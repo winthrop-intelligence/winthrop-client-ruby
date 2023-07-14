@@ -37,7 +37,6 @@ docs/SummarizerPostSummarizeS3Request.md
 docs/UnprocessableEntity.md
 docs/User.md
 docs/UserCollection.md
-git_push.sh
 lib/winthrop-client-ruby.rb
 lib/winthrop-client-ruby/api/default_api.rb
 lib/winthrop-client-ruby/api/reporting_api.rb
