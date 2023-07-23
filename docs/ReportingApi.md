@@ -4,19 +4,19 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**api_v1_reports_coach_contract_requests_get**](ReportingApi.md#api_v1_reports_coach_contract_requests_get) | **GET** /api/v1/reports/coach_contract_requests |  |
-| [**api_v1_reports_coach_history_get**](ReportingApi.md#api_v1_reports_coach_history_get) | **GET** /api/v1/reports/coach_history |  |
-| [**api_v1_reports_conferenceships_get**](ReportingApi.md#api_v1_reports_conferenceships_get) | **GET** /api/v1/reports/conferenceships |  |
-| [**api_v1_reports_foia_details_get**](ReportingApi.md#api_v1_reports_foia_details_get) | **GET** /api/v1/reports/foia_details |  |
-| [**api_v1_reports_games_get**](ReportingApi.md#api_v1_reports_games_get) | **GET** /api/v1/reports/games |  |
-| [**api_v1_reports_invoices_get**](ReportingApi.md#api_v1_reports_invoices_get) | **GET** /api/v1/reports/invoices |  |
-| [**api_v1_reports_school_contract_requests_get**](ReportingApi.md#api_v1_reports_school_contract_requests_get) | **GET** /api/v1/reports/school_contract_requests |  |
-| [**api_v1_reports_subscriptions_get**](ReportingApi.md#api_v1_reports_subscriptions_get) | **GET** /api/v1/reports/subscriptions |  |
+| [**get_coach_contract_requests**](ReportingApi.md#get_coach_contract_requests) | **GET** /api/v1/reports/coach_contract_requests |  |
+| [**get_coach_history**](ReportingApi.md#get_coach_history) | **GET** /api/v1/reports/coach_history |  |
+| [**get_conferenceships**](ReportingApi.md#get_conferenceships) | **GET** /api/v1/reports/conferenceships |  |
+| [**get_foia_details**](ReportingApi.md#get_foia_details) | **GET** /api/v1/reports/foia_details |  |
+| [**get_games**](ReportingApi.md#get_games) | **GET** /api/v1/reports/games |  |
+| [**get_invoices**](ReportingApi.md#get_invoices) | **GET** /api/v1/reports/invoices |  |
+| [**get_school_contract_requests**](ReportingApi.md#get_school_contract_requests) | **GET** /api/v1/reports/school_contract_requests |  |
+| [**get_subscriptions**](ReportingApi.md#get_subscriptions) | **GET** /api/v1/reports/subscriptions |  |
 
 
-## api_v1_reports_coach_contract_requests_get
+## get_coach_contract_requests
 
-> api_v1_reports_coach_contract_requests_get(opts)
+> Object get_coach_contract_requests(opts)
 
 
 
@@ -43,27 +43,28 @@ opts = {
 
 begin
   
-  api_instance.api_v1_reports_coach_contract_requests_get(opts)
+  result = api_instance.get_coach_contract_requests(opts)
+  p result
 rescue WinthropClient::ApiError => e
-  puts "Error when calling ReportingApi->api_v1_reports_coach_contract_requests_get: #{e}"
+  puts "Error when calling ReportingApi->get_coach_contract_requests: #{e}"
 end
 ```
 
-#### Using the api_v1_reports_coach_contract_requests_get_with_http_info variant
+#### Using the get_coach_contract_requests_with_http_info variant
 
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
+This returns an Array which contains the response data, status code and headers.
 
-> <Array(nil, Integer, Hash)> api_v1_reports_coach_contract_requests_get_with_http_info(opts)
+> <Array(Object, Integer, Hash)> get_coach_contract_requests_with_http_info(opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.api_v1_reports_coach_contract_requests_get_with_http_info(opts)
+  data, status_code, headers = api_instance.get_coach_contract_requests_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => nil
+  p data # => Object
 rescue WinthropClient::ApiError => e
-  puts "Error when calling ReportingApi->api_v1_reports_coach_contract_requests_get_with_http_info: #{e}"
+  puts "Error when calling ReportingApi->get_coach_contract_requests_with_http_info: #{e}"
 end
 ```
 
@@ -76,7 +77,7 @@ end
 
 ### Return type
 
-nil (empty response body)
+**Object**
 
 ### Authorization
 
@@ -88,9 +89,9 @@ nil (empty response body)
 - **Accept**: application/json
 
 
-## api_v1_reports_coach_history_get
+## get_coach_history
 
-> api_v1_reports_coach_history_get(opts)
+> Object get_coach_history(opts)
 
 
 
@@ -117,27 +118,28 @@ opts = {
 
 begin
   
-  api_instance.api_v1_reports_coach_history_get(opts)
+  result = api_instance.get_coach_history(opts)
+  p result
 rescue WinthropClient::ApiError => e
-  puts "Error when calling ReportingApi->api_v1_reports_coach_history_get: #{e}"
+  puts "Error when calling ReportingApi->get_coach_history: #{e}"
 end
 ```
 
-#### Using the api_v1_reports_coach_history_get_with_http_info variant
+#### Using the get_coach_history_with_http_info variant
 
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
+This returns an Array which contains the response data, status code and headers.
 
-> <Array(nil, Integer, Hash)> api_v1_reports_coach_history_get_with_http_info(opts)
+> <Array(Object, Integer, Hash)> get_coach_history_with_http_info(opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.api_v1_reports_coach_history_get_with_http_info(opts)
+  data, status_code, headers = api_instance.get_coach_history_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => nil
+  p data # => Object
 rescue WinthropClient::ApiError => e
-  puts "Error when calling ReportingApi->api_v1_reports_coach_history_get_with_http_info: #{e}"
+  puts "Error when calling ReportingApi->get_coach_history_with_http_info: #{e}"
 end
 ```
 
@@ -150,7 +152,7 @@ end
 
 ### Return type
 
-nil (empty response body)
+**Object**
 
 ### Authorization
 
@@ -162,9 +164,9 @@ nil (empty response body)
 - **Accept**: application/json
 
 
-## api_v1_reports_conferenceships_get
+## get_conferenceships
 
-> api_v1_reports_conferenceships_get(opts)
+> Object get_conferenceships(opts)
 
 
 
@@ -191,27 +193,28 @@ opts = {
 
 begin
   
-  api_instance.api_v1_reports_conferenceships_get(opts)
+  result = api_instance.get_conferenceships(opts)
+  p result
 rescue WinthropClient::ApiError => e
-  puts "Error when calling ReportingApi->api_v1_reports_conferenceships_get: #{e}"
+  puts "Error when calling ReportingApi->get_conferenceships: #{e}"
 end
 ```
 
-#### Using the api_v1_reports_conferenceships_get_with_http_info variant
+#### Using the get_conferenceships_with_http_info variant
 
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
+This returns an Array which contains the response data, status code and headers.
 
-> <Array(nil, Integer, Hash)> api_v1_reports_conferenceships_get_with_http_info(opts)
+> <Array(Object, Integer, Hash)> get_conferenceships_with_http_info(opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.api_v1_reports_conferenceships_get_with_http_info(opts)
+  data, status_code, headers = api_instance.get_conferenceships_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => nil
+  p data # => Object
 rescue WinthropClient::ApiError => e
-  puts "Error when calling ReportingApi->api_v1_reports_conferenceships_get_with_http_info: #{e}"
+  puts "Error when calling ReportingApi->get_conferenceships_with_http_info: #{e}"
 end
 ```
 
@@ -224,7 +227,7 @@ end
 
 ### Return type
 
-nil (empty response body)
+**Object**
 
 ### Authorization
 
@@ -236,9 +239,9 @@ nil (empty response body)
 - **Accept**: application/json
 
 
-## api_v1_reports_foia_details_get
+## get_foia_details
 
-> api_v1_reports_foia_details_get(opts)
+> Object get_foia_details(opts)
 
 
 
@@ -265,27 +268,28 @@ opts = {
 
 begin
   
-  api_instance.api_v1_reports_foia_details_get(opts)
+  result = api_instance.get_foia_details(opts)
+  p result
 rescue WinthropClient::ApiError => e
-  puts "Error when calling ReportingApi->api_v1_reports_foia_details_get: #{e}"
+  puts "Error when calling ReportingApi->get_foia_details: #{e}"
 end
 ```
 
-#### Using the api_v1_reports_foia_details_get_with_http_info variant
+#### Using the get_foia_details_with_http_info variant
 
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
+This returns an Array which contains the response data, status code and headers.
 
-> <Array(nil, Integer, Hash)> api_v1_reports_foia_details_get_with_http_info(opts)
+> <Array(Object, Integer, Hash)> get_foia_details_with_http_info(opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.api_v1_reports_foia_details_get_with_http_info(opts)
+  data, status_code, headers = api_instance.get_foia_details_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => nil
+  p data # => Object
 rescue WinthropClient::ApiError => e
-  puts "Error when calling ReportingApi->api_v1_reports_foia_details_get_with_http_info: #{e}"
+  puts "Error when calling ReportingApi->get_foia_details_with_http_info: #{e}"
 end
 ```
 
@@ -298,7 +302,7 @@ end
 
 ### Return type
 
-nil (empty response body)
+**Object**
 
 ### Authorization
 
@@ -310,9 +314,9 @@ nil (empty response body)
 - **Accept**: application/json
 
 
-## api_v1_reports_games_get
+## get_games
 
-> api_v1_reports_games_get(opts)
+> Object get_games(opts)
 
 
 
@@ -339,27 +343,28 @@ opts = {
 
 begin
   
-  api_instance.api_v1_reports_games_get(opts)
+  result = api_instance.get_games(opts)
+  p result
 rescue WinthropClient::ApiError => e
-  puts "Error when calling ReportingApi->api_v1_reports_games_get: #{e}"
+  puts "Error when calling ReportingApi->get_games: #{e}"
 end
 ```
 
-#### Using the api_v1_reports_games_get_with_http_info variant
+#### Using the get_games_with_http_info variant
 
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
+This returns an Array which contains the response data, status code and headers.
 
-> <Array(nil, Integer, Hash)> api_v1_reports_games_get_with_http_info(opts)
+> <Array(Object, Integer, Hash)> get_games_with_http_info(opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.api_v1_reports_games_get_with_http_info(opts)
+  data, status_code, headers = api_instance.get_games_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => nil
+  p data # => Object
 rescue WinthropClient::ApiError => e
-  puts "Error when calling ReportingApi->api_v1_reports_games_get_with_http_info: #{e}"
+  puts "Error when calling ReportingApi->get_games_with_http_info: #{e}"
 end
 ```
 
@@ -372,7 +377,7 @@ end
 
 ### Return type
 
-nil (empty response body)
+**Object**
 
 ### Authorization
 
@@ -384,9 +389,9 @@ nil (empty response body)
 - **Accept**: application/json
 
 
-## api_v1_reports_invoices_get
+## get_invoices
 
-> api_v1_reports_invoices_get(opts)
+> Object get_invoices(opts)
 
 
 
@@ -413,27 +418,28 @@ opts = {
 
 begin
   
-  api_instance.api_v1_reports_invoices_get(opts)
+  result = api_instance.get_invoices(opts)
+  p result
 rescue WinthropClient::ApiError => e
-  puts "Error when calling ReportingApi->api_v1_reports_invoices_get: #{e}"
+  puts "Error when calling ReportingApi->get_invoices: #{e}"
 end
 ```
 
-#### Using the api_v1_reports_invoices_get_with_http_info variant
+#### Using the get_invoices_with_http_info variant
 
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
+This returns an Array which contains the response data, status code and headers.
 
-> <Array(nil, Integer, Hash)> api_v1_reports_invoices_get_with_http_info(opts)
+> <Array(Object, Integer, Hash)> get_invoices_with_http_info(opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.api_v1_reports_invoices_get_with_http_info(opts)
+  data, status_code, headers = api_instance.get_invoices_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => nil
+  p data # => Object
 rescue WinthropClient::ApiError => e
-  puts "Error when calling ReportingApi->api_v1_reports_invoices_get_with_http_info: #{e}"
+  puts "Error when calling ReportingApi->get_invoices_with_http_info: #{e}"
 end
 ```
 
@@ -446,7 +452,7 @@ end
 
 ### Return type
 
-nil (empty response body)
+**Object**
 
 ### Authorization
 
@@ -458,9 +464,9 @@ nil (empty response body)
 - **Accept**: application/json
 
 
-## api_v1_reports_school_contract_requests_get
+## get_school_contract_requests
 
-> api_v1_reports_school_contract_requests_get(opts)
+> Object get_school_contract_requests(opts)
 
 
 
@@ -487,27 +493,28 @@ opts = {
 
 begin
   
-  api_instance.api_v1_reports_school_contract_requests_get(opts)
+  result = api_instance.get_school_contract_requests(opts)
+  p result
 rescue WinthropClient::ApiError => e
-  puts "Error when calling ReportingApi->api_v1_reports_school_contract_requests_get: #{e}"
+  puts "Error when calling ReportingApi->get_school_contract_requests: #{e}"
 end
 ```
 
-#### Using the api_v1_reports_school_contract_requests_get_with_http_info variant
+#### Using the get_school_contract_requests_with_http_info variant
 
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
+This returns an Array which contains the response data, status code and headers.
 
-> <Array(nil, Integer, Hash)> api_v1_reports_school_contract_requests_get_with_http_info(opts)
+> <Array(Object, Integer, Hash)> get_school_contract_requests_with_http_info(opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.api_v1_reports_school_contract_requests_get_with_http_info(opts)
+  data, status_code, headers = api_instance.get_school_contract_requests_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => nil
+  p data # => Object
 rescue WinthropClient::ApiError => e
-  puts "Error when calling ReportingApi->api_v1_reports_school_contract_requests_get_with_http_info: #{e}"
+  puts "Error when calling ReportingApi->get_school_contract_requests_with_http_info: #{e}"
 end
 ```
 
@@ -520,7 +527,7 @@ end
 
 ### Return type
 
-nil (empty response body)
+**Object**
 
 ### Authorization
 
@@ -532,9 +539,9 @@ nil (empty response body)
 - **Accept**: application/json
 
 
-## api_v1_reports_subscriptions_get
+## get_subscriptions
 
-> api_v1_reports_subscriptions_get(opts)
+> Object get_subscriptions(opts)
 
 
 
@@ -561,27 +568,28 @@ opts = {
 
 begin
   
-  api_instance.api_v1_reports_subscriptions_get(opts)
+  result = api_instance.get_subscriptions(opts)
+  p result
 rescue WinthropClient::ApiError => e
-  puts "Error when calling ReportingApi->api_v1_reports_subscriptions_get: #{e}"
+  puts "Error when calling ReportingApi->get_subscriptions: #{e}"
 end
 ```
 
-#### Using the api_v1_reports_subscriptions_get_with_http_info variant
+#### Using the get_subscriptions_with_http_info variant
 
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
+This returns an Array which contains the response data, status code and headers.
 
-> <Array(nil, Integer, Hash)> api_v1_reports_subscriptions_get_with_http_info(opts)
+> <Array(Object, Integer, Hash)> get_subscriptions_with_http_info(opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.api_v1_reports_subscriptions_get_with_http_info(opts)
+  data, status_code, headers = api_instance.get_subscriptions_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => nil
+  p data # => Object
 rescue WinthropClient::ApiError => e
-  puts "Error when calling ReportingApi->api_v1_reports_subscriptions_get_with_http_info: #{e}"
+  puts "Error when calling ReportingApi->get_subscriptions_with_http_info: #{e}"
 end
 ```
 
@@ -594,7 +602,7 @@ end
 
 ### Return type
 
-nil (empty response body)
+**Object**
 
 ### Authorization
 

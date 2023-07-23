@@ -23,20 +23,20 @@ module WinthropClient
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
     # @option opts [Object] :q Ransack query
-    # @return [nil]
-    def api_v1_reports_coach_contract_requests_get(opts = {})
-      api_v1_reports_coach_contract_requests_get_with_http_info(opts)
-      nil
+    # @return [Object]
+    def get_coach_contract_requests(opts = {})
+      data, _status_code, _headers = get_coach_contract_requests_with_http_info(opts)
+      data
     end
 
     # Retrieve some or all coach contract requests
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
     # @option opts [Object] :q Ransack query
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def api_v1_reports_coach_contract_requests_get_with_http_info(opts = {})
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
+    def get_coach_contract_requests_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ReportingApi.api_v1_reports_coach_contract_requests_get ...'
+        @api_client.config.logger.debug 'Calling API: ReportingApi.get_coach_contract_requests ...'
       end
       # resource path
       local_var_path = '/api/v1/reports/coach_contract_requests'
@@ -58,13 +58,13 @@ module WinthropClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type]
+      return_type = opts[:debug_return_type] || 'Object'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey']
 
       new_options = opts.merge(
-        :operation => :"ReportingApi.api_v1_reports_coach_contract_requests_get",
+        :operation => :"ReportingApi.get_coach_contract_requests",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -75,7 +75,7 @@ module WinthropClient
 
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ReportingApi#api_v1_reports_coach_contract_requests_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: ReportingApi#get_coach_contract_requests\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -84,20 +84,20 @@ module WinthropClient
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
     # @option opts [Object] :q Ransack query
-    # @return [nil]
-    def api_v1_reports_coach_history_get(opts = {})
-      api_v1_reports_coach_history_get_with_http_info(opts)
-      nil
+    # @return [Object]
+    def get_coach_history(opts = {})
+      data, _status_code, _headers = get_coach_history_with_http_info(opts)
+      data
     end
 
     # Retrieve some or all coach history
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
     # @option opts [Object] :q Ransack query
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def api_v1_reports_coach_history_get_with_http_info(opts = {})
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
+    def get_coach_history_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ReportingApi.api_v1_reports_coach_history_get ...'
+        @api_client.config.logger.debug 'Calling API: ReportingApi.get_coach_history ...'
       end
       # resource path
       local_var_path = '/api/v1/reports/coach_history'
@@ -119,13 +119,13 @@ module WinthropClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type]
+      return_type = opts[:debug_return_type] || 'Object'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey']
 
       new_options = opts.merge(
-        :operation => :"ReportingApi.api_v1_reports_coach_history_get",
+        :operation => :"ReportingApi.get_coach_history",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -136,7 +136,7 @@ module WinthropClient
 
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ReportingApi#api_v1_reports_coach_history_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: ReportingApi#get_coach_history\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -145,20 +145,20 @@ module WinthropClient
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
     # @option opts [Object] :q Ransack query
-    # @return [nil]
-    def api_v1_reports_conferenceships_get(opts = {})
-      api_v1_reports_conferenceships_get_with_http_info(opts)
-      nil
+    # @return [Object]
+    def get_conferenceships(opts = {})
+      data, _status_code, _headers = get_conferenceships_with_http_info(opts)
+      data
     end
 
     # Retrieve some or all conferenceships
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
     # @option opts [Object] :q Ransack query
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def api_v1_reports_conferenceships_get_with_http_info(opts = {})
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
+    def get_conferenceships_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ReportingApi.api_v1_reports_conferenceships_get ...'
+        @api_client.config.logger.debug 'Calling API: ReportingApi.get_conferenceships ...'
       end
       # resource path
       local_var_path = '/api/v1/reports/conferenceships'
@@ -180,13 +180,13 @@ module WinthropClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type]
+      return_type = opts[:debug_return_type] || 'Object'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey']
 
       new_options = opts.merge(
-        :operation => :"ReportingApi.api_v1_reports_conferenceships_get",
+        :operation => :"ReportingApi.get_conferenceships",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -197,7 +197,7 @@ module WinthropClient
 
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ReportingApi#api_v1_reports_conferenceships_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: ReportingApi#get_conferenceships\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -206,20 +206,20 @@ module WinthropClient
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
     # @option opts [Object] :q Ransack query
-    # @return [nil]
-    def api_v1_reports_foia_details_get(opts = {})
-      api_v1_reports_foia_details_get_with_http_info(opts)
-      nil
+    # @return [Object]
+    def get_foia_details(opts = {})
+      data, _status_code, _headers = get_foia_details_with_http_info(opts)
+      data
     end
 
     # Retrieve some or all foia details
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
     # @option opts [Object] :q Ransack query
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def api_v1_reports_foia_details_get_with_http_info(opts = {})
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
+    def get_foia_details_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ReportingApi.api_v1_reports_foia_details_get ...'
+        @api_client.config.logger.debug 'Calling API: ReportingApi.get_foia_details ...'
       end
       # resource path
       local_var_path = '/api/v1/reports/foia_details'
@@ -241,13 +241,13 @@ module WinthropClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type]
+      return_type = opts[:debug_return_type] || 'Object'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey']
 
       new_options = opts.merge(
-        :operation => :"ReportingApi.api_v1_reports_foia_details_get",
+        :operation => :"ReportingApi.get_foia_details",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -258,7 +258,7 @@ module WinthropClient
 
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ReportingApi#api_v1_reports_foia_details_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: ReportingApi#get_foia_details\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -267,20 +267,20 @@ module WinthropClient
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
     # @option opts [Object] :q Ransack query
-    # @return [nil]
-    def api_v1_reports_games_get(opts = {})
-      api_v1_reports_games_get_with_http_info(opts)
-      nil
+    # @return [Object]
+    def get_games(opts = {})
+      data, _status_code, _headers = get_games_with_http_info(opts)
+      data
     end
 
     # Retrieve some or all games
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
     # @option opts [Object] :q Ransack query
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def api_v1_reports_games_get_with_http_info(opts = {})
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
+    def get_games_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ReportingApi.api_v1_reports_games_get ...'
+        @api_client.config.logger.debug 'Calling API: ReportingApi.get_games ...'
       end
       # resource path
       local_var_path = '/api/v1/reports/games'
@@ -302,13 +302,13 @@ module WinthropClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type]
+      return_type = opts[:debug_return_type] || 'Object'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey']
 
       new_options = opts.merge(
-        :operation => :"ReportingApi.api_v1_reports_games_get",
+        :operation => :"ReportingApi.get_games",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -319,7 +319,7 @@ module WinthropClient
 
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ReportingApi#api_v1_reports_games_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: ReportingApi#get_games\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -328,20 +328,20 @@ module WinthropClient
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
     # @option opts [Object] :q Ransack query
-    # @return [nil]
-    def api_v1_reports_invoices_get(opts = {})
-      api_v1_reports_invoices_get_with_http_info(opts)
-      nil
+    # @return [Object]
+    def get_invoices(opts = {})
+      data, _status_code, _headers = get_invoices_with_http_info(opts)
+      data
     end
 
     # Retrieve some or all client invoices
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
     # @option opts [Object] :q Ransack query
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def api_v1_reports_invoices_get_with_http_info(opts = {})
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
+    def get_invoices_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ReportingApi.api_v1_reports_invoices_get ...'
+        @api_client.config.logger.debug 'Calling API: ReportingApi.get_invoices ...'
       end
       # resource path
       local_var_path = '/api/v1/reports/invoices'
@@ -363,13 +363,13 @@ module WinthropClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type]
+      return_type = opts[:debug_return_type] || 'Object'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey']
 
       new_options = opts.merge(
-        :operation => :"ReportingApi.api_v1_reports_invoices_get",
+        :operation => :"ReportingApi.get_invoices",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -380,7 +380,7 @@ module WinthropClient
 
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ReportingApi#api_v1_reports_invoices_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: ReportingApi#get_invoices\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -389,20 +389,20 @@ module WinthropClient
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
     # @option opts [Object] :q Ransack query
-    # @return [nil]
-    def api_v1_reports_school_contract_requests_get(opts = {})
-      api_v1_reports_school_contract_requests_get_with_http_info(opts)
-      nil
+    # @return [Object]
+    def get_school_contract_requests(opts = {})
+      data, _status_code, _headers = get_school_contract_requests_with_http_info(opts)
+      data
     end
 
     # Retrieve some or all school contract requests
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
     # @option opts [Object] :q Ransack query
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def api_v1_reports_school_contract_requests_get_with_http_info(opts = {})
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
+    def get_school_contract_requests_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ReportingApi.api_v1_reports_school_contract_requests_get ...'
+        @api_client.config.logger.debug 'Calling API: ReportingApi.get_school_contract_requests ...'
       end
       # resource path
       local_var_path = '/api/v1/reports/school_contract_requests'
@@ -424,13 +424,13 @@ module WinthropClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type]
+      return_type = opts[:debug_return_type] || 'Object'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey']
 
       new_options = opts.merge(
-        :operation => :"ReportingApi.api_v1_reports_school_contract_requests_get",
+        :operation => :"ReportingApi.get_school_contract_requests",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -441,7 +441,7 @@ module WinthropClient
 
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ReportingApi#api_v1_reports_school_contract_requests_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: ReportingApi#get_school_contract_requests\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -450,20 +450,20 @@ module WinthropClient
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
     # @option opts [Object] :q Ransack query
-    # @return [nil]
-    def api_v1_reports_subscriptions_get(opts = {})
-      api_v1_reports_subscriptions_get_with_http_info(opts)
-      nil
+    # @return [Object]
+    def get_subscriptions(opts = {})
+      data, _status_code, _headers = get_subscriptions_with_http_info(opts)
+      data
     end
 
     # Retrieve subscriptions
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
     # @option opts [Object] :q Ransack query
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def api_v1_reports_subscriptions_get_with_http_info(opts = {})
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
+    def get_subscriptions_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ReportingApi.api_v1_reports_subscriptions_get ...'
+        @api_client.config.logger.debug 'Calling API: ReportingApi.get_subscriptions ...'
       end
       # resource path
       local_var_path = '/api/v1/reports/subscriptions'
@@ -485,13 +485,13 @@ module WinthropClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type]
+      return_type = opts[:debug_return_type] || 'Object'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey']
 
       new_options = opts.merge(
-        :operation => :"ReportingApi.api_v1_reports_subscriptions_get",
+        :operation => :"ReportingApi.get_subscriptions",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -502,7 +502,7 @@ module WinthropClient
 
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ReportingApi#api_v1_reports_subscriptions_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: ReportingApi#get_subscriptions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
