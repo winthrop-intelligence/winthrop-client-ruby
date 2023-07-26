@@ -38,7 +38,7 @@ end
 api_instance = WinthropClient::ReportingApi.new
 opts = {
   page: 56, # Integer | results page to retrieve.
-  q: { key: 3.56} # Object | Ransack query
+  q: { ... } # Object | Ransack query
 }
 
 begin
@@ -113,7 +113,7 @@ end
 api_instance = WinthropClient::ReportingApi.new
 opts = {
   page: 56, # Integer | results page to retrieve.
-  q: { key: 3.56} # Object | Ransack query
+  q: { ... } # Object | Ransack query
 }
 
 begin
@@ -188,7 +188,7 @@ end
 api_instance = WinthropClient::ReportingApi.new
 opts = {
   page: 56, # Integer | results page to retrieve.
-  q: { key: 3.56} # Object | Ransack query
+  q: { ... } # Object | Ransack query
 }
 
 begin
@@ -263,7 +263,7 @@ end
 api_instance = WinthropClient::ReportingApi.new
 opts = {
   page: 56, # Integer | results page to retrieve.
-  q: { key: 3.56} # Object | Ransack query
+  q: { ... } # Object | Ransack query
 }
 
 begin
@@ -338,7 +338,7 @@ end
 api_instance = WinthropClient::ReportingApi.new
 opts = {
   page: 56, # Integer | results page to retrieve.
-  q: { key: 3.56} # Object | Ransack query
+  q: { ... } # Object | Ransack query
 }
 
 begin
@@ -413,7 +413,7 @@ end
 api_instance = WinthropClient::ReportingApi.new
 opts = {
   page: 56, # Integer | results page to retrieve.
-  q: { key: 3.56} # Object | Ransack query
+  q: { ... } # Object | Ransack query
 }
 
 begin
@@ -488,7 +488,7 @@ end
 api_instance = WinthropClient::ReportingApi.new
 opts = {
   page: 56, # Integer | results page to retrieve.
-  q: { key: 3.56} # Object | Ransack query
+  q: { ... } # Object | Ransack query
 }
 
 begin
@@ -563,7 +563,7 @@ end
 api_instance = WinthropClient::ReportingApi.new
 opts = {
   page: 56, # Integer | results page to retrieve.
-  q: { key: 3.56} # Object | Ransack query
+  q: { ... } # Object | Ransack query
 }
 
 begin

@@ -560,7 +560,7 @@ api_instance = WinthropClient::DefaultApi.new
 opts = {
   page: 56, # Integer | results page to retrieve.
   per_page: 56, # Integer | number of results per page.
-  q: { key: 3.56} # Object | Ransack query
+  q: { ... } # Object | Ransack query
 }
 
 begin
@@ -708,7 +708,7 @@ api_instance = WinthropClient::DefaultApi.new
 opts = {
   page: 56, # Integer | results page to retrieve.
   per_page: 56, # Integer | number of results per page.
-  q: { key: 3.56} # Object | Ransack query
+  q: { ... } # Object | Ransack query
 }
 
 begin
@@ -856,7 +856,7 @@ api_instance = WinthropClient::DefaultApi.new
 opts = {
   page: 56, # Integer | results page to retrieve.
   per_page: 56, # Integer | number of results per page.
-  q: { key: 3.56} # Object | Ransack query
+  q: { ... } # Object | Ransack query
 }
 
 begin
@@ -1004,7 +1004,7 @@ api_instance = WinthropClient::DefaultApi.new
 opts = {
   page: 56, # Integer | results page to retrieve.
   per_page: 56, # Integer | number of results per page.
-  q: { key: 3.56} # Object | Ransack query
+  q: { ... } # Object | Ransack query
 }
 
 begin
@@ -1152,7 +1152,7 @@ api_instance = WinthropClient::DefaultApi.new
 opts = {
   page: 56, # Integer | results page to retrieve.
   per_page: 56, # Integer | number of results per page.
-  q: { key: 3.56} # Object | Ransack query
+  q: { ... } # Object | Ransack query
 }
 
 begin
@@ -1300,7 +1300,7 @@ api_instance = WinthropClient::DefaultApi.new
 opts = {
   page: 56, # Integer | results page to retrieve.
   per_page: 56, # Integer | number of results per page.
-  q: { key: 3.56} # Object | Ransack query
+  q: { ... } # Object | Ransack query
 }
 
 begin
@@ -1448,7 +1448,7 @@ api_instance = WinthropClient::DefaultApi.new
 opts = {
   page: 56, # Integer | results page to retrieve.
   per_page: 56, # Integer | number of results per page.
-  q: { key: 3.56} # Object | Ransack query
+  q: { ... } # Object | Ransack query
 }
 
 begin
@@ -1596,7 +1596,7 @@ api_instance = WinthropClient::DefaultApi.new
 opts = {
   page: 56, # Integer | results page to retrieve.
   per_page: 56, # Integer | number of results per page.
-  q: { key: 3.56} # Object | Ransack query
+  q: { ... } # Object | Ransack query
 }
 
 begin
@@ -1744,7 +1744,7 @@ api_instance = WinthropClient::DefaultApi.new
 opts = {
   page: 56, # Integer | results page to retrieve.
   per_page: 56, # Integer | number of results per page.
-  q: { key: 3.56} # Object | Ransack query
+  q: { ... } # Object | Ransack query
 }
 
 begin
@@ -1892,7 +1892,7 @@ api_instance = WinthropClient::DefaultApi.new
 opts = {
   page: 56, # Integer | results page to retrieve.
   per_page: 56, # Integer | number of results per page.
-  q: { key: 3.56} # Object | Ransack query
+  q: { ... } # Object | Ransack query
 }
 
 begin
@@ -2040,7 +2040,7 @@ api_instance = WinthropClient::DefaultApi.new
 opts = {
   page: 56, # Integer | results page to retrieve.
   per_page: 56, # Integer | number of results per page.
-  q: { key: 3.56} # Object | Ransack query
+  q: { ... } # Object | Ransack query
 }
 
 begin
@@ -2188,7 +2188,7 @@ api_instance = WinthropClient::DefaultApi.new
 opts = {
   page: 56, # Integer | results page to retrieve.
   per_page: 56, # Integer | number of results per page.
-  q: { key: 3.56} # Object | Ransack query
+  q: { ... } # Object | Ransack query
 }
 
 begin
