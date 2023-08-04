@@ -5,10 +5,10 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** |  | [optional] |
-| **home_school_id** | **Integer** |  |  |
-| **away_school_id** | **Integer** |  |  |
+| **home_school_id** | **Integer** |  | [optional] |
+| **away_school_id** | **Integer** |  | [optional] |
 | **sport_id** | **Integer** |  |  |
-| **game_date** | **Time** |  |  |
+| **game_date** | **Date** |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
 | **neutral** | **Boolean** |  | [optional] |
@@ -33,7 +33,7 @@ instance = WinthropClient::Game.new(
   home_school_id: 2,
   away_school_id: 3,
   sport_id: 4,
-  game_date: 2019-01-01T00:00Z,
+  game_date: null,
   created_at: 2019-01-01T00:00Z,
   updated_at: 2019-01-01T00:00Z,
   neutral: false,
