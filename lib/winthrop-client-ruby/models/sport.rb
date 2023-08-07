@@ -14,23 +14,57 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class AuditedFinancialReportStatus
+  class Sport
     attr_accessor :id
 
-    attr_accessor :school_id
+    attr_accessor :name
 
-    attr_accessor :year
+    attr_accessor :name_aka
+
+    attr_accessor :name_display
+
+    attr_accessor :gender_code
+
+    attr_accessor :emerging
+
+    attr_accessor :meet_sport
 
     attr_accessor :created_at
 
     attr_accessor :updated_at
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'school_id' => :'school_id',
-        :'year' => :'year',
+        :'name' => :'name',
+        :'name_aka' => :'name_aka',
+        :'name_display' => :'name_display',
+        :'gender_code' => :'gender_code',
+        :'emerging' => :'emerging',
+        :'meet_sport' => :'meet_sport',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -45,8 +79,12 @@ module WinthropClient
     def self.openapi_types
       {
         :'id' => :'Integer',
-        :'school_id' => :'Integer',
-        :'year' => :'Integer',
+        :'name' => :'String',
+        :'name_aka' => :'String',
+        :'name_display' => :'String',
+        :'gender_code' => :'String',
+        :'emerging' => :'Boolean',
+        :'meet_sport' => :'Boolean',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -62,13 +100,13 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::AuditedFinancialReportStatus` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::Sport` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::AuditedFinancialReportStatus`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::Sport`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -77,12 +115,28 @@ module WinthropClient
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'school_id')
-        self.school_id = attributes[:'school_id']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'year')
-        self.year = attributes[:'year']
+      if attributes.key?(:'name_aka')
+        self.name_aka = attributes[:'name_aka']
+      end
+
+      if attributes.key?(:'name_display')
+        self.name_display = attributes[:'name_display']
+      end
+
+      if attributes.key?(:'gender_code')
+        self.gender_code = attributes[:'gender_code']
+      end
+
+      if attributes.key?(:'emerging')
+        self.emerging = attributes[:'emerging']
+      end
+
+      if attributes.key?(:'meet_sport')
+        self.meet_sport = attributes[:'meet_sport']
       end
 
       if attributes.key?(:'created_at')
@@ -98,23 +152,25 @@ module WinthropClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @school_id.nil?
-        invalid_properties.push('invalid value for "school_id", school_id cannot be nil.')
-      end
-
-      if @year.nil?
-        invalid_properties.push('invalid value for "year", year cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @school_id.nil?
-      return false if @year.nil?
+      gender_code_validator = EnumAttributeValidator.new('String', ["M", "W"])
+      return false unless gender_code_validator.valid?(@gender_code)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] gender_code Object to be assigned
+    def gender_code=(gender_code)
+      validator = EnumAttributeValidator.new('String', ["M", "W"])
+      unless validator.valid?(gender_code)
+        fail ArgumentError, "invalid value for \"gender_code\", must be one of #{validator.allowable_values}."
+      end
+      @gender_code = gender_code
     end
 
     # Checks equality by comparing each attribute.
@@ -123,8 +179,12 @@ module WinthropClient
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          school_id == o.school_id &&
-          year == o.year &&
+          name == o.name &&
+          name_aka == o.name_aka &&
+          name_display == o.name_display &&
+          gender_code == o.gender_code &&
+          emerging == o.emerging &&
+          meet_sport == o.meet_sport &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -138,7 +198,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, school_id, year, created_at, updated_at].hash
+      [id, name, name_aka, name_display, gender_code, emerging, meet_sport, created_at, updated_at].hash
     end
 
     # Builds the object from hash

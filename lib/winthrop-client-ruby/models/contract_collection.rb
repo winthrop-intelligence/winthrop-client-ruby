@@ -14,25 +14,16 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class AuditedFinancialReportStatus
-    attr_accessor :id
+  class ContractCollection
+    attr_accessor :data
 
-    attr_accessor :school_id
-
-    attr_accessor :year
-
-    attr_accessor :created_at
-
-    attr_accessor :updated_at
+    attr_accessor :meta
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'school_id' => :'school_id',
-        :'year' => :'year',
-        :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at'
+        :'data' => :'data',
+        :'meta' => :'meta'
       }
     end
 
@@ -44,11 +35,8 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'Integer',
-        :'school_id' => :'Integer',
-        :'year' => :'Integer',
-        :'created_at' => :'Time',
-        :'updated_at' => :'Time'
+        :'data' => :'Array<Contract>',
+        :'meta' => :'Meta'
       }
     end
 
@@ -62,35 +50,25 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::AuditedFinancialReportStatus` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::ContractCollection` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::AuditedFinancialReportStatus`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::ContractCollection`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'data')
+        if (value = attributes[:'data']).is_a?(Array)
+          self.data = value
+        end
       end
 
-      if attributes.key?(:'school_id')
-        self.school_id = attributes[:'school_id']
-      end
-
-      if attributes.key?(:'year')
-        self.year = attributes[:'year']
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
+      if attributes.key?(:'meta')
+        self.meta = attributes[:'meta']
       end
     end
 
@@ -98,22 +76,12 @@ module WinthropClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @school_id.nil?
-        invalid_properties.push('invalid value for "school_id", school_id cannot be nil.')
-      end
-
-      if @year.nil?
-        invalid_properties.push('invalid value for "year", year cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @school_id.nil?
-      return false if @year.nil?
       true
     end
 
@@ -122,11 +90,8 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          school_id == o.school_id &&
-          year == o.year &&
-          created_at == o.created_at &&
-          updated_at == o.updated_at
+          data == o.data &&
+          meta == o.meta
     end
 
     # @see the `==` method
@@ -138,7 +103,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, school_id, year, created_at, updated_at].hash
+      [data, meta].hash
     end
 
     # Builds the object from hash

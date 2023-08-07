@@ -16,6 +16,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_coaches**](DefaultApi.md#get_coaches) | **GET** /api/v1/coaches |  |
 | [**get_compensation**](DefaultApi.md#get_compensation) | **GET** /api/v1/compensations/{compensationId} |  |
 | [**get_compensations**](DefaultApi.md#get_compensations) | **GET** /api/v1/compensations |  |
+| [**get_contract**](DefaultApi.md#get_contract) | **GET** /api/v1/contracts/{contractId} |  |
+| [**get_contracts**](DefaultApi.md#get_contracts) | **GET** /api/v1/contracts |  |
 | [**get_deal_status**](DefaultApi.md#get_deal_status) | **GET** /api/v1/deal_statuses/{dealStatusId} |  |
 | [**get_deal_statuses**](DefaultApi.md#get_deal_statuses) | **GET** /api/v1/deal_statuses |  |
 | [**get_foia_label**](DefaultApi.md#get_foia_label) | **GET** /api/v1/foia_labels/{foiaLabelId} |  |
@@ -32,6 +34,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_requested_items**](DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items |  |
 | [**get_school**](DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} |  |
 | [**get_schools**](DefaultApi.md#get_schools) | **GET** /api/v1/schools |  |
+| [**get_sport**](DefaultApi.md#get_sport) | **GET** /api/v1/sports/{sportId} |  |
+| [**get_sports**](DefaultApi.md#get_sports) | **GET** /api/v1/sports |  |
 | [**get_user**](DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} |  |
 | [**get_users**](DefaultApi.md#get_users) | **GET** /api/v1/users |  |
 | [**summarizer_post_qa_s3**](DefaultApi.md#summarizer_post_qa_s3) | **POST** /summarizer/qa_s3 | Answer questions over a file from S3 |
@@ -897,6 +901,154 @@ end
 ### Return type
 
 [**CompensationCollection**](CompensationCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_contract
+
+> <Contract> get_contract(contract_id)
+
+
+
+Retrieve a single contract
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+contract_id = 56 # Integer | ID of contract to retrieve
+
+begin
+  
+  result = api_instance.get_contract(contract_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_contract: #{e}"
+end
+```
+
+#### Using the get_contract_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Contract>, Integer, Hash)> get_contract_with_http_info(contract_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_contract_with_http_info(contract_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Contract>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_contract_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **contract_id** | **Integer** | ID of contract to retrieve |  |
+
+### Return type
+
+[**Contract**](Contract.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_contracts
+
+> <ContractCollection> get_contracts(opts)
+
+
+
+Retrieve some or all contracts
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  
+  result = api_instance.get_contracts(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_contracts: #{e}"
+end
+```
+
+#### Using the get_contracts_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ContractCollection>, Integer, Hash)> get_contracts_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_contracts_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ContractCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_contracts_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 100] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**ContractCollection**](ContractCollection.md)
 
 ### Authorization
 
@@ -2081,6 +2233,154 @@ end
 ### Return type
 
 [**SchoolCollection**](SchoolCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sport
+
+> <Sport> get_sport(sport_id)
+
+
+
+Retrieve a single sport
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+sport_id = 56 # Integer | ID of sport to retrieve
+
+begin
+  
+  result = api_instance.get_sport(sport_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_sport: #{e}"
+end
+```
+
+#### Using the get_sport_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Sport>, Integer, Hash)> get_sport_with_http_info(sport_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_sport_with_http_info(sport_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Sport>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_sport_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **sport_id** | **Integer** | ID of sport to retrieve |  |
+
+### Return type
+
+[**Sport**](Sport.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sports
+
+> <SportCollection> get_sports(opts)
+
+
+
+Retrieve some or all sports
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  
+  result = api_instance.get_sports(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_sports: #{e}"
+end
+```
+
+#### Using the get_sports_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SportCollection>, Integer, Hash)> get_sports_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_sports_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SportCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_sports_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 100] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**SportCollection**](SportCollection.md)
 
 ### Authorization
 

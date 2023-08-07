@@ -12,6 +12,8 @@ docs/Coach.md
 docs/CoachCollection.md
 docs/Compensation.md
 docs/CompensationCollection.md
+docs/Contract.md
+docs/ContractCollection.md
 docs/DealStatus.md
 docs/DealStatusCollection.md
 docs/DefaultApi.md
@@ -32,6 +34,8 @@ docs/RequestedItemCollection.md
 docs/School.md
 docs/SchoolCollection.md
 docs/SchoolLogo.md
+docs/Sport.md
+docs/SportCollection.md
 docs/SummarizerPostQaS3Request.md
 docs/SummarizerPostSummarizeS3Request.md
 docs/UnprocessableEntity.md
@@ -49,6 +53,8 @@ lib/winthrop-client-ruby/models/coach.rb
 lib/winthrop-client-ruby/models/coach_collection.rb
 lib/winthrop-client-ruby/models/compensation.rb
 lib/winthrop-client-ruby/models/compensation_collection.rb
+lib/winthrop-client-ruby/models/contract.rb
+lib/winthrop-client-ruby/models/contract_collection.rb
 lib/winthrop-client-ruby/models/deal_status.rb
 lib/winthrop-client-ruby/models/deal_status_collection.rb
 lib/winthrop-client-ruby/models/foia_label.rb
@@ -67,6 +73,8 @@ lib/winthrop-client-ruby/models/requested_item_collection.rb
 lib/winthrop-client-ruby/models/school.rb
 lib/winthrop-client-ruby/models/school_collection.rb
 lib/winthrop-client-ruby/models/school_logo.rb
+lib/winthrop-client-ruby/models/sport.rb
+lib/winthrop-client-ruby/models/sport_collection.rb
 lib/winthrop-client-ruby/models/summarizer_post_qa_s3_request.rb
 lib/winthrop-client-ruby/models/summarizer_post_summarize_s3_request.rb
 lib/winthrop-client-ruby/models/unprocessable_entity.rb

@@ -14,23 +14,66 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class AuditedFinancialReportStatus
+  class Contract
     attr_accessor :id
 
-    attr_accessor :school_id
+    attr_accessor :executed_on
 
-    attr_accessor :year
+    attr_accessor :expires_on
+
+    attr_accessor :start_on
+
+    attr_accessor :end_on
+
+    attr_accessor :at_will
+
+    attr_accessor :verified
+
+    attr_accessor :contractable_type
+
+    attr_accessor :contractable_id
+
+    attr_accessor :raw_contract_id
 
     attr_accessor :created_at
 
     attr_accessor :updated_at
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'school_id' => :'school_id',
-        :'year' => :'year',
+        :'executed_on' => :'executed_on',
+        :'expires_on' => :'expires_on',
+        :'start_on' => :'start_on',
+        :'end_on' => :'end_on',
+        :'at_will' => :'at_will',
+        :'verified' => :'verified',
+        :'contractable_type' => :'contractable_type',
+        :'contractable_id' => :'contractable_id',
+        :'raw_contract_id' => :'raw_contract_id',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -45,8 +88,15 @@ module WinthropClient
     def self.openapi_types
       {
         :'id' => :'Integer',
-        :'school_id' => :'Integer',
-        :'year' => :'Integer',
+        :'executed_on' => :'Date',
+        :'expires_on' => :'Date',
+        :'start_on' => :'Date',
+        :'end_on' => :'Date',
+        :'at_will' => :'Boolean',
+        :'verified' => :'Boolean',
+        :'contractable_type' => :'String',
+        :'contractable_id' => :'Integer',
+        :'raw_contract_id' => :'Integer',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -62,13 +112,13 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::AuditedFinancialReportStatus` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::Contract` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::AuditedFinancialReportStatus`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::Contract`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -77,12 +127,40 @@ module WinthropClient
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'school_id')
-        self.school_id = attributes[:'school_id']
+      if attributes.key?(:'executed_on')
+        self.executed_on = attributes[:'executed_on']
       end
 
-      if attributes.key?(:'year')
-        self.year = attributes[:'year']
+      if attributes.key?(:'expires_on')
+        self.expires_on = attributes[:'expires_on']
+      end
+
+      if attributes.key?(:'start_on')
+        self.start_on = attributes[:'start_on']
+      end
+
+      if attributes.key?(:'end_on')
+        self.end_on = attributes[:'end_on']
+      end
+
+      if attributes.key?(:'at_will')
+        self.at_will = attributes[:'at_will']
+      end
+
+      if attributes.key?(:'verified')
+        self.verified = attributes[:'verified']
+      end
+
+      if attributes.key?(:'contractable_type')
+        self.contractable_type = attributes[:'contractable_type']
+      end
+
+      if attributes.key?(:'contractable_id')
+        self.contractable_id = attributes[:'contractable_id']
+      end
+
+      if attributes.key?(:'raw_contract_id')
+        self.raw_contract_id = attributes[:'raw_contract_id']
       end
 
       if attributes.key?(:'created_at')
@@ -98,23 +176,25 @@ module WinthropClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @school_id.nil?
-        invalid_properties.push('invalid value for "school_id", school_id cannot be nil.')
-      end
-
-      if @year.nil?
-        invalid_properties.push('invalid value for "year", year cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @school_id.nil?
-      return false if @year.nil?
+      contractable_type_validator = EnumAttributeValidator.new('String', ["Coach", "Person"])
+      return false unless contractable_type_validator.valid?(@contractable_type)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] contractable_type Object to be assigned
+    def contractable_type=(contractable_type)
+      validator = EnumAttributeValidator.new('String', ["Coach", "Person"])
+      unless validator.valid?(contractable_type)
+        fail ArgumentError, "invalid value for \"contractable_type\", must be one of #{validator.allowable_values}."
+      end
+      @contractable_type = contractable_type
     end
 
     # Checks equality by comparing each attribute.
@@ -123,8 +203,15 @@ module WinthropClient
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          school_id == o.school_id &&
-          year == o.year &&
+          executed_on == o.executed_on &&
+          expires_on == o.expires_on &&
+          start_on == o.start_on &&
+          end_on == o.end_on &&
+          at_will == o.at_will &&
+          verified == o.verified &&
+          contractable_type == o.contractable_type &&
+          contractable_id == o.contractable_id &&
+          raw_contract_id == o.raw_contract_id &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -138,7 +225,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, school_id, year, created_at, updated_at].hash
+      [id, executed_on, expires_on, start_on, end_on, at_will, verified, contractable_type, contractable_id, raw_contract_id, created_at, updated_at].hash
     end
 
     # Builds the object from hash
