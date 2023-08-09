@@ -14,54 +14,38 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class FoiaRequest
+  class JobPost
     attr_accessor :id
 
+    attr_accessor :title
+
+    attr_accessor :department
+
+    attr_accessor :link
+
+    attr_accessor :uid
+
+    attr_accessor :work_type
+
+    attr_accessor :description
+
     attr_accessor :school_id
-
-    attr_accessor :created_by_id
-
-    attr_accessor :updated_by_id
-
-    attr_accessor :state
-
-    attr_accessor :foia_label_id
 
     attr_accessor :created_at
 
     attr_accessor :updated_at
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
+        :'title' => :'title',
+        :'department' => :'department',
+        :'link' => :'link',
+        :'uid' => :'uid',
+        :'work_type' => :'work_type',
+        :'description' => :'description',
         :'school_id' => :'school_id',
-        :'created_by_id' => :'created_by_id',
-        :'updated_by_id' => :'updated_by_id',
-        :'state' => :'state',
-        :'foia_label_id' => :'foia_label_id',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -76,11 +60,13 @@ module WinthropClient
     def self.openapi_types
       {
         :'id' => :'Integer',
+        :'title' => :'String',
+        :'department' => :'String',
+        :'link' => :'String',
+        :'uid' => :'String',
+        :'work_type' => :'String',
+        :'description' => :'String',
         :'school_id' => :'Integer',
-        :'created_by_id' => :'Integer',
-        :'updated_by_id' => :'Integer',
-        :'state' => :'String',
-        :'foia_label_id' => :'Integer',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -96,13 +82,13 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::FoiaRequest` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::JobPost` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::FoiaRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::JobPost`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -111,24 +97,32 @@ module WinthropClient
         self.id = attributes[:'id']
       end
 
+      if attributes.key?(:'title')
+        self.title = attributes[:'title']
+      end
+
+      if attributes.key?(:'department')
+        self.department = attributes[:'department']
+      end
+
+      if attributes.key?(:'link')
+        self.link = attributes[:'link']
+      end
+
+      if attributes.key?(:'uid')
+        self.uid = attributes[:'uid']
+      end
+
+      if attributes.key?(:'work_type')
+        self.work_type = attributes[:'work_type']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
+      end
+
       if attributes.key?(:'school_id')
         self.school_id = attributes[:'school_id']
-      end
-
-      if attributes.key?(:'created_by_id')
-        self.created_by_id = attributes[:'created_by_id']
-      end
-
-      if attributes.key?(:'updated_by_id')
-        self.updated_by_id = attributes[:'updated_by_id']
-      end
-
-      if attributes.key?(:'state')
-        self.state = attributes[:'state']
-      end
-
-      if attributes.key?(:'foia_label_id')
-        self.foia_label_id = attributes[:'foia_label_id']
       end
 
       if attributes.key?(:'created_at')
@@ -144,12 +138,16 @@ module WinthropClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @school_id.nil?
-        invalid_properties.push('invalid value for "school_id", school_id cannot be nil.')
+      if @uid.nil?
+        invalid_properties.push('invalid value for "uid", uid cannot be nil.')
       end
 
-      if @state.nil?
-        invalid_properties.push('invalid value for "state", state cannot be nil.')
+      if @description.nil?
+        invalid_properties.push('invalid value for "description", description cannot be nil.')
+      end
+
+      if @school_id.nil?
+        invalid_properties.push('invalid value for "school_id", school_id cannot be nil.')
       end
 
       invalid_properties
@@ -158,21 +156,10 @@ module WinthropClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @uid.nil?
+      return false if @description.nil?
       return false if @school_id.nil?
-      return false if @state.nil?
-      state_validator = EnumAttributeValidator.new('String', ["ACTIVE", "ARCHIVED"])
-      return false unless state_validator.valid?(@state)
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] state Object to be assigned
-    def state=(state)
-      validator = EnumAttributeValidator.new('String', ["ACTIVE", "ARCHIVED"])
-      unless validator.valid?(state)
-        fail ArgumentError, "invalid value for \"state\", must be one of #{validator.allowable_values}."
-      end
-      @state = state
     end
 
     # Checks equality by comparing each attribute.
@@ -181,11 +168,13 @@ module WinthropClient
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
+          title == o.title &&
+          department == o.department &&
+          link == o.link &&
+          uid == o.uid &&
+          work_type == o.work_type &&
+          description == o.description &&
           school_id == o.school_id &&
-          created_by_id == o.created_by_id &&
-          updated_by_id == o.updated_by_id &&
-          state == o.state &&
-          foia_label_id == o.foia_label_id &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -199,7 +188,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, school_id, created_by_id, updated_by_id, state, foia_label_id, created_at, updated_at].hash
+      [id, title, department, link, uid, work_type, description, school_id, created_at, updated_at].hash
     end
 
     # Builds the object from hash

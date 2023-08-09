@@ -6,9 +6,11 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | ------ | ------------ | ----------- |
 | [**create_foia_label**](DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels |  |
 | [**create_foia_request**](DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests |  |
+| [**create_job_post**](DefaultApi.md#create_job_post) | **POST** /api/central-jobs-api/job_posts | Create a job post |
 | [**create_requested_item**](DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items |  |
 | [**delete_foia_label**](DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} |  |
 | [**delete_foia_request**](DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} |  |
+| [**delete_job_post**](DefaultApi.md#delete_job_post) | **DELETE** /api/central-jobs-api/job_posts/{jobPostId} | Delete a job post |
 | [**delete_requested_item**](DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} |  |
 | [**get_audited_financial_report_status**](DefaultApi.md#get_audited_financial_report_status) | **GET** /api/v1/audited_financial_report_statuses/{auditedFinancialReportStatusId} |  |
 | [**get_audited_financial_report_statuses**](DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses |  |
@@ -28,6 +30,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_games**](DefaultApi.md#get_games) | **GET** /api/v1/games |  |
 | [**get_income_report**](DefaultApi.md#get_income_report) | **GET** /api/v1/income_reports/{incomeReportId} |  |
 | [**get_income_reports**](DefaultApi.md#get_income_reports) | **GET** /api/v1/income_reports |  |
+| [**get_job_post**](DefaultApi.md#get_job_post) | **GET** /api/central-jobs-api/job_posts/{jobPostId} | Get a job post |
+| [**get_job_posts**](DefaultApi.md#get_job_posts) | **GET** /api/central-jobs-api/job_posts | List all job posts |
 | [**get_ncaa_financial_report_status**](DefaultApi.md#get_ncaa_financial_report_status) | **GET** /api/v1/ncaa_financial_report_statuses/{ncaaFinancialReportStatusId} |  |
 | [**get_ncaa_financial_report_statuses**](DefaultApi.md#get_ncaa_financial_report_statuses) | **GET** /api/v1/ncaa_financial_report_statuses |  |
 | [**get_requested_item**](DefaultApi.md#get_requested_item) | **GET** /api/v1/requested_items/{requestedItemId} |  |
@@ -42,6 +46,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**summarizer_post_summarize_s3**](DefaultApi.md#summarizer_post_summarize_s3) | **POST** /summarizer/summarize_s3 | Summarize a file from S3 |
 | [**update_foia_label**](DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} |  |
 | [**update_foia_request**](DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} |  |
+| [**update_job_post**](DefaultApi.md#update_job_post) | **PATCH** /api/central-jobs-api/job_posts/{jobPostId} | Update a job post |
 | [**update_requested_item**](DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} |  |
 
 
@@ -176,6 +181,79 @@ end
 ### Return type
 
 [**FoiaRequest**](FoiaRequest.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_job_post
+
+> <JobPost> create_job_post(opts)
+
+Create a job post
+
+Create a job post
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  job_post: WinthropClient::JobPost.new({uid: 'uid_example', description: 'description_example', school_id: 3.56}) # JobPost | 
+}
+
+begin
+  # Create a job post
+  result = api_instance.create_job_post(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_job_post: #{e}"
+end
+```
+
+#### Using the create_job_post_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<JobPost>, Integer, Hash)> create_job_post_with_http_info(opts)
+
+```ruby
+begin
+  # Create a job post
+  data, status_code, headers = api_instance.create_job_post_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <JobPost>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_job_post_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **job_post** | [**JobPost**](JobPost.md) |  | [optional] |
+
+### Return type
+
+[**JobPost**](JobPost.md)
 
 ### Authorization
 
@@ -383,6 +461,76 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **foia_request_id** | **Integer** | ID of foia request to delete |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## delete_job_post
+
+> delete_job_post(job_post_id)
+
+Delete a job post
+
+Delete a job post
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+job_post_id = 789 # Integer | ID of job post to delete
+
+begin
+  # Delete a job post
+  api_instance.delete_job_post(job_post_id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_job_post: #{e}"
+end
+```
+
+#### Using the delete_job_post_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_job_post_with_http_info(job_post_id)
+
+```ruby
+begin
+  # Delete a job post
+  data, status_code, headers = api_instance.delete_job_post_with_http_info(job_post_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_job_post_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **job_post_id** | **Integer** | ID of job post to delete |  |
 
 ### Return type
 
@@ -1800,6 +1948,154 @@ end
 - **Accept**: application/json
 
 
+## get_job_post
+
+> <JobPost> get_job_post(job_post_id)
+
+Get a job post
+
+Get a job post
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+job_post_id = 789 # Integer | ID of job post to return
+
+begin
+  # Get a job post
+  result = api_instance.get_job_post(job_post_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_job_post: #{e}"
+end
+```
+
+#### Using the get_job_post_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<JobPost>, Integer, Hash)> get_job_post_with_http_info(job_post_id)
+
+```ruby
+begin
+  # Get a job post
+  data, status_code, headers = api_instance.get_job_post_with_http_info(job_post_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <JobPost>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_job_post_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **job_post_id** | **Integer** | ID of job post to return |  |
+
+### Return type
+
+[**JobPost**](JobPost.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_job_posts
+
+> <Array<JobPost>> get_job_posts(opts)
+
+List all job posts
+
+List all job posts
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  # List all job posts
+  result = api_instance.get_job_posts(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_job_posts: #{e}"
+end
+```
+
+#### Using the get_job_posts_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<JobPost>>, Integer, Hash)> get_job_posts_with_http_info(opts)
+
+```ruby
+begin
+  # List all job posts
+  data, status_code, headers = api_instance.get_job_posts_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<JobPost>>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_job_posts_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 100] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**Array&lt;JobPost&gt;**](JobPost.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_ncaa_financial_report_status
 
 > <NcaaFinancialReportStatus> get_ncaa_financial_report_status(ncaa_financial_report_status_id)
@@ -2821,6 +3117,81 @@ end
 ### Return type
 
 [**FoiaRequest**](FoiaRequest.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_job_post
+
+> <JobPost> update_job_post(job_post_id, opts)
+
+Update a job post
+
+Update a job post
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+job_post_id = 789 # Integer | ID of job post to update
+opts = {
+  job_post: WinthropClient::JobPost.new({uid: 'uid_example', description: 'description_example', school_id: 3.56}) # JobPost | 
+}
+
+begin
+  # Update a job post
+  result = api_instance.update_job_post(job_post_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_job_post: #{e}"
+end
+```
+
+#### Using the update_job_post_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<JobPost>, Integer, Hash)> update_job_post_with_http_info(job_post_id, opts)
+
+```ruby
+begin
+  # Update a job post
+  data, status_code, headers = api_instance.update_job_post_with_http_info(job_post_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <JobPost>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_job_post_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **job_post_id** | **Integer** | ID of job post to update |  |
+| **job_post** | [**JobPost**](JobPost.md) |  | [optional] |
+
+### Return type
+
+[**JobPost**](JobPost.md)
 
 ### Authorization
 

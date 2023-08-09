@@ -25,6 +25,7 @@ docs/Game.md
 docs/GameCollection.md
 docs/IncomeReport.md
 docs/IncomeReportCollection.md
+docs/JobPost.md
 docs/Meta.md
 docs/NcaaFinancialReportStatus.md
 docs/NcaaFinancialReportStatusCollection.md
@@ -65,6 +66,7 @@ lib/winthrop-client-ruby/models/game.rb
 lib/winthrop-client-ruby/models/game_collection.rb
 lib/winthrop-client-ruby/models/income_report.rb
 lib/winthrop-client-ruby/models/income_report_collection.rb
+lib/winthrop-client-ruby/models/job_post.rb
 lib/winthrop-client-ruby/models/meta.rb
 lib/winthrop-client-ruby/models/ncaa_financial_report_status.rb
 lib/winthrop-client-ruby/models/ncaa_financial_report_status_collection.rb
