@@ -21,6 +21,8 @@ module WinthropClient
 
     attr_accessor :year
 
+    attr_accessor :available
+
     attr_accessor :created_at
 
     attr_accessor :updated_at
@@ -31,6 +33,7 @@ module WinthropClient
         :'id' => :'id',
         :'school_id' => :'school_id',
         :'year' => :'year',
+        :'available' => :'available',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -47,6 +50,7 @@ module WinthropClient
         :'id' => :'Integer',
         :'school_id' => :'Integer',
         :'year' => :'Integer',
+        :'available' => :'Boolean',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -85,6 +89,10 @@ module WinthropClient
         self.year = attributes[:'year']
       end
 
+      if attributes.key?(:'available')
+        self.available = attributes[:'available']
+      end
+
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
@@ -115,6 +123,7 @@ module WinthropClient
           id == o.id &&
           school_id == o.school_id &&
           year == o.year &&
+          available == o.available &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -128,7 +137,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, school_id, year, created_at, updated_at].hash
+      [id, school_id, year, available, created_at, updated_at].hash
     end
 
     # Builds the object from hash

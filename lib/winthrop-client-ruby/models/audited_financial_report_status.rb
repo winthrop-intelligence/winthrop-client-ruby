@@ -21,9 +21,34 @@ module WinthropClient
 
     attr_accessor :year
 
+    # The status of the audited financial report. Available means the report is in the system. Missing means the report is not in the system. Not Available means the report is not required for the year.
+    attr_accessor :status
+
     attr_accessor :created_at
 
     attr_accessor :updated_at
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -31,6 +56,7 @@ module WinthropClient
         :'id' => :'id',
         :'school_id' => :'school_id',
         :'year' => :'year',
+        :'status' => :'status',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -47,6 +73,7 @@ module WinthropClient
         :'id' => :'Integer',
         :'school_id' => :'Integer',
         :'year' => :'Integer',
+        :'status' => :'String',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -85,6 +112,10 @@ module WinthropClient
         self.year = attributes[:'year']
       end
 
+      if attributes.key?(:'status')
+        self.status = attributes[:'status']
+      end
+
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
@@ -114,7 +145,19 @@ module WinthropClient
     def valid?
       return false if @school_id.nil?
       return false if @year.nil?
+      status_validator = EnumAttributeValidator.new('String', ["Available", "Missing", "Not Available"])
+      return false unless status_validator.valid?(@status)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] status Object to be assigned
+    def status=(status)
+      validator = EnumAttributeValidator.new('String', ["Available", "Missing", "Not Available"])
+      unless validator.valid?(status)
+        fail ArgumentError, "invalid value for \"status\", must be one of #{validator.allowable_values}."
+      end
+      @status = status
     end
 
     # Checks equality by comparing each attribute.
@@ -125,6 +168,7 @@ module WinthropClient
           id == o.id &&
           school_id == o.school_id &&
           year == o.year &&
+          status == o.status &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -138,7 +182,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, school_id, year, created_at, updated_at].hash
+      [id, school_id, year, status, created_at, updated_at].hash
     end
 
     # Builds the object from hash
