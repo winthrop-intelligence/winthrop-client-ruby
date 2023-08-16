@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** |  | [optional] |
 | **coach_id** | **Integer** |  |  |
-| **raw_contract_id** | **Integer** |  |  |
+| **raw_contract_id** | **Integer** |  | [optional] |
 | **year** | **Integer** |  |  |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |

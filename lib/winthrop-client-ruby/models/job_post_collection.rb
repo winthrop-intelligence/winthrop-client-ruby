@@ -14,34 +14,16 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class IncomeReport
-    attr_accessor :id
+  class JobPostCollection
+    attr_accessor :data
 
-    attr_accessor :coach_id
-
-    attr_accessor :raw_contract_id
-
-    attr_accessor :year
-
-    attr_accessor :created_at
-
-    attr_accessor :updated_at
-
-    attr_accessor :notes
-
-    attr_accessor :contract_status_id
+    attr_accessor :meta
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'coach_id' => :'coach_id',
-        :'raw_contract_id' => :'raw_contract_id',
-        :'year' => :'year',
-        :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at',
-        :'notes' => :'notes',
-        :'contract_status_id' => :'contract_status_id'
+        :'data' => :'data',
+        :'meta' => :'meta'
       }
     end
 
@@ -53,14 +35,8 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'Integer',
-        :'coach_id' => :'Integer',
-        :'raw_contract_id' => :'Integer',
-        :'year' => :'Integer',
-        :'created_at' => :'Time',
-        :'updated_at' => :'Time',
-        :'notes' => :'String',
-        :'contract_status_id' => :'Integer'
+        :'data' => :'Array<JobPost>',
+        :'meta' => :'Meta'
       }
     end
 
@@ -74,47 +50,25 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::IncomeReport` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::JobPostCollection` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::IncomeReport`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::JobPostCollection`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'data')
+        if (value = attributes[:'data']).is_a?(Array)
+          self.data = value
+        end
       end
 
-      if attributes.key?(:'coach_id')
-        self.coach_id = attributes[:'coach_id']
-      end
-
-      if attributes.key?(:'raw_contract_id')
-        self.raw_contract_id = attributes[:'raw_contract_id']
-      end
-
-      if attributes.key?(:'year')
-        self.year = attributes[:'year']
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
-      end
-
-      if attributes.key?(:'notes')
-        self.notes = attributes[:'notes']
-      end
-
-      if attributes.key?(:'contract_status_id')
-        self.contract_status_id = attributes[:'contract_status_id']
+      if attributes.key?(:'meta')
+        self.meta = attributes[:'meta']
       end
     end
 
@@ -122,22 +76,12 @@ module WinthropClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @coach_id.nil?
-        invalid_properties.push('invalid value for "coach_id", coach_id cannot be nil.')
-      end
-
-      if @year.nil?
-        invalid_properties.push('invalid value for "year", year cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @coach_id.nil?
-      return false if @year.nil?
       true
     end
 
@@ -146,14 +90,8 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          coach_id == o.coach_id &&
-          raw_contract_id == o.raw_contract_id &&
-          year == o.year &&
-          created_at == o.created_at &&
-          updated_at == o.updated_at &&
-          notes == o.notes &&
-          contract_status_id == o.contract_status_id
+          data == o.data &&
+          meta == o.meta
     end
 
     # @see the `==` method
@@ -165,7 +103,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, coach_id, raw_contract_id, year, created_at, updated_at, notes, contract_status_id].hash
+      [data, meta].hash
     end
 
     # Builds the object from hash

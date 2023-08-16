@@ -84,11 +84,11 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *WinthropClient::DefaultApi* | [**create_foia_label**](docs/DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels | 
 *WinthropClient::DefaultApi* | [**create_foia_request**](docs/DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests | 
-*WinthropClient::DefaultApi* | [**create_job_post**](docs/DefaultApi.md#create_job_post) | **POST** /api/central-jobs-api/job_posts | Create a job post
+*WinthropClient::DefaultApi* | [**create_job_post**](docs/DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post
 *WinthropClient::DefaultApi* | [**create_requested_item**](docs/DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items | 
 *WinthropClient::DefaultApi* | [**delete_foia_label**](docs/DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} | 
 *WinthropClient::DefaultApi* | [**delete_foia_request**](docs/DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} | 
-*WinthropClient::DefaultApi* | [**delete_job_post**](docs/DefaultApi.md#delete_job_post) | **DELETE** /api/central-jobs-api/job_posts/{jobPostId} | Delete a job post
+*WinthropClient::DefaultApi* | [**delete_job_post**](docs/DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post
 *WinthropClient::DefaultApi* | [**delete_requested_item**](docs/DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} | 
 *WinthropClient::DefaultApi* | [**get_audited_financial_report_status**](docs/DefaultApi.md#get_audited_financial_report_status) | **GET** /api/v1/audited_financial_report_statuses/{auditedFinancialReportStatusId} | 
 *WinthropClient::DefaultApi* | [**get_audited_financial_report_statuses**](docs/DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses | 
@@ -108,8 +108,8 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_games**](docs/DefaultApi.md#get_games) | **GET** /api/v1/games | 
 *WinthropClient::DefaultApi* | [**get_income_report**](docs/DefaultApi.md#get_income_report) | **GET** /api/v1/income_reports/{incomeReportId} | 
 *WinthropClient::DefaultApi* | [**get_income_reports**](docs/DefaultApi.md#get_income_reports) | **GET** /api/v1/income_reports | 
-*WinthropClient::DefaultApi* | [**get_job_post**](docs/DefaultApi.md#get_job_post) | **GET** /api/central-jobs-api/job_posts/{jobPostId} | Get a job post
-*WinthropClient::DefaultApi* | [**get_job_posts**](docs/DefaultApi.md#get_job_posts) | **GET** /api/central-jobs-api/job_posts | List all job posts
+*WinthropClient::DefaultApi* | [**get_job_post**](docs/DefaultApi.md#get_job_post) | **GET** /central_jobs/job_posts/{jobPostId} | Get a job post
+*WinthropClient::DefaultApi* | [**get_job_posts**](docs/DefaultApi.md#get_job_posts) | **GET** /central_jobs/job_posts | List all job posts
 *WinthropClient::DefaultApi* | [**get_ncaa_financial_report_status**](docs/DefaultApi.md#get_ncaa_financial_report_status) | **GET** /api/v1/ncaa_financial_report_statuses/{ncaaFinancialReportStatusId} | 
 *WinthropClient::DefaultApi* | [**get_ncaa_financial_report_statuses**](docs/DefaultApi.md#get_ncaa_financial_report_statuses) | **GET** /api/v1/ncaa_financial_report_statuses | 
 *WinthropClient::DefaultApi* | [**get_requested_item**](docs/DefaultApi.md#get_requested_item) | **GET** /api/v1/requested_items/{requestedItemId} | 
@@ -124,7 +124,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**summarizer_post_summarize_s3**](docs/DefaultApi.md#summarizer_post_summarize_s3) | **POST** /summarizer/summarize_s3 | Summarize a file from S3
 *WinthropClient::DefaultApi* | [**update_foia_label**](docs/DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} | 
 *WinthropClient::DefaultApi* | [**update_foia_request**](docs/DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} | 
-*WinthropClient::DefaultApi* | [**update_job_post**](docs/DefaultApi.md#update_job_post) | **PATCH** /api/central-jobs-api/job_posts/{jobPostId} | Update a job post
+*WinthropClient::DefaultApi* | [**update_job_post**](docs/DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post
 *WinthropClient::DefaultApi* | [**update_requested_item**](docs/DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} | 
 *WinthropClient::ReportingApi* | [**get_coach_contract_requests**](docs/ReportingApi.md#get_coach_contract_requests) | **GET** /api/v1/reports/coach_contract_requests | 
 *WinthropClient::ReportingApi* | [**get_coach_history**](docs/ReportingApi.md#get_coach_history) | **GET** /api/v1/reports/coach_history | 
@@ -157,6 +157,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::IncomeReport](docs/IncomeReport.md)
  - [WinthropClient::IncomeReportCollection](docs/IncomeReportCollection.md)
  - [WinthropClient::JobPost](docs/JobPost.md)
+ - [WinthropClient::JobPostCollection](docs/JobPostCollection.md)
  - [WinthropClient::Meta](docs/Meta.md)
  - [WinthropClient::NcaaFinancialReportStatus](docs/NcaaFinancialReportStatus.md)
  - [WinthropClient::NcaaFinancialReportStatusCollection](docs/NcaaFinancialReportStatusCollection.md)

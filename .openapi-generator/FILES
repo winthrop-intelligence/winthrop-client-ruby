@@ -26,6 +26,7 @@ docs/GameCollection.md
 docs/IncomeReport.md
 docs/IncomeReportCollection.md
 docs/JobPost.md
+docs/JobPostCollection.md
 docs/Meta.md
 docs/NcaaFinancialReportStatus.md
 docs/NcaaFinancialReportStatusCollection.md
@@ -67,6 +68,7 @@ lib/winthrop-client-ruby/models/game_collection.rb
 lib/winthrop-client-ruby/models/income_report.rb
 lib/winthrop-client-ruby/models/income_report_collection.rb
 lib/winthrop-client-ruby/models/job_post.rb
+lib/winthrop-client-ruby/models/job_post_collection.rb
 lib/winthrop-client-ruby/models/meta.rb
 lib/winthrop-client-ruby/models/ncaa_financial_report_status.rb
 lib/winthrop-client-ruby/models/ncaa_financial_report_status_collection.rb
@@ -85,5 +87,6 @@ lib/winthrop-client-ruby/models/user_collection.rb
 lib/winthrop-client-ruby/version.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
+spec/models/job_post_collection_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

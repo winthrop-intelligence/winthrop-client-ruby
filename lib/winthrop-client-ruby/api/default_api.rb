@@ -171,7 +171,7 @@ module WinthropClient
         @api_client.config.logger.debug 'Calling API: DefaultApi.create_job_post ...'
       end
       # resource path
-      local_var_path = '/api/central-jobs-api/job_posts'
+      local_var_path = '/central_jobs/job_posts'
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -423,7 +423,7 @@ module WinthropClient
         fail ArgumentError, "Missing the required parameter 'job_post_id' when calling DefaultApi.delete_job_post"
       end
       # resource path
-      local_var_path = '/api/central-jobs-api/job_posts/{jobPostId}'.sub('{' + 'jobPostId' + '}', CGI.escape(job_post_id.to_s))
+      local_var_path = '/central_jobs/job_posts/{jobPostId}'.sub('{' + 'jobPostId' + '}', CGI.escape(job_post_id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1668,7 +1668,7 @@ module WinthropClient
         fail ArgumentError, "Missing the required parameter 'job_post_id' when calling DefaultApi.get_job_post"
       end
       # resource path
-      local_var_path = '/api/central-jobs-api/job_posts/{jobPostId}'.sub('{' + 'jobPostId' + '}', CGI.escape(job_post_id.to_s))
+      local_var_path = '/central_jobs/job_posts/{jobPostId}'.sub('{' + 'jobPostId' + '}', CGI.escape(job_post_id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1713,7 +1713,7 @@ module WinthropClient
     # @option opts [Integer] :page results page to retrieve. (default to 1)
     # @option opts [Integer] :per_page number of results per page. (default to 100)
     # @option opts [Object] :q Ransack query
-    # @return [Array<JobPost>]
+    # @return [JobPostCollection]
     def get_job_posts(opts = {})
       data, _status_code, _headers = get_job_posts_with_http_info(opts)
       data
@@ -1725,13 +1725,13 @@ module WinthropClient
     # @option opts [Integer] :page results page to retrieve. (default to 1)
     # @option opts [Integer] :per_page number of results per page. (default to 100)
     # @option opts [Object] :q Ransack query
-    # @return [Array<(Array<JobPost>, Integer, Hash)>] Array<JobPost> data, response status code and response headers
+    # @return [Array<(JobPostCollection, Integer, Hash)>] JobPostCollection data, response status code and response headers
     def get_job_posts_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_job_posts ...'
       end
       # resource path
-      local_var_path = '/api/central-jobs-api/job_posts'
+      local_var_path = '/central_jobs/job_posts'
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1751,7 +1751,7 @@ module WinthropClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'Array<JobPost>'
+      return_type = opts[:debug_return_type] || 'JobPostCollection'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey']
@@ -2696,7 +2696,7 @@ module WinthropClient
         fail ArgumentError, "Missing the required parameter 'job_post_id' when calling DefaultApi.update_job_post"
       end
       # resource path
-      local_var_path = '/api/central-jobs-api/job_posts/{jobPostId}'.sub('{' + 'jobPostId' + '}', CGI.escape(job_post_id.to_s))
+      local_var_path = '/central_jobs/job_posts/{jobPostId}'.sub('{' + 'jobPostId' + '}', CGI.escape(job_post_id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
