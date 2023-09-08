@@ -29,6 +29,8 @@ module WinthropClient
 
     attr_accessor :description
 
+    attr_accessor :description_md
+
     attr_accessor :school_id
 
     attr_accessor :expired
@@ -47,6 +49,7 @@ module WinthropClient
         :'uid' => :'uid',
         :'work_type' => :'work_type',
         :'description' => :'description',
+        :'description_md' => :'description_md',
         :'school_id' => :'school_id',
         :'expired' => :'expired',
         :'created_at' => :'created_at',
@@ -69,6 +72,7 @@ module WinthropClient
         :'uid' => :'String',
         :'work_type' => :'String',
         :'description' => :'String',
+        :'description_md' => :'String',
         :'school_id' => :'Integer',
         :'expired' => :'Boolean',
         :'created_at' => :'Time',
@@ -123,6 +127,10 @@ module WinthropClient
 
       if attributes.key?(:'description')
         self.description = attributes[:'description']
+      end
+
+      if attributes.key?(:'description_md')
+        self.description_md = attributes[:'description_md']
       end
 
       if attributes.key?(:'school_id')
@@ -184,6 +192,7 @@ module WinthropClient
           uid == o.uid &&
           work_type == o.work_type &&
           description == o.description &&
+          description_md == o.description_md &&
           school_id == o.school_id &&
           expired == o.expired &&
           created_at == o.created_at &&
@@ -199,7 +208,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, title, department, link, uid, work_type, description, school_id, expired, created_at, updated_at].hash
+      [id, title, department, link, uid, work_type, description, description_md, school_id, expired, created_at, updated_at].hash
     end
 
     # Builds the object from hash
