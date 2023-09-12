@@ -12,6 +12,7 @@
 | **work_type** | **String** |  | [optional] |
 | **description** | **String** |  |  |
 | **description_md** | **String** |  | [optional] |
+| **salary** | **String** |  | [optional] |
 | **school_id** | **Integer** |  |  |
 | **expired** | **Boolean** |  | [optional][default to false] |
 | **created_at** | **Time** |  | [optional] |
@@ -31,6 +32,7 @@ instance = WinthropClient::JobPost.new(
   work_type: null,
   description: null,
   description_md: null,
+  salary: $50,000 - $60,000,
   school_id: null,
   expired: null,
   created_at: null,
