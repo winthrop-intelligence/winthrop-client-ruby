@@ -36,6 +36,8 @@ docs/RequestedItemCollection.md
 docs/School.md
 docs/SchoolCollection.md
 docs/SchoolLogo.md
+docs/Season.md
+docs/SeasonCollection.md
 docs/Sport.md
 docs/SportCollection.md
 docs/SummarizerPostQaS3Request.md
@@ -77,6 +79,8 @@ lib/winthrop-client-ruby/models/requested_item_collection.rb
 lib/winthrop-client-ruby/models/school.rb
 lib/winthrop-client-ruby/models/school_collection.rb
 lib/winthrop-client-ruby/models/school_logo.rb
+lib/winthrop-client-ruby/models/season.rb
+lib/winthrop-client-ruby/models/season_collection.rb
 lib/winthrop-client-ruby/models/sport.rb
 lib/winthrop-client-ruby/models/sport_collection.rb
 lib/winthrop-client-ruby/models/summarizer_post_qa_s3_request.rb

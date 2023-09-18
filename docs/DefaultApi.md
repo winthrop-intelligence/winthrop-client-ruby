@@ -38,6 +38,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_requested_items**](DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items |  |
 | [**get_school**](DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} |  |
 | [**get_schools**](DefaultApi.md#get_schools) | **GET** /api/v1/schools |  |
+| [**get_season**](DefaultApi.md#get_season) | **GET** /api/v1/season/{seasonId} |  |
+| [**get_seasons**](DefaultApi.md#get_seasons) | **GET** /api/v1/seasons |  |
 | [**get_sport**](DefaultApi.md#get_sport) | **GET** /api/v1/sports/{sportId} |  |
 | [**get_sports**](DefaultApi.md#get_sports) | **GET** /api/v1/sports |  |
 | [**get_user**](DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} |  |
@@ -2529,6 +2531,154 @@ end
 ### Return type
 
 [**SchoolCollection**](SchoolCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_season
+
+> <Season> get_season(season_id)
+
+
+
+Retrieve a single season
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+season_id = 56 # Integer | ID of season to retrieve
+
+begin
+  
+  result = api_instance.get_season(season_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_season: #{e}"
+end
+```
+
+#### Using the get_season_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Season>, Integer, Hash)> get_season_with_http_info(season_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_season_with_http_info(season_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Season>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_season_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **season_id** | **Integer** | ID of season to retrieve |  |
+
+### Return type
+
+[**Season**](Season.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_seasons
+
+> <SeasonCollection> get_seasons(opts)
+
+
+
+Retrieve some or all seasons
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  
+  result = api_instance.get_seasons(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_seasons: #{e}"
+end
+```
+
+#### Using the get_seasons_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SeasonCollection>, Integer, Hash)> get_seasons_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_seasons_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SeasonCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_seasons_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 100] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**SeasonCollection**](SeasonCollection.md)
 
 ### Authorization
 

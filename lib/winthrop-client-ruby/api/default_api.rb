@@ -2148,6 +2148,131 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Retrieve a single season
+    # @param season_id [Integer] ID of season to retrieve
+    # @param [Hash] opts the optional parameters
+    # @return [Season]
+    def get_season(season_id, opts = {})
+      data, _status_code, _headers = get_season_with_http_info(season_id, opts)
+      data
+    end
+
+    # Retrieve a single season
+    # @param season_id [Integer] ID of season to retrieve
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Season, Integer, Hash)>] Season data, response status code and response headers
+    def get_season_with_http_info(season_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_season ...'
+      end
+      # verify the required parameter 'season_id' is set
+      if @api_client.config.client_side_validation && season_id.nil?
+        fail ArgumentError, "Missing the required parameter 'season_id' when calling DefaultApi.get_season"
+      end
+      # resource path
+      local_var_path = '/api/v1/season/{seasonId}'.sub('{' + 'seasonId' + '}', CGI.escape(season_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Season'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_season",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_season\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve some or all seasons
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. (default to 100)
+    # @option opts [Object] :q Ransack query
+    # @return [SeasonCollection]
+    def get_seasons(opts = {})
+      data, _status_code, _headers = get_seasons_with_http_info(opts)
+      data
+    end
+
+    # Retrieve some or all seasons
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. (default to 100)
+    # @option opts [Object] :q Ransack query
+    # @return [Array<(SeasonCollection, Integer, Hash)>] SeasonCollection data, response status code and response headers
+    def get_seasons_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_seasons ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/seasons'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SeasonCollection'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_seasons",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_seasons\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve a single sport
     # @param sport_id [Integer] ID of sport to retrieve
     # @param [Hash] opts the optional parameters

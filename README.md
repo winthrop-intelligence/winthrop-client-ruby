@@ -116,6 +116,8 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_requested_items**](docs/DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items | 
 *WinthropClient::DefaultApi* | [**get_school**](docs/DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
 *WinthropClient::DefaultApi* | [**get_schools**](docs/DefaultApi.md#get_schools) | **GET** /api/v1/schools | 
+*WinthropClient::DefaultApi* | [**get_season**](docs/DefaultApi.md#get_season) | **GET** /api/v1/season/{seasonId} | 
+*WinthropClient::DefaultApi* | [**get_seasons**](docs/DefaultApi.md#get_seasons) | **GET** /api/v1/seasons | 
 *WinthropClient::DefaultApi* | [**get_sport**](docs/DefaultApi.md#get_sport) | **GET** /api/v1/sports/{sportId} | 
 *WinthropClient::DefaultApi* | [**get_sports**](docs/DefaultApi.md#get_sports) | **GET** /api/v1/sports | 
 *WinthropClient::DefaultApi* | [**get_user**](docs/DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} | 
@@ -166,6 +168,8 @@ Class | Method | HTTP request | Description
  - [WinthropClient::School](docs/School.md)
  - [WinthropClient::SchoolCollection](docs/SchoolCollection.md)
  - [WinthropClient::SchoolLogo](docs/SchoolLogo.md)
+ - [WinthropClient::Season](docs/Season.md)
+ - [WinthropClient::SeasonCollection](docs/SeasonCollection.md)
  - [WinthropClient::Sport](docs/Sport.md)
  - [WinthropClient::SportCollection](docs/SportCollection.md)
  - [WinthropClient::SummarizerPostQaS3Request](docs/SummarizerPostQaS3Request.md)
