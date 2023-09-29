@@ -65,6 +65,8 @@ module WinthropClient
 
     attr_accessor :logo
 
+    attr_accessor :athletic_director
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -92,7 +94,8 @@ module WinthropClient
         :'address_1' => :'address_1',
         :'address_2' => :'address_2',
         :'zip_code' => :'zip_code',
-        :'logo' => :'logo'
+        :'logo' => :'logo',
+        :'athletic_director' => :'athletic_director'
       }
     end
 
@@ -128,7 +131,8 @@ module WinthropClient
         :'address_1' => :'String',
         :'address_2' => :'String',
         :'zip_code' => :'String',
-        :'logo' => :'SchoolLogo'
+        :'logo' => :'SchoolLogo',
+        :'athletic_director' => :'Coach'
       }
     end
 
@@ -252,6 +256,10 @@ module WinthropClient
       if attributes.key?(:'logo')
         self.logo = attributes[:'logo']
       end
+
+      if attributes.key?(:'athletic_director')
+        self.athletic_director = attributes[:'athletic_director']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -296,7 +304,8 @@ module WinthropClient
           address_1 == o.address_1 &&
           address_2 == o.address_2 &&
           zip_code == o.zip_code &&
-          logo == o.logo
+          logo == o.logo &&
+          athletic_director == o.athletic_director
     end
 
     # @see the `==` method
@@ -308,7 +317,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, short_name, location, created_at, updated_at, city, nickname, external_url, colors, state, primary_conference_id, cost_of_living_index_city_code, current_directors_cup_ranking, current_usnwr_ranking, private, school_classification_id, logo_updated_at, youtube_search_name, latitude, longitude, address_1, address_2, zip_code, logo].hash
+      [id, name, short_name, location, created_at, updated_at, city, nickname, external_url, colors, state, primary_conference_id, cost_of_living_index_city_code, current_directors_cup_ranking, current_usnwr_ranking, private, school_classification_id, logo_updated_at, youtube_search_name, latitude, longitude, address_1, address_2, zip_code, logo, athletic_director].hash
     end
 
     # Builds the object from hash

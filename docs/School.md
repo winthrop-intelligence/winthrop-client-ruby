@@ -29,6 +29,7 @@
 | **address_2** | **String** |  | [optional] |
 | **zip_code** | **String** |  | [optional] |
 | **logo** | [**SchoolLogo**](SchoolLogo.md) |  | [optional] |
+| **athletic_director** | [**Coach**](Coach.md) |  | [optional] |
 
 ## Example
 
@@ -60,7 +61,8 @@ instance = WinthropClient::School.new(
   address_1: 739 University Blvd,
   address_2: Box 870158,
   zip_code: 35487,
-  logo: null
+  logo: null,
+  athletic_director: null
 )
 ```
 
