@@ -6,7 +6,6 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** |  | [optional] |
 | **title** | **String** |  | [optional] |
-| **department** | **String** |  | [optional] |
 | **link** | **String** |  | [optional] |
 | **uid** | **String** |  |  |
 | **work_type** | **String** |  | [optional] |
@@ -26,7 +25,6 @@ require 'winthrop-client-ruby'
 instance = WinthropClient::JobPost.new(
   id: null,
   title: null,
-  department: null,
   link: null,
   uid: null,
   work_type: null,
