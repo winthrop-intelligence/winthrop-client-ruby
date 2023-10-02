@@ -10,6 +10,7 @@
 | **email** | **String** |  | [optional] |
 | **phone** | **String** |  | [optional] |
 | **leader** | **Boolean** |  | [optional] |
+| **bio** | **String** |  | [optional] |
 
 ## Example
 
@@ -22,7 +23,8 @@ instance = WinthropClient::Coach.new(
   last_name: Doe,
   email: jdoe@alabama.edu,
   phone: 555-555-5555,
-  leader: false
+  leader: false,
+  bio: https://rolltide.com/staff-directory/greg-byrne/519
 )
 ```
 
