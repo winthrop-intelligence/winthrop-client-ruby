@@ -77,6 +77,10 @@ module WinthropClient
 
     attr_accessor :asr
 
+    attr_accessor :head_coach
+
+    attr_accessor :assistant_coaches
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -110,7 +114,9 @@ module WinthropClient
         :'home_wins' => :'home_wins',
         :'home_losses' => :'home_losses',
         :'home_win_percent' => :'home_win_percent',
-        :'asr' => :'asr'
+        :'asr' => :'asr',
+        :'head_coach' => :'head_coach',
+        :'assistant_coaches' => :'assistant_coaches'
       }
     end
 
@@ -152,7 +158,9 @@ module WinthropClient
         :'home_wins' => :'Integer',
         :'home_losses' => :'Integer',
         :'home_win_percent' => :'Float',
-        :'asr' => :'Integer'
+        :'asr' => :'Integer',
+        :'head_coach' => :'Coach',
+        :'assistant_coaches' => :'Array<Coach>'
       }
     end
 
@@ -300,6 +308,16 @@ module WinthropClient
       if attributes.key?(:'asr')
         self.asr = attributes[:'asr']
       end
+
+      if attributes.key?(:'head_coach')
+        self.head_coach = attributes[:'head_coach']
+      end
+
+      if attributes.key?(:'assistant_coaches')
+        if (value = attributes[:'assistant_coaches']).is_a?(Array)
+          self.assistant_coaches = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -350,7 +368,9 @@ module WinthropClient
           home_wins == o.home_wins &&
           home_losses == o.home_losses &&
           home_win_percent == o.home_win_percent &&
-          asr == o.asr
+          asr == o.asr &&
+          head_coach == o.head_coach &&
+          assistant_coaches == o.assistant_coaches
     end
 
     # @see the `==` method
@@ -362,7 +382,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, description, school_id, sport_id, year, wins, losses, conference_wins, conference_losses, apr, created_at, updated_at, win_percent, ties, rpi, prev_rpi, conference_position, conference_num_positions, coach_apr, attendance, conference_ties, recruit_ranking, offensive_efficiency, defensive_efficiency, sos_ranking, sos, home_wins, home_losses, home_win_percent, asr].hash
+      [id, name, description, school_id, sport_id, year, wins, losses, conference_wins, conference_losses, apr, created_at, updated_at, win_percent, ties, rpi, prev_rpi, conference_position, conference_num_positions, coach_apr, attendance, conference_ties, recruit_ranking, offensive_efficiency, defensive_efficiency, sos_ranking, sos, home_wins, home_losses, home_win_percent, asr, head_coach, assistant_coaches].hash
     end
 
     # Builds the object from hash

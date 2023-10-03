@@ -27,8 +27,6 @@ module WinthropClient
 
     attr_accessor :leader
 
-    attr_accessor :bio
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -37,8 +35,7 @@ module WinthropClient
         :'last_name' => :'last_name',
         :'email' => :'email',
         :'phone' => :'phone',
-        :'leader' => :'leader',
-        :'bio' => :'bio'
+        :'leader' => :'leader'
       }
     end
 
@@ -55,8 +52,7 @@ module WinthropClient
         :'last_name' => :'String',
         :'email' => :'String',
         :'phone' => :'String',
-        :'leader' => :'Boolean',
-        :'bio' => :'String'
+        :'leader' => :'Boolean'
       }
     end
 
@@ -104,10 +100,6 @@ module WinthropClient
       if attributes.key?(:'leader')
         self.leader = attributes[:'leader']
       end
-
-      if attributes.key?(:'bio')
-        self.bio = attributes[:'bio']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -133,8 +125,7 @@ module WinthropClient
           last_name == o.last_name &&
           email == o.email &&
           phone == o.phone &&
-          leader == o.leader &&
-          bio == o.bio
+          leader == o.leader
     end
 
     # @see the `==` method
@@ -146,7 +137,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, first_name, last_name, email, phone, leader, bio].hash
+      [id, first_name, last_name, email, phone, leader].hash
     end
 
     # Builds the object from hash
