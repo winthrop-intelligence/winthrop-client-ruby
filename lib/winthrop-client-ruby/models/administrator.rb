@@ -416,7 +416,7 @@ module WinthropClient
     def valid?
       compensation_type_validator = EnumAttributeValidator.new('String', ["yearly", "hourly", "990"])
       return false unless compensation_type_validator.valid?(@compensation_type)
-      gender_validator = EnumAttributeValidator.new('String', ["M", "F"])
+      gender_validator = EnumAttributeValidator.new('String', ["M", "F", ""])
       return false unless gender_validator.valid?(@gender)
       true
     end
@@ -434,7 +434,7 @@ module WinthropClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] gender Object to be assigned
     def gender=(gender)
-      validator = EnumAttributeValidator.new('String', ["M", "F"])
+      validator = EnumAttributeValidator.new('String', ["M", "F", ""])
       unless validator.valid?(gender)
         fail ArgumentError, "invalid value for \"gender\", must be one of #{validator.allowable_values}."
       end
