@@ -12,6 +12,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_foia_request**](DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} |  |
 | [**delete_job_post**](DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post |
 | [**delete_requested_item**](DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} |  |
+| [**get_administrator**](DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} |  |
+| [**get_administrators**](DefaultApi.md#get_administrators) | **GET** /api/v1/administrators |  |
 | [**get_audited_financial_report_status**](DefaultApi.md#get_audited_financial_report_status) | **GET** /api/v1/audited_financial_report_statuses/{auditedFinancialReportStatusId} |  |
 | [**get_audited_financial_report_statuses**](DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses |  |
 | [**get_coach**](DefaultApi.md#get_coach) | **GET** /api/v1/coaches/{coachId} |  |
@@ -616,6 +618,154 @@ nil (empty response body)
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+
+## get_administrator
+
+> <Administrator> get_administrator(administrator_id)
+
+
+
+Retrieve a single administrator
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+administrator_id = 56 # Integer | ID of administrator to retrieve
+
+begin
+  
+  result = api_instance.get_administrator(administrator_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_administrator: #{e}"
+end
+```
+
+#### Using the get_administrator_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Administrator>, Integer, Hash)> get_administrator_with_http_info(administrator_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_administrator_with_http_info(administrator_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Administrator>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_administrator_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **administrator_id** | **Integer** | ID of administrator to retrieve |  |
+
+### Return type
+
+[**Administrator**](Administrator.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_administrators
+
+> <AdministratorCollection> get_administrators(opts)
+
+
+
+Retrieve some or all administrators
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  
+  result = api_instance.get_administrators(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_administrators: #{e}"
+end
+```
+
+#### Using the get_administrators_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdministratorCollection>, Integer, Hash)> get_administrators_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_administrators_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdministratorCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_administrators_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 100] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**AdministratorCollection**](AdministratorCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## get_audited_financial_report_status

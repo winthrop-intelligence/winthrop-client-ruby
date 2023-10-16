@@ -6,6 +6,8 @@
 Gemfile
 README.md
 Rakefile
+docs/Administrator.md
+docs/AdministratorCollection.md
 docs/AuditedFinancialReportStatus.md
 docs/AuditedFinancialReportStatusCollection.md
 docs/Coach.md
@@ -51,6 +53,8 @@ lib/winthrop-client-ruby/api/reporting_api.rb
 lib/winthrop-client-ruby/api_client.rb
 lib/winthrop-client-ruby/api_error.rb
 lib/winthrop-client-ruby/configuration.rb
+lib/winthrop-client-ruby/models/administrator.rb
+lib/winthrop-client-ruby/models/administrator_collection.rb
 lib/winthrop-client-ruby/models/audited_financial_report_status.rb
 lib/winthrop-client-ruby/models/audited_financial_report_status_collection.rb
 lib/winthrop-client-ruby/models/coach.rb

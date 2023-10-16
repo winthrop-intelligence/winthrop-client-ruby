@@ -17,6 +17,8 @@ require 'winthrop-client-ruby/version'
 require 'winthrop-client-ruby/configuration'
 
 # Models
+require 'winthrop-client-ruby/models/administrator'
+require 'winthrop-client-ruby/models/administrator_collection'
 require 'winthrop-client-ruby/models/audited_financial_report_status'
 require 'winthrop-client-ruby/models/audited_financial_report_status_collection'
 require 'winthrop-client-ruby/models/coach'
