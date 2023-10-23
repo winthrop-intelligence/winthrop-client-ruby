@@ -36,6 +36,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_job_posts**](DefaultApi.md#get_job_posts) | **GET** /central_jobs/job_posts | List all job posts |
 | [**get_ncaa_financial_report_status**](DefaultApi.md#get_ncaa_financial_report_status) | **GET** /api/v1/ncaa_financial_report_statuses/{ncaaFinancialReportStatusId} |  |
 | [**get_ncaa_financial_report_statuses**](DefaultApi.md#get_ncaa_financial_report_statuses) | **GET** /api/v1/ncaa_financial_report_statuses |  |
+| [**get_position**](DefaultApi.md#get_position) | **GET** /api/v1/positions/{positionId} |  |
+| [**get_positions**](DefaultApi.md#get_positions) | **GET** /api/v1/positions |  |
 | [**get_requested_item**](DefaultApi.md#get_requested_item) | **GET** /api/v1/requested_items/{requestedItemId} |  |
 | [**get_requested_items**](DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items |  |
 | [**get_school**](DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} |  |
@@ -2385,6 +2387,154 @@ end
 ### Return type
 
 [**NcaaFinancialReportStatusCollection**](NcaaFinancialReportStatusCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_position
+
+> <Position> get_position(position_id)
+
+
+
+Retrieve a single position
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+position_id = 56 # Integer | ID of position to retrieve
+
+begin
+  
+  result = api_instance.get_position(position_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_position: #{e}"
+end
+```
+
+#### Using the get_position_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Position>, Integer, Hash)> get_position_with_http_info(position_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_position_with_http_info(position_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Position>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_position_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **position_id** | **Integer** | ID of position to retrieve |  |
+
+### Return type
+
+[**Position**](Position.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_positions
+
+> <PositionCollection> get_positions(opts)
+
+
+
+Retrieve some or all positions
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  
+  result = api_instance.get_positions(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_positions: #{e}"
+end
+```
+
+#### Using the get_positions_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PositionCollection>, Integer, Hash)> get_positions_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_positions_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PositionCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_positions_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 100] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**PositionCollection**](PositionCollection.md)
 
 ### Authorization
 

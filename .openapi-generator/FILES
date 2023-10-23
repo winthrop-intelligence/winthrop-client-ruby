@@ -32,6 +32,8 @@ docs/JobPostCollection.md
 docs/Meta.md
 docs/NcaaFinancialReportStatus.md
 docs/NcaaFinancialReportStatusCollection.md
+docs/Position.md
+docs/PositionCollection.md
 docs/ReportingApi.md
 docs/RequestedItem.md
 docs/RequestedItemCollection.md
@@ -78,6 +80,8 @@ lib/winthrop-client-ruby/models/job_post_collection.rb
 lib/winthrop-client-ruby/models/meta.rb
 lib/winthrop-client-ruby/models/ncaa_financial_report_status.rb
 lib/winthrop-client-ruby/models/ncaa_financial_report_status_collection.rb
+lib/winthrop-client-ruby/models/position.rb
+lib/winthrop-client-ruby/models/position_collection.rb
 lib/winthrop-client-ruby/models/requested_item.rb
 lib/winthrop-client-ruby/models/requested_item_collection.rb
 lib/winthrop-client-ruby/models/school.rb

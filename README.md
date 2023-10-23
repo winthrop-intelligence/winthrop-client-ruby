@@ -114,6 +114,8 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_job_posts**](docs/DefaultApi.md#get_job_posts) | **GET** /central_jobs/job_posts | List all job posts
 *WinthropClient::DefaultApi* | [**get_ncaa_financial_report_status**](docs/DefaultApi.md#get_ncaa_financial_report_status) | **GET** /api/v1/ncaa_financial_report_statuses/{ncaaFinancialReportStatusId} | 
 *WinthropClient::DefaultApi* | [**get_ncaa_financial_report_statuses**](docs/DefaultApi.md#get_ncaa_financial_report_statuses) | **GET** /api/v1/ncaa_financial_report_statuses | 
+*WinthropClient::DefaultApi* | [**get_position**](docs/DefaultApi.md#get_position) | **GET** /api/v1/positions/{positionId} | 
+*WinthropClient::DefaultApi* | [**get_positions**](docs/DefaultApi.md#get_positions) | **GET** /api/v1/positions | 
 *WinthropClient::DefaultApi* | [**get_requested_item**](docs/DefaultApi.md#get_requested_item) | **GET** /api/v1/requested_items/{requestedItemId} | 
 *WinthropClient::DefaultApi* | [**get_requested_items**](docs/DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items | 
 *WinthropClient::DefaultApi* | [**get_school**](docs/DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
@@ -167,6 +169,8 @@ Class | Method | HTTP request | Description
  - [WinthropClient::Meta](docs/Meta.md)
  - [WinthropClient::NcaaFinancialReportStatus](docs/NcaaFinancialReportStatus.md)
  - [WinthropClient::NcaaFinancialReportStatusCollection](docs/NcaaFinancialReportStatusCollection.md)
+ - [WinthropClient::Position](docs/Position.md)
+ - [WinthropClient::PositionCollection](docs/PositionCollection.md)
  - [WinthropClient::RequestedItem](docs/RequestedItem.md)
  - [WinthropClient::RequestedItemCollection](docs/RequestedItemCollection.md)
  - [WinthropClient::School](docs/School.md)
