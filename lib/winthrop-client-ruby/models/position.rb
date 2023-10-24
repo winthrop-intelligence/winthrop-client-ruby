@@ -33,6 +33,8 @@ module WinthropClient
 
     attr_accessor :title
 
+    attr_accessor :name_display
+
     attr_accessor :departing
 
     attr_accessor :departing_set_at
@@ -57,6 +59,7 @@ module WinthropClient
         :'compensation_id' => :'compensation_id',
         :'coach_apr' => :'coach_apr',
         :'title' => :'title',
+        :'name_display' => :'name_display',
         :'departing' => :'departing',
         :'departing_set_at' => :'departing_set_at',
         :'coach' => :'coach',
@@ -83,6 +86,7 @@ module WinthropClient
         :'compensation_id' => :'Integer',
         :'coach_apr' => :'Integer',
         :'title' => :'String',
+        :'name_display' => :'String',
         :'departing' => :'Boolean',
         :'departing_set_at' => :'Time',
         :'coach' => :'Coach',
@@ -149,6 +153,10 @@ module WinthropClient
         self.title = attributes[:'title']
       end
 
+      if attributes.key?(:'name_display')
+        self.name_display = attributes[:'name_display']
+      end
+
       if attributes.key?(:'departing')
         self.departing = attributes[:'departing']
       end
@@ -203,6 +211,7 @@ module WinthropClient
           compensation_id == o.compensation_id &&
           coach_apr == o.coach_apr &&
           title == o.title &&
+          name_display == o.name_display &&
           departing == o.departing &&
           departing_set_at == o.departing_set_at &&
           coach == o.coach &&
@@ -220,7 +229,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, season_id, coach_id, start_on, end_on, partial_season, compensation_id, coach_apr, title, departing, departing_set_at, coach, sport, school, position_types].hash
+      [id, season_id, coach_id, start_on, end_on, partial_season, compensation_id, coach_apr, title, name_display, departing, departing_set_at, coach, sport, school, position_types].hash
     end
 
     # Builds the object from hash

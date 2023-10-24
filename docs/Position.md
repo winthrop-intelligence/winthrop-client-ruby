@@ -13,6 +13,7 @@
 | **compensation_id** | **Integer** |  | [optional] |
 | **coach_apr** | **Integer** |  | [optional] |
 | **title** | **String** |  | [optional] |
+| **name_display** | **String** |  | [optional] |
 | **departing** | **Boolean** |  | [optional] |
 | **departing_set_at** | **Time** |  | [optional] |
 | **coach** | [**Coach**](Coach.md) |  | [optional] |
@@ -35,6 +36,7 @@ instance = WinthropClient::Position.new(
   compensation_id: 4,
   coach_apr: 5,
   title: This is a title,
+  name_display: This is a display name,
   departing: false,
   departing_set_at: 2019-01-01T00:00Z,
   coach: null,
