@@ -148,6 +148,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::AdministratorCollection](docs/AdministratorCollection.md)
  - [WinthropClient::AuditedFinancialReportStatus](docs/AuditedFinancialReportStatus.md)
  - [WinthropClient::AuditedFinancialReportStatusCollection](docs/AuditedFinancialReportStatusCollection.md)
+ - [WinthropClient::Avatar](docs/Avatar.md)
  - [WinthropClient::Coach](docs/Coach.md)
  - [WinthropClient::CoachCollection](docs/CoachCollection.md)
  - [WinthropClient::Compensation](docs/Compensation.md)

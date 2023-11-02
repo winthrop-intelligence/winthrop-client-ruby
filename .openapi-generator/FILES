@@ -10,6 +10,7 @@ docs/Administrator.md
 docs/AdministratorCollection.md
 docs/AuditedFinancialReportStatus.md
 docs/AuditedFinancialReportStatusCollection.md
+docs/Avatar.md
 docs/Coach.md
 docs/CoachCollection.md
 docs/Compensation.md
@@ -59,6 +60,7 @@ lib/winthrop-client-ruby/models/administrator.rb
 lib/winthrop-client-ruby/models/administrator_collection.rb
 lib/winthrop-client-ruby/models/audited_financial_report_status.rb
 lib/winthrop-client-ruby/models/audited_financial_report_status_collection.rb
+lib/winthrop-client-ruby/models/avatar.rb
 lib/winthrop-client-ruby/models/coach.rb
 lib/winthrop-client-ruby/models/coach_collection.rb
 lib/winthrop-client-ruby/models/compensation.rb

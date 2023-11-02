@@ -45,6 +45,7 @@
 | **private** | **Boolean** |  | [optional] |
 | **sport_id** | **Integer** |  | [optional] |
 | **coli** | **Float** |  | [optional] |
+| **coach** | [**Coach**](Coach.md) |  | [optional] |
 
 ## Example
 
@@ -92,7 +93,8 @@ instance = WinthropClient::Administrator.new(
   alma_mater_id: 2,
   private: false,
   sport_id: 2089953594,
-  coli: 11.09
+  coli: 11.09,
+  coach: null
 )
 ```
 

@@ -14,34 +14,22 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class Coach
-    attr_accessor :id
+  class Avatar
+    # Signed, expiring url for the original logo image
+    attr_accessor :original_url
 
-    attr_accessor :first_name
+    # Signed, expiring url for the medium logo image
+    attr_accessor :medium_url
 
-    attr_accessor :last_name
-
-    attr_accessor :email
-
-    attr_accessor :phone
-
-    attr_accessor :leader
-
-    attr_accessor :bio
-
-    attr_accessor :avatar
+    # Signed, expiring url for the small logo image
+    attr_accessor :small_url
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'first_name' => :'first_name',
-        :'last_name' => :'last_name',
-        :'email' => :'email',
-        :'phone' => :'phone',
-        :'leader' => :'leader',
-        :'bio' => :'bio',
-        :'avatar' => :'avatar'
+        :'original_url' => :'original_url',
+        :'medium_url' => :'medium_url',
+        :'small_url' => :'small_url'
       }
     end
 
@@ -53,14 +41,9 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'Integer',
-        :'first_name' => :'String',
-        :'last_name' => :'String',
-        :'email' => :'String',
-        :'phone' => :'String',
-        :'leader' => :'Boolean',
-        :'bio' => :'String',
-        :'avatar' => :'Avatar'
+        :'original_url' => :'String',
+        :'medium_url' => :'String',
+        :'small_url' => :'String'
       }
     end
 
@@ -74,47 +57,27 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::Coach` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::Avatar` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::Coach`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::Avatar`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'original_url')
+        self.original_url = attributes[:'original_url']
       end
 
-      if attributes.key?(:'first_name')
-        self.first_name = attributes[:'first_name']
+      if attributes.key?(:'medium_url')
+        self.medium_url = attributes[:'medium_url']
       end
 
-      if attributes.key?(:'last_name')
-        self.last_name = attributes[:'last_name']
-      end
-
-      if attributes.key?(:'email')
-        self.email = attributes[:'email']
-      end
-
-      if attributes.key?(:'phone')
-        self.phone = attributes[:'phone']
-      end
-
-      if attributes.key?(:'leader')
-        self.leader = attributes[:'leader']
-      end
-
-      if attributes.key?(:'bio')
-        self.bio = attributes[:'bio']
-      end
-
-      if attributes.key?(:'avatar')
-        self.avatar = attributes[:'avatar']
+      if attributes.key?(:'small_url')
+        self.small_url = attributes[:'small_url']
       end
     end
 
@@ -136,14 +99,9 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          first_name == o.first_name &&
-          last_name == o.last_name &&
-          email == o.email &&
-          phone == o.phone &&
-          leader == o.leader &&
-          bio == o.bio &&
-          avatar == o.avatar
+          original_url == o.original_url &&
+          medium_url == o.medium_url &&
+          small_url == o.small_url
     end
 
     # @see the `==` method
@@ -155,7 +113,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, first_name, last_name, email, phone, leader, bio, avatar].hash
+      [original_url, medium_url, small_url].hash
     end
 
     # Builds the object from hash
