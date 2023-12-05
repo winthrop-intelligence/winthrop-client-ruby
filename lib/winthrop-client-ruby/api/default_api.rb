@@ -769,6 +769,72 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # List all categories
+    # List all categories
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. (default to 100)
+    # @option opts [Object] :q Ransack query
+    # @return [CategoryCollection]
+    def get_categories(opts = {})
+      data, _status_code, _headers = get_categories_with_http_info(opts)
+      data
+    end
+
+    # List all categories
+    # List all categories
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. (default to 100)
+    # @option opts [Object] :q Ransack query
+    # @return [Array<(CategoryCollection, Integer, Hash)>] CategoryCollection data, response status code and response headers
+    def get_categories_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_categories ...'
+      end
+      # resource path
+      local_var_path = '/central_jobs/categories'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CategoryCollection'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_categories",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_categories\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve a single coach
     # @param coach_id [Integer] ID of coach to retrieve
     # @param [Hash] opts the optional parameters

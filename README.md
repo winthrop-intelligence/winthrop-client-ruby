@@ -94,6 +94,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_administrators**](docs/DefaultApi.md#get_administrators) | **GET** /api/v1/administrators | 
 *WinthropClient::DefaultApi* | [**get_audited_financial_report_status**](docs/DefaultApi.md#get_audited_financial_report_status) | **GET** /api/v1/audited_financial_report_statuses/{auditedFinancialReportStatusId} | 
 *WinthropClient::DefaultApi* | [**get_audited_financial_report_statuses**](docs/DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses | 
+*WinthropClient::DefaultApi* | [**get_categories**](docs/DefaultApi.md#get_categories) | **GET** /central_jobs/categories | List all categories
 *WinthropClient::DefaultApi* | [**get_coach**](docs/DefaultApi.md#get_coach) | **GET** /api/v1/coaches/{coachId} | 
 *WinthropClient::DefaultApi* | [**get_coaches**](docs/DefaultApi.md#get_coaches) | **GET** /api/v1/coaches | 
 *WinthropClient::DefaultApi* | [**get_compensation**](docs/DefaultApi.md#get_compensation) | **GET** /api/v1/compensations/{compensationId} | 
@@ -149,6 +150,8 @@ Class | Method | HTTP request | Description
  - [WinthropClient::AuditedFinancialReportStatus](docs/AuditedFinancialReportStatus.md)
  - [WinthropClient::AuditedFinancialReportStatusCollection](docs/AuditedFinancialReportStatusCollection.md)
  - [WinthropClient::Avatar](docs/Avatar.md)
+ - [WinthropClient::Category](docs/Category.md)
+ - [WinthropClient::CategoryCollection](docs/CategoryCollection.md)
  - [WinthropClient::Coach](docs/Coach.md)
  - [WinthropClient::CoachCollection](docs/CoachCollection.md)
  - [WinthropClient::Compensation](docs/Compensation.md)

@@ -16,6 +16,7 @@
 | **expired** | **Boolean** |  | [optional][default to false] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
+| **categories** | [**Array&lt;Category&gt;**](Category.md) |  | [optional] |
 
 ## Example
 
@@ -34,7 +35,8 @@ instance = WinthropClient::JobPost.new(
   school_id: null,
   expired: null,
   created_at: null,
-  updated_at: null
+  updated_at: null,
+  categories: null
 )
 ```
 

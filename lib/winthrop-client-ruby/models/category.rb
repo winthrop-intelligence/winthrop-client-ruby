@@ -14,49 +14,28 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class JobPost
+  class Category
     attr_accessor :id
 
-    attr_accessor :title
-
-    attr_accessor :link
-
-    attr_accessor :uid
-
-    attr_accessor :work_type
+    attr_accessor :name
 
     attr_accessor :description
 
-    attr_accessor :description_md
-
-    attr_accessor :salary
-
-    attr_accessor :school_id
-
-    attr_accessor :expired
+    attr_accessor :ancestry
 
     attr_accessor :created_at
 
     attr_accessor :updated_at
 
-    attr_accessor :categories
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'title' => :'title',
-        :'link' => :'link',
-        :'uid' => :'uid',
-        :'work_type' => :'work_type',
+        :'name' => :'name',
         :'description' => :'description',
-        :'description_md' => :'description_md',
-        :'salary' => :'salary',
-        :'school_id' => :'school_id',
-        :'expired' => :'expired',
+        :'ancestry' => :'ancestry',
         :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at',
-        :'categories' => :'categories'
+        :'updated_at' => :'updated_at'
       }
     end
 
@@ -69,18 +48,11 @@ module WinthropClient
     def self.openapi_types
       {
         :'id' => :'Integer',
-        :'title' => :'String',
-        :'link' => :'String',
-        :'uid' => :'String',
-        :'work_type' => :'String',
+        :'name' => :'String',
         :'description' => :'String',
-        :'description_md' => :'String',
-        :'salary' => :'String',
-        :'school_id' => :'Integer',
-        :'expired' => :'Boolean',
+        :'ancestry' => :'String',
         :'created_at' => :'Time',
-        :'updated_at' => :'Time',
-        :'categories' => :'Array<Category>'
+        :'updated_at' => :'Time'
       }
     end
 
@@ -94,13 +66,13 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::JobPost` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::Category` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::JobPost`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::Category`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -109,42 +81,16 @@ module WinthropClient
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'title')
-        self.title = attributes[:'title']
-      end
-
-      if attributes.key?(:'link')
-        self.link = attributes[:'link']
-      end
-
-      if attributes.key?(:'uid')
-        self.uid = attributes[:'uid']
-      end
-
-      if attributes.key?(:'work_type')
-        self.work_type = attributes[:'work_type']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
 
       if attributes.key?(:'description')
         self.description = attributes[:'description']
       end
 
-      if attributes.key?(:'description_md')
-        self.description_md = attributes[:'description_md']
-      end
-
-      if attributes.key?(:'salary')
-        self.salary = attributes[:'salary']
-      end
-
-      if attributes.key?(:'school_id')
-        self.school_id = attributes[:'school_id']
-      end
-
-      if attributes.key?(:'expired')
-        self.expired = attributes[:'expired']
-      else
-        self.expired = false
+      if attributes.key?(:'ancestry')
+        self.ancestry = attributes[:'ancestry']
       end
 
       if attributes.key?(:'created_at')
@@ -154,39 +100,18 @@ module WinthropClient
       if attributes.key?(:'updated_at')
         self.updated_at = attributes[:'updated_at']
       end
-
-      if attributes.key?(:'categories')
-        if (value = attributes[:'categories']).is_a?(Array)
-          self.categories = value
-        end
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @uid.nil?
-        invalid_properties.push('invalid value for "uid", uid cannot be nil.')
-      end
-
-      if @description.nil?
-        invalid_properties.push('invalid value for "description", description cannot be nil.')
-      end
-
-      if @school_id.nil?
-        invalid_properties.push('invalid value for "school_id", school_id cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @uid.nil?
-      return false if @description.nil?
-      return false if @school_id.nil?
       true
     end
 
@@ -196,18 +121,11 @@ module WinthropClient
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          title == o.title &&
-          link == o.link &&
-          uid == o.uid &&
-          work_type == o.work_type &&
+          name == o.name &&
           description == o.description &&
-          description_md == o.description_md &&
-          salary == o.salary &&
-          school_id == o.school_id &&
-          expired == o.expired &&
+          ancestry == o.ancestry &&
           created_at == o.created_at &&
-          updated_at == o.updated_at &&
-          categories == o.categories
+          updated_at == o.updated_at
     end
 
     # @see the `==` method
@@ -219,7 +137,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, title, link, uid, work_type, description, description_md, salary, school_id, expired, created_at, updated_at, categories].hash
+      [id, name, description, ancestry, created_at, updated_at].hash
     end
 
     # Builds the object from hash

@@ -16,6 +16,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_administrators**](DefaultApi.md#get_administrators) | **GET** /api/v1/administrators |  |
 | [**get_audited_financial_report_status**](DefaultApi.md#get_audited_financial_report_status) | **GET** /api/v1/audited_financial_report_statuses/{auditedFinancialReportStatusId} |  |
 | [**get_audited_financial_report_statuses**](DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses |  |
+| [**get_categories**](DefaultApi.md#get_categories) | **GET** /central_jobs/categories | List all categories |
 | [**get_coach**](DefaultApi.md#get_coach) | **GET** /api/v1/coaches/{coachId} |  |
 | [**get_coaches**](DefaultApi.md#get_coaches) | **GET** /api/v1/coaches |  |
 | [**get_compensation**](DefaultApi.md#get_compensation) | **GET** /api/v1/compensations/{compensationId} |  |
@@ -907,6 +908,83 @@ end
 ### Return type
 
 [**AuditedFinancialReportStatusCollection**](AuditedFinancialReportStatusCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_categories
+
+> <CategoryCollection> get_categories(opts)
+
+List all categories
+
+List all categories
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  # List all categories
+  result = api_instance.get_categories(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_categories: #{e}"
+end
+```
+
+#### Using the get_categories_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CategoryCollection>, Integer, Hash)> get_categories_with_http_info(opts)
+
+```ruby
+begin
+  # List all categories
+  data, status_code, headers = api_instance.get_categories_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CategoryCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_categories_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 100] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**CategoryCollection**](CategoryCollection.md)
 
 ### Authorization
 
