@@ -43,6 +43,7 @@ docs/RequestedItemCollection.md
 docs/School.md
 docs/SchoolCollection.md
 docs/SchoolLogo.md
+docs/ScraperApi.md
 docs/Season.md
 docs/SeasonCollection.md
 docs/Sport.md
@@ -55,6 +56,7 @@ docs/UserCollection.md
 lib/winthrop-client-ruby.rb
 lib/winthrop-client-ruby/api/default_api.rb
 lib/winthrop-client-ruby/api/reporting_api.rb
+lib/winthrop-client-ruby/api/scraper_api.rb
 lib/winthrop-client-ruby/api_client.rb
 lib/winthrop-client-ruby/api_error.rb
 lib/winthrop-client-ruby/configuration.rb

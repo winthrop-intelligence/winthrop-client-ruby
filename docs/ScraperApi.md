@@ -1,0 +1,143 @@
+# WinthropClient::ScraperApi
+
+All URIs are relative to *http://api-gateway.default.svc.cluster.local*
+
+| Method | HTTP request | Description |
+| ------ | ------------ | ----------- |
+| [**list_scrapers**](ScraperApi.md#list_scrapers) | **GET** /ondemand-scrapers/ | List all available scrapers |
+| [**run_scraper**](ScraperApi.md#run_scraper) | **POST** /ondemand-scrapers/run/{scraper} | Run a scraper |
+
+
+## list_scrapers
+
+> Array&lt;String&gt; list_scrapers
+
+List all available scrapers
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = WinthropClient::ScraperApi.new
+
+begin
+  # List all available scrapers
+  result = api_instance.list_scrapers
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling ScraperApi->list_scrapers: #{e}"
+end
+```
+
+#### Using the list_scrapers_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Array&lt;String&gt;, Integer, Hash)> list_scrapers_with_http_info
+
+```ruby
+begin
+  # List all available scrapers
+  data, status_code, headers = api_instance.list_scrapers_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Array&lt;String&gt;
+rescue WinthropClient::ApiError => e
+  puts "Error when calling ScraperApi->list_scrapers_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**Array&lt;String&gt;**
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## run_scraper
+
+> run_scraper(scraper)
+
+Run a scraper
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = WinthropClient::ScraperApi.new
+scraper = 'scraper_example' # String | The name of the scraper to run
+
+begin
+  # Run a scraper
+  api_instance.run_scraper(scraper)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling ScraperApi->run_scraper: #{e}"
+end
+```
+
+#### Using the run_scraper_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> run_scraper_with_http_info(scraper)
+
+```ruby
+begin
+  # Run a scraper
+  data, status_code, headers = api_instance.run_scraper_with_http_info(scraper)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling ScraperApi->run_scraper_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **scraper** | **String** | The name of the scraper to run |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+

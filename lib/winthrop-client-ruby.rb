@@ -65,6 +65,7 @@ require 'winthrop-client-ruby/models/user_collection'
 # APIs
 require 'winthrop-client-ruby/api/default_api'
 require 'winthrop-client-ruby/api/reporting_api'
+require 'winthrop-client-ruby/api/scraper_api'
 
 module WinthropClient
   class << self

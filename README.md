@@ -141,6 +141,8 @@ Class | Method | HTTP request | Description
 *WinthropClient::ReportingApi* | [**get_invoices**](docs/ReportingApi.md#get_invoices) | **GET** /api/v1/reports/invoices | 
 *WinthropClient::ReportingApi* | [**get_school_contract_requests**](docs/ReportingApi.md#get_school_contract_requests) | **GET** /api/v1/reports/school_contract_requests | 
 *WinthropClient::ReportingApi* | [**get_subscriptions**](docs/ReportingApi.md#get_subscriptions) | **GET** /api/v1/reports/subscriptions | 
+*WinthropClient::ScraperApi* | [**list_scrapers**](docs/ScraperApi.md#list_scrapers) | **GET** /ondemand-scrapers/ | List all available scrapers
+*WinthropClient::ScraperApi* | [**run_scraper**](docs/ScraperApi.md#run_scraper) | **POST** /ondemand-scrapers/run/{scraper} | Run a scraper
 
 
 ## Documentation for Models
