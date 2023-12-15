@@ -29,6 +29,8 @@ module WinthropClient
 
     attr_accessor :bio
 
+    attr_accessor :bio_text
+
     attr_accessor :avatar
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -41,6 +43,7 @@ module WinthropClient
         :'phone' => :'phone',
         :'leader' => :'leader',
         :'bio' => :'bio',
+        :'bio_text' => :'bio_text',
         :'avatar' => :'avatar'
       }
     end
@@ -60,6 +63,7 @@ module WinthropClient
         :'phone' => :'String',
         :'leader' => :'Boolean',
         :'bio' => :'String',
+        :'bio_text' => :'String',
         :'avatar' => :'Avatar'
       }
     end
@@ -113,6 +117,10 @@ module WinthropClient
         self.bio = attributes[:'bio']
       end
 
+      if attributes.key?(:'bio_text')
+        self.bio_text = attributes[:'bio_text']
+      end
+
       if attributes.key?(:'avatar')
         self.avatar = attributes[:'avatar']
       end
@@ -143,6 +151,7 @@ module WinthropClient
           phone == o.phone &&
           leader == o.leader &&
           bio == o.bio &&
+          bio_text == o.bio_text &&
           avatar == o.avatar
     end
 
@@ -155,7 +164,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, first_name, last_name, email, phone, leader, bio, avatar].hash
+      [id, first_name, last_name, email, phone, leader, bio, bio_text, avatar].hash
     end
 
     # Builds the object from hash

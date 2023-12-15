@@ -11,6 +11,7 @@
 | **phone** | **String** |  | [optional] |
 | **leader** | **Boolean** |  | [optional] |
 | **bio** | **String** |  | [optional] |
+| **bio_text** | **String** |  | [optional] |
 | **avatar** | [**Avatar**](Avatar.md) |  | [optional] |
 
 ## Example
@@ -26,6 +27,7 @@ instance = WinthropClient::Coach.new(
   phone: 555-555-5555,
   leader: false,
   bio: https://rolltide.com/staff-directory/greg-byrne/519,
+  bio_text: Example Bio Text,
   avatar: null
 )
 ```

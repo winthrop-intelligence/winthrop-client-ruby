@@ -51,6 +51,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_users**](DefaultApi.md#get_users) | **GET** /api/v1/users |  |
 | [**summarizer_post_qa_s3**](DefaultApi.md#summarizer_post_qa_s3) | **POST** /summarizer/qa_s3 | Answer questions over a file from S3 |
 | [**summarizer_post_summarize_s3**](DefaultApi.md#summarizer_post_summarize_s3) | **POST** /summarizer/summarize_s3 | Summarize a file from S3 |
+| [**update_coach**](DefaultApi.md#update_coach) | **PATCH** /api/v1/coaches/{coachId} |  |
 | [**update_foia_label**](DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} |  |
 | [**update_foia_request**](DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} |  |
 | [**update_job_post**](DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post |
@@ -3508,6 +3509,77 @@ end
 
 - **Content-Type**: application/json
 - **Accept**: text/plain
+
+
+## update_coach
+
+> <Coach> update_coach(coach)
+
+
+
+Update a coach
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+coach = WinthropClient::Coach.new # Coach | Attributes to update. Currently only supports email, phone, bio, bio_text. Others will be ignored.
+
+begin
+  
+  result = api_instance.update_coach(coach)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_coach: #{e}"
+end
+```
+
+#### Using the update_coach_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Coach>, Integer, Hash)> update_coach_with_http_info(coach)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_coach_with_http_info(coach)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Coach>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_coach_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **coach** | [**Coach**](Coach.md) | Attributes to update. Currently only supports email, phone, bio, bio_text. Others will be ignored. |  |
+
+### Return type
+
+[**Coach**](Coach.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ## update_foia_label
