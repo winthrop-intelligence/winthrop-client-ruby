@@ -3513,7 +3513,7 @@ end
 
 ## update_coach
 
-> <Coach> update_coach(coach)
+> <Coach> update_coach(coach_id, coach)
 
 
 
@@ -3533,11 +3533,12 @@ WinthropClient.configure do |config|
 end
 
 api_instance = WinthropClient::DefaultApi.new
+coach_id = 56 # Integer | ID of coach to update
 coach = WinthropClient::Coach.new # Coach | Attributes to update. Currently only supports email, phone, bio, bio_text. Others will be ignored.
 
 begin
   
-  result = api_instance.update_coach(coach)
+  result = api_instance.update_coach(coach_id, coach)
   p result
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->update_coach: #{e}"
@@ -3548,12 +3549,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Coach>, Integer, Hash)> update_coach_with_http_info(coach)
+> <Array(<Coach>, Integer, Hash)> update_coach_with_http_info(coach_id, coach)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.update_coach_with_http_info(coach)
+  data, status_code, headers = api_instance.update_coach_with_http_info(coach_id, coach)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Coach>
@@ -3566,6 +3567,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **coach_id** | **Integer** | ID of coach to update |  |
 | **coach** | [**Coach**](Coach.md) | Attributes to update. Currently only supports email, phone, bio, bio_text. Others will be ignored. |  |
 
 ### Return type

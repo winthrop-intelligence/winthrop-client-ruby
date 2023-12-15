@@ -2968,28 +2968,34 @@ module WinthropClient
     end
 
     # Update a coach
+    # @param coach_id [Integer] ID of coach to update
     # @param coach [Coach] Attributes to update. Currently only supports email, phone, bio, bio_text. Others will be ignored.
     # @param [Hash] opts the optional parameters
     # @return [Coach]
-    def update_coach(coach, opts = {})
-      data, _status_code, _headers = update_coach_with_http_info(coach, opts)
+    def update_coach(coach_id, coach, opts = {})
+      data, _status_code, _headers = update_coach_with_http_info(coach_id, coach, opts)
       data
     end
 
     # Update a coach
+    # @param coach_id [Integer] ID of coach to update
     # @param coach [Coach] Attributes to update. Currently only supports email, phone, bio, bio_text. Others will be ignored.
     # @param [Hash] opts the optional parameters
     # @return [Array<(Coach, Integer, Hash)>] Coach data, response status code and response headers
-    def update_coach_with_http_info(coach, opts = {})
+    def update_coach_with_http_info(coach_id, coach, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.update_coach ...'
+      end
+      # verify the required parameter 'coach_id' is set
+      if @api_client.config.client_side_validation && coach_id.nil?
+        fail ArgumentError, "Missing the required parameter 'coach_id' when calling DefaultApi.update_coach"
       end
       # verify the required parameter 'coach' is set
       if @api_client.config.client_side_validation && coach.nil?
         fail ArgumentError, "Missing the required parameter 'coach' when calling DefaultApi.update_coach"
       end
       # resource path
-      local_var_path = '/api/v1/coaches/{coachId}'
+      local_var_path = '/api/v1/coaches/{coachId}'.sub('{' + 'coachId' + '}', CGI.escape(coach_id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
