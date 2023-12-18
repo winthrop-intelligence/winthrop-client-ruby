@@ -43,6 +43,7 @@ docs/RequestedItemCollection.md
 docs/School.md
 docs/SchoolCollection.md
 docs/SchoolLogo.md
+docs/Scraper.md
 docs/ScraperApi.md
 docs/Season.md
 docs/SeasonCollection.md
@@ -95,6 +96,7 @@ lib/winthrop-client-ruby/models/requested_item_collection.rb
 lib/winthrop-client-ruby/models/school.rb
 lib/winthrop-client-ruby/models/school_collection.rb
 lib/winthrop-client-ruby/models/school_logo.rb
+lib/winthrop-client-ruby/models/scraper.rb
 lib/winthrop-client-ruby/models/season.rb
 lib/winthrop-client-ruby/models/season_collection.rb
 lib/winthrop-client-ruby/models/sport.rb
@@ -107,5 +109,6 @@ lib/winthrop-client-ruby/models/user_collection.rb
 lib/winthrop-client-ruby/version.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
+spec/models/scraper_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

@@ -143,7 +143,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::ReportingApi* | [**get_school_contract_requests**](docs/ReportingApi.md#get_school_contract_requests) | **GET** /api/v1/reports/school_contract_requests | 
 *WinthropClient::ReportingApi* | [**get_subscriptions**](docs/ReportingApi.md#get_subscriptions) | **GET** /api/v1/reports/subscriptions | 
 *WinthropClient::ScraperApi* | [**list_scrapers**](docs/ScraperApi.md#list_scrapers) | **GET** /ondemand-scrapers/ | List all available scrapers
-*WinthropClient::ScraperApi* | [**run_scraper**](docs/ScraperApi.md#run_scraper) | **POST** /ondemand-scrapers/run/{scraper} | Run a scraper
+*WinthropClient::ScraperApi* | [**run_scraper**](docs/ScraperApi.md#run_scraper) | **POST** /ondemand-scrapers/run/{command} | Run a scraper
 
 
 ## Documentation for Models
@@ -183,6 +183,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::School](docs/School.md)
  - [WinthropClient::SchoolCollection](docs/SchoolCollection.md)
  - [WinthropClient::SchoolLogo](docs/SchoolLogo.md)
+ - [WinthropClient::Scraper](docs/Scraper.md)
  - [WinthropClient::Season](docs/Season.md)
  - [WinthropClient::SeasonCollection](docs/SeasonCollection.md)
  - [WinthropClient::Sport](docs/Sport.md)
