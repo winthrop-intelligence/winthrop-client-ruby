@@ -28,8 +28,12 @@
 | **address_1** | **String** |  | [optional] |
 | **address_2** | **String** |  | [optional] |
 | **zip_code** | **String** |  | [optional] |
-| **logo** | [**SchoolLogo**](SchoolLogo.md) |  | [optional] |
+| **logo** | [**Logo**](Logo.md) |  | [optional] |
 | **athletic_director** | [**Coach**](Coach.md) |  | [optional] |
+| **athletics_url** | **String** |  | [optional] |
+| **wikipedia_url** | **String** |  | [optional] |
+| **athletics_wikipedia_url** | **String** |  | [optional] |
+| **external_logo** | [**Logo**](Logo.md) |  | [optional] |
 
 ## Example
 
@@ -62,7 +66,11 @@ instance = WinthropClient::School.new(
   address_2: Box 870158,
   zip_code: 35487,
   logo: null,
-  athletic_director: null
+  athletic_director: null,
+  athletics_url: ,
+  wikipedia_url: ,
+  athletics_wikipedia_url: ,
+  external_logo: null
 )
 ```
 

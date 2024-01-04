@@ -5,12 +5,12 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**list_scrapers**](ScraperApi.md#list_scrapers) | **GET** /ondemand-scrapers/ | List all available scrapers |
-| [**run_scraper**](ScraperApi.md#run_scraper) | **POST** /ondemand-scrapers/run/{scraper} | Run a scraper |
+| [**run_scraper**](ScraperApi.md#run_scraper) | **POST** /ondemand-scrapers/run/{command} | Run a scraper |
 
 
 ## list_scrapers
 
-> Array&lt;String&gt; list_scrapers
+> <Array<Scraper>> list_scrapers
 
 List all available scrapers
 
@@ -42,7 +42,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(Array&lt;String&gt;, Integer, Hash)> list_scrapers_with_http_info
+> <Array(<Array<Scraper>>, Integer, Hash)> list_scrapers_with_http_info
 
 ```ruby
 begin
@@ -50,7 +50,7 @@ begin
   data, status_code, headers = api_instance.list_scrapers_with_http_info
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => Array&lt;String&gt;
+  p data # => <Array<Scraper>>
 rescue WinthropClient::ApiError => e
   puts "Error when calling ScraperApi->list_scrapers_with_http_info: #{e}"
 end
@@ -62,7 +62,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**Array&lt;String&gt;**
+[**Array&lt;Scraper&gt;**](Scraper.md)
 
 ### Authorization
 
@@ -76,7 +76,7 @@ This endpoint does not need any parameter.
 
 ## run_scraper
 
-> run_scraper(scraper)
+> run_scraper(command)
 
 Run a scraper
 
@@ -94,11 +94,11 @@ WinthropClient.configure do |config|
 end
 
 api_instance = WinthropClient::ScraperApi.new
-scraper = 'scraper_example' # String | The name of the scraper to run
+command = 'command_example' # String | The name of the scraper to run
 
 begin
   # Run a scraper
-  api_instance.run_scraper(scraper)
+  api_instance.run_scraper(command)
 rescue WinthropClient::ApiError => e
   puts "Error when calling ScraperApi->run_scraper: #{e}"
 end
@@ -108,12 +108,12 @@ end
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> run_scraper_with_http_info(scraper)
+> <Array(nil, Integer, Hash)> run_scraper_with_http_info(command)
 
 ```ruby
 begin
   # Run a scraper
-  data, status_code, headers = api_instance.run_scraper_with_http_info(scraper)
+  data, status_code, headers = api_instance.run_scraper_with_http_info(command)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
@@ -126,7 +126,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **scraper** | **String** | The name of the scraper to run |  |
+| **command** | **String** | The name of the scraper to run |  |
 
 ### Return type
 
