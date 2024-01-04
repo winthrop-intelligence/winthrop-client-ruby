@@ -67,6 +67,14 @@ module WinthropClient
 
     attr_accessor :athletic_director
 
+    attr_accessor :athletics_url
+
+    attr_accessor :wikipedia_url
+
+    attr_accessor :athletics_wikipedia_url
+
+    attr_accessor :external_logo
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -95,7 +103,11 @@ module WinthropClient
         :'address_2' => :'address_2',
         :'zip_code' => :'zip_code',
         :'logo' => :'logo',
-        :'athletic_director' => :'athletic_director'
+        :'athletic_director' => :'athletic_director',
+        :'athletics_url' => :'athletics_url',
+        :'wikipedia_url' => :'wikipedia_url',
+        :'athletics_wikipedia_url' => :'athletics_wikipedia_url',
+        :'external_logo' => :'external_logo'
       }
     end
 
@@ -131,8 +143,12 @@ module WinthropClient
         :'address_1' => :'String',
         :'address_2' => :'String',
         :'zip_code' => :'String',
-        :'logo' => :'SchoolLogo',
-        :'athletic_director' => :'Coach'
+        :'logo' => :'Logo',
+        :'athletic_director' => :'Coach',
+        :'athletics_url' => :'String',
+        :'wikipedia_url' => :'String',
+        :'athletics_wikipedia_url' => :'String',
+        :'external_logo' => :'Logo'
       }
     end
 
@@ -260,6 +276,22 @@ module WinthropClient
       if attributes.key?(:'athletic_director')
         self.athletic_director = attributes[:'athletic_director']
       end
+
+      if attributes.key?(:'athletics_url')
+        self.athletics_url = attributes[:'athletics_url']
+      end
+
+      if attributes.key?(:'wikipedia_url')
+        self.wikipedia_url = attributes[:'wikipedia_url']
+      end
+
+      if attributes.key?(:'athletics_wikipedia_url')
+        self.athletics_wikipedia_url = attributes[:'athletics_wikipedia_url']
+      end
+
+      if attributes.key?(:'external_logo')
+        self.external_logo = attributes[:'external_logo']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -305,7 +337,11 @@ module WinthropClient
           address_2 == o.address_2 &&
           zip_code == o.zip_code &&
           logo == o.logo &&
-          athletic_director == o.athletic_director
+          athletic_director == o.athletic_director &&
+          athletics_url == o.athletics_url &&
+          wikipedia_url == o.wikipedia_url &&
+          athletics_wikipedia_url == o.athletics_wikipedia_url &&
+          external_logo == o.external_logo
     end
 
     # @see the `==` method
@@ -317,7 +353,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, short_name, location, created_at, updated_at, city, nickname, external_url, colors, state, primary_conference_id, cost_of_living_index_city_code, current_directors_cup_ranking, current_usnwr_ranking, private, school_classification_id, logo_updated_at, youtube_search_name, latitude, longitude, address_1, address_2, zip_code, logo, athletic_director].hash
+      [id, name, short_name, location, created_at, updated_at, city, nickname, external_url, colors, state, primary_conference_id, cost_of_living_index_city_code, current_directors_cup_ranking, current_usnwr_ranking, private, school_classification_id, logo_updated_at, youtube_search_name, latitude, longitude, address_1, address_2, zip_code, logo, athletic_director, athletics_url, wikipedia_url, athletics_wikipedia_url, external_logo].hash
     end
 
     # Builds the object from hash
