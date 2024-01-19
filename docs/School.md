@@ -34,6 +34,7 @@
 | **wikipedia_url** | **String** |  | [optional] |
 | **athletics_wikipedia_url** | **String** |  | [optional] |
 | **external_logo** | [**Logo**](Logo.md) |  | [optional] |
+| **non_ncaa_group** | **String** |  | [optional] |
 
 ## Example
 
@@ -70,7 +71,8 @@ instance = WinthropClient::School.new(
   athletics_url: ,
   wikipedia_url: ,
   athletics_wikipedia_url: ,
-  external_logo: null
+  external_logo: null,
+  non_ncaa_group: NAIA
 )
 ```
 
