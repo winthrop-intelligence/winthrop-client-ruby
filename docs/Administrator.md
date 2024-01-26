@@ -46,6 +46,7 @@
 | **sport_id** | **Integer** |  | [optional] |
 | **coli** | **Float** |  | [optional] |
 | **coach** | [**Coach**](Coach.md) |  | [optional] |
+| **departments** | [**Array&lt;PositionType&gt;**](PositionType.md) |  | [optional] |
 
 ## Example
 
@@ -94,7 +95,8 @@ instance = WinthropClient::Administrator.new(
   private: false,
   sport_id: 2089953594,
   coli: 11.09,
-  coach: null
+  coach: null,
+  departments: null
 )
 ```
 

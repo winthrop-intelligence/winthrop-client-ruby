@@ -179,6 +179,8 @@ Class | Method | HTTP request | Description
  - [WinthropClient::NcaaFinancialReportStatusCollection](docs/NcaaFinancialReportStatusCollection.md)
  - [WinthropClient::Position](docs/Position.md)
  - [WinthropClient::PositionCollection](docs/PositionCollection.md)
+ - [WinthropClient::PositionType](docs/PositionType.md)
+ - [WinthropClient::PositionTypeGroup](docs/PositionTypeGroup.md)
  - [WinthropClient::RequestedItem](docs/RequestedItem.md)
  - [WinthropClient::RequestedItemCollection](docs/RequestedItemCollection.md)
  - [WinthropClient::School](docs/School.md)

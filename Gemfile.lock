@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    winthrop-client-ruby (1.0.0)
+    winthrop-client-ruby (1.1.0)
       typhoeus (~> 1.0, >= 1.0.1)
 
 GEM

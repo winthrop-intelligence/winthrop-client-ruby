@@ -99,6 +99,8 @@ module WinthropClient
 
     attr_accessor :coach
 
+    attr_accessor :departments
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -165,7 +167,8 @@ module WinthropClient
         :'private' => :'private',
         :'sport_id' => :'sport_id',
         :'coli' => :'coli',
-        :'coach' => :'coach'
+        :'coach' => :'coach',
+        :'departments' => :'departments'
       }
     end
 
@@ -218,7 +221,8 @@ module WinthropClient
         :'private' => :'Boolean',
         :'sport_id' => :'Integer',
         :'coli' => :'Float',
-        :'coach' => :'Coach'
+        :'coach' => :'Coach',
+        :'departments' => :'Array<PositionType>'
       }
     end
 
@@ -410,6 +414,12 @@ module WinthropClient
       if attributes.key?(:'coach')
         self.coach = attributes[:'coach']
       end
+
+      if attributes.key?(:'departments')
+        if (value = attributes[:'departments']).is_a?(Array)
+          self.departments = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -497,7 +507,8 @@ module WinthropClient
           private == o.private &&
           sport_id == o.sport_id &&
           coli == o.coli &&
-          coach == o.coach
+          coach == o.coach &&
+          departments == o.departments
     end
 
     # @see the `==` method
@@ -509,7 +520,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, coach_id, coach_first_name, coach_last_name, coach_name, season_id, position_id, school_id, conference_id, division_id, geo_division_id, compensation_id, contract_id, year, position_title, school_name, school_short_name, state, usnwr_ranking, directors_cup_ranking, compensation_cents, compensation_base_salary_cents, compensation_type, compensation_outside_income_cents, compensation_deferred_comp_cents, compensation_one_time_bonus_cents, compensation_contingent_bonus_comp_cents, compensation_buyout_terms, compensation_num_cars, compensation_car_stipend_cents, compensation_country_club_dues_cents, compensation_country_club_membership_paid, compensation_media_link, contract_starts_on, contract_expires_on, diversity, gender, alma_mater_id, private, sport_id, coli, coach].hash
+      [id, coach_id, coach_first_name, coach_last_name, coach_name, season_id, position_id, school_id, conference_id, division_id, geo_division_id, compensation_id, contract_id, year, position_title, school_name, school_short_name, state, usnwr_ranking, directors_cup_ranking, compensation_cents, compensation_base_salary_cents, compensation_type, compensation_outside_income_cents, compensation_deferred_comp_cents, compensation_one_time_bonus_cents, compensation_contingent_bonus_comp_cents, compensation_buyout_terms, compensation_num_cars, compensation_car_stipend_cents, compensation_country_club_dues_cents, compensation_country_club_membership_paid, compensation_media_link, contract_starts_on, contract_expires_on, diversity, gender, alma_mater_id, private, sport_id, coli, coach, departments].hash
     end
 
     # Builds the object from hash
