@@ -2486,7 +2486,7 @@ module WinthropClient
         fail ArgumentError, "Missing the required parameter 'season_id' when calling DefaultApi.get_season"
       end
       # resource path
-      local_var_path = '/api/v1/season/{seasonId}'.sub('{' + 'seasonId' + '}', CGI.escape(season_id.to_s))
+      local_var_path = '/api/v1/seasons/{seasonId}'.sub('{' + 'seasonId' + '}', CGI.escape(season_id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}

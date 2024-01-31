@@ -43,7 +43,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_requested_items**](DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items |  |
 | [**get_school**](DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} |  |
 | [**get_schools**](DefaultApi.md#get_schools) | **GET** /api/v1/schools |  |
-| [**get_season**](DefaultApi.md#get_season) | **GET** /api/v1/season/{seasonId} |  |
+| [**get_season**](DefaultApi.md#get_season) | **GET** /api/v1/seasons/{seasonId} |  |
 | [**get_seasons**](DefaultApi.md#get_seasons) | **GET** /api/v1/seasons |  |
 | [**get_sport**](DefaultApi.md#get_sport) | **GET** /api/v1/sports/{sportId} |  |
 | [**get_sports**](DefaultApi.md#get_sports) | **GET** /api/v1/sports |  |
