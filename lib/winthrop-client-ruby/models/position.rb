@@ -92,7 +92,7 @@ module WinthropClient
         :'coach' => :'Coach',
         :'sport' => :'Sport',
         :'school' => :'School',
-        :'position_types' => :'Array<String>'
+        :'position_types' => :'Array<PositionType>'
       }
     end
 
