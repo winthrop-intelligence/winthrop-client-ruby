@@ -24,12 +24,16 @@ module WinthropClient
     # Signed, expiring url for the small logo image
     attr_accessor :small_url
 
+    # Remote URL for Coach Avatar
+    attr_accessor :image_remote_url
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'original_url' => :'original_url',
         :'medium_url' => :'medium_url',
-        :'small_url' => :'small_url'
+        :'small_url' => :'small_url',
+        :'image_remote_url' => :'image_remote_url'
       }
     end
 
@@ -43,7 +47,8 @@ module WinthropClient
       {
         :'original_url' => :'String',
         :'medium_url' => :'String',
-        :'small_url' => :'String'
+        :'small_url' => :'String',
+        :'image_remote_url' => :'String'
       }
     end
 
@@ -79,6 +84,10 @@ module WinthropClient
       if attributes.key?(:'small_url')
         self.small_url = attributes[:'small_url']
       end
+
+      if attributes.key?(:'image_remote_url')
+        self.image_remote_url = attributes[:'image_remote_url']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -103,7 +112,8 @@ module WinthropClient
       self.class == o.class &&
           original_url == o.original_url &&
           medium_url == o.medium_url &&
-          small_url == o.small_url
+          small_url == o.small_url &&
+          image_remote_url == o.image_remote_url
     end
 
     # @see the `==` method
@@ -115,7 +125,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [original_url, medium_url, small_url].hash
+      [original_url, medium_url, small_url, image_remote_url].hash
     end
 
     # Builds the object from hash
