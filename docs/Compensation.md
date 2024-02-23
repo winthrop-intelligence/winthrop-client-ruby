@@ -34,6 +34,7 @@
 | **contract_status_id** | **Integer** |  | [optional] |
 | **year** | **Integer** |  | [optional] |
 | **school_id** | **Integer** |  | [optional] |
+| **contracts** | [**Array&lt;Contract&gt;**](Contract.md) |  | [optional] |
 
 ## Example
 
@@ -70,7 +71,8 @@ instance = WinthropClient::Compensation.new(
   media_link: This is a media link,
   contract_status_id: 1,
   year: 2019,
-  school_id: 1
+  school_id: 1,
+  contracts: null
 )
 ```
 
