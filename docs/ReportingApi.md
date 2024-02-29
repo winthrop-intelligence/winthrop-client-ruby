@@ -11,6 +11,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_games**](ReportingApi.md#get_games) | **GET** /api/v1/reports/games |  |
 | [**get_invoices**](ReportingApi.md#get_invoices) | **GET** /api/v1/reports/invoices |  |
 | [**get_school_contract_requests**](ReportingApi.md#get_school_contract_requests) | **GET** /api/v1/reports/school_contract_requests |  |
+| [**get_schools_financials_qc**](ReportingApi.md#get_schools_financials_qc) | **GET** /api/v1/financials_qc |  |
 | [**get_subscriptions**](ReportingApi.md#get_subscriptions) | **GET** /api/v1/reports/subscriptions |  |
 
 
@@ -528,6 +529,81 @@ end
 ### Return type
 
 **Object**
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_schools_financials_qc
+
+> <FinancialQc> get_schools_financials_qc(opts)
+
+
+
+Retrieve schools with thier financials qc
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = WinthropClient::ReportingApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  
+  result = api_instance.get_schools_financials_qc(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling ReportingApi->get_schools_financials_qc: #{e}"
+end
+```
+
+#### Using the get_schools_financials_qc_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FinancialQc>, Integer, Hash)> get_schools_financials_qc_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_schools_financials_qc_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FinancialQc>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling ReportingApi->get_schools_financials_qc_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**FinancialQc**](FinancialQc.md)
 
 ### Authorization
 

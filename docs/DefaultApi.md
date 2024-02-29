@@ -21,6 +21,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_coaches**](DefaultApi.md#get_coaches) | **GET** /api/v1/coaches |  |
 | [**get_compensation**](DefaultApi.md#get_compensation) | **GET** /api/v1/compensations/{compensationId} |  |
 | [**get_compensations**](DefaultApi.md#get_compensations) | **GET** /api/v1/compensations |  |
+| [**get_contact**](DefaultApi.md#get_contact) | **GET** /api/v1/contacts/{contactId} |  |
+| [**get_contacts**](DefaultApi.md#get_contacts) | **GET** /api/v1/contacts |  |
 | [**get_contract**](DefaultApi.md#get_contract) | **GET** /api/v1/contracts/{contractId} |  |
 | [**get_contracts**](DefaultApi.md#get_contracts) | **GET** /api/v1/contracts |  |
 | [**get_deal_status**](DefaultApi.md#get_deal_status) | **GET** /api/v1/deal_statuses/{dealStatusId} |  |
@@ -1282,6 +1284,154 @@ end
 ### Return type
 
 [**CompensationCollection**](CompensationCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_contact
+
+> <Contact> get_contact(contact_id)
+
+
+
+Retrieve a single contact
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+contact_id = 56 # Integer | ID of contact to retrieve
+
+begin
+  
+  result = api_instance.get_contact(contact_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_contact: #{e}"
+end
+```
+
+#### Using the get_contact_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Contact>, Integer, Hash)> get_contact_with_http_info(contact_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_contact_with_http_info(contact_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Contact>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_contact_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **contact_id** | **Integer** | ID of contact to retrieve |  |
+
+### Return type
+
+[**Contact**](Contact.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_contacts
+
+> <ContactCollection> get_contacts(opts)
+
+
+
+Retrieve some or all contacts
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  
+  result = api_instance.get_contacts(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_contacts: #{e}"
+end
+```
+
+#### Using the get_contacts_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ContactCollection>, Integer, Hash)> get_contacts_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_contacts_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ContactCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_contacts_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 100] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**ContactCollection**](ContactCollection.md)
 
 ### Authorization
 

@@ -99,6 +99,8 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_coaches**](docs/DefaultApi.md#get_coaches) | **GET** /api/v1/coaches | 
 *WinthropClient::DefaultApi* | [**get_compensation**](docs/DefaultApi.md#get_compensation) | **GET** /api/v1/compensations/{compensationId} | 
 *WinthropClient::DefaultApi* | [**get_compensations**](docs/DefaultApi.md#get_compensations) | **GET** /api/v1/compensations | 
+*WinthropClient::DefaultApi* | [**get_contact**](docs/DefaultApi.md#get_contact) | **GET** /api/v1/contacts/{contactId} | 
+*WinthropClient::DefaultApi* | [**get_contacts**](docs/DefaultApi.md#get_contacts) | **GET** /api/v1/contacts | 
 *WinthropClient::DefaultApi* | [**get_contract**](docs/DefaultApi.md#get_contract) | **GET** /api/v1/contracts/{contractId} | 
 *WinthropClient::DefaultApi* | [**get_contracts**](docs/DefaultApi.md#get_contracts) | **GET** /api/v1/contracts | 
 *WinthropClient::DefaultApi* | [**get_deal_status**](docs/DefaultApi.md#get_deal_status) | **GET** /api/v1/deal_statuses/{dealStatusId} | 
@@ -141,6 +143,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::ReportingApi* | [**get_games**](docs/ReportingApi.md#get_games) | **GET** /api/v1/reports/games | 
 *WinthropClient::ReportingApi* | [**get_invoices**](docs/ReportingApi.md#get_invoices) | **GET** /api/v1/reports/invoices | 
 *WinthropClient::ReportingApi* | [**get_school_contract_requests**](docs/ReportingApi.md#get_school_contract_requests) | **GET** /api/v1/reports/school_contract_requests | 
+*WinthropClient::ReportingApi* | [**get_schools_financials_qc**](docs/ReportingApi.md#get_schools_financials_qc) | **GET** /api/v1/financials_qc | 
 *WinthropClient::ReportingApi* | [**get_subscriptions**](docs/ReportingApi.md#get_subscriptions) | **GET** /api/v1/reports/subscriptions | 
 *WinthropClient::ScraperApi* | [**list_scrapers**](docs/ScraperApi.md#list_scrapers) | **GET** /ondemand-scrapers/ | List all available scrapers
 *WinthropClient::ScraperApi* | [**run_scraper**](docs/ScraperApi.md#run_scraper) | **POST** /ondemand-scrapers/run/{command} | Run a scraper
@@ -159,10 +162,13 @@ Class | Method | HTTP request | Description
  - [WinthropClient::CoachCollection](docs/CoachCollection.md)
  - [WinthropClient::Compensation](docs/Compensation.md)
  - [WinthropClient::CompensationCollection](docs/CompensationCollection.md)
+ - [WinthropClient::Contact](docs/Contact.md)
+ - [WinthropClient::ContactCollection](docs/ContactCollection.md)
  - [WinthropClient::Contract](docs/Contract.md)
  - [WinthropClient::ContractCollection](docs/ContractCollection.md)
  - [WinthropClient::DealStatus](docs/DealStatus.md)
  - [WinthropClient::DealStatusCollection](docs/DealStatusCollection.md)
+ - [WinthropClient::FinancialQc](docs/FinancialQc.md)
  - [WinthropClient::FoiaLabel](docs/FoiaLabel.md)
  - [WinthropClient::FoiaLabelCollection](docs/FoiaLabelCollection.md)
  - [WinthropClient::FoiaRequest](docs/FoiaRequest.md)

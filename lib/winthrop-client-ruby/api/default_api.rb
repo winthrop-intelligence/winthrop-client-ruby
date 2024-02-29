@@ -1085,6 +1085,131 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Retrieve a single contact
+    # @param contact_id [Integer] ID of contact to retrieve
+    # @param [Hash] opts the optional parameters
+    # @return [Contact]
+    def get_contact(contact_id, opts = {})
+      data, _status_code, _headers = get_contact_with_http_info(contact_id, opts)
+      data
+    end
+
+    # Retrieve a single contact
+    # @param contact_id [Integer] ID of contact to retrieve
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Contact, Integer, Hash)>] Contact data, response status code and response headers
+    def get_contact_with_http_info(contact_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_contact ...'
+      end
+      # verify the required parameter 'contact_id' is set
+      if @api_client.config.client_side_validation && contact_id.nil?
+        fail ArgumentError, "Missing the required parameter 'contact_id' when calling DefaultApi.get_contact"
+      end
+      # resource path
+      local_var_path = '/api/v1/contacts/{contactId}'.sub('{' + 'contactId' + '}', CGI.escape(contact_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Contact'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_contact",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_contact\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve some or all contacts
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. (default to 100)
+    # @option opts [Object] :q Ransack query
+    # @return [ContactCollection]
+    def get_contacts(opts = {})
+      data, _status_code, _headers = get_contacts_with_http_info(opts)
+      data
+    end
+
+    # Retrieve some or all contacts
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. (default to 100)
+    # @option opts [Object] :q Ransack query
+    # @return [Array<(ContactCollection, Integer, Hash)>] ContactCollection data, response status code and response headers
+    def get_contacts_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_contacts ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/contacts'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ContactCollection'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_contacts",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_contacts\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve a single contract
     # @param contract_id [Integer] ID of contract to retrieve
     # @param [Hash] opts the optional parameters
