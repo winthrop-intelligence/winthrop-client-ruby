@@ -186,6 +186,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::School](docs/School.md)
  - [WinthropClient::SchoolCollection](docs/SchoolCollection.md)
  - [WinthropClient::Scraper](docs/Scraper.md)
+ - [WinthropClient::ScraperArgDef](docs/ScraperArgDef.md)
  - [WinthropClient::Season](docs/Season.md)
  - [WinthropClient::SeasonCollection](docs/SeasonCollection.md)
  - [WinthropClient::Sport](docs/Sport.md)

@@ -14,19 +14,19 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class Scraper
+  class ScraperArgDef
     attr_accessor :name
 
-    attr_accessor :title
+    attr_accessor :type
 
-    attr_accessor :argument_defs
+    attr_accessor :description
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'name' => :'name',
-        :'title' => :'title',
-        :'argument_defs' => :'argumentDefs'
+        :'type' => :'type',
+        :'description' => :'description'
       }
     end
 
@@ -39,8 +39,8 @@ module WinthropClient
     def self.openapi_types
       {
         :'name' => :'String',
-        :'title' => :'String',
-        :'argument_defs' => :'Array<ScraperArgDef>'
+        :'type' => :'String',
+        :'description' => :'String'
       }
     end
 
@@ -54,13 +54,13 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::Scraper` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::ScraperArgDef` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::Scraper`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::ScraperArgDef`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -69,14 +69,12 @@ module WinthropClient
         self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'title')
-        self.title = attributes[:'title']
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
       end
 
-      if attributes.key?(:'argument_defs')
-        if (value = attributes[:'argument_defs']).is_a?(Array)
-          self.argument_defs = value
-        end
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
     end
 
@@ -101,8 +99,8 @@ module WinthropClient
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          title == o.title &&
-          argument_defs == o.argument_defs
+          type == o.type &&
+          description == o.description
     end
 
     # @see the `==` method
@@ -114,7 +112,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, title, argument_defs].hash
+      [name, type, description].hash
     end
 
     # Builds the object from hash
