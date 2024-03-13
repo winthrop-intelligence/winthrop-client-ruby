@@ -75,8 +75,6 @@ module WinthropClient
 
     attr_accessor :external_logo
 
-    attr_accessor :non_ncaa_group
-
     attr_accessor :school_status
 
     class EnumAttributeValidator
@@ -134,7 +132,6 @@ module WinthropClient
         :'wikipedia_url' => :'wikipedia_url',
         :'athletics_wikipedia_url' => :'athletics_wikipedia_url',
         :'external_logo' => :'external_logo',
-        :'non_ncaa_group' => :'non_ncaa_group',
         :'school_status' => :'school_status'
       }
     end
@@ -177,7 +174,6 @@ module WinthropClient
         :'wikipedia_url' => :'String',
         :'athletics_wikipedia_url' => :'String',
         :'external_logo' => :'Logo',
-        :'non_ncaa_group' => :'String',
         :'school_status' => :'String'
       }
     end
@@ -323,10 +319,6 @@ module WinthropClient
         self.external_logo = attributes[:'external_logo']
       end
 
-      if attributes.key?(:'non_ncaa_group')
-        self.non_ncaa_group = attributes[:'non_ncaa_group']
-      end
-
       if attributes.key?(:'school_status')
         self.school_status = attributes[:'school_status']
       end
@@ -394,7 +386,6 @@ module WinthropClient
           wikipedia_url == o.wikipedia_url &&
           athletics_wikipedia_url == o.athletics_wikipedia_url &&
           external_logo == o.external_logo &&
-          non_ncaa_group == o.non_ncaa_group &&
           school_status == o.school_status
     end
 
@@ -407,7 +398,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, short_name, location, created_at, updated_at, city, nickname, external_url, colors, state, primary_conference_id, cost_of_living_index_city_code, current_directors_cup_ranking, current_usnwr_ranking, private, school_classification_id, logo_updated_at, youtube_search_name, latitude, longitude, address_1, address_2, zip_code, logo, athletic_director, athletics_url, wikipedia_url, athletics_wikipedia_url, external_logo, non_ncaa_group, school_status].hash
+      [id, name, short_name, location, created_at, updated_at, city, nickname, external_url, colors, state, primary_conference_id, cost_of_living_index_city_code, current_directors_cup_ranking, current_usnwr_ranking, private, school_classification_id, logo_updated_at, youtube_search_name, latitude, longitude, address_1, address_2, zip_code, logo, athletic_director, athletics_url, wikipedia_url, athletics_wikipedia_url, external_logo, school_status].hash
     end
 
     # Builds the object from hash
