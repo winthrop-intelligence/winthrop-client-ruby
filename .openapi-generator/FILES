@@ -50,6 +50,7 @@ docs/School.md
 docs/SchoolCollection.md
 docs/Scraper.md
 docs/ScraperApi.md
+docs/ScraperArgDef.md
 docs/Season.md
 docs/SeasonCollection.md
 docs/Sport.md
@@ -107,6 +108,7 @@ lib/winthrop-client-ruby/models/requested_item_collection.rb
 lib/winthrop-client-ruby/models/school.rb
 lib/winthrop-client-ruby/models/school_collection.rb
 lib/winthrop-client-ruby/models/scraper.rb
+lib/winthrop-client-ruby/models/scraper_arg_def.rb
 lib/winthrop-client-ruby/models/season.rb
 lib/winthrop-client-ruby/models/season_collection.rb
 lib/winthrop-client-ruby/models/sport.rb
@@ -117,5 +119,6 @@ lib/winthrop-client-ruby/models/unprocessable_entity.rb
 lib/winthrop-client-ruby/models/user.rb
 lib/winthrop-client-ruby/models/user_collection.rb
 lib/winthrop-client-ruby/version.rb
+spec/models/scraper_arg_def_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

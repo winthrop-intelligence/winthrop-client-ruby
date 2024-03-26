@@ -77,6 +77,7 @@ module WinthropClient
     # Run a scraper
     # @param command [String] The name of the scraper to run
     # @param [Hash] opts the optional parameters
+    # @option opts [Object] :body 
     # @return [nil]
     def run_scraper(command, opts = {})
       run_scraper_with_http_info(command, opts)
@@ -86,6 +87,7 @@ module WinthropClient
     # Run a scraper
     # @param command [String] The name of the scraper to run
     # @param [Hash] opts the optional parameters
+    # @option opts [Object] :body 
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def run_scraper_with_http_info(command, opts = {})
       if @api_client.config.debugging
@@ -103,12 +105,17 @@ module WinthropClient
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body]
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'body'])
 
       # return_type
       return_type = opts[:debug_return_type]
