@@ -31,6 +31,8 @@ module WinthropClient
 
     attr_accessor :salary
 
+    attr_accessor :annual_salary
+
     attr_accessor :school_id
 
     attr_accessor :expired
@@ -52,6 +54,7 @@ module WinthropClient
         :'description' => :'description',
         :'description_md' => :'description_md',
         :'salary' => :'salary',
+        :'annual_salary' => :'annual_salary',
         :'school_id' => :'school_id',
         :'expired' => :'expired',
         :'created_at' => :'created_at',
@@ -76,6 +79,7 @@ module WinthropClient
         :'description' => :'String',
         :'description_md' => :'String',
         :'salary' => :'String',
+        :'annual_salary' => :'Float',
         :'school_id' => :'Integer',
         :'expired' => :'Boolean',
         :'created_at' => :'Time',
@@ -139,6 +143,10 @@ module WinthropClient
 
       if attributes.key?(:'salary')
         self.salary = attributes[:'salary']
+      end
+
+      if attributes.key?(:'annual_salary')
+        self.annual_salary = attributes[:'annual_salary']
       end
 
       if attributes.key?(:'school_id')
@@ -211,6 +219,7 @@ module WinthropClient
           description == o.description &&
           description_md == o.description_md &&
           salary == o.salary &&
+          annual_salary == o.annual_salary &&
           school_id == o.school_id &&
           expired == o.expired &&
           created_at == o.created_at &&
