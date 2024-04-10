@@ -19,6 +19,130 @@ module WinthropClient
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # Create a new Conference
+    # @param [Hash] opts the optional parameters
+    # @option opts [Conference] :conference 
+    # @return [Conference]
+    def create_conference(opts = {})
+      data, _status_code, _headers = create_conference_with_http_info(opts)
+      data
+    end
+
+    # Create a new Conference
+    # @param [Hash] opts the optional parameters
+    # @option opts [Conference] :conference 
+    # @return [Array<(Conference, Integer, Hash)>] Conference data, response status code and response headers
+    def create_conference_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_conference ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/conferences'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'conference'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Conference'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_conference",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_conference\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create a new Conferenceship
+    # @param [Hash] opts the optional parameters
+    # @option opts [Conferenceship] :conferenceship 
+    # @return [Conferenceship]
+    def create_conferenceship(opts = {})
+      data, _status_code, _headers = create_conferenceship_with_http_info(opts)
+      data
+    end
+
+    # Create a new Conferenceship
+    # @param [Hash] opts the optional parameters
+    # @option opts [Conferenceship] :conferenceship 
+    # @return [Array<(Conferenceship, Integer, Hash)>] Conferenceship data, response status code and response headers
+    def create_conferenceship_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_conferenceship ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/conferenceships'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'conferenceship'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Conferenceship'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_conferenceship",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_conferenceship\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create a new foia label
     # @param foia_label [FoiaLabel] Foia label to create
     # @param [Hash] opts the optional parameters
@@ -277,6 +401,124 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#create_requested_item\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete a single Conference
+    # @param conference_id [Integer] ID of the Conference
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_conference(conference_id, opts = {})
+      delete_conference_with_http_info(conference_id, opts)
+      nil
+    end
+
+    # Delete a single Conference
+    # @param conference_id [Integer] ID of the Conference
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def delete_conference_with_http_info(conference_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.delete_conference ...'
+      end
+      # verify the required parameter 'conference_id' is set
+      if @api_client.config.client_side_validation && conference_id.nil?
+        fail ArgumentError, "Missing the required parameter 'conference_id' when calling DefaultApi.delete_conference"
+      end
+      # resource path
+      local_var_path = '/api/v1/conferences/{conferenceId}'.sub('{' + 'conferenceId' + '}', CGI.escape(conference_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.delete_conference",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#delete_conference\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete a single Conferenceship
+    # @param conferenceship_id [Integer] ID of the Conferenceship
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_conferenceship(conferenceship_id, opts = {})
+      delete_conferenceship_with_http_info(conferenceship_id, opts)
+      nil
+    end
+
+    # Delete a single Conferenceship
+    # @param conferenceship_id [Integer] ID of the Conferenceship
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def delete_conferenceship_with_http_info(conferenceship_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.delete_conferenceship ...'
+      end
+      # verify the required parameter 'conferenceship_id' is set
+      if @api_client.config.client_side_validation && conferenceship_id.nil?
+        fail ArgumentError, "Missing the required parameter 'conferenceship_id' when calling DefaultApi.delete_conferenceship"
+      end
+      # resource path
+      local_var_path = '/api/v1/conferenceships/{conferenceshipId}'.sub('{' + 'conferenceshipId' + '}', CGI.escape(conferenceship_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.delete_conferenceship",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#delete_conferenceship\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1081,6 +1323,256 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_compensations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a single Conference
+    # @param conference_id [Integer] ID of the Conference
+    # @param [Hash] opts the optional parameters
+    # @return [Conference]
+    def get_conference(conference_id, opts = {})
+      data, _status_code, _headers = get_conference_with_http_info(conference_id, opts)
+      data
+    end
+
+    # Retrieve a single Conference
+    # @param conference_id [Integer] ID of the Conference
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Conference, Integer, Hash)>] Conference data, response status code and response headers
+    def get_conference_with_http_info(conference_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_conference ...'
+      end
+      # verify the required parameter 'conference_id' is set
+      if @api_client.config.client_side_validation && conference_id.nil?
+        fail ArgumentError, "Missing the required parameter 'conference_id' when calling DefaultApi.get_conference"
+      end
+      # resource path
+      local_var_path = '/api/v1/conferences/{conferenceId}'.sub('{' + 'conferenceId' + '}', CGI.escape(conference_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Conference'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_conference",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_conference\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve some or all conferences
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. (default to 100)
+    # @option opts [Object] :q Ransack query
+    # @return [ConferenceCollection]
+    def get_conferences(opts = {})
+      data, _status_code, _headers = get_conferences_with_http_info(opts)
+      data
+    end
+
+    # Retrieve some or all conferences
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. (default to 100)
+    # @option opts [Object] :q Ransack query
+    # @return [Array<(ConferenceCollection, Integer, Hash)>] ConferenceCollection data, response status code and response headers
+    def get_conferences_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_conferences ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/conferences'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConferenceCollection'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_conferences",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_conferences\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a single Conferenceship
+    # @param conferenceship_id [Integer] ID of the Conferenceship
+    # @param [Hash] opts the optional parameters
+    # @return [Conferenceship]
+    def get_conferenceship(conferenceship_id, opts = {})
+      data, _status_code, _headers = get_conferenceship_with_http_info(conferenceship_id, opts)
+      data
+    end
+
+    # Retrieve a single Conferenceship
+    # @param conferenceship_id [Integer] ID of the Conferenceship
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Conferenceship, Integer, Hash)>] Conferenceship data, response status code and response headers
+    def get_conferenceship_with_http_info(conferenceship_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_conferenceship ...'
+      end
+      # verify the required parameter 'conferenceship_id' is set
+      if @api_client.config.client_side_validation && conferenceship_id.nil?
+        fail ArgumentError, "Missing the required parameter 'conferenceship_id' when calling DefaultApi.get_conferenceship"
+      end
+      # resource path
+      local_var_path = '/api/v1/conferenceships/{conferenceshipId}'.sub('{' + 'conferenceshipId' + '}', CGI.escape(conferenceship_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Conferenceship'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_conferenceship",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_conferenceship\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve some or all conferenceships
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. (default to 100)
+    # @option opts [Object] :q Ransack query
+    # @return [ConferenceshipCollection]
+    def get_conferenceships(opts = {})
+      data, _status_code, _headers = get_conferenceships_with_http_info(opts)
+      data
+    end
+
+    # Retrieve some or all conferenceships
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. (default to 100)
+    # @option opts [Object] :q Ransack query
+    # @return [Array<(ConferenceshipCollection, Integer, Hash)>] ConferenceshipCollection data, response status code and response headers
+    def get_conferenceships_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_conferenceships ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/conferenceships'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConferenceshipCollection'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_conferenceships",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_conferenceships\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -2839,6 +3331,61 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Retrieve the current system settings
+    # @param [Hash] opts the optional parameters
+    # @return [SystemSetting]
+    def get_system_settings(opts = {})
+      data, _status_code, _headers = get_system_settings_with_http_info(opts)
+      data
+    end
+
+    # Retrieve the current system settings
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SystemSetting, Integer, Hash)>] SystemSetting data, response status code and response headers
+    def get_system_settings_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_system_settings ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/system_setting'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SystemSetting'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_system_settings",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_system_settings\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve a single user
     # @param user_id [Integer] ID of user to retrieve
     # @param [Hash] opts the optional parameters
@@ -3160,6 +3707,150 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#update_coach\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a single Conference
+    # @param conference_id [Integer] ID of the Conference
+    # @param conference [Conference] Conference attributes to update
+    # @param [Hash] opts the optional parameters
+    # @return [Conference]
+    def update_conference(conference_id, conference, opts = {})
+      data, _status_code, _headers = update_conference_with_http_info(conference_id, conference, opts)
+      data
+    end
+
+    # Update a single Conference
+    # @param conference_id [Integer] ID of the Conference
+    # @param conference [Conference] Conference attributes to update
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Conference, Integer, Hash)>] Conference data, response status code and response headers
+    def update_conference_with_http_info(conference_id, conference, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_conference ...'
+      end
+      # verify the required parameter 'conference_id' is set
+      if @api_client.config.client_side_validation && conference_id.nil?
+        fail ArgumentError, "Missing the required parameter 'conference_id' when calling DefaultApi.update_conference"
+      end
+      # verify the required parameter 'conference' is set
+      if @api_client.config.client_side_validation && conference.nil?
+        fail ArgumentError, "Missing the required parameter 'conference' when calling DefaultApi.update_conference"
+      end
+      # resource path
+      local_var_path = '/api/v1/conferences/{conferenceId}'.sub('{' + 'conferenceId' + '}', CGI.escape(conference_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(conference)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Conference'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_conference",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_conference\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a single Conferenceship
+    # @param conferenceship_id [Integer] ID of the Conferenceship
+    # @param conferenceship [Conferenceship] Conferenceship attributes to update
+    # @param [Hash] opts the optional parameters
+    # @return [Conferenceship]
+    def update_conferenceship(conferenceship_id, conferenceship, opts = {})
+      data, _status_code, _headers = update_conferenceship_with_http_info(conferenceship_id, conferenceship, opts)
+      data
+    end
+
+    # Update a single Conferenceship
+    # @param conferenceship_id [Integer] ID of the Conferenceship
+    # @param conferenceship [Conferenceship] Conferenceship attributes to update
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Conferenceship, Integer, Hash)>] Conferenceship data, response status code and response headers
+    def update_conferenceship_with_http_info(conferenceship_id, conferenceship, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_conferenceship ...'
+      end
+      # verify the required parameter 'conferenceship_id' is set
+      if @api_client.config.client_side_validation && conferenceship_id.nil?
+        fail ArgumentError, "Missing the required parameter 'conferenceship_id' when calling DefaultApi.update_conferenceship"
+      end
+      # verify the required parameter 'conferenceship' is set
+      if @api_client.config.client_side_validation && conferenceship.nil?
+        fail ArgumentError, "Missing the required parameter 'conferenceship' when calling DefaultApi.update_conferenceship"
+      end
+      # resource path
+      local_var_path = '/api/v1/conferenceships/{conferenceshipId}'.sub('{' + 'conferenceshipId' + '}', CGI.escape(conferenceship_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(conferenceship)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Conferenceship'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_conferenceship",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_conferenceship\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

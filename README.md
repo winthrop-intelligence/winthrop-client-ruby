@@ -65,13 +65,15 @@ WinthropClient.configure do |config|
 end
 
 api_instance = WinthropClient::DefaultApi.new
-foia_label = WinthropClient::FoiaLabel.new({name: 'August Coaches 2015'}) # FoiaLabel | Foia label to create
+opts = {
+  conference: WinthropClient::Conference.new # Conference | 
+}
 
 begin
-  result = api_instance.create_foia_label(foia_label)
+  result = api_instance.create_conference(opts)
   p result
 rescue WinthropClient::ApiError => e
-  puts "Exception when calling DefaultApi->create_foia_label: #{e}"
+  puts "Exception when calling DefaultApi->create_conference: #{e}"
 end
 
 ```
@@ -82,10 +84,14 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*WinthropClient::DefaultApi* | [**create_conference**](docs/DefaultApi.md#create_conference) | **POST** /api/v1/conferences | 
+*WinthropClient::DefaultApi* | [**create_conferenceship**](docs/DefaultApi.md#create_conferenceship) | **POST** /api/v1/conferenceships | 
 *WinthropClient::DefaultApi* | [**create_foia_label**](docs/DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels | 
 *WinthropClient::DefaultApi* | [**create_foia_request**](docs/DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests | 
 *WinthropClient::DefaultApi* | [**create_job_post**](docs/DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post
 *WinthropClient::DefaultApi* | [**create_requested_item**](docs/DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items | 
+*WinthropClient::DefaultApi* | [**delete_conference**](docs/DefaultApi.md#delete_conference) | **DELETE** /api/v1/conferences/{conferenceId} | 
+*WinthropClient::DefaultApi* | [**delete_conferenceship**](docs/DefaultApi.md#delete_conferenceship) | **DELETE** /api/v1/conferenceships/{conferenceshipId} | 
 *WinthropClient::DefaultApi* | [**delete_foia_label**](docs/DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} | 
 *WinthropClient::DefaultApi* | [**delete_foia_request**](docs/DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} | 
 *WinthropClient::DefaultApi* | [**delete_job_post**](docs/DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post
@@ -99,6 +105,10 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_coaches**](docs/DefaultApi.md#get_coaches) | **GET** /api/v1/coaches | 
 *WinthropClient::DefaultApi* | [**get_compensation**](docs/DefaultApi.md#get_compensation) | **GET** /api/v1/compensations/{compensationId} | 
 *WinthropClient::DefaultApi* | [**get_compensations**](docs/DefaultApi.md#get_compensations) | **GET** /api/v1/compensations | 
+*WinthropClient::DefaultApi* | [**get_conference**](docs/DefaultApi.md#get_conference) | **GET** /api/v1/conferences/{conferenceId} | 
+*WinthropClient::DefaultApi* | [**get_conferences**](docs/DefaultApi.md#get_conferences) | **GET** /api/v1/conferences | 
+*WinthropClient::DefaultApi* | [**get_conferenceship**](docs/DefaultApi.md#get_conferenceship) | **GET** /api/v1/conferenceships/{conferenceshipId} | 
+*WinthropClient::DefaultApi* | [**get_conferenceships**](docs/DefaultApi.md#get_conferenceships) | **GET** /api/v1/conferenceships | 
 *WinthropClient::DefaultApi* | [**get_contact**](docs/DefaultApi.md#get_contact) | **GET** /api/v1/contacts/{contactId} | 
 *WinthropClient::DefaultApi* | [**get_contacts**](docs/DefaultApi.md#get_contacts) | **GET** /api/v1/contacts | 
 *WinthropClient::DefaultApi* | [**get_contract**](docs/DefaultApi.md#get_contract) | **GET** /api/v1/contracts/{contractId} | 
@@ -127,11 +137,14 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_seasons**](docs/DefaultApi.md#get_seasons) | **GET** /api/v1/seasons | 
 *WinthropClient::DefaultApi* | [**get_sport**](docs/DefaultApi.md#get_sport) | **GET** /api/v1/sports/{sportId} | 
 *WinthropClient::DefaultApi* | [**get_sports**](docs/DefaultApi.md#get_sports) | **GET** /api/v1/sports | 
+*WinthropClient::DefaultApi* | [**get_system_settings**](docs/DefaultApi.md#get_system_settings) | **GET** /api/v1/system_setting | 
 *WinthropClient::DefaultApi* | [**get_user**](docs/DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} | 
 *WinthropClient::DefaultApi* | [**get_users**](docs/DefaultApi.md#get_users) | **GET** /api/v1/users | 
 *WinthropClient::DefaultApi* | [**summarizer_post_qa_s3**](docs/DefaultApi.md#summarizer_post_qa_s3) | **POST** /summarizer/qa_s3 | Answer questions over a file from S3
 *WinthropClient::DefaultApi* | [**summarizer_post_summarize_s3**](docs/DefaultApi.md#summarizer_post_summarize_s3) | **POST** /summarizer/summarize_s3 | Summarize a file from S3
 *WinthropClient::DefaultApi* | [**update_coach**](docs/DefaultApi.md#update_coach) | **PATCH** /api/v1/coaches/{coachId} | 
+*WinthropClient::DefaultApi* | [**update_conference**](docs/DefaultApi.md#update_conference) | **PUT** /api/v1/conferences/{conferenceId} | 
+*WinthropClient::DefaultApi* | [**update_conferenceship**](docs/DefaultApi.md#update_conferenceship) | **PUT** /api/v1/conferenceships/{conferenceshipId} | 
 *WinthropClient::DefaultApi* | [**update_foia_label**](docs/DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} | 
 *WinthropClient::DefaultApi* | [**update_foia_request**](docs/DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} | 
 *WinthropClient::DefaultApi* | [**update_job_post**](docs/DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post
@@ -162,6 +175,10 @@ Class | Method | HTTP request | Description
  - [WinthropClient::CoachCollection](docs/CoachCollection.md)
  - [WinthropClient::Compensation](docs/Compensation.md)
  - [WinthropClient::CompensationCollection](docs/CompensationCollection.md)
+ - [WinthropClient::Conference](docs/Conference.md)
+ - [WinthropClient::ConferenceCollection](docs/ConferenceCollection.md)
+ - [WinthropClient::Conferenceship](docs/Conferenceship.md)
+ - [WinthropClient::ConferenceshipCollection](docs/ConferenceshipCollection.md)
  - [WinthropClient::Contact](docs/Contact.md)
  - [WinthropClient::ContactCollection](docs/ContactCollection.md)
  - [WinthropClient::Contract](docs/Contract.md)
@@ -199,6 +216,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::SportCollection](docs/SportCollection.md)
  - [WinthropClient::SummarizerPostQaS3Request](docs/SummarizerPostQaS3Request.md)
  - [WinthropClient::SummarizerPostSummarizeS3Request](docs/SummarizerPostSummarizeS3Request.md)
+ - [WinthropClient::SystemSetting](docs/SystemSetting.md)
  - [WinthropClient::UnprocessableEntity](docs/UnprocessableEntity.md)
  - [WinthropClient::User](docs/User.md)
  - [WinthropClient::UserCollection](docs/UserCollection.md)
