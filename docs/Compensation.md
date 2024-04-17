@@ -34,7 +34,7 @@
 | **contract_status_id** | **Integer** |  | [optional] |
 | **year** | **Integer** |  | [optional] |
 | **school_id** | **Integer** |  | [optional] |
-| **contracts** | [**Array&lt;Contract&gt;**](Contract.md) |  | [optional] |
+| **contract** | [**Contract**](Contract.md) |  | [optional] |
 
 ## Example
 
@@ -72,7 +72,7 @@ instance = WinthropClient::Compensation.new(
   contract_status_id: 1,
   year: 2019,
   school_id: 1,
-  contracts: null
+  contract: null
 )
 ```
 

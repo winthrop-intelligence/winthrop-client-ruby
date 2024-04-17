@@ -75,7 +75,7 @@ module WinthropClient
 
     attr_accessor :school_id
 
-    attr_accessor :contracts
+    attr_accessor :contract
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -110,7 +110,7 @@ module WinthropClient
         :'contract_status_id' => :'contract_status_id',
         :'year' => :'year',
         :'school_id' => :'school_id',
-        :'contracts' => :'contracts'
+        :'contract' => :'contract'
       }
     end
 
@@ -152,7 +152,7 @@ module WinthropClient
         :'contract_status_id' => :'Integer',
         :'year' => :'Integer',
         :'school_id' => :'Integer',
-        :'contracts' => :'Array<Contract>'
+        :'contract' => :'Contract'
       }
     end
 
@@ -297,10 +297,8 @@ module WinthropClient
         self.school_id = attributes[:'school_id']
       end
 
-      if attributes.key?(:'contracts')
-        if (value = attributes[:'contracts']).is_a?(Array)
-          self.contracts = value
-        end
+      if attributes.key?(:'contract')
+        self.contract = attributes[:'contract']
       end
     end
 
@@ -354,7 +352,7 @@ module WinthropClient
           contract_status_id == o.contract_status_id &&
           year == o.year &&
           school_id == o.school_id &&
-          contracts == o.contracts
+          contract == o.contract
     end
 
     # @see the `==` method
@@ -366,7 +364,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, bonus_comp_cents, deferred_comp_cents, talent_fee, num_cars, country_club_dues_cents, coach_id, buyout_terms, executed_on, expires_on, start_on, end_on, average_yearly_comp_cents, created_at, updated_at, outside_income_cents, one_time_bonus_cents, comment, car_stipend_cents, country_club_membership_paid, base_salary_cents, bonus_has_contingents, calculated_guaranteed_comp_cents, contingent_bonus_comp_cents, noncontingent_bonus_comp_cents, compensation_type, media_link, contract_status_id, year, school_id, contracts].hash
+      [id, bonus_comp_cents, deferred_comp_cents, talent_fee, num_cars, country_club_dues_cents, coach_id, buyout_terms, executed_on, expires_on, start_on, end_on, average_yearly_comp_cents, created_at, updated_at, outside_income_cents, one_time_bonus_cents, comment, car_stipend_cents, country_club_membership_paid, base_salary_cents, bonus_has_contingents, calculated_guaranteed_comp_cents, contingent_bonus_comp_cents, noncontingent_bonus_comp_cents, compensation_type, media_link, contract_status_id, year, school_id, contract].hash
     end
 
     # Builds the object from hash
