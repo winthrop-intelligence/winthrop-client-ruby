@@ -19,6 +19,7 @@
 | **hometown_state** | **String** |  | [optional] |
 | **twitter_handle** | **String** |  | [optional] |
 | **avatar** | [**Avatar**](Avatar.md) |  | [optional] |
+| **years_of_experience** | **Integer** |  | [optional] |
 
 ## Example
 
@@ -40,7 +41,8 @@ instance = WinthropClient::Coach.new(
   hometown_city: Omaha,
   hometown_state: PA,
   twitter_handle: Example_User3,
-  avatar: null
+  avatar: null,
+  years_of_experience: 1
 )
 ```
 
