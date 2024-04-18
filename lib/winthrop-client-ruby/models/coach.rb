@@ -46,6 +46,8 @@ module WinthropClient
 
     attr_accessor :avatar
 
+    attr_accessor :years_of_experience
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -63,7 +65,8 @@ module WinthropClient
         :'hometown_city' => :'hometown_city',
         :'hometown_state' => :'hometown_state',
         :'twitter_handle' => :'twitter_handle',
-        :'avatar' => :'avatar'
+        :'avatar' => :'avatar',
+        :'years_of_experience' => :'years_of_experience'
       }
     end
 
@@ -89,7 +92,8 @@ module WinthropClient
         :'hometown_city' => :'String',
         :'hometown_state' => :'String',
         :'twitter_handle' => :'String',
-        :'avatar' => :'Avatar'
+        :'avatar' => :'Avatar',
+        :'years_of_experience' => :'Integer'
       }
     end
 
@@ -173,6 +177,10 @@ module WinthropClient
       if attributes.key?(:'avatar')
         self.avatar = attributes[:'avatar']
       end
+
+      if attributes.key?(:'years_of_experience')
+        self.years_of_experience = attributes[:'years_of_experience']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -209,7 +217,8 @@ module WinthropClient
           hometown_city == o.hometown_city &&
           hometown_state == o.hometown_state &&
           twitter_handle == o.twitter_handle &&
-          avatar == o.avatar
+          avatar == o.avatar &&
+          years_of_experience == o.years_of_experience
     end
 
     # @see the `==` method
@@ -221,7 +230,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, first_name, last_name, email, phone, leader, bio, bio_text, dob, alma_mater_id, alma_mater_year, hometown_city, hometown_state, twitter_handle, avatar].hash
+      [id, first_name, last_name, email, phone, leader, bio, bio_text, dob, alma_mater_id, alma_mater_year, hometown_city, hometown_state, twitter_handle, avatar, years_of_experience].hash
     end
 
     # Builds the object from hash
