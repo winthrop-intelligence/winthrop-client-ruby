@@ -63,6 +63,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**summarizer_post_qa_s3**](DefaultApi.md#summarizer_post_qa_s3) | **POST** /summarizer/qa_s3 | Answer questions over a file from S3 |
 | [**summarizer_post_summarize_s3**](DefaultApi.md#summarizer_post_summarize_s3) | **POST** /summarizer/summarize_s3 | Summarize a file from S3 |
 | [**update_coach**](DefaultApi.md#update_coach) | **PATCH** /api/v1/coaches/{coachId} |  |
+| [**update_compensation**](DefaultApi.md#update_compensation) | **PATCH** /api/v1/compensations/{compensationId} |  |
 | [**update_conference**](DefaultApi.md#update_conference) | **PUT** /api/v1/conferences/{conferenceId} |  |
 | [**update_conferenceship**](DefaultApi.md#update_conferenceship) | **PUT** /api/v1/conferenceships/{conferenceshipId} |  |
 | [**update_foia_label**](DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} |  |
@@ -4384,6 +4385,79 @@ end
 ### Return type
 
 [**Coach**](Coach.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_compensation
+
+> <Compensation> update_compensation(compensation_id, compensation)
+
+
+
+Update a compensation
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+compensation_id = 56 # Integer | ID of compensation to update
+compensation = WinthropClient::Compensation.new # Compensation | Compensation to update
+
+begin
+  
+  result = api_instance.update_compensation(compensation_id, compensation)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_compensation: #{e}"
+end
+```
+
+#### Using the update_compensation_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Compensation>, Integer, Hash)> update_compensation_with_http_info(compensation_id, compensation)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_compensation_with_http_info(compensation_id, compensation)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Compensation>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_compensation_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **compensation_id** | **Integer** | ID of compensation to update |  |
+| **compensation** | [**Compensation**](Compensation.md) | Compensation to update |  |
+
+### Return type
+
+[**Compensation**](Compensation.md)
 
 ### Authorization
 
