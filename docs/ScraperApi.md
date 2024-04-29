@@ -25,6 +25,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::ScraperApi.new
@@ -66,7 +69,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -91,6 +94,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::ScraperApi.new
@@ -138,7 +144,7 @@ nil (empty response body)
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 

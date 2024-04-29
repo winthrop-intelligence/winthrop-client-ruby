@@ -32,8 +32,7 @@
 | **compensation_one_time_bonus_cents** | **Integer** |  | [optional] |
 | **compensation_contingent_bonus_comp_cents** | **Integer** |  | [optional] |
 | **compensation_buyout_terms** | **String** |  | [optional] |
-| **compensation_num_cars** | **Integer** |  | [optional] |
-| **compensation_car_stipend_cents** | **Integer** |  | [optional] |
+| **compensation_is_car_provided** | **Boolean** |  | [optional] |
 | **compensation_country_club_dues_cents** | **Integer** |  | [optional] |
 | **compensation_country_club_membership_paid** | **Boolean** |  | [optional] |
 | **compensation_media_link** | **String** |  | [optional] |
@@ -82,8 +81,7 @@ instance = WinthropClient::Administrator.new(
   compensation_one_time_bonus_cents: 10000,
   compensation_contingent_bonus_comp_cents: 10000,
   compensation_buyout_terms: This is a compensation buyout terms,
-  compensation_num_cars: 1,
-  compensation_car_stipend_cents: 10000,
+  compensation_is_car_provided: true,
   compensation_country_club_dues_cents: 10000,
   compensation_country_club_membership_paid: false,
   compensation_media_link: This is a compensation media link,

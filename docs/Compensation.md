@@ -8,7 +8,7 @@
 | **bonus_comp_cents** | **Integer** |  | [optional] |
 | **deferred_comp_cents** | **Integer** |  | [optional] |
 | **talent_fee** | **Integer** |  | [optional] |
-| **num_cars** | **Integer** |  | [optional] |
+| **is_car_provided** | **Boolean** |  | [optional] |
 | **country_club_dues_cents** | **Integer** |  | [optional] |
 | **coach_id** | **Integer** |  | [optional] |
 | **buyout_terms** | **String** |  | [optional] |
@@ -22,7 +22,6 @@
 | **outside_income_cents** | **Integer** |  | [optional] |
 | **one_time_bonus_cents** | **Integer** |  | [optional] |
 | **comment** | **String** |  | [optional] |
-| **car_stipend_cents** | **Integer** |  | [optional] |
 | **country_club_membership_paid** | **Boolean** |  | [optional] |
 | **base_salary_cents** | **Integer** |  | [optional] |
 | **bonus_has_contingents** | **Boolean** |  | [optional] |
@@ -46,7 +45,7 @@ instance = WinthropClient::Compensation.new(
   bonus_comp_cents: 10000,
   deferred_comp_cents: 10000,
   talent_fee: 10000,
-  num_cars: 1,
+  is_car_provided: false,
   country_club_dues_cents: 10000,
   coach_id: 1,
   buyout_terms: This is a buyout term,
@@ -60,7 +59,6 @@ instance = WinthropClient::Compensation.new(
   outside_income_cents: 10000,
   one_time_bonus_cents: 10000,
   comment: This is a comment,
-  car_stipend_cents: 10000,
   country_club_membership_paid: false,
   base_salary_cents: 10000,
   bonus_has_contingents: false,
