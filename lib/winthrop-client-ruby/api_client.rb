@@ -197,7 +197,7 @@ module WinthropClient
                             "will be deleted automatically with GC. It's also recommended to delete the temp file "\
                             "explicitly with `tempfile.delete`"
       else
-        fail ApiError.new("Failed to create the tempfile based on the HTTP response from the server: #{request.inspect}") 
+        fail ApiError.new("Failed to create the tempfile based on the HTTP response from the server: #{request.inspect}")
       end
 
       tempfile
