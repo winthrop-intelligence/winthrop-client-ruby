@@ -197,7 +197,7 @@ module WinthropClient
                             "will be deleted automatically with GC. It's also recommended to delete the temp file "\
                             "explicitly with `tempfile.delete`"
       else
-        fail ApiError.new("Failed to create the tempfile based on the HTTP response from the server: #{request.inspect}")
+        fail ApiError.new("Failed to create the tempfile based on the HTTP response from the server: #{request.inspect}") 
       end
 
       tempfile
@@ -308,7 +308,7 @@ module WinthropClient
     def update_params_for_auth!(header_params, query_params, auth_names)
       Array(auth_names).each do |auth_name|
         auth_setting = @config.auth_settings[auth_name]
-        next unless auth_setting
+        next unless auth_setting && auth_setting[:value].to_s.size > 10
         case auth_setting[:in]
         when 'header' then header_params[auth_setting[:key]] = auth_setting[:value]
         when 'query'  then query_params[auth_setting[:key]] = auth_setting[:value]
