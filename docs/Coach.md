@@ -18,6 +18,8 @@
 | **hometown_city** | **String** |  | [optional] |
 | **hometown_state** | **String** |  | [optional] |
 | **twitter_handle** | **String** |  | [optional] |
+| **linkedin** | **String** |  | [optional] |
+| **instagram_handle** | **String** |  | [optional] |
 | **avatar** | [**Avatar**](Avatar.md) |  | [optional] |
 | **years_of_experience** | **Integer** |  | [optional] |
 
@@ -41,6 +43,8 @@ instance = WinthropClient::Coach.new(
   hometown_city: Omaha,
   hometown_state: PA,
   twitter_handle: Example_User3,
+  linkedin: example-user-9974688,
+  instagram_handle: example_User4,
   avatar: null,
   years_of_experience: 1
 )
