@@ -1,35 +1,56 @@
 require 'uri'
 require 'net/http'
+require 'json'
 
 module WinthropClient
   class RefreshToken
+    @token = nil
+    @expires_at = nil
+
     TOKEN_GRANT_TYPE = 'client_credentials'.freeze
     CONTENT_TYPE = 'application/x-www-form-urlencoded'.freeze
+    EXPIRY_IN_MINUTES = 60
 
-    def generate_access_token(url, client_id, client_secret)
-      http = build_http(url)
-      request = build_request(url, client_id, client_secret)
+    class << self
+      attr_accessor :client_id, :client_secret, :host
 
-      response = http.request(request)
-      handle_response(response)
-    end
+      def access_token
+        if @token.nil? || Time.now >= @expires_at
+          generate_access_token
+        else
+          @token
+        end
+      end
 
-    private
+      private
 
-      def build_http(url)
-        http = Net::HTTP.new(url.host, url.port)
-        http.use_ssl = false
+      # Generates a new access token
+      def generate_access_token
+        http = build_http
+        request = build_request
+        response = http.request(request)
+        handle_response(response)
+      end
+
+      # Builds the HTTP connection
+      def build_http
+        uri = URI.parse(host)
+        http = Net::HTTP.new(uri.host, uri.port)
+        http.use_ssl = (uri.scheme == 'https')
         http
       end
 
-      def build_request(url, client_id, client_secret)
-        request = Net::HTTP::Post.new(url)
+      # Builds the request for the token
+      def build_request
+        uri = URI.parse(host)
+        request = Net::HTTP::Post.new(uri)
         request['Content-Type'] = CONTENT_TYPE
-        request.set_form_data(token_params(client_id, client_secret))
+        request.set_form_data(token_params)
         request
       end
 
-      def token_params(client_id, client_secret)
+      # Returns the parameters required for the token request
+      def token_params
         {
           grant_type: TOKEN_GRANT_TYPE,
           client_id: client_id,
@@ -37,9 +58,19 @@ module WinthropClient
         }
       end
 
+      # Handles the HTTP response and caches the token
       def handle_response(response)
-        parsed_response = JSON.parse(response.body)
-        parsed_response['access_token']
+        if response.is_a?(Net::HTTPSuccess)
+          parsed_response = JSON.parse(response.body)
+          @token = parsed_response['access_token']
+
+          # Set the expiry time to 1 hour from now
+          @expires_at = Time.now + (EXPIRY_IN_MINUTES * 60)
+          @token
+        else
+          raise "Failed to retrieve access token: #{response.body}"
+        end
       end
+    end
   end
 end
