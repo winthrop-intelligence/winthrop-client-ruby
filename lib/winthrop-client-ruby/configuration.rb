@@ -18,6 +18,12 @@ module WinthropClient
     # Defines url host
     attr_accessor :host
 
+    # Define client_id for oauth token
+    attr_accessor :client_id
+
+    # Define client_secret for oauth token
+    attr_accessor :client_secret
+
     # Defines url base path
     attr_accessor :base_path
 
@@ -168,6 +174,9 @@ module WinthropClient
       @debugging = false
       @inject_format = false
       @force_ending_format = false
+      @client_id = nil
+      @client_secret = nil
+      @refresh_service = RefreshToken.new
       @logger = defined?(Rails) ? Rails.logger : Logger.new(STDOUT)
 
       yield(self) if block_given?
@@ -222,7 +231,7 @@ module WinthropClient
 
     # Gets access_token using access_token_getter or uses the static access_token
     def access_token_with_refresh
-      return access_token if access_token_getter.nil?
+      return @access_token ||= @refresh_service.generate_access_token(host, client_id, client_secret) if access_token_getter.nil?
       access_token_getter.call
     end
 
@@ -241,6 +250,13 @@ module WinthropClient
             key: 'Authorization',
             value: api_key_with_prefix('ApiKey')
           },
+        'token' =>
+          {
+            type: 'token',
+            in: 'header',
+            key: 'Authorization',
+            value: access_token_with_refresh
+          }
       }
     end
 
