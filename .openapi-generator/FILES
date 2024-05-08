@@ -1,4 +1,3 @@
-.gitignore
 .gitlab-ci.yml
 .rspec
 .rubocop.yml
@@ -17,6 +16,10 @@ docs/Coach.md
 docs/CoachCollection.md
 docs/Compensation.md
 docs/CompensationCollection.md
+docs/Conference.md
+docs/ConferenceCollection.md
+docs/Conferenceship.md
+docs/ConferenceshipCollection.md
 docs/Contact.md
 docs/ContactCollection.md
 docs/Contract.md
@@ -50,12 +53,14 @@ docs/School.md
 docs/SchoolCollection.md
 docs/Scraper.md
 docs/ScraperApi.md
+docs/ScraperArgDef.md
 docs/Season.md
 docs/SeasonCollection.md
 docs/Sport.md
 docs/SportCollection.md
 docs/SummarizerPostQaS3Request.md
 docs/SummarizerPostSummarizeS3Request.md
+docs/SystemSetting.md
 docs/UnprocessableEntity.md
 docs/User.md
 docs/UserCollection.md
@@ -77,6 +82,10 @@ lib/winthrop-client-ruby/models/coach.rb
 lib/winthrop-client-ruby/models/coach_collection.rb
 lib/winthrop-client-ruby/models/compensation.rb
 lib/winthrop-client-ruby/models/compensation_collection.rb
+lib/winthrop-client-ruby/models/conference.rb
+lib/winthrop-client-ruby/models/conference_collection.rb
+lib/winthrop-client-ruby/models/conferenceship.rb
+lib/winthrop-client-ruby/models/conferenceship_collection.rb
 lib/winthrop-client-ruby/models/contact.rb
 lib/winthrop-client-ruby/models/contact_collection.rb
 lib/winthrop-client-ruby/models/contract.rb
@@ -107,12 +116,14 @@ lib/winthrop-client-ruby/models/requested_item_collection.rb
 lib/winthrop-client-ruby/models/school.rb
 lib/winthrop-client-ruby/models/school_collection.rb
 lib/winthrop-client-ruby/models/scraper.rb
+lib/winthrop-client-ruby/models/scraper_arg_def.rb
 lib/winthrop-client-ruby/models/season.rb
 lib/winthrop-client-ruby/models/season_collection.rb
 lib/winthrop-client-ruby/models/sport.rb
 lib/winthrop-client-ruby/models/sport_collection.rb
 lib/winthrop-client-ruby/models/summarizer_post_qa_s3_request.rb
 lib/winthrop-client-ruby/models/summarizer_post_summarize_s3_request.rb
+lib/winthrop-client-ruby/models/system_setting.rb
 lib/winthrop-client-ruby/models/unprocessable_entity.rb
 lib/winthrop-client-ruby/models/user.rb
 lib/winthrop-client-ruby/models/user_collection.rb

@@ -16,6 +16,8 @@
 | **name_display** | **String** |  | [optional] |
 | **departing** | **Boolean** |  | [optional] |
 | **departing_set_at** | **Time** |  | [optional] |
+| **creation_reason** | **String** |  | [optional] |
+| **creation_reason_updated_at** | **Time** |  | [optional] |
 | **coach** | [**Coach**](Coach.md) |  | [optional] |
 | **sport** | [**Sport**](Sport.md) |  | [optional] |
 | **school** | [**School**](School.md) |  | [optional] |
@@ -39,6 +41,8 @@ instance = WinthropClient::Position.new(
   name_display: This is a display name,
   departing: false,
   departing_set_at: 2019-01-01T00:00Z,
+  creation_reason: null,
+  creation_reason_updated_at: 2019-01-01T00:00Z,
   coach: null,
   sport: null,
   school: null,

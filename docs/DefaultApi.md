@@ -4,10 +4,14 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**create_conference**](DefaultApi.md#create_conference) | **POST** /api/v1/conferences |  |
+| [**create_conferenceship**](DefaultApi.md#create_conferenceship) | **POST** /api/v1/conferenceships |  |
 | [**create_foia_label**](DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels |  |
 | [**create_foia_request**](DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests |  |
 | [**create_job_post**](DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post |
 | [**create_requested_item**](DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items |  |
+| [**delete_conference**](DefaultApi.md#delete_conference) | **DELETE** /api/v1/conferences/{conferenceId} |  |
+| [**delete_conferenceship**](DefaultApi.md#delete_conferenceship) | **DELETE** /api/v1/conferenceships/{conferenceshipId} |  |
 | [**delete_foia_label**](DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} |  |
 | [**delete_foia_request**](DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} |  |
 | [**delete_job_post**](DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post |
@@ -21,6 +25,10 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_coaches**](DefaultApi.md#get_coaches) | **GET** /api/v1/coaches |  |
 | [**get_compensation**](DefaultApi.md#get_compensation) | **GET** /api/v1/compensations/{compensationId} |  |
 | [**get_compensations**](DefaultApi.md#get_compensations) | **GET** /api/v1/compensations |  |
+| [**get_conference**](DefaultApi.md#get_conference) | **GET** /api/v1/conferences/{conferenceId} |  |
+| [**get_conferences**](DefaultApi.md#get_conferences) | **GET** /api/v1/conferences |  |
+| [**get_conferenceship**](DefaultApi.md#get_conferenceship) | **GET** /api/v1/conferenceships/{conferenceshipId} |  |
+| [**get_conferenceships**](DefaultApi.md#get_conferenceships) | **GET** /api/v1/conferenceships |  |
 | [**get_contact**](DefaultApi.md#get_contact) | **GET** /api/v1/contacts/{contactId} |  |
 | [**get_contacts**](DefaultApi.md#get_contacts) | **GET** /api/v1/contacts |  |
 | [**get_contract**](DefaultApi.md#get_contract) | **GET** /api/v1/contracts/{contractId} |  |
@@ -49,15 +57,171 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_seasons**](DefaultApi.md#get_seasons) | **GET** /api/v1/seasons |  |
 | [**get_sport**](DefaultApi.md#get_sport) | **GET** /api/v1/sports/{sportId} |  |
 | [**get_sports**](DefaultApi.md#get_sports) | **GET** /api/v1/sports |  |
+| [**get_system_settings**](DefaultApi.md#get_system_settings) | **GET** /api/v1/system_setting |  |
 | [**get_user**](DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} |  |
 | [**get_users**](DefaultApi.md#get_users) | **GET** /api/v1/users |  |
 | [**summarizer_post_qa_s3**](DefaultApi.md#summarizer_post_qa_s3) | **POST** /summarizer/qa_s3 | Answer questions over a file from S3 |
 | [**summarizer_post_summarize_s3**](DefaultApi.md#summarizer_post_summarize_s3) | **POST** /summarizer/summarize_s3 | Summarize a file from S3 |
 | [**update_coach**](DefaultApi.md#update_coach) | **PATCH** /api/v1/coaches/{coachId} |  |
+| [**update_compensation**](DefaultApi.md#update_compensation) | **PATCH** /api/v1/compensations/{compensationId} |  |
+| [**update_conference**](DefaultApi.md#update_conference) | **PUT** /api/v1/conferences/{conferenceId} |  |
+| [**update_conferenceship**](DefaultApi.md#update_conferenceship) | **PUT** /api/v1/conferenceships/{conferenceshipId} |  |
 | [**update_foia_label**](DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} |  |
 | [**update_foia_request**](DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} |  |
 | [**update_job_post**](DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post |
 | [**update_requested_item**](DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} |  |
+
+
+## create_conference
+
+> <Conference> create_conference(opts)
+
+
+
+Create a new Conference
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  conference: WinthropClient::Conference.new # Conference | 
+}
+
+begin
+  
+  result = api_instance.create_conference(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_conference: #{e}"
+end
+```
+
+#### Using the create_conference_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Conference>, Integer, Hash)> create_conference_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_conference_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Conference>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_conference_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conference** | [**Conference**](Conference.md) |  | [optional] |
+
+### Return type
+
+[**Conference**](Conference.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_conferenceship
+
+> <Conferenceship> create_conferenceship(opts)
+
+
+
+Create a new Conferenceship
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  conferenceship: WinthropClient::Conferenceship.new # Conferenceship | 
+}
+
+begin
+  
+  result = api_instance.create_conferenceship(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_conferenceship: #{e}"
+end
+```
+
+#### Using the create_conferenceship_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Conferenceship>, Integer, Hash)> create_conferenceship_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_conferenceship_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Conferenceship>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_conferenceship_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conferenceship** | [**Conferenceship**](Conferenceship.md) |  | [optional] |
+
+### Return type
+
+[**Conferenceship**](Conferenceship.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ## create_foia_label
@@ -79,6 +243,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -123,7 +290,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -150,6 +317,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -194,7 +364,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -221,6 +391,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -267,7 +440,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -294,6 +467,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -338,12 +514,158 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
+
+## delete_conference
+
+> delete_conference(conference_id)
+
+
+
+Delete a single Conference
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+conference_id = 56 # Integer | ID of the Conference
+
+begin
+  
+  api_instance.delete_conference(conference_id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_conference: #{e}"
+end
+```
+
+#### Using the delete_conference_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_conference_with_http_info(conference_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_conference_with_http_info(conference_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_conference_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conference_id** | **Integer** | ID of the Conference |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## delete_conferenceship
+
+> delete_conferenceship(conferenceship_id)
+
+
+
+Delete a single Conferenceship
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+conferenceship_id = 56 # Integer | ID of the Conferenceship
+
+begin
+  
+  api_instance.delete_conferenceship(conferenceship_id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_conferenceship: #{e}"
+end
+```
+
+#### Using the delete_conferenceship_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_conferenceship_with_http_info(conferenceship_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_conferenceship_with_http_info(conferenceship_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_conferenceship_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conferenceship_id** | **Integer** | ID of the Conferenceship |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 
 ## delete_foia_label
@@ -365,6 +687,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -408,7 +733,7 @@ nil (empty response body)
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -435,6 +760,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -478,7 +806,7 @@ nil (empty response body)
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -505,6 +833,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -548,7 +879,7 @@ nil (empty response body)
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -575,6 +906,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -618,7 +952,7 @@ nil (empty response body)
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -645,6 +979,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -689,7 +1026,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -716,6 +1053,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -766,7 +1106,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -793,6 +1133,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -837,7 +1180,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -864,6 +1207,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -914,7 +1260,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -941,6 +1287,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -991,7 +1340,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -1018,6 +1367,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -1062,7 +1414,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -1089,6 +1441,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -1139,7 +1494,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -1166,6 +1521,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -1210,7 +1568,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -1237,6 +1595,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -1287,7 +1648,315 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_conference
+
+> <Conference> get_conference(conference_id)
+
+
+
+Retrieve a single Conference
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+conference_id = 56 # Integer | ID of the Conference
+
+begin
+  
+  result = api_instance.get_conference(conference_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_conference: #{e}"
+end
+```
+
+#### Using the get_conference_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Conference>, Integer, Hash)> get_conference_with_http_info(conference_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_conference_with_http_info(conference_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Conference>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_conference_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conference_id** | **Integer** | ID of the Conference |  |
+
+### Return type
+
+[**Conference**](Conference.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_conferences
+
+> <ConferenceCollection> get_conferences(opts)
+
+
+
+Retrieve some or all conferences
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  
+  result = api_instance.get_conferences(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_conferences: #{e}"
+end
+```
+
+#### Using the get_conferences_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConferenceCollection>, Integer, Hash)> get_conferences_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_conferences_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConferenceCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_conferences_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 100] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**ConferenceCollection**](ConferenceCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_conferenceship
+
+> <Conferenceship> get_conferenceship(conferenceship_id)
+
+
+
+Retrieve a single Conferenceship
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+conferenceship_id = 56 # Integer | ID of the Conferenceship
+
+begin
+  
+  result = api_instance.get_conferenceship(conferenceship_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_conferenceship: #{e}"
+end
+```
+
+#### Using the get_conferenceship_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Conferenceship>, Integer, Hash)> get_conferenceship_with_http_info(conferenceship_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_conferenceship_with_http_info(conferenceship_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Conferenceship>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_conferenceship_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conferenceship_id** | **Integer** | ID of the Conferenceship |  |
+
+### Return type
+
+[**Conferenceship**](Conferenceship.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_conferenceships
+
+> <ConferenceshipCollection> get_conferenceships(opts)
+
+
+
+Retrieve some or all conferenceships
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  
+  result = api_instance.get_conferenceships(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_conferenceships: #{e}"
+end
+```
+
+#### Using the get_conferenceships_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConferenceshipCollection>, Integer, Hash)> get_conferenceships_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_conferenceships_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConferenceshipCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_conferenceships_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 100] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**ConferenceshipCollection**](ConferenceshipCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -1314,6 +1983,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -1358,7 +2030,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -1385,6 +2057,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -1435,7 +2110,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -1462,6 +2137,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -1506,7 +2184,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -1533,6 +2211,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -1583,7 +2264,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -1610,6 +2291,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -1654,7 +2338,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -1681,6 +2365,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -1731,7 +2418,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -1758,6 +2445,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -1802,7 +2492,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -1829,6 +2519,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -1879,7 +2572,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -1906,6 +2599,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -1950,7 +2646,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -1977,6 +2673,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -2027,7 +2726,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -2054,6 +2753,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -2098,7 +2800,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -2125,6 +2827,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -2175,7 +2880,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -2202,6 +2907,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -2246,7 +2954,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -2273,6 +2981,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -2323,7 +3034,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -2350,6 +3061,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -2394,7 +3108,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -2421,6 +3135,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -2471,7 +3188,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -2498,6 +3215,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -2542,7 +3262,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -2569,6 +3289,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -2619,7 +3342,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -2646,6 +3369,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -2690,7 +3416,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -2717,6 +3443,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -2767,7 +3496,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -2794,6 +3523,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -2838,7 +3570,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -2865,6 +3597,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -2915,7 +3650,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -2942,6 +3677,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -2986,7 +3724,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -3013,6 +3751,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -3063,7 +3804,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -3090,6 +3831,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -3134,7 +3878,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -3161,6 +3905,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -3211,7 +3958,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -3238,6 +3985,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -3282,7 +4032,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -3309,6 +4059,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -3359,7 +4112,78 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_system_settings
+
+> <SystemSetting> get_system_settings
+
+
+
+Retrieve the current system settings
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_system_settings
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_system_settings: #{e}"
+end
+```
+
+#### Using the get_system_settings_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SystemSetting>, Integer, Hash)> get_system_settings_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_system_settings_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SystemSetting>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_system_settings_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**SystemSetting**](SystemSetting.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -3386,6 +4210,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -3430,7 +4257,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -3457,6 +4284,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -3507,7 +4337,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -3534,6 +4364,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -3580,7 +4413,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -3607,6 +4440,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -3653,7 +4489,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -3680,6 +4516,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -3726,7 +4565,235 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_compensation
+
+> <Compensation> update_compensation(compensation_id, compensation)
+
+
+
+Update a compensation
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+compensation_id = 56 # Integer | ID of compensation to update
+compensation = WinthropClient::Compensation.new # Compensation | Compensation to update
+
+begin
+  
+  result = api_instance.update_compensation(compensation_id, compensation)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_compensation: #{e}"
+end
+```
+
+#### Using the update_compensation_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Compensation>, Integer, Hash)> update_compensation_with_http_info(compensation_id, compensation)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_compensation_with_http_info(compensation_id, compensation)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Compensation>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_compensation_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **compensation_id** | **Integer** | ID of compensation to update |  |
+| **compensation** | [**Compensation**](Compensation.md) | Compensation to update |  |
+
+### Return type
+
+[**Compensation**](Compensation.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_conference
+
+> <Conference> update_conference(conference_id, conference)
+
+
+
+Update a single Conference
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+conference_id = 56 # Integer | ID of the Conference
+conference = WinthropClient::Conference.new # Conference | Conference attributes to update
+
+begin
+  
+  result = api_instance.update_conference(conference_id, conference)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_conference: #{e}"
+end
+```
+
+#### Using the update_conference_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Conference>, Integer, Hash)> update_conference_with_http_info(conference_id, conference)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_conference_with_http_info(conference_id, conference)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Conference>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_conference_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conference_id** | **Integer** | ID of the Conference |  |
+| **conference** | [**Conference**](Conference.md) | Conference attributes to update |  |
+
+### Return type
+
+[**Conference**](Conference.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_conferenceship
+
+> <Conferenceship> update_conferenceship(conferenceship_id, conferenceship)
+
+
+
+Update a single Conferenceship
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+conferenceship_id = 56 # Integer | ID of the Conferenceship
+conferenceship = WinthropClient::Conferenceship.new # Conferenceship | Conferenceship attributes to update
+
+begin
+  
+  result = api_instance.update_conferenceship(conferenceship_id, conferenceship)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_conferenceship: #{e}"
+end
+```
+
+#### Using the update_conferenceship_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Conferenceship>, Integer, Hash)> update_conferenceship_with_http_info(conferenceship_id, conferenceship)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_conferenceship_with_http_info(conferenceship_id, conferenceship)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Conferenceship>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_conferenceship_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conferenceship_id** | **Integer** | ID of the Conferenceship |  |
+| **conferenceship** | [**Conferenceship**](Conferenceship.md) | Conferenceship attributes to update |  |
+
+### Return type
+
+[**Conferenceship**](Conferenceship.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -3753,6 +4820,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -3799,7 +4869,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -3826,6 +4896,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -3872,7 +4945,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -3899,6 +4972,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -3947,7 +5023,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -3974,6 +5050,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -4020,7 +5099,7 @@ end
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 

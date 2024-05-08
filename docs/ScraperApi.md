@@ -25,6 +25,9 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::ScraperApi.new
@@ -66,7 +69,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -76,7 +79,7 @@ This endpoint does not need any parameter.
 
 ## run_scraper
 
-> run_scraper(command)
+> run_scraper(command, opts)
 
 Run a scraper
 
@@ -91,14 +94,20 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = WinthropClient::ScraperApi.new
 command = 'command_example' # String | The name of the scraper to run
+opts = {
+  body: { ... } # Object | 
+}
 
 begin
   # Run a scraper
-  api_instance.run_scraper(command)
+  api_instance.run_scraper(command, opts)
 rescue WinthropClient::ApiError => e
   puts "Error when calling ScraperApi->run_scraper: #{e}"
 end
@@ -108,12 +117,12 @@ end
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> run_scraper_with_http_info(command)
+> <Array(nil, Integer, Hash)> run_scraper_with_http_info(command, opts)
 
 ```ruby
 begin
   # Run a scraper
-  data, status_code, headers = api_instance.run_scraper_with_http_info(command)
+  data, status_code, headers = api_instance.run_scraper_with_http_info(command, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
@@ -127,6 +136,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **command** | **String** | The name of the scraper to run |  |
+| **body** | **Object** |  | [optional] |
 
 ### Return type
 
@@ -134,10 +144,10 @@ nil (empty response body)
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: Not defined
 
