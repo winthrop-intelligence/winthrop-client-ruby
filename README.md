@@ -146,8 +146,6 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_system_settings**](docs/DefaultApi.md#get_system_settings) | **GET** /api/v1/system_setting | 
 *WinthropClient::DefaultApi* | [**get_user**](docs/DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} | 
 *WinthropClient::DefaultApi* | [**get_users**](docs/DefaultApi.md#get_users) | **GET** /api/v1/users | 
-*WinthropClient::DefaultApi* | [**summarizer_post_qa_s3**](docs/DefaultApi.md#summarizer_post_qa_s3) | **POST** /summarizer/qa_s3 | Answer questions over a file from S3
-*WinthropClient::DefaultApi* | [**summarizer_post_summarize_s3**](docs/DefaultApi.md#summarizer_post_summarize_s3) | **POST** /summarizer/summarize_s3 | Summarize a file from S3
 *WinthropClient::DefaultApi* | [**update_coach**](docs/DefaultApi.md#update_coach) | **PATCH** /api/v1/coaches/{coachId} | 
 *WinthropClient::DefaultApi* | [**update_compensation**](docs/DefaultApi.md#update_compensation) | **PATCH** /api/v1/compensations/{compensationId} | 
 *WinthropClient::DefaultApi* | [**update_conference**](docs/DefaultApi.md#update_conference) | **PUT** /api/v1/conferences/{conferenceId} | 
@@ -221,8 +219,6 @@ Class | Method | HTTP request | Description
  - [WinthropClient::SeasonCollection](docs/SeasonCollection.md)
  - [WinthropClient::Sport](docs/Sport.md)
  - [WinthropClient::SportCollection](docs/SportCollection.md)
- - [WinthropClient::SummarizerPostQaS3Request](docs/SummarizerPostQaS3Request.md)
- - [WinthropClient::SummarizerPostSummarizeS3Request](docs/SummarizerPostSummarizeS3Request.md)
  - [WinthropClient::SystemSetting](docs/SystemSetting.md)
  - [WinthropClient::UnprocessableEntity](docs/UnprocessableEntity.md)
  - [WinthropClient::User](docs/User.md)
