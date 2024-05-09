@@ -11,8 +11,13 @@
 | **work_type** | **String** |  | [optional] |
 | **description** | **String** |  |  |
 | **description_md** | **String** |  | [optional] |
-| **salary** | **String** |  | [optional] |
+| **salary_summary** | **String** |  | [optional] |
+| **annual_salary** | **Float** |  | [optional] |
+| **pay_period** | **String** |  | [optional] |
+| **min_salary** | **Float** |  | [optional] |
+| **max_salary** | **Float** |  | [optional] |
 | **school_id** | **Integer** |  |  |
+| **required_years_of_experience** | **Integer** |  | [optional] |
 | **expired** | **Boolean** |  | [optional][default to false] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
@@ -31,8 +36,13 @@ instance = WinthropClient::JobPost.new(
   work_type: null,
   description: null,
   description_md: null,
-  salary: $50,000 - $60,000,
+  salary_summary: null,
+  annual_salary: null,
+  pay_period: null,
+  min_salary: null,
+  max_salary: null,
   school_id: null,
+  required_years_of_experience: null,
   expired: null,
   created_at: null,
   updated_at: null,
