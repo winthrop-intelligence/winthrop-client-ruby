@@ -121,6 +121,8 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_contracts**](docs/DefaultApi.md#get_contracts) | **GET** /api/v1/contracts | 
 *WinthropClient::DefaultApi* | [**get_deal_status**](docs/DefaultApi.md#get_deal_status) | **GET** /api/v1/deal_statuses/{dealStatusId} | 
 *WinthropClient::DefaultApi* | [**get_deal_statuses**](docs/DefaultApi.md#get_deal_statuses) | **GET** /api/v1/deal_statuses | 
+*WinthropClient::DefaultApi* | [**get_division**](docs/DefaultApi.md#get_division) | **GET** /api/v1/divisions/{divisionId} | 
+*WinthropClient::DefaultApi* | [**get_divisions**](docs/DefaultApi.md#get_divisions) | **GET** /api/v1/divisions | 
 *WinthropClient::DefaultApi* | [**get_foia_label**](docs/DefaultApi.md#get_foia_label) | **GET** /api/v1/foia_labels/{foiaLabelId} | 
 *WinthropClient::DefaultApi* | [**get_foia_labels**](docs/DefaultApi.md#get_foia_labels) | **GET** /api/v1/foia_labels | 
 *WinthropClient::DefaultApi* | [**get_foia_request**](docs/DefaultApi.md#get_foia_request) | **GET** /api/v1/foia_requests/{foiaRequestId} | 
@@ -143,6 +145,8 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_seasons**](docs/DefaultApi.md#get_seasons) | **GET** /api/v1/seasons | 
 *WinthropClient::DefaultApi* | [**get_sport**](docs/DefaultApi.md#get_sport) | **GET** /api/v1/sports/{sportId} | 
 *WinthropClient::DefaultApi* | [**get_sports**](docs/DefaultApi.md#get_sports) | **GET** /api/v1/sports | 
+*WinthropClient::DefaultApi* | [**get_subdivision**](docs/DefaultApi.md#get_subdivision) | **GET** /api/v1/subdivisions/{subdivisionId} | 
+*WinthropClient::DefaultApi* | [**get_subdivisions**](docs/DefaultApi.md#get_subdivisions) | **GET** /api/v1/subdivisions | 
 *WinthropClient::DefaultApi* | [**get_system_settings**](docs/DefaultApi.md#get_system_settings) | **GET** /api/v1/system_setting | 
 *WinthropClient::DefaultApi* | [**get_user**](docs/DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} | 
 *WinthropClient::DefaultApi* | [**get_users**](docs/DefaultApi.md#get_users) | **GET** /api/v1/users | 
@@ -190,6 +194,8 @@ Class | Method | HTTP request | Description
  - [WinthropClient::ContractCollection](docs/ContractCollection.md)
  - [WinthropClient::DealStatus](docs/DealStatus.md)
  - [WinthropClient::DealStatusCollection](docs/DealStatusCollection.md)
+ - [WinthropClient::Division](docs/Division.md)
+ - [WinthropClient::DivisionCollection](docs/DivisionCollection.md)
  - [WinthropClient::FinancialQc](docs/FinancialQc.md)
  - [WinthropClient::FoiaLabel](docs/FoiaLabel.md)
  - [WinthropClient::FoiaLabelCollection](docs/FoiaLabelCollection.md)
@@ -219,6 +225,8 @@ Class | Method | HTTP request | Description
  - [WinthropClient::SeasonCollection](docs/SeasonCollection.md)
  - [WinthropClient::Sport](docs/Sport.md)
  - [WinthropClient::SportCollection](docs/SportCollection.md)
+ - [WinthropClient::Subdivision](docs/Subdivision.md)
+ - [WinthropClient::SubdivisionCollection](docs/SubdivisionCollection.md)
  - [WinthropClient::SystemSetting](docs/SystemSetting.md)
  - [WinthropClient::UnprocessableEntity](docs/UnprocessableEntity.md)
  - [WinthropClient::User](docs/User.md)

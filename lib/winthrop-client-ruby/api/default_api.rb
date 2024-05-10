@@ -1952,6 +1952,131 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Retrieve a single Division
+    # @param division_id [Integer] ID of the Division
+    # @param [Hash] opts the optional parameters
+    # @return [Division]
+    def get_division(division_id, opts = {})
+      data, _status_code, _headers = get_division_with_http_info(division_id, opts)
+      data
+    end
+
+    # Retrieve a single Division
+    # @param division_id [Integer] ID of the Division
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Division, Integer, Hash)>] Division data, response status code and response headers
+    def get_division_with_http_info(division_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_division ...'
+      end
+      # verify the required parameter 'division_id' is set
+      if @api_client.config.client_side_validation && division_id.nil?
+        fail ArgumentError, "Missing the required parameter 'division_id' when calling DefaultApi.get_division"
+      end
+      # resource path
+      local_var_path = '/api/v1/divisions/{divisionId}'.sub('{' + 'divisionId' + '}', CGI.escape(division_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Division'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_division",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_division\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve some or all divisions
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. (default to 100)
+    # @option opts [Object] :q Ransack query
+    # @return [DivisionCollection]
+    def get_divisions(opts = {})
+      data, _status_code, _headers = get_divisions_with_http_info(opts)
+      data
+    end
+
+    # Retrieve some or all divisions
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. (default to 100)
+    # @option opts [Object] :q Ransack query
+    # @return [Array<(DivisionCollection, Integer, Hash)>] DivisionCollection data, response status code and response headers
+    def get_divisions_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_divisions ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/divisions'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'DivisionCollection'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_divisions",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_divisions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve a single foia label
     # @param foia_label_id [Integer] ID of foia label to retrieve
     # @param [Hash] opts the optional parameters
@@ -3327,6 +3452,131 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_sports\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a single Subdivision
+    # @param subdivision_id [Integer] ID of the Subdivision
+    # @param [Hash] opts the optional parameters
+    # @return [Subdivision]
+    def get_subdivision(subdivision_id, opts = {})
+      data, _status_code, _headers = get_subdivision_with_http_info(subdivision_id, opts)
+      data
+    end
+
+    # Retrieve a single Subdivision
+    # @param subdivision_id [Integer] ID of the Subdivision
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Subdivision, Integer, Hash)>] Subdivision data, response status code and response headers
+    def get_subdivision_with_http_info(subdivision_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_subdivision ...'
+      end
+      # verify the required parameter 'subdivision_id' is set
+      if @api_client.config.client_side_validation && subdivision_id.nil?
+        fail ArgumentError, "Missing the required parameter 'subdivision_id' when calling DefaultApi.get_subdivision"
+      end
+      # resource path
+      local_var_path = '/api/v1/subdivisions/{subdivisionId}'.sub('{' + 'subdivisionId' + '}', CGI.escape(subdivision_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Subdivision'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_subdivision",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_subdivision\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve some or all subdivisions
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. (default to 100)
+    # @option opts [Object] :q Ransack query
+    # @return [SubdivisionCollection]
+    def get_subdivisions(opts = {})
+      data, _status_code, _headers = get_subdivisions_with_http_info(opts)
+      data
+    end
+
+    # Retrieve some or all subdivisions
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. (default to 100)
+    # @option opts [Object] :q Ransack query
+    # @return [Array<(SubdivisionCollection, Integer, Hash)>] SubdivisionCollection data, response status code and response headers
+    def get_subdivisions_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_subdivisions ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/subdivisions'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SubdivisionCollection'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_subdivisions",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_subdivisions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

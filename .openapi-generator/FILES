@@ -27,6 +27,8 @@ docs/ContractCollection.md
 docs/DealStatus.md
 docs/DealStatusCollection.md
 docs/DefaultApi.md
+docs/Division.md
+docs/DivisionCollection.md
 docs/FinancialQc.md
 docs/FoiaLabel.md
 docs/FoiaLabelCollection.md
@@ -58,6 +60,8 @@ docs/Season.md
 docs/SeasonCollection.md
 docs/Sport.md
 docs/SportCollection.md
+docs/Subdivision.md
+docs/SubdivisionCollection.md
 docs/SystemSetting.md
 docs/UnprocessableEntity.md
 docs/User.md
@@ -90,6 +94,8 @@ lib/winthrop-client-ruby/models/contract.rb
 lib/winthrop-client-ruby/models/contract_collection.rb
 lib/winthrop-client-ruby/models/deal_status.rb
 lib/winthrop-client-ruby/models/deal_status_collection.rb
+lib/winthrop-client-ruby/models/division.rb
+lib/winthrop-client-ruby/models/division_collection.rb
 lib/winthrop-client-ruby/models/financial_qc.rb
 lib/winthrop-client-ruby/models/foia_label.rb
 lib/winthrop-client-ruby/models/foia_label_collection.rb
@@ -119,10 +125,16 @@ lib/winthrop-client-ruby/models/season.rb
 lib/winthrop-client-ruby/models/season_collection.rb
 lib/winthrop-client-ruby/models/sport.rb
 lib/winthrop-client-ruby/models/sport_collection.rb
+lib/winthrop-client-ruby/models/subdivision.rb
+lib/winthrop-client-ruby/models/subdivision_collection.rb
 lib/winthrop-client-ruby/models/system_setting.rb
 lib/winthrop-client-ruby/models/unprocessable_entity.rb
 lib/winthrop-client-ruby/models/user.rb
 lib/winthrop-client-ruby/models/user_collection.rb
 lib/winthrop-client-ruby/version.rb
+spec/models/division_collection_spec.rb
+spec/models/division_spec.rb
+spec/models/subdivision_collection_spec.rb
+spec/models/subdivision_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
