@@ -68,7 +68,7 @@ module WinthropClient
           @expires_at = Time.now + (expires_in * 60)
           @token
         else
-          raise "Failed to retrieve access token: #{response.body}"
+          fail ApiError.new('Failed to retrieve access token')
         end
       end
     end
