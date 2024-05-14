@@ -35,6 +35,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_contracts**](DefaultApi.md#get_contracts) | **GET** /api/v1/contracts |  |
 | [**get_deal_status**](DefaultApi.md#get_deal_status) | **GET** /api/v1/deal_statuses/{dealStatusId} |  |
 | [**get_deal_statuses**](DefaultApi.md#get_deal_statuses) | **GET** /api/v1/deal_statuses |  |
+| [**get_division**](DefaultApi.md#get_division) | **GET** /api/v1/divisions/{divisionId} |  |
+| [**get_divisions**](DefaultApi.md#get_divisions) | **GET** /api/v1/divisions |  |
 | [**get_foia_label**](DefaultApi.md#get_foia_label) | **GET** /api/v1/foia_labels/{foiaLabelId} |  |
 | [**get_foia_labels**](DefaultApi.md#get_foia_labels) | **GET** /api/v1/foia_labels |  |
 | [**get_foia_request**](DefaultApi.md#get_foia_request) | **GET** /api/v1/foia_requests/{foiaRequestId} |  |
@@ -57,6 +59,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_seasons**](DefaultApi.md#get_seasons) | **GET** /api/v1/seasons |  |
 | [**get_sport**](DefaultApi.md#get_sport) | **GET** /api/v1/sports/{sportId} |  |
 | [**get_sports**](DefaultApi.md#get_sports) | **GET** /api/v1/sports |  |
+| [**get_subdivision**](DefaultApi.md#get_subdivision) | **GET** /api/v1/subdivisions/{subdivisionId} |  |
+| [**get_subdivisions**](DefaultApi.md#get_subdivisions) | **GET** /api/v1/subdivisions |  |
 | [**get_system_settings**](DefaultApi.md#get_system_settings) | **GET** /api/v1/system_setting |  |
 | [**get_user**](DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} |  |
 | [**get_users**](DefaultApi.md#get_users) | **GET** /api/v1/users |  |
@@ -2424,6 +2428,160 @@ end
 - **Accept**: application/json
 
 
+## get_division
+
+> <Division> get_division(division_id)
+
+
+
+Retrieve a single Division
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+division_id = 56 # Integer | ID of the Division
+
+begin
+  
+  result = api_instance.get_division(division_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_division: #{e}"
+end
+```
+
+#### Using the get_division_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Division>, Integer, Hash)> get_division_with_http_info(division_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_division_with_http_info(division_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Division>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_division_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **division_id** | **Integer** | ID of the Division |  |
+
+### Return type
+
+[**Division**](Division.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_divisions
+
+> <DivisionCollection> get_divisions(opts)
+
+
+
+Retrieve some or all divisions
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  
+  result = api_instance.get_divisions(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_divisions: #{e}"
+end
+```
+
+#### Using the get_divisions_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DivisionCollection>, Integer, Hash)> get_divisions_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_divisions_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DivisionCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_divisions_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 100] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**DivisionCollection**](DivisionCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_foia_label
 
 > <FoiaLabel> get_foia_label(foia_label_id)
@@ -4107,6 +4265,160 @@ end
 ### Return type
 
 [**SportCollection**](SportCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_subdivision
+
+> <Subdivision> get_subdivision(subdivision_id)
+
+
+
+Retrieve a single Subdivision
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+subdivision_id = 56 # Integer | ID of the Subdivision
+
+begin
+  
+  result = api_instance.get_subdivision(subdivision_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_subdivision: #{e}"
+end
+```
+
+#### Using the get_subdivision_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Subdivision>, Integer, Hash)> get_subdivision_with_http_info(subdivision_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_subdivision_with_http_info(subdivision_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Subdivision>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_subdivision_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **subdivision_id** | **Integer** | ID of the Subdivision |  |
+
+### Return type
+
+[**Subdivision**](Subdivision.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_subdivisions
+
+> <SubdivisionCollection> get_subdivisions(opts)
+
+
+
+Retrieve some or all subdivisions
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  
+  result = api_instance.get_subdivisions(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_subdivisions: #{e}"
+end
+```
+
+#### Using the get_subdivisions_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SubdivisionCollection>, Integer, Hash)> get_subdivisions_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_subdivisions_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SubdivisionCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_subdivisions_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 100] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**SubdivisionCollection**](SubdivisionCollection.md)
 
 ### Authorization
 

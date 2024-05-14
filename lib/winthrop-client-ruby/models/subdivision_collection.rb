@@ -14,28 +14,16 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class Category
-    attr_accessor :id
+  class SubdivisionCollection
+    attr_accessor :data
 
-    attr_accessor :name
-
-    attr_accessor :description
-
-    attr_accessor :ancestry
-
-    attr_accessor :created_at
-
-    attr_accessor :updated_at
+    attr_accessor :meta
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'name' => :'name',
-        :'description' => :'description',
-        :'ancestry' => :'ancestry',
-        :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at'
+        :'data' => :'data',
+        :'meta' => :'meta'
       }
     end
 
@@ -47,12 +35,8 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'Integer',
-        :'name' => :'String',
-        :'description' => :'String',
-        :'ancestry' => :'String',
-        :'created_at' => :'Time',
-        :'updated_at' => :'Time'
+        :'data' => :'Array<Subdivision>',
+        :'meta' => :'Meta'
       }
     end
 
@@ -66,39 +50,25 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::Category` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::SubdivisionCollection` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::Category`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::SubdivisionCollection`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'data')
+        if (value = attributes[:'data']).is_a?(Array)
+          self.data = value
+        end
       end
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
-      end
-
-      if attributes.key?(:'ancestry')
-        self.ancestry = attributes[:'ancestry']
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
+      if attributes.key?(:'meta')
+        self.meta = attributes[:'meta']
       end
     end
 
@@ -122,12 +92,8 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          name == o.name &&
-          description == o.description &&
-          ancestry == o.ancestry &&
-          created_at == o.created_at &&
-          updated_at == o.updated_at
+          data == o.data &&
+          meta == o.meta
     end
 
     # @see the `==` method
@@ -139,7 +105,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, description, ancestry, created_at, updated_at].hash
+      [data, meta].hash
     end
 
     # Builds the object from hash
