@@ -143,6 +143,7 @@ module WinthropClient
     # https://github.com/typhoeus/ethon/blob/master/lib/ethon/easy/queryable.rb#L96
     attr_accessor :params_encoding
 
+
     attr_accessor :inject_format
 
     attr_accessor :force_ending_format
