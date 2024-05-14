@@ -14,7 +14,6 @@ Generator version: 7.4.0
 require 'winthrop-client-ruby/api_client'
 require 'winthrop-client-ruby/api_error'
 require 'winthrop-client-ruby/version'
-require 'winthrop-client-ruby/refresh_token'
 require 'winthrop-client-ruby/configuration'
 
 # Models
