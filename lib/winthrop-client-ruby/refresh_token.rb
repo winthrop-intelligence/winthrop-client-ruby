@@ -9,7 +9,6 @@ module WinthropClient
 
     TOKEN_GRANT_TYPE = 'client_credentials'.freeze
     CONTENT_TYPE = 'application/x-www-form-urlencoded'.freeze
-    EXPIRY_IN_MINUTES = 60
 
     class << self
       attr_accessor :client_id, :client_secret, :host
@@ -63,9 +62,10 @@ module WinthropClient
         if response.is_a?(Net::HTTPSuccess)
           parsed_response = JSON.parse(response.body)
           @token = parsed_response['access_token']
+          expires_in = parsed_response['expires_in'].to_i
 
-          # Set the expiry time to 1 hour from now
-          @expires_at = Time.now + (EXPIRY_IN_MINUTES * 60)
+          # Set the expiry time to current time + expires_in minutes
+          @expires_at = Time.now + (expires_in * 60)
           @token
         else
           raise "Failed to retrieve access token: #{response.body}"
