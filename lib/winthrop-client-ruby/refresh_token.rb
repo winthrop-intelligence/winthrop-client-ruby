@@ -64,8 +64,8 @@ module WinthropClient
           @token = parsed_response['access_token']
           expires_in = parsed_response['expires_in'].to_i
 
-          # Set the expiry time to current time + expires_in minutes
-          @expires_at = Time.now + (expires_in * 60)
+          @expires_at = Time.now + expires_in
+
           @token
         else
           fail ApiError.new('Failed to retrieve access token')
