@@ -73,7 +73,6 @@ lib/winthrop-client-ruby/api/scraper_api.rb
 lib/winthrop-client-ruby/api_client.rb
 lib/winthrop-client-ruby/api_error.rb
 lib/winthrop-client-ruby/configuration.rb
-lib/winthrop-client-ruby/refresh_token.rb
 lib/winthrop-client-ruby/models/administrator.rb
 lib/winthrop-client-ruby/models/administrator_collection.rb
 lib/winthrop-client-ruby/models/audited_financial_report_status.rb
@@ -133,9 +132,5 @@ lib/winthrop-client-ruby/models/unprocessable_entity.rb
 lib/winthrop-client-ruby/models/user.rb
 lib/winthrop-client-ruby/models/user_collection.rb
 lib/winthrop-client-ruby/version.rb
-spec/models/division_collection_spec.rb
-spec/models/division_spec.rb
-spec/models/subdivision_collection_spec.rb
-spec/models/subdivision_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

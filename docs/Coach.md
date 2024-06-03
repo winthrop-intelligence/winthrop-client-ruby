@@ -22,6 +22,7 @@
 | **instagram_handle** | **String** |  | [optional] |
 | **avatar** | [**Avatar**](Avatar.md) |  | [optional] |
 | **years_of_experience** | **Integer** |  | [optional] |
+| **avatar_scraping_disabled** | **Boolean** |  | [optional] |
 
 ## Example
 
@@ -46,7 +47,8 @@ instance = WinthropClient::Coach.new(
   linkedin: example-user-9974688,
   instagram_handle: example_User4,
   avatar: null,
-  years_of_experience: 1
+  years_of_experience: 1,
+  avatar_scraping_disabled: false
 )
 ```
 
