@@ -20,8 +20,10 @@
 | **twitter_handle** | **String** |  | [optional] |
 | **linkedin** | **String** |  | [optional] |
 | **instagram_handle** | **String** |  | [optional] |
+| **current_tenure_years** | **Integer** |  | [optional] |
 | **avatar** | [**Avatar**](Avatar.md) |  | [optional] |
 | **years_of_experience** | **Integer** |  | [optional] |
+| **article_link** | **String** |  | [optional] |
 | **avatar_scraping_disabled** | **Boolean** |  | [optional] |
 
 ## Example
@@ -46,8 +48,10 @@ instance = WinthropClient::Coach.new(
   twitter_handle: Example_User3,
   linkedin: example-user-9974688,
   instagram_handle: example_User4,
+  current_tenure_years: 1,
   avatar: null,
   years_of_experience: 1,
+  article_link: https://google.com,
   avatar_scraping_disabled: false
 )
 ```
