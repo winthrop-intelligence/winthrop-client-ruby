@@ -35,6 +35,10 @@
 | **athletics_wikipedia_url** | **String** |  | [optional] |
 | **external_logo** | [**Logo**](Logo.md) |  | [optional] |
 | **school_status** | **String** |  | [optional] |
+| **athletics_instagram_handle** | **String** |  | [optional] |
+| **athletics_twitter_handle** | **String** |  | [optional] |
+| **external_instagram_handle** | **String** |  | [optional] |
+| **external_twitter_handle** | **String** |  | [optional] |
 
 ## Example
 
@@ -72,7 +76,11 @@ instance = WinthropClient::School.new(
   wikipedia_url: ,
   athletics_wikipedia_url: ,
   external_logo: null,
-  school_status: null
+  school_status: null,
+  athletics_instagram_handle: ,
+  athletics_twitter_handle: ,
+  external_instagram_handle: ,
+  external_twitter_handle: 
 )
 ```
 
