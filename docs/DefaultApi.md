@@ -61,6 +61,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_sports**](DefaultApi.md#get_sports) | **GET** /api/v1/sports |  |
 | [**get_subdivision**](DefaultApi.md#get_subdivision) | **GET** /api/v1/subdivisions/{subdivisionId} |  |
 | [**get_subdivisions**](DefaultApi.md#get_subdivisions) | **GET** /api/v1/subdivisions |  |
+| [**get_subscription**](DefaultApi.md#get_subscription) | **GET** /api/v1/subscriptions/{subscriptionId} |  |
+| [**get_subscriptions**](DefaultApi.md#get_subscriptions) | **GET** /api/v1/subscriptions |  |
 | [**get_system_settings**](DefaultApi.md#get_system_settings) | **GET** /api/v1/system_setting |  |
 | [**get_user**](DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} |  |
 | [**get_users**](DefaultApi.md#get_users) | **GET** /api/v1/users |  |
@@ -4419,6 +4421,160 @@ end
 ### Return type
 
 [**SubdivisionCollection**](SubdivisionCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_subscription
+
+> <Subscription> get_subscription(subscription_id)
+
+
+
+Retrieve a single Subscription
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+subscription_id = 56 # Integer | ID of the Subscription
+
+begin
+  
+  result = api_instance.get_subscription(subscription_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_subscription: #{e}"
+end
+```
+
+#### Using the get_subscription_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Subscription>, Integer, Hash)> get_subscription_with_http_info(subscription_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_subscription_with_http_info(subscription_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Subscription>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_subscription_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **subscription_id** | **Integer** | ID of the Subscription |  |
+
+### Return type
+
+[**Subscription**](Subscription.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_subscriptions
+
+> <Subscription> get_subscriptions(opts)
+
+
+
+Retrieve the all subscriptions
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  
+  result = api_instance.get_subscriptions(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_subscriptions: #{e}"
+end
+```
+
+#### Using the get_subscriptions_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Subscription>, Integer, Hash)> get_subscriptions_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_subscriptions_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Subscription>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_subscriptions_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 100] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**Subscription**](Subscription.md)
 
 ### Authorization
 

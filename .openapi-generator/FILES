@@ -62,6 +62,7 @@ docs/Sport.md
 docs/SportCollection.md
 docs/Subdivision.md
 docs/SubdivisionCollection.md
+docs/Subscription.md
 docs/SystemSetting.md
 docs/UnprocessableEntity.md
 docs/User.md
@@ -127,10 +128,12 @@ lib/winthrop-client-ruby/models/sport.rb
 lib/winthrop-client-ruby/models/sport_collection.rb
 lib/winthrop-client-ruby/models/subdivision.rb
 lib/winthrop-client-ruby/models/subdivision_collection.rb
+lib/winthrop-client-ruby/models/subscription.rb
 lib/winthrop-client-ruby/models/system_setting.rb
 lib/winthrop-client-ruby/models/unprocessable_entity.rb
 lib/winthrop-client-ruby/models/user.rb
 lib/winthrop-client-ruby/models/user_collection.rb
 lib/winthrop-client-ruby/version.rb
+spec/models/subscription_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
