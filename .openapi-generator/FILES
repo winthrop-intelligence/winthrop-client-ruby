@@ -134,6 +134,5 @@ lib/winthrop-client-ruby/models/unprocessable_entity.rb
 lib/winthrop-client-ruby/models/user.rb
 lib/winthrop-client-ruby/models/user_collection.rb
 lib/winthrop-client-ruby/version.rb
-spec/models/subscription_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

@@ -22,6 +22,7 @@
 | **sport** | [**Sport**](Sport.md) |  | [optional] |
 | **school** | [**School**](School.md) |  | [optional] |
 | **article_link** | **String** |  | [optional] |
+| **article_title** | **String** |  | [optional] |
 | **position_types** | [**Array&lt;PositionType&gt;**](PositionType.md) |  | [optional] |
 
 ## Example
@@ -48,6 +49,7 @@ instance = WinthropClient::Position.new(
   sport: null,
   school: null,
   article_link: https://google.com,
+  article_title: This is the title,
   position_types: null
 )
 ```
