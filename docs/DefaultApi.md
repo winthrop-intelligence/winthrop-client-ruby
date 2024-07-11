@@ -4508,7 +4508,7 @@ end
 
 ## get_subscriptions
 
-> <Subscription> get_subscriptions(opts)
+> <SubscriptionCollection> get_subscriptions(opts)
 
 
 
@@ -4550,7 +4550,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Subscription>, Integer, Hash)> get_subscriptions_with_http_info(opts)
+> <Array(<SubscriptionCollection>, Integer, Hash)> get_subscriptions_with_http_info(opts)
 
 ```ruby
 begin
@@ -4558,7 +4558,7 @@ begin
   data, status_code, headers = api_instance.get_subscriptions_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Subscription>
+  p data # => <SubscriptionCollection>
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->get_subscriptions_with_http_info: #{e}"
 end
@@ -4574,7 +4574,7 @@ end
 
 ### Return type
 
-[**Subscription**](Subscription.md)
+[**SubscriptionCollection**](SubscriptionCollection.md)
 
 ### Authorization
 
