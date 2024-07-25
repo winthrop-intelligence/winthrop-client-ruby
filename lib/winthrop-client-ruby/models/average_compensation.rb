@@ -14,16 +14,25 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class SportCollection
-    attr_accessor :data
+  class AverageCompensation
+    attr_accessor :mean
 
-    attr_accessor :meta
+    attr_accessor :median
+
+    attr_accessor :mode
+
+    attr_accessor :min
+
+    attr_accessor :max
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'data' => :'data',
-        :'meta' => :'meta'
+        :'mean' => :'mean',
+        :'median' => :'median',
+        :'mode' => :'mode',
+        :'min' => :'min',
+        :'max' => :'max'
       }
     end
 
@@ -35,8 +44,11 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'data' => :'Array<Sport>',
-        :'meta' => :'Meta'
+        :'mean' => :'Float',
+        :'median' => :'Float',
+        :'mode' => :'Float',
+        :'min' => :'Float',
+        :'max' => :'Float'
       }
     end
 
@@ -50,25 +62,35 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::SportCollection` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::AverageCompensation` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::SportCollection`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::AverageCompensation`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'data')
-        if (value = attributes[:'data']).is_a?(Array)
-          self.data = value
-        end
+      if attributes.key?(:'mean')
+        self.mean = attributes[:'mean']
       end
 
-      if attributes.key?(:'meta')
-        self.meta = attributes[:'meta']
+      if attributes.key?(:'median')
+        self.median = attributes[:'median']
+      end
+
+      if attributes.key?(:'mode')
+        self.mode = attributes[:'mode']
+      end
+
+      if attributes.key?(:'min')
+        self.min = attributes[:'min']
+      end
+
+      if attributes.key?(:'max')
+        self.max = attributes[:'max']
       end
     end
 
@@ -92,8 +114,11 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          data == o.data &&
-          meta == o.meta
+          mean == o.mean &&
+          median == o.median &&
+          mode == o.mode &&
+          min == o.min &&
+          max == o.max
     end
 
     # @see the `==` method
@@ -105,7 +130,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data, meta].hash
+      [mean, median, mode, min, max].hash
     end
 
     # Builds the object from hash

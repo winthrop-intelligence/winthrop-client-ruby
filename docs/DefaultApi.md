@@ -4,6 +4,10 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**average_conference_comp**](DefaultApi.md#average_conference_comp) | **GET** /api/v1/compensations/average_conference_comp |  |
+| [**average_division_comp**](DefaultApi.md#average_division_comp) | **GET** /api/v1/compensations/average_division_comp |  |
+| [**average_school_comp**](DefaultApi.md#average_school_comp) | **GET** /api/v1/compensations/average_school_comp |  |
+| [**average_subdivision_comp**](DefaultApi.md#average_subdivision_comp) | **GET** /api/v1/compensations/average_subdivision_comp |  |
 | [**create_conference**](DefaultApi.md#create_conference) | **POST** /api/v1/conferences |  |
 | [**create_conferenceship**](DefaultApi.md#create_conferenceship) | **POST** /api/v1/conferenceships |  |
 | [**create_foia_label**](DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels |  |
@@ -74,6 +78,326 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_foia_request**](DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} |  |
 | [**update_job_post**](DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post |
 | [**update_requested_item**](DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} |  |
+
+
+## average_conference_comp
+
+> <AverageCompensation> average_conference_comp(conference_id, season_years, sport_id, position_type_ids)
+
+
+
+Retrieve average compensation for a conference
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+conference_id = 56 # Integer | ID of the conference
+season_years = [37] # Array<Integer> | Season years
+sport_id = 56 # Integer | ID of the sport
+position_type_ids = [37] # Array<Integer> | IDs of the position types
+
+begin
+  
+  result = api_instance.average_conference_comp(conference_id, season_years, sport_id, position_type_ids)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->average_conference_comp: #{e}"
+end
+```
+
+#### Using the average_conference_comp_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AverageCompensation>, Integer, Hash)> average_conference_comp_with_http_info(conference_id, season_years, sport_id, position_type_ids)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.average_conference_comp_with_http_info(conference_id, season_years, sport_id, position_type_ids)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AverageCompensation>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->average_conference_comp_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conference_id** | **Integer** | ID of the conference |  |
+| **season_years** | [**Array&lt;Integer&gt;**](Integer.md) | Season years |  |
+| **sport_id** | **Integer** | ID of the sport |  |
+| **position_type_ids** | [**Array&lt;Integer&gt;**](Integer.md) | IDs of the position types |  |
+
+### Return type
+
+[**AverageCompensation**](AverageCompensation.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## average_division_comp
+
+> <AverageCompensation> average_division_comp(division_id, season_years, sport_id, position_type_ids)
+
+
+
+Retrieve average compensation for a division
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+division_id = 56 # Integer | ID of the division
+season_years = [37] # Array<Integer> | Season years
+sport_id = 56 # Integer | ID of the sport
+position_type_ids = [37] # Array<Integer> | IDs of the position types
+
+begin
+  
+  result = api_instance.average_division_comp(division_id, season_years, sport_id, position_type_ids)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->average_division_comp: #{e}"
+end
+```
+
+#### Using the average_division_comp_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AverageCompensation>, Integer, Hash)> average_division_comp_with_http_info(division_id, season_years, sport_id, position_type_ids)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.average_division_comp_with_http_info(division_id, season_years, sport_id, position_type_ids)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AverageCompensation>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->average_division_comp_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **division_id** | **Integer** | ID of the division |  |
+| **season_years** | [**Array&lt;Integer&gt;**](Integer.md) | Season years |  |
+| **sport_id** | **Integer** | ID of the sport |  |
+| **position_type_ids** | [**Array&lt;Integer&gt;**](Integer.md) | IDs of the position types |  |
+
+### Return type
+
+[**AverageCompensation**](AverageCompensation.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## average_school_comp
+
+> <AverageCompensation> average_school_comp(school_id, season_years, sport_id, position_type_ids)
+
+
+
+Retrieve average compensation for a school
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | ID of the school
+season_years = [37] # Array<Integer> | Season years
+sport_id = 56 # Integer | ID of the sport
+position_type_ids = [37] # Array<Integer> | IDs of the position types
+
+begin
+  
+  result = api_instance.average_school_comp(school_id, season_years, sport_id, position_type_ids)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->average_school_comp: #{e}"
+end
+```
+
+#### Using the average_school_comp_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AverageCompensation>, Integer, Hash)> average_school_comp_with_http_info(school_id, season_years, sport_id, position_type_ids)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.average_school_comp_with_http_info(school_id, season_years, sport_id, position_type_ids)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AverageCompensation>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->average_school_comp_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** | ID of the school |  |
+| **season_years** | [**Array&lt;Integer&gt;**](Integer.md) | Season years |  |
+| **sport_id** | **Integer** | ID of the sport |  |
+| **position_type_ids** | [**Array&lt;Integer&gt;**](Integer.md) | IDs of the position types |  |
+
+### Return type
+
+[**AverageCompensation**](AverageCompensation.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## average_subdivision_comp
+
+> <AverageCompensation> average_subdivision_comp(subdivision_id, season_years, sport_id, position_type_ids)
+
+
+
+Retrieve average compensation for a subdivision
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+subdivision_id = 56 # Integer | ID of the subdivision
+season_years = [37] # Array<Integer> | Season years
+sport_id = 56 # Integer | ID of the sport
+position_type_ids = [37] # Array<Integer> | IDs of the position types
+
+begin
+  
+  result = api_instance.average_subdivision_comp(subdivision_id, season_years, sport_id, position_type_ids)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->average_subdivision_comp: #{e}"
+end
+```
+
+#### Using the average_subdivision_comp_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AverageCompensation>, Integer, Hash)> average_subdivision_comp_with_http_info(subdivision_id, season_years, sport_id, position_type_ids)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.average_subdivision_comp_with_http_info(subdivision_id, season_years, sport_id, position_type_ids)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AverageCompensation>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->average_subdivision_comp_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **subdivision_id** | **Integer** | ID of the subdivision |  |
+| **season_years** | [**Array&lt;Integer&gt;**](Integer.md) | Season years |  |
+| **sport_id** | **Integer** | ID of the sport |  |
+| **position_type_ids** | [**Array&lt;Integer&gt;**](Integer.md) | IDs of the position types |  |
+
+### Return type
+
+[**AverageCompensation**](AverageCompensation.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## create_conference

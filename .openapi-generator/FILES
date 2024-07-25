@@ -10,6 +10,7 @@ docs/AdministratorCollection.md
 docs/AuditedFinancialReportStatus.md
 docs/AuditedFinancialReportStatusCollection.md
 docs/Avatar.md
+docs/AverageCompensation.md
 docs/Category.md
 docs/CategoryCollection.md
 docs/Coach.md
@@ -80,6 +81,7 @@ lib/winthrop-client-ruby/models/administrator_collection.rb
 lib/winthrop-client-ruby/models/audited_financial_report_status.rb
 lib/winthrop-client-ruby/models/audited_financial_report_status_collection.rb
 lib/winthrop-client-ruby/models/avatar.rb
+lib/winthrop-client-ruby/models/average_compensation.rb
 lib/winthrop-client-ruby/models/category.rb
 lib/winthrop-client-ruby/models/category_collection.rb
 lib/winthrop-client-ruby/models/coach.rb
@@ -136,5 +138,6 @@ lib/winthrop-client-ruby/models/unprocessable_entity.rb
 lib/winthrop-client-ruby/models/user.rb
 lib/winthrop-client-ruby/models/user_collection.rb
 lib/winthrop-client-ruby/version.rb
+spec/models/average_compensation_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
