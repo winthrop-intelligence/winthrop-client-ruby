@@ -242,7 +242,7 @@ end
 
 ## average_school_comp
 
-> <AverageCompensation> average_school_comp(school_id, season_years, sport_id, position_type_ids)
+> <AverageCompensation> average_school_comp(school_id, season_years, sport_ids, position_type_ids)
 
 
 
@@ -267,12 +267,12 @@ end
 api_instance = WinthropClient::DefaultApi.new
 school_id = 56 # Integer | ID of the school
 season_years = [37] # Array<Integer> | Season years
-sport_id = 56 # Integer | ID of the sport
+sport_ids = [37] # Array<Integer> | IDs of the sports
 position_type_ids = [37] # Array<Integer> | IDs of the position types
 
 begin
   
-  result = api_instance.average_school_comp(school_id, season_years, sport_id, position_type_ids)
+  result = api_instance.average_school_comp(school_id, season_years, sport_ids, position_type_ids)
   p result
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->average_school_comp: #{e}"
@@ -283,12 +283,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AverageCompensation>, Integer, Hash)> average_school_comp_with_http_info(school_id, season_years, sport_id, position_type_ids)
+> <Array(<AverageCompensation>, Integer, Hash)> average_school_comp_with_http_info(school_id, season_years, sport_ids, position_type_ids)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.average_school_comp_with_http_info(school_id, season_years, sport_id, position_type_ids)
+  data, status_code, headers = api_instance.average_school_comp_with_http_info(school_id, season_years, sport_ids, position_type_ids)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AverageCompensation>
@@ -303,7 +303,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **school_id** | **Integer** | ID of the school |  |
 | **season_years** | [**Array&lt;Integer&gt;**](Integer.md) | Season years |  |
-| **sport_id** | **Integer** | ID of the sport |  |
+| **sport_ids** | [**Array&lt;Integer&gt;**](Integer.md) | IDs of the sports |  |
 | **position_type_ids** | [**Array&lt;Integer&gt;**](Integer.md) | IDs of the position types |  |
 
 ### Return type

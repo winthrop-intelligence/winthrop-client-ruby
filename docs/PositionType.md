@@ -11,6 +11,8 @@
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
 | **position_type_group** | [**PositionTypeGroup**](PositionTypeGroup.md) |  | [optional] |
+| **force_display_title** | **Boolean** |  | [optional] |
+| **intercollegiate_only** | **Boolean** |  | [optional] |
 
 ## Example
 
@@ -24,7 +26,9 @@ instance = WinthropClient::PositionType.new(
   ord: 2,
   created_at: 2019-01-01T00:00Z,
   updated_at: 2019-01-01T00:00Z,
-  position_type_group: null
+  position_type_group: null,
+  force_display_title: false,
+  intercollegiate_only: false
 )
 ```
 
