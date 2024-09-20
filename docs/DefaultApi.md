@@ -82,7 +82,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 
 ## average_conference_comp
 
-> <AverageCompensation> average_conference_comp(conference_id, season_years, sport_id, position_type_ids)
+> <AverageCompensation> average_conference_comp(conference_id, season_years, sport_ids, position_type_ids)
 
 
 
@@ -107,12 +107,12 @@ end
 api_instance = WinthropClient::DefaultApi.new
 conference_id = 56 # Integer | ID of the conference
 season_years = [37] # Array<Integer> | Season years
-sport_id = 56 # Integer | ID of the sport
+sport_ids = [37] # Array<Integer> | IDs of the sports
 position_type_ids = [37] # Array<Integer> | IDs of the position types
 
 begin
   
-  result = api_instance.average_conference_comp(conference_id, season_years, sport_id, position_type_ids)
+  result = api_instance.average_conference_comp(conference_id, season_years, sport_ids, position_type_ids)
   p result
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->average_conference_comp: #{e}"
@@ -123,12 +123,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AverageCompensation>, Integer, Hash)> average_conference_comp_with_http_info(conference_id, season_years, sport_id, position_type_ids)
+> <Array(<AverageCompensation>, Integer, Hash)> average_conference_comp_with_http_info(conference_id, season_years, sport_ids, position_type_ids)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.average_conference_comp_with_http_info(conference_id, season_years, sport_id, position_type_ids)
+  data, status_code, headers = api_instance.average_conference_comp_with_http_info(conference_id, season_years, sport_ids, position_type_ids)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AverageCompensation>
@@ -143,7 +143,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **conference_id** | **Integer** | ID of the conference |  |
 | **season_years** | [**Array&lt;Integer&gt;**](Integer.md) | Season years |  |
-| **sport_id** | **Integer** | ID of the sport |  |
+| **sport_ids** | [**Array&lt;Integer&gt;**](Integer.md) | IDs of the sports |  |
 | **position_type_ids** | [**Array&lt;Integer&gt;**](Integer.md) | IDs of the position types |  |
 
 ### Return type
@@ -162,7 +162,7 @@ end
 
 ## average_division_comp
 
-> <AverageCompensation> average_division_comp(division_id, season_years, sport_id, position_type_ids)
+> <AverageCompensation> average_division_comp(division_id, season_years, sport_ids, position_type_ids)
 
 
 
@@ -187,12 +187,12 @@ end
 api_instance = WinthropClient::DefaultApi.new
 division_id = 56 # Integer | ID of the division
 season_years = [37] # Array<Integer> | Season years
-sport_id = 56 # Integer | ID of the sport
+sport_ids = [37] # Array<Integer> | IDs of the sports
 position_type_ids = [37] # Array<Integer> | IDs of the position types
 
 begin
   
-  result = api_instance.average_division_comp(division_id, season_years, sport_id, position_type_ids)
+  result = api_instance.average_division_comp(division_id, season_years, sport_ids, position_type_ids)
   p result
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->average_division_comp: #{e}"
@@ -203,12 +203,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AverageCompensation>, Integer, Hash)> average_division_comp_with_http_info(division_id, season_years, sport_id, position_type_ids)
+> <Array(<AverageCompensation>, Integer, Hash)> average_division_comp_with_http_info(division_id, season_years, sport_ids, position_type_ids)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.average_division_comp_with_http_info(division_id, season_years, sport_id, position_type_ids)
+  data, status_code, headers = api_instance.average_division_comp_with_http_info(division_id, season_years, sport_ids, position_type_ids)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AverageCompensation>
@@ -223,7 +223,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **division_id** | **Integer** | ID of the division |  |
 | **season_years** | [**Array&lt;Integer&gt;**](Integer.md) | Season years |  |
-| **sport_id** | **Integer** | ID of the sport |  |
+| **sport_ids** | [**Array&lt;Integer&gt;**](Integer.md) | IDs of the sports |  |
 | **position_type_ids** | [**Array&lt;Integer&gt;**](Integer.md) | IDs of the position types |  |
 
 ### Return type
@@ -322,7 +322,7 @@ end
 
 ## average_subdivision_comp
 
-> <AverageCompensation> average_subdivision_comp(subdivision_id, season_years, sport_id, position_type_ids)
+> <AverageCompensation> average_subdivision_comp(subdivision_id, season_years, sport_ids, position_type_ids)
 
 
 
@@ -347,12 +347,12 @@ end
 api_instance = WinthropClient::DefaultApi.new
 subdivision_id = 56 # Integer | ID of the subdivision
 season_years = [37] # Array<Integer> | Season years
-sport_id = 56 # Integer | ID of the sport
+sport_ids = [37] # Array<Integer> | IDs of the sports
 position_type_ids = [37] # Array<Integer> | IDs of the position types
 
 begin
   
-  result = api_instance.average_subdivision_comp(subdivision_id, season_years, sport_id, position_type_ids)
+  result = api_instance.average_subdivision_comp(subdivision_id, season_years, sport_ids, position_type_ids)
   p result
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->average_subdivision_comp: #{e}"
@@ -363,12 +363,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AverageCompensation>, Integer, Hash)> average_subdivision_comp_with_http_info(subdivision_id, season_years, sport_id, position_type_ids)
+> <Array(<AverageCompensation>, Integer, Hash)> average_subdivision_comp_with_http_info(subdivision_id, season_years, sport_ids, position_type_ids)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.average_subdivision_comp_with_http_info(subdivision_id, season_years, sport_id, position_type_ids)
+  data, status_code, headers = api_instance.average_subdivision_comp_with_http_info(subdivision_id, season_years, sport_ids, position_type_ids)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AverageCompensation>
@@ -383,7 +383,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **subdivision_id** | **Integer** | ID of the subdivision |  |
 | **season_years** | [**Array&lt;Integer&gt;**](Integer.md) | Season years |  |
-| **sport_id** | **Integer** | ID of the sport |  |
+| **sport_ids** | [**Array&lt;Integer&gt;**](Integer.md) | IDs of the sports |  |
 | **position_type_ids** | [**Array&lt;Integer&gt;**](Integer.md) | IDs of the position types |  |
 
 ### Return type
