@@ -8,6 +8,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**average_division_comp**](DefaultApi.md#average_division_comp) | **GET** /api/v1/compensations/average_division_comp |  |
 | [**average_school_comp**](DefaultApi.md#average_school_comp) | **GET** /api/v1/compensations/average_school_comp |  |
 | [**average_subdivision_comp**](DefaultApi.md#average_subdivision_comp) | **GET** /api/v1/compensations/average_subdivision_comp |  |
+| [**compare_coli**](DefaultApi.md#compare_coli) | **GET** /api/v1/schools/compare_coli |  |
 | [**create_conference**](DefaultApi.md#create_conference) | **POST** /api/v1/conferences |  |
 | [**create_conferenceship**](DefaultApi.md#create_conferenceship) | **POST** /api/v1/conferenceships |  |
 | [**create_foia_label**](DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels |  |
@@ -389,6 +390,84 @@ end
 ### Return type
 
 [**AverageCompensation**](AverageCompensation.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## compare_coli
+
+> <COLIAdjusted> compare_coli(school_id, other_person_school_id, other_person_total_compensation)
+
+
+
+Retrieve the COLI-adjusted compensation
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | ID of the School
+other_person_school_id = 56 # Integer | ID of the other person School
+other_person_total_compensation = 56 # Integer | Other person total compensation amount
+
+begin
+  
+  result = api_instance.compare_coli(school_id, other_person_school_id, other_person_total_compensation)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->compare_coli: #{e}"
+end
+```
+
+#### Using the compare_coli_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<COLIAdjusted>, Integer, Hash)> compare_coli_with_http_info(school_id, other_person_school_id, other_person_total_compensation)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.compare_coli_with_http_info(school_id, other_person_school_id, other_person_total_compensation)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <COLIAdjusted>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->compare_coli_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** | ID of the School |  |
+| **other_person_school_id** | **Integer** | ID of the other person School |  |
+| **other_person_total_compensation** | **Integer** | Other person total compensation amount |  |
+
+### Return type
+
+[**COLIAdjusted**](COLIAdjusted.md)
 
 ### Authorization
 

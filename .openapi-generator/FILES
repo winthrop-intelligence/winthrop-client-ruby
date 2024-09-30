@@ -11,10 +11,13 @@ docs/AuditedFinancialReportStatus.md
 docs/AuditedFinancialReportStatusCollection.md
 docs/Avatar.md
 docs/AverageCompensation.md
+docs/COLIAdjusted.md
 docs/Category.md
 docs/CategoryCollection.md
 docs/Coach.md
 docs/CoachCollection.md
+docs/CompareColi404Response.md
+docs/CompareColi422Response.md
 docs/Compensation.md
 docs/CompensationCollection.md
 docs/Conference.md
@@ -86,6 +89,9 @@ lib/winthrop-client-ruby/models/category.rb
 lib/winthrop-client-ruby/models/category_collection.rb
 lib/winthrop-client-ruby/models/coach.rb
 lib/winthrop-client-ruby/models/coach_collection.rb
+lib/winthrop-client-ruby/models/coli_adjusted.rb
+lib/winthrop-client-ruby/models/compare_coli404_response.rb
+lib/winthrop-client-ruby/models/compare_coli422_response.rb
 lib/winthrop-client-ruby/models/compensation.rb
 lib/winthrop-client-ruby/models/compensation_collection.rb
 lib/winthrop-client-ruby/models/conference.rb
@@ -138,5 +144,8 @@ lib/winthrop-client-ruby/models/unprocessable_entity.rb
 lib/winthrop-client-ruby/models/user.rb
 lib/winthrop-client-ruby/models/user_collection.rb
 lib/winthrop-client-ruby/version.rb
+spec/models/coli_adjusted_spec.rb
+spec/models/compare_coli404_response_spec.rb
+spec/models/compare_coli422_response_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

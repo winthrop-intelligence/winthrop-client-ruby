@@ -14,37 +14,13 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class PositionType
-    attr_accessor :id
-
-    attr_accessor :name
-
-    attr_accessor :name_display
-
-    attr_accessor :ord
-
-    attr_accessor :created_at
-
-    attr_accessor :updated_at
-
-    attr_accessor :position_type_group
-
-    attr_accessor :force_display_title
-
-    attr_accessor :intercollegiate_only
+  class CompareColi422Response
+    attr_accessor :error
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'name' => :'name',
-        :'name_display' => :'name_display',
-        :'ord' => :'ord',
-        :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at',
-        :'position_type_group' => :'position_type_group',
-        :'force_display_title' => :'force_display_title',
-        :'intercollegiate_only' => :'intercollegiate_only'
+        :'error' => :'error'
       }
     end
 
@@ -56,15 +32,7 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'Integer',
-        :'name' => :'String',
-        :'name_display' => :'String',
-        :'ord' => :'Integer',
-        :'created_at' => :'Time',
-        :'updated_at' => :'Time',
-        :'position_type_group' => :'PositionTypeGroup',
-        :'force_display_title' => :'Boolean',
-        :'intercollegiate_only' => :'Boolean'
+        :'error' => :'String'
       }
     end
 
@@ -78,51 +46,19 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::PositionType` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::CompareColi422Response` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::PositionType`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::CompareColi422Response`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      end
-
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'name_display')
-        self.name_display = attributes[:'name_display']
-      end
-
-      if attributes.key?(:'ord')
-        self.ord = attributes[:'ord']
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
-      end
-
-      if attributes.key?(:'position_type_group')
-        self.position_type_group = attributes[:'position_type_group']
-      end
-
-      if attributes.key?(:'force_display_title')
-        self.force_display_title = attributes[:'force_display_title']
-      end
-
-      if attributes.key?(:'intercollegiate_only')
-        self.intercollegiate_only = attributes[:'intercollegiate_only']
+      if attributes.key?(:'error')
+        self.error = attributes[:'error']
       end
     end
 
@@ -146,15 +82,7 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          name == o.name &&
-          name_display == o.name_display &&
-          ord == o.ord &&
-          created_at == o.created_at &&
-          updated_at == o.updated_at &&
-          position_type_group == o.position_type_group &&
-          force_display_title == o.force_display_title &&
-          intercollegiate_only == o.intercollegiate_only
+          error == o.error
     end
 
     # @see the `==` method
@@ -166,7 +94,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, name_display, ord, created_at, updated_at, position_type_group, force_display_title, intercollegiate_only].hash
+      [error].hash
     end
 
     # Builds the object from hash
