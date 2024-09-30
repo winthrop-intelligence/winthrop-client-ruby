@@ -144,8 +144,5 @@ lib/winthrop-client-ruby/models/unprocessable_entity.rb
 lib/winthrop-client-ruby/models/user.rb
 lib/winthrop-client-ruby/models/user_collection.rb
 lib/winthrop-client-ruby/version.rb
-spec/models/coli_adjusted_spec.rb
-spec/models/compare_coli404_response_spec.rb
-spec/models/compare_coli422_response_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
