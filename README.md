@@ -166,6 +166,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**update_foia_request**](docs/DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} | 
 *WinthropClient::DefaultApi* | [**update_job_post**](docs/DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post
 *WinthropClient::DefaultApi* | [**update_requested_item**](docs/DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} | 
+*WinthropClient::IntercollegiateApi* | [**get_job_posts**](docs/IntercollegiateApi.md#get_job_posts) | **GET** /wi_jobs/job_posts | 
 *WinthropClient::ReportingApi* | [**get_coach_contract_requests**](docs/ReportingApi.md#get_coach_contract_requests) | **GET** /api/v1/reports/coach_contract_requests | 
 *WinthropClient::ReportingApi* | [**get_coach_history**](docs/ReportingApi.md#get_coach_history) | **GET** /api/v1/reports/coach_history | 
 *WinthropClient::ReportingApi* | [**get_conferenceships**](docs/ReportingApi.md#get_conferenceships) | **GET** /api/v1/reports/conferenceships | 
@@ -217,8 +218,13 @@ Class | Method | HTTP request | Description
  - [WinthropClient::GameCollection](docs/GameCollection.md)
  - [WinthropClient::IncomeReport](docs/IncomeReport.md)
  - [WinthropClient::IncomeReportCollection](docs/IncomeReportCollection.md)
+ - [WinthropClient::Job](docs/Job.md)
+ - [WinthropClient::JobCollection](docs/JobCollection.md)
+ - [WinthropClient::JobDepartment](docs/JobDepartment.md)
  - [WinthropClient::JobPost](docs/JobPost.md)
  - [WinthropClient::JobPostCollection](docs/JobPostCollection.md)
+ - [WinthropClient::JobSchool](docs/JobSchool.md)
+ - [WinthropClient::JobSport](docs/JobSport.md)
  - [WinthropClient::Logo](docs/Logo.md)
  - [WinthropClient::Meta](docs/Meta.md)
  - [WinthropClient::NcaaFinancialReportStatus](docs/NcaaFinancialReportStatus.md)
