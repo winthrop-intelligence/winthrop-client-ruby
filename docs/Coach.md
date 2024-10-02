@@ -24,6 +24,7 @@
 | **avatar** | [**Avatar**](Avatar.md) |  | [optional] |
 | **years_of_experience** | **Integer** |  | [optional] |
 | **avatar_scraping_disabled** | **Boolean** |  | [optional] |
+| **latest_salary** | **Integer** |  | [optional] |
 
 ## Example
 
@@ -50,7 +51,8 @@ instance = WinthropClient::Coach.new(
   current_tenure_years: 1,
   avatar: null,
   years_of_experience: 1,
-  avatar_scraping_disabled: false
+  avatar_scraping_disabled: false,
+  latest_salary: 1
 )
 ```
 
