@@ -28,7 +28,6 @@
 | **invoicing** | **Boolean** |  | [optional] |
 | **notes** | **String** |  | [optional] |
 | **send_renewal** | **Boolean** |  | [optional] |
-| **has_foia_clause** | **Boolean** |  | [optional] |
 | **standard_agreement** | **Boolean** |  | [optional] |
 | **active_users_count** | **Integer** |  | [optional] |
 
@@ -62,7 +61,6 @@ instance = WinthropClient::Subscription.new(
   invoicing: true,
   notes: This is a note,
   send_renewal: true,
-  has_foia_clause: true,
   standard_agreement: true,
   active_users_count: 5
 )

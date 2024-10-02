@@ -156,11 +156,5 @@ lib/winthrop-client-ruby/models/unprocessable_entity.rb
 lib/winthrop-client-ruby/models/user.rb
 lib/winthrop-client-ruby/models/user_collection.rb
 lib/winthrop-client-ruby/version.rb
-spec/api/intercollegiate_api_spec.rb
-spec/models/job_collection_spec.rb
-spec/models/job_department_spec.rb
-spec/models/job_school_spec.rb
-spec/models/job_spec.rb
-spec/models/job_sport_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
