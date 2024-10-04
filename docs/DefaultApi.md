@@ -54,6 +54,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_job_posts**](DefaultApi.md#get_job_posts) | **GET** /central_jobs/job_posts | List all job posts |
 | [**get_ncaa_financial_report_status**](DefaultApi.md#get_ncaa_financial_report_status) | **GET** /api/v1/ncaa_financial_report_statuses/{ncaaFinancialReportStatusId} |  |
 | [**get_ncaa_financial_report_statuses**](DefaultApi.md#get_ncaa_financial_report_statuses) | **GET** /api/v1/ncaa_financial_report_statuses |  |
+| [**get_news_feed**](DefaultApi.md#get_news_feed) | **GET** /wi_jobs/news_feeds/{newsFeedId} | Get a news feed |
 | [**get_position**](DefaultApi.md#get_position) | **GET** /api/v1/positions/{positionId} |  |
 | [**get_positions**](DefaultApi.md#get_positions) | **GET** /api/v1/positions |  |
 | [**get_requested_item**](DefaultApi.md#get_requested_item) | **GET** /api/v1/requested_items/{requestedItemId} |  |
@@ -3900,6 +3901,80 @@ end
 ### Return type
 
 [**NcaaFinancialReportStatusCollection**](NcaaFinancialReportStatusCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_news_feed
+
+> <NewsFeed> get_news_feed(news_feed_id)
+
+Get a news feed
+
+Get a news feed
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+news_feed_id = 56 # Integer | ID of news feed to return
+
+begin
+  # Get a news feed
+  result = api_instance.get_news_feed(news_feed_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_news_feed: #{e}"
+end
+```
+
+#### Using the get_news_feed_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<NewsFeed>, Integer, Hash)> get_news_feed_with_http_info(news_feed_id)
+
+```ruby
+begin
+  # Get a news feed
+  data, status_code, headers = api_instance.get_news_feed_with_http_info(news_feed_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <NewsFeed>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_news_feed_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **news_feed_id** | **Integer** | ID of news feed to return |  |
+
+### Return type
+
+[**NewsFeed**](NewsFeed.md)
 
 ### Authorization
 
