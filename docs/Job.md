@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  | [optional] |
 | **title** | **String** |  | [optional] |
 | **description** | **String** |  | [optional] |
 | **job_url** | **String** |  | [optional] |
@@ -19,6 +20,7 @@
 require 'winthrop-client-ruby'
 
 instance = WinthropClient::Job.new(
+  id: 1,
   title: John,
   description: John,
   job_url: https://job-url.com,
