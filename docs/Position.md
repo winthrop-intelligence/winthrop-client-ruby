@@ -23,6 +23,10 @@
 | **school** | [**School**](School.md) |  | [optional] |
 | **article_link** | **String** |  | [optional] |
 | **article_title** | **String** |  | [optional] |
+| **article_description** | **String** |  | [optional] |
+| **article_site_name** | **String** |  | [optional] |
+| **article_publish_time** | **String** |  | [optional] |
+| **article_image_url** | **String** |  | [optional] |
 | **position_types** | [**Array&lt;PositionType&gt;**](PositionType.md) |  | [optional] |
 
 ## Example
@@ -50,6 +54,10 @@ instance = WinthropClient::Position.new(
   school: null,
   article_link: https://google.com,
   article_title: This is the title,
+  article_description: This is the description for this article,
+  article_site_name: Test Site,
+  article_publish_time: 2019-01-01T00:00:00.000Z,
+  article_image_url: https://google.com,
   position_types: null
 )
 ```

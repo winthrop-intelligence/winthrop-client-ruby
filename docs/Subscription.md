@@ -30,6 +30,7 @@
 | **send_renewal** | **Boolean** |  | [optional] |
 | **standard_agreement** | **Boolean** |  | [optional] |
 | **active_users_count** | **Integer** |  | [optional] |
+| **has_intercollegiate_access** | **Boolean** |  | [optional] |
 
 ## Example
 
@@ -62,7 +63,8 @@ instance = WinthropClient::Subscription.new(
   notes: This is a note,
   send_renewal: true,
   standard_agreement: true,
-  active_users_count: 5
+  active_users_count: 5,
+  has_intercollegiate_access: true
 )
 ```
 
