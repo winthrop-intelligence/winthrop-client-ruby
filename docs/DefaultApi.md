@@ -80,6 +80,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_foia_request**](DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} |  |
 | [**update_job_post**](DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post |
 | [**update_requested_item**](DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} |  |
+| [**verify_user_intercollegiate_access**](DefaultApi.md#verify_user_intercollegiate_access) | **GET** /api/v1/users/verify_user_intercollegiate_access |  |
 
 
 ## average_conference_comp
@@ -5896,5 +5897,79 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## verify_user_intercollegiate_access
+
+> <VerifyUserIntercollegiateAccess200Response> verify_user_intercollegiate_access(user_email)
+
+
+
+Verifies whether the user has intercollegiate access based on their email.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+user_email = 'user_email_example' # String | The email of the user whose intercollegiate access is being verified.
+
+begin
+  
+  result = api_instance.verify_user_intercollegiate_access(user_email)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->verify_user_intercollegiate_access: #{e}"
+end
+```
+
+#### Using the verify_user_intercollegiate_access_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<VerifyUserIntercollegiateAccess200Response>, Integer, Hash)> verify_user_intercollegiate_access_with_http_info(user_email)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.verify_user_intercollegiate_access_with_http_info(user_email)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <VerifyUserIntercollegiateAccess200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->verify_user_intercollegiate_access_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **user_email** | **String** | The email of the user whose intercollegiate access is being verified. |  |
+
+### Return type
+
+[**VerifyUserIntercollegiateAccess200Response**](VerifyUserIntercollegiateAccess200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
