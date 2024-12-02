@@ -9,6 +9,8 @@
 | **mode** | **Float** |  | [optional] |
 | **min** | **Float** |  | [optional] |
 | **max** | **Float** |  | [optional] |
+| **percentile_25** | **Float** |  | [optional] |
+| **percentile_75** | **Float** |  | [optional] |
 
 ## Example
 
@@ -20,7 +22,9 @@ instance = WinthropClient::AverageCompensation.new(
   median: null,
   mode: null,
   min: null,
-  max: null
+  max: null,
+  percentile_25: null,
+  percentile_75: null
 )
 ```
 
