@@ -63,11 +63,15 @@ WinthropClient.configure do |config|
   config.api_key['ApiKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # Configure faraday connection
+  config.configure_faraday_connection { |connection| 'YOUR CONNECTION CONFIG PROC' }
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
   # Configure a proc to get access tokens in lieu of the static access_token configuration
   config.access_token_getter = -> { 'YOUR TOKEN GETTER PROC' } 
+  # Configure faraday connection
+  config.configure_faraday_connection { |connection| 'YOUR CONNECTION CONFIG PROC' }
 end
 
 api_instance = WinthropClient::DefaultApi.new
