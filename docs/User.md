@@ -15,6 +15,8 @@
 | **accountable_id** | **Integer** |  | [optional] |
 | **accountable_type** | **String** |  | [optional] |
 | **coach_id** | **Integer** |  | [optional] |
+| **divisions** | [**Array&lt;Division&gt;**](Division.md) |  | [optional] |
+| **roles** | **Array&lt;String&gt;** |  | [optional] |
 
 ## Example
 
@@ -32,7 +34,9 @@ instance = WinthropClient::User.new(
   title: Director of Athletics,
   accountable_id: 1,
   accountable_type: School,
-  coach_id: 1
+  coach_id: 1,
+  divisions: null,
+  roles: null
 )
 ```
 

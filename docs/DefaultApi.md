@@ -80,6 +80,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_foia_request**](DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} |  |
 | [**update_job_post**](DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post |
 | [**update_requested_item**](DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} |  |
+| [**user_me**](DefaultApi.md#user_me) | **GET** /api/v1/users/me |  |
 | [**verify_user_intercollegiate_access**](DefaultApi.md#verify_user_intercollegiate_access) | **GET** /api/v1/users/verify_user_intercollegiate_access |  |
 
 
@@ -5897,6 +5898,77 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## user_me
+
+> <User> user_me
+
+
+
+Retrieve a single user
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.user_me
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->user_me: #{e}"
+end
+```
+
+#### Using the user_me_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<User>, Integer, Hash)> user_me_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.user_me_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <User>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->user_me_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**User**](User.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
