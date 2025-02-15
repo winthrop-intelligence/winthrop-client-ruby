@@ -28,12 +28,12 @@
 | **address_1** | **String** |  | [optional] |
 | **address_2** | **String** |  | [optional] |
 | **zip_code** | **String** |  | [optional] |
-| **logo** | [**Logo**](Logo.md) |  | [optional] |
+| **logo_image** | [**Logo**](Logo.md) |  | [optional] |
 | **athletic_director** | [**Coach**](Coach.md) |  | [optional] |
 | **athletics_url** | **String** |  | [optional] |
 | **wikipedia_url** | **String** |  | [optional] |
 | **athletics_wikipedia_url** | **String** |  | [optional] |
-| **external_logo** | [**Logo**](Logo.md) |  | [optional] |
+| **external_logo_image** | [**Logo**](Logo.md) |  | [optional] |
 | **school_status** | **String** |  | [optional] |
 | **athletics_instagram_handle** | **String** |  | [optional] |
 | **athletics_twitter_handle** | **String** |  | [optional] |
@@ -70,12 +70,12 @@ instance = WinthropClient::School.new(
   address_1: 739 University Blvd,
   address_2: Box 870158,
   zip_code: 35487,
-  logo: null,
+  logo_image: null,
   athletic_director: null,
   athletics_url: ,
   wikipedia_url: ,
   athletics_wikipedia_url: ,
-  external_logo: null,
+  external_logo_image: null,
   school_status: null,
   athletics_instagram_handle: ,
   athletics_twitter_handle: ,
