@@ -39,6 +39,7 @@
 | **athletics_twitter_handle** | **String** |  | [optional] |
 | **external_instagram_handle** | **String** |  | [optional] |
 | **external_twitter_handle** | **String** |  | [optional] |
+| **ncaa_id** | **Integer** |  | [optional] |
 
 ## Example
 
@@ -80,7 +81,8 @@ instance = WinthropClient::School.new(
   athletics_instagram_handle: ,
   athletics_twitter_handle: ,
   external_instagram_handle: ,
-  external_twitter_handle: 
+  external_twitter_handle: ,
+  ncaa_id: 306
 )
 ```
 
