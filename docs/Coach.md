@@ -27,6 +27,10 @@
 | **latest_salary** | **Integer** |  | [optional] |
 | **latest_salary_year** | **Integer** |  | [optional] |
 | **last_bio_text_updated_at** | **Time** |  | [optional] |
+| **instagram_scraping_disabled** | **Boolean** |  | [optional] |
+| **linkedin_scraping_disabled** | **Boolean** |  | [optional] |
+| **twitter_scraping_disabled** | **Boolean** |  | [optional] |
+| **email_scraping_disabled** | **Boolean** |  | [optional] |
 
 ## Example
 
@@ -56,7 +60,11 @@ instance = WinthropClient::Coach.new(
   avatar_scraping_disabled: false,
   latest_salary: 1,
   latest_salary_year: 2000,
-  last_bio_text_updated_at: 2019-01-01T00:00Z
+  last_bio_text_updated_at: 2019-01-01T00:00Z,
+  instagram_scraping_disabled: false,
+  linkedin_scraping_disabled: false,
+  twitter_scraping_disabled: false,
+  email_scraping_disabled: false
 )
 ```
 
