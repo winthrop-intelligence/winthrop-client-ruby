@@ -13,6 +13,7 @@
 | **meet_sport** | **Boolean** |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
+| **ncaa_id** | **String** |  | [optional] |
 
 ## Example
 
@@ -28,7 +29,8 @@ instance = WinthropClient::Sport.new(
   emerging: false,
   meet_sport: false,
   created_at: 2019-01-01T00:00Z,
-  updated_at: 2019-01-01T00:00Z
+  updated_at: 2019-01-01T00:00Z,
+  ncaa_id: MBA
 )
 ```
 

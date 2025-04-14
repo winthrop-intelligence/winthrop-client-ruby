@@ -44,6 +44,7 @@ docs/IncomeReport.md
 docs/IncomeReportCollection.md
 docs/IntercollegiateApi.md
 docs/Job.md
+docs/JobCandidate.md
 docs/JobCollection.md
 docs/JobDepartment.md
 docs/JobPost.md
@@ -130,6 +131,7 @@ lib/winthrop-client-ruby/models/game_collection.rb
 lib/winthrop-client-ruby/models/income_report.rb
 lib/winthrop-client-ruby/models/income_report_collection.rb
 lib/winthrop-client-ruby/models/job.rb
+lib/winthrop-client-ruby/models/job_candidate.rb
 lib/winthrop-client-ruby/models/job_collection.rb
 lib/winthrop-client-ruby/models/job_department.rb
 lib/winthrop-client-ruby/models/job_post.rb
@@ -170,5 +172,6 @@ lib/winthrop-client-ruby/models/user.rb
 lib/winthrop-client-ruby/models/user_collection.rb
 lib/winthrop-client-ruby/models/verify_user_intercollegiate_access200_response.rb
 lib/winthrop-client-ruby/version.rb
+spec/models/job_candidate_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

@@ -13,6 +13,7 @@
 | **school** | [**JobSchool**](JobSchool.md) |  | [optional] |
 | **departments** | [**Array&lt;JobDepartment&gt;**](JobDepartment.md) |  | [optional] |
 | **sports** | [**Array&lt;JobSport&gt;**](JobSport.md) |  | [optional] |
+| **candidates** | [**Array&lt;JobCandidate&gt;**](JobCandidate.md) |  | [optional] |
 
 ## Example
 
@@ -28,7 +29,8 @@ instance = WinthropClient::Job.new(
   created_at: 2019-01-01T00:00Z,
   school: null,
   departments: null,
-  sports: null
+  sports: null,
+  candidates: null
 )
 ```
 

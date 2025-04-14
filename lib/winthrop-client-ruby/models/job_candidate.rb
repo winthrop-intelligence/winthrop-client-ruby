@@ -14,17 +14,28 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class JobSchool
-    attr_accessor :name
+  class JobCandidate
+    attr_accessor :coach_id
 
-    # ID of School, You can view Alma Mater using School API
-    attr_accessor :winad_id
+    attr_accessor :id
+
+    attr_accessor :favorite_id
+
+    attr_accessor :created_by_id
+
+    attr_accessor :created_at
+
+    attr_accessor :shortlisted
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'winad_id' => :'winad_id'
+        :'coach_id' => :'coach_id',
+        :'id' => :'id',
+        :'favorite_id' => :'favorite_id',
+        :'created_by_id' => :'created_by_id',
+        :'created_at' => :'created_at',
+        :'shortlisted' => :'shortlisted'
       }
     end
 
@@ -36,8 +47,12 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'name' => :'String',
-        :'winad_id' => :'Integer'
+        :'coach_id' => :'String',
+        :'id' => :'Integer',
+        :'favorite_id' => :'Integer',
+        :'created_by_id' => :'Integer',
+        :'created_at' => :'Time',
+        :'shortlisted' => :'Boolean'
       }
     end
 
@@ -51,23 +66,39 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::JobSchool` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::JobCandidate` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::JobSchool`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::JobCandidate`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'coach_id')
+        self.coach_id = attributes[:'coach_id']
       end
 
-      if attributes.key?(:'winad_id')
-        self.winad_id = attributes[:'winad_id']
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
+      end
+
+      if attributes.key?(:'favorite_id')
+        self.favorite_id = attributes[:'favorite_id']
+      end
+
+      if attributes.key?(:'created_by_id')
+        self.created_by_id = attributes[:'created_by_id']
+      end
+
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'shortlisted')
+        self.shortlisted = attributes[:'shortlisted']
       end
     end
 
@@ -91,8 +122,12 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          winad_id == o.winad_id
+          coach_id == o.coach_id &&
+          id == o.id &&
+          favorite_id == o.favorite_id &&
+          created_by_id == o.created_by_id &&
+          created_at == o.created_at &&
+          shortlisted == o.shortlisted
     end
 
     # @see the `==` method
@@ -104,7 +139,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, winad_id].hash
+      [coach_id, id, favorite_id, created_by_id, created_at, shortlisted].hash
     end
 
     # Builds the object from hash
