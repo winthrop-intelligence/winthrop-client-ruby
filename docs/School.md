@@ -40,6 +40,9 @@
 | **external_instagram_handle** | **String** |  | [optional] |
 | **external_twitter_handle** | **String** |  | [optional] |
 | **ncaa_id** | **Integer** |  | [optional] |
+| **conference** | [**Conference**](Conference.md) |  | [optional] |
+| **division** | [**Division**](Division.md) |  | [optional] |
+| **subdivisions** | [**Array&lt;Subdivision&gt;**](Subdivision.md) |  | [optional] |
 
 ## Example
 
@@ -82,7 +85,10 @@ instance = WinthropClient::School.new(
   athletics_twitter_handle: ,
   external_instagram_handle: ,
   external_twitter_handle: ,
-  ncaa_id: 306
+  ncaa_id: 306,
+  conference: null,
+  division: null,
+  subdivisions: null
 )
 ```
 

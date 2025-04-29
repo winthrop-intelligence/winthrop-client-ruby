@@ -26,7 +26,7 @@
 | **base_salary_cents** | **Integer** |  | [optional] |
 | **bonus_has_contingents** | **Boolean** |  | [optional] |
 | **calculated_guaranteed_comp_cents** | **Integer** |  | [optional] |
-| **contingent_bonus_comp_cents** | **Integer** |  | [optional] |
+| **contingent_bonus** | **Boolean** |  | [optional] |
 | **noncontingent_bonus_comp_cents** | **Integer** |  | [optional] |
 | **compensation_type** | **String** |  | [optional] |
 | **media_link** | **String** |  | [optional] |
@@ -63,7 +63,7 @@ instance = WinthropClient::Compensation.new(
   base_salary_cents: 10000,
   bonus_has_contingents: false,
   calculated_guaranteed_comp_cents: 10000,
-  contingent_bonus_comp_cents: 10000,
+  contingent_bonus: true,
   noncontingent_bonus_comp_cents: 10000,
   compensation_type: This is a compensation type,
   media_link: This is a media link,

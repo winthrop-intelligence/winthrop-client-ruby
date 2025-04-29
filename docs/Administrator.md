@@ -30,7 +30,7 @@
 | **compensation_outside_income_cents** | **Integer** |  | [optional] |
 | **compensation_deferred_comp_cents** | **Integer** |  | [optional] |
 | **compensation_one_time_bonus_cents** | **Integer** |  | [optional] |
-| **compensation_contingent_bonus_comp_cents** | **Integer** |  | [optional] |
+| **compensation_contingent_bonus** | **Boolean** |  | [optional] |
 | **compensation_buyout_terms** | **String** |  | [optional] |
 | **compensation_is_car_provided** | **Boolean** |  | [optional] |
 | **compensation_country_club_dues_cents** | **Integer** |  | [optional] |
@@ -79,7 +79,7 @@ instance = WinthropClient::Administrator.new(
   compensation_outside_income_cents: 10000,
   compensation_deferred_comp_cents: 10000,
   compensation_one_time_bonus_cents: 10000,
-  compensation_contingent_bonus_comp_cents: 10000,
+  compensation_contingent_bonus: true,
   compensation_buyout_terms: This is a compensation buyout terms,
   compensation_is_car_provided: true,
   compensation_country_club_dues_cents: 10000,
