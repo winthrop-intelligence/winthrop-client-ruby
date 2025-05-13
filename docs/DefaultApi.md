@@ -63,6 +63,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_schools**](DefaultApi.md#get_schools) | **GET** /api/v1/schools |  |
 | [**get_season**](DefaultApi.md#get_season) | **GET** /api/v1/seasons/{seasonId} |  |
 | [**get_seasons**](DefaultApi.md#get_seasons) | **GET** /api/v1/seasons |  |
+| [**get_similar_coaches**](DefaultApi.md#get_similar_coaches) | **GET** /api/v1/coaches/{coachId}/similar_coaches |  |
 | [**get_sport**](DefaultApi.md#get_sport) | **GET** /api/v1/sports/{sportId} |  |
 | [**get_sports**](DefaultApi.md#get_sports) | **GET** /api/v1/sports |  |
 | [**get_subdivision**](DefaultApi.md#get_subdivision) | **GET** /api/v1/subdivisions/{subdivisionId} |  |
@@ -4593,6 +4594,88 @@ end
 ### Return type
 
 [**SeasonCollection**](SeasonCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_similar_coaches
+
+> <CoachCollection> get_similar_coaches(coach_id, opts)
+
+
+
+Retrieve similar coaches based on coach ID
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+coach_id = 56 # Integer | ID of coach to retrieve
+opts = {
+  q: { ... }, # Object | Ransack query
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56 # Integer | number of results per page.
+}
+
+begin
+  
+  result = api_instance.get_similar_coaches(coach_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_similar_coaches: #{e}"
+end
+```
+
+#### Using the get_similar_coaches_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CoachCollection>, Integer, Hash)> get_similar_coaches_with_http_info(coach_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_similar_coaches_with_http_info(coach_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CoachCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_similar_coaches_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **coach_id** | **Integer** | ID of coach to retrieve |  |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 100] |
+
+### Return type
+
+[**CoachCollection**](CoachCollection.md)
 
 ### Authorization
 
