@@ -1610,6 +1610,67 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Search Coaches by priority_ids
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. (default to 100)
+    # @option opts [Object] :q Ransack query
+    # @return [CoachCollection]
+    def search_coaches(opts = {})
+      data, _status_code, _headers = search_coaches_with_http_info(opts)
+      data
+    end
+
+    # Search Coaches by priority_ids
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. (default to 100)
+    # @option opts [Object] :q Ransack query
+    # @return [Array<(CoachCollection, Integer, Hash)>] CoachCollection data, response status code and response headers
+    def search_coaches_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.search_coaches ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/coaches/search'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'filters'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CoachCollection'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_coaches",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#search_coaches\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve a single compensation
     # @param compensation_id [Integer] ID of compensation to retrieve
     # @param [Hash] opts the optional parameters
