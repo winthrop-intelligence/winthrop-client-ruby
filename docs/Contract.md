@@ -24,10 +24,10 @@ require 'winthrop-client-ruby'
 
 instance = WinthropClient::Contract.new(
   id: 1,
-  executed_on: Tue Jan 01 00:00:00 UTC 2019,
-  expires_on: Tue Jan 01 00:00:00 UTC 2019,
-  start_on: Tue Jan 01 00:00:00 UTC 2019,
-  end_on: Tue Jan 01 00:00:00 UTC 2019,
+  executed_on: Mon Dec 31 18:00:00 CST 2018,
+  expires_on: Mon Dec 31 18:00:00 CST 2018,
+  start_on: Mon Dec 31 18:00:00 CST 2018,
+  end_on: Mon Dec 31 18:00:00 CST 2018,
   at_will: false,
   verified: false,
   contractable_type: Coach,
