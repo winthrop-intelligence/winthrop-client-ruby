@@ -14,16 +14,14 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class IncomeReportCollection
-    attr_accessor :data
-
-    attr_accessor :meta
+  class Filters
+    # Key-value pairs for filtering coaches
+    attr_accessor :filters
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'data' => :'data',
-        :'meta' => :'meta'
+        :'filters' => :'filters'
       }
     end
 
@@ -35,8 +33,7 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'data' => :'Array<IncomeReport>',
-        :'meta' => :'Meta'
+        :'filters' => :'Object'
       }
     end
 
@@ -50,25 +47,19 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::IncomeReportCollection` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::Filters` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::IncomeReportCollection`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::Filters`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'data')
-        if (value = attributes[:'data']).is_a?(Array)
-          self.data = value
-        end
-      end
-
-      if attributes.key?(:'meta')
-        self.meta = attributes[:'meta']
+      if attributes.key?(:'filters')
+        self.filters = attributes[:'filters']
       end
     end
 
@@ -92,8 +83,7 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          data == o.data &&
-          meta == o.meta
+          filters == o.filters
     end
 
     # @see the `==` method
@@ -105,7 +95,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data, meta].hash
+      [filters].hash
     end
 
     # Builds the object from hash

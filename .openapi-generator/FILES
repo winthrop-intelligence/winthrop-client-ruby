@@ -33,6 +33,7 @@ docs/DealStatusCollection.md
 docs/DefaultApi.md
 docs/Division.md
 docs/DivisionCollection.md
+docs/Filters.md
 docs/FinancialQc.md
 docs/FoiaLabel.md
 docs/FoiaLabelCollection.md
@@ -121,6 +122,7 @@ lib/winthrop-client-ruby/models/deal_status.rb
 lib/winthrop-client-ruby/models/deal_status_collection.rb
 lib/winthrop-client-ruby/models/division.rb
 lib/winthrop-client-ruby/models/division_collection.rb
+lib/winthrop-client-ruby/models/filters.rb
 lib/winthrop-client-ruby/models/financial_qc.rb
 lib/winthrop-client-ruby/models/foia_label.rb
 lib/winthrop-client-ruby/models/foia_label_collection.rb
@@ -172,5 +174,6 @@ lib/winthrop-client-ruby/models/user.rb
 lib/winthrop-client-ruby/models/user_collection.rb
 lib/winthrop-client-ruby/models/verify_user_intercollegiate_access200_response.rb
 lib/winthrop-client-ruby/version.rb
+spec/models/filters_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
