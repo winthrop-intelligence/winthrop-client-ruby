@@ -33,6 +33,8 @@ docs/DealStatusCollection.md
 docs/DefaultApi.md
 docs/Division.md
 docs/DivisionCollection.md
+docs/DossierApi.md
+docs/DossierReportResponse.md
 docs/Filters.md
 docs/FinancialQc.md
 docs/FoiaLabel.md
@@ -41,6 +43,7 @@ docs/FoiaRequest.md
 docs/FoiaRequestCollection.md
 docs/Game.md
 docs/GameCollection.md
+docs/HTTPValidationError.md
 docs/IncomeReport.md
 docs/IncomeReportCollection.md
 docs/IntercollegiateApi.md
@@ -55,6 +58,7 @@ docs/JobSport.md
 docs/Link.md
 docs/LinkCollection.md
 docs/LinkCollection1.md
+docs/LocationInner.md
 docs/Logo.md
 docs/Meta.md
 docs/NcaaFinancialReportStatus.md
@@ -86,9 +90,11 @@ docs/Tag.md
 docs/UnprocessableEntity.md
 docs/User.md
 docs/UserCollection.md
+docs/ValidationError.md
 docs/VerifyUserIntercollegiateAccess200Response.md
 lib/winthrop-client-ruby.rb
 lib/winthrop-client-ruby/api/default_api.rb
+lib/winthrop-client-ruby/api/dossier_api.rb
 lib/winthrop-client-ruby/api/intercollegiate_api.rb
 lib/winthrop-client-ruby/api/reporting_api.rb
 lib/winthrop-client-ruby/api/scraper_api.rb
@@ -122,6 +128,7 @@ lib/winthrop-client-ruby/models/deal_status.rb
 lib/winthrop-client-ruby/models/deal_status_collection.rb
 lib/winthrop-client-ruby/models/division.rb
 lib/winthrop-client-ruby/models/division_collection.rb
+lib/winthrop-client-ruby/models/dossier_report_response.rb
 lib/winthrop-client-ruby/models/filters.rb
 lib/winthrop-client-ruby/models/financial_qc.rb
 lib/winthrop-client-ruby/models/foia_label.rb
@@ -130,6 +137,7 @@ lib/winthrop-client-ruby/models/foia_request.rb
 lib/winthrop-client-ruby/models/foia_request_collection.rb
 lib/winthrop-client-ruby/models/game.rb
 lib/winthrop-client-ruby/models/game_collection.rb
+lib/winthrop-client-ruby/models/http_validation_error.rb
 lib/winthrop-client-ruby/models/income_report.rb
 lib/winthrop-client-ruby/models/income_report_collection.rb
 lib/winthrop-client-ruby/models/job.rb
@@ -143,6 +151,7 @@ lib/winthrop-client-ruby/models/job_sport.rb
 lib/winthrop-client-ruby/models/link.rb
 lib/winthrop-client-ruby/models/link_collection.rb
 lib/winthrop-client-ruby/models/link_collection1.rb
+lib/winthrop-client-ruby/models/location_inner.rb
 lib/winthrop-client-ruby/models/logo.rb
 lib/winthrop-client-ruby/models/meta.rb
 lib/winthrop-client-ruby/models/ncaa_financial_report_status.rb
@@ -172,8 +181,13 @@ lib/winthrop-client-ruby/models/tag.rb
 lib/winthrop-client-ruby/models/unprocessable_entity.rb
 lib/winthrop-client-ruby/models/user.rb
 lib/winthrop-client-ruby/models/user_collection.rb
+lib/winthrop-client-ruby/models/validation_error.rb
 lib/winthrop-client-ruby/models/verify_user_intercollegiate_access200_response.rb
 lib/winthrop-client-ruby/version.rb
-spec/models/filters_spec.rb
+spec/api/dossier_api_spec.rb
+spec/models/dossier_report_response_spec.rb
+spec/models/http_validation_error_spec.rb
+spec/models/location_inner_spec.rb
+spec/models/validation_error_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
