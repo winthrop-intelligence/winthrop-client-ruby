@@ -4,7 +4,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**university_dossier_report_dossier_winad_id_get**](DossierApi.md#university_dossier_report_dossier_winad_id_get) | **GET** /dossier/dossier/{winad_id}/ | University Dossier Report |
+| [**university_dossier_report_dossier_winad_id_get**](DossierApi.md#university_dossier_report_dossier_winad_id_get) | **GET** /dossier/{winad_id}/ | University Dossier Report |
 
 
 ## university_dossier_report_dossier_winad_id_get
