@@ -23,6 +23,8 @@
 | **current_tenure_years** | **Integer** |  | [optional] |
 | **avatar** | [**Avatar**](Avatar.md) |  | [optional] |
 | **years_of_experience** | **Integer** |  | [optional] |
+| **external_years_experience** | **Integer** |  | [optional] |
+| **athletic_years_of_experience** | **Integer** |  | [optional] |
 | **avatar_scraping_disabled** | **Boolean** |  | [optional] |
 | **latest_salary** | **Integer** |  | [optional] |
 | **latest_salary_year** | **Integer** |  | [optional] |
@@ -57,6 +59,8 @@ instance = WinthropClient::Coach.new(
   current_tenure_years: 1,
   avatar: null,
   years_of_experience: 1,
+  external_years_experience: 1,
+  athletic_years_of_experience: 1,
   avatar_scraping_disabled: false,
   latest_salary: 1,
   latest_salary_year: 2000,
