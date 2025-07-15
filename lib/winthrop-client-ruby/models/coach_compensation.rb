@@ -14,19 +14,26 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class ValidationError
-    attr_accessor :loc
+  class CoachCompensation
+    attr_accessor :coach_id
 
-    attr_accessor :msg
+    attr_accessor :estimated
 
-    attr_accessor :type
+    # The base salary (rounded to 2 decimal places)
+    attr_accessor :salary
+
+    attr_accessor :year
+
+    attr_accessor :coli_salary
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'loc' => :'loc',
-        :'msg' => :'msg',
-        :'type' => :'type'
+        :'coach_id' => :'coach_id',
+        :'estimated' => :'estimated',
+        :'salary' => :'salary',
+        :'year' => :'year',
+        :'coli_salary' => :'coli_salary'
       }
     end
 
@@ -38,9 +45,11 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'loc' => :'Array<LocationInner>',
-        :'msg' => :'String',
-        :'type' => :'String'
+        :'coach_id' => :'Integer',
+        :'estimated' => :'Boolean',
+        :'salary' => :'Float',
+        :'year' => :'Integer',
+        :'coli_salary' => :'Float'
       }
     end
 
@@ -54,35 +63,35 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::ValidationError` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::CoachCompensation` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::ValidationError`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::CoachCompensation`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'loc')
-        if (value = attributes[:'loc']).is_a?(Array)
-          self.loc = value
-        end
-      else
-        self.loc = nil
+      if attributes.key?(:'coach_id')
+        self.coach_id = attributes[:'coach_id']
       end
 
-      if attributes.key?(:'msg')
-        self.msg = attributes[:'msg']
-      else
-        self.msg = nil
+      if attributes.key?(:'estimated')
+        self.estimated = attributes[:'estimated']
       end
 
-      if attributes.key?(:'type')
-        self.type = attributes[:'type']
-      else
-        self.type = nil
+      if attributes.key?(:'salary')
+        self.salary = attributes[:'salary']
+      end
+
+      if attributes.key?(:'year')
+        self.year = attributes[:'year']
+      end
+
+      if attributes.key?(:'coli_salary')
+        self.coli_salary = attributes[:'coli_salary']
       end
     end
 
@@ -91,18 +100,6 @@ module WinthropClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @loc.nil?
-        invalid_properties.push('invalid value for "loc", loc cannot be nil.')
-      end
-
-      if @msg.nil?
-        invalid_properties.push('invalid value for "msg", msg cannot be nil.')
-      end
-
-      if @type.nil?
-        invalid_properties.push('invalid value for "type", type cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -110,9 +107,6 @@ module WinthropClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @loc.nil?
-      return false if @msg.nil?
-      return false if @type.nil?
       true
     end
 
@@ -121,9 +115,11 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          loc == o.loc &&
-          msg == o.msg &&
-          type == o.type
+          coach_id == o.coach_id &&
+          estimated == o.estimated &&
+          salary == o.salary &&
+          year == o.year &&
+          coli_salary == o.coli_salary
     end
 
     # @see the `==` method
@@ -135,7 +131,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [loc, msg, type].hash
+      [coach_id, estimated, salary, year, coli_salary].hash
     end
 
     # Builds the object from hash
