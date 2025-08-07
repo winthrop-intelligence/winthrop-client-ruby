@@ -22,6 +22,9 @@
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
 | **categories** | [**Array&lt;Category&gt;**](Category.md) |  | [optional] |
+| **ml_is_athletics** | **Boolean** |  | [optional] |
+| **llm_is_athletics** | **Boolean** |  | [optional] |
+| **human_override_is_athletics** | **Boolean** |  | [optional] |
 
 ## Example
 
@@ -46,7 +49,10 @@ instance = WinthropClient::JobPost.new(
   expired: null,
   created_at: null,
   updated_at: null,
-  categories: null
+  categories: null,
+  ml_is_athletics: null,
+  llm_is_athletics: null,
+  human_override_is_athletics: null
 )
 ```
 
