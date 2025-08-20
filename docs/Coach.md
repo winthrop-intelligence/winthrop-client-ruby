@@ -33,6 +33,8 @@
 | **linkedin_scraping_disabled** | **Boolean** |  | [optional] |
 | **twitter_scraping_disabled** | **Boolean** |  | [optional] |
 | **email_scraping_disabled** | **Boolean** |  | [optional] |
+| **mobility_index** | **Integer** |  | [optional] |
+| **has_new_job** | **Boolean** |  | [optional] |
 
 ## Example
 
@@ -68,7 +70,9 @@ instance = WinthropClient::Coach.new(
   instagram_scraping_disabled: false,
   linkedin_scraping_disabled: false,
   twitter_scraping_disabled: false,
-  email_scraping_disabled: false
+  email_scraping_disabled: false,
+  mobility_index: 5,
+  has_new_job: false
 )
 ```
 
