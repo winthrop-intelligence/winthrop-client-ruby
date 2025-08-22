@@ -25,6 +25,7 @@
 | **ml_is_athletics** | **Boolean** |  | [optional] |
 | **llm_is_athletics** | **Boolean** |  | [optional] |
 | **human_override_is_athletics** | **Boolean** |  | [optional] |
+| **status** | **String** |  | [optional] |
 
 ## Example
 
@@ -52,7 +53,8 @@ instance = WinthropClient::JobPost.new(
   categories: null,
   ml_is_athletics: null,
   llm_is_athletics: null,
-  human_override_is_athletics: null
+  human_override_is_athletics: null,
+  status: null
 )
 ```
 
