@@ -44,6 +44,7 @@ docs/FoiaRequest.md
 docs/FoiaRequestCollection.md
 docs/Game.md
 docs/GameCollection.md
+docs/GetWireChanges200Response.md
 docs/HTTPValidationError.md
 docs/IncomeReport.md
 docs/IncomeReportCollection.md
@@ -93,6 +94,9 @@ docs/User.md
 docs/UserCollection.md
 docs/ValidationError.md
 docs/VerifyUserIntercollegiateAccess200Response.md
+docs/WireChange.md
+docs/WireChangePositionTypesInner.md
+docs/WireChangeSportsInner.md
 lib/winthrop-client-ruby.rb
 lib/winthrop-client-ruby/api/default_api.rb
 lib/winthrop-client-ruby/api/dossier_api.rb
@@ -139,6 +143,7 @@ lib/winthrop-client-ruby/models/foia_request.rb
 lib/winthrop-client-ruby/models/foia_request_collection.rb
 lib/winthrop-client-ruby/models/game.rb
 lib/winthrop-client-ruby/models/game_collection.rb
+lib/winthrop-client-ruby/models/get_wire_changes200_response.rb
 lib/winthrop-client-ruby/models/http_validation_error.rb
 lib/winthrop-client-ruby/models/income_report.rb
 lib/winthrop-client-ruby/models/income_report_collection.rb
@@ -185,6 +190,13 @@ lib/winthrop-client-ruby/models/user.rb
 lib/winthrop-client-ruby/models/user_collection.rb
 lib/winthrop-client-ruby/models/validation_error.rb
 lib/winthrop-client-ruby/models/verify_user_intercollegiate_access200_response.rb
+lib/winthrop-client-ruby/models/wire_change.rb
+lib/winthrop-client-ruby/models/wire_change_position_types_inner.rb
+lib/winthrop-client-ruby/models/wire_change_sports_inner.rb
 lib/winthrop-client-ruby/version.rb
+spec/models/get_wire_changes200_response_spec.rb
+spec/models/wire_change_position_types_inner_spec.rb
+spec/models/wire_change_spec.rb
+spec/models/wire_change_sports_inner_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

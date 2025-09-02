@@ -74,6 +74,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_system_settings**](DefaultApi.md#get_system_settings) | **GET** /api/v1/system_setting |  |
 | [**get_user**](DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} |  |
 | [**get_users**](DefaultApi.md#get_users) | **GET** /api/v1/users |  |
+| [**get_wire_changes**](DefaultApi.md#get_wire_changes) | **GET** /api/v1/wire_changes |  |
 | [**search_coaches**](DefaultApi.md#search_coaches) | **POST** /api/v1/coaches/search |  |
 | [**update_coach**](DefaultApi.md#update_coach) | **PATCH** /api/v1/coaches/{coachId} |  |
 | [**update_compensation**](DefaultApi.md#update_compensation) | **PATCH** /api/v1/compensations/{compensationId} |  |
@@ -5441,6 +5442,92 @@ end
 ### Return type
 
 [**UserCollection**](UserCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_wire_changes
+
+> <GetWireChanges200Response> get_wire_changes(opts)
+
+
+
+Returns WireChange records. Supports Ransack-style filters (`q[...]`). Includes related position_types and sports arrays in each object. Maximum 400 records per page.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... }, # Object | Ransack query
+  q_coach_id_eq: 56, # Integer | Filter by coach ID
+  q_school_id_eq: 56, # Integer | Filter by school ID
+  q_sport_id_eq: 56 # Integer | Filter by sport ID
+}
+
+begin
+  
+  result = api_instance.get_wire_changes(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_wire_changes: #{e}"
+end
+```
+
+#### Using the get_wire_changes_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetWireChanges200Response>, Integer, Hash)> get_wire_changes_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_wire_changes_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetWireChanges200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_wire_changes_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 100] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+| **q_coach_id_eq** | **Integer** | Filter by coach ID | [optional] |
+| **q_school_id_eq** | **Integer** | Filter by school ID | [optional] |
+| **q_sport_id_eq** | **Integer** | Filter by sport ID | [optional] |
+
+### Return type
+
+[**GetWireChanges200Response**](GetWireChanges200Response.md)
 
 ### Authorization
 
