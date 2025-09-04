@@ -223,7 +223,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 100] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query | [optional] |
 
 ### Return type

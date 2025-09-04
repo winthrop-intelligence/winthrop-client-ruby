@@ -14,28 +14,22 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class JobCandidate
-    attr_accessor :coach_id
-
+  class WireChangeCoach
     attr_accessor :id
 
-    attr_accessor :favorite_id
+    attr_accessor :first_name
 
-    attr_accessor :created_by_id
+    attr_accessor :last_name
 
-    attr_accessor :created_at
-
-    attr_accessor :shortlisted
+    attr_accessor :avatar
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'coach_id' => :'coach_id',
         :'id' => :'id',
-        :'favorite_id' => :'favorite_id',
-        :'created_by_id' => :'created_by_id',
-        :'created_at' => :'created_at',
-        :'shortlisted' => :'shortlisted'
+        :'first_name' => :'first_name',
+        :'last_name' => :'last_name',
+        :'avatar' => :'avatar'
       }
     end
 
@@ -47,12 +41,10 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'coach_id' => :'String',
         :'id' => :'Integer',
-        :'favorite_id' => :'Integer',
-        :'created_by_id' => :'Integer',
-        :'created_at' => :'Time',
-        :'shortlisted' => :'Boolean'
+        :'first_name' => :'String',
+        :'last_name' => :'String',
+        :'avatar' => :'Avatar'
       }
     end
 
@@ -66,39 +58,31 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::JobCandidate` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::WireChangeCoach` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::JobCandidate`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::WireChangeCoach`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'coach_id')
-        self.coach_id = attributes[:'coach_id']
-      end
 
       if attributes.key?(:'id')
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'favorite_id')
-        self.favorite_id = attributes[:'favorite_id']
+      if attributes.key?(:'first_name')
+        self.first_name = attributes[:'first_name']
       end
 
-      if attributes.key?(:'created_by_id')
-        self.created_by_id = attributes[:'created_by_id']
+      if attributes.key?(:'last_name')
+        self.last_name = attributes[:'last_name']
       end
 
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'shortlisted')
-        self.shortlisted = attributes[:'shortlisted']
+      if attributes.key?(:'avatar')
+        self.avatar = attributes[:'avatar']
       end
     end
 
@@ -122,12 +106,10 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          coach_id == o.coach_id &&
           id == o.id &&
-          favorite_id == o.favorite_id &&
-          created_by_id == o.created_by_id &&
-          created_at == o.created_at &&
-          shortlisted == o.shortlisted
+          first_name == o.first_name &&
+          last_name == o.last_name &&
+          avatar == o.avatar
     end
 
     # @see the `==` method
@@ -139,7 +121,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [coach_id, id, favorite_id, created_by_id, created_at, shortlisted].hash
+      [id, first_name, last_name, avatar].hash
     end
 
     # Builds the object from hash

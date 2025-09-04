@@ -95,8 +95,8 @@ docs/UserCollection.md
 docs/ValidationError.md
 docs/VerifyUserIntercollegiateAccess200Response.md
 docs/WireChange.md
-docs/WireChangePositionTypesInner.md
-docs/WireChangeSportsInner.md
+docs/WireChangeCoach.md
+docs/WireChangeSchool.md
 lib/winthrop-client-ruby.rb
 lib/winthrop-client-ruby/api/default_api.rb
 lib/winthrop-client-ruby/api/dossier_api.rb
@@ -191,12 +191,10 @@ lib/winthrop-client-ruby/models/user_collection.rb
 lib/winthrop-client-ruby/models/validation_error.rb
 lib/winthrop-client-ruby/models/verify_user_intercollegiate_access200_response.rb
 lib/winthrop-client-ruby/models/wire_change.rb
-lib/winthrop-client-ruby/models/wire_change_position_types_inner.rb
-lib/winthrop-client-ruby/models/wire_change_sports_inner.rb
+lib/winthrop-client-ruby/models/wire_change_coach.rb
+lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
-spec/models/get_wire_changes200_response_spec.rb
-spec/models/wire_change_position_types_inner_spec.rb
-spec/models/wire_change_spec.rb
-spec/models/wire_change_sports_inner_spec.rb
+spec/models/wire_change_coach_spec.rb
+spec/models/wire_change_school_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
