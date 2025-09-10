@@ -1558,75 +1558,6 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Retrieve compensation estimate (base salary, year, and COL-adjusted salary) for a private school coach
-    # @param coaches_ids [Array<Integer>] IDs of the coaches
-    # @param user_school_id [Integer] ID of the school whose cost-of-living index should be used
-    # @param [Hash] opts the optional parameters
-    # @return [CoachCompensation]
-    def get_coach_compensation(coaches_ids, user_school_id, opts = {})
-      data, _status_code, _headers = get_coach_compensation_with_http_info(coaches_ids, user_school_id, opts)
-      data
-    end
-
-    # Retrieve compensation estimate (base salary, year, and COL-adjusted salary) for a private school coach
-    # @param coaches_ids [Array<Integer>] IDs of the coaches
-    # @param user_school_id [Integer] ID of the school whose cost-of-living index should be used
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(CoachCompensation, Integer, Hash)>] CoachCompensation data, response status code and response headers
-    def get_coach_compensation_with_http_info(coaches_ids, user_school_id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.get_coach_compensation ...'
-      end
-      # verify the required parameter 'coaches_ids' is set
-      if @api_client.config.client_side_validation && coaches_ids.nil?
-        fail ArgumentError, "Missing the required parameter 'coaches_ids' when calling DefaultApi.get_coach_compensation"
-      end
-      # verify the required parameter 'user_school_id' is set
-      if @api_client.config.client_side_validation && user_school_id.nil?
-        fail ArgumentError, "Missing the required parameter 'user_school_id' when calling DefaultApi.get_coach_compensation"
-      end
-      # resource path
-      local_var_path = '/api/v1/coach_compensations/get_coach_compensation'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-      query_params[:'coaches_ids'] = @api_client.build_collection_param(coaches_ids, :csv)
-      query_params[:'user_school_id'] = user_school_id
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'CoachCompensation'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.get_coach_compensation",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#get_coach_compensation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Retrieve some or all coaches
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
@@ -3754,6 +3685,67 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_school\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve alternate names for a specific school
+    # @param school_id [Integer] ID of school to retrieve alternate names for
+    # @param [Hash] opts the optional parameters
+    # @return [GetSchoolAlternateNames200Response]
+    def get_school_alternate_names(school_id, opts = {})
+      data, _status_code, _headers = get_school_alternate_names_with_http_info(school_id, opts)
+      data
+    end
+
+    # Retrieve alternate names for a specific school
+    # @param school_id [Integer] ID of school to retrieve alternate names for
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GetSchoolAlternateNames200Response, Integer, Hash)>] GetSchoolAlternateNames200Response data, response status code and response headers
+    def get_school_alternate_names_with_http_info(school_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_school_alternate_names ...'
+      end
+      # verify the required parameter 'school_id' is set
+      if @api_client.config.client_side_validation && school_id.nil?
+        fail ArgumentError, "Missing the required parameter 'school_id' when calling DefaultApi.get_school_alternate_names"
+      end
+      # resource path
+      local_var_path = '/api/v1/schools/{schoolId}/alternate_names'.sub('{' + 'schoolId' + '}', CGI.escape(school_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GetSchoolAlternateNames200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_school_alternate_names",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_school_alternate_names\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

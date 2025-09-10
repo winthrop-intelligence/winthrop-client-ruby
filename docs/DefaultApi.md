@@ -27,7 +27,6 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_audited_financial_report_statuses**](DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses |  |
 | [**get_categories**](DefaultApi.md#get_categories) | **GET** /central_jobs/categories | List all categories |
 | [**get_coach**](DefaultApi.md#get_coach) | **GET** /api/v1/coaches/{coachId} |  |
-| [**get_coach_compensation**](DefaultApi.md#get_coach_compensation) | **GET** /api/v1/coach_compensations/get_coach_compensation |  |
 | [**get_coaches**](DefaultApi.md#get_coaches) | **GET** /api/v1/coaches |  |
 | [**get_compensation**](DefaultApi.md#get_compensation) | **GET** /api/v1/compensations/{compensationId} |  |
 | [**get_compensations**](DefaultApi.md#get_compensations) | **GET** /api/v1/compensations |  |
@@ -61,6 +60,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_requested_item**](DefaultApi.md#get_requested_item) | **GET** /api/v1/requested_items/{requestedItemId} |  |
 | [**get_requested_items**](DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items |  |
 | [**get_school**](DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} |  |
+| [**get_school_alternate_names**](DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names |  |
 | [**get_schools**](DefaultApi.md#get_schools) | **GET** /api/v1/schools |  |
 | [**get_season**](DefaultApi.md#get_season) | **GET** /api/v1/seasons/{seasonId} |  |
 | [**get_seasons**](DefaultApi.md#get_seasons) | **GET** /api/v1/seasons |  |
@@ -1825,82 +1825,6 @@ end
 ### Return type
 
 [**Coach**](Coach.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## get_coach_compensation
-
-> <CoachCompensation> get_coach_compensation(coaches_ids, user_school_id)
-
-
-
-Retrieve compensation estimate (base salary, year, and COL-adjusted salary) for a private school coach
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-coaches_ids = [37] # Array<Integer> | IDs of the coaches
-user_school_id = 56 # Integer | ID of the school whose cost-of-living index should be used
-
-begin
-  
-  result = api_instance.get_coach_compensation(coaches_ids, user_school_id)
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_coach_compensation: #{e}"
-end
-```
-
-#### Using the get_coach_compensation_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<CoachCompensation>, Integer, Hash)> get_coach_compensation_with_http_info(coaches_ids, user_school_id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.get_coach_compensation_with_http_info(coaches_ids, user_school_id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <CoachCompensation>
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_coach_compensation_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **coaches_ids** | [**Array&lt;Integer&gt;**](Integer.md) | IDs of the coaches |  |
-| **user_school_id** | **Integer** | ID of the school whose cost-of-living index should be used |  |
-
-### Return type
-
-[**CoachCompensation**](CoachCompensation.md)
 
 ### Authorization
 
@@ -4439,6 +4363,80 @@ end
 ### Return type
 
 [**School**](School.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_school_alternate_names
+
+> <GetSchoolAlternateNames200Response> get_school_alternate_names(school_id)
+
+
+
+Retrieve alternate names for a specific school
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | ID of school to retrieve alternate names for
+
+begin
+  
+  result = api_instance.get_school_alternate_names(school_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_school_alternate_names: #{e}"
+end
+```
+
+#### Using the get_school_alternate_names_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetSchoolAlternateNames200Response>, Integer, Hash)> get_school_alternate_names_with_http_info(school_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_school_alternate_names_with_http_info(school_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetSchoolAlternateNames200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_school_alternate_names_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** | ID of school to retrieve alternate names for |  |
+
+### Return type
+
+[**GetSchoolAlternateNames200Response**](GetSchoolAlternateNames200Response.md)
 
 ### Authorization
 

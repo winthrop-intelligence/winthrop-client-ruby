@@ -7,6 +7,7 @@
 | **id** | **Integer** |  | [optional] |
 | **first_name** | **String** |  | [optional] |
 | **last_name** | **String** |  | [optional] |
+| **full_name** | **String** |  | [optional] |
 | **email** | **String** |  | [optional] |
 | **phone** | **String** |  | [optional] |
 | **leader** | **Boolean** |  | [optional] |
@@ -33,6 +34,8 @@
 | **linkedin_scraping_disabled** | **Boolean** |  | [optional] |
 | **twitter_scraping_disabled** | **Boolean** |  | [optional] |
 | **email_scraping_disabled** | **Boolean** |  | [optional] |
+| **estimated_salary** | **Boolean** |  | [optional] |
+| **formatted_coli_salary** | **Integer** |  | [optional] |
 | **mobility_index** | **Integer** |  | [optional] |
 | **has_new_job** | **Boolean** |  | [optional] |
 
@@ -45,6 +48,7 @@ instance = WinthropClient::Coach.new(
   id: 1,
   first_name: John,
   last_name: Doe,
+  full_name: John Doe,
   email: jdoe@alabama.edu,
   phone: 555-555-5555,
   leader: false,
@@ -71,6 +75,8 @@ instance = WinthropClient::Coach.new(
   linkedin_scraping_disabled: false,
   twitter_scraping_disabled: false,
   email_scraping_disabled: false,
+  estimated_salary: true,
+  formatted_coli_salary: 100,
   mobility_index: 5,
   has_new_job: false
 )
