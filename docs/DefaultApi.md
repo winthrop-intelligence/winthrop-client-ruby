@@ -39,8 +39,10 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_contacts**](DefaultApi.md#get_contacts) | **GET** /api/v1/contacts |  |
 | [**get_contract**](DefaultApi.md#get_contract) | **GET** /api/v1/contracts/{contractId} |  |
 | [**get_contracts**](DefaultApi.md#get_contracts) | **GET** /api/v1/contracts |  |
+| [**get_deal**](DefaultApi.md#get_deal) | **GET** /api/v1/deals/{dealId} |  |
 | [**get_deal_status**](DefaultApi.md#get_deal_status) | **GET** /api/v1/deal_statuses/{dealStatusId} |  |
 | [**get_deal_statuses**](DefaultApi.md#get_deal_statuses) | **GET** /api/v1/deal_statuses |  |
+| [**get_deals**](DefaultApi.md#get_deals) | **GET** /api/v1/deals |  |
 | [**get_division**](DefaultApi.md#get_division) | **GET** /api/v1/divisions/{divisionId} |  |
 | [**get_divisions**](DefaultApi.md#get_divisions) | **GET** /api/v1/divisions |  |
 | [**get_foia_label**](DefaultApi.md#get_foia_label) | **GET** /api/v1/foia_labels/{foiaLabelId} |  |
@@ -58,6 +60,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_news_feed**](DefaultApi.md#get_news_feed) | **GET** /wi_jobs/news_feeds/{newsFeedId} | Get a news feed |
 | [**get_position**](DefaultApi.md#get_position) | **GET** /api/v1/positions/{positionId} |  |
 | [**get_positions**](DefaultApi.md#get_positions) | **GET** /api/v1/positions |  |
+| [**get_raw_contract**](DefaultApi.md#get_raw_contract) | **GET** /api/v1/raw_contracts/{raw_contractId} |  |
+| [**get_raw_contracts**](DefaultApi.md#get_raw_contracts) | **GET** /api/v1/raw_contracts |  |
 | [**get_requested_item**](DefaultApi.md#get_requested_item) | **GET** /api/v1/requested_items/{requestedItemId} |  |
 | [**get_requested_items**](DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items |  |
 | [**get_school**](DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} |  |
@@ -74,6 +78,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_system_settings**](DefaultApi.md#get_system_settings) | **GET** /api/v1/system_setting |  |
 | [**get_user**](DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} |  |
 | [**get_users**](DefaultApi.md#get_users) | **GET** /api/v1/users |  |
+| [**get_vendor**](DefaultApi.md#get_vendor) | **GET** /api/v1/vendors/{vendorId} |  |
+| [**get_vendors**](DefaultApi.md#get_vendors) | **GET** /api/v1/vendors |  |
 | [**get_wire_changes**](DefaultApi.md#get_wire_changes) | **GET** /api/v1/wire_changes |  |
 | [**search_coaches**](DefaultApi.md#search_coaches) | **POST** /api/v1/coaches/search |  |
 | [**update_coach**](DefaultApi.md#update_coach) | **PATCH** /api/v1/coaches/{coachId} |  |
@@ -2762,6 +2768,80 @@ end
 - **Accept**: application/json
 
 
+## get_deal
+
+> <Deal> get_deal(deal_id)
+
+
+
+Retrieve a single Deal
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+deal_id = 56 # Integer | ID of the Deal
+
+begin
+  
+  result = api_instance.get_deal(deal_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_deal: #{e}"
+end
+```
+
+#### Using the get_deal_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Deal>, Integer, Hash)> get_deal_with_http_info(deal_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_deal_with_http_info(deal_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Deal>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_deal_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **deal_id** | **Integer** | ID of the Deal |  |
+
+### Return type
+
+[**Deal**](Deal.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_deal_status
 
 > <DealStatus> get_deal_status(deal_status_id)
@@ -2905,6 +2985,86 @@ end
 ### Return type
 
 [**DealStatusCollection**](DealStatusCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_deals
+
+> <DealCollection> get_deals(opts)
+
+
+
+Retrieve some or all deals
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  
+  result = api_instance.get_deals(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_deals: #{e}"
+end
+```
+
+#### Using the get_deals_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DealCollection>, Integer, Hash)> get_deals_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_deals_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DealCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_deals_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**DealCollection**](DealCollection.md)
 
 ### Authorization
 
@@ -4222,6 +4382,160 @@ end
 - **Accept**: application/json
 
 
+## get_raw_contract
+
+> <RawContract> get_raw_contract(raw_contract_id)
+
+
+
+Retrieve a single RawContract
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+raw_contract_id = 56 # Integer | ID of the RawContract
+
+begin
+  
+  result = api_instance.get_raw_contract(raw_contract_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_raw_contract: #{e}"
+end
+```
+
+#### Using the get_raw_contract_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RawContract>, Integer, Hash)> get_raw_contract_with_http_info(raw_contract_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_raw_contract_with_http_info(raw_contract_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RawContract>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_raw_contract_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **raw_contract_id** | **Integer** | ID of the RawContract |  |
+
+### Return type
+
+[**RawContract**](RawContract.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_raw_contracts
+
+> <RawContractCollection> get_raw_contracts(opts)
+
+
+
+Retrieve some or all raw_contracts
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  
+  result = api_instance.get_raw_contracts(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_raw_contracts: #{e}"
+end
+```
+
+#### Using the get_raw_contracts_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RawContractCollection>, Integer, Hash)> get_raw_contracts_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_raw_contracts_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RawContractCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_raw_contracts_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**RawContractCollection**](RawContractCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_requested_item
 
 > <RequestedItem> get_requested_item(requested_item_id)
@@ -5442,6 +5756,160 @@ end
 ### Return type
 
 [**UserCollection**](UserCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_vendor
+
+> <Vendor> get_vendor(vendor_id)
+
+
+
+Retrieve a single Vendor
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+vendor_id = 56 # Integer | ID of the Vendor
+
+begin
+  
+  result = api_instance.get_vendor(vendor_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_vendor: #{e}"
+end
+```
+
+#### Using the get_vendor_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Vendor>, Integer, Hash)> get_vendor_with_http_info(vendor_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_vendor_with_http_info(vendor_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Vendor>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_vendor_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **vendor_id** | **Integer** | ID of the Vendor |  |
+
+### Return type
+
+[**Vendor**](Vendor.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_vendors
+
+> <VendorCollection> get_vendors(opts)
+
+
+
+Retrieve some or all vendors
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  
+  result = api_instance.get_vendors(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_vendors: #{e}"
+end
+```
+
+#### Using the get_vendors_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<VendorCollection>, Integer, Hash)> get_vendors_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_vendors_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <VendorCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_vendors_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**VendorCollection**](VendorCollection.md)
 
 ### Authorization
 
