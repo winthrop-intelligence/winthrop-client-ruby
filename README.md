@@ -152,6 +152,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_requested_item**](docs/DefaultApi.md#get_requested_item) | **GET** /api/v1/requested_items/{requestedItemId} | 
 *WinthropClient::DefaultApi* | [**get_requested_items**](docs/DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items | 
 *WinthropClient::DefaultApi* | [**get_school**](docs/DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
+*WinthropClient::DefaultApi* | [**get_school_alternate_names**](docs/DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names | 
 *WinthropClient::DefaultApi* | [**get_schools**](docs/DefaultApi.md#get_schools) | **GET** /api/v1/schools | 
 *WinthropClient::DefaultApi* | [**get_season**](docs/DefaultApi.md#get_season) | **GET** /api/v1/seasons/{seasonId} | 
 *WinthropClient::DefaultApi* | [**get_seasons**](docs/DefaultApi.md#get_seasons) | **GET** /api/v1/seasons | 
@@ -238,6 +239,8 @@ Class | Method | HTTP request | Description
  - [WinthropClient::FoiaRequestCollection](docs/FoiaRequestCollection.md)
  - [WinthropClient::Game](docs/Game.md)
  - [WinthropClient::GameCollection](docs/GameCollection.md)
+ - [WinthropClient::GetSchoolAlternateNames200Response](docs/GetSchoolAlternateNames200Response.md)
+ - [WinthropClient::GetSchoolAlternateNames404Response](docs/GetSchoolAlternateNames404Response.md)
  - [WinthropClient::GetWireChanges200Response](docs/GetWireChanges200Response.md)
  - [WinthropClient::HTTPValidationError](docs/HTTPValidationError.md)
  - [WinthropClient::IncomeReport](docs/IncomeReport.md)

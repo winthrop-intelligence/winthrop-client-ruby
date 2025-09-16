@@ -65,6 +65,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_requested_item**](DefaultApi.md#get_requested_item) | **GET** /api/v1/requested_items/{requestedItemId} |  |
 | [**get_requested_items**](DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items |  |
 | [**get_school**](DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} |  |
+| [**get_school_alternate_names**](DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names |  |
 | [**get_schools**](DefaultApi.md#get_schools) | **GET** /api/v1/schools |  |
 | [**get_season**](DefaultApi.md#get_season) | **GET** /api/v1/seasons/{seasonId} |  |
 | [**get_seasons**](DefaultApi.md#get_seasons) | **GET** /api/v1/seasons |  |
@@ -4764,9 +4765,91 @@ end
 - **Accept**: application/json
 
 
+## get_school_alternate_names
+
+> <GetSchoolAlternateNames200Response> get_school_alternate_names(school_id, opts)
+
+
+
+Retrieve alternate names for a specific school
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | ID of school to retrieve alternate names for
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  
+  result = api_instance.get_school_alternate_names(school_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_school_alternate_names: #{e}"
+end
+```
+
+#### Using the get_school_alternate_names_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetSchoolAlternateNames200Response>, Integer, Hash)> get_school_alternate_names_with_http_info(school_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_school_alternate_names_with_http_info(school_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetSchoolAlternateNames200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_school_alternate_names_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** | ID of school to retrieve alternate names for |  |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**GetSchoolAlternateNames200Response**](GetSchoolAlternateNames200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_schools
 
-> <SchoolCollection> get_schools(opts)
+> <SchoolCollection> get_schools(school_id)
 
 
 
@@ -4789,15 +4872,11 @@ WinthropClient.configure do |config|
 end
 
 api_instance = WinthropClient::DefaultApi.new
-opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
-  q: { ... } # Object | Ransack query
-}
+school_id = 56 # Integer | ID of school to retrieve
 
 begin
   
-  result = api_instance.get_schools(opts)
+  result = api_instance.get_schools(school_id)
   p result
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->get_schools: #{e}"
@@ -4808,12 +4887,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<SchoolCollection>, Integer, Hash)> get_schools_with_http_info(opts)
+> <Array(<SchoolCollection>, Integer, Hash)> get_schools_with_http_info(school_id)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.get_schools_with_http_info(opts)
+  data, status_code, headers = api_instance.get_schools_with_http_info(school_id)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <SchoolCollection>
@@ -4826,9 +4905,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
-| **q** | [**Object**](.md) | Ransack query | [optional] |
+| **school_id** | **Integer** | ID of school to retrieve |  |
 
 ### Return type
 

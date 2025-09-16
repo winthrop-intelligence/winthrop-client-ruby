@@ -21,6 +21,8 @@ module WinthropClient
 
     attr_accessor :last_name
 
+    attr_accessor :full_name
+
     attr_accessor :email
 
     attr_accessor :phone
@@ -74,6 +76,10 @@ module WinthropClient
 
     attr_accessor :email_scraping_disabled
 
+    attr_accessor :estimated_salary
+
+    attr_accessor :formatted_coli_salary
+
     attr_accessor :mobility_index
 
     attr_accessor :has_new_job
@@ -84,6 +90,7 @@ module WinthropClient
         :'id' => :'id',
         :'first_name' => :'first_name',
         :'last_name' => :'last_name',
+        :'full_name' => :'full_name',
         :'email' => :'email',
         :'phone' => :'phone',
         :'leader' => :'leader',
@@ -110,6 +117,8 @@ module WinthropClient
         :'linkedin_scraping_disabled' => :'linkedin_scraping_disabled',
         :'twitter_scraping_disabled' => :'twitter_scraping_disabled',
         :'email_scraping_disabled' => :'email_scraping_disabled',
+        :'estimated_salary' => :'estimated_salary',
+        :'formatted_coli_salary' => :'formatted_coli_salary',
         :'mobility_index' => :'mobility_index',
         :'has_new_job' => :'has_new_job'
       }
@@ -126,6 +135,7 @@ module WinthropClient
         :'id' => :'Integer',
         :'first_name' => :'String',
         :'last_name' => :'String',
+        :'full_name' => :'String',
         :'email' => :'String',
         :'phone' => :'String',
         :'leader' => :'Boolean',
@@ -152,6 +162,8 @@ module WinthropClient
         :'linkedin_scraping_disabled' => :'Boolean',
         :'twitter_scraping_disabled' => :'Boolean',
         :'email_scraping_disabled' => :'Boolean',
+        :'estimated_salary' => :'Boolean',
+        :'formatted_coli_salary' => :'Integer',
         :'mobility_index' => :'Integer',
         :'has_new_job' => :'Boolean'
       }
@@ -188,6 +200,10 @@ module WinthropClient
 
       if attributes.key?(:'last_name')
         self.last_name = attributes[:'last_name']
+      end
+
+      if attributes.key?(:'full_name')
+        self.full_name = attributes[:'full_name']
       end
 
       if attributes.key?(:'email')
@@ -294,6 +310,14 @@ module WinthropClient
         self.email_scraping_disabled = attributes[:'email_scraping_disabled']
       end
 
+      if attributes.key?(:'estimated_salary')
+        self.estimated_salary = attributes[:'estimated_salary']
+      end
+
+      if attributes.key?(:'formatted_coli_salary')
+        self.formatted_coli_salary = attributes[:'formatted_coli_salary']
+      end
+
       if attributes.key?(:'mobility_index')
         self.mobility_index = attributes[:'mobility_index']
       end
@@ -326,6 +350,7 @@ module WinthropClient
           id == o.id &&
           first_name == o.first_name &&
           last_name == o.last_name &&
+          full_name == o.full_name &&
           email == o.email &&
           phone == o.phone &&
           leader == o.leader &&
@@ -352,6 +377,8 @@ module WinthropClient
           linkedin_scraping_disabled == o.linkedin_scraping_disabled &&
           twitter_scraping_disabled == o.twitter_scraping_disabled &&
           email_scraping_disabled == o.email_scraping_disabled &&
+          estimated_salary == o.estimated_salary &&
+          formatted_coli_salary == o.formatted_coli_salary &&
           mobility_index == o.mobility_index &&
           has_new_job == o.has_new_job
     end
@@ -365,7 +392,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, first_name, last_name, email, phone, leader, bio, bio_text, dob, alma_mater_id, alma_mater_year, hometown_city, hometown_state, twitter_handle, linkedin, instagram_handle, current_tenure_years, avatar, years_of_experience, external_years_experience, athletic_years_of_experience, avatar_scraping_disabled, latest_salary, latest_salary_year, last_bio_text_updated_at, instagram_scraping_disabled, linkedin_scraping_disabled, twitter_scraping_disabled, email_scraping_disabled, mobility_index, has_new_job].hash
+      [id, first_name, last_name, full_name, email, phone, leader, bio, bio_text, dob, alma_mater_id, alma_mater_year, hometown_city, hometown_state, twitter_handle, linkedin, instagram_handle, current_tenure_years, avatar, years_of_experience, external_years_experience, athletic_years_of_experience, avatar_scraping_disabled, latest_salary, latest_salary_year, last_bio_text_updated_at, instagram_scraping_disabled, linkedin_scraping_disabled, twitter_scraping_disabled, email_scraping_disabled, estimated_salary, formatted_coli_salary, mobility_index, has_new_job].hash
     end
 
     # Builds the object from hash
