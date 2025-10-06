@@ -46,8 +46,12 @@ docs/FoiaRequest.md
 docs/FoiaRequestCollection.md
 docs/Game.md
 docs/GameCollection.md
+docs/GetSchoolAlternateNames200Response.md
+docs/GetSchoolAlternateNames404Response.md
 docs/GetWireChanges200Response.md
 docs/HTTPValidationError.md
+docs/HealthCheckFailure.md
+docs/HealthCheckSuccess.md
 docs/IncomeReport.md
 docs/IncomeReportCollection.md
 docs/IntercollegiateApi.md
@@ -65,6 +69,7 @@ docs/LinkCollection1.md
 docs/LocationInner.md
 docs/Logo.md
 docs/Meta.md
+docs/MlAthleticApi.md
 docs/NcaaFinancialReportStatus.md
 docs/NcaaFinancialReportStatusCollection.md
 docs/NewsFeed.md
@@ -73,6 +78,9 @@ docs/Position.md
 docs/PositionCollection.md
 docs/PositionType.md
 docs/PositionTypeGroup.md
+docs/PredictBody.md
+docs/PredictFailure.md
+docs/PredictSuccess.md
 docs/RawContract.md
 docs/RawContractCollection.md
 docs/ReportingApi.md
@@ -93,6 +101,7 @@ docs/Subscription.md
 docs/SubscriptionCollection.md
 docs/SystemSetting.md
 docs/Tag.md
+docs/UnauthorizedError.md
 docs/UnprocessableEntity.md
 docs/User.md
 docs/UserCollection.md
@@ -107,6 +116,7 @@ lib/winthrop-client-ruby.rb
 lib/winthrop-client-ruby/api/default_api.rb
 lib/winthrop-client-ruby/api/dossier_api.rb
 lib/winthrop-client-ruby/api/intercollegiate_api.rb
+lib/winthrop-client-ruby/api/ml_athletic_api.rb
 lib/winthrop-client-ruby/api/reporting_api.rb
 lib/winthrop-client-ruby/api/scraper_api.rb
 lib/winthrop-client-ruby/api_client.rb
@@ -151,7 +161,11 @@ lib/winthrop-client-ruby/models/foia_request.rb
 lib/winthrop-client-ruby/models/foia_request_collection.rb
 lib/winthrop-client-ruby/models/game.rb
 lib/winthrop-client-ruby/models/game_collection.rb
+lib/winthrop-client-ruby/models/get_school_alternate_names200_response.rb
+lib/winthrop-client-ruby/models/get_school_alternate_names404_response.rb
 lib/winthrop-client-ruby/models/get_wire_changes200_response.rb
+lib/winthrop-client-ruby/models/health_check_failure.rb
+lib/winthrop-client-ruby/models/health_check_success.rb
 lib/winthrop-client-ruby/models/http_validation_error.rb
 lib/winthrop-client-ruby/models/income_report.rb
 lib/winthrop-client-ruby/models/income_report_collection.rb
@@ -177,6 +191,9 @@ lib/winthrop-client-ruby/models/position.rb
 lib/winthrop-client-ruby/models/position_collection.rb
 lib/winthrop-client-ruby/models/position_type.rb
 lib/winthrop-client-ruby/models/position_type_group.rb
+lib/winthrop-client-ruby/models/predict_body.rb
+lib/winthrop-client-ruby/models/predict_failure.rb
+lib/winthrop-client-ruby/models/predict_success.rb
 lib/winthrop-client-ruby/models/raw_contract.rb
 lib/winthrop-client-ruby/models/raw_contract_collection.rb
 lib/winthrop-client-ruby/models/requested_item.rb
@@ -195,6 +212,7 @@ lib/winthrop-client-ruby/models/subscription.rb
 lib/winthrop-client-ruby/models/subscription_collection.rb
 lib/winthrop-client-ruby/models/system_setting.rb
 lib/winthrop-client-ruby/models/tag.rb
+lib/winthrop-client-ruby/models/unauthorized_error.rb
 lib/winthrop-client-ruby/models/unprocessable_entity.rb
 lib/winthrop-client-ruby/models/user.rb
 lib/winthrop-client-ruby/models/user_collection.rb
@@ -206,11 +224,14 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
-spec/models/deal_collection_spec.rb
-spec/models/deal_spec.rb
-spec/models/raw_contract_collection_spec.rb
-spec/models/raw_contract_spec.rb
-spec/models/vendor_collection_spec.rb
-spec/models/vendor_spec.rb
+spec/api/ml_athletic_api_spec.rb
+spec/models/get_school_alternate_names200_response_spec.rb
+spec/models/get_school_alternate_names404_response_spec.rb
+spec/models/health_check_failure_spec.rb
+spec/models/health_check_success_spec.rb
+spec/models/predict_body_spec.rb
+spec/models/predict_failure_spec.rb
+spec/models/predict_success_spec.rb
+spec/models/unauthorized_error_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
