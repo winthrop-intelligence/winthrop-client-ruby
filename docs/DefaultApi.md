@@ -50,6 +50,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_foia_request**](DefaultApi.md#get_foia_request) | **GET** /api/v1/foia_requests/{foiaRequestId} |  |
 | [**get_foia_requests**](DefaultApi.md#get_foia_requests) | **GET** /api/v1/foia_requests |  |
 | [**get_game**](DefaultApi.md#get_game) | **GET** /api/v1/games/{gameId} |  |
+| [**get_game_contract**](DefaultApi.md#get_game_contract) | **GET** /api/v1/game_contracts/{game_contractId} |  |
+| [**get_game_contracts**](DefaultApi.md#get_game_contracts) | **GET** /api/v1/game_contracts |  |
 | [**get_games**](DefaultApi.md#get_games) | **GET** /api/v1/games |  |
 | [**get_income_report**](DefaultApi.md#get_income_report) | **GET** /api/v1/income_reports/{incomeReportId} |  |
 | [**get_income_reports**](DefaultApi.md#get_income_reports) | **GET** /api/v1/income_reports |  |
@@ -111,9 +113,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -191,9 +193,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -271,9 +273,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -351,9 +353,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -431,9 +433,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -509,9 +511,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -585,9 +587,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -661,9 +663,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -735,9 +737,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -809,9 +811,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -885,9 +887,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -959,9 +961,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -1032,9 +1034,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -1105,9 +1107,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -1178,9 +1180,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -1251,9 +1253,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -1324,9 +1326,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -1397,9 +1399,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -1471,9 +1473,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -1551,9 +1553,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -1625,9 +1627,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -1705,9 +1707,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -1785,9 +1787,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -1859,9 +1861,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -1935,9 +1937,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -2015,9 +2017,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -2089,9 +2091,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -2169,9 +2171,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -2243,9 +2245,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -2323,9 +2325,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -2397,9 +2399,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -2477,9 +2479,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -2551,9 +2553,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -2631,9 +2633,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -2705,9 +2707,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -2785,9 +2787,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -2859,9 +2861,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -2933,9 +2935,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -3013,9 +3015,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -3093,9 +3095,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -3167,9 +3169,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -3247,9 +3249,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -3321,9 +3323,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -3401,9 +3403,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -3475,9 +3477,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -3555,9 +3557,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -3613,6 +3615,160 @@ end
 - **Accept**: application/json
 
 
+## get_game_contract
+
+> <GameContract> get_game_contract(game_contract_id)
+
+
+
+Retrieve a single GameContract
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+game_contract_id = 56 # Integer | ID of the GameContract
+
+begin
+  
+  result = api_instance.get_game_contract(game_contract_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_game_contract: #{e}"
+end
+```
+
+#### Using the get_game_contract_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GameContract>, Integer, Hash)> get_game_contract_with_http_info(game_contract_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_game_contract_with_http_info(game_contract_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GameContract>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_game_contract_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **game_contract_id** | **Integer** | ID of the GameContract |  |
+
+### Return type
+
+[**GameContract**](GameContract.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_game_contracts
+
+> <GameContractCollection> get_game_contracts(opts)
+
+
+
+Retrieve some or all game_contracts
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  
+  result = api_instance.get_game_contracts(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_game_contracts: #{e}"
+end
+```
+
+#### Using the get_game_contracts_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GameContractCollection>, Integer, Hash)> get_game_contracts_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_game_contracts_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GameContractCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_game_contracts_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**GameContractCollection**](GameContractCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_games
 
 > <GameCollection> get_games(opts)
@@ -3629,9 +3785,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -3709,9 +3865,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -3783,9 +3939,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -3863,9 +4019,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -3937,9 +4093,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -4017,9 +4173,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -4091,9 +4247,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -4171,9 +4327,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -4245,9 +4401,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -4319,9 +4475,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -4399,9 +4555,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -4473,9 +4629,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -4553,9 +4709,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -4627,9 +4783,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -4707,9 +4863,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -4781,9 +4937,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -4855,9 +5011,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -4935,9 +5091,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -5009,9 +5165,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -5089,9 +5245,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -5171,9 +5327,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -5245,9 +5401,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -5325,9 +5481,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -5399,9 +5555,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -5479,9 +5635,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -5553,9 +5709,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -5633,9 +5789,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -5704,9 +5860,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -5778,9 +5934,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -5858,9 +6014,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -5932,9 +6088,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -6012,9 +6168,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -6098,9 +6254,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -6174,9 +6330,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -6250,9 +6406,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -6326,9 +6482,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -6402,9 +6558,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -6478,9 +6634,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -6554,9 +6710,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -6630,9 +6786,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -6708,9 +6864,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -6784,9 +6940,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -6855,9 +7011,9 @@ require 'winthrop-client-ruby'
 # setup authorization
 WinthropClient.configure do |config|
   # Configure API key authorization: ApiKey
-  config.api_key['ApiKey'] = 'YOUR API KEY'
+  config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ApiKey'] = 'Bearer'
+  # config.api_key_prefix['Authorization'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: Oauth2
   config.access_token = 'YOUR ACCESS TOKEN'

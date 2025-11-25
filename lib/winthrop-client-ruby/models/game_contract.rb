@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class Game < ApiModelBase
+  class GameContract < ApiModelBase
     attr_accessor :id
 
     attr_accessor :home_school_id
@@ -25,31 +25,37 @@ module WinthropClient
 
     attr_accessor :game_date
 
+    attr_accessor :game_date_tbd
+
+    attr_accessor :comp_cents
+
+    attr_accessor :variable
+
+    attr_accessor :cancel_fee_cents
+
+    attr_accessor :signed_on
+
+    attr_accessor :raw_contract_id
+
     attr_accessor :created_at
 
     attr_accessor :updated_at
 
-    attr_accessor :neutral
+    attr_accessor :comp_tbd
 
-    attr_accessor :city
-
-    attr_accessor :game_contract_id
-
-    attr_accessor :state_id
-
-    attr_accessor :description
-
-    attr_accessor :in_conference
+    attr_accessor :tbd
 
     attr_accessor :season_year_tbd
 
-    attr_accessor :home_school_score
-
-    attr_accessor :away_school_score
-
-    attr_accessor :overtime
+    attr_accessor :cancelled
 
     attr_accessor :season_year
+
+    attr_accessor :game_type
+
+    attr_accessor :off_site_location
+
+    attr_accessor :verified
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -59,19 +65,22 @@ module WinthropClient
         :'away_school_id' => :'away_school_id',
         :'sport_id' => :'sport_id',
         :'game_date' => :'game_date',
+        :'game_date_tbd' => :'game_date_tbd',
+        :'comp_cents' => :'comp_cents',
+        :'variable' => :'variable',
+        :'cancel_fee_cents' => :'cancel_fee_cents',
+        :'signed_on' => :'signed_on',
+        :'raw_contract_id' => :'raw_contract_id',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at',
-        :'neutral' => :'neutral',
-        :'city' => :'city',
-        :'game_contract_id' => :'game_contract_id',
-        :'state_id' => :'state_id',
-        :'description' => :'description',
-        :'in_conference' => :'in_conference',
+        :'comp_tbd' => :'comp_tbd',
+        :'tbd' => :'tbd',
         :'season_year_tbd' => :'season_year_tbd',
-        :'home_school_score' => :'home_school_score',
-        :'away_school_score' => :'away_school_score',
-        :'overtime' => :'overtime',
-        :'season_year' => :'season_year'
+        :'cancelled' => :'cancelled',
+        :'season_year' => :'season_year',
+        :'game_type' => :'game_type',
+        :'off_site_location' => :'off_site_location',
+        :'verified' => :'verified'
       }
     end
 
@@ -92,20 +101,23 @@ module WinthropClient
         :'home_school_id' => :'Integer',
         :'away_school_id' => :'Integer',
         :'sport_id' => :'Integer',
-        :'game_date' => :'Date',
+        :'game_date' => :'Time',
+        :'game_date_tbd' => :'String',
+        :'comp_cents' => :'Integer',
+        :'variable' => :'Boolean',
+        :'cancel_fee_cents' => :'Integer',
+        :'signed_on' => :'Time',
+        :'raw_contract_id' => :'Integer',
         :'created_at' => :'Time',
         :'updated_at' => :'Time',
-        :'neutral' => :'Boolean',
-        :'city' => :'String',
-        :'game_contract_id' => :'Integer',
-        :'state_id' => :'Integer',
-        :'description' => :'String',
-        :'in_conference' => :'Boolean',
+        :'comp_tbd' => :'Boolean',
+        :'tbd' => :'Boolean',
         :'season_year_tbd' => :'Integer',
-        :'home_school_score' => :'Integer',
-        :'away_school_score' => :'Integer',
-        :'overtime' => :'Integer',
-        :'season_year' => :'Integer'
+        :'cancelled' => :'Boolean',
+        :'season_year' => :'Integer',
+        :'game_type' => :'String',
+        :'off_site_location' => :'String',
+        :'verified' => :'Boolean'
       }
     end
 
@@ -119,14 +131,14 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::Game` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::GameContract` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::Game`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::GameContract`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -145,12 +157,34 @@ module WinthropClient
 
       if attributes.key?(:'sport_id')
         self.sport_id = attributes[:'sport_id']
-      else
-        self.sport_id = nil
       end
 
       if attributes.key?(:'game_date')
         self.game_date = attributes[:'game_date']
+      end
+
+      if attributes.key?(:'game_date_tbd')
+        self.game_date_tbd = attributes[:'game_date_tbd']
+      end
+
+      if attributes.key?(:'comp_cents')
+        self.comp_cents = attributes[:'comp_cents']
+      end
+
+      if attributes.key?(:'variable')
+        self.variable = attributes[:'variable']
+      end
+
+      if attributes.key?(:'cancel_fee_cents')
+        self.cancel_fee_cents = attributes[:'cancel_fee_cents']
+      end
+
+      if attributes.key?(:'signed_on')
+        self.signed_on = attributes[:'signed_on']
+      end
+
+      if attributes.key?(:'raw_contract_id')
+        self.raw_contract_id = attributes[:'raw_contract_id']
       end
 
       if attributes.key?(:'created_at')
@@ -161,48 +195,36 @@ module WinthropClient
         self.updated_at = attributes[:'updated_at']
       end
 
-      if attributes.key?(:'neutral')
-        self.neutral = attributes[:'neutral']
+      if attributes.key?(:'comp_tbd')
+        self.comp_tbd = attributes[:'comp_tbd']
       end
 
-      if attributes.key?(:'city')
-        self.city = attributes[:'city']
-      end
-
-      if attributes.key?(:'game_contract_id')
-        self.game_contract_id = attributes[:'game_contract_id']
-      end
-
-      if attributes.key?(:'state_id')
-        self.state_id = attributes[:'state_id']
-      end
-
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
-      end
-
-      if attributes.key?(:'in_conference')
-        self.in_conference = attributes[:'in_conference']
+      if attributes.key?(:'tbd')
+        self.tbd = attributes[:'tbd']
       end
 
       if attributes.key?(:'season_year_tbd')
         self.season_year_tbd = attributes[:'season_year_tbd']
       end
 
-      if attributes.key?(:'home_school_score')
-        self.home_school_score = attributes[:'home_school_score']
-      end
-
-      if attributes.key?(:'away_school_score')
-        self.away_school_score = attributes[:'away_school_score']
-      end
-
-      if attributes.key?(:'overtime')
-        self.overtime = attributes[:'overtime']
+      if attributes.key?(:'cancelled')
+        self.cancelled = attributes[:'cancelled']
       end
 
       if attributes.key?(:'season_year')
         self.season_year = attributes[:'season_year']
+      end
+
+      if attributes.key?(:'game_type')
+        self.game_type = attributes[:'game_type']
+      end
+
+      if attributes.key?(:'off_site_location')
+        self.off_site_location = attributes[:'off_site_location']
+      end
+
+      if attributes.key?(:'verified')
+        self.verified = attributes[:'verified']
       end
     end
 
@@ -211,10 +233,6 @@ module WinthropClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @sport_id.nil?
-        invalid_properties.push('invalid value for "sport_id", sport_id cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -222,18 +240,7 @@ module WinthropClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @sport_id.nil?
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] sport_id Value to be assigned
-    def sport_id=(sport_id)
-      if sport_id.nil?
-        fail ArgumentError, 'sport_id cannot be nil'
-      end
-
-      @sport_id = sport_id
     end
 
     # Checks equality by comparing each attribute.
@@ -246,19 +253,22 @@ module WinthropClient
           away_school_id == o.away_school_id &&
           sport_id == o.sport_id &&
           game_date == o.game_date &&
+          game_date_tbd == o.game_date_tbd &&
+          comp_cents == o.comp_cents &&
+          variable == o.variable &&
+          cancel_fee_cents == o.cancel_fee_cents &&
+          signed_on == o.signed_on &&
+          raw_contract_id == o.raw_contract_id &&
           created_at == o.created_at &&
           updated_at == o.updated_at &&
-          neutral == o.neutral &&
-          city == o.city &&
-          game_contract_id == o.game_contract_id &&
-          state_id == o.state_id &&
-          description == o.description &&
-          in_conference == o.in_conference &&
+          comp_tbd == o.comp_tbd &&
+          tbd == o.tbd &&
           season_year_tbd == o.season_year_tbd &&
-          home_school_score == o.home_school_score &&
-          away_school_score == o.away_school_score &&
-          overtime == o.overtime &&
-          season_year == o.season_year
+          cancelled == o.cancelled &&
+          season_year == o.season_year &&
+          game_type == o.game_type &&
+          off_site_location == o.off_site_location &&
+          verified == o.verified
     end
 
     # @see the `==` method
@@ -270,7 +280,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, home_school_id, away_school_id, sport_id, game_date, created_at, updated_at, neutral, city, game_contract_id, state_id, description, in_conference, season_year_tbd, home_school_score, away_school_score, overtime, season_year].hash
+      [id, home_school_id, away_school_id, sport_id, game_date, game_date_tbd, comp_cents, variable, cancel_fee_cents, signed_on, raw_contract_id, created_at, updated_at, comp_tbd, tbd, season_year_tbd, cancelled, season_year, game_type, off_site_location, verified].hash
     end
 
     # Builds the object from hash

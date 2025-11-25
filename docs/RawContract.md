@@ -23,7 +23,7 @@
 | **migrated_successfully** | **Boolean** |  | [optional] |
 | **migration_failure_reason** | **String** |  | [optional] |
 | **unstract_pdf_text** | **String** |  | [optional] |
-| **unstract_responses_details** | **Object** |  | [optional] |
+| **unstract_responses_details** | **String** |  | [optional] |
 | **layout_preserved_pdf_text** | **String** |  | [optional] |
 
 ## Example
