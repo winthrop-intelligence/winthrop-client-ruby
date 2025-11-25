@@ -35,8 +35,6 @@
 | **home_losses** | **Integer** |  | [optional] |
 | **home_win_percent** | **Float** |  | [optional] |
 | **asr** | **Integer** |  | [optional] |
-| **head_coach** | [**Coach**](Coach.md) |  | [optional] |
-| **assistant_coaches** | [**Array&lt;Coach&gt;**](Coach.md) |  | [optional] |
 
 ## Example
 
@@ -44,39 +42,37 @@
 require 'winthrop-client-ruby'
 
 instance = WinthropClient::Season.new(
-  id: 1,
-  name: 2019-2020,
-  description: 2019-2020,
-  school_id: 2,
-  sport_id: 3,
-  year: 2019,
-  wins: 4,
-  losses: 5,
-  conference_wins: 6,
-  conference_losses: 7,
-  apr: 8,
+  id: null,
+  name: null,
+  description: null,
+  school_id: null,
+  sport_id: null,
+  year: null,
+  wins: null,
+  losses: null,
+  conference_wins: null,
+  conference_losses: null,
+  apr: null,
   created_at: 2019-01-01T00:00Z,
   updated_at: 2019-01-01T00:00Z,
-  win_percent: 0.5,
-  ties: 9,
-  rpi: 10,
-  prev_rpi: 11,
-  conference_position: 12,
-  conference_num_positions: 13,
-  coach_apr: 14,
-  attendance: 15,
-  conference_ties: 16,
-  recruit_ranking: 17,
-  offensive_efficiency: 18.0,
-  defensive_efficiency: 19.0,
-  sos_ranking: 20,
-  sos: 21.0,
-  home_wins: 22,
-  home_losses: 23,
-  home_win_percent: 0.5,
-  asr: 24,
-  head_coach: null,
-  assistant_coaches: null
+  win_percent: null,
+  ties: null,
+  rpi: null,
+  prev_rpi: null,
+  conference_position: null,
+  conference_num_positions: null,
+  coach_apr: null,
+  attendance: null,
+  conference_ties: null,
+  recruit_ranking: null,
+  offensive_efficiency: null,
+  defensive_efficiency: null,
+  sos_ranking: null,
+  sos: null,
+  home_wins: null,
+  home_losses: null,
+  home_win_percent: null,
+  asr: null
 )
 ```
 

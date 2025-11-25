@@ -14,16 +14,31 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class UserCollection < ApiModelBase
-    attr_accessor :data
+  class Cashflow < ApiModelBase
+    attr_accessor :id
 
-    attr_accessor :meta
+    attr_accessor :season_id
+
+    attr_accessor :cashflow_group_id
+
+    attr_accessor :amount
+
+    attr_accessor :created_at
+
+    attr_accessor :updated_at
+
+    attr_accessor :name
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'data' => :'data',
-        :'meta' => :'meta'
+        :'id' => :'id',
+        :'season_id' => :'season_id',
+        :'cashflow_group_id' => :'cashflow_group_id',
+        :'amount' => :'amount',
+        :'created_at' => :'created_at',
+        :'updated_at' => :'updated_at',
+        :'name' => :'name'
       }
     end
 
@@ -40,8 +55,13 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'data' => :'Array<User>',
-        :'meta' => :'Meta'
+        :'id' => :'Integer',
+        :'season_id' => :'Integer',
+        :'cashflow_group_id' => :'Integer',
+        :'amount' => :'Integer',
+        :'created_at' => :'Time',
+        :'updated_at' => :'Time',
+        :'name' => :'String'
       }
     end
 
@@ -55,26 +75,44 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::UserCollection` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::Cashflow` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::UserCollection`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::Cashflow`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'data')
-        if (value = attributes[:'data']).is_a?(Array)
-          self.data = value
-        end
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'meta')
-        self.meta = attributes[:'meta']
+      if attributes.key?(:'season_id')
+        self.season_id = attributes[:'season_id']
+      end
+
+      if attributes.key?(:'cashflow_group_id')
+        self.cashflow_group_id = attributes[:'cashflow_group_id']
+      end
+
+      if attributes.key?(:'amount')
+        self.amount = attributes[:'amount']
+      end
+
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
+      end
+
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
     end
 
@@ -98,8 +136,13 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          data == o.data &&
-          meta == o.meta
+          id == o.id &&
+          season_id == o.season_id &&
+          cashflow_group_id == o.cashflow_group_id &&
+          amount == o.amount &&
+          created_at == o.created_at &&
+          updated_at == o.updated_at &&
+          name == o.name
     end
 
     # @see the `==` method
@@ -111,7 +154,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data, meta].hash
+      [id, season_id, cashflow_group_id, amount, created_at, updated_at, name].hash
     end
 
     # Builds the object from hash

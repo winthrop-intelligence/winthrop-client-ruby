@@ -9,22 +9,28 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**average_school_comp**](DefaultApi.md#average_school_comp) | **GET** /api/v1/compensations/average_school_comp |  |
 | [**average_subdivision_comp**](DefaultApi.md#average_subdivision_comp) | **GET** /api/v1/compensations/average_subdivision_comp |  |
 | [**compare_coli**](DefaultApi.md#compare_coli) | **GET** /api/v1/schools/compare_coli |  |
+| [**create_cashflow**](DefaultApi.md#create_cashflow) | **POST** /api/v1/cashflows |  |
 | [**create_conference**](DefaultApi.md#create_conference) | **POST** /api/v1/conferences |  |
 | [**create_conferenceship**](DefaultApi.md#create_conferenceship) | **POST** /api/v1/conferenceships |  |
 | [**create_foia_label**](DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels |  |
 | [**create_foia_request**](DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests |  |
 | [**create_job_post**](DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post |
 | [**create_requested_item**](DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items |  |
+| [**create_season**](DefaultApi.md#create_season) | **POST** /api/v1/seasons |  |
+| [**delete_cashflow**](DefaultApi.md#delete_cashflow) | **DELETE** /api/v1/cashflows/{cashflowId} |  |
 | [**delete_conference**](DefaultApi.md#delete_conference) | **DELETE** /api/v1/conferences/{conferenceId} |  |
 | [**delete_conferenceship**](DefaultApi.md#delete_conferenceship) | **DELETE** /api/v1/conferenceships/{conferenceshipId} |  |
 | [**delete_foia_label**](DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} |  |
 | [**delete_foia_request**](DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} |  |
 | [**delete_job_post**](DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post |
 | [**delete_requested_item**](DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} |  |
+| [**delete_season**](DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} |  |
 | [**get_administrator**](DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} |  |
 | [**get_administrators**](DefaultApi.md#get_administrators) | **GET** /api/v1/administrators |  |
 | [**get_audited_financial_report_status**](DefaultApi.md#get_audited_financial_report_status) | **GET** /api/v1/audited_financial_report_statuses/{auditedFinancialReportStatusId} |  |
 | [**get_audited_financial_report_statuses**](DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses |  |
+| [**get_cashflow**](DefaultApi.md#get_cashflow) | **GET** /api/v1/cashflows/{cashflowId} |  |
+| [**get_cashflows**](DefaultApi.md#get_cashflows) | **GET** /api/v1/cashflows |  |
 | [**get_categories**](DefaultApi.md#get_categories) | **GET** /central_jobs/categories | List all categories |
 | [**get_coach**](DefaultApi.md#get_coach) | **GET** /api/v1/coaches/{coachId} |  |
 | [**get_coach_compensation**](DefaultApi.md#get_coach_compensation) | **GET** /api/v1/coach_compensations/get_coach_compensation |  |
@@ -85,6 +91,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_vendors**](DefaultApi.md#get_vendors) | **GET** /api/v1/vendors |  |
 | [**get_wire_changes**](DefaultApi.md#get_wire_changes) | **GET** /api/v1/wire_changes |  |
 | [**search_coaches**](DefaultApi.md#search_coaches) | **POST** /api/v1/coaches/search |  |
+| [**update_cashflow**](DefaultApi.md#update_cashflow) | **PUT** /api/v1/cashflows/{cashflowId} |  |
 | [**update_coach**](DefaultApi.md#update_coach) | **PATCH** /api/v1/coaches/{coachId} |  |
 | [**update_compensation**](DefaultApi.md#update_compensation) | **PATCH** /api/v1/compensations/{compensationId} |  |
 | [**update_conference**](DefaultApi.md#update_conference) | **PUT** /api/v1/conferences/{conferenceId} |  |
@@ -93,6 +100,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_foia_request**](DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} |  |
 | [**update_job_post**](DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post |
 | [**update_requested_item**](DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} |  |
+| [**update_season**](DefaultApi.md#update_season) | **PUT** /api/v1/seasons/{seasonId} |  |
 | [**user_me**](DefaultApi.md#user_me) | **GET** /api/v1/users/me |  |
 | [**verify_user_intercollegiate_access**](DefaultApi.md#verify_user_intercollegiate_access) | **GET** /api/v1/users/verify_user_intercollegiate_access |  |
 
@@ -492,6 +500,82 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## create_cashflow
+
+> <Cashflow> create_cashflow(opts)
+
+
+
+Create a new Cashflow
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  cashflow: WinthropClient::Cashflow.new # Cashflow | 
+}
+
+begin
+  
+  result = api_instance.create_cashflow(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_cashflow: #{e}"
+end
+```
+
+#### Using the create_cashflow_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Cashflow>, Integer, Hash)> create_cashflow_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_cashflow_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Cashflow>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_cashflow_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **cashflow** | [**Cashflow**](Cashflow.md) |  | [optional] |
+
+### Return type
+
+[**Cashflow**](Cashflow.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -945,6 +1029,155 @@ end
 - **Accept**: application/json
 
 
+## create_season
+
+> <Season> create_season(opts)
+
+
+
+Create a new Season
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  season: WinthropClient::Season.new # Season | 
+}
+
+begin
+  
+  result = api_instance.create_season(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_season: #{e}"
+end
+```
+
+#### Using the create_season_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Season>, Integer, Hash)> create_season_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_season_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Season>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_season_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **season** | [**Season**](Season.md) |  | [optional] |
+
+### Return type
+
+[**Season**](Season.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## delete_cashflow
+
+> delete_cashflow(cashflow_id)
+
+
+
+Delete a single Cashflow
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+cashflow_id = 56 # Integer | ID of the Cashflow
+
+begin
+  
+  api_instance.delete_cashflow(cashflow_id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_cashflow: #{e}"
+end
+```
+
+#### Using the delete_cashflow_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_cashflow_with_http_info(cashflow_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_cashflow_with_http_info(cashflow_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_cashflow_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **cashflow_id** | **Integer** | ID of the Cashflow |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
 ## delete_conference
 
 > delete_conference(conference_id)
@@ -1383,6 +1616,79 @@ nil (empty response body)
 - **Accept**: Not defined
 
 
+## delete_season
+
+> delete_season(season_id)
+
+
+
+Delete a single Season
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+season_id = 56 # Integer | ID of the Season
+
+begin
+  
+  api_instance.delete_season(season_id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_season: #{e}"
+end
+```
+
+#### Using the delete_season_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_season_with_http_info(season_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_season_with_http_info(season_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_season_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **season_id** | **Integer** | ID of the Season |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
 ## get_administrator
 
 > <Administrator> get_administrator(administrator_id)
@@ -1680,6 +1986,160 @@ end
 ### Return type
 
 [**AuditedFinancialReportStatusCollection**](AuditedFinancialReportStatusCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_cashflow
+
+> <Cashflow> get_cashflow(cashflow_id)
+
+
+
+Retrieve a single Cashflow
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+cashflow_id = 56 # Integer | ID of the Cashflow
+
+begin
+  
+  result = api_instance.get_cashflow(cashflow_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_cashflow: #{e}"
+end
+```
+
+#### Using the get_cashflow_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Cashflow>, Integer, Hash)> get_cashflow_with_http_info(cashflow_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_cashflow_with_http_info(cashflow_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Cashflow>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_cashflow_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **cashflow_id** | **Integer** | ID of the Cashflow |  |
+
+### Return type
+
+[**Cashflow**](Cashflow.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_cashflows
+
+> <CashflowCollection> get_cashflows(opts)
+
+
+
+Retrieve some or all cashflows
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  
+  result = api_instance.get_cashflows(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_cashflows: #{e}"
+end
+```
+
+#### Using the get_cashflows_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CashflowCollection>, Integer, Hash)> get_cashflows_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_cashflows_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CashflowCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_cashflows_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**CashflowCollection**](CashflowCollection.md)
 
 ### Authorization
 
@@ -5081,7 +5541,7 @@ end
 
 
 
-Retrieve a single season
+Retrieve a single Season
 
 ### Examples
 
@@ -5100,7 +5560,7 @@ WinthropClient.configure do |config|
 end
 
 api_instance = WinthropClient::DefaultApi.new
-season_id = 56 # Integer | ID of season to retrieve
+season_id = 56 # Integer | ID of the Season
 
 begin
   
@@ -5133,7 +5593,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **season_id** | **Integer** | ID of season to retrieve |  |
+| **season_id** | **Integer** | ID of the Season |  |
 
 ### Return type
 
@@ -6314,6 +6774,82 @@ end
 - **Accept**: application/json
 
 
+## update_cashflow
+
+> <Cashflow> update_cashflow(cashflow_id, cashflow)
+
+
+
+Update a single Cashflow
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+cashflow_id = 56 # Integer | ID of the Cashflow
+cashflow = WinthropClient::Cashflow.new # Cashflow | Cashflow attributes to update
+
+begin
+  
+  result = api_instance.update_cashflow(cashflow_id, cashflow)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_cashflow: #{e}"
+end
+```
+
+#### Using the update_cashflow_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Cashflow>, Integer, Hash)> update_cashflow_with_http_info(cashflow_id, cashflow)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_cashflow_with_http_info(cashflow_id, cashflow)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Cashflow>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_cashflow_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **cashflow_id** | **Integer** | ID of the Cashflow |  |
+| **cashflow** | [**Cashflow**](Cashflow.md) | Cashflow attributes to update |  |
+
+### Return type
+
+[**Cashflow**](Cashflow.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## update_coach
 
 > <Coach> update_coach(coach_id, coach)
@@ -6913,6 +7449,82 @@ end
 ### Return type
 
 [**RequestedItem**](RequestedItem.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_season
+
+> <Season> update_season(season_id, season)
+
+
+
+Update a single Season
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+season_id = 56 # Integer | ID of the Season
+season = WinthropClient::Season.new # Season | Season attributes to update
+
+begin
+  
+  result = api_instance.update_season(season_id, season)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_season: #{e}"
+end
+```
+
+#### Using the update_season_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Season>, Integer, Hash)> update_season_with_http_info(season_id, season)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_season_with_http_info(season_id, season)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Season>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_season_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **season_id** | **Integer** | ID of the Season |  |
+| **season** | [**Season**](Season.md) | Season attributes to update |  |
+
+### Return type
+
+[**Season**](Season.md)
 
 ### Authorization
 
