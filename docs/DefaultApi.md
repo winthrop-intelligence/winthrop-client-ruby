@@ -86,6 +86,10 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_subscriptions**](DefaultApi.md#get_subscriptions) | **GET** /api/v1/subscriptions |  |
 | [**get_system_settings**](DefaultApi.md#get_system_settings) | **GET** /api/v1/system_setting |  |
 | [**get_user**](DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} |  |
+| [**get_user_activity_summaries**](DefaultApi.md#get_user_activity_summaries) | **GET** /api/v1/user_activity_summaries |  |
+| [**get_user_activity_summary**](DefaultApi.md#get_user_activity_summary) | **GET** /api/v1/user_activity_summaries/{user_activity_summaryId} |  |
+| [**get_user_request**](DefaultApi.md#get_user_request) | **GET** /api/v1/user_requests/{user_requestId} |  |
+| [**get_user_requests**](DefaultApi.md#get_user_requests) | **GET** /api/v1/user_requests |  |
 | [**get_users**](DefaultApi.md#get_users) | **GET** /api/v1/users |  |
 | [**get_vendor**](DefaultApi.md#get_vendor) | **GET** /api/v1/vendors/{vendorId} |  |
 | [**get_vendors**](DefaultApi.md#get_vendors) | **GET** /api/v1/vendors |  |
@@ -6367,6 +6371,314 @@ end
 ### Return type
 
 [**User**](User.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_user_activity_summaries
+
+> <UserActivitySummaryCollection> get_user_activity_summaries(opts)
+
+
+
+Retrieve some or all user_activity_summaries
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  
+  result = api_instance.get_user_activity_summaries(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_user_activity_summaries: #{e}"
+end
+```
+
+#### Using the get_user_activity_summaries_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UserActivitySummaryCollection>, Integer, Hash)> get_user_activity_summaries_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_user_activity_summaries_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UserActivitySummaryCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_user_activity_summaries_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**UserActivitySummaryCollection**](UserActivitySummaryCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_user_activity_summary
+
+> <UserActivitySummary> get_user_activity_summary(user_activity_summary_id)
+
+
+
+Retrieve a single UserActivitySummary
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+user_activity_summary_id = 56 # Integer | ID of the UserActivitySummary
+
+begin
+  
+  result = api_instance.get_user_activity_summary(user_activity_summary_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_user_activity_summary: #{e}"
+end
+```
+
+#### Using the get_user_activity_summary_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UserActivitySummary>, Integer, Hash)> get_user_activity_summary_with_http_info(user_activity_summary_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_user_activity_summary_with_http_info(user_activity_summary_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UserActivitySummary>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_user_activity_summary_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **user_activity_summary_id** | **Integer** | ID of the UserActivitySummary |  |
+
+### Return type
+
+[**UserActivitySummary**](UserActivitySummary.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_user_request
+
+> <UserRequest> get_user_request(user_request_id)
+
+
+
+Retrieve a single UserRequest
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+user_request_id = 56 # Integer | ID of the UserRequest
+
+begin
+  
+  result = api_instance.get_user_request(user_request_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_user_request: #{e}"
+end
+```
+
+#### Using the get_user_request_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UserRequest>, Integer, Hash)> get_user_request_with_http_info(user_request_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_user_request_with_http_info(user_request_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UserRequest>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_user_request_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **user_request_id** | **Integer** | ID of the UserRequest |  |
+
+### Return type
+
+[**UserRequest**](UserRequest.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_user_requests
+
+> <UserRequestCollection> get_user_requests(opts)
+
+
+
+Retrieve some or all user_requests
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  
+  result = api_instance.get_user_requests(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_user_requests: #{e}"
+end
+```
+
+#### Using the get_user_requests_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UserRequestCollection>, Integer, Hash)> get_user_requests_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_user_requests_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UserRequestCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_user_requests_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**UserRequestCollection**](UserRequestCollection.md)
 
 ### Authorization
 
