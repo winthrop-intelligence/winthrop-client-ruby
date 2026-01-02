@@ -14,49 +14,13 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class Deal < ApiModelBase
-    attr_accessor :id
-
-    attr_accessor :school_id
-
-    attr_accessor :vendor_id
-
-    attr_accessor :start_at
-
-    attr_accessor :end_at
-
-    attr_accessor :signed
-
-    attr_accessor :created_at
-
-    attr_accessor :updated_at
-
-    attr_accessor :text
-
-    attr_accessor :autorenew
-
-    attr_accessor :deal_type_id
-
-    attr_accessor :archived
-
-    attr_accessor :verified
+  class GetJobPostsAthleticsCount200Response < ApiModelBase
+    attr_accessor :data
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'school_id' => :'school_id',
-        :'vendor_id' => :'vendor_id',
-        :'start_at' => :'start_at',
-        :'end_at' => :'end_at',
-        :'signed' => :'signed',
-        :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at',
-        :'text' => :'text',
-        :'autorenew' => :'autorenew',
-        :'deal_type_id' => :'deal_type_id',
-        :'archived' => :'archived',
-        :'verified' => :'verified'
+        :'data' => :'data'
       }
     end
 
@@ -73,19 +37,7 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'Integer',
-        :'school_id' => :'Integer',
-        :'vendor_id' => :'Integer',
-        :'start_at' => :'Time',
-        :'end_at' => :'Time',
-        :'signed' => :'Time',
-        :'created_at' => :'Time',
-        :'updated_at' => :'Time',
-        :'text' => :'String',
-        :'autorenew' => :'Boolean',
-        :'deal_type_id' => :'Integer',
-        :'archived' => :'Boolean',
-        :'verified' => :'Boolean'
+        :'data' => :'GetJobPostsAthleticsCount200ResponseData'
       }
     end
 
@@ -99,68 +51,20 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::Deal` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::GetJobPostsAthleticsCount200Response` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::Deal`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::GetJobPostsAthleticsCount200Response`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      end
-
-      if attributes.key?(:'school_id')
-        self.school_id = attributes[:'school_id']
-      end
-
-      if attributes.key?(:'vendor_id')
-        self.vendor_id = attributes[:'vendor_id']
-      end
-
-      if attributes.key?(:'start_at')
-        self.start_at = attributes[:'start_at']
-      end
-
-      if attributes.key?(:'end_at')
-        self.end_at = attributes[:'end_at']
-      end
-
-      if attributes.key?(:'signed')
-        self.signed = attributes[:'signed']
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
-      end
-
-      if attributes.key?(:'text')
-        self.text = attributes[:'text']
-      end
-
-      if attributes.key?(:'autorenew')
-        self.autorenew = attributes[:'autorenew']
-      end
-
-      if attributes.key?(:'deal_type_id')
-        self.deal_type_id = attributes[:'deal_type_id']
-      end
-
-      if attributes.key?(:'archived')
-        self.archived = attributes[:'archived']
-      end
-
-      if attributes.key?(:'verified')
-        self.verified = attributes[:'verified']
+      if attributes.key?(:'data')
+        self.data = attributes[:'data']
       end
     end
 
@@ -184,19 +88,7 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          school_id == o.school_id &&
-          vendor_id == o.vendor_id &&
-          start_at == o.start_at &&
-          end_at == o.end_at &&
-          signed == o.signed &&
-          created_at == o.created_at &&
-          updated_at == o.updated_at &&
-          text == o.text &&
-          autorenew == o.autorenew &&
-          deal_type_id == o.deal_type_id &&
-          archived == o.archived &&
-          verified == o.verified
+          data == o.data
     end
 
     # @see the `==` method
@@ -208,7 +100,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, school_id, vendor_id, start_at, end_at, signed, created_at, updated_at, text, autorenew, deal_type_id, archived, verified].hash
+      [data].hash
     end
 
     # Builds the object from hash

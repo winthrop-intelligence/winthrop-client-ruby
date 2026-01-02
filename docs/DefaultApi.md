@@ -63,6 +63,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_income_reports**](DefaultApi.md#get_income_reports) | **GET** /api/v1/income_reports |  |
 | [**get_job_post**](DefaultApi.md#get_job_post) | **GET** /central_jobs/job_posts/{jobPostId} | Get a job post |
 | [**get_job_posts**](DefaultApi.md#get_job_posts) | **GET** /central_jobs/job_posts | List all job posts |
+| [**get_job_posts_athletics_count**](DefaultApi.md#get_job_posts_athletics_count) | **GET** /central_jobs/job_posts/athletics_count | Get total athletics job posts count |
 | [**get_ncaa_financial_report_status**](DefaultApi.md#get_ncaa_financial_report_status) | **GET** /api/v1/ncaa_financial_report_statuses/{ncaaFinancialReportStatusId} |  |
 | [**get_ncaa_financial_report_statuses**](DefaultApi.md#get_ncaa_financial_report_statuses) | **GET** /api/v1/ncaa_financial_report_statuses |  |
 | [**get_news_feed**](DefaultApi.md#get_news_feed) | **GET** /wi_jobs/news_feeds/{newsFeedId} | Get a news feed |
@@ -4610,6 +4611,77 @@ end
 ### Return type
 
 [**JobPostCollection**](JobPostCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_job_posts_athletics_count
+
+> <GetJobPostsAthleticsCount200Response> get_job_posts_athletics_count
+
+Get total athletics job posts count
+
+Returns the total count of athletics job posts (where LLM and ML both agree it's athletics, OR human override is athletics, OR has Athletic Department category)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  # Get total athletics job posts count
+  result = api_instance.get_job_posts_athletics_count
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_job_posts_athletics_count: #{e}"
+end
+```
+
+#### Using the get_job_posts_athletics_count_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetJobPostsAthleticsCount200Response>, Integer, Hash)> get_job_posts_athletics_count_with_http_info
+
+```ruby
+begin
+  # Get total athletics job posts count
+  data, status_code, headers = api_instance.get_job_posts_athletics_count_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetJobPostsAthleticsCount200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_job_posts_athletics_count_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GetJobPostsAthleticsCount200Response**](GetJobPostsAthleticsCount200Response.md)
 
 ### Authorization
 

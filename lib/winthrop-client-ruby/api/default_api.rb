@@ -3800,6 +3800,63 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Get total athletics job posts count
+    # Returns the total count of athletics job posts (where LLM and ML both agree it's athletics, OR human override is athletics, OR has Athletic Department category)
+    # @param [Hash] opts the optional parameters
+    # @return [GetJobPostsAthleticsCount200Response]
+    def get_job_posts_athletics_count(opts = {})
+      data, _status_code, _headers = get_job_posts_athletics_count_with_http_info(opts)
+      data
+    end
+
+    # Get total athletics job posts count
+    # Returns the total count of athletics job posts (where LLM and ML both agree it&#39;s athletics, OR human override is athletics, OR has Athletic Department category)
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GetJobPostsAthleticsCount200Response, Integer, Hash)>] GetJobPostsAthleticsCount200Response data, response status code and response headers
+    def get_job_posts_athletics_count_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_job_posts_athletics_count ...'
+      end
+      # resource path
+      local_var_path = '/central_jobs/job_posts/athletics_count'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GetJobPostsAthleticsCount200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_job_posts_athletics_count",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_job_posts_athletics_count\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve a single ncaa financial report status
     # @param ncaa_financial_report_status_id [Integer] ID of ncaa financial report status to retrieve
     # @param [Hash] opts the optional parameters
