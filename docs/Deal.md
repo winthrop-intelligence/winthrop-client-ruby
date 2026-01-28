@@ -16,7 +16,6 @@
 | **autorenew** | **Boolean** |  | [optional] |
 | **deal_type_id** | **Integer** |  | [optional] |
 | **archived** | **Boolean** |  | [optional] |
-| **deal_status_type_id** | **Integer** |  | [optional] |
 | **verified** | **Boolean** |  | [optional] |
 
 ## Example
@@ -37,7 +36,6 @@ instance = WinthropClient::Deal.new(
   autorenew: null,
   deal_type_id: null,
   archived: null,
-  deal_status_type_id: null,
   verified: null
 )
 ```
