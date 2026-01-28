@@ -247,8 +247,5 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
-spec/models/game_post_collection_spec.rb
-spec/models/game_post_spec.rb
-spec/models/game_type_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
