@@ -10,11 +10,13 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**average_subdivision_comp**](DefaultApi.md#average_subdivision_comp) | **GET** /api/v1/compensations/average_subdivision_comp |  |
 | [**compare_coli**](DefaultApi.md#compare_coli) | **GET** /api/v1/schools/compare_coli |  |
 | [**create_cashflow**](DefaultApi.md#create_cashflow) | **POST** /api/v1/cashflows |  |
+| [**create_coach**](DefaultApi.md#create_coach) | **POST** /api/v1/coaches |  |
 | [**create_conference**](DefaultApi.md#create_conference) | **POST** /api/v1/conferences |  |
 | [**create_conferenceship**](DefaultApi.md#create_conferenceship) | **POST** /api/v1/conferenceships |  |
 | [**create_foia_label**](DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels |  |
 | [**create_foia_request**](DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests |  |
 | [**create_job_post**](DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post |
+| [**create_position**](DefaultApi.md#create_position) | **POST** /api/v1/positions |  |
 | [**create_requested_item**](DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items |  |
 | [**create_season**](DefaultApi.md#create_season) | **POST** /api/v1/seasons |  |
 | [**delete_cashflow**](DefaultApi.md#delete_cashflow) | **DELETE** /api/v1/cashflows/{cashflowId} |  |
@@ -23,6 +25,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_foia_label**](DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} |  |
 | [**delete_foia_request**](DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} |  |
 | [**delete_job_post**](DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post |
+| [**delete_position**](DefaultApi.md#delete_position) | **DELETE** /api/v1/positions/{positionId} |  |
 | [**delete_requested_item**](DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} |  |
 | [**delete_season**](DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} |  |
 | [**get_administrator**](DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} |  |
@@ -105,6 +108,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_foia_label**](DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} |  |
 | [**update_foia_request**](DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} |  |
 | [**update_job_post**](DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post |
+| [**update_position**](DefaultApi.md#update_position) | **PATCH** /api/v1/positions/{positionId} |  |
 | [**update_requested_item**](DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} |  |
 | [**update_season**](DefaultApi.md#update_season) | **PUT** /api/v1/seasons/{seasonId} |  |
 | [**user_me**](DefaultApi.md#user_me) | **GET** /api/v1/users/me |  |
@@ -585,6 +589,80 @@ end
 - **Accept**: application/json
 
 
+## create_coach
+
+> <Coach> create_coach(coach)
+
+
+
+Create a coach
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+coach = WinthropClient::Coach.new # Coach | Coach attributes to create. Accepts standard coach fields including first_name, last_name, email, phone, bio, bio_text, and related profile fields.
+
+begin
+  
+  result = api_instance.create_coach(coach)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_coach: #{e}"
+end
+```
+
+#### Using the create_coach_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Coach>, Integer, Hash)> create_coach_with_http_info(coach)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_coach_with_http_info(coach)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Coach>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_coach_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **coach** | [**Coach**](Coach.md) | Coach attributes to create. Accepts standard coach fields including first_name, last_name, email, phone, bio, bio_text, and related profile fields. |  |
+
+### Return type
+
+[**Coach**](Coach.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_conference
 
 > <Conference> create_conference(opts)
@@ -950,6 +1028,80 @@ end
 ### Return type
 
 [**JobPost**](JobPost.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_position
+
+> <Position> create_position(position)
+
+
+
+Create a position. If season_id is omitted, a season will be created (or reused) when school_id, sport_id, and year are provided.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+position = WinthropClient::Position.new # Position | Position attributes to create. Accepts season_id or school_id/sport_id/year, coach_id, title, creation_reason, and position_type_ids.
+
+begin
+  
+  result = api_instance.create_position(position)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_position: #{e}"
+end
+```
+
+#### Using the create_position_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Position>, Integer, Hash)> create_position_with_http_info(position)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_position_with_http_info(position)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Position>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_position_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **position** | [**Position**](Position.md) | Position attributes to create. Accepts season_id or school_id/sport_id/year, coach_id, title, creation_reason, and position_type_ids. |  |
+
+### Return type
+
+[**Position**](Position.md)
 
 ### Authorization
 
@@ -1534,6 +1686,79 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **job_post_id** | **Integer** | ID of job post to delete |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## delete_position
+
+> delete_position(position_id)
+
+
+
+Delete a single position
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+position_id = 56 # Integer | ID of position to delete
+
+begin
+  
+  api_instance.delete_position(position_id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_position: #{e}"
+end
+```
+
+#### Using the delete_position_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_position_with_http_info(position_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_position_with_http_info(position_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_position_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **position_id** | **Integer** | ID of position to delete |  |
 
 ### Return type
 
@@ -7344,7 +7569,7 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 coach_id = 56 # Integer | ID of coach to update
-coach = WinthropClient::Coach.new # Coach | Attributes to update. Currently only supports email, phone, bio, bio_text. Others will be ignored.
+coach = WinthropClient::Coach.new # Coach | Coach attributes to update. Supports standard coach fields including first_name, last_name, email, phone, bio, bio_text, and related profile fields.
 
 begin
   
@@ -7378,7 +7603,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **coach_id** | **Integer** | ID of coach to update |  |
-| **coach** | [**Coach**](Coach.md) | Attributes to update. Currently only supports email, phone, bio, bio_text. Others will be ignored. |  |
+| **coach** | [**Coach**](Coach.md) | Coach attributes to update. Supports standard coach fields including first_name, last_name, email, phone, bio, bio_text, and related profile fields. |  |
 
 ### Return type
 
@@ -7841,6 +8066,82 @@ end
 ### Return type
 
 [**JobPost**](JobPost.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_position
+
+> <Position> update_position(position_id, position)
+
+
+
+Update a position
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+position_id = 56 # Integer | ID of position to update
+position = WinthropClient::Position.new # Position | Position attributes to update.
+
+begin
+  
+  result = api_instance.update_position(position_id, position)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_position: #{e}"
+end
+```
+
+#### Using the update_position_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Position>, Integer, Hash)> update_position_with_http_info(position_id, position)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_position_with_http_info(position_id, position)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Position>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_position_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **position_id** | **Integer** | ID of position to update |  |
+| **position** | [**Position**](Position.md) | Position attributes to update. |  |
+
+### Return type
+
+[**Position**](Position.md)
 
 ### Authorization
 
