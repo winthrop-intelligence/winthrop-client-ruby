@@ -37,6 +37,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_categories**](DefaultApi.md#get_categories) | **GET** /central_jobs/categories | List all categories |
 | [**get_coach**](DefaultApi.md#get_coach) | **GET** /api/v1/coaches/{coachId} |  |
 | [**get_coach_compensation**](DefaultApi.md#get_coach_compensation) | **GET** /api/v1/coach_compensations/get_coach_compensation |  |
+| [**get_coach_searches**](DefaultApi.md#get_coach_searches) | **GET** /api/v1/coach_searches |  |
 | [**get_coaches**](DefaultApi.md#get_coaches) | **GET** /api/v1/coaches |  |
 | [**get_compensation**](DefaultApi.md#get_compensation) | **GET** /api/v1/compensations/{compensationId} |  |
 | [**get_compensations**](DefaultApi.md#get_compensations) | **GET** /api/v1/compensations |  |
@@ -49,15 +50,19 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_contract**](DefaultApi.md#get_contract) | **GET** /api/v1/contracts/{contractId} |  |
 | [**get_contracts**](DefaultApi.md#get_contracts) | **GET** /api/v1/contracts |  |
 | [**get_deal**](DefaultApi.md#get_deal) | **GET** /api/v1/deals/{dealId} |  |
+| [**get_deal_searches**](DefaultApi.md#get_deal_searches) | **GET** /api/v1/deal_searches |  |
 | [**get_deal_status**](DefaultApi.md#get_deal_status) | **GET** /api/v1/deal_statuses/{dealStatusId} |  |
 | [**get_deal_statuses**](DefaultApi.md#get_deal_statuses) | **GET** /api/v1/deal_statuses |  |
 | [**get_deals**](DefaultApi.md#get_deals) | **GET** /api/v1/deals |  |
+| [**get_department_searches**](DefaultApi.md#get_department_searches) | **GET** /api/v1/department_searches |  |
 | [**get_division**](DefaultApi.md#get_division) | **GET** /api/v1/divisions/{divisionId} |  |
 | [**get_divisions**](DefaultApi.md#get_divisions) | **GET** /api/v1/divisions |  |
+| [**get_financial_searches**](DefaultApi.md#get_financial_searches) | **GET** /api/v1/financial_searches |  |
 | [**get_foia_label**](DefaultApi.md#get_foia_label) | **GET** /api/v1/foia_labels/{foiaLabelId} |  |
 | [**get_foia_labels**](DefaultApi.md#get_foia_labels) | **GET** /api/v1/foia_labels |  |
 | [**get_foia_request**](DefaultApi.md#get_foia_request) | **GET** /api/v1/foia_requests/{foiaRequestId} |  |
 | [**get_foia_requests**](DefaultApi.md#get_foia_requests) | **GET** /api/v1/foia_requests |  |
+| [**get_gad_searches**](DefaultApi.md#get_gad_searches) | **GET** /api/v1/gad_searches |  |
 | [**get_game**](DefaultApi.md#get_game) | **GET** /api/v1/games/{gameId} |  |
 | [**get_game_contract**](DefaultApi.md#get_game_contract) | **GET** /api/v1/game_contracts/{game_contractId} |  |
 | [**get_game_contracts**](DefaultApi.md#get_game_contracts) | **GET** /api/v1/game_contracts |  |
@@ -2612,6 +2617,90 @@ end
 - **Accept**: application/json
 
 
+## get_coach_searches
+
+> <CoachSearchResultCollection> get_coach_searches(opts)
+
+
+
+Search coaches with filtering and pagination
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... }, # Object | Ransack query
+  position_type_id: 56, # Integer | Filter by position type (expands to group if position is a group stub)
+  contract_expires_on: 'contract_expires_on_example' # String | Filter by contract expiration. Use \"expired\" for expired contracts, or a date range in \"YYYY-MM-DD..YYYY-MM-DD\" format.
+}
+
+begin
+  
+  result = api_instance.get_coach_searches(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_coach_searches: #{e}"
+end
+```
+
+#### Using the get_coach_searches_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CoachSearchResultCollection>, Integer, Hash)> get_coach_searches_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_coach_searches_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CoachSearchResultCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_coach_searches_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+| **position_type_id** | **Integer** | Filter by position type (expands to group if position is a group stub) | [optional] |
+| **contract_expires_on** | **String** | Filter by contract expiration. Use \&quot;expired\&quot; for expired contracts, or a date range in \&quot;YYYY-MM-DD..YYYY-MM-DD\&quot; format. | [optional] |
+
+### Return type
+
+[**CoachSearchResultCollection**](CoachSearchResultCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_coaches
 
 > <CoachCollection> get_coaches(opts)
@@ -3536,6 +3625,86 @@ end
 - **Accept**: application/json
 
 
+## get_deal_searches
+
+> <DealSearchResultCollection> get_deal_searches(opts)
+
+
+
+Search deals with filtering and pagination
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  
+  result = api_instance.get_deal_searches(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_deal_searches: #{e}"
+end
+```
+
+#### Using the get_deal_searches_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DealSearchResultCollection>, Integer, Hash)> get_deal_searches_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_deal_searches_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DealSearchResultCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_deal_searches_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**DealSearchResultCollection**](DealSearchResultCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_deal_status
 
 > <DealStatus> get_deal_status(deal_status_id)
@@ -3770,6 +3939,86 @@ end
 - **Accept**: application/json
 
 
+## get_department_searches
+
+> <DepartmentSearchResultCollection> get_department_searches(opts)
+
+
+
+Search school departments with filtering and pagination
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  
+  result = api_instance.get_department_searches(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_department_searches: #{e}"
+end
+```
+
+#### Using the get_department_searches_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DepartmentSearchResultCollection>, Integer, Hash)> get_department_searches_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_department_searches_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DepartmentSearchResultCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_department_searches_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**DepartmentSearchResultCollection**](DepartmentSearchResultCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_division
 
 > <Division> get_division(division_id)
@@ -3913,6 +4162,86 @@ end
 ### Return type
 
 [**DivisionCollection**](DivisionCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_financial_searches
+
+> <FinancialSearchResultCollection> get_financial_searches(opts)
+
+
+
+Search NCAA financial data with filtering and pagination
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  
+  result = api_instance.get_financial_searches(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_financial_searches: #{e}"
+end
+```
+
+#### Using the get_financial_searches_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FinancialSearchResultCollection>, Integer, Hash)> get_financial_searches_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_financial_searches_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FinancialSearchResultCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_financial_searches_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**FinancialSearchResultCollection**](FinancialSearchResultCollection.md)
 
 ### Authorization
 
@@ -4221,6 +4550,86 @@ end
 ### Return type
 
 [**FoiaRequestCollection**](FoiaRequestCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_gad_searches
+
+> <GadSearchResultCollection> get_gad_searches(opts)
+
+
+
+Search game contracts (GAD) with filtering and pagination
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  
+  result = api_instance.get_gad_searches(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_gad_searches: #{e}"
+end
+```
+
+#### Using the get_gad_searches_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GadSearchResultCollection>, Integer, Hash)> get_gad_searches_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_gad_searches_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GadSearchResultCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_gad_searches_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**GadSearchResultCollection**](GadSearchResultCollection.md)
 
 ### Authorization
 
