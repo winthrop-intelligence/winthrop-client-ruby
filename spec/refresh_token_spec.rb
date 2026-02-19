@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'winthrop-client-ruby/refresh_token'
+require 'webmock/rspec'
 
 describe WinthropClient::RefreshToken do
   before do
