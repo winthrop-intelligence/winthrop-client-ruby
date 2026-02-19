@@ -1,6 +1,8 @@
 require 'spec_helper'
+require 'winthrop-client-ruby/refresh_token'
+require 'webmock/rspec'
 
-RSpec.describe WinthropClient::RefreshToken do
+describe WinthropClient::RefreshToken do
   before do
     described_class.client_id = "test_client_id"
     described_class.client_secret = "test_client_secret"
@@ -47,7 +49,7 @@ RSpec.describe WinthropClient::RefreshToken do
     end
 
     it "generates and caches a new token" do
-      token = described_class.generate_access_token
+      token = described_class.send(:generate_access_token)
       expect(token).to eq("new_access_token")
       expect(described_class.instance_variable_get(:@token)).to eq("new_access_token")
       expect(described_class.instance_variable_get(:@expires_at)).to be > Time.now
