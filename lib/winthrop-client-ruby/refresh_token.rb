@@ -13,7 +13,8 @@ module WinthropClient
     class << self
       attr_accessor :client_id, :client_secret, :host
 
-      def access_token
+      def access_token(scopes: nil)
+        @scopes = scopes
         if @token.nil? || Time.now >= @expires_at
           generate_access_token
         else
@@ -50,11 +51,14 @@ module WinthropClient
 
         # Returns the parameters required for the token request
         def token_params
-          {
+          params = {}
+          params['scope'] = @scopes.join(' ') if @scopes
+          params.merge!(
             grant_type: TOKEN_GRANT_TYPE,
             client_id: client_id,
             client_secret: client_secret
-          }
+          )
+          params
         end
 
         # Handles the HTTP response and caches the token
