@@ -1668,6 +1668,7 @@ module WinthropClient
     # @option opts [Integer] :page results page to retrieve. (default to 1)
     # @option opts [Integer] :per_page number of results per page. (default to 20)
     # @option opts [Object] :q Ransack query
+    # @option opts [String] :favorites_only When \&quot;1\&quot; or \&quot;true\&quot;, restrict results to the current user&#39;s favorited administrators
     # @return [AdministratorCollection]
     def get_administrators(opts = {})
       data, _status_code, _headers = get_administrators_with_http_info(opts)
@@ -1679,6 +1680,7 @@ module WinthropClient
     # @option opts [Integer] :page results page to retrieve. (default to 1)
     # @option opts [Integer] :per_page number of results per page. (default to 20)
     # @option opts [Object] :q Ransack query
+    # @option opts [String] :favorites_only When \&quot;1\&quot; or \&quot;true\&quot;, restrict results to the current user&#39;s favorited administrators
     # @return [Array<(AdministratorCollection, Integer, Hash)>] AdministratorCollection data, response status code and response headers
     def get_administrators_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -1692,6 +1694,7 @@ module WinthropClient
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
       query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
       query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
+      query_params[:'favorites_only'] = opts[:'favorites_only'] if !opts[:'favorites_only'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -3435,6 +3438,251 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Retrieve static filter options for coach/admin search (years, divisions, sports, position types, geo regions)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :context Filter context: &#39;gad&#39; returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball)
+    # @return [GetFilterOptions200Response]
+    def get_filter_options(opts = {})
+      data, _status_code, _headers = get_filter_options_with_http_info(opts)
+      data
+    end
+
+    # Retrieve static filter options for coach/admin search (years, divisions, sports, position types, geo regions)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :context Filter context: &#39;gad&#39; returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball)
+    # @return [Array<(GetFilterOptions200Response, Integer, Hash)>] GetFilterOptions200Response data, response status code and response headers
+    def get_filter_options_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_filter_options ...'
+      end
+      allowable_values = ["gad"]
+      if @api_client.config.client_side_validation && opts[:'context'] && !allowable_values.include?(opts[:'context'])
+        fail ArgumentError, "invalid value for \"context\", must be one of #{allowable_values}"
+      end
+      # resource path
+      local_var_path = '/api/v1/filter_options'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'context'] = opts[:'context'] if !opts[:'context'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GetFilterOptions200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_filter_options",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_filter_options\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve conferences filtered by division and/or sport
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :division_id 
+    # @option opts [Integer] :sport_id 
+    # @return [Array<IdName>]
+    def get_filter_options_conferences(opts = {})
+      data, _status_code, _headers = get_filter_options_conferences_with_http_info(opts)
+      data
+    end
+
+    # Retrieve conferences filtered by division and/or sport
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :division_id 
+    # @option opts [Integer] :sport_id 
+    # @return [Array<(Array<IdName>, Integer, Hash)>] Array<IdName> data, response status code and response headers
+    def get_filter_options_conferences_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_filter_options_conferences ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/filter_options/conferences'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'division_id'] = opts[:'division_id'] if !opts[:'division_id'].nil?
+      query_params[:'sport_id'] = opts[:'sport_id'] if !opts[:'sport_id'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<IdName>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_filter_options_conferences",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_filter_options_conferences\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve schools filtered by conference, division, and/or sport
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :conference_id 
+    # @option opts [Integer] :division_id 
+    # @option opts [Integer] :sport_id 
+    # @return [Array<IdName>]
+    def get_filter_options_schools(opts = {})
+      data, _status_code, _headers = get_filter_options_schools_with_http_info(opts)
+      data
+    end
+
+    # Retrieve schools filtered by conference, division, and/or sport
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :conference_id 
+    # @option opts [Integer] :division_id 
+    # @option opts [Integer] :sport_id 
+    # @return [Array<(Array<IdName>, Integer, Hash)>] Array<IdName> data, response status code and response headers
+    def get_filter_options_schools_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_filter_options_schools ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/filter_options/schools'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'conference_id'] = opts[:'conference_id'] if !opts[:'conference_id'].nil?
+      query_params[:'division_id'] = opts[:'division_id'] if !opts[:'division_id'].nil?
+      query_params[:'sport_id'] = opts[:'sport_id'] if !opts[:'sport_id'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<IdName>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_filter_options_schools",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_filter_options_schools\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve subdivisions filtered by division
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :division_id 
+    # @return [Array<IdName>]
+    def get_filter_options_subdivisions(opts = {})
+      data, _status_code, _headers = get_filter_options_subdivisions_with_http_info(opts)
+      data
+    end
+
+    # Retrieve subdivisions filtered by division
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :division_id 
+    # @return [Array<(Array<IdName>, Integer, Hash)>] Array<IdName> data, response status code and response headers
+    def get_filter_options_subdivisions_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_filter_options_subdivisions ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/filter_options/subdivisions'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'division_id'] = opts[:'division_id'] if !opts[:'division_id'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<IdName>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_filter_options_subdivisions",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_filter_options_subdivisions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Search NCAA financial data with filtering and pagination
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
@@ -4060,6 +4308,70 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Search game posts with enriched data including school info, location, RPI, etc.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Object] :q Ransack query
+    # @return [GamePostSearchResultCollection]
+    def get_game_post_searches(opts = {})
+      data, _status_code, _headers = get_game_post_searches_with_http_info(opts)
+      data
+    end
+
+    # Search game posts with enriched data including school info, location, RPI, etc.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Object] :q Ransack query
+    # @return [Array<(GamePostSearchResultCollection, Integer, Hash)>] GamePostSearchResultCollection data, response status code and response headers
+    def get_game_post_searches_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_game_post_searches ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/game_post_searches'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GamePostSearchResultCollection'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_game_post_searches",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_game_post_searches\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve some or all game_posts
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
@@ -4438,6 +4750,61 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_job_posts\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve filter options specific to the leader/administrator (LAD) search — position types, departments, and school groups
+    # @param [Hash] opts the optional parameters
+    # @return [GetLadFilterOptions200Response]
+    def get_lad_filter_options(opts = {})
+      data, _status_code, _headers = get_lad_filter_options_with_http_info(opts)
+      data
+    end
+
+    # Retrieve filter options specific to the leader/administrator (LAD) search — position types, departments, and school groups
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GetLadFilterOptions200Response, Integer, Hash)>] GetLadFilterOptions200Response data, response status code and response headers
+    def get_lad_filter_options_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_lad_filter_options ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/lad_filter_options'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GetLadFilterOptions200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_lad_filter_options",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_lad_filter_options\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -5187,6 +5554,61 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_schools\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve all schools as a flat list for alma mater filtering
+    # @param [Hash] opts the optional parameters
+    # @return [Array<IdName>]
+    def get_schools_alma_mater(opts = {})
+      data, _status_code, _headers = get_schools_alma_mater_with_http_info(opts)
+      data
+    end
+
+    # Retrieve all schools as a flat list for alma mater filtering
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<IdName>, Integer, Hash)>] Array<IdName> data, response status code and response headers
+    def get_schools_alma_mater_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_schools_alma_mater ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/schools/alma_mater'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<IdName>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_schools_alma_mater",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_schools_alma_mater\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
