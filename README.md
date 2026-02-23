@@ -145,9 +145,13 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_division**](docs/DefaultApi.md#get_division) | **GET** /api/v1/divisions/{divisionId} | 
 *WinthropClient::DefaultApi* | [**get_divisions**](docs/DefaultApi.md#get_divisions) | **GET** /api/v1/divisions | 
 *WinthropClient::DefaultApi* | [**get_filter_options**](docs/DefaultApi.md#get_filter_options) | **GET** /api/v1/filter_options | 
+*WinthropClient::DefaultApi* | [**get_filter_options_all_schools**](docs/DefaultApi.md#get_filter_options_all_schools) | **GET** /api/v1/filter_options/all_schools | 
 *WinthropClient::DefaultApi* | [**get_filter_options_conferences**](docs/DefaultApi.md#get_filter_options_conferences) | **GET** /api/v1/filter_options/conferences | 
+*WinthropClient::DefaultApi* | [**get_filter_options_deal_types**](docs/DefaultApi.md#get_filter_options_deal_types) | **GET** /api/v1/filter_options/deal_types | 
+*WinthropClient::DefaultApi* | [**get_filter_options_school_groups**](docs/DefaultApi.md#get_filter_options_school_groups) | **GET** /api/v1/filter_options/school_groups | 
 *WinthropClient::DefaultApi* | [**get_filter_options_schools**](docs/DefaultApi.md#get_filter_options_schools) | **GET** /api/v1/filter_options/schools | 
 *WinthropClient::DefaultApi* | [**get_filter_options_subdivisions**](docs/DefaultApi.md#get_filter_options_subdivisions) | **GET** /api/v1/filter_options/subdivisions | 
+*WinthropClient::DefaultApi* | [**get_filter_options_vendors**](docs/DefaultApi.md#get_filter_options_vendors) | **GET** /api/v1/filter_options/vendors | 
 *WinthropClient::DefaultApi* | [**get_financial_searches**](docs/DefaultApi.md#get_financial_searches) | **GET** /api/v1/financial_searches | 
 *WinthropClient::DefaultApi* | [**get_foia_label**](docs/DefaultApi.md#get_foia_label) | **GET** /api/v1/foia_labels/{foiaLabelId} | 
 *WinthropClient::DefaultApi* | [**get_foia_labels**](docs/DefaultApi.md#get_foia_labels) | **GET** /api/v1/foia_labels | 

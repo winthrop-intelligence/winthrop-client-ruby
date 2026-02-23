@@ -58,9 +58,13 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_division**](DefaultApi.md#get_division) | **GET** /api/v1/divisions/{divisionId} |  |
 | [**get_divisions**](DefaultApi.md#get_divisions) | **GET** /api/v1/divisions |  |
 | [**get_filter_options**](DefaultApi.md#get_filter_options) | **GET** /api/v1/filter_options |  |
+| [**get_filter_options_all_schools**](DefaultApi.md#get_filter_options_all_schools) | **GET** /api/v1/filter_options/all_schools |  |
 | [**get_filter_options_conferences**](DefaultApi.md#get_filter_options_conferences) | **GET** /api/v1/filter_options/conferences |  |
+| [**get_filter_options_deal_types**](DefaultApi.md#get_filter_options_deal_types) | **GET** /api/v1/filter_options/deal_types |  |
+| [**get_filter_options_school_groups**](DefaultApi.md#get_filter_options_school_groups) | **GET** /api/v1/filter_options/school_groups |  |
 | [**get_filter_options_schools**](DefaultApi.md#get_filter_options_schools) | **GET** /api/v1/filter_options/schools |  |
 | [**get_filter_options_subdivisions**](DefaultApi.md#get_filter_options_subdivisions) | **GET** /api/v1/filter_options/subdivisions |  |
+| [**get_filter_options_vendors**](DefaultApi.md#get_filter_options_vendors) | **GET** /api/v1/filter_options/vendors |  |
 | [**get_financial_searches**](DefaultApi.md#get_financial_searches) | **GET** /api/v1/financial_searches |  |
 | [**get_foia_label**](DefaultApi.md#get_foia_label) | **GET** /api/v1/foia_labels/{foiaLabelId} |  |
 | [**get_foia_labels**](DefaultApi.md#get_foia_labels) | **GET** /api/v1/foia_labels |  |
@@ -4258,6 +4262,77 @@ end
 - **Accept**: application/json
 
 
+## get_filter_options_all_schools
+
+> <Array<IdName>> get_filter_options_all_schools
+
+
+
+Retrieve all accessible schools for filter dropdowns
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_filter_options_all_schools
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_filter_options_all_schools: #{e}"
+end
+```
+
+#### Using the get_filter_options_all_schools_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<IdName>>, Integer, Hash)> get_filter_options_all_schools_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_filter_options_all_schools_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<IdName>>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_filter_options_all_schools_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Array&lt;IdName&gt;**](IdName.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_filter_options_conferences
 
 > <Array<IdName>> get_filter_options_conferences(opts)
@@ -4321,6 +4396,148 @@ end
 | ---- | ---- | ----------- | ----- |
 | **division_id** | **Integer** |  | [optional] |
 | **sport_id** | **Integer** |  | [optional] |
+
+### Return type
+
+[**Array&lt;IdName&gt;**](IdName.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_filter_options_deal_types
+
+> <Array<IdName>> get_filter_options_deal_types
+
+
+
+Retrieve all available deal types for vendor deal filtering
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_filter_options_deal_types
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_filter_options_deal_types: #{e}"
+end
+```
+
+#### Using the get_filter_options_deal_types_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<IdName>>, Integer, Hash)> get_filter_options_deal_types_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_filter_options_deal_types_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<IdName>>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_filter_options_deal_types_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Array&lt;IdName&gt;**](IdName.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_filter_options_school_groups
+
+> <Array<IdName>> get_filter_options_school_groups
+
+
+
+Retrieve the current user's school groups for filtering
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_filter_options_school_groups
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_filter_options_school_groups: #{e}"
+end
+```
+
+#### Using the get_filter_options_school_groups_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<IdName>>, Integer, Hash)> get_filter_options_school_groups_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_filter_options_school_groups_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<IdName>>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_filter_options_school_groups_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -4477,6 +4694,82 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **division_id** | **Integer** |  | [optional] |
+
+### Return type
+
+[**Array&lt;IdName&gt;**](IdName.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_filter_options_vendors
+
+> <Array<IdName>> get_filter_options_vendors(opts)
+
+
+
+Retrieve vendors for filter dropdown, optionally filtered by deal type
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  deal_type_id: 56 # Integer | 
+}
+
+begin
+  
+  result = api_instance.get_filter_options_vendors(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_filter_options_vendors: #{e}"
+end
+```
+
+#### Using the get_filter_options_vendors_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<IdName>>, Integer, Hash)> get_filter_options_vendors_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_filter_options_vendors_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<IdName>>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_filter_options_vendors_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **deal_type_id** | **Integer** |  | [optional] |
 
 ### Return type
 
