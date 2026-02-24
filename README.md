@@ -120,6 +120,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_audited_financial_report_status**](docs/DefaultApi.md#get_audited_financial_report_status) | **GET** /api/v1/audited_financial_report_statuses/{auditedFinancialReportStatusId} | 
 *WinthropClient::DefaultApi* | [**get_audited_financial_report_statuses**](docs/DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses | 
 *WinthropClient::DefaultApi* | [**get_cashflow**](docs/DefaultApi.md#get_cashflow) | **GET** /api/v1/cashflows/{cashflowId} | 
+*WinthropClient::DefaultApi* | [**get_cashflow_groups**](docs/DefaultApi.md#get_cashflow_groups) | **GET** /api/v1/cashflow_groups | 
 *WinthropClient::DefaultApi* | [**get_cashflows**](docs/DefaultApi.md#get_cashflows) | **GET** /api/v1/cashflows | 
 *WinthropClient::DefaultApi* | [**get_categories**](docs/DefaultApi.md#get_categories) | **GET** /central_jobs/categories | List all categories
 *WinthropClient::DefaultApi* | [**get_coach**](docs/DefaultApi.md#get_coach) | **GET** /api/v1/coaches/{coachId} | 
@@ -129,6 +130,8 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_compensation**](docs/DefaultApi.md#get_compensation) | **GET** /api/v1/compensations/{compensationId} | 
 *WinthropClient::DefaultApi* | [**get_compensations**](docs/DefaultApi.md#get_compensations) | **GET** /api/v1/compensations | 
 *WinthropClient::DefaultApi* | [**get_conference**](docs/DefaultApi.md#get_conference) | **GET** /api/v1/conferences/{conferenceId} | 
+*WinthropClient::DefaultApi* | [**get_conference_cashflow_stats**](docs/DefaultApi.md#get_conference_cashflow_stats) | **GET** /api/v1/conferences/{conferenceId}/cashflow_stats | 
+*WinthropClient::DefaultApi* | [**get_conference_position_stats**](docs/DefaultApi.md#get_conference_position_stats) | **GET** /api/v1/conferences/{conferenceId}/position_stats | 
 *WinthropClient::DefaultApi* | [**get_conferences**](docs/DefaultApi.md#get_conferences) | **GET** /api/v1/conferences | 
 *WinthropClient::DefaultApi* | [**get_conferenceship**](docs/DefaultApi.md#get_conferenceship) | **GET** /api/v1/conferenceships/{conferenceshipId} | 
 *WinthropClient::DefaultApi* | [**get_conferenceships**](docs/DefaultApi.md#get_conferenceships) | **GET** /api/v1/conferenceships | 
@@ -247,6 +250,10 @@ Class | Method | HTTP request | Description
  - [WinthropClient::COLIAdjusted](docs/COLIAdjusted.md)
  - [WinthropClient::Cashflow](docs/Cashflow.md)
  - [WinthropClient::CashflowCollection](docs/CashflowCollection.md)
+ - [WinthropClient::CashflowGroupItem](docs/CashflowGroupItem.md)
+ - [WinthropClient::CashflowGroupStats](docs/CashflowGroupStats.md)
+ - [WinthropClient::CashflowGroupsResponse](docs/CashflowGroupsResponse.md)
+ - [WinthropClient::CashflowSportStat](docs/CashflowSportStat.md)
  - [WinthropClient::Category](docs/Category.md)
  - [WinthropClient::CategoryCollection](docs/CategoryCollection.md)
  - [WinthropClient::Coach](docs/Coach.md)
@@ -259,7 +266,9 @@ Class | Method | HTTP request | Description
  - [WinthropClient::Compensation](docs/Compensation.md)
  - [WinthropClient::CompensationCollection](docs/CompensationCollection.md)
  - [WinthropClient::Conference](docs/Conference.md)
+ - [WinthropClient::ConferenceCashflowStatsResponse](docs/ConferenceCashflowStatsResponse.md)
  - [WinthropClient::ConferenceCollection](docs/ConferenceCollection.md)
+ - [WinthropClient::ConferencePositionStatsResponse](docs/ConferencePositionStatsResponse.md)
  - [WinthropClient::Conferenceship](docs/Conferenceship.md)
  - [WinthropClient::ConferenceshipCollection](docs/ConferenceshipCollection.md)
  - [WinthropClient::Contact](docs/Contact.md)
@@ -328,6 +337,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::NewsFeedCollection](docs/NewsFeedCollection.md)
  - [WinthropClient::Position](docs/Position.md)
  - [WinthropClient::PositionCollection](docs/PositionCollection.md)
+ - [WinthropClient::PositionSportStat](docs/PositionSportStat.md)
  - [WinthropClient::PositionType](docs/PositionType.md)
  - [WinthropClient::PositionTypeGroup](docs/PositionTypeGroup.md)
  - [WinthropClient::PredictBody](docs/PredictBody.md)

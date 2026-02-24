@@ -14,37 +14,53 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class GetFilterOptions200Response < ApiModelBase
-    attr_accessor :years
+  class CashflowSportStat < ApiModelBase
+    attr_accessor :sport_id
 
-    attr_accessor :current_year
+    attr_accessor :sport_name
 
-    attr_accessor :divisions
+    attr_accessor :gender_code
 
-    attr_accessor :sports
+    attr_accessor :high
 
-    attr_accessor :position_types
+    attr_accessor :low
 
-    attr_accessor :geo_regions
+    attr_accessor :median
 
-    attr_accessor :gender_options
+    attr_accessor :count
 
-    attr_accessor :diversity_options
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
 
-    attr_accessor :compensation_types
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'years' => :'years',
-        :'current_year' => :'current_year',
-        :'divisions' => :'divisions',
-        :'sports' => :'sports',
-        :'position_types' => :'position_types',
-        :'geo_regions' => :'geo_regions',
-        :'gender_options' => :'gender_options',
-        :'diversity_options' => :'diversity_options',
-        :'compensation_types' => :'compensation_types'
+        :'sport_id' => :'sport_id',
+        :'sport_name' => :'sport_name',
+        :'gender_code' => :'gender_code',
+        :'high' => :'high',
+        :'low' => :'low',
+        :'median' => :'median',
+        :'count' => :'count'
       }
     end
 
@@ -61,21 +77,23 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'years' => :'Array<Integer>',
-        :'current_year' => :'Integer',
-        :'divisions' => :'Array<IdName>',
-        :'sports' => :'Array<Sport>',
-        :'position_types' => :'Array<IdName>',
-        :'geo_regions' => :'Array<IdName>',
-        :'gender_options' => :'Array<String>',
-        :'diversity_options' => :'Array<String>',
-        :'compensation_types' => :'Array<String>'
+        :'sport_id' => :'Integer',
+        :'sport_name' => :'String',
+        :'gender_code' => :'String',
+        :'high' => :'Float',
+        :'low' => :'Float',
+        :'median' => :'Float',
+        :'count' => :'Integer'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'gender_code',
+        :'high',
+        :'low',
+        :'median',
       ])
     end
 
@@ -83,68 +101,44 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::GetFilterOptions200Response` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::CashflowSportStat` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::GetFilterOptions200Response`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::CashflowSportStat`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'years')
-        if (value = attributes[:'years']).is_a?(Array)
-          self.years = value
-        end
+      if attributes.key?(:'sport_id')
+        self.sport_id = attributes[:'sport_id']
       end
 
-      if attributes.key?(:'current_year')
-        self.current_year = attributes[:'current_year']
+      if attributes.key?(:'sport_name')
+        self.sport_name = attributes[:'sport_name']
       end
 
-      if attributes.key?(:'divisions')
-        if (value = attributes[:'divisions']).is_a?(Array)
-          self.divisions = value
-        end
+      if attributes.key?(:'gender_code')
+        self.gender_code = attributes[:'gender_code']
       end
 
-      if attributes.key?(:'sports')
-        if (value = attributes[:'sports']).is_a?(Array)
-          self.sports = value
-        end
+      if attributes.key?(:'high')
+        self.high = attributes[:'high']
       end
 
-      if attributes.key?(:'position_types')
-        if (value = attributes[:'position_types']).is_a?(Array)
-          self.position_types = value
-        end
+      if attributes.key?(:'low')
+        self.low = attributes[:'low']
       end
 
-      if attributes.key?(:'geo_regions')
-        if (value = attributes[:'geo_regions']).is_a?(Array)
-          self.geo_regions = value
-        end
+      if attributes.key?(:'median')
+        self.median = attributes[:'median']
       end
 
-      if attributes.key?(:'gender_options')
-        if (value = attributes[:'gender_options']).is_a?(Array)
-          self.gender_options = value
-        end
-      end
-
-      if attributes.key?(:'diversity_options')
-        if (value = attributes[:'diversity_options']).is_a?(Array)
-          self.diversity_options = value
-        end
-      end
-
-      if attributes.key?(:'compensation_types')
-        if (value = attributes[:'compensation_types']).is_a?(Array)
-          self.compensation_types = value
-        end
+      if attributes.key?(:'count')
+        self.count = attributes[:'count']
       end
     end
 
@@ -160,7 +154,19 @@ module WinthropClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      gender_code_validator = EnumAttributeValidator.new('String', ["M", "W"])
+      return false unless gender_code_validator.valid?(@gender_code)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] gender_code Object to be assigned
+    def gender_code=(gender_code)
+      validator = EnumAttributeValidator.new('String', ["M", "W"])
+      unless validator.valid?(gender_code)
+        fail ArgumentError, "invalid value for \"gender_code\", must be one of #{validator.allowable_values}."
+      end
+      @gender_code = gender_code
     end
 
     # Checks equality by comparing each attribute.
@@ -168,15 +174,13 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          years == o.years &&
-          current_year == o.current_year &&
-          divisions == o.divisions &&
-          sports == o.sports &&
-          position_types == o.position_types &&
-          geo_regions == o.geo_regions &&
-          gender_options == o.gender_options &&
-          diversity_options == o.diversity_options &&
-          compensation_types == o.compensation_types
+          sport_id == o.sport_id &&
+          sport_name == o.sport_name &&
+          gender_code == o.gender_code &&
+          high == o.high &&
+          low == o.low &&
+          median == o.median &&
+          count == o.count
     end
 
     # @see the `==` method
@@ -188,7 +192,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [years, current_year, divisions, sports, position_types, geo_regions, gender_options, diversity_options, compensation_types].hash
+      [sport_id, sport_name, gender_code, high, low, median, count].hash
     end
 
     # Builds the object from hash

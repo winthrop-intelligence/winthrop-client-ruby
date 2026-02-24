@@ -1916,6 +1916,61 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Retrieve all cashflow groups (revenues and expenses) for Select Tables UI
+    # @param [Hash] opts the optional parameters
+    # @return [CashflowGroupsResponse]
+    def get_cashflow_groups(opts = {})
+      data, _status_code, _headers = get_cashflow_groups_with_http_info(opts)
+      data
+    end
+
+    # Retrieve all cashflow groups (revenues and expenses) for Select Tables UI
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CashflowGroupsResponse, Integer, Hash)>] CashflowGroupsResponse data, response status code and response headers
+    def get_cashflow_groups_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_cashflow_groups ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/cashflow_groups'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CashflowGroupsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_cashflow_groups",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_cashflow_groups\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve some or all cashflows
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
@@ -2492,6 +2547,137 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_conference\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve aggregated cashflow stats (High/Low/Median per sport) for selected cashflow groups
+    # @param conference_id [Integer] ID of the Conference
+    # @param [Hash] opts the optional parameters
+    # @option opts [Array<Integer>] :group_ids Array of cashflow group IDs to include
+    # @option opts [Integer] :year Financial year
+    # @return [ConferenceCashflowStatsResponse]
+    def get_conference_cashflow_stats(conference_id, opts = {})
+      data, _status_code, _headers = get_conference_cashflow_stats_with_http_info(conference_id, opts)
+      data
+    end
+
+    # Retrieve aggregated cashflow stats (High/Low/Median per sport) for selected cashflow groups
+    # @param conference_id [Integer] ID of the Conference
+    # @param [Hash] opts the optional parameters
+    # @option opts [Array<Integer>] :group_ids Array of cashflow group IDs to include
+    # @option opts [Integer] :year Financial year
+    # @return [Array<(ConferenceCashflowStatsResponse, Integer, Hash)>] ConferenceCashflowStatsResponse data, response status code and response headers
+    def get_conference_cashflow_stats_with_http_info(conference_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_conference_cashflow_stats ...'
+      end
+      # verify the required parameter 'conference_id' is set
+      if @api_client.config.client_side_validation && conference_id.nil?
+        fail ArgumentError, "Missing the required parameter 'conference_id' when calling DefaultApi.get_conference_cashflow_stats"
+      end
+      # resource path
+      local_var_path = '/api/v1/conferences/{conferenceId}/cashflow_stats'.sub('{' + 'conferenceId' + '}', CGI.escape(conference_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'group_ids[]'] = @api_client.build_collection_param(opts[:'group_ids'], :csv) if !opts[:'group_ids'].nil?
+      query_params[:'year'] = opts[:'year'] if !opts[:'year'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConferenceCashflowStatsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_conference_cashflow_stats",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_conference_cashflow_stats\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve aggregated assistant coach position stats (High/Low/Median per sport)
+    # @param conference_id [Integer] ID of the Conference
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :year Financial year
+    # @return [ConferencePositionStatsResponse]
+    def get_conference_position_stats(conference_id, opts = {})
+      data, _status_code, _headers = get_conference_position_stats_with_http_info(conference_id, opts)
+      data
+    end
+
+    # Retrieve aggregated assistant coach position stats (High/Low/Median per sport)
+    # @param conference_id [Integer] ID of the Conference
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :year Financial year
+    # @return [Array<(ConferencePositionStatsResponse, Integer, Hash)>] ConferencePositionStatsResponse data, response status code and response headers
+    def get_conference_position_stats_with_http_info(conference_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_conference_position_stats ...'
+      end
+      # verify the required parameter 'conference_id' is set
+      if @api_client.config.client_side_validation && conference_id.nil?
+        fail ArgumentError, "Missing the required parameter 'conference_id' when calling DefaultApi.get_conference_position_stats"
+      end
+      # resource path
+      local_var_path = '/api/v1/conferences/{conferenceId}/position_stats'.sub('{' + 'conferenceId' + '}', CGI.escape(conference_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'year'] = opts[:'year'] if !opts[:'year'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConferencePositionStatsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_conference_position_stats",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_conference_position_stats\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

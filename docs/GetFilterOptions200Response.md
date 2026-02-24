@@ -7,7 +7,7 @@
 | **years** | **Array&lt;Integer&gt;** |  | [optional] |
 | **current_year** | **Integer** |  | [optional] |
 | **divisions** | [**Array&lt;IdName&gt;**](IdName.md) |  | [optional] |
-| **sports** | [**Array&lt;IdName&gt;**](IdName.md) |  | [optional] |
+| **sports** | [**Array&lt;Sport&gt;**](Sport.md) |  | [optional] |
 | **position_types** | [**Array&lt;IdName&gt;**](IdName.md) |  | [optional] |
 | **geo_regions** | [**Array&lt;IdName&gt;**](IdName.md) |  | [optional] |
 | **gender_options** | **Array&lt;String&gt;** |  | [optional] |

@@ -33,6 +33,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_audited_financial_report_status**](DefaultApi.md#get_audited_financial_report_status) | **GET** /api/v1/audited_financial_report_statuses/{auditedFinancialReportStatusId} |  |
 | [**get_audited_financial_report_statuses**](DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses |  |
 | [**get_cashflow**](DefaultApi.md#get_cashflow) | **GET** /api/v1/cashflows/{cashflowId} |  |
+| [**get_cashflow_groups**](DefaultApi.md#get_cashflow_groups) | **GET** /api/v1/cashflow_groups |  |
 | [**get_cashflows**](DefaultApi.md#get_cashflows) | **GET** /api/v1/cashflows |  |
 | [**get_categories**](DefaultApi.md#get_categories) | **GET** /central_jobs/categories | List all categories |
 | [**get_coach**](DefaultApi.md#get_coach) | **GET** /api/v1/coaches/{coachId} |  |
@@ -42,6 +43,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_compensation**](DefaultApi.md#get_compensation) | **GET** /api/v1/compensations/{compensationId} |  |
 | [**get_compensations**](DefaultApi.md#get_compensations) | **GET** /api/v1/compensations |  |
 | [**get_conference**](DefaultApi.md#get_conference) | **GET** /api/v1/conferences/{conferenceId} |  |
+| [**get_conference_cashflow_stats**](DefaultApi.md#get_conference_cashflow_stats) | **GET** /api/v1/conferences/{conferenceId}/cashflow_stats |  |
+| [**get_conference_position_stats**](DefaultApi.md#get_conference_position_stats) | **GET** /api/v1/conferences/{conferenceId}/position_stats |  |
 | [**get_conferences**](DefaultApi.md#get_conferences) | **GET** /api/v1/conferences |  |
 | [**get_conferenceship**](DefaultApi.md#get_conferenceship) | **GET** /api/v1/conferenceships/{conferenceshipId} |  |
 | [**get_conferenceships**](DefaultApi.md#get_conferenceships) | **GET** /api/v1/conferenceships |  |
@@ -2320,6 +2323,77 @@ end
 - **Accept**: application/json
 
 
+## get_cashflow_groups
+
+> <CashflowGroupsResponse> get_cashflow_groups
+
+
+
+Retrieve all cashflow groups (revenues and expenses) for Select Tables UI
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_cashflow_groups
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_cashflow_groups: #{e}"
+end
+```
+
+#### Using the get_cashflow_groups_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CashflowGroupsResponse>, Integer, Hash)> get_cashflow_groups_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_cashflow_groups_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CashflowGroupsResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_cashflow_groups_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**CashflowGroupsResponse**](CashflowGroupsResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_cashflows
 
 > <CashflowCollection> get_cashflows(opts)
@@ -3011,6 +3085,164 @@ end
 ### Return type
 
 [**Conference**](Conference.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_conference_cashflow_stats
+
+> <ConferenceCashflowStatsResponse> get_conference_cashflow_stats(conference_id, opts)
+
+
+
+Retrieve aggregated cashflow stats (High/Low/Median per sport) for selected cashflow groups
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+conference_id = 56 # Integer | ID of the Conference
+opts = {
+  group_ids: [37], # Array<Integer> | Array of cashflow group IDs to include
+  year: 56 # Integer | Financial year
+}
+
+begin
+  
+  result = api_instance.get_conference_cashflow_stats(conference_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_conference_cashflow_stats: #{e}"
+end
+```
+
+#### Using the get_conference_cashflow_stats_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConferenceCashflowStatsResponse>, Integer, Hash)> get_conference_cashflow_stats_with_http_info(conference_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_conference_cashflow_stats_with_http_info(conference_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConferenceCashflowStatsResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_conference_cashflow_stats_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conference_id** | **Integer** | ID of the Conference |  |
+| **group_ids** | [**Array&lt;Integer&gt;**](Integer.md) | Array of cashflow group IDs to include | [optional] |
+| **year** | **Integer** | Financial year | [optional] |
+
+### Return type
+
+[**ConferenceCashflowStatsResponse**](ConferenceCashflowStatsResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_conference_position_stats
+
+> <ConferencePositionStatsResponse> get_conference_position_stats(conference_id, opts)
+
+
+
+Retrieve aggregated assistant coach position stats (High/Low/Median per sport)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+conference_id = 56 # Integer | ID of the Conference
+opts = {
+  year: 56 # Integer | Financial year
+}
+
+begin
+  
+  result = api_instance.get_conference_position_stats(conference_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_conference_position_stats: #{e}"
+end
+```
+
+#### Using the get_conference_position_stats_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConferencePositionStatsResponse>, Integer, Hash)> get_conference_position_stats_with_http_info(conference_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_conference_position_stats_with_http_info(conference_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConferencePositionStatsResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_conference_position_stats_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conference_id** | **Integer** | ID of the Conference |  |
+| **year** | **Integer** | Financial year | [optional] |
+
+### Return type
+
+[**ConferencePositionStatsResponse**](ConferencePositionStatsResponse.md)
 
 ### Authorization
 
