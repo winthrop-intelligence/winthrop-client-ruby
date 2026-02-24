@@ -130,8 +130,12 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_compensation**](docs/DefaultApi.md#get_compensation) | **GET** /api/v1/compensations/{compensationId} | 
 *WinthropClient::DefaultApi* | [**get_compensations**](docs/DefaultApi.md#get_compensations) | **GET** /api/v1/compensations | 
 *WinthropClient::DefaultApi* | [**get_conference**](docs/DefaultApi.md#get_conference) | **GET** /api/v1/conferences/{conferenceId} | 
+*WinthropClient::DefaultApi* | [**get_conference_admin_compensation**](docs/DefaultApi.md#get_conference_admin_compensation) | **GET** /api/v1/conferences/{conferenceId}/admin_compensation | 
 *WinthropClient::DefaultApi* | [**get_conference_cashflow_stats**](docs/DefaultApi.md#get_conference_cashflow_stats) | **GET** /api/v1/conferences/{conferenceId}/cashflow_stats | 
+*WinthropClient::DefaultApi* | [**get_conference_department_staff**](docs/DefaultApi.md#get_conference_department_staff) | **GET** /api/v1/conferences/{conferenceId}/department_staff | 
+*WinthropClient::DefaultApi* | [**get_conference_directors_cup**](docs/DefaultApi.md#get_conference_directors_cup) | **GET** /api/v1/conferences/{conferenceId}/directors_cup | 
 *WinthropClient::DefaultApi* | [**get_conference_position_stats**](docs/DefaultApi.md#get_conference_position_stats) | **GET** /api/v1/conferences/{conferenceId}/position_stats | 
+*WinthropClient::DefaultApi* | [**get_conference_sport_compensation**](docs/DefaultApi.md#get_conference_sport_compensation) | **GET** /api/v1/conferences/{conferenceId}/sport_compensation | 
 *WinthropClient::DefaultApi* | [**get_conferences**](docs/DefaultApi.md#get_conferences) | **GET** /api/v1/conferences | 
 *WinthropClient::DefaultApi* | [**get_conferenceship**](docs/DefaultApi.md#get_conferenceship) | **GET** /api/v1/conferenceships/{conferenceshipId} | 
 *WinthropClient::DefaultApi* | [**get_conferenceships**](docs/DefaultApi.md#get_conferenceships) | **GET** /api/v1/conferenceships | 
@@ -184,6 +188,10 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_requested_items**](docs/DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items | 
 *WinthropClient::DefaultApi* | [**get_school**](docs/DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
 *WinthropClient::DefaultApi* | [**get_school_alternate_names**](docs/DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names | 
+*WinthropClient::DefaultApi* | [**get_school_group**](docs/DefaultApi.md#get_school_group) | **GET** /api/v1/school_groups/{schoolGroupId} | 
+*WinthropClient::DefaultApi* | [**get_school_group_cashflow_stats**](docs/DefaultApi.md#get_school_group_cashflow_stats) | **GET** /api/v1/school_groups/{schoolGroupId}/cashflow_stats | 
+*WinthropClient::DefaultApi* | [**get_school_group_position_stats**](docs/DefaultApi.md#get_school_group_position_stats) | **GET** /api/v1/school_groups/{schoolGroupId}/position_stats | 
+*WinthropClient::DefaultApi* | [**get_school_group_sport_compensation**](docs/DefaultApi.md#get_school_group_sport_compensation) | **GET** /api/v1/school_groups/{schoolGroupId}/sport_compensation | 
 *WinthropClient::DefaultApi* | [**get_schools**](docs/DefaultApi.md#get_schools) | **GET** /api/v1/schools | 
 *WinthropClient::DefaultApi* | [**get_schools_alma_mater**](docs/DefaultApi.md#get_schools_alma_mater) | **GET** /api/v1/schools/alma_mater | 
 *WinthropClient::DefaultApi* | [**get_season**](docs/DefaultApi.md#get_season) | **GET** /api/v1/seasons/{seasonId} | 
@@ -192,6 +200,9 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_sport**](docs/DefaultApi.md#get_sport) | **GET** /api/v1/sports/{sportId} | 
 *WinthropClient::DefaultApi* | [**get_sports**](docs/DefaultApi.md#get_sports) | **GET** /api/v1/sports | 
 *WinthropClient::DefaultApi* | [**get_subdivision**](docs/DefaultApi.md#get_subdivision) | **GET** /api/v1/subdivisions/{subdivisionId} | 
+*WinthropClient::DefaultApi* | [**get_subdivision_cashflow_stats**](docs/DefaultApi.md#get_subdivision_cashflow_stats) | **GET** /api/v1/subdivisions/{subdivisionId}/cashflow_stats | 
+*WinthropClient::DefaultApi* | [**get_subdivision_position_stats**](docs/DefaultApi.md#get_subdivision_position_stats) | **GET** /api/v1/subdivisions/{subdivisionId}/position_stats | 
+*WinthropClient::DefaultApi* | [**get_subdivision_sport_compensation**](docs/DefaultApi.md#get_subdivision_sport_compensation) | **GET** /api/v1/subdivisions/{subdivisionId}/sport_compensation | 
 *WinthropClient::DefaultApi* | [**get_subdivisions**](docs/DefaultApi.md#get_subdivisions) | **GET** /api/v1/subdivisions | 
 *WinthropClient::DefaultApi* | [**get_subscription**](docs/DefaultApi.md#get_subscription) | **GET** /api/v1/subscriptions/{subscriptionId} | 
 *WinthropClient::DefaultApi* | [**get_subscriptions**](docs/DefaultApi.md#get_subscriptions) | **GET** /api/v1/subscriptions | 
@@ -241,8 +252,11 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [WinthropClient::AdminCompensationSubdivision](docs/AdminCompensationSubdivision.md)
  - [WinthropClient::Administrator](docs/Administrator.md)
  - [WinthropClient::AdministratorCollection](docs/AdministratorCollection.md)
+ - [WinthropClient::AsstCoachEntry](docs/AsstCoachEntry.md)
+ - [WinthropClient::AsstCoachSchool](docs/AsstCoachSchool.md)
  - [WinthropClient::AuditedFinancialReportStatus](docs/AuditedFinancialReportStatus.md)
  - [WinthropClient::AuditedFinancialReportStatusCollection](docs/AuditedFinancialReportStatusCollection.md)
  - [WinthropClient::Avatar](docs/Avatar.md)
@@ -265,9 +279,13 @@ Class | Method | HTTP request | Description
  - [WinthropClient::CompareColi422Response](docs/CompareColi422Response.md)
  - [WinthropClient::Compensation](docs/Compensation.md)
  - [WinthropClient::CompensationCollection](docs/CompensationCollection.md)
+ - [WinthropClient::CompensationRow](docs/CompensationRow.md)
  - [WinthropClient::Conference](docs/Conference.md)
+ - [WinthropClient::ConferenceAdminCompensationResponse](docs/ConferenceAdminCompensationResponse.md)
  - [WinthropClient::ConferenceCashflowStatsResponse](docs/ConferenceCashflowStatsResponse.md)
  - [WinthropClient::ConferenceCollection](docs/ConferenceCollection.md)
+ - [WinthropClient::ConferenceDepartmentStaffResponse](docs/ConferenceDepartmentStaffResponse.md)
+ - [WinthropClient::ConferenceDirectorsCupResponse](docs/ConferenceDirectorsCupResponse.md)
  - [WinthropClient::ConferencePositionStatsResponse](docs/ConferencePositionStatsResponse.md)
  - [WinthropClient::Conferenceship](docs/Conferenceship.md)
  - [WinthropClient::ConferenceshipCollection](docs/ConferenceshipCollection.md)
@@ -283,6 +301,9 @@ Class | Method | HTTP request | Description
  - [WinthropClient::DealStatusCollection](docs/DealStatusCollection.md)
  - [WinthropClient::DepartmentSearchResult](docs/DepartmentSearchResult.md)
  - [WinthropClient::DepartmentSearchResultCollection](docs/DepartmentSearchResultCollection.md)
+ - [WinthropClient::DepartmentStaffMember](docs/DepartmentStaffMember.md)
+ - [WinthropClient::DepartmentStaffSchool](docs/DepartmentStaffSchool.md)
+ - [WinthropClient::DirectorsCupSchool](docs/DirectorsCupSchool.md)
  - [WinthropClient::Division](docs/Division.md)
  - [WinthropClient::DivisionCollection](docs/DivisionCollection.md)
  - [WinthropClient::DossierReportResponse](docs/DossierReportResponse.md)
@@ -349,12 +370,19 @@ Class | Method | HTTP request | Description
  - [WinthropClient::RequestedItemCollection](docs/RequestedItemCollection.md)
  - [WinthropClient::School](docs/School.md)
  - [WinthropClient::SchoolCollection](docs/SchoolCollection.md)
+ - [WinthropClient::SchoolGroupShow](docs/SchoolGroupShow.md)
+ - [WinthropClient::SchoolNoComp](docs/SchoolNoComp.md)
+ - [WinthropClient::SchoolNoSeason](docs/SchoolNoSeason.md)
  - [WinthropClient::Scraper](docs/Scraper.md)
  - [WinthropClient::ScraperArgDef](docs/ScraperArgDef.md)
  - [WinthropClient::Season](docs/Season.md)
  - [WinthropClient::SeasonCollection](docs/SeasonCollection.md)
  - [WinthropClient::Sport](docs/Sport.md)
  - [WinthropClient::SportCollection](docs/SportCollection.md)
+ - [WinthropClient::SportCompensationRankings](docs/SportCompensationRankings.md)
+ - [WinthropClient::SportCompensationRankingsSchoolsInner](docs/SportCompensationRankingsSchoolsInner.md)
+ - [WinthropClient::SportCompensationResponse](docs/SportCompensationResponse.md)
+ - [WinthropClient::SportCompensationSubdivision](docs/SportCompensationSubdivision.md)
  - [WinthropClient::Subdivision](docs/Subdivision.md)
  - [WinthropClient::SubdivisionCollection](docs/SubdivisionCollection.md)
  - [WinthropClient::Subscription](docs/Subscription.md)

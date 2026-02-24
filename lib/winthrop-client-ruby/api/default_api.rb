@@ -2551,6 +2551,70 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Retrieve athletic director compensation table for a conference
+    # @param conference_id [Integer] ID of the Conference
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :year Season year
+    # @return [ConferenceAdminCompensationResponse]
+    def get_conference_admin_compensation(conference_id, opts = {})
+      data, _status_code, _headers = get_conference_admin_compensation_with_http_info(conference_id, opts)
+      data
+    end
+
+    # Retrieve athletic director compensation table for a conference
+    # @param conference_id [Integer] ID of the Conference
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :year Season year
+    # @return [Array<(ConferenceAdminCompensationResponse, Integer, Hash)>] ConferenceAdminCompensationResponse data, response status code and response headers
+    def get_conference_admin_compensation_with_http_info(conference_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_conference_admin_compensation ...'
+      end
+      # verify the required parameter 'conference_id' is set
+      if @api_client.config.client_side_validation && conference_id.nil?
+        fail ArgumentError, "Missing the required parameter 'conference_id' when calling DefaultApi.get_conference_admin_compensation"
+      end
+      # resource path
+      local_var_path = '/api/v1/conferences/{conferenceId}/admin_compensation'.sub('{' + 'conferenceId' + '}', CGI.escape(conference_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'year'] = opts[:'year'] if !opts[:'year'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConferenceAdminCompensationResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_conference_admin_compensation",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_conference_admin_compensation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve aggregated cashflow stats (High/Low/Median per sport) for selected cashflow groups
     # @param conference_id [Integer] ID of the Conference
     # @param [Hash] opts the optional parameters
@@ -2618,6 +2682,134 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Retrieve department staff compensation for a conference
+    # @param conference_id [Integer] ID of the Conference
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :year Season year
+    # @option opts [Integer] :department_id ID of the department PositionType to filter by
+    # @return [ConferenceDepartmentStaffResponse]
+    def get_conference_department_staff(conference_id, opts = {})
+      data, _status_code, _headers = get_conference_department_staff_with_http_info(conference_id, opts)
+      data
+    end
+
+    # Retrieve department staff compensation for a conference
+    # @param conference_id [Integer] ID of the Conference
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :year Season year
+    # @option opts [Integer] :department_id ID of the department PositionType to filter by
+    # @return [Array<(ConferenceDepartmentStaffResponse, Integer, Hash)>] ConferenceDepartmentStaffResponse data, response status code and response headers
+    def get_conference_department_staff_with_http_info(conference_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_conference_department_staff ...'
+      end
+      # verify the required parameter 'conference_id' is set
+      if @api_client.config.client_side_validation && conference_id.nil?
+        fail ArgumentError, "Missing the required parameter 'conference_id' when calling DefaultApi.get_conference_department_staff"
+      end
+      # resource path
+      local_var_path = '/api/v1/conferences/{conferenceId}/department_staff'.sub('{' + 'conferenceId' + '}', CGI.escape(conference_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'year'] = opts[:'year'] if !opts[:'year'].nil?
+      query_params[:'department_id'] = opts[:'department_id'] if !opts[:'department_id'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConferenceDepartmentStaffResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_conference_department_staff",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_conference_department_staff\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve Directors Cup rankings for schools in a conference
+    # @param conference_id [Integer] ID of the Conference
+    # @param [Hash] opts the optional parameters
+    # @return [ConferenceDirectorsCupResponse]
+    def get_conference_directors_cup(conference_id, opts = {})
+      data, _status_code, _headers = get_conference_directors_cup_with_http_info(conference_id, opts)
+      data
+    end
+
+    # Retrieve Directors Cup rankings for schools in a conference
+    # @param conference_id [Integer] ID of the Conference
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConferenceDirectorsCupResponse, Integer, Hash)>] ConferenceDirectorsCupResponse data, response status code and response headers
+    def get_conference_directors_cup_with_http_info(conference_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_conference_directors_cup ...'
+      end
+      # verify the required parameter 'conference_id' is set
+      if @api_client.config.client_side_validation && conference_id.nil?
+        fail ArgumentError, "Missing the required parameter 'conference_id' when calling DefaultApi.get_conference_directors_cup"
+      end
+      # resource path
+      local_var_path = '/api/v1/conferences/{conferenceId}/directors_cup'.sub('{' + 'conferenceId' + '}', CGI.escape(conference_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConferenceDirectorsCupResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_conference_directors_cup",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_conference_directors_cup\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve aggregated assistant coach position stats (High/Low/Median per sport)
     # @param conference_id [Integer] ID of the Conference
     # @param [Hash] opts the optional parameters
@@ -2678,6 +2870,77 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_conference_position_stats\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve head coach compensation table for a conference sport
+    # @param conference_id [Integer] ID of the Conference
+    # @param sport_id [Integer] ID of the Sport
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :year Season year
+    # @return [SportCompensationResponse]
+    def get_conference_sport_compensation(conference_id, sport_id, opts = {})
+      data, _status_code, _headers = get_conference_sport_compensation_with_http_info(conference_id, sport_id, opts)
+      data
+    end
+
+    # Retrieve head coach compensation table for a conference sport
+    # @param conference_id [Integer] ID of the Conference
+    # @param sport_id [Integer] ID of the Sport
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :year Season year
+    # @return [Array<(SportCompensationResponse, Integer, Hash)>] SportCompensationResponse data, response status code and response headers
+    def get_conference_sport_compensation_with_http_info(conference_id, sport_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_conference_sport_compensation ...'
+      end
+      # verify the required parameter 'conference_id' is set
+      if @api_client.config.client_side_validation && conference_id.nil?
+        fail ArgumentError, "Missing the required parameter 'conference_id' when calling DefaultApi.get_conference_sport_compensation"
+      end
+      # verify the required parameter 'sport_id' is set
+      if @api_client.config.client_side_validation && sport_id.nil?
+        fail ArgumentError, "Missing the required parameter 'sport_id' when calling DefaultApi.get_conference_sport_compensation"
+      end
+      # resource path
+      local_var_path = '/api/v1/conferences/{conferenceId}/sport_compensation'.sub('{' + 'conferenceId' + '}', CGI.escape(conference_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'sport_id'] = sport_id
+      query_params[:'year'] = opts[:'year'] if !opts[:'year'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SportCompensationResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_conference_sport_compensation",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_conference_sport_compensation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -5903,6 +6166,269 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Retrieve a single School Group
+    # @param school_group_id [Integer] ID of the School Group
+    # @param [Hash] opts the optional parameters
+    # @return [SchoolGroupShow]
+    def get_school_group(school_group_id, opts = {})
+      data, _status_code, _headers = get_school_group_with_http_info(school_group_id, opts)
+      data
+    end
+
+    # Retrieve a single School Group
+    # @param school_group_id [Integer] ID of the School Group
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SchoolGroupShow, Integer, Hash)>] SchoolGroupShow data, response status code and response headers
+    def get_school_group_with_http_info(school_group_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_school_group ...'
+      end
+      # verify the required parameter 'school_group_id' is set
+      if @api_client.config.client_side_validation && school_group_id.nil?
+        fail ArgumentError, "Missing the required parameter 'school_group_id' when calling DefaultApi.get_school_group"
+      end
+      # resource path
+      local_var_path = '/api/v1/school_groups/{schoolGroupId}'.sub('{' + 'schoolGroupId' + '}', CGI.escape(school_group_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SchoolGroupShow'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_school_group",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_school_group\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve aggregated cashflow stats for a custom school group
+    # @param school_group_id [Integer] ID of the School Group
+    # @param [Hash] opts the optional parameters
+    # @option opts [Array<Integer>] :group_ids Array of cashflow group IDs to include
+    # @option opts [Integer] :year Financial year
+    # @return [ConferenceCashflowStatsResponse]
+    def get_school_group_cashflow_stats(school_group_id, opts = {})
+      data, _status_code, _headers = get_school_group_cashflow_stats_with_http_info(school_group_id, opts)
+      data
+    end
+
+    # Retrieve aggregated cashflow stats for a custom school group
+    # @param school_group_id [Integer] ID of the School Group
+    # @param [Hash] opts the optional parameters
+    # @option opts [Array<Integer>] :group_ids Array of cashflow group IDs to include
+    # @option opts [Integer] :year Financial year
+    # @return [Array<(ConferenceCashflowStatsResponse, Integer, Hash)>] ConferenceCashflowStatsResponse data, response status code and response headers
+    def get_school_group_cashflow_stats_with_http_info(school_group_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_school_group_cashflow_stats ...'
+      end
+      # verify the required parameter 'school_group_id' is set
+      if @api_client.config.client_side_validation && school_group_id.nil?
+        fail ArgumentError, "Missing the required parameter 'school_group_id' when calling DefaultApi.get_school_group_cashflow_stats"
+      end
+      # resource path
+      local_var_path = '/api/v1/school_groups/{schoolGroupId}/cashflow_stats'.sub('{' + 'schoolGroupId' + '}', CGI.escape(school_group_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'group_ids[]'] = @api_client.build_collection_param(opts[:'group_ids'], :csv) if !opts[:'group_ids'].nil?
+      query_params[:'year'] = opts[:'year'] if !opts[:'year'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConferenceCashflowStatsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_school_group_cashflow_stats",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_school_group_cashflow_stats\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve aggregated assistant coach position stats for a custom school group
+    # @param school_group_id [Integer] ID of the School Group
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :year Season year
+    # @return [ConferencePositionStatsResponse]
+    def get_school_group_position_stats(school_group_id, opts = {})
+      data, _status_code, _headers = get_school_group_position_stats_with_http_info(school_group_id, opts)
+      data
+    end
+
+    # Retrieve aggregated assistant coach position stats for a custom school group
+    # @param school_group_id [Integer] ID of the School Group
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :year Season year
+    # @return [Array<(ConferencePositionStatsResponse, Integer, Hash)>] ConferencePositionStatsResponse data, response status code and response headers
+    def get_school_group_position_stats_with_http_info(school_group_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_school_group_position_stats ...'
+      end
+      # verify the required parameter 'school_group_id' is set
+      if @api_client.config.client_side_validation && school_group_id.nil?
+        fail ArgumentError, "Missing the required parameter 'school_group_id' when calling DefaultApi.get_school_group_position_stats"
+      end
+      # resource path
+      local_var_path = '/api/v1/school_groups/{schoolGroupId}/position_stats'.sub('{' + 'schoolGroupId' + '}', CGI.escape(school_group_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'year'] = opts[:'year'] if !opts[:'year'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConferencePositionStatsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_school_group_position_stats",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_school_group_position_stats\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve head coach compensation table for a custom school group sport
+    # @param school_group_id [Integer] ID of the School Group
+    # @param sport_id [Integer] ID of the Sport
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :year Season year
+    # @return [SportCompensationResponse]
+    def get_school_group_sport_compensation(school_group_id, sport_id, opts = {})
+      data, _status_code, _headers = get_school_group_sport_compensation_with_http_info(school_group_id, sport_id, opts)
+      data
+    end
+
+    # Retrieve head coach compensation table for a custom school group sport
+    # @param school_group_id [Integer] ID of the School Group
+    # @param sport_id [Integer] ID of the Sport
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :year Season year
+    # @return [Array<(SportCompensationResponse, Integer, Hash)>] SportCompensationResponse data, response status code and response headers
+    def get_school_group_sport_compensation_with_http_info(school_group_id, sport_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_school_group_sport_compensation ...'
+      end
+      # verify the required parameter 'school_group_id' is set
+      if @api_client.config.client_side_validation && school_group_id.nil?
+        fail ArgumentError, "Missing the required parameter 'school_group_id' when calling DefaultApi.get_school_group_sport_compensation"
+      end
+      # verify the required parameter 'sport_id' is set
+      if @api_client.config.client_side_validation && sport_id.nil?
+        fail ArgumentError, "Missing the required parameter 'sport_id' when calling DefaultApi.get_school_group_sport_compensation"
+      end
+      # resource path
+      local_var_path = '/api/v1/school_groups/{schoolGroupId}/sport_compensation'.sub('{' + 'schoolGroupId' + '}', CGI.escape(school_group_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'sport_id'] = sport_id
+      query_params[:'year'] = opts[:'year'] if !opts[:'year'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SportCompensationResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_school_group_sport_compensation",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_school_group_sport_compensation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve some or all schools
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
@@ -6399,6 +6925,208 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_subdivision\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve aggregated cashflow stats for a subdivision
+    # @param subdivision_id [Integer] ID of the Subdivision
+    # @param [Hash] opts the optional parameters
+    # @option opts [Array<Integer>] :group_ids Array of cashflow group IDs to include
+    # @option opts [Integer] :year Financial year
+    # @return [ConferenceCashflowStatsResponse]
+    def get_subdivision_cashflow_stats(subdivision_id, opts = {})
+      data, _status_code, _headers = get_subdivision_cashflow_stats_with_http_info(subdivision_id, opts)
+      data
+    end
+
+    # Retrieve aggregated cashflow stats for a subdivision
+    # @param subdivision_id [Integer] ID of the Subdivision
+    # @param [Hash] opts the optional parameters
+    # @option opts [Array<Integer>] :group_ids Array of cashflow group IDs to include
+    # @option opts [Integer] :year Financial year
+    # @return [Array<(ConferenceCashflowStatsResponse, Integer, Hash)>] ConferenceCashflowStatsResponse data, response status code and response headers
+    def get_subdivision_cashflow_stats_with_http_info(subdivision_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_subdivision_cashflow_stats ...'
+      end
+      # verify the required parameter 'subdivision_id' is set
+      if @api_client.config.client_side_validation && subdivision_id.nil?
+        fail ArgumentError, "Missing the required parameter 'subdivision_id' when calling DefaultApi.get_subdivision_cashflow_stats"
+      end
+      # resource path
+      local_var_path = '/api/v1/subdivisions/{subdivisionId}/cashflow_stats'.sub('{' + 'subdivisionId' + '}', CGI.escape(subdivision_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'group_ids[]'] = @api_client.build_collection_param(opts[:'group_ids'], :csv) if !opts[:'group_ids'].nil?
+      query_params[:'year'] = opts[:'year'] if !opts[:'year'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConferenceCashflowStatsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_subdivision_cashflow_stats",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_subdivision_cashflow_stats\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve aggregated assistant coach position stats for a subdivision
+    # @param subdivision_id [Integer] ID of the Subdivision
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :year Season year
+    # @return [ConferencePositionStatsResponse]
+    def get_subdivision_position_stats(subdivision_id, opts = {})
+      data, _status_code, _headers = get_subdivision_position_stats_with_http_info(subdivision_id, opts)
+      data
+    end
+
+    # Retrieve aggregated assistant coach position stats for a subdivision
+    # @param subdivision_id [Integer] ID of the Subdivision
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :year Season year
+    # @return [Array<(ConferencePositionStatsResponse, Integer, Hash)>] ConferencePositionStatsResponse data, response status code and response headers
+    def get_subdivision_position_stats_with_http_info(subdivision_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_subdivision_position_stats ...'
+      end
+      # verify the required parameter 'subdivision_id' is set
+      if @api_client.config.client_side_validation && subdivision_id.nil?
+        fail ArgumentError, "Missing the required parameter 'subdivision_id' when calling DefaultApi.get_subdivision_position_stats"
+      end
+      # resource path
+      local_var_path = '/api/v1/subdivisions/{subdivisionId}/position_stats'.sub('{' + 'subdivisionId' + '}', CGI.escape(subdivision_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'year'] = opts[:'year'] if !opts[:'year'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConferencePositionStatsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_subdivision_position_stats",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_subdivision_position_stats\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve head coach compensation table for a subdivision sport
+    # @param subdivision_id [Integer] ID of the Subdivision
+    # @param sport_id [Integer] ID of the Sport
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :year Season year
+    # @return [SportCompensationResponse]
+    def get_subdivision_sport_compensation(subdivision_id, sport_id, opts = {})
+      data, _status_code, _headers = get_subdivision_sport_compensation_with_http_info(subdivision_id, sport_id, opts)
+      data
+    end
+
+    # Retrieve head coach compensation table for a subdivision sport
+    # @param subdivision_id [Integer] ID of the Subdivision
+    # @param sport_id [Integer] ID of the Sport
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :year Season year
+    # @return [Array<(SportCompensationResponse, Integer, Hash)>] SportCompensationResponse data, response status code and response headers
+    def get_subdivision_sport_compensation_with_http_info(subdivision_id, sport_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_subdivision_sport_compensation ...'
+      end
+      # verify the required parameter 'subdivision_id' is set
+      if @api_client.config.client_side_validation && subdivision_id.nil?
+        fail ArgumentError, "Missing the required parameter 'subdivision_id' when calling DefaultApi.get_subdivision_sport_compensation"
+      end
+      # verify the required parameter 'sport_id' is set
+      if @api_client.config.client_side_validation && sport_id.nil?
+        fail ArgumentError, "Missing the required parameter 'sport_id' when calling DefaultApi.get_subdivision_sport_compensation"
+      end
+      # resource path
+      local_var_path = '/api/v1/subdivisions/{subdivisionId}/sport_compensation'.sub('{' + 'subdivisionId' + '}', CGI.escape(subdivision_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'sport_id'] = sport_id
+      query_params[:'year'] = opts[:'year'] if !opts[:'year'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SportCompensationResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_subdivision_sport_compensation",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_subdivision_sport_compensation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
