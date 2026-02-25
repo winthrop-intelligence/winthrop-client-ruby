@@ -35,6 +35,8 @@
 | **home_losses** | **Integer** |  | [optional] |
 | **home_win_percent** | **Float** |  | [optional] |
 | **asr** | **Integer** |  | [optional] |
+| **head_coach** | [**Coach**](Coach.md) |  | [optional] |
+| **assistant_coaches** | [**Array&lt;Coach&gt;**](Coach.md) |  | [optional] |
 
 ## Example
 
@@ -72,7 +74,9 @@ instance = WinthropClient::Season.new(
   home_wins: null,
   home_losses: null,
   home_win_percent: null,
-  asr: null
+  asr: null,
+  head_coach: null,
+  assistant_coaches: null
 )
 ```
 
