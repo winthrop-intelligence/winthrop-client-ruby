@@ -102,7 +102,10 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_school**](DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} |  |
 | [**get_school_alternate_names**](DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names |  |
 | [**get_school_group**](DefaultApi.md#get_school_group) | **GET** /api/v1/school_groups/{schoolGroupId} |  |
+| [**get_school_group_admin_compensation**](DefaultApi.md#get_school_group_admin_compensation) | **GET** /api/v1/school_groups/{schoolGroupId}/admin_compensation |  |
 | [**get_school_group_cashflow_stats**](DefaultApi.md#get_school_group_cashflow_stats) | **GET** /api/v1/school_groups/{schoolGroupId}/cashflow_stats |  |
+| [**get_school_group_department_staff**](DefaultApi.md#get_school_group_department_staff) | **GET** /api/v1/school_groups/{schoolGroupId}/department_staff |  |
+| [**get_school_group_directors_cup**](DefaultApi.md#get_school_group_directors_cup) | **GET** /api/v1/school_groups/{schoolGroupId}/directors_cup |  |
 | [**get_school_group_position_stats**](DefaultApi.md#get_school_group_position_stats) | **GET** /api/v1/school_groups/{schoolGroupId}/position_stats |  |
 | [**get_school_group_sport_compensation**](DefaultApi.md#get_school_group_sport_compensation) | **GET** /api/v1/school_groups/{schoolGroupId}/sport_compensation |  |
 | [**get_schools**](DefaultApi.md#get_schools) | **GET** /api/v1/schools |  |
@@ -113,7 +116,10 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_sport**](DefaultApi.md#get_sport) | **GET** /api/v1/sports/{sportId} |  |
 | [**get_sports**](DefaultApi.md#get_sports) | **GET** /api/v1/sports |  |
 | [**get_subdivision**](DefaultApi.md#get_subdivision) | **GET** /api/v1/subdivisions/{subdivisionId} |  |
+| [**get_subdivision_admin_compensation**](DefaultApi.md#get_subdivision_admin_compensation) | **GET** /api/v1/subdivisions/{subdivisionId}/admin_compensation |  |
 | [**get_subdivision_cashflow_stats**](DefaultApi.md#get_subdivision_cashflow_stats) | **GET** /api/v1/subdivisions/{subdivisionId}/cashflow_stats |  |
+| [**get_subdivision_department_staff**](DefaultApi.md#get_subdivision_department_staff) | **GET** /api/v1/subdivisions/{subdivisionId}/department_staff |  |
+| [**get_subdivision_directors_cup**](DefaultApi.md#get_subdivision_directors_cup) | **GET** /api/v1/subdivisions/{subdivisionId}/directors_cup |  |
 | [**get_subdivision_position_stats**](DefaultApi.md#get_subdivision_position_stats) | **GET** /api/v1/subdivisions/{subdivisionId}/position_stats |  |
 | [**get_subdivision_sport_compensation**](DefaultApi.md#get_subdivision_sport_compensation) | **GET** /api/v1/subdivisions/{subdivisionId}/sport_compensation |  |
 | [**get_subdivisions**](DefaultApi.md#get_subdivisions) | **GET** /api/v1/subdivisions |  |
@@ -7641,6 +7647,84 @@ end
 - **Accept**: application/json
 
 
+## get_school_group_admin_compensation
+
+> <ConferenceAdminCompensationResponse> get_school_group_admin_compensation(school_group_id, opts)
+
+
+
+Retrieve athletic director compensation for a custom school group
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_group_id = 56 # Integer | ID of the School Group
+opts = {
+  year: 56 # Integer | Financial year
+}
+
+begin
+  
+  result = api_instance.get_school_group_admin_compensation(school_group_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_school_group_admin_compensation: #{e}"
+end
+```
+
+#### Using the get_school_group_admin_compensation_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConferenceAdminCompensationResponse>, Integer, Hash)> get_school_group_admin_compensation_with_http_info(school_group_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_school_group_admin_compensation_with_http_info(school_group_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConferenceAdminCompensationResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_school_group_admin_compensation_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_group_id** | **Integer** | ID of the School Group |  |
+| **year** | **Integer** | Financial year | [optional] |
+
+### Return type
+
+[**ConferenceAdminCompensationResponse**](ConferenceAdminCompensationResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_school_group_cashflow_stats
 
 > <ConferenceCashflowStatsResponse> get_school_group_cashflow_stats(school_group_id, opts)
@@ -7710,6 +7794,160 @@ end
 ### Return type
 
 [**ConferenceCashflowStatsResponse**](ConferenceCashflowStatsResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_school_group_department_staff
+
+> <ConferenceDepartmentStaffResponse> get_school_group_department_staff(school_group_id, opts)
+
+
+
+Retrieve department staff compensation for a custom school group
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_group_id = 56 # Integer | ID of the School Group
+opts = {
+  year: 56, # Integer | Financial year
+  department_id: 56 # Integer | ID of the department (PositionType)
+}
+
+begin
+  
+  result = api_instance.get_school_group_department_staff(school_group_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_school_group_department_staff: #{e}"
+end
+```
+
+#### Using the get_school_group_department_staff_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConferenceDepartmentStaffResponse>, Integer, Hash)> get_school_group_department_staff_with_http_info(school_group_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_school_group_department_staff_with_http_info(school_group_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConferenceDepartmentStaffResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_school_group_department_staff_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_group_id** | **Integer** | ID of the School Group |  |
+| **year** | **Integer** | Financial year | [optional] |
+| **department_id** | **Integer** | ID of the department (PositionType) | [optional] |
+
+### Return type
+
+[**ConferenceDepartmentStaffResponse**](ConferenceDepartmentStaffResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_school_group_directors_cup
+
+> <ConferenceDirectorsCupResponse> get_school_group_directors_cup(school_group_id)
+
+
+
+Retrieve Director's Cup rankings for schools in a custom school group
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_group_id = 56 # Integer | ID of the School Group
+
+begin
+  
+  result = api_instance.get_school_group_directors_cup(school_group_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_school_group_directors_cup: #{e}"
+end
+```
+
+#### Using the get_school_group_directors_cup_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConferenceDirectorsCupResponse>, Integer, Hash)> get_school_group_directors_cup_with_http_info(school_group_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_school_group_directors_cup_with_http_info(school_group_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConferenceDirectorsCupResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_school_group_directors_cup_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_group_id** | **Integer** | ID of the School Group |  |
+
+### Return type
+
+[**ConferenceDirectorsCupResponse**](ConferenceDirectorsCupResponse.md)
 
 ### Authorization
 
@@ -8494,6 +8732,84 @@ end
 - **Accept**: application/json
 
 
+## get_subdivision_admin_compensation
+
+> <ConferenceAdminCompensationResponse> get_subdivision_admin_compensation(subdivision_id, opts)
+
+
+
+Retrieve athletic director compensation for a subdivision
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+subdivision_id = 56 # Integer | ID of the Subdivision
+opts = {
+  year: 56 # Integer | Financial year
+}
+
+begin
+  
+  result = api_instance.get_subdivision_admin_compensation(subdivision_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_subdivision_admin_compensation: #{e}"
+end
+```
+
+#### Using the get_subdivision_admin_compensation_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConferenceAdminCompensationResponse>, Integer, Hash)> get_subdivision_admin_compensation_with_http_info(subdivision_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_subdivision_admin_compensation_with_http_info(subdivision_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConferenceAdminCompensationResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_subdivision_admin_compensation_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **subdivision_id** | **Integer** | ID of the Subdivision |  |
+| **year** | **Integer** | Financial year | [optional] |
+
+### Return type
+
+[**ConferenceAdminCompensationResponse**](ConferenceAdminCompensationResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_subdivision_cashflow_stats
 
 > <ConferenceCashflowStatsResponse> get_subdivision_cashflow_stats(subdivision_id, opts)
@@ -8563,6 +8879,160 @@ end
 ### Return type
 
 [**ConferenceCashflowStatsResponse**](ConferenceCashflowStatsResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_subdivision_department_staff
+
+> <ConferenceDepartmentStaffResponse> get_subdivision_department_staff(subdivision_id, opts)
+
+
+
+Retrieve department staff compensation for a subdivision
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+subdivision_id = 56 # Integer | ID of the Subdivision
+opts = {
+  year: 56, # Integer | Financial year
+  department_id: 56 # Integer | ID of the department (PositionType)
+}
+
+begin
+  
+  result = api_instance.get_subdivision_department_staff(subdivision_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_subdivision_department_staff: #{e}"
+end
+```
+
+#### Using the get_subdivision_department_staff_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConferenceDepartmentStaffResponse>, Integer, Hash)> get_subdivision_department_staff_with_http_info(subdivision_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_subdivision_department_staff_with_http_info(subdivision_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConferenceDepartmentStaffResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_subdivision_department_staff_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **subdivision_id** | **Integer** | ID of the Subdivision |  |
+| **year** | **Integer** | Financial year | [optional] |
+| **department_id** | **Integer** | ID of the department (PositionType) | [optional] |
+
+### Return type
+
+[**ConferenceDepartmentStaffResponse**](ConferenceDepartmentStaffResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_subdivision_directors_cup
+
+> <ConferenceDirectorsCupResponse> get_subdivision_directors_cup(subdivision_id)
+
+
+
+Retrieve Director's Cup rankings for schools in a subdivision
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+subdivision_id = 56 # Integer | ID of the Subdivision
+
+begin
+  
+  result = api_instance.get_subdivision_directors_cup(subdivision_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_subdivision_directors_cup: #{e}"
+end
+```
+
+#### Using the get_subdivision_directors_cup_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConferenceDirectorsCupResponse>, Integer, Hash)> get_subdivision_directors_cup_with_http_info(subdivision_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_subdivision_directors_cup_with_http_info(subdivision_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConferenceDirectorsCupResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_subdivision_directors_cup_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **subdivision_id** | **Integer** | ID of the Subdivision |  |
+
+### Return type
+
+[**ConferenceDirectorsCupResponse**](ConferenceDirectorsCupResponse.md)
 
 ### Authorization
 
