@@ -13,6 +13,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**create_coach**](DefaultApi.md#create_coach) | **POST** /api/v1/coaches |  |
 | [**create_conference**](DefaultApi.md#create_conference) | **POST** /api/v1/conferences |  |
 | [**create_conferenceship**](DefaultApi.md#create_conferenceship) | **POST** /api/v1/conferenceships |  |
+| [**create_favorite**](DefaultApi.md#create_favorite) | **POST** /api/v1/favorites |  |
 | [**create_foia_label**](DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels |  |
 | [**create_foia_request**](DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests |  |
 | [**create_job_post**](DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post |
@@ -22,6 +23,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_cashflow**](DefaultApi.md#delete_cashflow) | **DELETE** /api/v1/cashflows/{cashflowId} |  |
 | [**delete_conference**](DefaultApi.md#delete_conference) | **DELETE** /api/v1/conferences/{conferenceId} |  |
 | [**delete_conferenceship**](DefaultApi.md#delete_conferenceship) | **DELETE** /api/v1/conferenceships/{conferenceshipId} |  |
+| [**delete_favorite**](DefaultApi.md#delete_favorite) | **DELETE** /api/v1/favorites |  |
 | [**delete_foia_label**](DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} |  |
 | [**delete_foia_request**](DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} |  |
 | [**delete_job_post**](DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post |
@@ -64,10 +66,12 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_department_searches**](DefaultApi.md#get_department_searches) | **GET** /api/v1/department_searches |  |
 | [**get_division**](DefaultApi.md#get_division) | **GET** /api/v1/divisions/{divisionId} |  |
 | [**get_divisions**](DefaultApi.md#get_divisions) | **GET** /api/v1/divisions |  |
+| [**get_favorites**](DefaultApi.md#get_favorites) | **GET** /api/v1/favorites |  |
 | [**get_filter_options**](DefaultApi.md#get_filter_options) | **GET** /api/v1/filter_options |  |
 | [**get_filter_options_all_schools**](DefaultApi.md#get_filter_options_all_schools) | **GET** /api/v1/filter_options/all_schools |  |
 | [**get_filter_options_conferences**](DefaultApi.md#get_filter_options_conferences) | **GET** /api/v1/filter_options/conferences |  |
 | [**get_filter_options_deal_types**](DefaultApi.md#get_filter_options_deal_types) | **GET** /api/v1/filter_options/deal_types |  |
+| [**get_filter_options_game_types**](DefaultApi.md#get_filter_options_game_types) | **GET** /api/v1/filter_options/game_types |  |
 | [**get_filter_options_school_groups**](DefaultApi.md#get_filter_options_school_groups) | **GET** /api/v1/filter_options/school_groups |  |
 | [**get_filter_options_schools**](DefaultApi.md#get_filter_options_schools) | **GET** /api/v1/filter_options/schools |  |
 | [**get_filter_options_subdivisions**](DefaultApi.md#get_filter_options_subdivisions) | **GET** /api/v1/filter_options/subdivisions |  |
@@ -851,6 +855,80 @@ end
 - **Accept**: application/json
 
 
+## create_favorite
+
+> <CreateFavorite201Response> create_favorite(create_favorite_request)
+
+
+
+Add a favorite for the current user
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_favorite_request = WinthropClient::CreateFavoriteRequest.new({favoritable_type: 'favoritable_type_example', favoritable_id: 37}) # CreateFavoriteRequest | 
+
+begin
+  
+  result = api_instance.create_favorite(create_favorite_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_favorite: #{e}"
+end
+```
+
+#### Using the create_favorite_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateFavorite201Response>, Integer, Hash)> create_favorite_with_http_info(create_favorite_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_favorite_with_http_info(create_favorite_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateFavorite201Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_favorite_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_favorite_request** | [**CreateFavoriteRequest**](CreateFavoriteRequest.md) |  |  |
+
+### Return type
+
+[**CreateFavorite201Response**](CreateFavorite201Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_foia_label
 
 > <FoiaLabel> create_foia_label(foia_label)
@@ -1516,6 +1594,82 @@ nil (empty response body)
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+
+## delete_favorite
+
+> <DeleteFavorite200Response> delete_favorite(favoritable_type, favoritable_id)
+
+
+
+Remove a favorite for the current user
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+favoritable_type = 'favoritable_type_example' # String | The model type (e.g. \"Coach\")
+favoritable_id = 56 # Integer | The ID of the record to unfavorite
+
+begin
+  
+  result = api_instance.delete_favorite(favoritable_type, favoritable_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_favorite: #{e}"
+end
+```
+
+#### Using the delete_favorite_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DeleteFavorite200Response>, Integer, Hash)> delete_favorite_with_http_info(favoritable_type, favoritable_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_favorite_with_http_info(favoritable_type, favoritable_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DeleteFavorite200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_favorite_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **favoritable_type** | **String** | The model type (e.g. \&quot;Coach\&quot;) |  |
+| **favoritable_id** | **Integer** | The ID of the record to unfavorite |  |
+
+### Return type
+
+[**DeleteFavorite200Response**](DeleteFavorite200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## delete_foia_label
@@ -4747,6 +4901,80 @@ end
 - **Accept**: application/json
 
 
+## get_favorites
+
+> Array&lt;Integer&gt; get_favorites(favoritable_type)
+
+
+
+Retrieve the current user's favorited IDs for a given type
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+favoritable_type = 'favoritable_type_example' # String | The model type (e.g. \"Coach\")
+
+begin
+  
+  result = api_instance.get_favorites(favoritable_type)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_favorites: #{e}"
+end
+```
+
+#### Using the get_favorites_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Array&lt;Integer&gt;, Integer, Hash)> get_favorites_with_http_info(favoritable_type)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_favorites_with_http_info(favoritable_type)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Array&lt;Integer&gt;
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_favorites_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **favoritable_type** | **String** | The model type (e.g. \&quot;Coach\&quot;) |  |
+
+### Return type
+
+**Array&lt;Integer&gt;**
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_filter_options
 
 > <GetFilterOptions200Response> get_filter_options(opts)
@@ -5032,6 +5260,77 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**Array&lt;IdName&gt;**](IdName.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_filter_options_game_types
+
+> <Array<GameType>> get_filter_options_game_types
+
+
+
+Retrieve all available game types for game post filtering
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_filter_options_game_types
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_filter_options_game_types: #{e}"
+end
+```
+
+#### Using the get_filter_options_game_types_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<GameType>>, Integer, Hash)> get_filter_options_game_types_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_filter_options_game_types_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<GameType>>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_filter_options_game_types_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Array&lt;GameType&gt;**](GameType.md)
 
 ### Authorization
 
