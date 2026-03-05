@@ -2213,7 +2213,8 @@ opts = {
   page: 56, # Integer | results page to retrieve.
   per_page: 56, # Integer | number of results per page.
   q: { ... }, # Object | Ransack query
-  favorites_only: 'favorites_only_example' # String | When \"1\" or \"true\", restrict results to the current user's favorited administrators
+  favorites_only: 'favorites_only_example', # String | When \"1\" or \"true\", restrict results to the current user's favorited administrators
+  contract_expires_on: 'contract_expires_on_example' # String | Filter by contract expiration. Use \"expired\" or a date range like \"2025-01-01..2025-12-31\"
 }
 
 begin
@@ -2251,6 +2252,7 @@ end
 | **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query | [optional] |
 | **favorites_only** | **String** | When \&quot;1\&quot; or \&quot;true\&quot;, restrict results to the current user&#39;s favorited administrators | [optional] |
+| **contract_expires_on** | **String** | Filter by contract expiration. Use \&quot;expired\&quot; or a date range like \&quot;2025-01-01..2025-12-31\&quot; | [optional] |
 
 ### Return type
 

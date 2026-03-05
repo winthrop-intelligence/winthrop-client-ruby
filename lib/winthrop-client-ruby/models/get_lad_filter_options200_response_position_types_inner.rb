@@ -14,19 +14,19 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class GetLadFilterOptions200Response < ApiModelBase
-    attr_accessor :position_types
+  class GetLadFilterOptions200ResponsePositionTypesInner < ApiModelBase
+    attr_accessor :id
 
-    attr_accessor :departments
+    attr_accessor :name
 
-    attr_accessor :school_groups
+    attr_accessor :category
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'position_types' => :'position_types',
-        :'departments' => :'departments',
-        :'school_groups' => :'school_groups'
+        :'id' => :'id',
+        :'name' => :'name',
+        :'category' => :'category'
       }
     end
 
@@ -43,15 +43,16 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'position_types' => :'Array<GetLadFilterOptions200ResponsePositionTypesInner>',
-        :'departments' => :'Array<IdName>',
-        :'school_groups' => :'Array<IdName>'
+        :'id' => :'Integer',
+        :'name' => :'String',
+        :'category' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'category'
       ])
     end
 
@@ -59,34 +60,28 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::GetLadFilterOptions200Response` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::GetLadFilterOptions200ResponsePositionTypesInner` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::GetLadFilterOptions200Response`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::GetLadFilterOptions200ResponsePositionTypesInner`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'position_types')
-        if (value = attributes[:'position_types']).is_a?(Array)
-          self.position_types = value
-        end
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'departments')
-        if (value = attributes[:'departments']).is_a?(Array)
-          self.departments = value
-        end
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'school_groups')
-        if (value = attributes[:'school_groups']).is_a?(Array)
-          self.school_groups = value
-        end
+      if attributes.key?(:'category')
+        self.category = attributes[:'category']
       end
     end
 
@@ -110,9 +105,9 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          position_types == o.position_types &&
-          departments == o.departments &&
-          school_groups == o.school_groups
+          id == o.id &&
+          name == o.name &&
+          category == o.category
     end
 
     # @see the `==` method
@@ -124,7 +119,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [position_types, departments, school_groups].hash
+      [id, name, category].hash
     end
 
     # Builds the object from hash

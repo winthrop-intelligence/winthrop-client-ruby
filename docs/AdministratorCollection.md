@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **data** | [**Array&lt;Administrator&gt;**](Administrator.md) |  | [optional] |
-| **meta** | [**Meta**](Meta.md) |  | [optional] |
+| **meta** | [**AdminMeta**](AdminMeta.md) |  | [optional] |
 
 ## Example
 

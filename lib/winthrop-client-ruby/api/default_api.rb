@@ -1804,6 +1804,7 @@ module WinthropClient
     # @option opts [Integer] :per_page number of results per page. (default to 20)
     # @option opts [Object] :q Ransack query
     # @option opts [String] :favorites_only When \&quot;1\&quot; or \&quot;true\&quot;, restrict results to the current user&#39;s favorited administrators
+    # @option opts [String] :contract_expires_on Filter by contract expiration. Use \&quot;expired\&quot; or a date range like \&quot;2025-01-01..2025-12-31\&quot;
     # @return [AdministratorCollection]
     def get_administrators(opts = {})
       data, _status_code, _headers = get_administrators_with_http_info(opts)
@@ -1816,6 +1817,7 @@ module WinthropClient
     # @option opts [Integer] :per_page number of results per page. (default to 20)
     # @option opts [Object] :q Ransack query
     # @option opts [String] :favorites_only When \&quot;1\&quot; or \&quot;true\&quot;, restrict results to the current user&#39;s favorited administrators
+    # @option opts [String] :contract_expires_on Filter by contract expiration. Use \&quot;expired\&quot; or a date range like \&quot;2025-01-01..2025-12-31\&quot;
     # @return [Array<(AdministratorCollection, Integer, Hash)>] AdministratorCollection data, response status code and response headers
     def get_administrators_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -1830,6 +1832,7 @@ module WinthropClient
       query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
       query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
       query_params[:'favorites_only'] = opts[:'favorites_only'] if !opts[:'favorites_only'].nil?
+      query_params[:'contract_expires_on'] = opts[:'contract_expires_on'] if !opts[:'contract_expires_on'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

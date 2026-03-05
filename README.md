@@ -263,6 +263,8 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [WinthropClient::AdminCompensationSubdivision](docs/AdminCompensationSubdivision.md)
+ - [WinthropClient::AdminMeta](docs/AdminMeta.md)
+ - [WinthropClient::AdminMetaCompStats](docs/AdminMetaCompStats.md)
  - [WinthropClient::Administrator](docs/Administrator.md)
  - [WinthropClient::AdministratorCollection](docs/AdministratorCollection.md)
  - [WinthropClient::AsstCoachEntry](docs/AsstCoachEntry.md)
@@ -342,6 +344,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::GameType](docs/GameType.md)
  - [WinthropClient::GetFilterOptions200Response](docs/GetFilterOptions200Response.md)
  - [WinthropClient::GetLadFilterOptions200Response](docs/GetLadFilterOptions200Response.md)
+ - [WinthropClient::GetLadFilterOptions200ResponsePositionTypesInner](docs/GetLadFilterOptions200ResponsePositionTypesInner.md)
  - [WinthropClient::GetSchoolAlternateNames200Response](docs/GetSchoolAlternateNames200Response.md)
  - [WinthropClient::GetSchoolAlternateNames404Response](docs/GetSchoolAlternateNames404Response.md)
  - [WinthropClient::GetWireChanges200Response](docs/GetWireChanges200Response.md)

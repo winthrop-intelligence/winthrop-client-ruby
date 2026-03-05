@@ -40,6 +40,7 @@
 | **raw_contract_id** | **Integer** |  | [optional] |
 | **contract_starts_on** | **Date** |  | [optional] |
 | **contract_expires_on** | **Date** |  | [optional] |
+| **contract_at_will** | **Boolean** |  | [optional] |
 | **diversity** | **Boolean** |  | [optional] |
 | **gender** | **String** |  | [optional] |
 | **alma_mater_id** | **Integer** |  | [optional] |
@@ -91,6 +92,7 @@ instance = WinthropClient::Administrator.new(
   raw_contract_id: 1,
   contract_starts_on: Tue Jan 01 00:00:00 UTC 2019,
   contract_expires_on: Tue Jan 01 00:00:00 UTC 2019,
+  contract_at_will: false,
   diversity: false,
   gender: M,
   alma_mater_id: 2,

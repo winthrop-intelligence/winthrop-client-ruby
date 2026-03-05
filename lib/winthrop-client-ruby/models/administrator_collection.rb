@@ -41,7 +41,7 @@ module WinthropClient
     def self.openapi_types
       {
         :'data' => :'Array<Administrator>',
-        :'meta' => :'Meta'
+        :'meta' => :'AdminMeta'
       }
     end
 

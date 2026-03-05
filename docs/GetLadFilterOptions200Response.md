@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **position_types** | [**Array&lt;IdName&gt;**](IdName.md) |  | [optional] |
+| **position_types** | [**Array&lt;GetLadFilterOptions200ResponsePositionTypesInner&gt;**](GetLadFilterOptions200ResponsePositionTypesInner.md) |  | [optional] |
 | **departments** | [**Array&lt;IdName&gt;**](IdName.md) |  | [optional] |
 | **school_groups** | [**Array&lt;IdName&gt;**](IdName.md) |  | [optional] |
 

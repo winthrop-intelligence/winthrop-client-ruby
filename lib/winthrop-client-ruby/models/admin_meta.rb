@@ -14,19 +14,28 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class GetLadFilterOptions200Response < ApiModelBase
-    attr_accessor :position_types
+  class AdminMeta < ApiModelBase
+    attr_accessor :current_page
 
-    attr_accessor :departments
+    attr_accessor :total_pages
 
-    attr_accessor :school_groups
+    attr_accessor :total_entries
+
+    attr_accessor :next_page
+
+    attr_accessor :previous_page
+
+    attr_accessor :comp_stats
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'position_types' => :'position_types',
-        :'departments' => :'departments',
-        :'school_groups' => :'school_groups'
+        :'current_page' => :'current_page',
+        :'total_pages' => :'total_pages',
+        :'total_entries' => :'total_entries',
+        :'next_page' => :'next_page',
+        :'previous_page' => :'previous_page',
+        :'comp_stats' => :'comp_stats'
       }
     end
 
@@ -43,9 +52,12 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'position_types' => :'Array<GetLadFilterOptions200ResponsePositionTypesInner>',
-        :'departments' => :'Array<IdName>',
-        :'school_groups' => :'Array<IdName>'
+        :'current_page' => :'Integer',
+        :'total_pages' => :'Integer',
+        :'total_entries' => :'Integer',
+        :'next_page' => :'Integer',
+        :'previous_page' => :'Integer',
+        :'comp_stats' => :'AdminMetaCompStats'
       }
     end
 
@@ -59,34 +71,40 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::GetLadFilterOptions200Response` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::AdminMeta` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::GetLadFilterOptions200Response`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::AdminMeta`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'position_types')
-        if (value = attributes[:'position_types']).is_a?(Array)
-          self.position_types = value
-        end
+      if attributes.key?(:'current_page')
+        self.current_page = attributes[:'current_page']
       end
 
-      if attributes.key?(:'departments')
-        if (value = attributes[:'departments']).is_a?(Array)
-          self.departments = value
-        end
+      if attributes.key?(:'total_pages')
+        self.total_pages = attributes[:'total_pages']
       end
 
-      if attributes.key?(:'school_groups')
-        if (value = attributes[:'school_groups']).is_a?(Array)
-          self.school_groups = value
-        end
+      if attributes.key?(:'total_entries')
+        self.total_entries = attributes[:'total_entries']
+      end
+
+      if attributes.key?(:'next_page')
+        self.next_page = attributes[:'next_page']
+      end
+
+      if attributes.key?(:'previous_page')
+        self.previous_page = attributes[:'previous_page']
+      end
+
+      if attributes.key?(:'comp_stats')
+        self.comp_stats = attributes[:'comp_stats']
       end
     end
 
@@ -110,9 +128,12 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          position_types == o.position_types &&
-          departments == o.departments &&
-          school_groups == o.school_groups
+          current_page == o.current_page &&
+          total_pages == o.total_pages &&
+          total_entries == o.total_entries &&
+          next_page == o.next_page &&
+          previous_page == o.previous_page &&
+          comp_stats == o.comp_stats
     end
 
     # @see the `==` method
@@ -124,7 +145,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [position_types, departments, school_groups].hash
+      [current_page, total_pages, total_entries, next_page, previous_page, comp_stats].hash
     end
 
     # Builds the object from hash

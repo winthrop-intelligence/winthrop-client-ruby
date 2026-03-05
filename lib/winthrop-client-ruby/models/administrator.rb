@@ -87,6 +87,8 @@ module WinthropClient
 
     attr_accessor :contract_expires_on
 
+    attr_accessor :contract_at_will
+
     attr_accessor :diversity
 
     attr_accessor :gender
@@ -164,6 +166,7 @@ module WinthropClient
         :'raw_contract_id' => :'raw_contract_id',
         :'contract_starts_on' => :'contract_starts_on',
         :'contract_expires_on' => :'contract_expires_on',
+        :'contract_at_will' => :'contract_at_will',
         :'diversity' => :'diversity',
         :'gender' => :'gender',
         :'alma_mater_id' => :'alma_mater_id',
@@ -224,6 +227,7 @@ module WinthropClient
         :'raw_contract_id' => :'Integer',
         :'contract_starts_on' => :'Date',
         :'contract_expires_on' => :'Date',
+        :'contract_at_will' => :'Boolean',
         :'diversity' => :'Boolean',
         :'gender' => :'String',
         :'alma_mater_id' => :'Integer',
@@ -401,6 +405,10 @@ module WinthropClient
         self.contract_expires_on = attributes[:'contract_expires_on']
       end
 
+      if attributes.key?(:'contract_at_will')
+        self.contract_at_will = attributes[:'contract_at_will']
+      end
+
       if attributes.key?(:'diversity')
         self.diversity = attributes[:'diversity']
       end
@@ -516,6 +524,7 @@ module WinthropClient
           raw_contract_id == o.raw_contract_id &&
           contract_starts_on == o.contract_starts_on &&
           contract_expires_on == o.contract_expires_on &&
+          contract_at_will == o.contract_at_will &&
           diversity == o.diversity &&
           gender == o.gender &&
           alma_mater_id == o.alma_mater_id &&
@@ -535,7 +544,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, coach_id, coach_first_name, coach_last_name, coach_name, season_id, position_id, school_id, conference_id, division_id, geo_division_id, compensation_id, contract_id, year, position_title, school_name, school_short_name, state, usnwr_ranking, directors_cup_ranking, compensation_cents, compensation_base_salary_cents, compensation_type, compensation_outside_income_cents, compensation_deferred_comp_cents, compensation_one_time_bonus_cents, compensation_contingent_bonus, compensation_buyout_terms, compensation_is_car_provided, compensation_country_club_dues_cents, compensation_country_club_membership_paid, compensation_talent_fee, compensation_media_link, raw_contract_id, contract_starts_on, contract_expires_on, diversity, gender, alma_mater_id, private, sport_id, coli, coach, departments].hash
+      [id, coach_id, coach_first_name, coach_last_name, coach_name, season_id, position_id, school_id, conference_id, division_id, geo_division_id, compensation_id, contract_id, year, position_title, school_name, school_short_name, state, usnwr_ranking, directors_cup_ranking, compensation_cents, compensation_base_salary_cents, compensation_type, compensation_outside_income_cents, compensation_deferred_comp_cents, compensation_one_time_bonus_cents, compensation_contingent_bonus, compensation_buyout_terms, compensation_is_car_provided, compensation_country_club_dues_cents, compensation_country_club_membership_paid, compensation_talent_fee, compensation_media_link, raw_contract_id, contract_starts_on, contract_expires_on, contract_at_will, diversity, gender, alma_mater_id, private, sport_id, coli, coach, departments].hash
     end
 
     # Builds the object from hash
