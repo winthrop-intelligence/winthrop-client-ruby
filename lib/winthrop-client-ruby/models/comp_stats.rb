@@ -14,16 +14,22 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class AdministratorCollection < ApiModelBase
-    attr_accessor :data
+  class CompStats < ApiModelBase
+    attr_accessor :min
 
-    attr_accessor :meta
+    attr_accessor :max
+
+    attr_accessor :average
+
+    attr_accessor :median
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'data' => :'data',
-        :'meta' => :'meta'
+        :'min' => :'min',
+        :'max' => :'max',
+        :'average' => :'average',
+        :'median' => :'median'
       }
     end
 
@@ -40,8 +46,10 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'data' => :'Array<Administrator>',
-        :'meta' => :'Meta'
+        :'min' => :'Integer',
+        :'max' => :'Integer',
+        :'average' => :'Integer',
+        :'median' => :'Integer'
       }
     end
 
@@ -55,26 +63,32 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::AdministratorCollection` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::CompStats` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::AdministratorCollection`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::CompStats`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'data')
-        if (value = attributes[:'data']).is_a?(Array)
-          self.data = value
-        end
+      if attributes.key?(:'min')
+        self.min = attributes[:'min']
       end
 
-      if attributes.key?(:'meta')
-        self.meta = attributes[:'meta']
+      if attributes.key?(:'max')
+        self.max = attributes[:'max']
+      end
+
+      if attributes.key?(:'average')
+        self.average = attributes[:'average']
+      end
+
+      if attributes.key?(:'median')
+        self.median = attributes[:'median']
       end
     end
 
@@ -98,8 +112,10 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          data == o.data &&
-          meta == o.meta
+          min == o.min &&
+          max == o.max &&
+          average == o.average &&
+          median == o.median
     end
 
     # @see the `==` method
@@ -111,7 +127,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data, meta].hash
+      [min, max, average, median].hash
     end
 
     # Builds the object from hash

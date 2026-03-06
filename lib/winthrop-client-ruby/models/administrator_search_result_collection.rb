@@ -14,16 +14,19 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class AdministratorCollection < ApiModelBase
+  class AdministratorSearchResultCollection < ApiModelBase
     attr_accessor :data
 
     attr_accessor :meta
+
+    attr_accessor :comp_stats
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'data' => :'data',
-        :'meta' => :'meta'
+        :'meta' => :'meta',
+        :'comp_stats' => :'comp_stats'
       }
     end
 
@@ -41,7 +44,8 @@ module WinthropClient
     def self.openapi_types
       {
         :'data' => :'Array<Administrator>',
-        :'meta' => :'Meta'
+        :'meta' => :'Meta',
+        :'comp_stats' => :'CompStats'
       }
     end
 
@@ -55,14 +59,14 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::AdministratorCollection` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::AdministratorSearchResultCollection` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::AdministratorCollection`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::AdministratorSearchResultCollection`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -75,6 +79,10 @@ module WinthropClient
 
       if attributes.key?(:'meta')
         self.meta = attributes[:'meta']
+      end
+
+      if attributes.key?(:'comp_stats')
+        self.comp_stats = attributes[:'comp_stats']
       end
     end
 
@@ -99,7 +107,8 @@ module WinthropClient
       return true if self.equal?(o)
       self.class == o.class &&
           data == o.data &&
-          meta == o.meta
+          meta == o.meta &&
+          comp_stats == o.comp_stats
     end
 
     # @see the `==` method
@@ -111,7 +120,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data, meta].hash
+      [data, meta, comp_stats].hash
     end
 
     # Builds the object from hash

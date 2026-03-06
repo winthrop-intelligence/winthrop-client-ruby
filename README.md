@@ -118,6 +118,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**delete_requested_item**](docs/DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} | 
 *WinthropClient::DefaultApi* | [**delete_season**](docs/DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} | 
 *WinthropClient::DefaultApi* | [**get_administrator**](docs/DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} | 
+*WinthropClient::DefaultApi* | [**get_administrator_searches**](docs/DefaultApi.md#get_administrator_searches) | **GET** /api/v1/administrator_searches | 
 *WinthropClient::DefaultApi* | [**get_administrators**](docs/DefaultApi.md#get_administrators) | **GET** /api/v1/administrators | 
 *WinthropClient::DefaultApi* | [**get_audited_financial_report_status**](docs/DefaultApi.md#get_audited_financial_report_status) | **GET** /api/v1/audited_financial_report_statuses/{auditedFinancialReportStatusId} | 
 *WinthropClient::DefaultApi* | [**get_audited_financial_report_statuses**](docs/DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses | 
@@ -263,10 +264,9 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [WinthropClient::AdminCompensationSubdivision](docs/AdminCompensationSubdivision.md)
- - [WinthropClient::AdminMeta](docs/AdminMeta.md)
- - [WinthropClient::AdminMetaCompStats](docs/AdminMetaCompStats.md)
  - [WinthropClient::Administrator](docs/Administrator.md)
  - [WinthropClient::AdministratorCollection](docs/AdministratorCollection.md)
+ - [WinthropClient::AdministratorSearchResultCollection](docs/AdministratorSearchResultCollection.md)
  - [WinthropClient::AsstCoachEntry](docs/AsstCoachEntry.md)
  - [WinthropClient::AsstCoachSchool](docs/AsstCoachSchool.md)
  - [WinthropClient::AuditedFinancialReportStatus](docs/AuditedFinancialReportStatus.md)
@@ -287,6 +287,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::CoachCompensation](docs/CoachCompensation.md)
  - [WinthropClient::CoachSearchResult](docs/CoachSearchResult.md)
  - [WinthropClient::CoachSearchResultCollection](docs/CoachSearchResultCollection.md)
+ - [WinthropClient::CompStats](docs/CompStats.md)
  - [WinthropClient::CompareColi404Response](docs/CompareColi404Response.md)
  - [WinthropClient::CompareColi422Response](docs/CompareColi422Response.md)
  - [WinthropClient::Compensation](docs/Compensation.md)

@@ -31,6 +31,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_requested_item**](DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} |  |
 | [**delete_season**](DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} |  |
 | [**get_administrator**](DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} |  |
+| [**get_administrator_searches**](DefaultApi.md#get_administrator_searches) | **GET** /api/v1/administrator_searches |  |
 | [**get_administrators**](DefaultApi.md#get_administrators) | **GET** /api/v1/administrators |  |
 | [**get_audited_financial_report_status**](DefaultApi.md#get_audited_financial_report_status) | **GET** /api/v1/audited_financial_report_statuses/{auditedFinancialReportStatusId} |  |
 | [**get_audited_financial_report_statuses**](DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses |  |
@@ -2184,6 +2185,90 @@ end
 - **Accept**: application/json
 
 
+## get_administrator_searches
+
+> <AdministratorSearchResultCollection> get_administrator_searches(opts)
+
+
+
+Search administrators with filtering, pagination, and comp stats (React UI endpoint)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... }, # Object | Ransack query
+  favorites_only: 'favorites_only_example', # String | When \"1\" or \"true\", restrict results to the current user's favorited administrators
+  contract_expires_on: 'contract_expires_on_example' # String | Filter by contract expiration. Use \"expired\" or a date range like \"2025-01-01..2025-12-31\"
+}
+
+begin
+  
+  result = api_instance.get_administrator_searches(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_administrator_searches: #{e}"
+end
+```
+
+#### Using the get_administrator_searches_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdministratorSearchResultCollection>, Integer, Hash)> get_administrator_searches_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_administrator_searches_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdministratorSearchResultCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_administrator_searches_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+| **favorites_only** | **String** | When \&quot;1\&quot; or \&quot;true\&quot;, restrict results to the current user&#39;s favorited administrators | [optional] |
+| **contract_expires_on** | **String** | Filter by contract expiration. Use \&quot;expired\&quot; or a date range like \&quot;2025-01-01..2025-12-31\&quot; | [optional] |
+
+### Return type
+
+[**AdministratorSearchResultCollection**](AdministratorSearchResultCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_administrators
 
 > <AdministratorCollection> get_administrators(opts)
@@ -2212,9 +2297,7 @@ api_instance = WinthropClient::DefaultApi.new
 opts = {
   page: 56, # Integer | results page to retrieve.
   per_page: 56, # Integer | number of results per page.
-  q: { ... }, # Object | Ransack query
-  favorites_only: 'favorites_only_example', # String | When \"1\" or \"true\", restrict results to the current user's favorited administrators
-  contract_expires_on: 'contract_expires_on_example' # String | Filter by contract expiration. Use \"expired\" or a date range like \"2025-01-01..2025-12-31\"
+  q: { ... } # Object | Ransack query
 }
 
 begin
@@ -2251,8 +2334,6 @@ end
 | **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
 | **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query | [optional] |
-| **favorites_only** | **String** | When \&quot;1\&quot; or \&quot;true\&quot;, restrict results to the current user&#39;s favorited administrators | [optional] |
-| **contract_expires_on** | **String** | Filter by contract expiration. Use \&quot;expired\&quot; or a date range like \&quot;2025-01-01..2025-12-31\&quot; | [optional] |
 
 ### Return type
 

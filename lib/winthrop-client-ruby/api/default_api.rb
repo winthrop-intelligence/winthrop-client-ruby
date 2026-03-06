@@ -1798,13 +1798,81 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Retrieve some or all administrators
+    # Search administrators with filtering, pagination, and comp stats (React UI endpoint)
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
     # @option opts [Integer] :per_page number of results per page. (default to 20)
     # @option opts [Object] :q Ransack query
     # @option opts [String] :favorites_only When \&quot;1\&quot; or \&quot;true\&quot;, restrict results to the current user&#39;s favorited administrators
     # @option opts [String] :contract_expires_on Filter by contract expiration. Use \&quot;expired\&quot; or a date range like \&quot;2025-01-01..2025-12-31\&quot;
+    # @return [AdministratorSearchResultCollection]
+    def get_administrator_searches(opts = {})
+      data, _status_code, _headers = get_administrator_searches_with_http_info(opts)
+      data
+    end
+
+    # Search administrators with filtering, pagination, and comp stats (React UI endpoint)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Object] :q Ransack query
+    # @option opts [String] :favorites_only When \&quot;1\&quot; or \&quot;true\&quot;, restrict results to the current user&#39;s favorited administrators
+    # @option opts [String] :contract_expires_on Filter by contract expiration. Use \&quot;expired\&quot; or a date range like \&quot;2025-01-01..2025-12-31\&quot;
+    # @return [Array<(AdministratorSearchResultCollection, Integer, Hash)>] AdministratorSearchResultCollection data, response status code and response headers
+    def get_administrator_searches_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_administrator_searches ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/administrator_searches'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
+      query_params[:'favorites_only'] = opts[:'favorites_only'] if !opts[:'favorites_only'].nil?
+      query_params[:'contract_expires_on'] = opts[:'contract_expires_on'] if !opts[:'contract_expires_on'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdministratorSearchResultCollection'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_administrator_searches",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_administrator_searches\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve some or all administrators
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Object] :q Ransack query
     # @return [AdministratorCollection]
     def get_administrators(opts = {})
       data, _status_code, _headers = get_administrators_with_http_info(opts)
@@ -1816,8 +1884,6 @@ module WinthropClient
     # @option opts [Integer] :page results page to retrieve. (default to 1)
     # @option opts [Integer] :per_page number of results per page. (default to 20)
     # @option opts [Object] :q Ransack query
-    # @option opts [String] :favorites_only When \&quot;1\&quot; or \&quot;true\&quot;, restrict results to the current user&#39;s favorited administrators
-    # @option opts [String] :contract_expires_on Filter by contract expiration. Use \&quot;expired\&quot; or a date range like \&quot;2025-01-01..2025-12-31\&quot;
     # @return [Array<(AdministratorCollection, Integer, Hash)>] AdministratorCollection data, response status code and response headers
     def get_administrators_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -1831,8 +1897,6 @@ module WinthropClient
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
       query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
       query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
-      query_params[:'favorites_only'] = opts[:'favorites_only'] if !opts[:'favorites_only'].nil?
-      query_params[:'contract_expires_on'] = opts[:'contract_expires_on'] if !opts[:'contract_expires_on'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

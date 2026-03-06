@@ -1,4 +1,4 @@
-# WinthropClient::AdministratorCollection
+# WinthropClient::AdministratorSearchResultCollection
 
 ## Properties
 
@@ -6,15 +6,17 @@
 | ---- | ---- | ----------- | ----- |
 | **data** | [**Array&lt;Administrator&gt;**](Administrator.md) |  | [optional] |
 | **meta** | [**Meta**](Meta.md) |  | [optional] |
+| **comp_stats** | [**CompStats**](CompStats.md) |  | [optional] |
 
 ## Example
 
 ```ruby
 require 'winthrop-client-ruby'
 
-instance = WinthropClient::AdministratorCollection.new(
+instance = WinthropClient::AdministratorSearchResultCollection.new(
   data: null,
-  meta: null
+  meta: null,
+  comp_stats: null
 )
 ```
 
