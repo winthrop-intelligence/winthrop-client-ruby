@@ -110,7 +110,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**delete_cashflow**](docs/DefaultApi.md#delete_cashflow) | **DELETE** /api/v1/cashflows/{cashflowId} | 
 *WinthropClient::DefaultApi* | [**delete_conference**](docs/DefaultApi.md#delete_conference) | **DELETE** /api/v1/conferences/{conferenceId} | 
 *WinthropClient::DefaultApi* | [**delete_conferenceship**](docs/DefaultApi.md#delete_conferenceship) | **DELETE** /api/v1/conferenceships/{conferenceshipId} | 
-*WinthropClient::DefaultApi* | [**delete_favorite**](docs/DefaultApi.md#delete_favorite) | **DELETE** /api/v1/favorites | 
+*WinthropClient::DefaultApi* | [**delete_favorite**](docs/DefaultApi.md#delete_favorite) | **DELETE** /api/v1/favorites/{id} | 
 *WinthropClient::DefaultApi* | [**delete_foia_label**](docs/DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} | 
 *WinthropClient::DefaultApi* | [**delete_foia_request**](docs/DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} | 
 *WinthropClient::DefaultApi* | [**delete_job_post**](docs/DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post
@@ -343,6 +343,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::GamePostSearchResult](docs/GamePostSearchResult.md)
  - [WinthropClient::GamePostSearchResultCollection](docs/GamePostSearchResultCollection.md)
  - [WinthropClient::GameType](docs/GameType.md)
+ - [WinthropClient::GetFavorites200ResponseInner](docs/GetFavorites200ResponseInner.md)
  - [WinthropClient::GetFilterOptions200Response](docs/GetFilterOptions200Response.md)
  - [WinthropClient::GetLadFilterOptions200Response](docs/GetLadFilterOptions200Response.md)
  - [WinthropClient::GetLadFilterOptions200ResponsePositionTypesInner](docs/GetLadFilterOptions200ResponsePositionTypesInner.md)

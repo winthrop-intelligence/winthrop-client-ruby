@@ -1312,40 +1312,32 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Remove a favorite for the current user
-    # @param favoritable_type [String] The model type (e.g. \&quot;Coach\&quot;)
-    # @param favoritable_id [Integer] The ID of the record to unfavorite
+    # Remove a favorite by its ID
+    # @param id [Integer] The favorite record ID
     # @param [Hash] opts the optional parameters
     # @return [DeleteFavorite200Response]
-    def delete_favorite(favoritable_type, favoritable_id, opts = {})
-      data, _status_code, _headers = delete_favorite_with_http_info(favoritable_type, favoritable_id, opts)
+    def delete_favorite(id, opts = {})
+      data, _status_code, _headers = delete_favorite_with_http_info(id, opts)
       data
     end
 
-    # Remove a favorite for the current user
-    # @param favoritable_type [String] The model type (e.g. \&quot;Coach\&quot;)
-    # @param favoritable_id [Integer] The ID of the record to unfavorite
+    # Remove a favorite by its ID
+    # @param id [Integer] The favorite record ID
     # @param [Hash] opts the optional parameters
     # @return [Array<(DeleteFavorite200Response, Integer, Hash)>] DeleteFavorite200Response data, response status code and response headers
-    def delete_favorite_with_http_info(favoritable_type, favoritable_id, opts = {})
+    def delete_favorite_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.delete_favorite ...'
       end
-      # verify the required parameter 'favoritable_type' is set
-      if @api_client.config.client_side_validation && favoritable_type.nil?
-        fail ArgumentError, "Missing the required parameter 'favoritable_type' when calling DefaultApi.delete_favorite"
-      end
-      # verify the required parameter 'favoritable_id' is set
-      if @api_client.config.client_side_validation && favoritable_id.nil?
-        fail ArgumentError, "Missing the required parameter 'favoritable_id' when calling DefaultApi.delete_favorite"
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.delete_favorite"
       end
       # resource path
-      local_var_path = '/api/v1/favorites'
+      local_var_path = '/api/v1/favorites/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'favoritable_type'] = favoritable_type
-      query_params[:'favoritable_id'] = favoritable_id
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -4089,19 +4081,19 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Retrieve the current user's favorited IDs for a given type
+    # Retrieve the current user's favorites for a given type
     # @param favoritable_type [String] The model type (e.g. \&quot;Coach\&quot;)
     # @param [Hash] opts the optional parameters
-    # @return [Array<Integer>]
+    # @return [Array<GetFavorites200ResponseInner>]
     def get_favorites(favoritable_type, opts = {})
       data, _status_code, _headers = get_favorites_with_http_info(favoritable_type, opts)
       data
     end
 
-    # Retrieve the current user&#39;s favorited IDs for a given type
+    # Retrieve the current user&#39;s favorites for a given type
     # @param favoritable_type [String] The model type (e.g. \&quot;Coach\&quot;)
     # @param [Hash] opts the optional parameters
-    # @return [Array<(Array<Integer>, Integer, Hash)>] Array<Integer> data, response status code and response headers
+    # @return [Array<(Array<GetFavorites200ResponseInner>, Integer, Hash)>] Array<GetFavorites200ResponseInner> data, response status code and response headers
     def get_favorites_with_http_info(favoritable_type, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_favorites ...'
@@ -4129,7 +4121,7 @@ module WinthropClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'Array<Integer>'
+      return_type = opts[:debug_return_type] || 'Array<GetFavorites200ResponseInner>'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']

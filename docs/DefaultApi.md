@@ -23,7 +23,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_cashflow**](DefaultApi.md#delete_cashflow) | **DELETE** /api/v1/cashflows/{cashflowId} |  |
 | [**delete_conference**](DefaultApi.md#delete_conference) | **DELETE** /api/v1/conferences/{conferenceId} |  |
 | [**delete_conferenceship**](DefaultApi.md#delete_conferenceship) | **DELETE** /api/v1/conferenceships/{conferenceshipId} |  |
-| [**delete_favorite**](DefaultApi.md#delete_favorite) | **DELETE** /api/v1/favorites |  |
+| [**delete_favorite**](DefaultApi.md#delete_favorite) | **DELETE** /api/v1/favorites/{id} |  |
 | [**delete_foia_label**](DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} |  |
 | [**delete_foia_request**](DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} |  |
 | [**delete_job_post**](DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post |
@@ -1599,11 +1599,11 @@ nil (empty response body)
 
 ## delete_favorite
 
-> <DeleteFavorite200Response> delete_favorite(favoritable_type, favoritable_id)
+> <DeleteFavorite200Response> delete_favorite(id)
 
 
 
-Remove a favorite for the current user
+Remove a favorite by its ID
 
 ### Examples
 
@@ -1622,12 +1622,11 @@ WinthropClient.configure do |config|
 end
 
 api_instance = WinthropClient::DefaultApi.new
-favoritable_type = 'favoritable_type_example' # String | The model type (e.g. \"Coach\")
-favoritable_id = 56 # Integer | The ID of the record to unfavorite
+id = 56 # Integer | The favorite record ID
 
 begin
   
-  result = api_instance.delete_favorite(favoritable_type, favoritable_id)
+  result = api_instance.delete_favorite(id)
   p result
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->delete_favorite: #{e}"
@@ -1638,12 +1637,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<DeleteFavorite200Response>, Integer, Hash)> delete_favorite_with_http_info(favoritable_type, favoritable_id)
+> <Array(<DeleteFavorite200Response>, Integer, Hash)> delete_favorite_with_http_info(id)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.delete_favorite_with_http_info(favoritable_type, favoritable_id)
+  data, status_code, headers = api_instance.delete_favorite_with_http_info(id)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <DeleteFavorite200Response>
@@ -1656,8 +1655,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **favoritable_type** | **String** | The model type (e.g. \&quot;Coach\&quot;) |  |
-| **favoritable_id** | **Integer** | The ID of the record to unfavorite |  |
+| **id** | **Integer** | The favorite record ID |  |
 
 ### Return type
 
@@ -4986,11 +4984,11 @@ end
 
 ## get_favorites
 
-> Array&lt;Integer&gt; get_favorites(favoritable_type)
+> <Array<GetFavorites200ResponseInner>> get_favorites(favoritable_type)
 
 
 
-Retrieve the current user's favorited IDs for a given type
+Retrieve the current user's favorites for a given type
 
 ### Examples
 
@@ -5024,7 +5022,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(Array&lt;Integer&gt;, Integer, Hash)> get_favorites_with_http_info(favoritable_type)
+> <Array(<Array<GetFavorites200ResponseInner>>, Integer, Hash)> get_favorites_with_http_info(favoritable_type)
 
 ```ruby
 begin
@@ -5032,7 +5030,7 @@ begin
   data, status_code, headers = api_instance.get_favorites_with_http_info(favoritable_type)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => Array&lt;Integer&gt;
+  p data # => <Array<GetFavorites200ResponseInner>>
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->get_favorites_with_http_info: #{e}"
 end
@@ -5046,7 +5044,7 @@ end
 
 ### Return type
 
-**Array&lt;Integer&gt;**
+[**Array&lt;GetFavorites200ResponseInner&gt;**](GetFavorites200ResponseInner.md)
 
 ### Authorization
 
