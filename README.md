@@ -310,6 +310,8 @@ Class | Method | HTTP request | Description
  - [WinthropClient::CreateFavoriteRequest](docs/CreateFavoriteRequest.md)
  - [WinthropClient::Deal](docs/Deal.md)
  - [WinthropClient::DealCollection](docs/DealCollection.md)
+ - [WinthropClient::DealDetail](docs/DealDetail.md)
+ - [WinthropClient::DealDetailVendor](docs/DealDetailVendor.md)
  - [WinthropClient::DealSearchResult](docs/DealSearchResult.md)
  - [WinthropClient::DealSearchResultCollection](docs/DealSearchResultCollection.md)
  - [WinthropClient::DealStatus](docs/DealStatus.md)

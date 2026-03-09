@@ -41,11 +41,17 @@ module WinthropClient
 
     attr_accessor :start_at
 
+    attr_accessor :created_at
+
     attr_accessor :summary
 
     attr_accessor :autorenew
 
     attr_accessor :archived
+
+    attr_accessor :vendors
+
+    attr_accessor :deal_detail
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -63,9 +69,12 @@ module WinthropClient
         :'start_year' => :'start_year',
         :'end_year' => :'end_year',
         :'start_at' => :'start_at',
+        :'created_at' => :'created_at',
         :'summary' => :'summary',
         :'autorenew' => :'autorenew',
-        :'archived' => :'archived'
+        :'archived' => :'archived',
+        :'vendors' => :'vendors',
+        :'deal_detail' => :'deal_detail'
       }
     end
 
@@ -95,9 +104,12 @@ module WinthropClient
         :'start_year' => :'Integer',
         :'end_year' => :'Integer',
         :'start_at' => :'Time',
+        :'created_at' => :'Time',
         :'summary' => :'String',
         :'autorenew' => :'Boolean',
-        :'archived' => :'Boolean'
+        :'archived' => :'Boolean',
+        :'vendors' => :'Array<DealDetailVendor>',
+        :'deal_detail' => :'DealDetail'
       }
     end
 
@@ -113,9 +125,10 @@ module WinthropClient
         :'start_year',
         :'end_year',
         :'start_at',
+        :'created_at',
         :'summary',
         :'autorenew',
-        :'archived'
+        :'archived',
       ])
     end
 
@@ -189,6 +202,10 @@ module WinthropClient
         self.start_at = attributes[:'start_at']
       end
 
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
       if attributes.key?(:'summary')
         self.summary = attributes[:'summary']
       end
@@ -199,6 +216,16 @@ module WinthropClient
 
       if attributes.key?(:'archived')
         self.archived = attributes[:'archived']
+      end
+
+      if attributes.key?(:'vendors')
+        if (value = attributes[:'vendors']).is_a?(Array)
+          self.vendors = value
+        end
+      end
+
+      if attributes.key?(:'deal_detail')
+        self.deal_detail = attributes[:'deal_detail']
       end
     end
 
@@ -235,9 +262,12 @@ module WinthropClient
           start_year == o.start_year &&
           end_year == o.end_year &&
           start_at == o.start_at &&
+          created_at == o.created_at &&
           summary == o.summary &&
           autorenew == o.autorenew &&
-          archived == o.archived
+          archived == o.archived &&
+          vendors == o.vendors &&
+          deal_detail == o.deal_detail
     end
 
     # @see the `==` method
@@ -249,7 +279,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, deal_id, school_id, school_name, conference_name, conference_id, division_id, deal_type_name, deal_type_id, vendor_names, start_year, end_year, start_at, summary, autorenew, archived].hash
+      [id, deal_id, school_id, school_name, conference_name, conference_id, division_id, deal_type_name, deal_type_id, vendor_names, start_year, end_year, start_at, created_at, summary, autorenew, archived, vendors, deal_detail].hash
     end
 
     # Builds the object from hash

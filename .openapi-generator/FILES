@@ -52,6 +52,8 @@ docs/CreateFavorite201Response.md
 docs/CreateFavoriteRequest.md
 docs/Deal.md
 docs/DealCollection.md
+docs/DealDetail.md
+docs/DealDetailVendor.md
 docs/DealSearchResult.md
 docs/DealSearchResultCollection.md
 docs/DealStatus.md
@@ -228,6 +230,8 @@ lib/winthrop-client-ruby/models/create_favorite201_response.rb
 lib/winthrop-client-ruby/models/create_favorite_request.rb
 lib/winthrop-client-ruby/models/deal.rb
 lib/winthrop-client-ruby/models/deal_collection.rb
+lib/winthrop-client-ruby/models/deal_detail.rb
+lib/winthrop-client-ruby/models/deal_detail_vendor.rb
 lib/winthrop-client-ruby/models/deal_search_result.rb
 lib/winthrop-client-ruby/models/deal_search_result_collection.rb
 lib/winthrop-client-ruby/models/deal_status.rb
@@ -341,6 +345,7 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
-spec/models/get_favorites200_response_inner_spec.rb
+spec/models/deal_detail_spec.rb
+spec/models/deal_detail_vendor_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
