@@ -14,19 +14,28 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class DepartmentSearchResultCollection < ApiModelBase
-    attr_accessor :data
+  class DepartmentSearchResultDepartment < ApiModelBase
+    attr_accessor :ad_name
 
-    attr_accessor :meta
+    attr_accessor :ad_coach_id
 
-    attr_accessor :financials_year
+    attr_accessor :ad_salary_cents
+
+    attr_accessor :revenue_cents
+
+    attr_accessor :expense_cents
+
+    attr_accessor :deals
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'data' => :'data',
-        :'meta' => :'meta',
-        :'financials_year' => :'financials_year'
+        :'ad_name' => :'ad_name',
+        :'ad_coach_id' => :'ad_coach_id',
+        :'ad_salary_cents' => :'ad_salary_cents',
+        :'revenue_cents' => :'revenue_cents',
+        :'expense_cents' => :'expense_cents',
+        :'deals' => :'deals'
       }
     end
 
@@ -43,16 +52,23 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'data' => :'Array<DepartmentSearchResult>',
-        :'meta' => :'Meta',
-        :'financials_year' => :'String'
+        :'ad_name' => :'String',
+        :'ad_coach_id' => :'Integer',
+        :'ad_salary_cents' => :'Integer',
+        :'revenue_cents' => :'Integer',
+        :'expense_cents' => :'Integer',
+        :'deals' => :'Array<DepartmentSearchResultDepartmentDealsInner>'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'financials_year'
+        :'ad_name',
+        :'ad_coach_id',
+        :'ad_salary_cents',
+        :'revenue_cents',
+        :'expense_cents',
       ])
     end
 
@@ -60,30 +76,42 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::DepartmentSearchResultCollection` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::DepartmentSearchResultDepartment` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::DepartmentSearchResultCollection`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::DepartmentSearchResultDepartment`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'data')
-        if (value = attributes[:'data']).is_a?(Array)
-          self.data = value
+      if attributes.key?(:'ad_name')
+        self.ad_name = attributes[:'ad_name']
+      end
+
+      if attributes.key?(:'ad_coach_id')
+        self.ad_coach_id = attributes[:'ad_coach_id']
+      end
+
+      if attributes.key?(:'ad_salary_cents')
+        self.ad_salary_cents = attributes[:'ad_salary_cents']
+      end
+
+      if attributes.key?(:'revenue_cents')
+        self.revenue_cents = attributes[:'revenue_cents']
+      end
+
+      if attributes.key?(:'expense_cents')
+        self.expense_cents = attributes[:'expense_cents']
+      end
+
+      if attributes.key?(:'deals')
+        if (value = attributes[:'deals']).is_a?(Array)
+          self.deals = value
         end
-      end
-
-      if attributes.key?(:'meta')
-        self.meta = attributes[:'meta']
-      end
-
-      if attributes.key?(:'financials_year')
-        self.financials_year = attributes[:'financials_year']
       end
     end
 
@@ -107,9 +135,12 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          data == o.data &&
-          meta == o.meta &&
-          financials_year == o.financials_year
+          ad_name == o.ad_name &&
+          ad_coach_id == o.ad_coach_id &&
+          ad_salary_cents == o.ad_salary_cents &&
+          revenue_cents == o.revenue_cents &&
+          expense_cents == o.expense_cents &&
+          deals == o.deals
     end
 
     # @see the `==` method
@@ -121,7 +152,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data, meta, financials_year].hash
+      [ad_name, ad_coach_id, ad_salary_cents, revenue_cents, expense_cents, deals].hash
     end
 
     # Builds the object from hash

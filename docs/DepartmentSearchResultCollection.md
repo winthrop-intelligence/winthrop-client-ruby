@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **data** | [**Array&lt;DepartmentSearchResult&gt;**](DepartmentSearchResult.md) |  | [optional] |
 | **meta** | [**Meta**](Meta.md) |  | [optional] |
+| **financials_year** | **String** |  | [optional] |
 
 ## Example
 
@@ -14,7 +15,8 @@ require 'winthrop-client-ruby'
 
 instance = WinthropClient::DepartmentSearchResultCollection.new(
   data: null,
-  meta: null
+  meta: null,
+  financials_year: null
 )
 ```
 

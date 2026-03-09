@@ -19,6 +19,8 @@ module WinthropClient
 
     attr_accessor :current_year
 
+    attr_accessor :current_financials_year
+
     attr_accessor :divisions
 
     attr_accessor :sports
@@ -38,6 +40,7 @@ module WinthropClient
       {
         :'years' => :'years',
         :'current_year' => :'current_year',
+        :'current_financials_year' => :'current_financials_year',
         :'divisions' => :'divisions',
         :'sports' => :'sports',
         :'position_types' => :'position_types',
@@ -63,6 +66,7 @@ module WinthropClient
       {
         :'years' => :'Array<Integer>',
         :'current_year' => :'Integer',
+        :'current_financials_year' => :'Integer',
         :'divisions' => :'Array<IdName>',
         :'sports' => :'Array<Sport>',
         :'position_types' => :'Array<IdName>',
@@ -103,6 +107,10 @@ module WinthropClient
 
       if attributes.key?(:'current_year')
         self.current_year = attributes[:'current_year']
+      end
+
+      if attributes.key?(:'current_financials_year')
+        self.current_financials_year = attributes[:'current_financials_year']
       end
 
       if attributes.key?(:'divisions')
@@ -170,6 +178,7 @@ module WinthropClient
       self.class == o.class &&
           years == o.years &&
           current_year == o.current_year &&
+          current_financials_year == o.current_financials_year &&
           divisions == o.divisions &&
           sports == o.sports &&
           position_types == o.position_types &&
@@ -188,7 +197,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [years, current_year, divisions, sports, position_types, geo_regions, gender_options, diversity_options, compensation_types].hash
+      [years, current_year, current_financials_year, divisions, sports, position_types, geo_regions, gender_options, diversity_options, compensation_types].hash
     end
 
     # Builds the object from hash

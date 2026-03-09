@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **years** | **Array&lt;Integer&gt;** |  | [optional] |
 | **current_year** | **Integer** |  | [optional] |
+| **current_financials_year** | **Integer** |  | [optional] |
 | **divisions** | [**Array&lt;IdName&gt;**](IdName.md) |  | [optional] |
 | **sports** | [**Array&lt;Sport&gt;**](Sport.md) |  | [optional] |
 | **position_types** | [**Array&lt;IdName&gt;**](IdName.md) |  | [optional] |
@@ -22,6 +23,7 @@ require 'winthrop-client-ruby'
 instance = WinthropClient::GetFilterOptions200Response.new(
   years: null,
   current_year: null,
+  current_financials_year: null,
   divisions: null,
   sports: null,
   position_types: null,

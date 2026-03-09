@@ -62,6 +62,9 @@ docs/DefaultApi.md
 docs/DeleteFavorite200Response.md
 docs/DepartmentSearchResult.md
 docs/DepartmentSearchResultCollection.md
+docs/DepartmentSearchResultDepartment.md
+docs/DepartmentSearchResultDepartmentDealsInner.md
+docs/DepartmentSearchResultSportsInner.md
 docs/DepartmentStaffMember.md
 docs/DepartmentStaffSchool.md
 docs/DirectorsCupSchool.md
@@ -239,6 +242,9 @@ lib/winthrop-client-ruby/models/deal_status_collection.rb
 lib/winthrop-client-ruby/models/delete_favorite200_response.rb
 lib/winthrop-client-ruby/models/department_search_result.rb
 lib/winthrop-client-ruby/models/department_search_result_collection.rb
+lib/winthrop-client-ruby/models/department_search_result_department.rb
+lib/winthrop-client-ruby/models/department_search_result_department_deals_inner.rb
+lib/winthrop-client-ruby/models/department_search_result_sports_inner.rb
 lib/winthrop-client-ruby/models/department_staff_member.rb
 lib/winthrop-client-ruby/models/department_staff_school.rb
 lib/winthrop-client-ruby/models/directors_cup_school.rb
@@ -345,7 +351,8 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
-spec/models/deal_detail_spec.rb
-spec/models/deal_detail_vendor_spec.rb
+spec/models/department_search_result_department_deals_inner_spec.rb
+spec/models/department_search_result_department_spec.rb
+spec/models/department_search_result_sports_inner_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
