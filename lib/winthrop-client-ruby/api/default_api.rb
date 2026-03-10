@@ -3895,7 +3895,6 @@ module WinthropClient
     # Search school departments with filtering and pagination
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
     # @option opts [Object] :q Ransack query
     # @return [DepartmentSearchResultCollection]
     def get_department_searches(opts = {})
@@ -3906,7 +3905,6 @@ module WinthropClient
     # Search school departments with filtering and pagination
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
     # @option opts [Object] :q Ransack query
     # @return [Array<(DepartmentSearchResultCollection, Integer, Hash)>] DepartmentSearchResultCollection data, response status code and response headers
     def get_department_searches_with_http_info(opts = {})
@@ -3919,7 +3917,6 @@ module WinthropClient
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
-      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
       query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
 
       # header parameters

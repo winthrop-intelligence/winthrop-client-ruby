@@ -4775,7 +4775,6 @@ end
 api_instance = WinthropClient::DefaultApi.new
 opts = {
   page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
   q: { ... } # Object | Ransack query
 }
 
@@ -4811,7 +4810,6 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query | [optional] |
 
 ### Return type
