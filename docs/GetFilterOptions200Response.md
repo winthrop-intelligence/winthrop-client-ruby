@@ -9,8 +9,8 @@
 | **current_financials_year** | **Integer** |  | [optional] |
 | **divisions** | [**Array&lt;IdName&gt;**](IdName.md) |  | [optional] |
 | **sports** | [**Array&lt;Sport&gt;**](Sport.md) |  | [optional] |
-| **position_types** | [**Array&lt;IdName&gt;**](IdName.md) |  | [optional] |
-| **geo_regions** | [**Array&lt;IdName&gt;**](IdName.md) |  | [optional] |
+| **position_types** | [**Array&lt;FilterPositionType&gt;**](FilterPositionType.md) |  | [optional] |
+| **geo_regions** | [**Array&lt;GeoRegion&gt;**](GeoRegion.md) |  | [optional] |
 | **gender_options** | **Array&lt;String&gt;** |  | [optional] |
 | **diversity_options** | **Array&lt;String&gt;** |  | [optional] |
 | **compensation_types** | **Array&lt;String&gt;** |  | [optional] |

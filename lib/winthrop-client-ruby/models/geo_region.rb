@@ -14,40 +14,20 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class GetFilterOptions200Response < ApiModelBase
-    attr_accessor :years
+  # A geographic region (geo division) with its parent region name
+  class GeoRegion < ApiModelBase
+    attr_accessor :id
 
-    attr_accessor :current_year
+    attr_accessor :name
 
-    attr_accessor :current_financials_year
-
-    attr_accessor :divisions
-
-    attr_accessor :sports
-
-    attr_accessor :position_types
-
-    attr_accessor :geo_regions
-
-    attr_accessor :gender_options
-
-    attr_accessor :diversity_options
-
-    attr_accessor :compensation_types
+    attr_accessor :geo_region_name
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'years' => :'years',
-        :'current_year' => :'current_year',
-        :'current_financials_year' => :'current_financials_year',
-        :'divisions' => :'divisions',
-        :'sports' => :'sports',
-        :'position_types' => :'position_types',
-        :'geo_regions' => :'geo_regions',
-        :'gender_options' => :'gender_options',
-        :'diversity_options' => :'diversity_options',
-        :'compensation_types' => :'compensation_types'
+        :'id' => :'id',
+        :'name' => :'name',
+        :'geo_region_name' => :'geo_region_name'
       }
     end
 
@@ -64,16 +44,9 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'years' => :'Array<Integer>',
-        :'current_year' => :'Integer',
-        :'current_financials_year' => :'Integer',
-        :'divisions' => :'Array<IdName>',
-        :'sports' => :'Array<Sport>',
-        :'position_types' => :'Array<FilterPositionType>',
-        :'geo_regions' => :'Array<GeoRegion>',
-        :'gender_options' => :'Array<String>',
-        :'diversity_options' => :'Array<String>',
-        :'compensation_types' => :'Array<String>'
+        :'id' => :'Integer',
+        :'name' => :'String',
+        :'geo_region_name' => :'String'
       }
     end
 
@@ -87,72 +60,32 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::GetFilterOptions200Response` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::GeoRegion` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::GetFilterOptions200Response`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::GeoRegion`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'years')
-        if (value = attributes[:'years']).is_a?(Array)
-          self.years = value
-        end
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
+      else
+        self.id = nil
       end
 
-      if attributes.key?(:'current_year')
-        self.current_year = attributes[:'current_year']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
+      else
+        self.name = nil
       end
 
-      if attributes.key?(:'current_financials_year')
-        self.current_financials_year = attributes[:'current_financials_year']
-      end
-
-      if attributes.key?(:'divisions')
-        if (value = attributes[:'divisions']).is_a?(Array)
-          self.divisions = value
-        end
-      end
-
-      if attributes.key?(:'sports')
-        if (value = attributes[:'sports']).is_a?(Array)
-          self.sports = value
-        end
-      end
-
-      if attributes.key?(:'position_types')
-        if (value = attributes[:'position_types']).is_a?(Array)
-          self.position_types = value
-        end
-      end
-
-      if attributes.key?(:'geo_regions')
-        if (value = attributes[:'geo_regions']).is_a?(Array)
-          self.geo_regions = value
-        end
-      end
-
-      if attributes.key?(:'gender_options')
-        if (value = attributes[:'gender_options']).is_a?(Array)
-          self.gender_options = value
-        end
-      end
-
-      if attributes.key?(:'diversity_options')
-        if (value = attributes[:'diversity_options']).is_a?(Array)
-          self.diversity_options = value
-        end
-      end
-
-      if attributes.key?(:'compensation_types')
-        if (value = attributes[:'compensation_types']).is_a?(Array)
-          self.compensation_types = value
-        end
+      if attributes.key?(:'geo_region_name')
+        self.geo_region_name = attributes[:'geo_region_name']
       end
     end
 
@@ -161,6 +94,14 @@ module WinthropClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @id.nil?
+        invalid_properties.push('invalid value for "id", id cannot be nil.')
+      end
+
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -168,7 +109,29 @@ module WinthropClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @id.nil?
+      return false if @name.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] id Value to be assigned
+    def id=(id)
+      if id.nil?
+        fail ArgumentError, 'id cannot be nil'
+      end
+
+      @id = id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] name Value to be assigned
+    def name=(name)
+      if name.nil?
+        fail ArgumentError, 'name cannot be nil'
+      end
+
+      @name = name
     end
 
     # Checks equality by comparing each attribute.
@@ -176,16 +139,9 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          years == o.years &&
-          current_year == o.current_year &&
-          current_financials_year == o.current_financials_year &&
-          divisions == o.divisions &&
-          sports == o.sports &&
-          position_types == o.position_types &&
-          geo_regions == o.geo_regions &&
-          gender_options == o.gender_options &&
-          diversity_options == o.diversity_options &&
-          compensation_types == o.compensation_types
+          id == o.id &&
+          name == o.name &&
+          geo_region_name == o.geo_region_name
     end
 
     # @see the `==` method
@@ -197,7 +153,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [years, current_year, current_financials_year, divisions, sports, position_types, geo_regions, gender_options, diversity_options, compensation_types].hash
+      [id, name, geo_region_name].hash
     end
 
     # Builds the object from hash
