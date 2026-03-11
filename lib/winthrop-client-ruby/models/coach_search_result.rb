@@ -44,8 +44,8 @@ module WinthropClient
     # Base salary in cents (included based on authorization)
     attr_accessor :base_salary_cents
 
-    # Cost-of-living adjusted compensation in cents (included based on authorization)
-    attr_accessor :adjusted_comp_cents
+    # School's cost-of-living index (included based on authorization)
+    attr_accessor :coli
 
     attr_accessor :contract_expires_on
 
@@ -67,7 +67,7 @@ module WinthropClient
         :'position_types' => :'position_types',
         :'compensation_cents' => :'compensation_cents',
         :'base_salary_cents' => :'base_salary_cents',
-        :'adjusted_comp_cents' => :'adjusted_comp_cents',
+        :'coli' => :'coli',
         :'contract_expires_on' => :'contract_expires_on',
         :'avatar_url' => :'avatar_url'
       }
@@ -99,7 +99,7 @@ module WinthropClient
         :'position_types' => :'Array<String>',
         :'compensation_cents' => :'Integer',
         :'base_salary_cents' => :'Integer',
-        :'adjusted_comp_cents' => :'Integer',
+        :'coli' => :'Float',
         :'contract_expires_on' => :'Date',
         :'avatar_url' => :'String'
       }
@@ -116,7 +116,7 @@ module WinthropClient
         :'division_id',
         :'compensation_cents',
         :'base_salary_cents',
-        :'adjusted_comp_cents',
+        :'coli',
         :'contract_expires_on',
         :'avatar_url'
       ])
@@ -192,8 +192,8 @@ module WinthropClient
         self.base_salary_cents = attributes[:'base_salary_cents']
       end
 
-      if attributes.key?(:'adjusted_comp_cents')
-        self.adjusted_comp_cents = attributes[:'adjusted_comp_cents']
+      if attributes.key?(:'coli')
+        self.coli = attributes[:'coli']
       end
 
       if attributes.key?(:'contract_expires_on')
@@ -238,7 +238,7 @@ module WinthropClient
           position_types == o.position_types &&
           compensation_cents == o.compensation_cents &&
           base_salary_cents == o.base_salary_cents &&
-          adjusted_comp_cents == o.adjusted_comp_cents &&
+          coli == o.coli &&
           contract_expires_on == o.contract_expires_on &&
           avatar_url == o.avatar_url
     end
@@ -252,7 +252,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, first_name, last_name, school_name, school_id, conference_name, conference_id, division_name, division_id, year, position_types, compensation_cents, base_salary_cents, adjusted_comp_cents, contract_expires_on, avatar_url].hash
+      [id, first_name, last_name, school_name, school_id, conference_name, conference_id, division_name, division_id, year, position_types, compensation_cents, base_salary_cents, coli, contract_expires_on, avatar_url].hash
     end
 
     # Builds the object from hash

@@ -17,7 +17,7 @@
 | **position_types** | **Array&lt;String&gt;** |  | [optional] |
 | **compensation_cents** | **Integer** | Total compensation in cents (included based on authorization) | [optional] |
 | **base_salary_cents** | **Integer** | Base salary in cents (included based on authorization) | [optional] |
-| **adjusted_comp_cents** | **Integer** | Cost-of-living adjusted compensation in cents (included based on authorization) | [optional] |
+| **coli** | **Float** | School&#39;s cost-of-living index (included based on authorization) | [optional] |
 | **contract_expires_on** | **Date** |  | [optional] |
 | **avatar_url** | **String** |  | [optional] |
 
@@ -40,7 +40,7 @@ instance = WinthropClient::CoachSearchResult.new(
   position_types: null,
   compensation_cents: null,
   base_salary_cents: null,
-  adjusted_comp_cents: null,
+  coli: null,
   contract_expires_on: null,
   avatar_url: null
 )
