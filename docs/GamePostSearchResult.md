@@ -29,6 +29,9 @@
 | **avg_guarantee_paid** | **Float** |  | [optional] |
 | **avg_guarantee_received** | **Float** |  | [optional] |
 | **game_types_display** | **String** | Comma-separated list of game type names | [optional] |
+| **created_by_name** | **String** | Full name of the user who created the game post | [optional] |
+| **avg_rpi** | **Integer** | 5-year average RPI ranking | [optional] |
+| **school_logo_url** | **String** | URL to school logo image (small variant) | [optional] |
 | **latitude** | **Float** |  | [optional] |
 | **longitude** | **Float** |  | [optional] |
 
@@ -63,6 +66,9 @@ instance = WinthropClient::GamePostSearchResult.new(
   avg_guarantee_paid: null,
   avg_guarantee_received: null,
   game_types_display: null,
+  created_by_name: null,
+  avg_rpi: null,
+  school_logo_url: null,
   latitude: null,
   longitude: null
 )

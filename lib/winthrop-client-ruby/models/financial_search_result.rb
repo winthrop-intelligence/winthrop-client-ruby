@@ -423,7 +423,6 @@ module WinthropClient
         :'exp_travel_amt',
         :'exp_facilities_amt',
         :'exp_guarantees_amt',
-        :'has_audited_report',
         :'rev_contributions_no_ik_amt',
         :'rev_conf_distributions_non_amt',
         :'rev_conf_bowl_amt',

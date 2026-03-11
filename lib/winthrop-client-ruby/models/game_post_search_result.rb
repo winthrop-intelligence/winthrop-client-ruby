@@ -71,6 +71,15 @@ module WinthropClient
     # Comma-separated list of game type names
     attr_accessor :game_types_display
 
+    # Full name of the user who created the game post
+    attr_accessor :created_by_name
+
+    # 5-year average RPI ranking
+    attr_accessor :avg_rpi
+
+    # URL to school logo image (small variant)
+    attr_accessor :school_logo_url
+
     attr_accessor :latitude
 
     attr_accessor :longitude
@@ -125,6 +134,9 @@ module WinthropClient
         :'avg_guarantee_paid' => :'avg_guarantee_paid',
         :'avg_guarantee_received' => :'avg_guarantee_received',
         :'game_types_display' => :'game_types_display',
+        :'created_by_name' => :'created_by_name',
+        :'avg_rpi' => :'avg_rpi',
+        :'school_logo_url' => :'school_logo_url',
         :'latitude' => :'latitude',
         :'longitude' => :'longitude'
       }
@@ -168,6 +180,9 @@ module WinthropClient
         :'avg_guarantee_paid' => :'Float',
         :'avg_guarantee_received' => :'Float',
         :'game_types_display' => :'String',
+        :'created_by_name' => :'String',
+        :'avg_rpi' => :'Integer',
+        :'school_logo_url' => :'String',
         :'latitude' => :'Float',
         :'longitude' => :'Float'
       }
@@ -195,6 +210,9 @@ module WinthropClient
         :'avg_guarantee_paid',
         :'avg_guarantee_received',
         :'game_types_display',
+        :'created_by_name',
+        :'avg_rpi',
+        :'school_logo_url',
         :'latitude',
         :'longitude'
       ])
@@ -316,6 +334,18 @@ module WinthropClient
         self.game_types_display = attributes[:'game_types_display']
       end
 
+      if attributes.key?(:'created_by_name')
+        self.created_by_name = attributes[:'created_by_name']
+      end
+
+      if attributes.key?(:'avg_rpi')
+        self.avg_rpi = attributes[:'avg_rpi']
+      end
+
+      if attributes.key?(:'school_logo_url')
+        self.school_logo_url = attributes[:'school_logo_url']
+      end
+
       if attributes.key?(:'latitude')
         self.latitude = attributes[:'latitude']
       end
@@ -382,6 +412,9 @@ module WinthropClient
           avg_guarantee_paid == o.avg_guarantee_paid &&
           avg_guarantee_received == o.avg_guarantee_received &&
           game_types_display == o.game_types_display &&
+          created_by_name == o.created_by_name &&
+          avg_rpi == o.avg_rpi &&
+          school_logo_url == o.school_logo_url &&
           latitude == o.latitude &&
           longitude == o.longitude
     end
@@ -395,7 +428,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [game_post_id, id, school_id, school_name, sport_id, sport_name, start_date, end_date, end_date_display, description, status, expires_on, created_at, updated_at, city, state_name, conference_id, conference_name, division_id, division_name, last_rpi, distance, avg_guarantee_paid, avg_guarantee_received, game_types_display, latitude, longitude].hash
+      [game_post_id, id, school_id, school_name, sport_id, sport_name, start_date, end_date, end_date_display, description, status, expires_on, created_at, updated_at, city, state_name, conference_id, conference_name, division_id, division_name, last_rpi, distance, avg_guarantee_paid, avg_guarantee_received, game_types_display, created_by_name, avg_rpi, school_logo_url, latitude, longitude].hash
     end
 
     # Builds the object from hash
