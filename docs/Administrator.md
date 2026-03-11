@@ -9,6 +9,7 @@
 | **coach_first_name** | **String** |  | [optional] |
 | **coach_last_name** | **String** |  | [optional] |
 | **coach_name** | **String** |  | [optional] |
+| **name** | **String** | Combined display name (first + last) | [optional] |
 | **season_id** | **Integer** |  | [optional] |
 | **position_id** | **Integer** |  | [optional] |
 | **school_id** | **Integer** |  | [optional] |
@@ -61,6 +62,7 @@ instance = WinthropClient::Administrator.new(
   coach_first_name: John,
   coach_last_name: Doe,
   coach_name: John Doe,
+  name: John Doe,
   season_id: 1,
   position_id: 1,
   school_id: 1,
