@@ -84,6 +84,9 @@ module WinthropClient
 
     attr_accessor :longitude
 
+    # Whether the current user can manage this game post
+    attr_accessor :can_manage
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -138,7 +141,8 @@ module WinthropClient
         :'avg_rpi' => :'avg_rpi',
         :'school_logo_url' => :'school_logo_url',
         :'latitude' => :'latitude',
-        :'longitude' => :'longitude'
+        :'longitude' => :'longitude',
+        :'can_manage' => :'can_manage'
       }
     end
 
@@ -184,7 +188,8 @@ module WinthropClient
         :'avg_rpi' => :'Integer',
         :'school_logo_url' => :'String',
         :'latitude' => :'Float',
-        :'longitude' => :'Float'
+        :'longitude' => :'Float',
+        :'can_manage' => :'Boolean'
       }
     end
 
@@ -214,7 +219,7 @@ module WinthropClient
         :'avg_rpi',
         :'school_logo_url',
         :'latitude',
-        :'longitude'
+        :'longitude',
       ])
     end
 
@@ -353,6 +358,10 @@ module WinthropClient
       if attributes.key?(:'longitude')
         self.longitude = attributes[:'longitude']
       end
+
+      if attributes.key?(:'can_manage')
+        self.can_manage = attributes[:'can_manage']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -416,7 +425,8 @@ module WinthropClient
           avg_rpi == o.avg_rpi &&
           school_logo_url == o.school_logo_url &&
           latitude == o.latitude &&
-          longitude == o.longitude
+          longitude == o.longitude &&
+          can_manage == o.can_manage
     end
 
     # @see the `==` method
@@ -428,7 +438,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [game_post_id, id, school_id, school_name, sport_id, sport_name, start_date, end_date, end_date_display, description, status, expires_on, created_at, updated_at, city, state_name, conference_id, conference_name, division_id, division_name, last_rpi, distance, avg_guarantee_paid, avg_guarantee_received, game_types_display, created_by_name, avg_rpi, school_logo_url, latitude, longitude].hash
+      [game_post_id, id, school_id, school_name, sport_id, sport_name, start_date, end_date, end_date_display, description, status, expires_on, created_at, updated_at, city, state_name, conference_id, conference_name, division_id, division_name, last_rpi, distance, avg_guarantee_paid, avg_guarantee_received, game_types_display, created_by_name, avg_rpi, school_logo_url, latitude, longitude, can_manage].hash
     end
 
     # Builds the object from hash

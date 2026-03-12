@@ -422,6 +422,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::UserCollection](docs/UserCollection.md)
  - [WinthropClient::UserRequest](docs/UserRequest.md)
  - [WinthropClient::UserRequestCollection](docs/UserRequestCollection.md)
+ - [WinthropClient::UserScheduleSportsInner](docs/UserScheduleSportsInner.md)
  - [WinthropClient::ValidationError](docs/ValidationError.md)
  - [WinthropClient::Vendor](docs/Vendor.md)
  - [WinthropClient::VendorCollection](docs/VendorCollection.md)

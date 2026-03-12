@@ -34,6 +34,7 @@
 | **school_logo_url** | **String** | URL to school logo image (small variant) | [optional] |
 | **latitude** | **Float** |  | [optional] |
 | **longitude** | **Float** |  | [optional] |
+| **can_manage** | **Boolean** | Whether the current user can manage this game post | [optional] |
 
 ## Example
 
@@ -70,7 +71,8 @@ instance = WinthropClient::GamePostSearchResult.new(
   avg_rpi: null,
   school_logo_url: null,
   latitude: null,
-  longitude: null
+  longitude: null,
+  can_manage: null
 )
 ```
 
