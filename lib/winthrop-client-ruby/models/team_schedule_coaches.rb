@@ -14,18 +14,25 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class CreateFavoriteRequest < ApiModelBase
-    # The model type (e.g. \"Coach\")
-    attr_accessor :favoritable_type
+  class TeamScheduleCoaches < ApiModelBase
+    attr_accessor :performance_year
 
-    # The ID of the record to favorite
-    attr_accessor :favoritable_id
+    attr_accessor :performance_years
+
+    attr_accessor :coaches
+
+    attr_accessor :head_coaches
+
+    attr_accessor :seasons
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'favoritable_type' => :'favoritable_type',
-        :'favoritable_id' => :'favoritable_id'
+        :'performance_year' => :'performance_year',
+        :'performance_years' => :'performance_years',
+        :'coaches' => :'coaches',
+        :'head_coaches' => :'head_coaches',
+        :'seasons' => :'seasons'
       }
     end
 
@@ -42,8 +49,11 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'favoritable_type' => :'String',
-        :'favoritable_id' => :'Integer'
+        :'performance_year' => :'Integer',
+        :'performance_years' => :'Array<Integer>',
+        :'coaches' => :'Array<TeamScheduleCoachesCoachesInner>',
+        :'head_coaches' => :'Array<Array<GetFavoritesCategories200ResponseInner>>',
+        :'seasons' => :'Array<TeamScheduleCoachesSeasonsInner>'
       }
     end
 
@@ -57,28 +67,44 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::CreateFavoriteRequest` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::TeamScheduleCoaches` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::CreateFavoriteRequest`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::TeamScheduleCoaches`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'favoritable_type')
-        self.favoritable_type = attributes[:'favoritable_type']
-      else
-        self.favoritable_type = nil
+      if attributes.key?(:'performance_year')
+        self.performance_year = attributes[:'performance_year']
       end
 
-      if attributes.key?(:'favoritable_id')
-        self.favoritable_id = attributes[:'favoritable_id']
-      else
-        self.favoritable_id = nil
+      if attributes.key?(:'performance_years')
+        if (value = attributes[:'performance_years']).is_a?(Array)
+          self.performance_years = value
+        end
+      end
+
+      if attributes.key?(:'coaches')
+        if (value = attributes[:'coaches']).is_a?(Array)
+          self.coaches = value
+        end
+      end
+
+      if attributes.key?(:'head_coaches')
+        if (value = attributes[:'head_coaches']).is_a?(Array)
+          self.head_coaches = value
+        end
+      end
+
+      if attributes.key?(:'seasons')
+        if (value = attributes[:'seasons']).is_a?(Array)
+          self.seasons = value
+        end
       end
     end
 
@@ -87,14 +113,6 @@ module WinthropClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @favoritable_type.nil?
-        invalid_properties.push('invalid value for "favoritable_type", favoritable_type cannot be nil.')
-      end
-
-      if @favoritable_id.nil?
-        invalid_properties.push('invalid value for "favoritable_id", favoritable_id cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -102,29 +120,7 @@ module WinthropClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @favoritable_type.nil?
-      return false if @favoritable_id.nil?
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] favoritable_type Value to be assigned
-    def favoritable_type=(favoritable_type)
-      if favoritable_type.nil?
-        fail ArgumentError, 'favoritable_type cannot be nil'
-      end
-
-      @favoritable_type = favoritable_type
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] favoritable_id Value to be assigned
-    def favoritable_id=(favoritable_id)
-      if favoritable_id.nil?
-        fail ArgumentError, 'favoritable_id cannot be nil'
-      end
-
-      @favoritable_id = favoritable_id
     end
 
     # Checks equality by comparing each attribute.
@@ -132,8 +128,11 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          favoritable_type == o.favoritable_type &&
-          favoritable_id == o.favoritable_id
+          performance_year == o.performance_year &&
+          performance_years == o.performance_years &&
+          coaches == o.coaches &&
+          head_coaches == o.head_coaches &&
+          seasons == o.seasons
     end
 
     # @see the `==` method
@@ -145,7 +144,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [favoritable_type, favoritable_id].hash
+      [performance_year, performance_years, coaches, head_coaches, seasons].hash
     end
 
     # Builds the object from hash

@@ -21,23 +21,11 @@ module WinthropClient
     # The favorited record's ID
     attr_accessor :favoritable_id
 
-    # Category ID (only when detailed=1)
-    attr_accessor :favorites_category_id
-
-    # Category name (only when detailed=1)
-    attr_accessor :category_name
-
-    # Favoritable record name (only when detailed=1)
-    attr_accessor :name
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'favoritable_id' => :'favoritable_id',
-        :'favorites_category_id' => :'favorites_category_id',
-        :'category_name' => :'category_name',
-        :'name' => :'name'
+        :'favoritable_id' => :'favoritable_id'
       }
     end
 
@@ -55,19 +43,13 @@ module WinthropClient
     def self.openapi_types
       {
         :'id' => :'Integer',
-        :'favoritable_id' => :'Integer',
-        :'favorites_category_id' => :'Integer',
-        :'category_name' => :'String',
-        :'name' => :'String'
+        :'favoritable_id' => :'Integer'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'favorites_category_id',
-        :'category_name',
-        :'name'
       ])
     end
 
@@ -94,18 +76,6 @@ module WinthropClient
       if attributes.key?(:'favoritable_id')
         self.favoritable_id = attributes[:'favoritable_id']
       end
-
-      if attributes.key?(:'favorites_category_id')
-        self.favorites_category_id = attributes[:'favorites_category_id']
-      end
-
-      if attributes.key?(:'category_name')
-        self.category_name = attributes[:'category_name']
-      end
-
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -129,10 +99,7 @@ module WinthropClient
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          favoritable_id == o.favoritable_id &&
-          favorites_category_id == o.favorites_category_id &&
-          category_name == o.category_name &&
-          name == o.name
+          favoritable_id == o.favoritable_id
     end
 
     # @see the `==` method
@@ -144,7 +111,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, favoritable_id, favorites_category_id, category_name, name].hash
+      [id, favoritable_id].hash
     end
 
     # Builds the object from hash
