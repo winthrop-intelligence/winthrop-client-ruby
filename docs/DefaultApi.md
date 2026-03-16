@@ -14,6 +14,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**create_conference**](DefaultApi.md#create_conference) | **POST** /api/v1/conferences |  |
 | [**create_conferenceship**](DefaultApi.md#create_conferenceship) | **POST** /api/v1/conferenceships |  |
 | [**create_favorite**](DefaultApi.md#create_favorite) | **POST** /api/v1/favorites |  |
+| [**create_favorites_category**](DefaultApi.md#create_favorites_category) | **POST** /api/v1/favorites_categories |  |
 | [**create_foia_label**](DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels |  |
 | [**create_foia_request**](DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests |  |
 | [**create_job_post**](DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post |
@@ -24,6 +25,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_conference**](DefaultApi.md#delete_conference) | **DELETE** /api/v1/conferences/{conferenceId} |  |
 | [**delete_conferenceship**](DefaultApi.md#delete_conferenceship) | **DELETE** /api/v1/conferenceships/{conferenceshipId} |  |
 | [**delete_favorite**](DefaultApi.md#delete_favorite) | **DELETE** /api/v1/favorites/{id} |  |
+| [**delete_favorites_category**](DefaultApi.md#delete_favorites_category) | **DELETE** /api/v1/favorites_categories/{id} |  |
 | [**delete_foia_label**](DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} |  |
 | [**delete_foia_request**](DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} |  |
 | [**delete_job_post**](DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post |
@@ -68,6 +70,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_division**](DefaultApi.md#get_division) | **GET** /api/v1/divisions/{divisionId} |  |
 | [**get_divisions**](DefaultApi.md#get_divisions) | **GET** /api/v1/divisions |  |
 | [**get_favorites**](DefaultApi.md#get_favorites) | **GET** /api/v1/favorites |  |
+| [**get_favorites_categories**](DefaultApi.md#get_favorites_categories) | **GET** /api/v1/favorites_categories |  |
 | [**get_filter_options**](DefaultApi.md#get_filter_options) | **GET** /api/v1/filter_options |  |
 | [**get_filter_options_all_schools**](DefaultApi.md#get_filter_options_all_schools) | **GET** /api/v1/filter_options/all_schools |  |
 | [**get_filter_options_conferences**](DefaultApi.md#get_filter_options_conferences) | **GET** /api/v1/filter_options/conferences |  |
@@ -146,6 +149,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_compensation**](DefaultApi.md#update_compensation) | **PATCH** /api/v1/compensations/{compensationId} |  |
 | [**update_conference**](DefaultApi.md#update_conference) | **PUT** /api/v1/conferences/{conferenceId} |  |
 | [**update_conferenceship**](DefaultApi.md#update_conferenceship) | **PUT** /api/v1/conferenceships/{conferenceshipId} |  |
+| [**update_favorite**](DefaultApi.md#update_favorite) | **PATCH** /api/v1/favorites/{id} |  |
+| [**update_favorites_category**](DefaultApi.md#update_favorites_category) | **PATCH** /api/v1/favorites_categories/{id} |  |
 | [**update_foia_label**](DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} |  |
 | [**update_foia_request**](DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} |  |
 | [**update_job_post**](DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post |
@@ -930,6 +935,80 @@ end
 - **Accept**: application/json
 
 
+## create_favorites_category
+
+> <GetFavoritesCategories200ResponseInner> create_favorites_category(create_favorites_category_request)
+
+
+
+Create a new favorites category
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_favorites_category_request = WinthropClient::CreateFavoritesCategoryRequest.new({name: 'name_example'}) # CreateFavoritesCategoryRequest | 
+
+begin
+  
+  result = api_instance.create_favorites_category(create_favorites_category_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_favorites_category: #{e}"
+end
+```
+
+#### Using the create_favorites_category_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetFavoritesCategories200ResponseInner>, Integer, Hash)> create_favorites_category_with_http_info(create_favorites_category_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_favorites_category_with_http_info(create_favorites_category_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetFavoritesCategories200ResponseInner>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_favorites_category_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_favorites_category_request** | [**CreateFavoritesCategoryRequest**](CreateFavoritesCategoryRequest.md) |  |  |
+
+### Return type
+
+[**GetFavoritesCategories200ResponseInner**](GetFavoritesCategories200ResponseInner.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_foia_label
 
 > <FoiaLabel> create_foia_label(foia_label)
@@ -1656,6 +1735,80 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** | The favorite record ID |  |
+
+### Return type
+
+[**DeleteFavorite200Response**](DeleteFavorite200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_favorites_category
+
+> <DeleteFavorite200Response> delete_favorites_category(id)
+
+
+
+Delete a favorites category
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | The category ID
+
+begin
+  
+  result = api_instance.delete_favorites_category(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_favorites_category: #{e}"
+end
+```
+
+#### Using the delete_favorites_category_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DeleteFavorite200Response>, Integer, Hash)> delete_favorites_category_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_favorites_category_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DeleteFavorite200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_favorites_category_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | The category ID |  |
 
 ### Return type
 
@@ -4982,11 +5135,11 @@ end
 
 ## get_favorites
 
-> <Array<GetFavorites200ResponseInner>> get_favorites(favoritable_type)
+> <Array<GetFavorites200ResponseInner>> get_favorites(favoritable_type, opts)
 
 
 
-Retrieve the current user's favorites for a given type
+Retrieve the current user's favorites for a given type. Pass detailed=1 for category info.
 
 ### Examples
 
@@ -5006,10 +5159,13 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 favoritable_type = 'favoritable_type_example' # String | The model type (e.g. \"Coach\")
+opts = {
+  detailed: '1' # String | Pass \"1\" to include category info and favoritable name
+}
 
 begin
   
-  result = api_instance.get_favorites(favoritable_type)
+  result = api_instance.get_favorites(favoritable_type, opts)
   p result
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->get_favorites: #{e}"
@@ -5020,12 +5176,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<GetFavorites200ResponseInner>>, Integer, Hash)> get_favorites_with_http_info(favoritable_type)
+> <Array(<Array<GetFavorites200ResponseInner>>, Integer, Hash)> get_favorites_with_http_info(favoritable_type, opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.get_favorites_with_http_info(favoritable_type)
+  data, status_code, headers = api_instance.get_favorites_with_http_info(favoritable_type, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Array<GetFavorites200ResponseInner>>
@@ -5039,10 +5195,82 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **favoritable_type** | **String** | The model type (e.g. \&quot;Coach\&quot;) |  |
+| **detailed** | **String** | Pass \&quot;1\&quot; to include category info and favoritable name | [optional] |
 
 ### Return type
 
 [**Array&lt;GetFavorites200ResponseInner&gt;**](GetFavorites200ResponseInner.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_favorites_categories
+
+> <Array<GetFavoritesCategories200ResponseInner>> get_favorites_categories
+
+
+
+List the current user's favorites categories
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_favorites_categories
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_favorites_categories: #{e}"
+end
+```
+
+#### Using the get_favorites_categories_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<GetFavoritesCategories200ResponseInner>>, Integer, Hash)> get_favorites_categories_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_favorites_categories_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<GetFavoritesCategories200ResponseInner>>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_favorites_categories_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Array&lt;GetFavoritesCategories200ResponseInner&gt;**](GetFavoritesCategories200ResponseInner.md)
 
 ### Authorization
 
@@ -11032,6 +11260,158 @@ end
 ### Return type
 
 [**Conferenceship**](Conferenceship.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_favorite
+
+> <CreateFavorite201Response> update_favorite(id, update_favorite_request)
+
+
+
+Update a favorite (e.g. reassign to a different category)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | The favorite record ID
+update_favorite_request = WinthropClient::UpdateFavoriteRequest.new # UpdateFavoriteRequest | 
+
+begin
+  
+  result = api_instance.update_favorite(id, update_favorite_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_favorite: #{e}"
+end
+```
+
+#### Using the update_favorite_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateFavorite201Response>, Integer, Hash)> update_favorite_with_http_info(id, update_favorite_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_favorite_with_http_info(id, update_favorite_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateFavorite201Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_favorite_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | The favorite record ID |  |
+| **update_favorite_request** | [**UpdateFavoriteRequest**](UpdateFavoriteRequest.md) |  |  |
+
+### Return type
+
+[**CreateFavorite201Response**](CreateFavorite201Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_favorites_category
+
+> <GetFavoritesCategories200ResponseInner> update_favorites_category(id, update_favorites_category_request)
+
+
+
+Update a favorites category name
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | The category ID
+update_favorites_category_request = WinthropClient::UpdateFavoritesCategoryRequest.new({name: 'name_example'}) # UpdateFavoritesCategoryRequest | 
+
+begin
+  
+  result = api_instance.update_favorites_category(id, update_favorites_category_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_favorites_category: #{e}"
+end
+```
+
+#### Using the update_favorites_category_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetFavoritesCategories200ResponseInner>, Integer, Hash)> update_favorites_category_with_http_info(id, update_favorites_category_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_favorites_category_with_http_info(id, update_favorites_category_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetFavoritesCategories200ResponseInner>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_favorites_category_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | The category ID |  |
+| **update_favorites_category_request** | [**UpdateFavoritesCategoryRequest**](UpdateFavoritesCategoryRequest.md) |  |  |
+
+### Return type
+
+[**GetFavoritesCategories200ResponseInner**](GetFavoritesCategories200ResponseInner.md)
 
 ### Authorization
 

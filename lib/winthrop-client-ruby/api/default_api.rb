@@ -745,6 +745,72 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Create a new favorites category
+    # @param create_favorites_category_request [CreateFavoritesCategoryRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [GetFavoritesCategories200ResponseInner]
+    def create_favorites_category(create_favorites_category_request, opts = {})
+      data, _status_code, _headers = create_favorites_category_with_http_info(create_favorites_category_request, opts)
+      data
+    end
+
+    # Create a new favorites category
+    # @param create_favorites_category_request [CreateFavoritesCategoryRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GetFavoritesCategories200ResponseInner, Integer, Hash)>] GetFavoritesCategories200ResponseInner data, response status code and response headers
+    def create_favorites_category_with_http_info(create_favorites_category_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_favorites_category ...'
+      end
+      # verify the required parameter 'create_favorites_category_request' is set
+      if @api_client.config.client_side_validation && create_favorites_category_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_favorites_category_request' when calling DefaultApi.create_favorites_category"
+      end
+      # resource path
+      local_var_path = '/api/v1/favorites_categories'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_favorites_category_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GetFavoritesCategories200ResponseInner'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_favorites_category",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_favorites_category\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create a new foia label
     # @param foia_label [FoiaLabel] Foia label to create
     # @param [Hash] opts the optional parameters
@@ -1369,6 +1435,67 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#delete_favorite\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete a favorites category
+    # @param id [Integer] The category ID
+    # @param [Hash] opts the optional parameters
+    # @return [DeleteFavorite200Response]
+    def delete_favorites_category(id, opts = {})
+      data, _status_code, _headers = delete_favorites_category_with_http_info(id, opts)
+      data
+    end
+
+    # Delete a favorites category
+    # @param id [Integer] The category ID
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(DeleteFavorite200Response, Integer, Hash)>] DeleteFavorite200Response data, response status code and response headers
+    def delete_favorites_category_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.delete_favorites_category ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.delete_favorites_category"
+      end
+      # resource path
+      local_var_path = '/api/v1/favorites_categories/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'DeleteFavorite200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.delete_favorites_category",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#delete_favorites_category\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -4078,18 +4205,20 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Retrieve the current user's favorites for a given type
+    # Retrieve the current user's favorites for a given type. Pass detailed=1 for category info.
     # @param favoritable_type [String] The model type (e.g. \&quot;Coach\&quot;)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :detailed Pass \&quot;1\&quot; to include category info and favoritable name
     # @return [Array<GetFavorites200ResponseInner>]
     def get_favorites(favoritable_type, opts = {})
       data, _status_code, _headers = get_favorites_with_http_info(favoritable_type, opts)
       data
     end
 
-    # Retrieve the current user&#39;s favorites for a given type
+    # Retrieve the current user&#39;s favorites for a given type. Pass detailed&#x3D;1 for category info.
     # @param favoritable_type [String] The model type (e.g. \&quot;Coach\&quot;)
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :detailed Pass \&quot;1\&quot; to include category info and favoritable name
     # @return [Array<(Array<GetFavorites200ResponseInner>, Integer, Hash)>] Array<GetFavorites200ResponseInner> data, response status code and response headers
     def get_favorites_with_http_info(favoritable_type, opts = {})
       if @api_client.config.debugging
@@ -4099,12 +4228,17 @@ module WinthropClient
       if @api_client.config.client_side_validation && favoritable_type.nil?
         fail ArgumentError, "Missing the required parameter 'favoritable_type' when calling DefaultApi.get_favorites"
       end
+      allowable_values = ["1"]
+      if @api_client.config.client_side_validation && opts[:'detailed'] && !allowable_values.include?(opts[:'detailed'])
+        fail ArgumentError, "invalid value for \"detailed\", must be one of #{allowable_values}"
+      end
       # resource path
       local_var_path = '/api/v1/favorites'
 
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'favoritable_type'] = favoritable_type
+      query_params[:'detailed'] = opts[:'detailed'] if !opts[:'detailed'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -4136,6 +4270,61 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_favorites\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List the current user's favorites categories
+    # @param [Hash] opts the optional parameters
+    # @return [Array<GetFavoritesCategories200ResponseInner>]
+    def get_favorites_categories(opts = {})
+      data, _status_code, _headers = get_favorites_categories_with_http_info(opts)
+      data
+    end
+
+    # List the current user&#39;s favorites categories
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<GetFavoritesCategories200ResponseInner>, Integer, Hash)>] Array<GetFavoritesCategories200ResponseInner> data, response status code and response headers
+    def get_favorites_categories_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_favorites_categories ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/favorites_categories'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<GetFavoritesCategories200ResponseInner>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_favorites_categories",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_favorites_categories\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -9058,6 +9247,150 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#update_conferenceship\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a favorite (e.g. reassign to a different category)
+    # @param id [Integer] The favorite record ID
+    # @param update_favorite_request [UpdateFavoriteRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [CreateFavorite201Response]
+    def update_favorite(id, update_favorite_request, opts = {})
+      data, _status_code, _headers = update_favorite_with_http_info(id, update_favorite_request, opts)
+      data
+    end
+
+    # Update a favorite (e.g. reassign to a different category)
+    # @param id [Integer] The favorite record ID
+    # @param update_favorite_request [UpdateFavoriteRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CreateFavorite201Response, Integer, Hash)>] CreateFavorite201Response data, response status code and response headers
+    def update_favorite_with_http_info(id, update_favorite_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_favorite ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.update_favorite"
+      end
+      # verify the required parameter 'update_favorite_request' is set
+      if @api_client.config.client_side_validation && update_favorite_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_favorite_request' when calling DefaultApi.update_favorite"
+      end
+      # resource path
+      local_var_path = '/api/v1/favorites/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_favorite_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CreateFavorite201Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_favorite",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_favorite\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a favorites category name
+    # @param id [Integer] The category ID
+    # @param update_favorites_category_request [UpdateFavoritesCategoryRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [GetFavoritesCategories200ResponseInner]
+    def update_favorites_category(id, update_favorites_category_request, opts = {})
+      data, _status_code, _headers = update_favorites_category_with_http_info(id, update_favorites_category_request, opts)
+      data
+    end
+
+    # Update a favorites category name
+    # @param id [Integer] The category ID
+    # @param update_favorites_category_request [UpdateFavoritesCategoryRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GetFavoritesCategories200ResponseInner, Integer, Hash)>] GetFavoritesCategories200ResponseInner data, response status code and response headers
+    def update_favorites_category_with_http_info(id, update_favorites_category_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_favorites_category ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.update_favorites_category"
+      end
+      # verify the required parameter 'update_favorites_category_request' is set
+      if @api_client.config.client_side_validation && update_favorites_category_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_favorites_category_request' when calling DefaultApi.update_favorites_category"
+      end
+      # resource path
+      local_var_path = '/api/v1/favorites_categories/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_favorites_category_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GetFavoritesCategories200ResponseInner'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_favorites_category",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_favorites_category\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

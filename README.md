@@ -101,6 +101,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**create_conference**](docs/DefaultApi.md#create_conference) | **POST** /api/v1/conferences | 
 *WinthropClient::DefaultApi* | [**create_conferenceship**](docs/DefaultApi.md#create_conferenceship) | **POST** /api/v1/conferenceships | 
 *WinthropClient::DefaultApi* | [**create_favorite**](docs/DefaultApi.md#create_favorite) | **POST** /api/v1/favorites | 
+*WinthropClient::DefaultApi* | [**create_favorites_category**](docs/DefaultApi.md#create_favorites_category) | **POST** /api/v1/favorites_categories | 
 *WinthropClient::DefaultApi* | [**create_foia_label**](docs/DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels | 
 *WinthropClient::DefaultApi* | [**create_foia_request**](docs/DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests | 
 *WinthropClient::DefaultApi* | [**create_job_post**](docs/DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post
@@ -111,6 +112,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**delete_conference**](docs/DefaultApi.md#delete_conference) | **DELETE** /api/v1/conferences/{conferenceId} | 
 *WinthropClient::DefaultApi* | [**delete_conferenceship**](docs/DefaultApi.md#delete_conferenceship) | **DELETE** /api/v1/conferenceships/{conferenceshipId} | 
 *WinthropClient::DefaultApi* | [**delete_favorite**](docs/DefaultApi.md#delete_favorite) | **DELETE** /api/v1/favorites/{id} | 
+*WinthropClient::DefaultApi* | [**delete_favorites_category**](docs/DefaultApi.md#delete_favorites_category) | **DELETE** /api/v1/favorites_categories/{id} | 
 *WinthropClient::DefaultApi* | [**delete_foia_label**](docs/DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} | 
 *WinthropClient::DefaultApi* | [**delete_foia_request**](docs/DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} | 
 *WinthropClient::DefaultApi* | [**delete_job_post**](docs/DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post
@@ -155,6 +157,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_division**](docs/DefaultApi.md#get_division) | **GET** /api/v1/divisions/{divisionId} | 
 *WinthropClient::DefaultApi* | [**get_divisions**](docs/DefaultApi.md#get_divisions) | **GET** /api/v1/divisions | 
 *WinthropClient::DefaultApi* | [**get_favorites**](docs/DefaultApi.md#get_favorites) | **GET** /api/v1/favorites | 
+*WinthropClient::DefaultApi* | [**get_favorites_categories**](docs/DefaultApi.md#get_favorites_categories) | **GET** /api/v1/favorites_categories | 
 *WinthropClient::DefaultApi* | [**get_filter_options**](docs/DefaultApi.md#get_filter_options) | **GET** /api/v1/filter_options | 
 *WinthropClient::DefaultApi* | [**get_filter_options_all_schools**](docs/DefaultApi.md#get_filter_options_all_schools) | **GET** /api/v1/filter_options/all_schools | 
 *WinthropClient::DefaultApi* | [**get_filter_options_conferences**](docs/DefaultApi.md#get_filter_options_conferences) | **GET** /api/v1/filter_options/conferences | 
@@ -233,6 +236,8 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**update_compensation**](docs/DefaultApi.md#update_compensation) | **PATCH** /api/v1/compensations/{compensationId} | 
 *WinthropClient::DefaultApi* | [**update_conference**](docs/DefaultApi.md#update_conference) | **PUT** /api/v1/conferences/{conferenceId} | 
 *WinthropClient::DefaultApi* | [**update_conferenceship**](docs/DefaultApi.md#update_conferenceship) | **PUT** /api/v1/conferenceships/{conferenceshipId} | 
+*WinthropClient::DefaultApi* | [**update_favorite**](docs/DefaultApi.md#update_favorite) | **PATCH** /api/v1/favorites/{id} | 
+*WinthropClient::DefaultApi* | [**update_favorites_category**](docs/DefaultApi.md#update_favorites_category) | **PATCH** /api/v1/favorites_categories/{id} | 
 *WinthropClient::DefaultApi* | [**update_foia_label**](docs/DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} | 
 *WinthropClient::DefaultApi* | [**update_foia_request**](docs/DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} | 
 *WinthropClient::DefaultApi* | [**update_job_post**](docs/DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post
@@ -308,6 +313,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::ContractCollection](docs/ContractCollection.md)
  - [WinthropClient::CreateFavorite201Response](docs/CreateFavorite201Response.md)
  - [WinthropClient::CreateFavoriteRequest](docs/CreateFavoriteRequest.md)
+ - [WinthropClient::CreateFavoritesCategoryRequest](docs/CreateFavoritesCategoryRequest.md)
  - [WinthropClient::Deal](docs/Deal.md)
  - [WinthropClient::DealCollection](docs/DealCollection.md)
  - [WinthropClient::DealDetail](docs/DealDetail.md)
@@ -351,6 +357,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::GameType](docs/GameType.md)
  - [WinthropClient::GeoRegion](docs/GeoRegion.md)
  - [WinthropClient::GetFavorites200ResponseInner](docs/GetFavorites200ResponseInner.md)
+ - [WinthropClient::GetFavoritesCategories200ResponseInner](docs/GetFavoritesCategories200ResponseInner.md)
  - [WinthropClient::GetFilterOptions200Response](docs/GetFilterOptions200Response.md)
  - [WinthropClient::GetLadFilterOptions200Response](docs/GetLadFilterOptions200Response.md)
  - [WinthropClient::GetLadFilterOptions200ResponsePositionTypesInner](docs/GetLadFilterOptions200ResponsePositionTypesInner.md)
@@ -416,6 +423,8 @@ Class | Method | HTTP request | Description
  - [WinthropClient::Tag](docs/Tag.md)
  - [WinthropClient::UnauthorizedError](docs/UnauthorizedError.md)
  - [WinthropClient::UnprocessableEntity](docs/UnprocessableEntity.md)
+ - [WinthropClient::UpdateFavoriteRequest](docs/UpdateFavoriteRequest.md)
+ - [WinthropClient::UpdateFavoritesCategoryRequest](docs/UpdateFavoritesCategoryRequest.md)
  - [WinthropClient::User](docs/User.md)
  - [WinthropClient::UserActivitySummary](docs/UserActivitySummary.md)
  - [WinthropClient::UserActivitySummaryCollection](docs/UserActivitySummaryCollection.md)

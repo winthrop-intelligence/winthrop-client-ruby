@@ -14,29 +14,15 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class GetFavorites200ResponseInner < ApiModelBase
-    # The favorite record ID
+  class GetFavoritesCategories200ResponseInner < ApiModelBase
     attr_accessor :id
 
-    # The favorited record's ID
-    attr_accessor :favoritable_id
-
-    # Category ID (only when detailed=1)
-    attr_accessor :favorites_category_id
-
-    # Category name (only when detailed=1)
-    attr_accessor :category_name
-
-    # Favoritable record name (only when detailed=1)
     attr_accessor :name
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'favoritable_id' => :'favoritable_id',
-        :'favorites_category_id' => :'favorites_category_id',
-        :'category_name' => :'category_name',
         :'name' => :'name'
       }
     end
@@ -55,9 +41,6 @@ module WinthropClient
     def self.openapi_types
       {
         :'id' => :'Integer',
-        :'favoritable_id' => :'Integer',
-        :'favorites_category_id' => :'Integer',
-        :'category_name' => :'String',
         :'name' => :'String'
       }
     end
@@ -65,9 +48,6 @@ module WinthropClient
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'favorites_category_id',
-        :'category_name',
-        :'name'
       ])
     end
 
@@ -75,32 +55,20 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::GetFavorites200ResponseInner` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::GetFavoritesCategories200ResponseInner` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::GetFavorites200ResponseInner`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::GetFavoritesCategories200ResponseInner`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
       if attributes.key?(:'id')
         self.id = attributes[:'id']
-      end
-
-      if attributes.key?(:'favoritable_id')
-        self.favoritable_id = attributes[:'favoritable_id']
-      end
-
-      if attributes.key?(:'favorites_category_id')
-        self.favorites_category_id = attributes[:'favorites_category_id']
-      end
-
-      if attributes.key?(:'category_name')
-        self.category_name = attributes[:'category_name']
       end
 
       if attributes.key?(:'name')
@@ -129,9 +97,6 @@ module WinthropClient
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          favoritable_id == o.favoritable_id &&
-          favorites_category_id == o.favorites_category_id &&
-          category_name == o.category_name &&
           name == o.name
     end
 
@@ -144,7 +109,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, favoritable_id, favorites_category_id, category_name, name].hash
+      [id, name].hash
     end
 
     # Builds the object from hash
