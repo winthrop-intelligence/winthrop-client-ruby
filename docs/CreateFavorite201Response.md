@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **id** | **Integer** |  | [optional] |
-| **favoritable_id** | **Integer** |  | [optional] |
+| **id** | **Integer** |  |  |
+| **favoritable_id** | **Integer** |  |  |
 
 ## Example
 
