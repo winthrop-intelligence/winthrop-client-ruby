@@ -27,8 +27,6 @@ module WinthropClient
 
     attr_accessor :leader
 
-    attr_accessor :dob
-
     attr_accessor :hometown_city
 
     attr_accessor :hometown_state
@@ -82,7 +80,6 @@ module WinthropClient
         :'email' => :'email',
         :'phone' => :'phone',
         :'leader' => :'leader',
-        :'dob' => :'dob',
         :'hometown_city' => :'hometown_city',
         :'hometown_state' => :'hometown_state',
         :'alma_mater_name' => :'alma_mater_name',
@@ -127,7 +124,6 @@ module WinthropClient
         :'email' => :'String',
         :'phone' => :'String',
         :'leader' => :'Boolean',
-        :'dob' => :'String',
         :'hometown_city' => :'String',
         :'hometown_state' => :'String',
         :'alma_mater_name' => :'String',
@@ -158,7 +154,6 @@ module WinthropClient
       Set.new([
         :'email',
         :'phone',
-        :'dob',
         :'hometown_city',
         :'hometown_state',
         :'alma_mater_name',
@@ -222,10 +217,6 @@ module WinthropClient
         self.leader = attributes[:'leader']
       else
         self.leader = nil
-      end
-
-      if attributes.key?(:'dob')
-        self.dob = attributes[:'dob']
       end
 
       if attributes.key?(:'hometown_city')
@@ -541,7 +532,6 @@ module WinthropClient
           email == o.email &&
           phone == o.phone &&
           leader == o.leader &&
-          dob == o.dob &&
           hometown_city == o.hometown_city &&
           hometown_state == o.hometown_state &&
           alma_mater_name == o.alma_mater_name &&
@@ -575,7 +565,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, first_name, last_name, email, phone, leader, dob, hometown_city, hometown_state, alma_mater_name, alma_mater_year, twitter_handle, twitter_verified, linkedin, linkedin_verified, instagram_handle, instagram_verified, bio, coach_friendly_id, departing, current_school_name, current_school_id, current_sport_name, current_position_types, avatar_url, can_see_compensation, can_see_videos, can_see_coworker_history, is_sport_specific].hash
+      [id, first_name, last_name, email, phone, leader, hometown_city, hometown_state, alma_mater_name, alma_mater_year, twitter_handle, twitter_verified, linkedin, linkedin_verified, instagram_handle, instagram_verified, bio, coach_friendly_id, departing, current_school_name, current_school_id, current_sport_name, current_position_types, avatar_url, can_see_compensation, can_see_videos, can_see_coworker_history, is_sport_specific].hash
     end
 
     # Builds the object from hash

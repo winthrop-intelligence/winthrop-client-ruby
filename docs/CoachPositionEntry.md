@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **sport** | **String** |  |  |
 | **year_str** | **String** |  |  |
 | **school_name** | **String** |  |  |
 | **school_id** | **Integer** |  |  |
@@ -20,6 +21,7 @@
 require 'winthrop-client-ruby'
 
 instance = WinthropClient::CoachPositionEntry.new(
+  sport: null,
   year_str: null,
   school_name: null,
   school_id: null,

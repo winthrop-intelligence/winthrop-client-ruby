@@ -19,9 +19,9 @@ module WinthropClient
 
     attr_accessor :show_coach_apr
 
-    attr_accessor :positions_by_sport
+    attr_accessor :positions
 
-    attr_accessor :conference_positions_by_sport
+    attr_accessor :conference_positions
 
     attr_accessor :performance_chart
 
@@ -30,8 +30,8 @@ module WinthropClient
       {
         :'leader_ad' => :'leader_ad',
         :'show_coach_apr' => :'show_coach_apr',
-        :'positions_by_sport' => :'positions_by_sport',
-        :'conference_positions_by_sport' => :'conference_positions_by_sport',
+        :'positions' => :'positions',
+        :'conference_positions' => :'conference_positions',
         :'performance_chart' => :'performance_chart'
       }
     end
@@ -51,8 +51,8 @@ module WinthropClient
       {
         :'leader_ad' => :'Boolean',
         :'show_coach_apr' => :'Boolean',
-        :'positions_by_sport' => :'Hash<String, Array<RecordPositionEntry>>',
-        :'conference_positions_by_sport' => :'Hash<String, Array<ConferencePositionEntry>>',
+        :'positions' => :'Array<RecordPositionEntry>',
+        :'conference_positions' => :'Array<ConferencePositionEntry>',
         :'performance_chart' => :'PerformanceChartData'
       }
     end
@@ -91,20 +91,20 @@ module WinthropClient
         self.show_coach_apr = nil
       end
 
-      if attributes.key?(:'positions_by_sport')
-        if (value = attributes[:'positions_by_sport']).is_a?(Hash)
-          self.positions_by_sport = value
+      if attributes.key?(:'positions')
+        if (value = attributes[:'positions']).is_a?(Array)
+          self.positions = value
         end
       else
-        self.positions_by_sport = nil
+        self.positions = nil
       end
 
-      if attributes.key?(:'conference_positions_by_sport')
-        if (value = attributes[:'conference_positions_by_sport']).is_a?(Hash)
-          self.conference_positions_by_sport = value
+      if attributes.key?(:'conference_positions')
+        if (value = attributes[:'conference_positions']).is_a?(Array)
+          self.conference_positions = value
         end
       else
-        self.conference_positions_by_sport = nil
+        self.conference_positions = nil
       end
 
       if attributes.key?(:'performance_chart')
@@ -125,12 +125,12 @@ module WinthropClient
         invalid_properties.push('invalid value for "show_coach_apr", show_coach_apr cannot be nil.')
       end
 
-      if @positions_by_sport.nil?
-        invalid_properties.push('invalid value for "positions_by_sport", positions_by_sport cannot be nil.')
+      if @positions.nil?
+        invalid_properties.push('invalid value for "positions", positions cannot be nil.')
       end
 
-      if @conference_positions_by_sport.nil?
-        invalid_properties.push('invalid value for "conference_positions_by_sport", conference_positions_by_sport cannot be nil.')
+      if @conference_positions.nil?
+        invalid_properties.push('invalid value for "conference_positions", conference_positions cannot be nil.')
       end
 
       invalid_properties
@@ -142,8 +142,8 @@ module WinthropClient
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @leader_ad.nil?
       return false if @show_coach_apr.nil?
-      return false if @positions_by_sport.nil?
-      return false if @conference_positions_by_sport.nil?
+      return false if @positions.nil?
+      return false if @conference_positions.nil?
       true
     end
 
@@ -168,23 +168,23 @@ module WinthropClient
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] positions_by_sport Value to be assigned
-    def positions_by_sport=(positions_by_sport)
-      if positions_by_sport.nil?
-        fail ArgumentError, 'positions_by_sport cannot be nil'
+    # @param [Object] positions Value to be assigned
+    def positions=(positions)
+      if positions.nil?
+        fail ArgumentError, 'positions cannot be nil'
       end
 
-      @positions_by_sport = positions_by_sport
+      @positions = positions
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] conference_positions_by_sport Value to be assigned
-    def conference_positions_by_sport=(conference_positions_by_sport)
-      if conference_positions_by_sport.nil?
-        fail ArgumentError, 'conference_positions_by_sport cannot be nil'
+    # @param [Object] conference_positions Value to be assigned
+    def conference_positions=(conference_positions)
+      if conference_positions.nil?
+        fail ArgumentError, 'conference_positions cannot be nil'
       end
 
-      @conference_positions_by_sport = conference_positions_by_sport
+      @conference_positions = conference_positions
     end
 
     # Checks equality by comparing each attribute.
@@ -194,8 +194,8 @@ module WinthropClient
       self.class == o.class &&
           leader_ad == o.leader_ad &&
           show_coach_apr == o.show_coach_apr &&
-          positions_by_sport == o.positions_by_sport &&
-          conference_positions_by_sport == o.conference_positions_by_sport &&
+          positions == o.positions &&
+          conference_positions == o.conference_positions &&
           performance_chart == o.performance_chart
     end
 
@@ -208,7 +208,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [leader_ad, show_coach_apr, positions_by_sport, conference_positions_by_sport, performance_chart].hash
+      [leader_ad, show_coach_apr, positions, conference_positions, performance_chart].hash
     end
 
     # Builds the object from hash

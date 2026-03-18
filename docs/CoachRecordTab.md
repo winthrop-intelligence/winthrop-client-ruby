@@ -6,8 +6,8 @@
 | ---- | ---- | ----------- | ----- |
 | **leader_ad** | **Boolean** |  |  |
 | **show_coach_apr** | **Boolean** |  |  |
-| **positions_by_sport** | **Hash&lt;String, Array&lt;RecordPositionEntry&gt;&gt;** |  |  |
-| **conference_positions_by_sport** | **Hash&lt;String, Array&lt;ConferencePositionEntry&gt;&gt;** |  |  |
+| **positions** | [**Array&lt;RecordPositionEntry&gt;**](RecordPositionEntry.md) |  |  |
+| **conference_positions** | [**Array&lt;ConferencePositionEntry&gt;**](ConferencePositionEntry.md) |  |  |
 | **performance_chart** | [**PerformanceChartData**](PerformanceChartData.md) |  | [optional] |
 
 ## Example
@@ -18,8 +18,8 @@ require 'winthrop-client-ruby'
 instance = WinthropClient::CoachRecordTab.new(
   leader_ad: null,
   show_coach_apr: null,
-  positions_by_sport: null,
-  conference_positions_by_sport: null,
+  positions: null,
+  conference_positions: null,
   performance_chart: null
 )
 ```

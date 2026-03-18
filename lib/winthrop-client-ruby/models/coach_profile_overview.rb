@@ -19,11 +19,11 @@ module WinthropClient
 
     attr_accessor :total_compensations
 
-    attr_accessor :positions_by_sport
+    attr_accessor :positions
 
     attr_accessor :total_positions
 
-    attr_accessor :conference_positions_by_sport
+    attr_accessor :conference_positions
 
     attr_accessor :snapshot
 
@@ -38,9 +38,9 @@ module WinthropClient
       {
         :'compensations' => :'compensations',
         :'total_compensations' => :'total_compensations',
-        :'positions_by_sport' => :'positions_by_sport',
+        :'positions' => :'positions',
         :'total_positions' => :'total_positions',
-        :'conference_positions_by_sport' => :'conference_positions_by_sport',
+        :'conference_positions' => :'conference_positions',
         :'snapshot' => :'snapshot',
         :'videos' => :'videos',
         :'can_see_compensation' => :'can_see_compensation',
@@ -63,9 +63,9 @@ module WinthropClient
       {
         :'compensations' => :'Array<CoachCompensationEntry>',
         :'total_compensations' => :'Integer',
-        :'positions_by_sport' => :'Hash<String, Array<CoachPositionEntry>>',
+        :'positions' => :'Array<CoachPositionEntry>',
         :'total_positions' => :'Integer',
-        :'conference_positions_by_sport' => :'Hash<String, Array<ConferencePositionEntry>>',
+        :'conference_positions' => :'Array<ConferencePositionEntry>',
         :'snapshot' => :'CoachSnapshot',
         :'videos' => :'Array<CoachVideoEntry>',
         :'can_see_compensation' => :'Boolean',
@@ -109,12 +109,12 @@ module WinthropClient
         self.total_compensations = nil
       end
 
-      if attributes.key?(:'positions_by_sport')
-        if (value = attributes[:'positions_by_sport']).is_a?(Hash)
-          self.positions_by_sport = value
+      if attributes.key?(:'positions')
+        if (value = attributes[:'positions']).is_a?(Array)
+          self.positions = value
         end
       else
-        self.positions_by_sport = nil
+        self.positions = nil
       end
 
       if attributes.key?(:'total_positions')
@@ -123,12 +123,12 @@ module WinthropClient
         self.total_positions = nil
       end
 
-      if attributes.key?(:'conference_positions_by_sport')
-        if (value = attributes[:'conference_positions_by_sport']).is_a?(Hash)
-          self.conference_positions_by_sport = value
+      if attributes.key?(:'conference_positions')
+        if (value = attributes[:'conference_positions']).is_a?(Array)
+          self.conference_positions = value
         end
       else
-        self.conference_positions_by_sport = nil
+        self.conference_positions = nil
       end
 
       if attributes.key?(:'snapshot')
@@ -169,16 +169,16 @@ module WinthropClient
         invalid_properties.push('invalid value for "total_compensations", total_compensations cannot be nil.')
       end
 
-      if @positions_by_sport.nil?
-        invalid_properties.push('invalid value for "positions_by_sport", positions_by_sport cannot be nil.')
+      if @positions.nil?
+        invalid_properties.push('invalid value for "positions", positions cannot be nil.')
       end
 
       if @total_positions.nil?
         invalid_properties.push('invalid value for "total_positions", total_positions cannot be nil.')
       end
 
-      if @conference_positions_by_sport.nil?
-        invalid_properties.push('invalid value for "conference_positions_by_sport", conference_positions_by_sport cannot be nil.')
+      if @conference_positions.nil?
+        invalid_properties.push('invalid value for "conference_positions", conference_positions cannot be nil.')
       end
 
       if @videos.nil?
@@ -202,9 +202,9 @@ module WinthropClient
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @compensations.nil?
       return false if @total_compensations.nil?
-      return false if @positions_by_sport.nil?
+      return false if @positions.nil?
       return false if @total_positions.nil?
-      return false if @conference_positions_by_sport.nil?
+      return false if @conference_positions.nil?
       return false if @videos.nil?
       return false if @can_see_compensation.nil?
       return false if @can_see_videos.nil?
@@ -232,13 +232,13 @@ module WinthropClient
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] positions_by_sport Value to be assigned
-    def positions_by_sport=(positions_by_sport)
-      if positions_by_sport.nil?
-        fail ArgumentError, 'positions_by_sport cannot be nil'
+    # @param [Object] positions Value to be assigned
+    def positions=(positions)
+      if positions.nil?
+        fail ArgumentError, 'positions cannot be nil'
       end
 
-      @positions_by_sport = positions_by_sport
+      @positions = positions
     end
 
     # Custom attribute writer method with validation
@@ -252,13 +252,13 @@ module WinthropClient
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] conference_positions_by_sport Value to be assigned
-    def conference_positions_by_sport=(conference_positions_by_sport)
-      if conference_positions_by_sport.nil?
-        fail ArgumentError, 'conference_positions_by_sport cannot be nil'
+    # @param [Object] conference_positions Value to be assigned
+    def conference_positions=(conference_positions)
+      if conference_positions.nil?
+        fail ArgumentError, 'conference_positions cannot be nil'
       end
 
-      @conference_positions_by_sport = conference_positions_by_sport
+      @conference_positions = conference_positions
     end
 
     # Custom attribute writer method with validation
@@ -298,9 +298,9 @@ module WinthropClient
       self.class == o.class &&
           compensations == o.compensations &&
           total_compensations == o.total_compensations &&
-          positions_by_sport == o.positions_by_sport &&
+          positions == o.positions &&
           total_positions == o.total_positions &&
-          conference_positions_by_sport == o.conference_positions_by_sport &&
+          conference_positions == o.conference_positions &&
           snapshot == o.snapshot &&
           videos == o.videos &&
           can_see_compensation == o.can_see_compensation &&
@@ -316,7 +316,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [compensations, total_compensations, positions_by_sport, total_positions, conference_positions_by_sport, snapshot, videos, can_see_compensation, can_see_videos].hash
+      [compensations, total_compensations, positions, total_positions, conference_positions, snapshot, videos, can_see_compensation, can_see_videos].hash
     end
 
     # Builds the object from hash

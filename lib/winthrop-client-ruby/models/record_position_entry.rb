@@ -15,6 +15,8 @@ require 'time'
 
 module WinthropClient
   class RecordPositionEntry < ApiModelBase
+    attr_accessor :sport
+
     attr_accessor :year_str
 
     attr_accessor :school_name
@@ -40,6 +42,7 @@ module WinthropClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'sport' => :'sport',
         :'year_str' => :'year_str',
         :'school_name' => :'school_name',
         :'school_id' => :'school_id',
@@ -67,6 +70,7 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'sport' => :'String',
         :'year_str' => :'String',
         :'school_name' => :'String',
         :'school_id' => :'Integer',
@@ -109,6 +113,12 @@ module WinthropClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'sport')
+        self.sport = attributes[:'sport']
+      else
+        self.sport = nil
+      end
 
       if attributes.key?(:'year_str')
         self.year_str = attributes[:'year_str']
@@ -168,6 +178,10 @@ module WinthropClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @sport.nil?
+        invalid_properties.push('invalid value for "sport", sport cannot be nil.')
+      end
+
       if @year_str.nil?
         invalid_properties.push('invalid value for "year_str", year_str cannot be nil.')
       end
@@ -191,11 +205,22 @@ module WinthropClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @sport.nil?
       return false if @year_str.nil?
       return false if @school_name.nil?
       return false if @school_id.nil?
       return false if @position_sport.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] sport Value to be assigned
+    def sport=(sport)
+      if sport.nil?
+        fail ArgumentError, 'sport cannot be nil'
+      end
+
+      @sport = sport
     end
 
     # Custom attribute writer method with validation
@@ -243,6 +268,7 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          sport == o.sport &&
           year_str == o.year_str &&
           school_name == o.school_name &&
           school_id == o.school_id &&
@@ -265,7 +291,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [year_str, school_name, school_id, position_sport, record, rpi, apr_asr, coach_apr, departing, us_news, directors_cup].hash
+      [sport, year_str, school_name, school_id, position_sport, record, rpi, apr_asr, coach_apr, departing, us_news, directors_cup].hash
     end
 
     # Builds the object from hash

@@ -10,7 +10,6 @@
 | **email** | **String** |  | [optional] |
 | **phone** | **String** |  | [optional] |
 | **leader** | **Boolean** |  |  |
-| **dob** | **String** |  | [optional] |
 | **hometown_city** | **String** |  | [optional] |
 | **hometown_state** | **String** |  | [optional] |
 | **alma_mater_name** | **String** |  | [optional] |
@@ -46,7 +45,6 @@ instance = WinthropClient::CoachProfile.new(
   email: null,
   phone: null,
   leader: null,
-  dob: null,
   hometown_city: null,
   hometown_state: null,
   alma_mater_name: null,
