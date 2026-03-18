@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **wins** | **Integer** |  | [optional] |
 | **losses** | **Integer** |  | [optional] |
+| **ties** | **Integer** |  | [optional] |
 
 ## Example
 
@@ -14,7 +15,8 @@ require 'winthrop-client-ruby'
 
 instance = WinthropClient::PerformanceChartRecord.new(
   wins: null,
-  losses: null
+  losses: null,
+  ties: null
 )
 ```
 

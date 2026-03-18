@@ -19,11 +19,14 @@ module WinthropClient
 
     attr_accessor :losses
 
+    attr_accessor :ties
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'wins' => :'wins',
-        :'losses' => :'losses'
+        :'losses' => :'losses',
+        :'ties' => :'ties'
       }
     end
 
@@ -41,7 +44,8 @@ module WinthropClient
     def self.openapi_types
       {
         :'wins' => :'Integer',
-        :'losses' => :'Integer'
+        :'losses' => :'Integer',
+        :'ties' => :'Integer'
       }
     end
 
@@ -49,7 +53,8 @@ module WinthropClient
     def self.openapi_nullable
       Set.new([
         :'wins',
-        :'losses'
+        :'losses',
+        :'ties'
       ])
     end
 
@@ -76,6 +81,10 @@ module WinthropClient
       if attributes.key?(:'losses')
         self.losses = attributes[:'losses']
       end
+
+      if attributes.key?(:'ties')
+        self.ties = attributes[:'ties']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -99,7 +108,8 @@ module WinthropClient
       return true if self.equal?(o)
       self.class == o.class &&
           wins == o.wins &&
-          losses == o.losses
+          losses == o.losses &&
+          ties == o.ties
     end
 
     # @see the `==` method
@@ -111,7 +121,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [wins, losses].hash
+      [wins, losses, ties].hash
     end
 
     # Builds the object from hash
