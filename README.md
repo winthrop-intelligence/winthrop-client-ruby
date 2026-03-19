@@ -432,8 +432,6 @@ Class | Method | HTTP request | Description
  - [WinthropClient::PredictBody](docs/PredictBody.md)
  - [WinthropClient::PredictFailure](docs/PredictFailure.md)
  - [WinthropClient::PredictSuccess](docs/PredictSuccess.md)
- - [WinthropClient::QuartileRow](docs/QuartileRow.md)
- - [WinthropClient::QuartilesData](docs/QuartilesData.md)
  - [WinthropClient::RawContract](docs/RawContract.md)
  - [WinthropClient::RawContractCollection](docs/RawContractCollection.md)
  - [WinthropClient::RecordPositionEntry](docs/RecordPositionEntry.md)

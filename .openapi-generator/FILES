@@ -166,8 +166,6 @@ docs/PositionTypeGroup.md
 docs/PredictBody.md
 docs/PredictFailure.md
 docs/PredictSuccess.md
-docs/QuartileRow.md
-docs/QuartilesData.md
 docs/RawContract.md
 docs/RawContractCollection.md
 docs/RecordPositionEntry.md
@@ -384,8 +382,6 @@ lib/winthrop-client-ruby/models/position_type_group.rb
 lib/winthrop-client-ruby/models/predict_body.rb
 lib/winthrop-client-ruby/models/predict_failure.rb
 lib/winthrop-client-ruby/models/predict_success.rb
-lib/winthrop-client-ruby/models/quartile_row.rb
-lib/winthrop-client-ruby/models/quartiles_data.rb
 lib/winthrop-client-ruby/models/raw_contract.rb
 lib/winthrop-client-ruby/models/raw_contract_collection.rb
 lib/winthrop-client-ruby/models/record_position_entry.rb

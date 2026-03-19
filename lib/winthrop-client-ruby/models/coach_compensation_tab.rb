@@ -27,8 +27,6 @@ module WinthropClient
 
     attr_accessor :sidebar
 
-    attr_accessor :quartiles
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -37,8 +35,7 @@ module WinthropClient
         :'compensations' => :'compensations',
         :'total_compensations' => :'total_compensations',
         :'comparisons' => :'comparisons',
-        :'sidebar' => :'sidebar',
-        :'quartiles' => :'quartiles'
+        :'sidebar' => :'sidebar'
       }
     end
 
@@ -60,8 +57,7 @@ module WinthropClient
         :'compensations' => :'Array<CoachCompensationTabCompensationsInner>',
         :'total_compensations' => :'Integer',
         :'comparisons' => :'CoachCompensationTabComparisons',
-        :'sidebar' => :'CoachCompensationTabSidebar',
-        :'quartiles' => :'QuartilesData'
+        :'sidebar' => :'CoachCompensationTabSidebar'
       }
     end
 
@@ -117,10 +113,6 @@ module WinthropClient
 
       if attributes.key?(:'sidebar')
         self.sidebar = attributes[:'sidebar']
-      end
-
-      if attributes.key?(:'quartiles')
-        self.quartiles = attributes[:'quartiles']
       end
     end
 
@@ -194,8 +186,7 @@ module WinthropClient
           compensations == o.compensations &&
           total_compensations == o.total_compensations &&
           comparisons == o.comparisons &&
-          sidebar == o.sidebar &&
-          quartiles == o.quartiles
+          sidebar == o.sidebar
     end
 
     # @see the `==` method
@@ -207,7 +198,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [can_see_compensation, chart_data, compensations, total_compensations, comparisons, sidebar, quartiles].hash
+      [can_see_compensation, chart_data, compensations, total_compensations, comparisons, sidebar].hash
     end
 
     # Builds the object from hash
