@@ -19,11 +19,14 @@ module WinthropClient
 
     attr_accessor :meta
 
+    attr_accessor :financials_year
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'data' => :'data',
-        :'meta' => :'meta'
+        :'meta' => :'meta',
+        :'financials_year' => :'financials_year'
       }
     end
 
@@ -41,13 +44,15 @@ module WinthropClient
     def self.openapi_types
       {
         :'data' => :'Array<DepartmentSearchResult>',
-        :'meta' => :'Meta'
+        :'meta' => :'Meta',
+        :'financials_year' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'financials_year'
       ])
     end
 
@@ -76,6 +81,10 @@ module WinthropClient
       if attributes.key?(:'meta')
         self.meta = attributes[:'meta']
       end
+
+      if attributes.key?(:'financials_year')
+        self.financials_year = attributes[:'financials_year']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -99,7 +108,8 @@ module WinthropClient
       return true if self.equal?(o)
       self.class == o.class &&
           data == o.data &&
-          meta == o.meta
+          meta == o.meta &&
+          financials_year == o.financials_year
     end
 
     # @see the `==` method
@@ -111,7 +121,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data, meta].hash
+      [data, meta, financials_year].hash
     end
 
     # Builds the object from hash

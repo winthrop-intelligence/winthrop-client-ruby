@@ -27,7 +27,8 @@
 | **game_date_tbd** | **Boolean** |  | [optional] |
 | **raw_contract_id** | **Integer** |  | [optional] |
 | **belongs_to_series** | **Boolean** |  | [optional] |
-| **can_manage** | **Boolean** |  | [optional] |
+| **can_link_home_school** | **Boolean** |  | [optional] |
+| **can_link_away_school** | **Boolean** |  | [optional] |
 
 ## Example
 
@@ -58,7 +59,8 @@ instance = WinthropClient::GadSearchResult.new(
   game_date_tbd: null,
   raw_contract_id: null,
   belongs_to_series: null,
-  can_manage: null
+  can_link_home_school: null,
+  can_link_away_school: null
 )
 ```
 

@@ -19,11 +19,14 @@ module WinthropClient
 
     attr_accessor :meta
 
+    attr_accessor :comp_stats
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'data' => :'data',
-        :'meta' => :'meta'
+        :'meta' => :'meta',
+        :'comp_stats' => :'comp_stats'
       }
     end
 
@@ -41,7 +44,8 @@ module WinthropClient
     def self.openapi_types
       {
         :'data' => :'Array<CoachSearchResult>',
-        :'meta' => :'Meta'
+        :'meta' => :'Meta',
+        :'comp_stats' => :'CompStats'
       }
     end
 
@@ -76,6 +80,10 @@ module WinthropClient
       if attributes.key?(:'meta')
         self.meta = attributes[:'meta']
       end
+
+      if attributes.key?(:'comp_stats')
+        self.comp_stats = attributes[:'comp_stats']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -99,7 +107,8 @@ module WinthropClient
       return true if self.equal?(o)
       self.class == o.class &&
           data == o.data &&
-          meta == o.meta
+          meta == o.meta &&
+          comp_stats == o.comp_stats
     end
 
     # @see the `==` method
@@ -111,7 +120,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data, meta].hash
+      [data, meta, comp_stats].hash
     end
 
     # Builds the object from hash

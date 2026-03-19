@@ -42,9 +42,6 @@ module WinthropClient
     attr_accessor :rev_ticket_sales_amt
 
     # Amount in whole US dollars
-    attr_accessor :rev_contributions_amt
-
-    # Amount in whole US dollars
     attr_accessor :rev_rights_amt
 
     # Amount in whole US dollars
@@ -74,6 +71,164 @@ module WinthropClient
     # Amount in whole US dollars
     attr_accessor :exp_guarantees_amt
 
+    attr_accessor :has_audited_report
+
+    # Amount in whole US dollars
+    attr_accessor :rev_contributions_no_ik_amt
+
+    # Amount in whole US dollars
+    attr_accessor :rev_conf_distributions_non_amt
+
+    # Amount in whole US dollars
+    attr_accessor :rev_conf_bowl_amt
+
+    # Amount in whole US dollars
+    attr_accessor :rev_ncaa_distributions_amt
+
+    # Amount in whole US dollars
+    attr_accessor :rev_ncaa_distributions_grants_amt
+
+    # Amount in whole US dollars
+    attr_accessor :rev_ncaa_host_settlements_amt
+
+    # Amount in whole US dollars
+    attr_accessor :rev_ncaa_postseason_reimb_amt
+
+    # Amount in whole US dollars
+    attr_accessor :rev_branding_amt
+
+    # Amount in whole US dollars
+    attr_accessor :rev_endowment_amt
+
+    # Amount in whole US dollars
+    attr_accessor :rev_parking_amt
+
+    # Amount in whole US dollars
+    attr_accessor :rev_admin_support_amt
+
+    # Amount in whole US dollars
+    attr_accessor :rev_compensation_amt
+
+    # Amount in whole US dollars
+    attr_accessor :rev_govt_support_amt
+
+    # Amount in whole US dollars
+    attr_accessor :rev_in_kind_amt
+
+    # Amount in whole US dollars
+    attr_accessor :rev_sports_camps_amt
+
+    # Amount in whole US dollars
+    attr_accessor :rev_transfers_amt
+
+    # Amount in whole US dollars
+    attr_accessor :rev_other_amt
+
+    # Amount in whole US dollars
+    attr_accessor :rev_indirect_amt
+
+    # Amount in whole US dollars
+    attr_accessor :rev_contributions_amt
+
+    # Amount in whole US dollars
+    attr_accessor :rev_conf_distributions_amt
+
+    # Amount in whole US dollars
+    attr_accessor :rev_bowl_amt
+
+    # Amount in whole US dollars
+    attr_accessor :rev_indirect_facilities_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_tuition_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_marketing_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_games_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_support_staff_salaries_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_indirect_support_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_equipment_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_sports_camps
+
+    # Amount in whole US dollars
+    attr_accessor :exp_debt_service_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_medical_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_dues_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_support_staff_other_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_severance_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_spirit_groups_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_head_coaches_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_facilities_maintenance_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_asst_coaches_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_head_coaches_third_party_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_asst_coaches_third_party_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_total_coaches_third_party_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_admin_support_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_meals_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_bowl_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_bowl_comp_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_postseason_fb_host_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_postseason_other_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_postseason_other_coaching_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_postseason_other_host_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_alston_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_other_amt
+
+    # Amount in whole US dollars
+    attr_accessor :exp_nil_revenue_share_amt
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -89,7 +244,6 @@ module WinthropClient
         :'sport_count' => :'sport_count',
         :'rev_total_amt' => :'rev_total_amt',
         :'rev_ticket_sales_amt' => :'rev_ticket_sales_amt',
-        :'rev_contributions_amt' => :'rev_contributions_amt',
         :'rev_rights_amt' => :'rev_rights_amt',
         :'rev_student_fees_amt' => :'rev_student_fees_amt',
         :'rev_university_amt' => :'rev_university_amt',
@@ -99,7 +253,60 @@ module WinthropClient
         :'exp_recruiting_amt' => :'exp_recruiting_amt',
         :'exp_travel_amt' => :'exp_travel_amt',
         :'exp_facilities_amt' => :'exp_facilities_amt',
-        :'exp_guarantees_amt' => :'exp_guarantees_amt'
+        :'exp_guarantees_amt' => :'exp_guarantees_amt',
+        :'has_audited_report' => :'has_audited_report',
+        :'rev_contributions_no_ik_amt' => :'rev_contributions_no_ik_amt',
+        :'rev_conf_distributions_non_amt' => :'rev_conf_distributions_non_amt',
+        :'rev_conf_bowl_amt' => :'rev_conf_bowl_amt',
+        :'rev_ncaa_distributions_amt' => :'rev_ncaa_distributions_amt',
+        :'rev_ncaa_distributions_grants_amt' => :'rev_ncaa_distributions_grants_amt',
+        :'rev_ncaa_host_settlements_amt' => :'rev_ncaa_host_settlements_amt',
+        :'rev_ncaa_postseason_reimb_amt' => :'rev_ncaa_postseason_reimb_amt',
+        :'rev_branding_amt' => :'rev_branding_amt',
+        :'rev_endowment_amt' => :'rev_endowment_amt',
+        :'rev_parking_amt' => :'rev_parking_amt',
+        :'rev_admin_support_amt' => :'rev_admin_support_amt',
+        :'rev_compensation_amt' => :'rev_compensation_amt',
+        :'rev_govt_support_amt' => :'rev_govt_support_amt',
+        :'rev_in_kind_amt' => :'rev_in_kind_amt',
+        :'rev_sports_camps_amt' => :'rev_sports_camps_amt',
+        :'rev_transfers_amt' => :'rev_transfers_amt',
+        :'rev_other_amt' => :'rev_other_amt',
+        :'rev_indirect_amt' => :'rev_indirect_amt',
+        :'rev_contributions_amt' => :'rev_contributions_amt',
+        :'rev_conf_distributions_amt' => :'rev_conf_distributions_amt',
+        :'rev_bowl_amt' => :'rev_bowl_amt',
+        :'rev_indirect_facilities_amt' => :'rev_indirect_facilities_amt',
+        :'exp_tuition_amt' => :'exp_tuition_amt',
+        :'exp_marketing_amt' => :'exp_marketing_amt',
+        :'exp_games_amt' => :'exp_games_amt',
+        :'exp_support_staff_salaries_amt' => :'exp_support_staff_salaries_amt',
+        :'exp_indirect_support_amt' => :'exp_indirect_support_amt',
+        :'exp_equipment_amt' => :'exp_equipment_amt',
+        :'exp_sports_camps' => :'exp_sports_camps',
+        :'exp_debt_service_amt' => :'exp_debt_service_amt',
+        :'exp_medical_amt' => :'exp_medical_amt',
+        :'exp_dues_amt' => :'exp_dues_amt',
+        :'exp_support_staff_other_amt' => :'exp_support_staff_other_amt',
+        :'exp_severance_amt' => :'exp_severance_amt',
+        :'exp_spirit_groups_amt' => :'exp_spirit_groups_amt',
+        :'exp_head_coaches_amt' => :'exp_head_coaches_amt',
+        :'exp_facilities_maintenance_amt' => :'exp_facilities_maintenance_amt',
+        :'exp_asst_coaches_amt' => :'exp_asst_coaches_amt',
+        :'exp_head_coaches_third_party_amt' => :'exp_head_coaches_third_party_amt',
+        :'exp_asst_coaches_third_party_amt' => :'exp_asst_coaches_third_party_amt',
+        :'exp_total_coaches_third_party_amt' => :'exp_total_coaches_third_party_amt',
+        :'exp_admin_support_amt' => :'exp_admin_support_amt',
+        :'exp_meals_amt' => :'exp_meals_amt',
+        :'exp_bowl_amt' => :'exp_bowl_amt',
+        :'exp_bowl_comp_amt' => :'exp_bowl_comp_amt',
+        :'exp_postseason_fb_host_amt' => :'exp_postseason_fb_host_amt',
+        :'exp_postseason_other_amt' => :'exp_postseason_other_amt',
+        :'exp_postseason_other_coaching_amt' => :'exp_postseason_other_coaching_amt',
+        :'exp_postseason_other_host_amt' => :'exp_postseason_other_host_amt',
+        :'exp_alston_amt' => :'exp_alston_amt',
+        :'exp_other_amt' => :'exp_other_amt',
+        :'exp_nil_revenue_share_amt' => :'exp_nil_revenue_share_amt'
       }
     end
 
@@ -128,7 +335,6 @@ module WinthropClient
         :'sport_count' => :'Integer',
         :'rev_total_amt' => :'Float',
         :'rev_ticket_sales_amt' => :'Float',
-        :'rev_contributions_amt' => :'Float',
         :'rev_rights_amt' => :'Float',
         :'rev_student_fees_amt' => :'Float',
         :'rev_university_amt' => :'Float',
@@ -138,7 +344,60 @@ module WinthropClient
         :'exp_recruiting_amt' => :'Float',
         :'exp_travel_amt' => :'Float',
         :'exp_facilities_amt' => :'Float',
-        :'exp_guarantees_amt' => :'Float'
+        :'exp_guarantees_amt' => :'Float',
+        :'has_audited_report' => :'Boolean',
+        :'rev_contributions_no_ik_amt' => :'Float',
+        :'rev_conf_distributions_non_amt' => :'Float',
+        :'rev_conf_bowl_amt' => :'Float',
+        :'rev_ncaa_distributions_amt' => :'Float',
+        :'rev_ncaa_distributions_grants_amt' => :'Float',
+        :'rev_ncaa_host_settlements_amt' => :'Float',
+        :'rev_ncaa_postseason_reimb_amt' => :'Float',
+        :'rev_branding_amt' => :'Float',
+        :'rev_endowment_amt' => :'Float',
+        :'rev_parking_amt' => :'Float',
+        :'rev_admin_support_amt' => :'Float',
+        :'rev_compensation_amt' => :'Float',
+        :'rev_govt_support_amt' => :'Float',
+        :'rev_in_kind_amt' => :'Float',
+        :'rev_sports_camps_amt' => :'Float',
+        :'rev_transfers_amt' => :'Float',
+        :'rev_other_amt' => :'Float',
+        :'rev_indirect_amt' => :'Float',
+        :'rev_contributions_amt' => :'Float',
+        :'rev_conf_distributions_amt' => :'Float',
+        :'rev_bowl_amt' => :'Float',
+        :'rev_indirect_facilities_amt' => :'Float',
+        :'exp_tuition_amt' => :'Float',
+        :'exp_marketing_amt' => :'Float',
+        :'exp_games_amt' => :'Float',
+        :'exp_support_staff_salaries_amt' => :'Float',
+        :'exp_indirect_support_amt' => :'Float',
+        :'exp_equipment_amt' => :'Float',
+        :'exp_sports_camps' => :'Float',
+        :'exp_debt_service_amt' => :'Float',
+        :'exp_medical_amt' => :'Float',
+        :'exp_dues_amt' => :'Float',
+        :'exp_support_staff_other_amt' => :'Float',
+        :'exp_severance_amt' => :'Float',
+        :'exp_spirit_groups_amt' => :'Float',
+        :'exp_head_coaches_amt' => :'Float',
+        :'exp_facilities_maintenance_amt' => :'Float',
+        :'exp_asst_coaches_amt' => :'Float',
+        :'exp_head_coaches_third_party_amt' => :'Float',
+        :'exp_asst_coaches_third_party_amt' => :'Float',
+        :'exp_total_coaches_third_party_amt' => :'Float',
+        :'exp_admin_support_amt' => :'Float',
+        :'exp_meals_amt' => :'Float',
+        :'exp_bowl_amt' => :'Float',
+        :'exp_bowl_comp_amt' => :'Float',
+        :'exp_postseason_fb_host_amt' => :'Float',
+        :'exp_postseason_other_amt' => :'Float',
+        :'exp_postseason_other_coaching_amt' => :'Float',
+        :'exp_postseason_other_host_amt' => :'Float',
+        :'exp_alston_amt' => :'Float',
+        :'exp_other_amt' => :'Float',
+        :'exp_nil_revenue_share_amt' => :'Float'
       }
     end
 
@@ -154,7 +413,6 @@ module WinthropClient
         :'sport_count',
         :'rev_total_amt',
         :'rev_ticket_sales_amt',
-        :'rev_contributions_amt',
         :'rev_rights_amt',
         :'rev_student_fees_amt',
         :'rev_university_amt',
@@ -164,7 +422,59 @@ module WinthropClient
         :'exp_recruiting_amt',
         :'exp_travel_amt',
         :'exp_facilities_amt',
-        :'exp_guarantees_amt'
+        :'exp_guarantees_amt',
+        :'rev_contributions_no_ik_amt',
+        :'rev_conf_distributions_non_amt',
+        :'rev_conf_bowl_amt',
+        :'rev_ncaa_distributions_amt',
+        :'rev_ncaa_distributions_grants_amt',
+        :'rev_ncaa_host_settlements_amt',
+        :'rev_ncaa_postseason_reimb_amt',
+        :'rev_branding_amt',
+        :'rev_endowment_amt',
+        :'rev_parking_amt',
+        :'rev_admin_support_amt',
+        :'rev_compensation_amt',
+        :'rev_govt_support_amt',
+        :'rev_in_kind_amt',
+        :'rev_sports_camps_amt',
+        :'rev_transfers_amt',
+        :'rev_other_amt',
+        :'rev_indirect_amt',
+        :'rev_contributions_amt',
+        :'rev_conf_distributions_amt',
+        :'rev_bowl_amt',
+        :'rev_indirect_facilities_amt',
+        :'exp_tuition_amt',
+        :'exp_marketing_amt',
+        :'exp_games_amt',
+        :'exp_support_staff_salaries_amt',
+        :'exp_indirect_support_amt',
+        :'exp_equipment_amt',
+        :'exp_sports_camps',
+        :'exp_debt_service_amt',
+        :'exp_medical_amt',
+        :'exp_dues_amt',
+        :'exp_support_staff_other_amt',
+        :'exp_severance_amt',
+        :'exp_spirit_groups_amt',
+        :'exp_head_coaches_amt',
+        :'exp_facilities_maintenance_amt',
+        :'exp_asst_coaches_amt',
+        :'exp_head_coaches_third_party_amt',
+        :'exp_asst_coaches_third_party_amt',
+        :'exp_total_coaches_third_party_amt',
+        :'exp_admin_support_amt',
+        :'exp_meals_amt',
+        :'exp_bowl_amt',
+        :'exp_bowl_comp_amt',
+        :'exp_postseason_fb_host_amt',
+        :'exp_postseason_other_amt',
+        :'exp_postseason_other_coaching_amt',
+        :'exp_postseason_other_host_amt',
+        :'exp_alston_amt',
+        :'exp_other_amt',
+        :'exp_nil_revenue_share_amt'
       ])
     end
 
@@ -232,10 +542,6 @@ module WinthropClient
         self.rev_ticket_sales_amt = attributes[:'rev_ticket_sales_amt']
       end
 
-      if attributes.key?(:'rev_contributions_amt')
-        self.rev_contributions_amt = attributes[:'rev_contributions_amt']
-      end
-
       if attributes.key?(:'rev_rights_amt')
         self.rev_rights_amt = attributes[:'rev_rights_amt']
       end
@@ -275,6 +581,218 @@ module WinthropClient
       if attributes.key?(:'exp_guarantees_amt')
         self.exp_guarantees_amt = attributes[:'exp_guarantees_amt']
       end
+
+      if attributes.key?(:'has_audited_report')
+        self.has_audited_report = attributes[:'has_audited_report']
+      end
+
+      if attributes.key?(:'rev_contributions_no_ik_amt')
+        self.rev_contributions_no_ik_amt = attributes[:'rev_contributions_no_ik_amt']
+      end
+
+      if attributes.key?(:'rev_conf_distributions_non_amt')
+        self.rev_conf_distributions_non_amt = attributes[:'rev_conf_distributions_non_amt']
+      end
+
+      if attributes.key?(:'rev_conf_bowl_amt')
+        self.rev_conf_bowl_amt = attributes[:'rev_conf_bowl_amt']
+      end
+
+      if attributes.key?(:'rev_ncaa_distributions_amt')
+        self.rev_ncaa_distributions_amt = attributes[:'rev_ncaa_distributions_amt']
+      end
+
+      if attributes.key?(:'rev_ncaa_distributions_grants_amt')
+        self.rev_ncaa_distributions_grants_amt = attributes[:'rev_ncaa_distributions_grants_amt']
+      end
+
+      if attributes.key?(:'rev_ncaa_host_settlements_amt')
+        self.rev_ncaa_host_settlements_amt = attributes[:'rev_ncaa_host_settlements_amt']
+      end
+
+      if attributes.key?(:'rev_ncaa_postseason_reimb_amt')
+        self.rev_ncaa_postseason_reimb_amt = attributes[:'rev_ncaa_postseason_reimb_amt']
+      end
+
+      if attributes.key?(:'rev_branding_amt')
+        self.rev_branding_amt = attributes[:'rev_branding_amt']
+      end
+
+      if attributes.key?(:'rev_endowment_amt')
+        self.rev_endowment_amt = attributes[:'rev_endowment_amt']
+      end
+
+      if attributes.key?(:'rev_parking_amt')
+        self.rev_parking_amt = attributes[:'rev_parking_amt']
+      end
+
+      if attributes.key?(:'rev_admin_support_amt')
+        self.rev_admin_support_amt = attributes[:'rev_admin_support_amt']
+      end
+
+      if attributes.key?(:'rev_compensation_amt')
+        self.rev_compensation_amt = attributes[:'rev_compensation_amt']
+      end
+
+      if attributes.key?(:'rev_govt_support_amt')
+        self.rev_govt_support_amt = attributes[:'rev_govt_support_amt']
+      end
+
+      if attributes.key?(:'rev_in_kind_amt')
+        self.rev_in_kind_amt = attributes[:'rev_in_kind_amt']
+      end
+
+      if attributes.key?(:'rev_sports_camps_amt')
+        self.rev_sports_camps_amt = attributes[:'rev_sports_camps_amt']
+      end
+
+      if attributes.key?(:'rev_transfers_amt')
+        self.rev_transfers_amt = attributes[:'rev_transfers_amt']
+      end
+
+      if attributes.key?(:'rev_other_amt')
+        self.rev_other_amt = attributes[:'rev_other_amt']
+      end
+
+      if attributes.key?(:'rev_indirect_amt')
+        self.rev_indirect_amt = attributes[:'rev_indirect_amt']
+      end
+
+      if attributes.key?(:'rev_contributions_amt')
+        self.rev_contributions_amt = attributes[:'rev_contributions_amt']
+      end
+
+      if attributes.key?(:'rev_conf_distributions_amt')
+        self.rev_conf_distributions_amt = attributes[:'rev_conf_distributions_amt']
+      end
+
+      if attributes.key?(:'rev_bowl_amt')
+        self.rev_bowl_amt = attributes[:'rev_bowl_amt']
+      end
+
+      if attributes.key?(:'rev_indirect_facilities_amt')
+        self.rev_indirect_facilities_amt = attributes[:'rev_indirect_facilities_amt']
+      end
+
+      if attributes.key?(:'exp_tuition_amt')
+        self.exp_tuition_amt = attributes[:'exp_tuition_amt']
+      end
+
+      if attributes.key?(:'exp_marketing_amt')
+        self.exp_marketing_amt = attributes[:'exp_marketing_amt']
+      end
+
+      if attributes.key?(:'exp_games_amt')
+        self.exp_games_amt = attributes[:'exp_games_amt']
+      end
+
+      if attributes.key?(:'exp_support_staff_salaries_amt')
+        self.exp_support_staff_salaries_amt = attributes[:'exp_support_staff_salaries_amt']
+      end
+
+      if attributes.key?(:'exp_indirect_support_amt')
+        self.exp_indirect_support_amt = attributes[:'exp_indirect_support_amt']
+      end
+
+      if attributes.key?(:'exp_equipment_amt')
+        self.exp_equipment_amt = attributes[:'exp_equipment_amt']
+      end
+
+      if attributes.key?(:'exp_sports_camps')
+        self.exp_sports_camps = attributes[:'exp_sports_camps']
+      end
+
+      if attributes.key?(:'exp_debt_service_amt')
+        self.exp_debt_service_amt = attributes[:'exp_debt_service_amt']
+      end
+
+      if attributes.key?(:'exp_medical_amt')
+        self.exp_medical_amt = attributes[:'exp_medical_amt']
+      end
+
+      if attributes.key?(:'exp_dues_amt')
+        self.exp_dues_amt = attributes[:'exp_dues_amt']
+      end
+
+      if attributes.key?(:'exp_support_staff_other_amt')
+        self.exp_support_staff_other_amt = attributes[:'exp_support_staff_other_amt']
+      end
+
+      if attributes.key?(:'exp_severance_amt')
+        self.exp_severance_amt = attributes[:'exp_severance_amt']
+      end
+
+      if attributes.key?(:'exp_spirit_groups_amt')
+        self.exp_spirit_groups_amt = attributes[:'exp_spirit_groups_amt']
+      end
+
+      if attributes.key?(:'exp_head_coaches_amt')
+        self.exp_head_coaches_amt = attributes[:'exp_head_coaches_amt']
+      end
+
+      if attributes.key?(:'exp_facilities_maintenance_amt')
+        self.exp_facilities_maintenance_amt = attributes[:'exp_facilities_maintenance_amt']
+      end
+
+      if attributes.key?(:'exp_asst_coaches_amt')
+        self.exp_asst_coaches_amt = attributes[:'exp_asst_coaches_amt']
+      end
+
+      if attributes.key?(:'exp_head_coaches_third_party_amt')
+        self.exp_head_coaches_third_party_amt = attributes[:'exp_head_coaches_third_party_amt']
+      end
+
+      if attributes.key?(:'exp_asst_coaches_third_party_amt')
+        self.exp_asst_coaches_third_party_amt = attributes[:'exp_asst_coaches_third_party_amt']
+      end
+
+      if attributes.key?(:'exp_total_coaches_third_party_amt')
+        self.exp_total_coaches_third_party_amt = attributes[:'exp_total_coaches_third_party_amt']
+      end
+
+      if attributes.key?(:'exp_admin_support_amt')
+        self.exp_admin_support_amt = attributes[:'exp_admin_support_amt']
+      end
+
+      if attributes.key?(:'exp_meals_amt')
+        self.exp_meals_amt = attributes[:'exp_meals_amt']
+      end
+
+      if attributes.key?(:'exp_bowl_amt')
+        self.exp_bowl_amt = attributes[:'exp_bowl_amt']
+      end
+
+      if attributes.key?(:'exp_bowl_comp_amt')
+        self.exp_bowl_comp_amt = attributes[:'exp_bowl_comp_amt']
+      end
+
+      if attributes.key?(:'exp_postseason_fb_host_amt')
+        self.exp_postseason_fb_host_amt = attributes[:'exp_postseason_fb_host_amt']
+      end
+
+      if attributes.key?(:'exp_postseason_other_amt')
+        self.exp_postseason_other_amt = attributes[:'exp_postseason_other_amt']
+      end
+
+      if attributes.key?(:'exp_postseason_other_coaching_amt')
+        self.exp_postseason_other_coaching_amt = attributes[:'exp_postseason_other_coaching_amt']
+      end
+
+      if attributes.key?(:'exp_postseason_other_host_amt')
+        self.exp_postseason_other_host_amt = attributes[:'exp_postseason_other_host_amt']
+      end
+
+      if attributes.key?(:'exp_alston_amt')
+        self.exp_alston_amt = attributes[:'exp_alston_amt']
+      end
+
+      if attributes.key?(:'exp_other_amt')
+        self.exp_other_amt = attributes[:'exp_other_amt']
+      end
+
+      if attributes.key?(:'exp_nil_revenue_share_amt')
+        self.exp_nil_revenue_share_amt = attributes[:'exp_nil_revenue_share_amt']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -309,7 +827,6 @@ module WinthropClient
           sport_count == o.sport_count &&
           rev_total_amt == o.rev_total_amt &&
           rev_ticket_sales_amt == o.rev_ticket_sales_amt &&
-          rev_contributions_amt == o.rev_contributions_amt &&
           rev_rights_amt == o.rev_rights_amt &&
           rev_student_fees_amt == o.rev_student_fees_amt &&
           rev_university_amt == o.rev_university_amt &&
@@ -319,7 +836,60 @@ module WinthropClient
           exp_recruiting_amt == o.exp_recruiting_amt &&
           exp_travel_amt == o.exp_travel_amt &&
           exp_facilities_amt == o.exp_facilities_amt &&
-          exp_guarantees_amt == o.exp_guarantees_amt
+          exp_guarantees_amt == o.exp_guarantees_amt &&
+          has_audited_report == o.has_audited_report &&
+          rev_contributions_no_ik_amt == o.rev_contributions_no_ik_amt &&
+          rev_conf_distributions_non_amt == o.rev_conf_distributions_non_amt &&
+          rev_conf_bowl_amt == o.rev_conf_bowl_amt &&
+          rev_ncaa_distributions_amt == o.rev_ncaa_distributions_amt &&
+          rev_ncaa_distributions_grants_amt == o.rev_ncaa_distributions_grants_amt &&
+          rev_ncaa_host_settlements_amt == o.rev_ncaa_host_settlements_amt &&
+          rev_ncaa_postseason_reimb_amt == o.rev_ncaa_postseason_reimb_amt &&
+          rev_branding_amt == o.rev_branding_amt &&
+          rev_endowment_amt == o.rev_endowment_amt &&
+          rev_parking_amt == o.rev_parking_amt &&
+          rev_admin_support_amt == o.rev_admin_support_amt &&
+          rev_compensation_amt == o.rev_compensation_amt &&
+          rev_govt_support_amt == o.rev_govt_support_amt &&
+          rev_in_kind_amt == o.rev_in_kind_amt &&
+          rev_sports_camps_amt == o.rev_sports_camps_amt &&
+          rev_transfers_amt == o.rev_transfers_amt &&
+          rev_other_amt == o.rev_other_amt &&
+          rev_indirect_amt == o.rev_indirect_amt &&
+          rev_contributions_amt == o.rev_contributions_amt &&
+          rev_conf_distributions_amt == o.rev_conf_distributions_amt &&
+          rev_bowl_amt == o.rev_bowl_amt &&
+          rev_indirect_facilities_amt == o.rev_indirect_facilities_amt &&
+          exp_tuition_amt == o.exp_tuition_amt &&
+          exp_marketing_amt == o.exp_marketing_amt &&
+          exp_games_amt == o.exp_games_amt &&
+          exp_support_staff_salaries_amt == o.exp_support_staff_salaries_amt &&
+          exp_indirect_support_amt == o.exp_indirect_support_amt &&
+          exp_equipment_amt == o.exp_equipment_amt &&
+          exp_sports_camps == o.exp_sports_camps &&
+          exp_debt_service_amt == o.exp_debt_service_amt &&
+          exp_medical_amt == o.exp_medical_amt &&
+          exp_dues_amt == o.exp_dues_amt &&
+          exp_support_staff_other_amt == o.exp_support_staff_other_amt &&
+          exp_severance_amt == o.exp_severance_amt &&
+          exp_spirit_groups_amt == o.exp_spirit_groups_amt &&
+          exp_head_coaches_amt == o.exp_head_coaches_amt &&
+          exp_facilities_maintenance_amt == o.exp_facilities_maintenance_amt &&
+          exp_asst_coaches_amt == o.exp_asst_coaches_amt &&
+          exp_head_coaches_third_party_amt == o.exp_head_coaches_third_party_amt &&
+          exp_asst_coaches_third_party_amt == o.exp_asst_coaches_third_party_amt &&
+          exp_total_coaches_third_party_amt == o.exp_total_coaches_third_party_amt &&
+          exp_admin_support_amt == o.exp_admin_support_amt &&
+          exp_meals_amt == o.exp_meals_amt &&
+          exp_bowl_amt == o.exp_bowl_amt &&
+          exp_bowl_comp_amt == o.exp_bowl_comp_amt &&
+          exp_postseason_fb_host_amt == o.exp_postseason_fb_host_amt &&
+          exp_postseason_other_amt == o.exp_postseason_other_amt &&
+          exp_postseason_other_coaching_amt == o.exp_postseason_other_coaching_amt &&
+          exp_postseason_other_host_amt == o.exp_postseason_other_host_amt &&
+          exp_alston_amt == o.exp_alston_amt &&
+          exp_other_amt == o.exp_other_amt &&
+          exp_nil_revenue_share_amt == o.exp_nil_revenue_share_amt
     end
 
     # @see the `==` method
@@ -331,7 +901,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, school_id, school_name, division_id, conference_id, conference_name, year, total_student_enrollment, student_athlete_enrollment, sport_count, rev_total_amt, rev_ticket_sales_amt, rev_contributions_amt, rev_rights_amt, rev_student_fees_amt, rev_university_amt, rev_guarantees_amt, exp_total_amt, exp_coaching_amt, exp_recruiting_amt, exp_travel_amt, exp_facilities_amt, exp_guarantees_amt].hash
+      [id, school_id, school_name, division_id, conference_id, conference_name, year, total_student_enrollment, student_athlete_enrollment, sport_count, rev_total_amt, rev_ticket_sales_amt, rev_rights_amt, rev_student_fees_amt, rev_university_amt, rev_guarantees_amt, exp_total_amt, exp_coaching_amt, exp_recruiting_amt, exp_travel_amt, exp_facilities_amt, exp_guarantees_amt, has_audited_report, rev_contributions_no_ik_amt, rev_conf_distributions_non_amt, rev_conf_bowl_amt, rev_ncaa_distributions_amt, rev_ncaa_distributions_grants_amt, rev_ncaa_host_settlements_amt, rev_ncaa_postseason_reimb_amt, rev_branding_amt, rev_endowment_amt, rev_parking_amt, rev_admin_support_amt, rev_compensation_amt, rev_govt_support_amt, rev_in_kind_amt, rev_sports_camps_amt, rev_transfers_amt, rev_other_amt, rev_indirect_amt, rev_contributions_amt, rev_conf_distributions_amt, rev_bowl_amt, rev_indirect_facilities_amt, exp_tuition_amt, exp_marketing_amt, exp_games_amt, exp_support_staff_salaries_amt, exp_indirect_support_amt, exp_equipment_amt, exp_sports_camps, exp_debt_service_amt, exp_medical_amt, exp_dues_amt, exp_support_staff_other_amt, exp_severance_amt, exp_spirit_groups_amt, exp_head_coaches_amt, exp_facilities_maintenance_amt, exp_asst_coaches_amt, exp_head_coaches_third_party_amt, exp_asst_coaches_third_party_amt, exp_total_coaches_third_party_amt, exp_admin_support_amt, exp_meals_amt, exp_bowl_amt, exp_bowl_comp_amt, exp_postseason_fb_host_amt, exp_postseason_other_amt, exp_postseason_other_coaching_amt, exp_postseason_other_host_amt, exp_alston_amt, exp_other_amt, exp_nil_revenue_share_amt].hash
     end
 
     # Builds the object from hash

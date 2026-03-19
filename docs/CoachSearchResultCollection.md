@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **data** | [**Array&lt;CoachSearchResult&gt;**](CoachSearchResult.md) |  | [optional] |
 | **meta** | [**Meta**](Meta.md) |  | [optional] |
+| **comp_stats** | [**CompStats**](CompStats.md) |  | [optional] |
 
 ## Example
 
@@ -14,7 +15,8 @@ require 'winthrop-client-ruby'
 
 instance = WinthropClient::CoachSearchResultCollection.new(
   data: null,
-  meta: null
+  meta: null,
+  comp_stats: null
 )
 ```
 

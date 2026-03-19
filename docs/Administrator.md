@@ -9,6 +9,7 @@
 | **coach_first_name** | **String** |  | [optional] |
 | **coach_last_name** | **String** |  | [optional] |
 | **coach_name** | **String** |  | [optional] |
+| **name** | **String** | Combined display name (first + last) | [optional] |
 | **season_id** | **Integer** |  | [optional] |
 | **position_id** | **Integer** |  | [optional] |
 | **school_id** | **Integer** |  | [optional] |
@@ -35,9 +36,12 @@
 | **compensation_is_car_provided** | **Boolean** |  | [optional] |
 | **compensation_country_club_dues_cents** | **Integer** |  | [optional] |
 | **compensation_country_club_membership_paid** | **Boolean** |  | [optional] |
+| **compensation_talent_fee** | **Integer** |  | [optional] |
 | **compensation_media_link** | **String** |  | [optional] |
+| **raw_contract_id** | **Integer** |  | [optional] |
 | **contract_starts_on** | **Date** |  | [optional] |
 | **contract_expires_on** | **Date** |  | [optional] |
+| **contract_at_will** | **Boolean** |  | [optional] |
 | **diversity** | **Boolean** |  | [optional] |
 | **gender** | **String** |  | [optional] |
 | **alma_mater_id** | **Integer** |  | [optional] |
@@ -58,6 +62,7 @@ instance = WinthropClient::Administrator.new(
   coach_first_name: John,
   coach_last_name: Doe,
   coach_name: John Doe,
+  name: John Doe,
   season_id: 1,
   position_id: 1,
   school_id: 1,
@@ -84,9 +89,12 @@ instance = WinthropClient::Administrator.new(
   compensation_is_car_provided: true,
   compensation_country_club_dues_cents: 10000,
   compensation_country_club_membership_paid: false,
+  compensation_talent_fee: 10000,
   compensation_media_link: This is a compensation media link,
+  raw_contract_id: 1,
   contract_starts_on: Tue Jan 01 00:00:00 UTC 2019,
   contract_expires_on: Tue Jan 01 00:00:00 UTC 2019,
+  contract_at_will: false,
   diversity: false,
   gender: M,
   alma_mater_id: 2,
