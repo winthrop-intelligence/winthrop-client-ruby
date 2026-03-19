@@ -17,9 +17,12 @@
 | **start_year** | **Integer** |  | [optional] |
 | **end_year** | **Integer** |  | [optional] |
 | **start_at** | **Time** |  | [optional] |
+| **created_at** | **Time** |  | [optional] |
 | **summary** | **String** |  | [optional] |
 | **autorenew** | **Boolean** |  | [optional] |
 | **archived** | **Boolean** |  | [optional] |
+| **vendors** | [**Array&lt;DealDetailVendor&gt;**](DealDetailVendor.md) |  | [optional] |
+| **deal_detail** | [**DealDetail**](DealDetail.md) |  | [optional] |
 
 ## Example
 
@@ -40,9 +43,12 @@ instance = WinthropClient::DealSearchResult.new(
   start_year: null,
   end_year: null,
   start_at: null,
+  created_at: null,
   summary: null,
   autorenew: null,
-  archived: null
+  archived: null,
+  vendors: null,
+  deal_detail: null
 )
 ```
 

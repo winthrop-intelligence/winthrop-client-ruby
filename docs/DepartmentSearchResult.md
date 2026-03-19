@@ -17,6 +17,9 @@
 | **directors_cup_ranking** | **Integer** |  | [optional] |
 | **is_private** | **Boolean** |  | [optional] |
 | **nickname** | **String** |  | [optional] |
+| **logo_url** | **String** |  | [optional] |
+| **department** | [**DepartmentSearchResultDepartment**](DepartmentSearchResultDepartment.md) |  | [optional] |
+| **sports** | [**Array&lt;DepartmentSearchResultSportsInner&gt;**](DepartmentSearchResultSportsInner.md) |  | [optional] |
 
 ## Example
 
@@ -36,7 +39,10 @@ instance = WinthropClient::DepartmentSearchResult.new(
   usnwr_ranking: null,
   directors_cup_ranking: null,
   is_private: null,
-  nickname: null
+  nickname: null,
+  logo_url: null,
+  department: null,
+  sports: null
 )
 ```
 

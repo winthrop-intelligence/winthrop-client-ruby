@@ -24,6 +24,8 @@ module WinthropClient
 
     attr_accessor :school_name
 
+    attr_accessor :school_short_name
+
     attr_accessor :school_id
 
     attr_accessor :conference_name
@@ -36,7 +38,27 @@ module WinthropClient
 
     attr_accessor :year
 
+    attr_accessor :coach_friendly_id
+
     attr_accessor :position_types
+
+    attr_accessor :sport_name
+
+    attr_accessor :sport_full_name
+
+    attr_accessor :position_title
+
+    attr_accessor :season_wins
+
+    attr_accessor :season_losses
+
+    attr_accessor :season_ties
+
+    attr_accessor :season_conference_position
+
+    attr_accessor :season_conference_num_positions
+
+    attr_accessor :rpi
 
     # Total compensation in cents (included based on authorization)
     attr_accessor :compensation_cents
@@ -44,10 +66,37 @@ module WinthropClient
     # Base salary in cents (included based on authorization)
     attr_accessor :base_salary_cents
 
-    # Cost-of-living adjusted compensation in cents (included based on authorization)
-    attr_accessor :adjusted_comp_cents
+    # School's cost-of-living index (included based on authorization)
+    attr_accessor :coli
+
+    # Compensation type (included based on authorization)
+    attr_accessor :compensation_type
+
+    attr_accessor :compensation_contingent_bonus
+
+    attr_accessor :compensation_deferred_comp_cents
+
+    attr_accessor :compensation_one_time_bonus_cents
+
+    attr_accessor :compensation_buyout_terms
+
+    attr_accessor :compensation_is_car_provided
+
+    attr_accessor :compensation_outside_income_cents
+
+    attr_accessor :compensation_talent_fee
+
+    attr_accessor :compensation_county_club_membership_paid
+
+    attr_accessor :compensation_media_link
+
+    attr_accessor :contract_starts_on
 
     attr_accessor :contract_expires_on
+
+    attr_accessor :contract_at_will
+
+    attr_accessor :raw_contract_id
 
     attr_accessor :avatar_url
 
@@ -58,17 +107,41 @@ module WinthropClient
         :'first_name' => :'first_name',
         :'last_name' => :'last_name',
         :'school_name' => :'school_name',
+        :'school_short_name' => :'school_short_name',
         :'school_id' => :'school_id',
         :'conference_name' => :'conference_name',
         :'conference_id' => :'conference_id',
         :'division_name' => :'division_name',
         :'division_id' => :'division_id',
         :'year' => :'year',
+        :'coach_friendly_id' => :'coach_friendly_id',
         :'position_types' => :'position_types',
+        :'sport_name' => :'sport_name',
+        :'sport_full_name' => :'sport_full_name',
+        :'position_title' => :'position_title',
+        :'season_wins' => :'season_wins',
+        :'season_losses' => :'season_losses',
+        :'season_ties' => :'season_ties',
+        :'season_conference_position' => :'season_conference_position',
+        :'season_conference_num_positions' => :'season_conference_num_positions',
+        :'rpi' => :'rpi',
         :'compensation_cents' => :'compensation_cents',
         :'base_salary_cents' => :'base_salary_cents',
-        :'adjusted_comp_cents' => :'adjusted_comp_cents',
+        :'coli' => :'coli',
+        :'compensation_type' => :'compensation_type',
+        :'compensation_contingent_bonus' => :'compensation_contingent_bonus',
+        :'compensation_deferred_comp_cents' => :'compensation_deferred_comp_cents',
+        :'compensation_one_time_bonus_cents' => :'compensation_one_time_bonus_cents',
+        :'compensation_buyout_terms' => :'compensation_buyout_terms',
+        :'compensation_is_car_provided' => :'compensation_is_car_provided',
+        :'compensation_outside_income_cents' => :'compensation_outside_income_cents',
+        :'compensation_talent_fee' => :'compensation_talent_fee',
+        :'compensation_county_club_membership_paid' => :'compensation_county_club_membership_paid',
+        :'compensation_media_link' => :'compensation_media_link',
+        :'contract_starts_on' => :'contract_starts_on',
         :'contract_expires_on' => :'contract_expires_on',
+        :'contract_at_will' => :'contract_at_will',
+        :'raw_contract_id' => :'raw_contract_id',
         :'avatar_url' => :'avatar_url'
       }
     end
@@ -90,17 +163,41 @@ module WinthropClient
         :'first_name' => :'String',
         :'last_name' => :'String',
         :'school_name' => :'String',
+        :'school_short_name' => :'String',
         :'school_id' => :'Integer',
         :'conference_name' => :'String',
         :'conference_id' => :'Integer',
         :'division_name' => :'String',
         :'division_id' => :'Integer',
         :'year' => :'Integer',
+        :'coach_friendly_id' => :'String',
         :'position_types' => :'Array<String>',
+        :'sport_name' => :'String',
+        :'sport_full_name' => :'String',
+        :'position_title' => :'String',
+        :'season_wins' => :'Integer',
+        :'season_losses' => :'Integer',
+        :'season_ties' => :'Integer',
+        :'season_conference_position' => :'Integer',
+        :'season_conference_num_positions' => :'Integer',
+        :'rpi' => :'Float',
         :'compensation_cents' => :'Integer',
         :'base_salary_cents' => :'Integer',
-        :'adjusted_comp_cents' => :'Integer',
+        :'coli' => :'Float',
+        :'compensation_type' => :'String',
+        :'compensation_contingent_bonus' => :'Boolean',
+        :'compensation_deferred_comp_cents' => :'Integer',
+        :'compensation_one_time_bonus_cents' => :'Integer',
+        :'compensation_buyout_terms' => :'String',
+        :'compensation_is_car_provided' => :'Boolean',
+        :'compensation_outside_income_cents' => :'Integer',
+        :'compensation_talent_fee' => :'Integer',
+        :'compensation_county_club_membership_paid' => :'Boolean',
+        :'compensation_media_link' => :'String',
+        :'contract_starts_on' => :'Date',
         :'contract_expires_on' => :'Date',
+        :'contract_at_will' => :'Boolean',
+        :'raw_contract_id' => :'Integer',
         :'avatar_url' => :'String'
       }
     end
@@ -109,15 +206,39 @@ module WinthropClient
     def self.openapi_nullable
       Set.new([
         :'school_name',
+        :'school_short_name',
         :'school_id',
         :'conference_name',
         :'conference_id',
         :'division_name',
         :'division_id',
+        :'coach_friendly_id',
+        :'sport_name',
+        :'sport_full_name',
+        :'position_title',
+        :'season_wins',
+        :'season_losses',
+        :'season_ties',
+        :'season_conference_position',
+        :'season_conference_num_positions',
+        :'rpi',
         :'compensation_cents',
         :'base_salary_cents',
-        :'adjusted_comp_cents',
+        :'coli',
+        :'compensation_type',
+        :'compensation_contingent_bonus',
+        :'compensation_deferred_comp_cents',
+        :'compensation_one_time_bonus_cents',
+        :'compensation_buyout_terms',
+        :'compensation_is_car_provided',
+        :'compensation_outside_income_cents',
+        :'compensation_talent_fee',
+        :'compensation_county_club_membership_paid',
+        :'compensation_media_link',
+        :'contract_starts_on',
         :'contract_expires_on',
+        :'contract_at_will',
+        :'raw_contract_id',
         :'avatar_url'
       ])
     end
@@ -154,6 +275,10 @@ module WinthropClient
         self.school_name = attributes[:'school_name']
       end
 
+      if attributes.key?(:'school_short_name')
+        self.school_short_name = attributes[:'school_short_name']
+      end
+
       if attributes.key?(:'school_id')
         self.school_id = attributes[:'school_id']
       end
@@ -178,10 +303,50 @@ module WinthropClient
         self.year = attributes[:'year']
       end
 
+      if attributes.key?(:'coach_friendly_id')
+        self.coach_friendly_id = attributes[:'coach_friendly_id']
+      end
+
       if attributes.key?(:'position_types')
         if (value = attributes[:'position_types']).is_a?(Array)
           self.position_types = value
         end
+      end
+
+      if attributes.key?(:'sport_name')
+        self.sport_name = attributes[:'sport_name']
+      end
+
+      if attributes.key?(:'sport_full_name')
+        self.sport_full_name = attributes[:'sport_full_name']
+      end
+
+      if attributes.key?(:'position_title')
+        self.position_title = attributes[:'position_title']
+      end
+
+      if attributes.key?(:'season_wins')
+        self.season_wins = attributes[:'season_wins']
+      end
+
+      if attributes.key?(:'season_losses')
+        self.season_losses = attributes[:'season_losses']
+      end
+
+      if attributes.key?(:'season_ties')
+        self.season_ties = attributes[:'season_ties']
+      end
+
+      if attributes.key?(:'season_conference_position')
+        self.season_conference_position = attributes[:'season_conference_position']
+      end
+
+      if attributes.key?(:'season_conference_num_positions')
+        self.season_conference_num_positions = attributes[:'season_conference_num_positions']
+      end
+
+      if attributes.key?(:'rpi')
+        self.rpi = attributes[:'rpi']
       end
 
       if attributes.key?(:'compensation_cents')
@@ -192,12 +357,64 @@ module WinthropClient
         self.base_salary_cents = attributes[:'base_salary_cents']
       end
 
-      if attributes.key?(:'adjusted_comp_cents')
-        self.adjusted_comp_cents = attributes[:'adjusted_comp_cents']
+      if attributes.key?(:'coli')
+        self.coli = attributes[:'coli']
+      end
+
+      if attributes.key?(:'compensation_type')
+        self.compensation_type = attributes[:'compensation_type']
+      end
+
+      if attributes.key?(:'compensation_contingent_bonus')
+        self.compensation_contingent_bonus = attributes[:'compensation_contingent_bonus']
+      end
+
+      if attributes.key?(:'compensation_deferred_comp_cents')
+        self.compensation_deferred_comp_cents = attributes[:'compensation_deferred_comp_cents']
+      end
+
+      if attributes.key?(:'compensation_one_time_bonus_cents')
+        self.compensation_one_time_bonus_cents = attributes[:'compensation_one_time_bonus_cents']
+      end
+
+      if attributes.key?(:'compensation_buyout_terms')
+        self.compensation_buyout_terms = attributes[:'compensation_buyout_terms']
+      end
+
+      if attributes.key?(:'compensation_is_car_provided')
+        self.compensation_is_car_provided = attributes[:'compensation_is_car_provided']
+      end
+
+      if attributes.key?(:'compensation_outside_income_cents')
+        self.compensation_outside_income_cents = attributes[:'compensation_outside_income_cents']
+      end
+
+      if attributes.key?(:'compensation_talent_fee')
+        self.compensation_talent_fee = attributes[:'compensation_talent_fee']
+      end
+
+      if attributes.key?(:'compensation_county_club_membership_paid')
+        self.compensation_county_club_membership_paid = attributes[:'compensation_county_club_membership_paid']
+      end
+
+      if attributes.key?(:'compensation_media_link')
+        self.compensation_media_link = attributes[:'compensation_media_link']
+      end
+
+      if attributes.key?(:'contract_starts_on')
+        self.contract_starts_on = attributes[:'contract_starts_on']
       end
 
       if attributes.key?(:'contract_expires_on')
         self.contract_expires_on = attributes[:'contract_expires_on']
+      end
+
+      if attributes.key?(:'contract_at_will')
+        self.contract_at_will = attributes[:'contract_at_will']
+      end
+
+      if attributes.key?(:'raw_contract_id')
+        self.raw_contract_id = attributes[:'raw_contract_id']
       end
 
       if attributes.key?(:'avatar_url')
@@ -229,17 +446,41 @@ module WinthropClient
           first_name == o.first_name &&
           last_name == o.last_name &&
           school_name == o.school_name &&
+          school_short_name == o.school_short_name &&
           school_id == o.school_id &&
           conference_name == o.conference_name &&
           conference_id == o.conference_id &&
           division_name == o.division_name &&
           division_id == o.division_id &&
           year == o.year &&
+          coach_friendly_id == o.coach_friendly_id &&
           position_types == o.position_types &&
+          sport_name == o.sport_name &&
+          sport_full_name == o.sport_full_name &&
+          position_title == o.position_title &&
+          season_wins == o.season_wins &&
+          season_losses == o.season_losses &&
+          season_ties == o.season_ties &&
+          season_conference_position == o.season_conference_position &&
+          season_conference_num_positions == o.season_conference_num_positions &&
+          rpi == o.rpi &&
           compensation_cents == o.compensation_cents &&
           base_salary_cents == o.base_salary_cents &&
-          adjusted_comp_cents == o.adjusted_comp_cents &&
+          coli == o.coli &&
+          compensation_type == o.compensation_type &&
+          compensation_contingent_bonus == o.compensation_contingent_bonus &&
+          compensation_deferred_comp_cents == o.compensation_deferred_comp_cents &&
+          compensation_one_time_bonus_cents == o.compensation_one_time_bonus_cents &&
+          compensation_buyout_terms == o.compensation_buyout_terms &&
+          compensation_is_car_provided == o.compensation_is_car_provided &&
+          compensation_outside_income_cents == o.compensation_outside_income_cents &&
+          compensation_talent_fee == o.compensation_talent_fee &&
+          compensation_county_club_membership_paid == o.compensation_county_club_membership_paid &&
+          compensation_media_link == o.compensation_media_link &&
+          contract_starts_on == o.contract_starts_on &&
           contract_expires_on == o.contract_expires_on &&
+          contract_at_will == o.contract_at_will &&
+          raw_contract_id == o.raw_contract_id &&
           avatar_url == o.avatar_url
     end
 
@@ -252,7 +493,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, first_name, last_name, school_name, school_id, conference_name, conference_id, division_name, division_id, year, position_types, compensation_cents, base_salary_cents, adjusted_comp_cents, contract_expires_on, avatar_url].hash
+      [id, first_name, last_name, school_name, school_short_name, school_id, conference_name, conference_id, division_name, division_id, year, coach_friendly_id, position_types, sport_name, sport_full_name, position_title, season_wins, season_losses, season_ties, season_conference_position, season_conference_num_positions, rpi, compensation_cents, base_salary_cents, coli, compensation_type, compensation_contingent_bonus, compensation_deferred_comp_cents, compensation_one_time_bonus_cents, compensation_buyout_terms, compensation_is_car_provided, compensation_outside_income_cents, compensation_talent_fee, compensation_county_club_membership_paid, compensation_media_link, contract_starts_on, contract_expires_on, contract_at_will, raw_contract_id, avatar_url].hash
     end
 
     # Builds the object from hash

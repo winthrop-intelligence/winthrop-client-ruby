@@ -25,6 +25,9 @@ module WinthropClient
 
     attr_accessor :coach_name
 
+    # Combined display name (first + last)
+    attr_accessor :name
+
     attr_accessor :season_id
 
     attr_accessor :position_id
@@ -77,11 +80,17 @@ module WinthropClient
 
     attr_accessor :compensation_country_club_membership_paid
 
+    attr_accessor :compensation_talent_fee
+
     attr_accessor :compensation_media_link
+
+    attr_accessor :raw_contract_id
 
     attr_accessor :contract_starts_on
 
     attr_accessor :contract_expires_on
+
+    attr_accessor :contract_at_will
 
     attr_accessor :diversity
 
@@ -129,6 +138,7 @@ module WinthropClient
         :'coach_first_name' => :'coach_first_name',
         :'coach_last_name' => :'coach_last_name',
         :'coach_name' => :'coach_name',
+        :'name' => :'name',
         :'season_id' => :'season_id',
         :'position_id' => :'position_id',
         :'school_id' => :'school_id',
@@ -155,9 +165,12 @@ module WinthropClient
         :'compensation_is_car_provided' => :'compensation_is_car_provided',
         :'compensation_country_club_dues_cents' => :'compensation_country_club_dues_cents',
         :'compensation_country_club_membership_paid' => :'compensation_country_club_membership_paid',
+        :'compensation_talent_fee' => :'compensation_talent_fee',
         :'compensation_media_link' => :'compensation_media_link',
+        :'raw_contract_id' => :'raw_contract_id',
         :'contract_starts_on' => :'contract_starts_on',
         :'contract_expires_on' => :'contract_expires_on',
+        :'contract_at_will' => :'contract_at_will',
         :'diversity' => :'diversity',
         :'gender' => :'gender',
         :'alma_mater_id' => :'alma_mater_id',
@@ -187,6 +200,7 @@ module WinthropClient
         :'coach_first_name' => :'String',
         :'coach_last_name' => :'String',
         :'coach_name' => :'String',
+        :'name' => :'String',
         :'season_id' => :'Integer',
         :'position_id' => :'Integer',
         :'school_id' => :'Integer',
@@ -213,9 +227,12 @@ module WinthropClient
         :'compensation_is_car_provided' => :'Boolean',
         :'compensation_country_club_dues_cents' => :'Integer',
         :'compensation_country_club_membership_paid' => :'Boolean',
+        :'compensation_talent_fee' => :'Integer',
         :'compensation_media_link' => :'String',
+        :'raw_contract_id' => :'Integer',
         :'contract_starts_on' => :'Date',
         :'contract_expires_on' => :'Date',
+        :'contract_at_will' => :'Boolean',
         :'diversity' => :'Boolean',
         :'gender' => :'String',
         :'alma_mater_id' => :'Integer',
@@ -267,6 +284,10 @@ module WinthropClient
 
       if attributes.key?(:'coach_name')
         self.coach_name = attributes[:'coach_name']
+      end
+
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
 
       if attributes.key?(:'season_id')
@@ -373,8 +394,16 @@ module WinthropClient
         self.compensation_country_club_membership_paid = attributes[:'compensation_country_club_membership_paid']
       end
 
+      if attributes.key?(:'compensation_talent_fee')
+        self.compensation_talent_fee = attributes[:'compensation_talent_fee']
+      end
+
       if attributes.key?(:'compensation_media_link')
         self.compensation_media_link = attributes[:'compensation_media_link']
+      end
+
+      if attributes.key?(:'raw_contract_id')
+        self.raw_contract_id = attributes[:'raw_contract_id']
       end
 
       if attributes.key?(:'contract_starts_on')
@@ -383,6 +412,10 @@ module WinthropClient
 
       if attributes.key?(:'contract_expires_on')
         self.contract_expires_on = attributes[:'contract_expires_on']
+      end
+
+      if attributes.key?(:'contract_at_will')
+        self.contract_at_will = attributes[:'contract_at_will']
       end
 
       if attributes.key?(:'diversity')
@@ -469,6 +502,7 @@ module WinthropClient
           coach_first_name == o.coach_first_name &&
           coach_last_name == o.coach_last_name &&
           coach_name == o.coach_name &&
+          name == o.name &&
           season_id == o.season_id &&
           position_id == o.position_id &&
           school_id == o.school_id &&
@@ -495,9 +529,12 @@ module WinthropClient
           compensation_is_car_provided == o.compensation_is_car_provided &&
           compensation_country_club_dues_cents == o.compensation_country_club_dues_cents &&
           compensation_country_club_membership_paid == o.compensation_country_club_membership_paid &&
+          compensation_talent_fee == o.compensation_talent_fee &&
           compensation_media_link == o.compensation_media_link &&
+          raw_contract_id == o.raw_contract_id &&
           contract_starts_on == o.contract_starts_on &&
           contract_expires_on == o.contract_expires_on &&
+          contract_at_will == o.contract_at_will &&
           diversity == o.diversity &&
           gender == o.gender &&
           alma_mater_id == o.alma_mater_id &&
@@ -517,7 +554,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, coach_id, coach_first_name, coach_last_name, coach_name, season_id, position_id, school_id, conference_id, division_id, geo_division_id, compensation_id, contract_id, year, position_title, school_name, school_short_name, state, usnwr_ranking, directors_cup_ranking, compensation_cents, compensation_base_salary_cents, compensation_type, compensation_outside_income_cents, compensation_deferred_comp_cents, compensation_one_time_bonus_cents, compensation_contingent_bonus, compensation_buyout_terms, compensation_is_car_provided, compensation_country_club_dues_cents, compensation_country_club_membership_paid, compensation_media_link, contract_starts_on, contract_expires_on, diversity, gender, alma_mater_id, private, sport_id, coli, coach, departments].hash
+      [id, coach_id, coach_first_name, coach_last_name, coach_name, name, season_id, position_id, school_id, conference_id, division_id, geo_division_id, compensation_id, contract_id, year, position_title, school_name, school_short_name, state, usnwr_ranking, directors_cup_ranking, compensation_cents, compensation_base_salary_cents, compensation_type, compensation_outside_income_cents, compensation_deferred_comp_cents, compensation_one_time_bonus_cents, compensation_contingent_bonus, compensation_buyout_terms, compensation_is_car_provided, compensation_country_club_dues_cents, compensation_country_club_membership_paid, compensation_talent_fee, compensation_media_link, raw_contract_id, contract_starts_on, contract_expires_on, contract_at_will, diversity, gender, alma_mater_id, private, sport_id, coli, coach, departments].hash
     end
 
     # Builds the object from hash

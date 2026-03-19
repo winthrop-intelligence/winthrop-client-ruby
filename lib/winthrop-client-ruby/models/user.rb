@@ -41,6 +41,35 @@ module WinthropClient
 
     attr_accessor :roles
 
+    # Whether the user can view coach compensation data
+    attr_accessor :can_see_compensation
+
+    # Whether the user can view scouting/team schedule links
+    attr_accessor :can_show_scouting
+
+    # Whether the user can view game contract/guarantee data
+    attr_accessor :can_show_game_contract
+
+    attr_accessor :is_sport_specific
+
+    attr_accessor :is_d2_only
+
+    attr_accessor :is_conference_only
+
+    attr_accessor :permissible_sport_ids
+
+    # Cost of living index for the user's school
+    attr_accessor :coli_index
+
+    attr_accessor :subscription_type
+
+    # Sports the user can access for game scheduling
+    attr_accessor :schedule_sports
+
+    attr_accessor :school_city
+
+    attr_accessor :school_state
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -78,7 +107,19 @@ module WinthropClient
         :'accountable_type' => :'accountable_type',
         :'coach_id' => :'coach_id',
         :'divisions' => :'divisions',
-        :'roles' => :'roles'
+        :'roles' => :'roles',
+        :'can_see_compensation' => :'can_see_compensation',
+        :'can_show_scouting' => :'can_show_scouting',
+        :'can_show_game_contract' => :'can_show_game_contract',
+        :'is_sport_specific' => :'is_sport_specific',
+        :'is_d2_only' => :'is_d2_only',
+        :'is_conference_only' => :'is_conference_only',
+        :'permissible_sport_ids' => :'permissible_sport_ids',
+        :'coli_index' => :'coli_index',
+        :'subscription_type' => :'subscription_type',
+        :'schedule_sports' => :'schedule_sports',
+        :'school_city' => :'school_city',
+        :'school_state' => :'school_state'
       }
     end
 
@@ -107,13 +148,29 @@ module WinthropClient
         :'accountable_type' => :'String',
         :'coach_id' => :'Integer',
         :'divisions' => :'Array<Division>',
-        :'roles' => :'Array<String>'
+        :'roles' => :'Array<String>',
+        :'can_see_compensation' => :'Boolean',
+        :'can_show_scouting' => :'Boolean',
+        :'can_show_game_contract' => :'Boolean',
+        :'is_sport_specific' => :'Boolean',
+        :'is_d2_only' => :'Boolean',
+        :'is_conference_only' => :'Boolean',
+        :'permissible_sport_ids' => :'Array<Integer>',
+        :'coli_index' => :'Float',
+        :'subscription_type' => :'String',
+        :'schedule_sports' => :'Array<UserScheduleSportsInner>',
+        :'school_city' => :'String',
+        :'school_state' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'permissible_sport_ids',
+        :'subscription_type',
+        :'school_city',
+        :'school_state'
       ])
     end
 
@@ -188,6 +245,58 @@ module WinthropClient
           self.roles = value
         end
       end
+
+      if attributes.key?(:'can_see_compensation')
+        self.can_see_compensation = attributes[:'can_see_compensation']
+      end
+
+      if attributes.key?(:'can_show_scouting')
+        self.can_show_scouting = attributes[:'can_show_scouting']
+      end
+
+      if attributes.key?(:'can_show_game_contract')
+        self.can_show_game_contract = attributes[:'can_show_game_contract']
+      end
+
+      if attributes.key?(:'is_sport_specific')
+        self.is_sport_specific = attributes[:'is_sport_specific']
+      end
+
+      if attributes.key?(:'is_d2_only')
+        self.is_d2_only = attributes[:'is_d2_only']
+      end
+
+      if attributes.key?(:'is_conference_only')
+        self.is_conference_only = attributes[:'is_conference_only']
+      end
+
+      if attributes.key?(:'permissible_sport_ids')
+        if (value = attributes[:'permissible_sport_ids']).is_a?(Array)
+          self.permissible_sport_ids = value
+        end
+      end
+
+      if attributes.key?(:'coli_index')
+        self.coli_index = attributes[:'coli_index']
+      end
+
+      if attributes.key?(:'subscription_type')
+        self.subscription_type = attributes[:'subscription_type']
+      end
+
+      if attributes.key?(:'schedule_sports')
+        if (value = attributes[:'schedule_sports']).is_a?(Array)
+          self.schedule_sports = value
+        end
+      end
+
+      if attributes.key?(:'school_city')
+        self.school_city = attributes[:'school_city']
+      end
+
+      if attributes.key?(:'school_state')
+        self.school_state = attributes[:'school_state']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -234,7 +343,19 @@ module WinthropClient
           accountable_type == o.accountable_type &&
           coach_id == o.coach_id &&
           divisions == o.divisions &&
-          roles == o.roles
+          roles == o.roles &&
+          can_see_compensation == o.can_see_compensation &&
+          can_show_scouting == o.can_show_scouting &&
+          can_show_game_contract == o.can_show_game_contract &&
+          is_sport_specific == o.is_sport_specific &&
+          is_d2_only == o.is_d2_only &&
+          is_conference_only == o.is_conference_only &&
+          permissible_sport_ids == o.permissible_sport_ids &&
+          coli_index == o.coli_index &&
+          subscription_type == o.subscription_type &&
+          schedule_sports == o.schedule_sports &&
+          school_city == o.school_city &&
+          school_state == o.school_state
     end
 
     # @see the `==` method
@@ -246,7 +367,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, email, first_name, last_name, created_at, updated_at, state, title, accountable_id, accountable_type, coach_id, divisions, roles].hash
+      [id, email, first_name, last_name, created_at, updated_at, state, title, accountable_id, accountable_type, coach_id, divisions, roles, can_see_compensation, can_show_scouting, can_show_game_contract, is_sport_specific, is_d2_only, is_conference_only, permissible_sport_ids, coli_index, subscription_type, schedule_sports, school_city, school_state].hash
     end
 
     # Builds the object from hash

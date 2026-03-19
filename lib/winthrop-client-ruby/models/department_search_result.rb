@@ -41,6 +41,12 @@ module WinthropClient
 
     attr_accessor :nickname
 
+    attr_accessor :logo_url
+
+    attr_accessor :department
+
+    attr_accessor :sports
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -56,7 +62,10 @@ module WinthropClient
         :'usnwr_ranking' => :'usnwr_ranking',
         :'directors_cup_ranking' => :'directors_cup_ranking',
         :'is_private' => :'is_private',
-        :'nickname' => :'nickname'
+        :'nickname' => :'nickname',
+        :'logo_url' => :'logo_url',
+        :'department' => :'department',
+        :'sports' => :'sports'
       }
     end
 
@@ -85,7 +94,10 @@ module WinthropClient
         :'usnwr_ranking' => :'Integer',
         :'directors_cup_ranking' => :'Integer',
         :'is_private' => :'Boolean',
-        :'nickname' => :'String'
+        :'nickname' => :'String',
+        :'logo_url' => :'String',
+        :'department' => :'DepartmentSearchResultDepartment',
+        :'sports' => :'Array<DepartmentSearchResultSportsInner>'
       }
     end
 
@@ -101,7 +113,8 @@ module WinthropClient
         :'division_id',
         :'usnwr_ranking',
         :'directors_cup_ranking',
-        :'nickname'
+        :'nickname',
+        :'logo_url',
       ])
     end
 
@@ -172,6 +185,20 @@ module WinthropClient
       if attributes.key?(:'nickname')
         self.nickname = attributes[:'nickname']
       end
+
+      if attributes.key?(:'logo_url')
+        self.logo_url = attributes[:'logo_url']
+      end
+
+      if attributes.key?(:'department')
+        self.department = attributes[:'department']
+      end
+
+      if attributes.key?(:'sports')
+        if (value = attributes[:'sports']).is_a?(Array)
+          self.sports = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -206,7 +233,10 @@ module WinthropClient
           usnwr_ranking == o.usnwr_ranking &&
           directors_cup_ranking == o.directors_cup_ranking &&
           is_private == o.is_private &&
-          nickname == o.nickname
+          nickname == o.nickname &&
+          logo_url == o.logo_url &&
+          department == o.department &&
+          sports == o.sports
     end
 
     # @see the `==` method
@@ -218,7 +248,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, short_name, city, state_name, conference_name, conference_id, division_name, division_id, usnwr_ranking, directors_cup_ranking, is_private, nickname].hash
+      [id, name, short_name, city, state_name, conference_name, conference_id, division_name, division_id, usnwr_ranking, directors_cup_ranking, is_private, nickname, logo_url, department, sports].hash
     end
 
     # Builds the object from hash

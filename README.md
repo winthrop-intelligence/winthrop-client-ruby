@@ -100,6 +100,8 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**create_coach**](docs/DefaultApi.md#create_coach) | **POST** /api/v1/coaches | 
 *WinthropClient::DefaultApi* | [**create_conference**](docs/DefaultApi.md#create_conference) | **POST** /api/v1/conferences | 
 *WinthropClient::DefaultApi* | [**create_conferenceship**](docs/DefaultApi.md#create_conferenceship) | **POST** /api/v1/conferenceships | 
+*WinthropClient::DefaultApi* | [**create_favorite**](docs/DefaultApi.md#create_favorite) | **POST** /api/v1/favorites | 
+*WinthropClient::DefaultApi* | [**create_favorites_category**](docs/DefaultApi.md#create_favorites_category) | **POST** /api/v1/favorites_categories | 
 *WinthropClient::DefaultApi* | [**create_foia_label**](docs/DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels | 
 *WinthropClient::DefaultApi* | [**create_foia_request**](docs/DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests | 
 *WinthropClient::DefaultApi* | [**create_job_post**](docs/DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post
@@ -109,6 +111,8 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**delete_cashflow**](docs/DefaultApi.md#delete_cashflow) | **DELETE** /api/v1/cashflows/{cashflowId} | 
 *WinthropClient::DefaultApi* | [**delete_conference**](docs/DefaultApi.md#delete_conference) | **DELETE** /api/v1/conferences/{conferenceId} | 
 *WinthropClient::DefaultApi* | [**delete_conferenceship**](docs/DefaultApi.md#delete_conferenceship) | **DELETE** /api/v1/conferenceships/{conferenceshipId} | 
+*WinthropClient::DefaultApi* | [**delete_favorite**](docs/DefaultApi.md#delete_favorite) | **DELETE** /api/v1/favorites/{id} | 
+*WinthropClient::DefaultApi* | [**delete_favorites_category**](docs/DefaultApi.md#delete_favorites_category) | **DELETE** /api/v1/favorites_categories/{id} | 
 *WinthropClient::DefaultApi* | [**delete_foia_label**](docs/DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} | 
 *WinthropClient::DefaultApi* | [**delete_foia_request**](docs/DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} | 
 *WinthropClient::DefaultApi* | [**delete_job_post**](docs/DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post
@@ -116,19 +120,34 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**delete_requested_item**](docs/DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} | 
 *WinthropClient::DefaultApi* | [**delete_season**](docs/DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} | 
 *WinthropClient::DefaultApi* | [**get_administrator**](docs/DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} | 
+*WinthropClient::DefaultApi* | [**get_administrator_searches**](docs/DefaultApi.md#get_administrator_searches) | **GET** /api/v1/administrator_searches | 
 *WinthropClient::DefaultApi* | [**get_administrators**](docs/DefaultApi.md#get_administrators) | **GET** /api/v1/administrators | 
 *WinthropClient::DefaultApi* | [**get_audited_financial_report_status**](docs/DefaultApi.md#get_audited_financial_report_status) | **GET** /api/v1/audited_financial_report_statuses/{auditedFinancialReportStatusId} | 
 *WinthropClient::DefaultApi* | [**get_audited_financial_report_statuses**](docs/DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses | 
 *WinthropClient::DefaultApi* | [**get_cashflow**](docs/DefaultApi.md#get_cashflow) | **GET** /api/v1/cashflows/{cashflowId} | 
+*WinthropClient::DefaultApi* | [**get_cashflow_groups**](docs/DefaultApi.md#get_cashflow_groups) | **GET** /api/v1/cashflow_groups | 
 *WinthropClient::DefaultApi* | [**get_cashflows**](docs/DefaultApi.md#get_cashflows) | **GET** /api/v1/cashflows | 
 *WinthropClient::DefaultApi* | [**get_categories**](docs/DefaultApi.md#get_categories) | **GET** /central_jobs/categories | List all categories
 *WinthropClient::DefaultApi* | [**get_coach**](docs/DefaultApi.md#get_coach) | **GET** /api/v1/coaches/{coachId} | 
 *WinthropClient::DefaultApi* | [**get_coach_compensation**](docs/DefaultApi.md#get_coach_compensation) | **GET** /api/v1/coach_compensations/get_coach_compensation | 
+*WinthropClient::DefaultApi* | [**get_coach_search**](docs/DefaultApi.md#get_coach_search) | **GET** /api/v1/coach_searches/{id} | 
+*WinthropClient::DefaultApi* | [**get_coach_search_coli**](docs/DefaultApi.md#get_coach_search_coli) | **GET** /api/v1/coach_searches/{id}/coli | 
+*WinthropClient::DefaultApi* | [**get_coach_search_compensation**](docs/DefaultApi.md#get_coach_search_compensation) | **GET** /api/v1/coach_searches/{id}/compensation | 
+*WinthropClient::DefaultApi* | [**get_coach_search_coworker_history**](docs/DefaultApi.md#get_coach_search_coworker_history) | **GET** /api/v1/coach_searches/{id}/coworker_history | 
+*WinthropClient::DefaultApi* | [**get_coach_search_overview**](docs/DefaultApi.md#get_coach_search_overview) | **GET** /api/v1/coach_searches/{id}/overview | 
+*WinthropClient::DefaultApi* | [**get_coach_search_record**](docs/DefaultApi.md#get_coach_search_record) | **GET** /api/v1/coach_searches/{id}/record | 
+*WinthropClient::DefaultApi* | [**get_coach_search_videos**](docs/DefaultApi.md#get_coach_search_videos) | **GET** /api/v1/coach_searches/{id}/videos | 
 *WinthropClient::DefaultApi* | [**get_coach_searches**](docs/DefaultApi.md#get_coach_searches) | **GET** /api/v1/coach_searches | 
 *WinthropClient::DefaultApi* | [**get_coaches**](docs/DefaultApi.md#get_coaches) | **GET** /api/v1/coaches | 
 *WinthropClient::DefaultApi* | [**get_compensation**](docs/DefaultApi.md#get_compensation) | **GET** /api/v1/compensations/{compensationId} | 
 *WinthropClient::DefaultApi* | [**get_compensations**](docs/DefaultApi.md#get_compensations) | **GET** /api/v1/compensations | 
 *WinthropClient::DefaultApi* | [**get_conference**](docs/DefaultApi.md#get_conference) | **GET** /api/v1/conferences/{conferenceId} | 
+*WinthropClient::DefaultApi* | [**get_conference_admin_compensation**](docs/DefaultApi.md#get_conference_admin_compensation) | **GET** /api/v1/conferences/{conferenceId}/admin_compensation | 
+*WinthropClient::DefaultApi* | [**get_conference_cashflow_stats**](docs/DefaultApi.md#get_conference_cashflow_stats) | **GET** /api/v1/conferences/{conferenceId}/cashflow_stats | 
+*WinthropClient::DefaultApi* | [**get_conference_department_staff**](docs/DefaultApi.md#get_conference_department_staff) | **GET** /api/v1/conferences/{conferenceId}/department_staff | 
+*WinthropClient::DefaultApi* | [**get_conference_directors_cup**](docs/DefaultApi.md#get_conference_directors_cup) | **GET** /api/v1/conferences/{conferenceId}/directors_cup | 
+*WinthropClient::DefaultApi* | [**get_conference_position_stats**](docs/DefaultApi.md#get_conference_position_stats) | **GET** /api/v1/conferences/{conferenceId}/position_stats | 
+*WinthropClient::DefaultApi* | [**get_conference_sport_compensation**](docs/DefaultApi.md#get_conference_sport_compensation) | **GET** /api/v1/conferences/{conferenceId}/sport_compensation | 
 *WinthropClient::DefaultApi* | [**get_conferences**](docs/DefaultApi.md#get_conferences) | **GET** /api/v1/conferences | 
 *WinthropClient::DefaultApi* | [**get_conferenceship**](docs/DefaultApi.md#get_conferenceship) | **GET** /api/v1/conferenceships/{conferenceshipId} | 
 *WinthropClient::DefaultApi* | [**get_conferenceships**](docs/DefaultApi.md#get_conferenceships) | **GET** /api/v1/conferenceships | 
@@ -144,6 +163,17 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_department_searches**](docs/DefaultApi.md#get_department_searches) | **GET** /api/v1/department_searches | 
 *WinthropClient::DefaultApi* | [**get_division**](docs/DefaultApi.md#get_division) | **GET** /api/v1/divisions/{divisionId} | 
 *WinthropClient::DefaultApi* | [**get_divisions**](docs/DefaultApi.md#get_divisions) | **GET** /api/v1/divisions | 
+*WinthropClient::DefaultApi* | [**get_favorites**](docs/DefaultApi.md#get_favorites) | **GET** /api/v1/favorites | 
+*WinthropClient::DefaultApi* | [**get_favorites_categories**](docs/DefaultApi.md#get_favorites_categories) | **GET** /api/v1/favorites_categories | 
+*WinthropClient::DefaultApi* | [**get_filter_options**](docs/DefaultApi.md#get_filter_options) | **GET** /api/v1/filter_options | 
+*WinthropClient::DefaultApi* | [**get_filter_options_all_schools**](docs/DefaultApi.md#get_filter_options_all_schools) | **GET** /api/v1/filter_options/all_schools | 
+*WinthropClient::DefaultApi* | [**get_filter_options_conferences**](docs/DefaultApi.md#get_filter_options_conferences) | **GET** /api/v1/filter_options/conferences | 
+*WinthropClient::DefaultApi* | [**get_filter_options_deal_types**](docs/DefaultApi.md#get_filter_options_deal_types) | **GET** /api/v1/filter_options/deal_types | 
+*WinthropClient::DefaultApi* | [**get_filter_options_game_types**](docs/DefaultApi.md#get_filter_options_game_types) | **GET** /api/v1/filter_options/game_types | 
+*WinthropClient::DefaultApi* | [**get_filter_options_school_groups**](docs/DefaultApi.md#get_filter_options_school_groups) | **GET** /api/v1/filter_options/school_groups | 
+*WinthropClient::DefaultApi* | [**get_filter_options_schools**](docs/DefaultApi.md#get_filter_options_schools) | **GET** /api/v1/filter_options/schools | 
+*WinthropClient::DefaultApi* | [**get_filter_options_subdivisions**](docs/DefaultApi.md#get_filter_options_subdivisions) | **GET** /api/v1/filter_options/subdivisions | 
+*WinthropClient::DefaultApi* | [**get_filter_options_vendors**](docs/DefaultApi.md#get_filter_options_vendors) | **GET** /api/v1/filter_options/vendors | 
 *WinthropClient::DefaultApi* | [**get_financial_searches**](docs/DefaultApi.md#get_financial_searches) | **GET** /api/v1/financial_searches | 
 *WinthropClient::DefaultApi* | [**get_foia_label**](docs/DefaultApi.md#get_foia_label) | **GET** /api/v1/foia_labels/{foiaLabelId} | 
 *WinthropClient::DefaultApi* | [**get_foia_labels**](docs/DefaultApi.md#get_foia_labels) | **GET** /api/v1/foia_labels | 
@@ -154,12 +184,14 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_game_contract**](docs/DefaultApi.md#get_game_contract) | **GET** /api/v1/game_contracts/{game_contractId} | 
 *WinthropClient::DefaultApi* | [**get_game_contracts**](docs/DefaultApi.md#get_game_contracts) | **GET** /api/v1/game_contracts | 
 *WinthropClient::DefaultApi* | [**get_game_post**](docs/DefaultApi.md#get_game_post) | **GET** /api/v1/game_posts/{gamePostId} | 
+*WinthropClient::DefaultApi* | [**get_game_post_searches**](docs/DefaultApi.md#get_game_post_searches) | **GET** /api/v1/game_post_searches | 
 *WinthropClient::DefaultApi* | [**get_game_posts**](docs/DefaultApi.md#get_game_posts) | **GET** /api/v1/game_posts | 
 *WinthropClient::DefaultApi* | [**get_games**](docs/DefaultApi.md#get_games) | **GET** /api/v1/games | 
 *WinthropClient::DefaultApi* | [**get_income_report**](docs/DefaultApi.md#get_income_report) | **GET** /api/v1/income_reports/{incomeReportId} | 
 *WinthropClient::DefaultApi* | [**get_income_reports**](docs/DefaultApi.md#get_income_reports) | **GET** /api/v1/income_reports | 
 *WinthropClient::DefaultApi* | [**get_job_post**](docs/DefaultApi.md#get_job_post) | **GET** /central_jobs/job_posts/{jobPostId} | Get a job post
 *WinthropClient::DefaultApi* | [**get_job_posts**](docs/DefaultApi.md#get_job_posts) | **GET** /central_jobs/job_posts | List all job posts
+*WinthropClient::DefaultApi* | [**get_lad_filter_options**](docs/DefaultApi.md#get_lad_filter_options) | **GET** /api/v1/lad_filter_options | 
 *WinthropClient::DefaultApi* | [**get_ncaa_financial_report_status**](docs/DefaultApi.md#get_ncaa_financial_report_status) | **GET** /api/v1/ncaa_financial_report_statuses/{ncaaFinancialReportStatusId} | 
 *WinthropClient::DefaultApi* | [**get_ncaa_financial_report_statuses**](docs/DefaultApi.md#get_ncaa_financial_report_statuses) | **GET** /api/v1/ncaa_financial_report_statuses | 
 *WinthropClient::DefaultApi* | [**get_news_feed**](docs/DefaultApi.md#get_news_feed) | **GET** /wi_jobs/news_feeds/{newsFeedId} | Get a news feed
@@ -171,13 +203,27 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_requested_items**](docs/DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items | 
 *WinthropClient::DefaultApi* | [**get_school**](docs/DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
 *WinthropClient::DefaultApi* | [**get_school_alternate_names**](docs/DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names | 
+*WinthropClient::DefaultApi* | [**get_school_group**](docs/DefaultApi.md#get_school_group) | **GET** /api/v1/school_groups/{schoolGroupId} | 
+*WinthropClient::DefaultApi* | [**get_school_group_admin_compensation**](docs/DefaultApi.md#get_school_group_admin_compensation) | **GET** /api/v1/school_groups/{schoolGroupId}/admin_compensation | 
+*WinthropClient::DefaultApi* | [**get_school_group_cashflow_stats**](docs/DefaultApi.md#get_school_group_cashflow_stats) | **GET** /api/v1/school_groups/{schoolGroupId}/cashflow_stats | 
+*WinthropClient::DefaultApi* | [**get_school_group_department_staff**](docs/DefaultApi.md#get_school_group_department_staff) | **GET** /api/v1/school_groups/{schoolGroupId}/department_staff | 
+*WinthropClient::DefaultApi* | [**get_school_group_directors_cup**](docs/DefaultApi.md#get_school_group_directors_cup) | **GET** /api/v1/school_groups/{schoolGroupId}/directors_cup | 
+*WinthropClient::DefaultApi* | [**get_school_group_position_stats**](docs/DefaultApi.md#get_school_group_position_stats) | **GET** /api/v1/school_groups/{schoolGroupId}/position_stats | 
+*WinthropClient::DefaultApi* | [**get_school_group_sport_compensation**](docs/DefaultApi.md#get_school_group_sport_compensation) | **GET** /api/v1/school_groups/{schoolGroupId}/sport_compensation | 
 *WinthropClient::DefaultApi* | [**get_schools**](docs/DefaultApi.md#get_schools) | **GET** /api/v1/schools | 
+*WinthropClient::DefaultApi* | [**get_schools_alma_mater**](docs/DefaultApi.md#get_schools_alma_mater) | **GET** /api/v1/schools/alma_mater | 
 *WinthropClient::DefaultApi* | [**get_season**](docs/DefaultApi.md#get_season) | **GET** /api/v1/seasons/{seasonId} | 
 *WinthropClient::DefaultApi* | [**get_seasons**](docs/DefaultApi.md#get_seasons) | **GET** /api/v1/seasons | 
 *WinthropClient::DefaultApi* | [**get_similar_coaches**](docs/DefaultApi.md#get_similar_coaches) | **GET** /api/v1/coaches/{coachId}/similar_coaches | 
 *WinthropClient::DefaultApi* | [**get_sport**](docs/DefaultApi.md#get_sport) | **GET** /api/v1/sports/{sportId} | 
 *WinthropClient::DefaultApi* | [**get_sports**](docs/DefaultApi.md#get_sports) | **GET** /api/v1/sports | 
 *WinthropClient::DefaultApi* | [**get_subdivision**](docs/DefaultApi.md#get_subdivision) | **GET** /api/v1/subdivisions/{subdivisionId} | 
+*WinthropClient::DefaultApi* | [**get_subdivision_admin_compensation**](docs/DefaultApi.md#get_subdivision_admin_compensation) | **GET** /api/v1/subdivisions/{subdivisionId}/admin_compensation | 
+*WinthropClient::DefaultApi* | [**get_subdivision_cashflow_stats**](docs/DefaultApi.md#get_subdivision_cashflow_stats) | **GET** /api/v1/subdivisions/{subdivisionId}/cashflow_stats | 
+*WinthropClient::DefaultApi* | [**get_subdivision_department_staff**](docs/DefaultApi.md#get_subdivision_department_staff) | **GET** /api/v1/subdivisions/{subdivisionId}/department_staff | 
+*WinthropClient::DefaultApi* | [**get_subdivision_directors_cup**](docs/DefaultApi.md#get_subdivision_directors_cup) | **GET** /api/v1/subdivisions/{subdivisionId}/directors_cup | 
+*WinthropClient::DefaultApi* | [**get_subdivision_position_stats**](docs/DefaultApi.md#get_subdivision_position_stats) | **GET** /api/v1/subdivisions/{subdivisionId}/position_stats | 
+*WinthropClient::DefaultApi* | [**get_subdivision_sport_compensation**](docs/DefaultApi.md#get_subdivision_sport_compensation) | **GET** /api/v1/subdivisions/{subdivisionId}/sport_compensation | 
 *WinthropClient::DefaultApi* | [**get_subdivisions**](docs/DefaultApi.md#get_subdivisions) | **GET** /api/v1/subdivisions | 
 *WinthropClient::DefaultApi* | [**get_subscription**](docs/DefaultApi.md#get_subscription) | **GET** /api/v1/subscriptions/{subscriptionId} | 
 *WinthropClient::DefaultApi* | [**get_subscriptions**](docs/DefaultApi.md#get_subscriptions) | **GET** /api/v1/subscriptions | 
@@ -197,6 +243,8 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**update_compensation**](docs/DefaultApi.md#update_compensation) | **PATCH** /api/v1/compensations/{compensationId} | 
 *WinthropClient::DefaultApi* | [**update_conference**](docs/DefaultApi.md#update_conference) | **PUT** /api/v1/conferences/{conferenceId} | 
 *WinthropClient::DefaultApi* | [**update_conferenceship**](docs/DefaultApi.md#update_conferenceship) | **PUT** /api/v1/conferenceships/{conferenceshipId} | 
+*WinthropClient::DefaultApi* | [**update_favorite**](docs/DefaultApi.md#update_favorite) | **PATCH** /api/v1/favorites/{id} | 
+*WinthropClient::DefaultApi* | [**update_favorites_category**](docs/DefaultApi.md#update_favorites_category) | **PATCH** /api/v1/favorites_categories/{id} | 
 *WinthropClient::DefaultApi* | [**update_foia_label**](docs/DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} | 
 *WinthropClient::DefaultApi* | [**update_foia_request**](docs/DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} | 
 *WinthropClient::DefaultApi* | [**update_job_post**](docs/DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post
@@ -227,8 +275,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [WinthropClient::AdminCompensationSubdivision](docs/AdminCompensationSubdivision.md)
  - [WinthropClient::Administrator](docs/Administrator.md)
  - [WinthropClient::AdministratorCollection](docs/AdministratorCollection.md)
+ - [WinthropClient::AdministratorSearchResultCollection](docs/AdministratorSearchResultCollection.md)
+ - [WinthropClient::AsstCoachEntry](docs/AsstCoachEntry.md)
+ - [WinthropClient::AsstCoachSchool](docs/AsstCoachSchool.md)
  - [WinthropClient::AuditedFinancialReportStatus](docs/AuditedFinancialReportStatus.md)
  - [WinthropClient::AuditedFinancialReportStatusCollection](docs/AuditedFinancialReportStatusCollection.md)
  - [WinthropClient::Avatar](docs/Avatar.md)
@@ -236,36 +288,86 @@ Class | Method | HTTP request | Description
  - [WinthropClient::COLIAdjusted](docs/COLIAdjusted.md)
  - [WinthropClient::Cashflow](docs/Cashflow.md)
  - [WinthropClient::CashflowCollection](docs/CashflowCollection.md)
+ - [WinthropClient::CashflowGroupItem](docs/CashflowGroupItem.md)
+ - [WinthropClient::CashflowGroupStats](docs/CashflowGroupStats.md)
+ - [WinthropClient::CashflowGroupsResponse](docs/CashflowGroupsResponse.md)
+ - [WinthropClient::CashflowSportStat](docs/CashflowSportStat.md)
  - [WinthropClient::Category](docs/Category.md)
  - [WinthropClient::CategoryCollection](docs/CategoryCollection.md)
  - [WinthropClient::Coach](docs/Coach.md)
  - [WinthropClient::CoachCollection](docs/CoachCollection.md)
  - [WinthropClient::CoachCompensation](docs/CoachCompensation.md)
+ - [WinthropClient::CoachCompensationEntry](docs/CoachCompensationEntry.md)
+ - [WinthropClient::CoachCompensationTab](docs/CoachCompensationTab.md)
+ - [WinthropClient::CoachCompensationTabChartData](docs/CoachCompensationTabChartData.md)
+ - [WinthropClient::CoachCompensationTabChartDataConferenceAvgOverTimeInner](docs/CoachCompensationTabChartDataConferenceAvgOverTimeInner.md)
+ - [WinthropClient::CoachCompensationTabChartDataCurrentBreakdown](docs/CoachCompensationTabChartDataCurrentBreakdown.md)
+ - [WinthropClient::CoachCompensationTabChartDataTotalCompOverTimeInner](docs/CoachCompensationTabChartDataTotalCompOverTimeInner.md)
+ - [WinthropClient::CoachCompensationTabComparisons](docs/CoachCompensationTabComparisons.md)
+ - [WinthropClient::CoachCompensationTabCompensationsInner](docs/CoachCompensationTabCompensationsInner.md)
+ - [WinthropClient::CoachCompensationTabSidebar](docs/CoachCompensationTabSidebar.md)
+ - [WinthropClient::CoachCompensationTabSidebarCoachingStaffInner](docs/CoachCompensationTabSidebarCoachingStaffInner.md)
+ - [WinthropClient::CoachCompensationTabSidebarContractsInner](docs/CoachCompensationTabSidebarContractsInner.md)
+ - [WinthropClient::CoachCompensationTabSidebarIncomeReportsInner](docs/CoachCompensationTabSidebarIncomeReportsInner.md)
+ - [WinthropClient::CoachCoworkerHistoryTab](docs/CoachCoworkerHistoryTab.md)
+ - [WinthropClient::CoachPositionEntry](docs/CoachPositionEntry.md)
+ - [WinthropClient::CoachProfile](docs/CoachProfile.md)
+ - [WinthropClient::CoachProfileOverview](docs/CoachProfileOverview.md)
+ - [WinthropClient::CoachRecordTab](docs/CoachRecordTab.md)
  - [WinthropClient::CoachSearchResult](docs/CoachSearchResult.md)
  - [WinthropClient::CoachSearchResultCollection](docs/CoachSearchResultCollection.md)
+ - [WinthropClient::CoachSnapshot](docs/CoachSnapshot.md)
+ - [WinthropClient::CoachVideoEntry](docs/CoachVideoEntry.md)
+ - [WinthropClient::CoachVideosTab](docs/CoachVideosTab.md)
+ - [WinthropClient::ColiData](docs/ColiData.md)
+ - [WinthropClient::CompStats](docs/CompStats.md)
  - [WinthropClient::CompareColi404Response](docs/CompareColi404Response.md)
  - [WinthropClient::CompareColi422Response](docs/CompareColi422Response.md)
+ - [WinthropClient::ComparisonSection](docs/ComparisonSection.md)
+ - [WinthropClient::ComparisonSectionCoachesInner](docs/ComparisonSectionCoachesInner.md)
  - [WinthropClient::Compensation](docs/Compensation.md)
  - [WinthropClient::CompensationCollection](docs/CompensationCollection.md)
+ - [WinthropClient::CompensationRow](docs/CompensationRow.md)
  - [WinthropClient::Conference](docs/Conference.md)
+ - [WinthropClient::ConferenceAdminCompensationResponse](docs/ConferenceAdminCompensationResponse.md)
+ - [WinthropClient::ConferenceCashflowStatsResponse](docs/ConferenceCashflowStatsResponse.md)
  - [WinthropClient::ConferenceCollection](docs/ConferenceCollection.md)
+ - [WinthropClient::ConferenceDepartmentStaffResponse](docs/ConferenceDepartmentStaffResponse.md)
+ - [WinthropClient::ConferenceDirectorsCupResponse](docs/ConferenceDirectorsCupResponse.md)
+ - [WinthropClient::ConferencePositionEntry](docs/ConferencePositionEntry.md)
+ - [WinthropClient::ConferencePositionStatsResponse](docs/ConferencePositionStatsResponse.md)
  - [WinthropClient::Conferenceship](docs/Conferenceship.md)
  - [WinthropClient::ConferenceshipCollection](docs/ConferenceshipCollection.md)
  - [WinthropClient::Contact](docs/Contact.md)
  - [WinthropClient::ContactCollection](docs/ContactCollection.md)
  - [WinthropClient::Contract](docs/Contract.md)
  - [WinthropClient::ContractCollection](docs/ContractCollection.md)
+ - [WinthropClient::CoworkerEntry](docs/CoworkerEntry.md)
+ - [WinthropClient::CoworkerTenure](docs/CoworkerTenure.md)
+ - [WinthropClient::CreateFavorite201Response](docs/CreateFavorite201Response.md)
+ - [WinthropClient::CreateFavoriteRequest](docs/CreateFavoriteRequest.md)
+ - [WinthropClient::CreateFavoritesCategoryRequest](docs/CreateFavoritesCategoryRequest.md)
  - [WinthropClient::Deal](docs/Deal.md)
  - [WinthropClient::DealCollection](docs/DealCollection.md)
+ - [WinthropClient::DealDetail](docs/DealDetail.md)
+ - [WinthropClient::DealDetailVendor](docs/DealDetailVendor.md)
  - [WinthropClient::DealSearchResult](docs/DealSearchResult.md)
  - [WinthropClient::DealSearchResultCollection](docs/DealSearchResultCollection.md)
  - [WinthropClient::DealStatus](docs/DealStatus.md)
  - [WinthropClient::DealStatusCollection](docs/DealStatusCollection.md)
+ - [WinthropClient::DeleteFavorite200Response](docs/DeleteFavorite200Response.md)
  - [WinthropClient::DepartmentSearchResult](docs/DepartmentSearchResult.md)
  - [WinthropClient::DepartmentSearchResultCollection](docs/DepartmentSearchResultCollection.md)
+ - [WinthropClient::DepartmentSearchResultDepartment](docs/DepartmentSearchResultDepartment.md)
+ - [WinthropClient::DepartmentSearchResultDepartmentDealsInner](docs/DepartmentSearchResultDepartmentDealsInner.md)
+ - [WinthropClient::DepartmentSearchResultSportsInner](docs/DepartmentSearchResultSportsInner.md)
+ - [WinthropClient::DepartmentStaffMember](docs/DepartmentStaffMember.md)
+ - [WinthropClient::DepartmentStaffSchool](docs/DepartmentStaffSchool.md)
+ - [WinthropClient::DirectorsCupSchool](docs/DirectorsCupSchool.md)
  - [WinthropClient::Division](docs/Division.md)
  - [WinthropClient::DivisionCollection](docs/DivisionCollection.md)
  - [WinthropClient::DossierReportResponse](docs/DossierReportResponse.md)
+ - [WinthropClient::FilterPositionType](docs/FilterPositionType.md)
  - [WinthropClient::Filters](docs/Filters.md)
  - [WinthropClient::FinancialQc](docs/FinancialQc.md)
  - [WinthropClient::FinancialSearchResult](docs/FinancialSearchResult.md)
@@ -283,13 +385,22 @@ Class | Method | HTTP request | Description
  - [WinthropClient::GameContractCollection](docs/GameContractCollection.md)
  - [WinthropClient::GamePost](docs/GamePost.md)
  - [WinthropClient::GamePostCollection](docs/GamePostCollection.md)
+ - [WinthropClient::GamePostSearchResult](docs/GamePostSearchResult.md)
+ - [WinthropClient::GamePostSearchResultCollection](docs/GamePostSearchResultCollection.md)
  - [WinthropClient::GameType](docs/GameType.md)
+ - [WinthropClient::GeoRegion](docs/GeoRegion.md)
+ - [WinthropClient::GetFavorites200ResponseInner](docs/GetFavorites200ResponseInner.md)
+ - [WinthropClient::GetFavoritesCategories200ResponseInner](docs/GetFavoritesCategories200ResponseInner.md)
+ - [WinthropClient::GetFilterOptions200Response](docs/GetFilterOptions200Response.md)
+ - [WinthropClient::GetLadFilterOptions200Response](docs/GetLadFilterOptions200Response.md)
+ - [WinthropClient::GetLadFilterOptions200ResponsePositionTypesInner](docs/GetLadFilterOptions200ResponsePositionTypesInner.md)
  - [WinthropClient::GetSchoolAlternateNames200Response](docs/GetSchoolAlternateNames200Response.md)
  - [WinthropClient::GetSchoolAlternateNames404Response](docs/GetSchoolAlternateNames404Response.md)
  - [WinthropClient::GetWireChanges200Response](docs/GetWireChanges200Response.md)
  - [WinthropClient::HTTPValidationError](docs/HTTPValidationError.md)
  - [WinthropClient::HealthCheckFailure](docs/HealthCheckFailure.md)
  - [WinthropClient::HealthCheckSuccess](docs/HealthCheckSuccess.md)
+ - [WinthropClient::IdName](docs/IdName.md)
  - [WinthropClient::IncomeReport](docs/IncomeReport.md)
  - [WinthropClient::IncomeReportCollection](docs/IncomeReportCollection.md)
  - [WinthropClient::Job](docs/Job.md)
@@ -310,25 +421,40 @@ Class | Method | HTTP request | Description
  - [WinthropClient::NcaaFinancialReportStatusCollection](docs/NcaaFinancialReportStatusCollection.md)
  - [WinthropClient::NewsFeed](docs/NewsFeed.md)
  - [WinthropClient::NewsFeedCollection](docs/NewsFeedCollection.md)
+ - [WinthropClient::PerformanceChartCoach](docs/PerformanceChartCoach.md)
+ - [WinthropClient::PerformanceChartData](docs/PerformanceChartData.md)
+ - [WinthropClient::PerformanceChartRecord](docs/PerformanceChartRecord.md)
  - [WinthropClient::Position](docs/Position.md)
  - [WinthropClient::PositionCollection](docs/PositionCollection.md)
+ - [WinthropClient::PositionSportStat](docs/PositionSportStat.md)
  - [WinthropClient::PositionType](docs/PositionType.md)
  - [WinthropClient::PositionTypeGroup](docs/PositionTypeGroup.md)
  - [WinthropClient::PredictBody](docs/PredictBody.md)
  - [WinthropClient::PredictFailure](docs/PredictFailure.md)
  - [WinthropClient::PredictSuccess](docs/PredictSuccess.md)
+ - [WinthropClient::QuartileRow](docs/QuartileRow.md)
+ - [WinthropClient::QuartilesData](docs/QuartilesData.md)
  - [WinthropClient::RawContract](docs/RawContract.md)
  - [WinthropClient::RawContractCollection](docs/RawContractCollection.md)
+ - [WinthropClient::RecordPositionEntry](docs/RecordPositionEntry.md)
  - [WinthropClient::RequestedItem](docs/RequestedItem.md)
  - [WinthropClient::RequestedItemCollection](docs/RequestedItemCollection.md)
  - [WinthropClient::School](docs/School.md)
  - [WinthropClient::SchoolCollection](docs/SchoolCollection.md)
+ - [WinthropClient::SchoolGroupShow](docs/SchoolGroupShow.md)
+ - [WinthropClient::SchoolNoComp](docs/SchoolNoComp.md)
+ - [WinthropClient::SchoolNoSeason](docs/SchoolNoSeason.md)
  - [WinthropClient::Scraper](docs/Scraper.md)
  - [WinthropClient::ScraperArgDef](docs/ScraperArgDef.md)
  - [WinthropClient::Season](docs/Season.md)
  - [WinthropClient::SeasonCollection](docs/SeasonCollection.md)
+ - [WinthropClient::SnapshotIncomeReport](docs/SnapshotIncomeReport.md)
  - [WinthropClient::Sport](docs/Sport.md)
  - [WinthropClient::SportCollection](docs/SportCollection.md)
+ - [WinthropClient::SportCompensationRankings](docs/SportCompensationRankings.md)
+ - [WinthropClient::SportCompensationRankingsSchoolsInner](docs/SportCompensationRankingsSchoolsInner.md)
+ - [WinthropClient::SportCompensationResponse](docs/SportCompensationResponse.md)
+ - [WinthropClient::SportCompensationSubdivision](docs/SportCompensationSubdivision.md)
  - [WinthropClient::Subdivision](docs/Subdivision.md)
  - [WinthropClient::SubdivisionCollection](docs/SubdivisionCollection.md)
  - [WinthropClient::Subscription](docs/Subscription.md)
@@ -337,16 +463,20 @@ Class | Method | HTTP request | Description
  - [WinthropClient::Tag](docs/Tag.md)
  - [WinthropClient::UnauthorizedError](docs/UnauthorizedError.md)
  - [WinthropClient::UnprocessableEntity](docs/UnprocessableEntity.md)
+ - [WinthropClient::UpdateFavoriteRequest](docs/UpdateFavoriteRequest.md)
+ - [WinthropClient::UpdateFavoritesCategoryRequest](docs/UpdateFavoritesCategoryRequest.md)
  - [WinthropClient::User](docs/User.md)
  - [WinthropClient::UserActivitySummary](docs/UserActivitySummary.md)
  - [WinthropClient::UserActivitySummaryCollection](docs/UserActivitySummaryCollection.md)
  - [WinthropClient::UserCollection](docs/UserCollection.md)
  - [WinthropClient::UserRequest](docs/UserRequest.md)
  - [WinthropClient::UserRequestCollection](docs/UserRequestCollection.md)
+ - [WinthropClient::UserScheduleSportsInner](docs/UserScheduleSportsInner.md)
  - [WinthropClient::ValidationError](docs/ValidationError.md)
  - [WinthropClient::Vendor](docs/Vendor.md)
  - [WinthropClient::VendorCollection](docs/VendorCollection.md)
  - [WinthropClient::VerifyUserIntercollegiateAccess200Response](docs/VerifyUserIntercollegiateAccess200Response.md)
+ - [WinthropClient::VideoEntry](docs/VideoEntry.md)
  - [WinthropClient::WireChange](docs/WireChange.md)
  - [WinthropClient::WireChangeCoach](docs/WireChangeCoach.md)
  - [WinthropClient::WireChangeSchool](docs/WireChangeSchool.md)

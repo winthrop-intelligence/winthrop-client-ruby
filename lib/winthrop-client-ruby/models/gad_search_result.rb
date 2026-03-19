@@ -61,7 +61,9 @@ module WinthropClient
 
     attr_accessor :belongs_to_series
 
-    attr_accessor :can_manage
+    attr_accessor :can_link_home_school
+
+    attr_accessor :can_link_away_school
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -89,7 +91,8 @@ module WinthropClient
         :'game_date_tbd' => :'game_date_tbd',
         :'raw_contract_id' => :'raw_contract_id',
         :'belongs_to_series' => :'belongs_to_series',
-        :'can_manage' => :'can_manage'
+        :'can_link_home_school' => :'can_link_home_school',
+        :'can_link_away_school' => :'can_link_away_school'
       }
     end
 
@@ -129,7 +132,8 @@ module WinthropClient
         :'game_date_tbd' => :'Boolean',
         :'raw_contract_id' => :'Integer',
         :'belongs_to_series' => :'Boolean',
-        :'can_manage' => :'Boolean'
+        :'can_link_home_school' => :'Boolean',
+        :'can_link_away_school' => :'Boolean'
       }
     end
 
@@ -268,8 +272,12 @@ module WinthropClient
         self.belongs_to_series = attributes[:'belongs_to_series']
       end
 
-      if attributes.key?(:'can_manage')
-        self.can_manage = attributes[:'can_manage']
+      if attributes.key?(:'can_link_home_school')
+        self.can_link_home_school = attributes[:'can_link_home_school']
+      end
+
+      if attributes.key?(:'can_link_away_school')
+        self.can_link_away_school = attributes[:'can_link_away_school']
       end
     end
 
@@ -316,7 +324,8 @@ module WinthropClient
           game_date_tbd == o.game_date_tbd &&
           raw_contract_id == o.raw_contract_id &&
           belongs_to_series == o.belongs_to_series &&
-          can_manage == o.can_manage
+          can_link_home_school == o.can_link_home_school &&
+          can_link_away_school == o.can_link_away_school
     end
 
     # @see the `==` method
@@ -328,7 +337,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [game_contract_id, sport_id, sport_name, sport_gender_code_class, home_school_id, home_school_name, home_school_short_name, home_school_logo_url, away_school_id, away_school_name, away_school_short_name, away_school_logo_url, game_type, comp_cents, comp_tbd, variable, cancel_fee_cents, cancelled, season_year, game_date, game_date_tbd, raw_contract_id, belongs_to_series, can_manage].hash
+      [game_contract_id, sport_id, sport_name, sport_gender_code_class, home_school_id, home_school_name, home_school_short_name, home_school_logo_url, away_school_id, away_school_name, away_school_short_name, away_school_logo_url, game_type, comp_cents, comp_tbd, variable, cancel_fee_cents, cancelled, season_year, game_date, game_date_tbd, raw_contract_id, belongs_to_series, can_link_home_school, can_link_away_school].hash
     end
 
     # Builds the object from hash
