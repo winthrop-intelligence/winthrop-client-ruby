@@ -14,8 +14,8 @@ module WinthropClient
       attr_accessor :client_id, :client_secret, :host
 
       def access_token(scopes: nil)
-        @scopes = scopes
-        if @token.nil? || Time.now >= @expires_at
+        if @token.nil? || Time.now >= @expires_at || Array(scopes).sort != Array(@scopes).sort
+          @scopes = scopes
           generate_access_token
         else
           @token
