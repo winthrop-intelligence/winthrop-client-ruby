@@ -7,6 +7,9 @@ describe WinthropClient::RefreshToken do
     described_class.client_id = "test_client_id"
     described_class.client_secret = "test_client_secret"
     described_class.host = "https://some-url.com/token"
+    described_class.instance_variable_set(:@token, nil)
+    described_class.instance_variable_set(:@expires_at, nil)
+    described_class.instance_variable_set(:@scopes, nil)
   end
 
   describe ".access_token" do
@@ -38,6 +41,37 @@ describe WinthropClient::RefreshToken do
       it "requests a new token" do
         expect(described_class.access_token).not_to eq("old_token")
         expect(described_class.access_token).to eq("new_access_token")
+      end
+    end
+
+    context "when scopes are provided" do
+      before do
+        stub_request(:post, "https://some-url.com/token").
+          to_return(body: '{"access_token": "scoped_token", "expires_in": 3600}', status: 200)
+      end
+
+      it "includes the scope in the token request body" do
+        token = described_class.access_token(scopes: ['read', 'write'])
+        expect(token).to eq('scoped_token')
+        expect(
+          a_request(:post, "https://some-url.com/token").
+            with(body: hash_including('scope' => 'read write'))
+        ).to have_been_made
+      end
+    end
+
+    context "when a cached token exists but different scopes are requested" do
+      before do
+        described_class.instance_variable_set(:@token, "cached_token")
+        described_class.instance_variable_set(:@expires_at, Time.now + 3600)
+        described_class.instance_variable_set(:@scopes, ['read'])
+        stub_request(:post, "https://some-url.com/token").
+          to_return(body: '{"access_token": "new_scoped_token", "expires_in": 3600}', status: 200)
+      end
+
+      it "requests a new token instead of returning the cached one" do
+        token = described_class.access_token(scopes: ['write'])
+        expect(token).to eq('new_scoped_token')
       end
     end
   end
