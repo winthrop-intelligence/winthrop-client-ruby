@@ -70,7 +70,7 @@ module WinthropClient
           when String
             scopes.split
           when Array
-            scopes.map(&:to_s).reject(&:empty?)
+            scopes.map { |s| s.to_s.strip }.reject(&:empty?)
           else
             []
           end
