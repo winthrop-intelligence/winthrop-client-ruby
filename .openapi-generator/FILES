@@ -453,16 +453,5 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
-spec/models/game_contract_series_entry_spec.rb
-spec/models/game_contract_series_response_spec.rb
-spec/models/regenerate_raw_contract_pdf200_response_spec.rb
-spec/models/school_contract_entry_spec.rb
-spec/models/school_game_contracts_response_school_spec.rb
-spec/models/school_game_contracts_response_spec.rb
-spec/models/school_sport_season_spec.rb
-spec/models/school_sport_section_spec.rb
-spec/models/school_wl_chart_point_spec.rb
-spec/models/unstract_raw_contract_pdf_text_request_spec.rb
-spec/models/update_game_contract200_response_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

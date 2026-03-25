@@ -22,12 +22,15 @@ module WinthropClient
 
     attr_accessor :group_stub
 
+    attr_accessor :category
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
         :'name' => :'name',
-        :'group_stub' => :'group_stub'
+        :'group_stub' => :'group_stub',
+        :'category' => :'category'
       }
     end
 
@@ -46,13 +49,15 @@ module WinthropClient
       {
         :'id' => :'Integer',
         :'name' => :'String',
-        :'group_stub' => :'Boolean'
+        :'group_stub' => :'Boolean',
+        :'category' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'category'
       ])
     end
 
@@ -86,6 +91,10 @@ module WinthropClient
 
       if attributes.key?(:'group_stub')
         self.group_stub = attributes[:'group_stub']
+      end
+
+      if attributes.key?(:'category')
+        self.category = attributes[:'category']
       end
     end
 
@@ -141,7 +150,8 @@ module WinthropClient
       self.class == o.class &&
           id == o.id &&
           name == o.name &&
-          group_stub == o.group_stub
+          group_stub == o.group_stub &&
+          category == o.category
     end
 
     # @see the `==` method
@@ -153,7 +163,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, group_stub].hash
+      [id, name, group_stub, category].hash
     end
 
     # Builds the object from hash
