@@ -179,6 +179,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_foia_labels**](docs/DefaultApi.md#get_foia_labels) | **GET** /api/v1/foia_labels | 
 *WinthropClient::DefaultApi* | [**get_foia_request**](docs/DefaultApi.md#get_foia_request) | **GET** /api/v1/foia_requests/{foiaRequestId} | 
 *WinthropClient::DefaultApi* | [**get_foia_requests**](docs/DefaultApi.md#get_foia_requests) | **GET** /api/v1/foia_requests | 
+*WinthropClient::DefaultApi* | [**get_gad_search_detail**](docs/DefaultApi.md#get_gad_search_detail) | **GET** /api/v1/gad_searches/{id}/detail | 
 *WinthropClient::DefaultApi* | [**get_gad_searches**](docs/DefaultApi.md#get_gad_searches) | **GET** /api/v1/gad_searches | 
 *WinthropClient::DefaultApi* | [**get_game**](docs/DefaultApi.md#get_game) | **GET** /api/v1/games/{gameId} | 
 *WinthropClient::DefaultApi* | [**get_game_contract**](docs/DefaultApi.md#get_game_contract) | **GET** /api/v1/game_contracts/{game_contractId} | 
@@ -376,6 +377,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::FoiaLabelCollection](docs/FoiaLabelCollection.md)
  - [WinthropClient::FoiaRequest](docs/FoiaRequest.md)
  - [WinthropClient::FoiaRequestCollection](docs/FoiaRequestCollection.md)
+ - [WinthropClient::GadContractDetail](docs/GadContractDetail.md)
  - [WinthropClient::GadSearchResult](docs/GadSearchResult.md)
  - [WinthropClient::GadSearchResultCollection](docs/GadSearchResultCollection.md)
  - [WinthropClient::GadSearchStats](docs/GadSearchStats.md)

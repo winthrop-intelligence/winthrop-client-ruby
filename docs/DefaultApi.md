@@ -92,6 +92,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_foia_labels**](DefaultApi.md#get_foia_labels) | **GET** /api/v1/foia_labels |  |
 | [**get_foia_request**](DefaultApi.md#get_foia_request) | **GET** /api/v1/foia_requests/{foiaRequestId} |  |
 | [**get_foia_requests**](DefaultApi.md#get_foia_requests) | **GET** /api/v1/foia_requests |  |
+| [**get_gad_search_detail**](DefaultApi.md#get_gad_search_detail) | **GET** /api/v1/gad_searches/{id}/detail |  |
 | [**get_gad_searches**](DefaultApi.md#get_gad_searches) | **GET** /api/v1/gad_searches |  |
 | [**get_game**](DefaultApi.md#get_game) | **GET** /api/v1/games/{gameId} |  |
 | [**get_game_contract**](DefaultApi.md#get_game_contract) | **GET** /api/v1/game_contracts/{game_contractId} |  |
@@ -6856,6 +6857,80 @@ end
 ### Return type
 
 [**FoiaRequestCollection**](FoiaRequestCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_gad_search_detail
+
+> <GadContractDetail> get_gad_search_detail(id)
+
+
+
+Retrieve detailed game contract data for the GAD detail page
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_gad_search_detail(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_gad_search_detail: #{e}"
+end
+```
+
+#### Using the get_gad_search_detail_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GadContractDetail>, Integer, Hash)> get_gad_search_detail_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_gad_search_detail_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GadContractDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_gad_search_detail_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**GadContractDetail**](GadContractDetail.md)
 
 ### Authorization
 

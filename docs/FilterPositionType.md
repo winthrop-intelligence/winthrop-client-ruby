@@ -7,7 +7,6 @@
 | **id** | **Integer** |  |  |
 | **name** | **String** |  |  |
 | **group_stub** | **Boolean** |  | [optional] |
-| **category** | **String** |  | [optional] |
 
 ## Example
 
@@ -17,8 +16,7 @@ require 'winthrop-client-ruby'
 instance = WinthropClient::FilterPositionType.new(
   id: null,
   name: null,
-  group_stub: null,
-  category: null
+  group_stub: null
 )
 ```
 

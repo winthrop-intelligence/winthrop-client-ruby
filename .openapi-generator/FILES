@@ -108,6 +108,7 @@ docs/FoiaLabel.md
 docs/FoiaLabelCollection.md
 docs/FoiaRequest.md
 docs/FoiaRequestCollection.md
+docs/GadContractDetail.md
 docs/GadSearchResult.md
 docs/GadSearchResultCollection.md
 docs/GadSearchStats.md
@@ -326,6 +327,7 @@ lib/winthrop-client-ruby/models/foia_label.rb
 lib/winthrop-client-ruby/models/foia_label_collection.rb
 lib/winthrop-client-ruby/models/foia_request.rb
 lib/winthrop-client-ruby/models/foia_request_collection.rb
+lib/winthrop-client-ruby/models/gad_contract_detail.rb
 lib/winthrop-client-ruby/models/gad_search_result.rb
 lib/winthrop-client-ruby/models/gad_search_result_collection.rb
 lib/winthrop-client-ruby/models/gad_search_stats.rb
@@ -429,5 +431,6 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
+spec/models/gad_contract_detail_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

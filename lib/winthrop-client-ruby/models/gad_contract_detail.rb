@@ -14,15 +14,12 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  # A single guarantee/game contract search result
-  class GadSearchResult < ApiModelBase
-    attr_accessor :game_contract_id
+  class GadContractDetail < ApiModelBase
+    attr_accessor :id
 
     attr_accessor :sport_id
 
     attr_accessor :sport_name
-
-    attr_accessor :sport_gender_code_class
 
     attr_accessor :home_school_id
 
@@ -30,19 +27,13 @@ module WinthropClient
 
     attr_accessor :home_school_short_name
 
-    attr_accessor :home_school_logo_url
-
     attr_accessor :away_school_id
 
     attr_accessor :away_school_name
 
     attr_accessor :away_school_short_name
 
-    attr_accessor :away_school_logo_url
-
     attr_accessor :game_type
-
-    attr_accessor :game_type_short
 
     attr_accessor :comp_cents
 
@@ -60,31 +51,33 @@ module WinthropClient
 
     attr_accessor :game_date_tbd
 
+    attr_accessor :signed_on
+
+    attr_accessor :off_site_location
+
     attr_accessor :raw_contract_id
+
+    attr_accessor :has_raw_contract
+
+    attr_accessor :raw_contract_url
 
     attr_accessor :belongs_to_series
 
-    attr_accessor :can_link_home_school
-
-    attr_accessor :can_link_away_school
+    attr_accessor :verified
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'game_contract_id' => :'game_contract_id',
+        :'id' => :'id',
         :'sport_id' => :'sport_id',
         :'sport_name' => :'sport_name',
-        :'sport_gender_code_class' => :'sport_gender_code_class',
         :'home_school_id' => :'home_school_id',
         :'home_school_name' => :'home_school_name',
         :'home_school_short_name' => :'home_school_short_name',
-        :'home_school_logo_url' => :'home_school_logo_url',
         :'away_school_id' => :'away_school_id',
         :'away_school_name' => :'away_school_name',
         :'away_school_short_name' => :'away_school_short_name',
-        :'away_school_logo_url' => :'away_school_logo_url',
         :'game_type' => :'game_type',
-        :'game_type_short' => :'game_type_short',
         :'comp_cents' => :'comp_cents',
         :'comp_tbd' => :'comp_tbd',
         :'variable' => :'variable',
@@ -93,10 +86,13 @@ module WinthropClient
         :'season_year' => :'season_year',
         :'game_date' => :'game_date',
         :'game_date_tbd' => :'game_date_tbd',
+        :'signed_on' => :'signed_on',
+        :'off_site_location' => :'off_site_location',
         :'raw_contract_id' => :'raw_contract_id',
+        :'has_raw_contract' => :'has_raw_contract',
+        :'raw_contract_url' => :'raw_contract_url',
         :'belongs_to_series' => :'belongs_to_series',
-        :'can_link_home_school' => :'can_link_home_school',
-        :'can_link_away_school' => :'can_link_away_school'
+        :'verified' => :'verified'
       }
     end
 
@@ -113,20 +109,16 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'game_contract_id' => :'Integer',
+        :'id' => :'Integer',
         :'sport_id' => :'Integer',
         :'sport_name' => :'String',
-        :'sport_gender_code_class' => :'String',
         :'home_school_id' => :'Integer',
         :'home_school_name' => :'String',
         :'home_school_short_name' => :'String',
-        :'home_school_logo_url' => :'String',
         :'away_school_id' => :'Integer',
         :'away_school_name' => :'String',
         :'away_school_short_name' => :'String',
-        :'away_school_logo_url' => :'String',
         :'game_type' => :'String',
-        :'game_type_short' => :'String',
         :'comp_cents' => :'Integer',
         :'comp_tbd' => :'Boolean',
         :'variable' => :'Boolean',
@@ -134,11 +126,14 @@ module WinthropClient
         :'cancelled' => :'Boolean',
         :'season_year' => :'Integer',
         :'game_date' => :'Date',
-        :'game_date_tbd' => :'Boolean',
+        :'game_date_tbd' => :'String',
+        :'signed_on' => :'Date',
+        :'off_site_location' => :'String',
         :'raw_contract_id' => :'Integer',
+        :'has_raw_contract' => :'Boolean',
+        :'raw_contract_url' => :'String',
         :'belongs_to_series' => :'Boolean',
-        :'can_link_home_school' => :'Boolean',
-        :'can_link_away_school' => :'Boolean'
+        :'verified' => :'Boolean'
       }
     end
 
@@ -147,17 +142,13 @@ module WinthropClient
       Set.new([
         :'sport_id',
         :'sport_name',
-        :'sport_gender_code_class',
         :'home_school_id',
         :'home_school_name',
         :'home_school_short_name',
-        :'home_school_logo_url',
         :'away_school_id',
         :'away_school_name',
         :'away_school_short_name',
-        :'away_school_logo_url',
         :'game_type',
-        :'game_type_short',
         :'comp_cents',
         :'comp_tbd',
         :'variable',
@@ -166,7 +157,11 @@ module WinthropClient
         :'season_year',
         :'game_date',
         :'game_date_tbd',
+        :'signed_on',
+        :'off_site_location',
         :'raw_contract_id',
+        :'raw_contract_url',
+        :'verified'
       ])
     end
 
@@ -174,20 +169,20 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::GadSearchResult` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::GadContractDetail` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::GadSearchResult`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::GadContractDetail`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'game_contract_id')
-        self.game_contract_id = attributes[:'game_contract_id']
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
       end
 
       if attributes.key?(:'sport_id')
@@ -196,10 +191,6 @@ module WinthropClient
 
       if attributes.key?(:'sport_name')
         self.sport_name = attributes[:'sport_name']
-      end
-
-      if attributes.key?(:'sport_gender_code_class')
-        self.sport_gender_code_class = attributes[:'sport_gender_code_class']
       end
 
       if attributes.key?(:'home_school_id')
@@ -214,10 +205,6 @@ module WinthropClient
         self.home_school_short_name = attributes[:'home_school_short_name']
       end
 
-      if attributes.key?(:'home_school_logo_url')
-        self.home_school_logo_url = attributes[:'home_school_logo_url']
-      end
-
       if attributes.key?(:'away_school_id')
         self.away_school_id = attributes[:'away_school_id']
       end
@@ -230,16 +217,8 @@ module WinthropClient
         self.away_school_short_name = attributes[:'away_school_short_name']
       end
 
-      if attributes.key?(:'away_school_logo_url')
-        self.away_school_logo_url = attributes[:'away_school_logo_url']
-      end
-
       if attributes.key?(:'game_type')
         self.game_type = attributes[:'game_type']
-      end
-
-      if attributes.key?(:'game_type_short')
-        self.game_type_short = attributes[:'game_type_short']
       end
 
       if attributes.key?(:'comp_cents')
@@ -274,20 +253,32 @@ module WinthropClient
         self.game_date_tbd = attributes[:'game_date_tbd']
       end
 
+      if attributes.key?(:'signed_on')
+        self.signed_on = attributes[:'signed_on']
+      end
+
+      if attributes.key?(:'off_site_location')
+        self.off_site_location = attributes[:'off_site_location']
+      end
+
       if attributes.key?(:'raw_contract_id')
         self.raw_contract_id = attributes[:'raw_contract_id']
+      end
+
+      if attributes.key?(:'has_raw_contract')
+        self.has_raw_contract = attributes[:'has_raw_contract']
+      end
+
+      if attributes.key?(:'raw_contract_url')
+        self.raw_contract_url = attributes[:'raw_contract_url']
       end
 
       if attributes.key?(:'belongs_to_series')
         self.belongs_to_series = attributes[:'belongs_to_series']
       end
 
-      if attributes.key?(:'can_link_home_school')
-        self.can_link_home_school = attributes[:'can_link_home_school']
-      end
-
-      if attributes.key?(:'can_link_away_school')
-        self.can_link_away_school = attributes[:'can_link_away_school']
+      if attributes.key?(:'verified')
+        self.verified = attributes[:'verified']
       end
     end
 
@@ -311,20 +302,16 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          game_contract_id == o.game_contract_id &&
+          id == o.id &&
           sport_id == o.sport_id &&
           sport_name == o.sport_name &&
-          sport_gender_code_class == o.sport_gender_code_class &&
           home_school_id == o.home_school_id &&
           home_school_name == o.home_school_name &&
           home_school_short_name == o.home_school_short_name &&
-          home_school_logo_url == o.home_school_logo_url &&
           away_school_id == o.away_school_id &&
           away_school_name == o.away_school_name &&
           away_school_short_name == o.away_school_short_name &&
-          away_school_logo_url == o.away_school_logo_url &&
           game_type == o.game_type &&
-          game_type_short == o.game_type_short &&
           comp_cents == o.comp_cents &&
           comp_tbd == o.comp_tbd &&
           variable == o.variable &&
@@ -333,10 +320,13 @@ module WinthropClient
           season_year == o.season_year &&
           game_date == o.game_date &&
           game_date_tbd == o.game_date_tbd &&
+          signed_on == o.signed_on &&
+          off_site_location == o.off_site_location &&
           raw_contract_id == o.raw_contract_id &&
+          has_raw_contract == o.has_raw_contract &&
+          raw_contract_url == o.raw_contract_url &&
           belongs_to_series == o.belongs_to_series &&
-          can_link_home_school == o.can_link_home_school &&
-          can_link_away_school == o.can_link_away_school
+          verified == o.verified
     end
 
     # @see the `==` method
@@ -348,7 +338,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [game_contract_id, sport_id, sport_name, sport_gender_code_class, home_school_id, home_school_name, home_school_short_name, home_school_logo_url, away_school_id, away_school_name, away_school_short_name, away_school_logo_url, game_type, game_type_short, comp_cents, comp_tbd, variable, cancel_fee_cents, cancelled, season_year, game_date, game_date_tbd, raw_contract_id, belongs_to_series, can_link_home_school, can_link_away_school].hash
+      [id, sport_id, sport_name, home_school_id, home_school_name, home_school_short_name, away_school_id, away_school_name, away_school_short_name, game_type, comp_cents, comp_tbd, variable, cancel_fee_cents, cancelled, season_year, game_date, game_date_tbd, signed_on, off_site_location, raw_contract_id, has_raw_contract, raw_contract_url, belongs_to_series, verified].hash
     end
 
     # Builds the object from hash
