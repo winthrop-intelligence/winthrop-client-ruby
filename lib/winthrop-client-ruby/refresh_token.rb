@@ -13,8 +13,9 @@ module WinthropClient
     class << self
       attr_accessor :client_id, :client_secret, :host
 
-      def access_token
-        if @token.nil? || Time.now >= @expires_at
+      def access_token(scopes: nil)
+        if @token.nil? || Time.now >= @expires_at || Array(scopes).sort != Array(@scopes).sort
+          @scopes = scopes
           generate_access_token
         else
           @token
@@ -50,11 +51,29 @@ module WinthropClient
 
         # Returns the parameters required for the token request
         def token_params
-          {
+          params = {}
+          scopes = normalize_scopes(@scopes)
+          params['scope'] = scopes.join(' ') unless scopes.empty?
+          params.merge!(
             grant_type: TOKEN_GRANT_TYPE,
             client_id: client_id,
             client_secret: client_secret
-          }
+          )
+          params
+        end
+
+        # Normalizes scopes to an array of non-blank strings.
+        # Accepts a String (split on whitespace) or an Array (elements cast to String).
+        # Any other value (including nil) is treated as no scopes.
+        def normalize_scopes(scopes)
+          case scopes
+          when String
+            scopes.split
+          when Array
+            scopes.map { |s| s.to_s.strip }.reject(&:empty?)
+          else
+            []
+          end
         end
 
         # Handles the HTTP response and caches the token
