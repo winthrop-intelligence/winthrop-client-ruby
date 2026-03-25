@@ -52,13 +52,28 @@ module WinthropClient
         # Returns the parameters required for the token request
         def token_params
           params = {}
-          params['scope'] = @scopes.join(' ') if @scopes
+          scopes = normalize_scopes(@scopes)
+          params['scope'] = scopes.join(' ') unless scopes.empty?
           params.merge!(
             grant_type: TOKEN_GRANT_TYPE,
             client_id: client_id,
             client_secret: client_secret
           )
           params
+        end
+
+        # Normalizes scopes to an array of non-blank strings.
+        # Accepts a String (split on whitespace) or an Array (elements cast to String).
+        # Any other value (including nil) is treated as no scopes.
+        def normalize_scopes(scopes)
+          case scopes
+          when String
+            scopes.split
+          when Array
+            scopes.map(&:to_s).reject(&:empty?)
+          else
+            []
+          end
         end
 
         # Handles the HTTP response and caches the token
