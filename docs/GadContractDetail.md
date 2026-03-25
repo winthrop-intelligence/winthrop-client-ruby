@@ -27,8 +27,17 @@
 | **raw_contract_id** | **Integer** |  | [optional] |
 | **has_raw_contract** | **Boolean** |  | [optional] |
 | **raw_contract_url** | **String** |  | [optional] |
+| **raw_contract_filename** | **String** |  | [optional] |
 | **belongs_to_series** | **Boolean** |  | [optional] |
 | **verified** | **Boolean** |  | [optional] |
+| **unstract_text_state** | **String** |  | [optional] |
+| **unstract_layout_state** | **String** |  | [optional] |
+| **has_simple_text** | **Boolean** |  | [optional] |
+| **has_layout_text** | **Boolean** |  | [optional] |
+| **simple_text** | **String** |  | [optional] |
+| **layout_preserved_text** | **String** |  | [optional] |
+| **unstract_text_error** | **String** |  | [optional] |
+| **unstract_layout_error** | **String** |  | [optional] |
 
 ## Example
 
@@ -59,8 +68,17 @@ instance = WinthropClient::GadContractDetail.new(
   raw_contract_id: null,
   has_raw_contract: null,
   raw_contract_url: null,
+  raw_contract_filename: null,
   belongs_to_series: null,
-  verified: null
+  verified: null,
+  unstract_text_state: null,
+  unstract_layout_state: null,
+  has_simple_text: null,
+  has_layout_text: null,
+  simple_text: null,
+  layout_preserved_text: null,
+  unstract_text_error: null,
+  unstract_layout_error: null
 )
 ```
 
