@@ -55,4 +55,61 @@ describe WinthropClient::RefreshToken do
       expect(described_class.instance_variable_get(:@expires_at)).to be > Time.now
     end
   end
+
+  describe ".normalize_scopes" do
+    it "returns an empty array for nil" do
+      expect(described_class.send(:normalize_scopes, nil)).to eq([])
+    end
+
+    it "returns an empty array for an empty array" do
+      expect(described_class.send(:normalize_scopes, [])).to eq([])
+    end
+
+    it "returns an empty array for an empty string" do
+      expect(described_class.send(:normalize_scopes, '')).to eq([])
+    end
+
+    it "splits a space-separated string into an array of scopes" do
+      expect(described_class.send(:normalize_scopes, 'read write')).to eq(['read', 'write'])
+    end
+
+    it "passes an array of scopes through unchanged" do
+      expect(described_class.send(:normalize_scopes, ['read', 'write'])).to eq(['read', 'write'])
+    end
+
+    it "drops blank strings from an array" do
+      expect(described_class.send(:normalize_scopes, ['read', '', 'write'])).to eq(['read', 'write'])
+    end
+
+    it "returns an empty array for unrecognized types" do
+      expect(described_class.send(:normalize_scopes, 42)).to eq([])
+    end
+  end
+
+  describe ".token_params (scope handling)" do
+    it "omits scope when scopes is nil" do
+      described_class.instance_variable_set(:@scopes, nil)
+      expect(described_class.send(:token_params)).not_to have_key('scope')
+    end
+
+    it "omits scope when scopes is an empty array" do
+      described_class.instance_variable_set(:@scopes, [])
+      expect(described_class.send(:token_params)).not_to have_key('scope')
+    end
+
+    it "omits scope when scopes is an empty string" do
+      described_class.instance_variable_set(:@scopes, '')
+      expect(described_class.send(:token_params)).not_to have_key('scope')
+    end
+
+    it "includes scope as a space-joined string when given an array" do
+      described_class.instance_variable_set(:@scopes, ['read', 'write'])
+      expect(described_class.send(:token_params)['scope']).to eq('read write')
+    end
+
+    it "includes scope when given a space-separated string" do
+      described_class.instance_variable_set(:@scopes, 'read write')
+      expect(described_class.send(:token_params)['scope']).to eq('read write')
+    end
+  end
 end
