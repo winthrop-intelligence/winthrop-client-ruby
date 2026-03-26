@@ -17,6 +17,7 @@
 | **start_year** | **Integer** |  | [optional] |
 | **end_year** | **Integer** |  | [optional] |
 | **start_at** | **Time** |  | [optional] |
+| **end_at** | **Time** |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **summary** | **String** |  | [optional] |
 | **autorenew** | **Boolean** |  | [optional] |
@@ -43,6 +44,7 @@ instance = WinthropClient::DealSearchResult.new(
   start_year: null,
   end_year: null,
   start_at: null,
+  end_at: null,
   created_at: null,
   summary: null,
   autorenew: null,

@@ -17,7 +17,6 @@
 | **away_school_short_name** | **String** |  | [optional] |
 | **away_school_logo_url** | **String** |  | [optional] |
 | **game_type** | **String** |  | [optional] |
-| **game_type_short** | **String** |  | [optional] |
 | **comp_cents** | **Integer** |  | [optional] |
 | **comp_tbd** | **Boolean** |  | [optional] |
 | **variable** | **Boolean** |  | [optional] |
@@ -50,7 +49,6 @@ instance = WinthropClient::GadSearchResult.new(
   away_school_short_name: null,
   away_school_logo_url: null,
   game_type: null,
-  game_type_short: null,
   comp_cents: null,
   comp_tbd: null,
   variable: null,

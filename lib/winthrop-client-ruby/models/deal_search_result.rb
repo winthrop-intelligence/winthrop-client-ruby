@@ -41,6 +41,8 @@ module WinthropClient
 
     attr_accessor :start_at
 
+    attr_accessor :end_at
+
     attr_accessor :created_at
 
     attr_accessor :summary
@@ -69,6 +71,7 @@ module WinthropClient
         :'start_year' => :'start_year',
         :'end_year' => :'end_year',
         :'start_at' => :'start_at',
+        :'end_at' => :'end_at',
         :'created_at' => :'created_at',
         :'summary' => :'summary',
         :'autorenew' => :'autorenew',
@@ -104,6 +107,7 @@ module WinthropClient
         :'start_year' => :'Integer',
         :'end_year' => :'Integer',
         :'start_at' => :'Time',
+        :'end_at' => :'Time',
         :'created_at' => :'Time',
         :'summary' => :'String',
         :'autorenew' => :'Boolean',
@@ -125,6 +129,7 @@ module WinthropClient
         :'start_year',
         :'end_year',
         :'start_at',
+        :'end_at',
         :'created_at',
         :'summary',
         :'autorenew',
@@ -202,6 +207,10 @@ module WinthropClient
         self.start_at = attributes[:'start_at']
       end
 
+      if attributes.key?(:'end_at')
+        self.end_at = attributes[:'end_at']
+      end
+
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
@@ -262,6 +271,7 @@ module WinthropClient
           start_year == o.start_year &&
           end_year == o.end_year &&
           start_at == o.start_at &&
+          end_at == o.end_at &&
           created_at == o.created_at &&
           summary == o.summary &&
           autorenew == o.autorenew &&
@@ -279,7 +289,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, deal_id, school_id, school_name, conference_name, conference_id, division_id, deal_type_name, deal_type_id, vendor_names, start_year, end_year, start_at, created_at, summary, autorenew, archived, vendors, deal_detail].hash
+      [id, deal_id, school_id, school_name, conference_name, conference_id, division_id, deal_type_name, deal_type_id, vendor_names, start_year, end_year, start_at, end_at, created_at, summary, autorenew, archived, vendors, deal_detail].hash
     end
 
     # Builds the object from hash
