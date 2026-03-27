@@ -77,6 +77,8 @@ docs/CoworkerTenure.md
 docs/CreateFavorite201Response.md
 docs/CreateFavoriteRequest.md
 docs/CreateFavoritesCategoryRequest.md
+docs/CreateGamePostSearchRequest.md
+docs/CreateGamePostSearchRequestGamePost.md
 docs/Deal.md
 docs/DealCollection.md
 docs/DealDetail.md
@@ -303,6 +305,8 @@ lib/winthrop-client-ruby/models/coworker_tenure.rb
 lib/winthrop-client-ruby/models/create_favorite201_response.rb
 lib/winthrop-client-ruby/models/create_favorite_request.rb
 lib/winthrop-client-ruby/models/create_favorites_category_request.rb
+lib/winthrop-client-ruby/models/create_game_post_search_request.rb
+lib/winthrop-client-ruby/models/create_game_post_search_request_game_post.rb
 lib/winthrop-client-ruby/models/deal.rb
 lib/winthrop-client-ruby/models/deal_collection.rb
 lib/winthrop-client-ruby/models/deal_detail.rb
@@ -441,11 +445,7 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
-spec/models/delete_game_post_search200_response_spec.rb
-spec/models/game_post_contact_spec.rb
-spec/models/game_post_detail_created_by_spec.rb
-spec/models/game_post_detail_spec.rb
-spec/models/update_game_post_search_request_game_post_spec.rb
-spec/models/update_game_post_search_request_spec.rb
+spec/models/create_game_post_search_request_game_post_spec.rb
+spec/models/create_game_post_search_request_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

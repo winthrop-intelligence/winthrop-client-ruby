@@ -17,6 +17,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**create_favorites_category**](DefaultApi.md#create_favorites_category) | **POST** /api/v1/favorites_categories |  |
 | [**create_foia_label**](DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels |  |
 | [**create_foia_request**](DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests |  |
+| [**create_game_post_search**](DefaultApi.md#create_game_post_search) | **POST** /api/v1/game_post_searches |  |
 | [**create_job_post**](DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post |
 | [**create_position**](DefaultApi.md#create_position) | **POST** /api/v1/positions |  |
 | [**create_requested_item**](DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items |  |
@@ -1156,6 +1157,80 @@ end
 ### Return type
 
 [**FoiaRequest**](FoiaRequest.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_game_post_search
+
+> <GamePostDetail> create_game_post_search(create_game_post_search_request)
+
+
+
+Create a new game post
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_game_post_search_request = WinthropClient::CreateGamePostSearchRequest.new({game_post: WinthropClient::CreateGamePostSearchRequestGamePost.new({sport_id: 37, start_date: Date.today})}) # CreateGamePostSearchRequest | 
+
+begin
+  
+  result = api_instance.create_game_post_search(create_game_post_search_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_game_post_search: #{e}"
+end
+```
+
+#### Using the create_game_post_search_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GamePostDetail>, Integer, Hash)> create_game_post_search_with_http_info(create_game_post_search_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_game_post_search_with_http_info(create_game_post_search_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GamePostDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_game_post_search_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_game_post_search_request** | [**CreateGamePostSearchRequest**](CreateGamePostSearchRequest.md) |  |  |
+
+### Return type
+
+[**GamePostDetail**](GamePostDetail.md)
 
 ### Authorization
 
@@ -12255,11 +12330,11 @@ end
 
 ## update_game_post_search
 
-> <DeleteGamePostSearch200Response> update_game_post_search(game_post_search_id, opts)
+> <GamePostDetail> update_game_post_search(game_post_search_id, opts)
 
 
 
-Update a game post (e.g. expire or renew)
+Update a game post. Accepts status/expires_on for expire/renew, or full form fields for editing.
 
 ### Examples
 
@@ -12296,7 +12371,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<DeleteGamePostSearch200Response>, Integer, Hash)> update_game_post_search_with_http_info(game_post_search_id, opts)
+> <Array(<GamePostDetail>, Integer, Hash)> update_game_post_search_with_http_info(game_post_search_id, opts)
 
 ```ruby
 begin
@@ -12304,7 +12379,7 @@ begin
   data, status_code, headers = api_instance.update_game_post_search_with_http_info(game_post_search_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <DeleteGamePostSearch200Response>
+  p data # => <GamePostDetail>
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->update_game_post_search_with_http_info: #{e}"
 end
@@ -12319,7 +12394,7 @@ end
 
 ### Return type
 
-[**DeleteGamePostSearch200Response**](DeleteGamePostSearch200Response.md)
+[**GamePostDetail**](GamePostDetail.md)
 
 ### Authorization
 

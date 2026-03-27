@@ -1,13 +1,11 @@
-# WinthropClient::UpdateGamePostSearchRequestGamePost
+# WinthropClient::CreateGamePostSearchRequestGamePost
 
 ## Properties
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **status** | **String** |  | [optional] |
-| **expires_on** | **Date** |  | [optional] |
-| **sport_id** | **Integer** |  | [optional] |
-| **start_date** | **Date** |  | [optional] |
+| **sport_id** | **Integer** |  |  |
+| **start_date** | **Date** |  |  |
 | **end_date** | **Date** |  | [optional] |
 | **description** | **String** |  | [optional] |
 | **game_type_ids** | **Array&lt;Integer&gt;** |  | [optional] |
@@ -17,9 +15,7 @@
 ```ruby
 require 'winthrop-client-ruby'
 
-instance = WinthropClient::UpdateGamePostSearchRequestGamePost.new(
-  status: null,
-  expires_on: null,
+instance = WinthropClient::CreateGamePostSearchRequestGamePost.new(
   sport_id: null,
   start_date: null,
   end_date: null,

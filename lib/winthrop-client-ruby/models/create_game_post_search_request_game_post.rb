@@ -14,11 +14,7 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class UpdateGamePostSearchRequestGamePost < ApiModelBase
-    attr_accessor :status
-
-    attr_accessor :expires_on
-
+  class CreateGamePostSearchRequestGamePost < ApiModelBase
     attr_accessor :sport_id
 
     attr_accessor :start_date
@@ -29,33 +25,9 @@ module WinthropClient
 
     attr_accessor :game_type_ids
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'status' => :'status',
-        :'expires_on' => :'expires_on',
         :'sport_id' => :'sport_id',
         :'start_date' => :'start_date',
         :'end_date' => :'end_date',
@@ -77,8 +49,6 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'status' => :'String',
-        :'expires_on' => :'Date',
         :'sport_id' => :'Integer',
         :'start_date' => :'Date',
         :'end_date' => :'Date',
@@ -98,32 +68,28 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::UpdateGamePostSearchRequestGamePost` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::CreateGamePostSearchRequestGamePost` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::UpdateGamePostSearchRequestGamePost`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::CreateGamePostSearchRequestGamePost`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'status')
-        self.status = attributes[:'status']
-      end
-
-      if attributes.key?(:'expires_on')
-        self.expires_on = attributes[:'expires_on']
-      end
-
       if attributes.key?(:'sport_id')
         self.sport_id = attributes[:'sport_id']
+      else
+        self.sport_id = nil
       end
 
       if attributes.key?(:'start_date')
         self.start_date = attributes[:'start_date']
+      else
+        self.start_date = nil
       end
 
       if attributes.key?(:'end_date')
@@ -146,6 +112,14 @@ module WinthropClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @sport_id.nil?
+        invalid_properties.push('invalid value for "sport_id", sport_id cannot be nil.')
+      end
+
+      if @start_date.nil?
+        invalid_properties.push('invalid value for "start_date", start_date cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -153,19 +127,29 @@ module WinthropClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      status_validator = EnumAttributeValidator.new('String', ["Active", "Inactive"])
-      return false unless status_validator.valid?(@status)
+      return false if @sport_id.nil?
+      return false if @start_date.nil?
       true
     end
 
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] status Object to be assigned
-    def status=(status)
-      validator = EnumAttributeValidator.new('String', ["Active", "Inactive"])
-      unless validator.valid?(status)
-        fail ArgumentError, "invalid value for \"status\", must be one of #{validator.allowable_values}."
+    # Custom attribute writer method with validation
+    # @param [Object] sport_id Value to be assigned
+    def sport_id=(sport_id)
+      if sport_id.nil?
+        fail ArgumentError, 'sport_id cannot be nil'
       end
-      @status = status
+
+      @sport_id = sport_id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] start_date Value to be assigned
+    def start_date=(start_date)
+      if start_date.nil?
+        fail ArgumentError, 'start_date cannot be nil'
+      end
+
+      @start_date = start_date
     end
 
     # Checks equality by comparing each attribute.
@@ -173,8 +157,6 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          status == o.status &&
-          expires_on == o.expires_on &&
           sport_id == o.sport_id &&
           start_date == o.start_date &&
           end_date == o.end_date &&
@@ -191,7 +173,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [status, expires_on, sport_id, start_date, end_date, description, game_type_ids].hash
+      [sport_id, start_date, end_date, description, game_type_ids].hash
     end
 
     # Builds the object from hash
