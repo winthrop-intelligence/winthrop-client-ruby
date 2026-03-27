@@ -87,6 +87,7 @@ docs/DealStatus.md
 docs/DealStatusCollection.md
 docs/DefaultApi.md
 docs/DeleteFavorite200Response.md
+docs/DeleteGamePostSearch200Response.md
 docs/DepartmentSearchResult.md
 docs/DepartmentSearchResultCollection.md
 docs/DepartmentSearchResultDepartment.md
@@ -117,6 +118,9 @@ docs/GameContract.md
 docs/GameContractCollection.md
 docs/GamePost.md
 docs/GamePostCollection.md
+docs/GamePostContact.md
+docs/GamePostDetail.md
+docs/GamePostDetailCreatedBy.md
 docs/GamePostSearchResult.md
 docs/GamePostSearchResultCollection.md
 docs/GameType.md
@@ -199,6 +203,8 @@ docs/UnauthorizedError.md
 docs/UnprocessableEntity.md
 docs/UpdateFavoriteRequest.md
 docs/UpdateFavoritesCategoryRequest.md
+docs/UpdateGamePostSearchRequest.md
+docs/UpdateGamePostSearchRequestGamePost.md
 docs/User.md
 docs/UserActivitySummary.md
 docs/UserActivitySummaryCollection.md
@@ -306,6 +312,7 @@ lib/winthrop-client-ruby/models/deal_search_result_collection.rb
 lib/winthrop-client-ruby/models/deal_status.rb
 lib/winthrop-client-ruby/models/deal_status_collection.rb
 lib/winthrop-client-ruby/models/delete_favorite200_response.rb
+lib/winthrop-client-ruby/models/delete_game_post_search200_response.rb
 lib/winthrop-client-ruby/models/department_search_result.rb
 lib/winthrop-client-ruby/models/department_search_result_collection.rb
 lib/winthrop-client-ruby/models/department_search_result_department.rb
@@ -335,6 +342,9 @@ lib/winthrop-client-ruby/models/game_contract.rb
 lib/winthrop-client-ruby/models/game_contract_collection.rb
 lib/winthrop-client-ruby/models/game_post.rb
 lib/winthrop-client-ruby/models/game_post_collection.rb
+lib/winthrop-client-ruby/models/game_post_contact.rb
+lib/winthrop-client-ruby/models/game_post_detail.rb
+lib/winthrop-client-ruby/models/game_post_detail_created_by.rb
 lib/winthrop-client-ruby/models/game_post_search_result.rb
 lib/winthrop-client-ruby/models/game_post_search_result_collection.rb
 lib/winthrop-client-ruby/models/game_type.rb
@@ -413,6 +423,8 @@ lib/winthrop-client-ruby/models/unauthorized_error.rb
 lib/winthrop-client-ruby/models/unprocessable_entity.rb
 lib/winthrop-client-ruby/models/update_favorite_request.rb
 lib/winthrop-client-ruby/models/update_favorites_category_request.rb
+lib/winthrop-client-ruby/models/update_game_post_search_request.rb
+lib/winthrop-client-ruby/models/update_game_post_search_request_game_post.rb
 lib/winthrop-client-ruby/models/user.rb
 lib/winthrop-client-ruby/models/user_activity_summary.rb
 lib/winthrop-client-ruby/models/user_activity_summary_collection.rb
@@ -429,5 +441,11 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
+spec/models/delete_game_post_search200_response_spec.rb
+spec/models/game_post_contact_spec.rb
+spec/models/game_post_detail_created_by_spec.rb
+spec/models/game_post_detail_spec.rb
+spec/models/update_game_post_search_request_game_post_spec.rb
+spec/models/update_game_post_search_request_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

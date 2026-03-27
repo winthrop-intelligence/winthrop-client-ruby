@@ -115,6 +115,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**delete_favorites_category**](docs/DefaultApi.md#delete_favorites_category) | **DELETE** /api/v1/favorites_categories/{id} | 
 *WinthropClient::DefaultApi* | [**delete_foia_label**](docs/DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} | 
 *WinthropClient::DefaultApi* | [**delete_foia_request**](docs/DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} | 
+*WinthropClient::DefaultApi* | [**delete_game_post_search**](docs/DefaultApi.md#delete_game_post_search) | **DELETE** /api/v1/game_post_searches/{gamePostSearchId} | 
 *WinthropClient::DefaultApi* | [**delete_job_post**](docs/DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post
 *WinthropClient::DefaultApi* | [**delete_position**](docs/DefaultApi.md#delete_position) | **DELETE** /api/v1/positions/{positionId} | 
 *WinthropClient::DefaultApi* | [**delete_requested_item**](docs/DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} | 
@@ -184,6 +185,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_game_contract**](docs/DefaultApi.md#get_game_contract) | **GET** /api/v1/game_contracts/{game_contractId} | 
 *WinthropClient::DefaultApi* | [**get_game_contracts**](docs/DefaultApi.md#get_game_contracts) | **GET** /api/v1/game_contracts | 
 *WinthropClient::DefaultApi* | [**get_game_post**](docs/DefaultApi.md#get_game_post) | **GET** /api/v1/game_posts/{gamePostId} | 
+*WinthropClient::DefaultApi* | [**get_game_post_search**](docs/DefaultApi.md#get_game_post_search) | **GET** /api/v1/game_post_searches/{gamePostSearchId} | 
 *WinthropClient::DefaultApi* | [**get_game_post_searches**](docs/DefaultApi.md#get_game_post_searches) | **GET** /api/v1/game_post_searches | 
 *WinthropClient::DefaultApi* | [**get_game_posts**](docs/DefaultApi.md#get_game_posts) | **GET** /api/v1/game_posts | 
 *WinthropClient::DefaultApi* | [**get_games**](docs/DefaultApi.md#get_games) | **GET** /api/v1/games | 
@@ -247,6 +249,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**update_favorites_category**](docs/DefaultApi.md#update_favorites_category) | **PATCH** /api/v1/favorites_categories/{id} | 
 *WinthropClient::DefaultApi* | [**update_foia_label**](docs/DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} | 
 *WinthropClient::DefaultApi* | [**update_foia_request**](docs/DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} | 
+*WinthropClient::DefaultApi* | [**update_game_post_search**](docs/DefaultApi.md#update_game_post_search) | **PATCH** /api/v1/game_post_searches/{gamePostSearchId} | 
 *WinthropClient::DefaultApi* | [**update_job_post**](docs/DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post
 *WinthropClient::DefaultApi* | [**update_position**](docs/DefaultApi.md#update_position) | **PATCH** /api/v1/positions/{positionId} | 
 *WinthropClient::DefaultApi* | [**update_requested_item**](docs/DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} | 
@@ -356,6 +359,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::DealStatus](docs/DealStatus.md)
  - [WinthropClient::DealStatusCollection](docs/DealStatusCollection.md)
  - [WinthropClient::DeleteFavorite200Response](docs/DeleteFavorite200Response.md)
+ - [WinthropClient::DeleteGamePostSearch200Response](docs/DeleteGamePostSearch200Response.md)
  - [WinthropClient::DepartmentSearchResult](docs/DepartmentSearchResult.md)
  - [WinthropClient::DepartmentSearchResultCollection](docs/DepartmentSearchResultCollection.md)
  - [WinthropClient::DepartmentSearchResultDepartment](docs/DepartmentSearchResultDepartment.md)
@@ -385,6 +389,9 @@ Class | Method | HTTP request | Description
  - [WinthropClient::GameContractCollection](docs/GameContractCollection.md)
  - [WinthropClient::GamePost](docs/GamePost.md)
  - [WinthropClient::GamePostCollection](docs/GamePostCollection.md)
+ - [WinthropClient::GamePostContact](docs/GamePostContact.md)
+ - [WinthropClient::GamePostDetail](docs/GamePostDetail.md)
+ - [WinthropClient::GamePostDetailCreatedBy](docs/GamePostDetailCreatedBy.md)
  - [WinthropClient::GamePostSearchResult](docs/GamePostSearchResult.md)
  - [WinthropClient::GamePostSearchResultCollection](docs/GamePostSearchResultCollection.md)
  - [WinthropClient::GameType](docs/GameType.md)
@@ -463,6 +470,8 @@ Class | Method | HTTP request | Description
  - [WinthropClient::UnprocessableEntity](docs/UnprocessableEntity.md)
  - [WinthropClient::UpdateFavoriteRequest](docs/UpdateFavoriteRequest.md)
  - [WinthropClient::UpdateFavoritesCategoryRequest](docs/UpdateFavoritesCategoryRequest.md)
+ - [WinthropClient::UpdateGamePostSearchRequest](docs/UpdateGamePostSearchRequest.md)
+ - [WinthropClient::UpdateGamePostSearchRequestGamePost](docs/UpdateGamePostSearchRequestGamePost.md)
  - [WinthropClient::User](docs/User.md)
  - [WinthropClient::UserActivitySummary](docs/UserActivitySummary.md)
  - [WinthropClient::UserActivitySummaryCollection](docs/UserActivitySummaryCollection.md)

@@ -28,6 +28,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_favorites_category**](DefaultApi.md#delete_favorites_category) | **DELETE** /api/v1/favorites_categories/{id} |  |
 | [**delete_foia_label**](DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} |  |
 | [**delete_foia_request**](DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} |  |
+| [**delete_game_post_search**](DefaultApi.md#delete_game_post_search) | **DELETE** /api/v1/game_post_searches/{gamePostSearchId} |  |
 | [**delete_job_post**](DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post |
 | [**delete_position**](DefaultApi.md#delete_position) | **DELETE** /api/v1/positions/{positionId} |  |
 | [**delete_requested_item**](DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} |  |
@@ -97,6 +98,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_game_contract**](DefaultApi.md#get_game_contract) | **GET** /api/v1/game_contracts/{game_contractId} |  |
 | [**get_game_contracts**](DefaultApi.md#get_game_contracts) | **GET** /api/v1/game_contracts |  |
 | [**get_game_post**](DefaultApi.md#get_game_post) | **GET** /api/v1/game_posts/{gamePostId} |  |
+| [**get_game_post_search**](DefaultApi.md#get_game_post_search) | **GET** /api/v1/game_post_searches/{gamePostSearchId} |  |
 | [**get_game_post_searches**](DefaultApi.md#get_game_post_searches) | **GET** /api/v1/game_post_searches |  |
 | [**get_game_posts**](DefaultApi.md#get_game_posts) | **GET** /api/v1/game_posts |  |
 | [**get_games**](DefaultApi.md#get_games) | **GET** /api/v1/games |  |
@@ -160,6 +162,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_favorites_category**](DefaultApi.md#update_favorites_category) | **PATCH** /api/v1/favorites_categories/{id} |  |
 | [**update_foia_label**](DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} |  |
 | [**update_foia_request**](DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} |  |
+| [**update_game_post_search**](DefaultApi.md#update_game_post_search) | **PATCH** /api/v1/game_post_searches/{gamePostSearchId} |  |
 | [**update_job_post**](DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post |
 | [**update_position**](DefaultApi.md#update_position) | **PATCH** /api/v1/positions/{positionId} |  |
 | [**update_requested_item**](DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} |  |
@@ -1975,6 +1978,80 @@ nil (empty response body)
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+
+## delete_game_post_search
+
+> <DeleteGamePostSearch200Response> delete_game_post_search(game_post_search_id)
+
+
+
+Delete a game post
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+game_post_search_id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.delete_game_post_search(game_post_search_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_game_post_search: #{e}"
+end
+```
+
+#### Using the delete_game_post_search_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DeleteGamePostSearch200Response>, Integer, Hash)> delete_game_post_search_with_http_info(game_post_search_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_game_post_search_with_http_info(game_post_search_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DeleteGamePostSearch200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_game_post_search_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **game_post_search_id** | **Integer** |  |  |
+
+### Return type
+
+[**DeleteGamePostSearch200Response**](DeleteGamePostSearch200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## delete_job_post
@@ -7249,6 +7326,80 @@ end
 - **Accept**: application/json
 
 
+## get_game_post_search
+
+> <GamePostDetail> get_game_post_search(game_post_search_id)
+
+
+
+Get a single game post with enriched details including contacts
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+game_post_search_id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_game_post_search(game_post_search_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_game_post_search: #{e}"
+end
+```
+
+#### Using the get_game_post_search_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GamePostDetail>, Integer, Hash)> get_game_post_search_with_http_info(game_post_search_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_game_post_search_with_http_info(game_post_search_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GamePostDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_game_post_search_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **game_post_search_id** | **Integer** |  |  |
+
+### Return type
+
+[**GamePostDetail**](GamePostDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_game_post_searches
 
 > <GamePostSearchResultCollection> get_game_post_searches(opts)
@@ -12091,6 +12242,84 @@ end
 ### Return type
 
 [**FoiaRequest**](FoiaRequest.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_game_post_search
+
+> <DeleteGamePostSearch200Response> update_game_post_search(game_post_search_id, opts)
+
+
+
+Update a game post (e.g. expire or renew)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+game_post_search_id = 56 # Integer | 
+opts = {
+  update_game_post_search_request: WinthropClient::UpdateGamePostSearchRequest.new # UpdateGamePostSearchRequest | 
+}
+
+begin
+  
+  result = api_instance.update_game_post_search(game_post_search_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_game_post_search: #{e}"
+end
+```
+
+#### Using the update_game_post_search_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DeleteGamePostSearch200Response>, Integer, Hash)> update_game_post_search_with_http_info(game_post_search_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_game_post_search_with_http_info(game_post_search_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DeleteGamePostSearch200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_game_post_search_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **game_post_search_id** | **Integer** |  |  |
+| **update_game_post_search_request** | [**UpdateGamePostSearchRequest**](UpdateGamePostSearchRequest.md) |  | [optional] |
+
+### Return type
+
+[**DeleteGamePostSearch200Response**](DeleteGamePostSearch200Response.md)
 
 ### Authorization
 
