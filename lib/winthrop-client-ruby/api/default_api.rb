@@ -1073,6 +1073,72 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Create a note for the current user on a notable object
+    # @param create_note_request [CreateNoteRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Note]
+    def create_note(create_note_request, opts = {})
+      data, _status_code, _headers = create_note_with_http_info(create_note_request, opts)
+      data
+    end
+
+    # Create a note for the current user on a notable object
+    # @param create_note_request [CreateNoteRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Note, Integer, Hash)>] Note data, response status code and response headers
+    def create_note_with_http_info(create_note_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_note ...'
+      end
+      # verify the required parameter 'create_note_request' is set
+      if @api_client.config.client_side_validation && create_note_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_note_request' when calling DefaultApi.create_note"
+      end
+      # resource path
+      local_var_path = '/api/v1/notes'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_note_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Note'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_note",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_note\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create a position. If season_id is omitted, a season will be created (or reused) when school_id, sport_id, and year are provided.
     # @param position [Position] Position attributes to create. Accepts season_id or school_id/sport_id/year, coach_id, title, creation_reason, and position_type_ids.
     # @param [Hash] opts the optional parameters
@@ -1802,6 +1868,67 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#delete_job_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete a note
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [DeleteNote200Response]
+    def delete_note(id, opts = {})
+      data, _status_code, _headers = delete_note_with_http_info(id, opts)
+      data
+    end
+
+    # Delete a note
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(DeleteNote200Response, Integer, Hash)>] DeleteNote200Response data, response status code and response headers
+    def delete_note_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.delete_note ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.delete_note"
+      end
+      # resource path
+      local_var_path = '/api/v1/notes/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'DeleteNote200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.delete_note",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#delete_note\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -6788,6 +6915,75 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Retrieve the current user's note for a given notable object. Returns null if no note exists.
+    # @param notable_type [String] The model type (e.g. \&quot;Coach\&quot;)
+    # @param notable_id [Integer] The ID of the notable record
+    # @param [Hash] opts the optional parameters
+    # @return [Note]
+    def get_note(notable_type, notable_id, opts = {})
+      data, _status_code, _headers = get_note_with_http_info(notable_type, notable_id, opts)
+      data
+    end
+
+    # Retrieve the current user&#39;s note for a given notable object. Returns null if no note exists.
+    # @param notable_type [String] The model type (e.g. \&quot;Coach\&quot;)
+    # @param notable_id [Integer] The ID of the notable record
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Note, Integer, Hash)>] Note data, response status code and response headers
+    def get_note_with_http_info(notable_type, notable_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_note ...'
+      end
+      # verify the required parameter 'notable_type' is set
+      if @api_client.config.client_side_validation && notable_type.nil?
+        fail ArgumentError, "Missing the required parameter 'notable_type' when calling DefaultApi.get_note"
+      end
+      # verify the required parameter 'notable_id' is set
+      if @api_client.config.client_side_validation && notable_id.nil?
+        fail ArgumentError, "Missing the required parameter 'notable_id' when calling DefaultApi.get_note"
+      end
+      # resource path
+      local_var_path = '/api/v1/notes'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'notable_type'] = notable_type
+      query_params[:'notable_id'] = notable_id
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Note'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_note",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_note\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve a single position
     # @param position_id [Integer] ID of position to retrieve
     # @param [Hash] opts the optional parameters
@@ -10295,6 +10491,78 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#update_job_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a note's content
+    # @param id [Integer] 
+    # @param update_note_request [UpdateNoteRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Note]
+    def update_note(id, update_note_request, opts = {})
+      data, _status_code, _headers = update_note_with_http_info(id, update_note_request, opts)
+      data
+    end
+
+    # Update a note&#39;s content
+    # @param id [Integer] 
+    # @param update_note_request [UpdateNoteRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Note, Integer, Hash)>] Note data, response status code and response headers
+    def update_note_with_http_info(id, update_note_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_note ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.update_note"
+      end
+      # verify the required parameter 'update_note_request' is set
+      if @api_client.config.client_side_validation && update_note_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_note_request' when calling DefaultApi.update_note"
+      end
+      # resource path
+      local_var_path = '/api/v1/notes/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_note_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Note'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_note",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_note\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

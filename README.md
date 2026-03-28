@@ -106,6 +106,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**create_foia_request**](docs/DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests | 
 *WinthropClient::DefaultApi* | [**create_game_post_search**](docs/DefaultApi.md#create_game_post_search) | **POST** /api/v1/game_post_searches | 
 *WinthropClient::DefaultApi* | [**create_job_post**](docs/DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post
+*WinthropClient::DefaultApi* | [**create_note**](docs/DefaultApi.md#create_note) | **POST** /api/v1/notes | 
 *WinthropClient::DefaultApi* | [**create_position**](docs/DefaultApi.md#create_position) | **POST** /api/v1/positions | 
 *WinthropClient::DefaultApi* | [**create_requested_item**](docs/DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items | 
 *WinthropClient::DefaultApi* | [**create_season**](docs/DefaultApi.md#create_season) | **POST** /api/v1/seasons | 
@@ -118,6 +119,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**delete_foia_request**](docs/DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} | 
 *WinthropClient::DefaultApi* | [**delete_game_post_search**](docs/DefaultApi.md#delete_game_post_search) | **DELETE** /api/v1/game_post_searches/{gamePostSearchId} | 
 *WinthropClient::DefaultApi* | [**delete_job_post**](docs/DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post
+*WinthropClient::DefaultApi* | [**delete_note**](docs/DefaultApi.md#delete_note) | **DELETE** /api/v1/notes/{id} | 
 *WinthropClient::DefaultApi* | [**delete_position**](docs/DefaultApi.md#delete_position) | **DELETE** /api/v1/positions/{positionId} | 
 *WinthropClient::DefaultApi* | [**delete_requested_item**](docs/DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} | 
 *WinthropClient::DefaultApi* | [**delete_season**](docs/DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} | 
@@ -198,6 +200,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_ncaa_financial_report_status**](docs/DefaultApi.md#get_ncaa_financial_report_status) | **GET** /api/v1/ncaa_financial_report_statuses/{ncaaFinancialReportStatusId} | 
 *WinthropClient::DefaultApi* | [**get_ncaa_financial_report_statuses**](docs/DefaultApi.md#get_ncaa_financial_report_statuses) | **GET** /api/v1/ncaa_financial_report_statuses | 
 *WinthropClient::DefaultApi* | [**get_news_feed**](docs/DefaultApi.md#get_news_feed) | **GET** /wi_jobs/news_feeds/{newsFeedId} | Get a news feed
+*WinthropClient::DefaultApi* | [**get_note**](docs/DefaultApi.md#get_note) | **GET** /api/v1/notes | 
 *WinthropClient::DefaultApi* | [**get_position**](docs/DefaultApi.md#get_position) | **GET** /api/v1/positions/{positionId} | 
 *WinthropClient::DefaultApi* | [**get_positions**](docs/DefaultApi.md#get_positions) | **GET** /api/v1/positions | 
 *WinthropClient::DefaultApi* | [**get_raw_contract**](docs/DefaultApi.md#get_raw_contract) | **GET** /api/v1/raw_contracts/{raw_contractId} | 
@@ -252,6 +255,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**update_foia_request**](docs/DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} | 
 *WinthropClient::DefaultApi* | [**update_game_post_search**](docs/DefaultApi.md#update_game_post_search) | **PATCH** /api/v1/game_post_searches/{gamePostSearchId} | 
 *WinthropClient::DefaultApi* | [**update_job_post**](docs/DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post
+*WinthropClient::DefaultApi* | [**update_note**](docs/DefaultApi.md#update_note) | **PATCH** /api/v1/notes/{id} | 
 *WinthropClient::DefaultApi* | [**update_position**](docs/DefaultApi.md#update_position) | **PATCH** /api/v1/positions/{positionId} | 
 *WinthropClient::DefaultApi* | [**update_requested_item**](docs/DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} | 
 *WinthropClient::DefaultApi* | [**update_season**](docs/DefaultApi.md#update_season) | **PUT** /api/v1/seasons/{seasonId} | 
@@ -353,6 +357,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::CreateFavoritesCategoryRequest](docs/CreateFavoritesCategoryRequest.md)
  - [WinthropClient::CreateGamePostSearchRequest](docs/CreateGamePostSearchRequest.md)
  - [WinthropClient::CreateGamePostSearchRequestGamePost](docs/CreateGamePostSearchRequestGamePost.md)
+ - [WinthropClient::CreateNoteRequest](docs/CreateNoteRequest.md)
  - [WinthropClient::Deal](docs/Deal.md)
  - [WinthropClient::DealCollection](docs/DealCollection.md)
  - [WinthropClient::DealDetail](docs/DealDetail.md)
@@ -363,6 +368,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::DealStatusCollection](docs/DealStatusCollection.md)
  - [WinthropClient::DeleteFavorite200Response](docs/DeleteFavorite200Response.md)
  - [WinthropClient::DeleteGamePostSearch200Response](docs/DeleteGamePostSearch200Response.md)
+ - [WinthropClient::DeleteNote200Response](docs/DeleteNote200Response.md)
  - [WinthropClient::DepartmentSearchResult](docs/DepartmentSearchResult.md)
  - [WinthropClient::DepartmentSearchResultCollection](docs/DepartmentSearchResultCollection.md)
  - [WinthropClient::DepartmentSearchResultDepartment](docs/DepartmentSearchResultDepartment.md)
@@ -431,6 +437,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::NcaaFinancialReportStatusCollection](docs/NcaaFinancialReportStatusCollection.md)
  - [WinthropClient::NewsFeed](docs/NewsFeed.md)
  - [WinthropClient::NewsFeedCollection](docs/NewsFeedCollection.md)
+ - [WinthropClient::Note](docs/Note.md)
  - [WinthropClient::PerformanceChartCoach](docs/PerformanceChartCoach.md)
  - [WinthropClient::PerformanceChartData](docs/PerformanceChartData.md)
  - [WinthropClient::PerformanceChartRecord](docs/PerformanceChartRecord.md)
@@ -475,6 +482,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::UpdateFavoritesCategoryRequest](docs/UpdateFavoritesCategoryRequest.md)
  - [WinthropClient::UpdateGamePostSearchRequest](docs/UpdateGamePostSearchRequest.md)
  - [WinthropClient::UpdateGamePostSearchRequestGamePost](docs/UpdateGamePostSearchRequestGamePost.md)
+ - [WinthropClient::UpdateNoteRequest](docs/UpdateNoteRequest.md)
  - [WinthropClient::User](docs/User.md)
  - [WinthropClient::UserActivitySummary](docs/UserActivitySummary.md)
  - [WinthropClient::UserActivitySummaryCollection](docs/UserActivitySummaryCollection.md)

@@ -19,6 +19,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**create_foia_request**](DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests |  |
 | [**create_game_post_search**](DefaultApi.md#create_game_post_search) | **POST** /api/v1/game_post_searches |  |
 | [**create_job_post**](DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post |
+| [**create_note**](DefaultApi.md#create_note) | **POST** /api/v1/notes |  |
 | [**create_position**](DefaultApi.md#create_position) | **POST** /api/v1/positions |  |
 | [**create_requested_item**](DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items |  |
 | [**create_season**](DefaultApi.md#create_season) | **POST** /api/v1/seasons |  |
@@ -31,6 +32,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_foia_request**](DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} |  |
 | [**delete_game_post_search**](DefaultApi.md#delete_game_post_search) | **DELETE** /api/v1/game_post_searches/{gamePostSearchId} |  |
 | [**delete_job_post**](DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post |
+| [**delete_note**](DefaultApi.md#delete_note) | **DELETE** /api/v1/notes/{id} |  |
 | [**delete_position**](DefaultApi.md#delete_position) | **DELETE** /api/v1/positions/{positionId} |  |
 | [**delete_requested_item**](DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} |  |
 | [**delete_season**](DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} |  |
@@ -111,6 +113,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_ncaa_financial_report_status**](DefaultApi.md#get_ncaa_financial_report_status) | **GET** /api/v1/ncaa_financial_report_statuses/{ncaaFinancialReportStatusId} |  |
 | [**get_ncaa_financial_report_statuses**](DefaultApi.md#get_ncaa_financial_report_statuses) | **GET** /api/v1/ncaa_financial_report_statuses |  |
 | [**get_news_feed**](DefaultApi.md#get_news_feed) | **GET** /wi_jobs/news_feeds/{newsFeedId} | Get a news feed |
+| [**get_note**](DefaultApi.md#get_note) | **GET** /api/v1/notes |  |
 | [**get_position**](DefaultApi.md#get_position) | **GET** /api/v1/positions/{positionId} |  |
 | [**get_positions**](DefaultApi.md#get_positions) | **GET** /api/v1/positions |  |
 | [**get_raw_contract**](DefaultApi.md#get_raw_contract) | **GET** /api/v1/raw_contracts/{raw_contractId} |  |
@@ -165,6 +168,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_foia_request**](DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} |  |
 | [**update_game_post_search**](DefaultApi.md#update_game_post_search) | **PATCH** /api/v1/game_post_searches/{gamePostSearchId} |  |
 | [**update_job_post**](DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post |
+| [**update_note**](DefaultApi.md#update_note) | **PATCH** /api/v1/notes/{id} |  |
 | [**update_position**](DefaultApi.md#update_position) | **PATCH** /api/v1/positions/{positionId} |  |
 | [**update_requested_item**](DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} |  |
 | [**update_season**](DefaultApi.md#update_season) | **PUT** /api/v1/seasons/{seasonId} |  |
@@ -1318,6 +1322,80 @@ end
 - **Accept**: application/json
 
 
+## create_note
+
+> <Note> create_note(create_note_request)
+
+
+
+Create a note for the current user on a notable object
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_note_request = WinthropClient::CreateNoteRequest.new({notable_type: 'notable_type_example', notable_id: 37, content: 'content_example'}) # CreateNoteRequest | 
+
+begin
+  
+  result = api_instance.create_note(create_note_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_note: #{e}"
+end
+```
+
+#### Using the create_note_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Note>, Integer, Hash)> create_note_with_http_info(create_note_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_note_with_http_info(create_note_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Note>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_note_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_note_request** | [**CreateNoteRequest**](CreateNoteRequest.md) |  |  |
+
+### Return type
+
+[**Note**](Note.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_position
 
 > <Position> create_position(position)
@@ -2200,6 +2278,80 @@ nil (empty response body)
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+
+## delete_note
+
+> <DeleteNote200Response> delete_note(id)
+
+
+
+Delete a note
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.delete_note(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_note: #{e}"
+end
+```
+
+#### Using the delete_note_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DeleteNote200Response>, Integer, Hash)> delete_note_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_note_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DeleteNote200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_note_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**DeleteNote200Response**](DeleteNote200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## delete_position
@@ -8322,6 +8474,82 @@ end
 - **Accept**: application/json
 
 
+## get_note
+
+> <Note> get_note(notable_type, notable_id)
+
+
+
+Retrieve the current user's note for a given notable object. Returns null if no note exists.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+notable_type = 'notable_type_example' # String | The model type (e.g. \"Coach\")
+notable_id = 56 # Integer | The ID of the notable record
+
+begin
+  
+  result = api_instance.get_note(notable_type, notable_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_note: #{e}"
+end
+```
+
+#### Using the get_note_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Note>, Integer, Hash)> get_note_with_http_info(notable_type, notable_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_note_with_http_info(notable_type, notable_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Note>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_note_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **notable_type** | **String** | The model type (e.g. \&quot;Coach\&quot;) |  |
+| **notable_id** | **Integer** | The ID of the notable record |  |
+
+### Return type
+
+[**Note**](Note.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_position
 
 > <Position> get_position(position_id)
@@ -12473,6 +12701,82 @@ end
 ### Return type
 
 [**JobPost**](JobPost.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_note
+
+> <Note> update_note(id, update_note_request)
+
+
+
+Update a note's content
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+update_note_request = WinthropClient::UpdateNoteRequest.new({content: 'content_example'}) # UpdateNoteRequest | 
+
+begin
+  
+  result = api_instance.update_note(id, update_note_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_note: #{e}"
+end
+```
+
+#### Using the update_note_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Note>, Integer, Hash)> update_note_with_http_info(id, update_note_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_note_with_http_info(id, update_note_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Note>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_note_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **update_note_request** | [**UpdateNoteRequest**](UpdateNoteRequest.md) |  |  |
+
+### Return type
+
+[**Note**](Note.md)
 
 ### Authorization
 
