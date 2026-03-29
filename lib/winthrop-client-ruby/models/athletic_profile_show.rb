@@ -25,6 +25,8 @@ module WinthropClient
 
     attr_accessor :year
 
+    attr_accessor :current_season_year
+
     attr_accessor :tab_sports
 
     attr_accessor :non_revenue_sports
@@ -59,6 +61,7 @@ module WinthropClient
         :'sport_key' => :'sport_key',
         :'sport_name' => :'sport_name',
         :'year' => :'year',
+        :'current_season_year' => :'current_season_year',
         :'tab_sports' => :'tab_sports',
         :'non_revenue_sports' => :'non_revenue_sports',
         :'permissions' => :'permissions',
@@ -93,6 +96,7 @@ module WinthropClient
         :'sport_key' => :'String',
         :'sport_name' => :'String',
         :'year' => :'Integer',
+        :'current_season_year' => :'Integer',
         :'tab_sports' => :'Array<AthleticProfileShowTabSportsInner>',
         :'non_revenue_sports' => :'Array<AthleticProfileShowTabSportsInner>',
         :'permissions' => :'AthleticProfileShowPermissions',
@@ -151,6 +155,10 @@ module WinthropClient
 
       if attributes.key?(:'year')
         self.year = attributes[:'year']
+      end
+
+      if attributes.key?(:'current_season_year')
+        self.current_season_year = attributes[:'current_season_year']
       end
 
       if attributes.key?(:'tab_sports')
@@ -247,6 +255,7 @@ module WinthropClient
           sport_key == o.sport_key &&
           sport_name == o.sport_name &&
           year == o.year &&
+          current_season_year == o.current_season_year &&
           tab_sports == o.tab_sports &&
           non_revenue_sports == o.non_revenue_sports &&
           permissions == o.permissions &&
@@ -271,7 +280,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [school, financial_info, sport_key, sport_name, year, tab_sports, non_revenue_sports, permissions, sports_overview, sponsored_count, personnel, personnel_total_count, financials, deals, guarantees, guarantees_total_count, contacts, games].hash
+      [school, financial_info, sport_key, sport_name, year, current_season_year, tab_sports, non_revenue_sports, permissions, sports_overview, sponsored_count, personnel, personnel_total_count, financials, deals, guarantees, guarantees_total_count, contacts, games].hash
     end
 
     # Builds the object from hash

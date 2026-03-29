@@ -9,6 +9,7 @@
 | **sport_key** | **String** |  | [optional] |
 | **sport_name** | **String** |  | [optional] |
 | **year** | **Integer** |  | [optional] |
+| **current_season_year** | **Integer** |  | [optional] |
 | **tab_sports** | [**Array&lt;AthleticProfileShowTabSportsInner&gt;**](AthleticProfileShowTabSportsInner.md) |  | [optional] |
 | **non_revenue_sports** | [**Array&lt;AthleticProfileShowTabSportsInner&gt;**](AthleticProfileShowTabSportsInner.md) |  | [optional] |
 | **permissions** | [**AthleticProfileShowPermissions**](AthleticProfileShowPermissions.md) |  | [optional] |
@@ -34,6 +35,7 @@ instance = WinthropClient::AthleticProfileShow.new(
   sport_key: null,
   sport_name: null,
   year: null,
+  current_season_year: null,
   tab_sports: null,
   non_revenue_sports: null,
   permissions: null,
