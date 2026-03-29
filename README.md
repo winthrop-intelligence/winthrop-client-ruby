@@ -126,6 +126,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_administrator**](docs/DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} | 
 *WinthropClient::DefaultApi* | [**get_administrator_searches**](docs/DefaultApi.md#get_administrator_searches) | **GET** /api/v1/administrator_searches | 
 *WinthropClient::DefaultApi* | [**get_administrators**](docs/DefaultApi.md#get_administrators) | **GET** /api/v1/administrators | 
+*WinthropClient::DefaultApi* | [**get_athletic_profile_search**](docs/DefaultApi.md#get_athletic_profile_search) | **GET** /api/v1/athletic_profile_searches/{athleticProfileSearchId} | 
 *WinthropClient::DefaultApi* | [**get_audited_financial_report_status**](docs/DefaultApi.md#get_audited_financial_report_status) | **GET** /api/v1/audited_financial_report_statuses/{auditedFinancialReportStatusId} | 
 *WinthropClient::DefaultApi* | [**get_audited_financial_report_statuses**](docs/DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses | 
 *WinthropClient::DefaultApi* | [**get_cashflow**](docs/DefaultApi.md#get_cashflow) | **GET** /api/v1/cashflows/{cashflowId} | 
@@ -291,6 +292,17 @@ Class | Method | HTTP request | Description
  - [WinthropClient::AdministratorSearchResultCollection](docs/AdministratorSearchResultCollection.md)
  - [WinthropClient::AsstCoachEntry](docs/AsstCoachEntry.md)
  - [WinthropClient::AsstCoachSchool](docs/AsstCoachSchool.md)
+ - [WinthropClient::AthleticProfileShow](docs/AthleticProfileShow.md)
+ - [WinthropClient::AthleticProfileShowDealsInner](docs/AthleticProfileShowDealsInner.md)
+ - [WinthropClient::AthleticProfileShowFinancialInfo](docs/AthleticProfileShowFinancialInfo.md)
+ - [WinthropClient::AthleticProfileShowFinancials](docs/AthleticProfileShowFinancials.md)
+ - [WinthropClient::AthleticProfileShowFinancialsRevenuesInner](docs/AthleticProfileShowFinancialsRevenuesInner.md)
+ - [WinthropClient::AthleticProfileShowGuaranteesInner](docs/AthleticProfileShowGuaranteesInner.md)
+ - [WinthropClient::AthleticProfileShowPermissions](docs/AthleticProfileShowPermissions.md)
+ - [WinthropClient::AthleticProfileShowPersonnelInner](docs/AthleticProfileShowPersonnelInner.md)
+ - [WinthropClient::AthleticProfileShowSchool](docs/AthleticProfileShowSchool.md)
+ - [WinthropClient::AthleticProfileShowSportsOverviewInner](docs/AthleticProfileShowSportsOverviewInner.md)
+ - [WinthropClient::AthleticProfileShowTabSportsInner](docs/AthleticProfileShowTabSportsInner.md)
  - [WinthropClient::AuditedFinancialReportStatus](docs/AuditedFinancialReportStatus.md)
  - [WinthropClient::AuditedFinancialReportStatusCollection](docs/AuditedFinancialReportStatusCollection.md)
  - [WinthropClient::Avatar](docs/Avatar.md)

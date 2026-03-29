@@ -39,6 +39,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_administrator**](DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} |  |
 | [**get_administrator_searches**](DefaultApi.md#get_administrator_searches) | **GET** /api/v1/administrator_searches |  |
 | [**get_administrators**](DefaultApi.md#get_administrators) | **GET** /api/v1/administrators |  |
+| [**get_athletic_profile_search**](DefaultApi.md#get_athletic_profile_search) | **GET** /api/v1/athletic_profile_searches/{athleticProfileSearchId} |  |
 | [**get_audited_financial_report_status**](DefaultApi.md#get_audited_financial_report_status) | **GET** /api/v1/audited_financial_report_statuses/{auditedFinancialReportStatusId} |  |
 | [**get_audited_financial_report_statuses**](DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses |  |
 | [**get_cashflow**](DefaultApi.md#get_cashflow) | **GET** /api/v1/cashflows/{cashflowId} |  |
@@ -2802,6 +2803,86 @@ end
 ### Return type
 
 [**AdministratorCollection**](AdministratorCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_athletic_profile_search
+
+> <AthleticProfileShow> get_athletic_profile_search(athletic_profile_search_id, opts)
+
+
+
+Get school athletic profile with overview data
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+athletic_profile_search_id = 56 # Integer | School ID
+opts = {
+  sport: 'sport_example', # String | Sport key (defaults to ADMIN for department overview)
+  year: 56 # Integer | Performance year
+}
+
+begin
+  
+  result = api_instance.get_athletic_profile_search(athletic_profile_search_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_athletic_profile_search: #{e}"
+end
+```
+
+#### Using the get_athletic_profile_search_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AthleticProfileShow>, Integer, Hash)> get_athletic_profile_search_with_http_info(athletic_profile_search_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_athletic_profile_search_with_http_info(athletic_profile_search_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AthleticProfileShow>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_athletic_profile_search_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **athletic_profile_search_id** | **Integer** | School ID |  |
+| **sport** | **String** | Sport key (defaults to ADMIN for department overview) | [optional][default to &#39;ADMIN&#39;] |
+| **year** | **Integer** | Performance year | [optional] |
+
+### Return type
+
+[**AthleticProfileShow**](AthleticProfileShow.md)
 
 ### Authorization
 
