@@ -7359,6 +7359,142 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Get revenue/expense line item detail with sport breakdown
+    # @param revenue_search_id [Integer] 
+    # @param school_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :year 
+    # @return [SchoolFinancialDetail]
+    def get_revenue_search(revenue_search_id, school_id, opts = {})
+      data, _status_code, _headers = get_revenue_search_with_http_info(revenue_search_id, school_id, opts)
+      data
+    end
+
+    # Get revenue/expense line item detail with sport breakdown
+    # @param revenue_search_id [Integer] 
+    # @param school_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :year 
+    # @return [Array<(SchoolFinancialDetail, Integer, Hash)>] SchoolFinancialDetail data, response status code and response headers
+    def get_revenue_search_with_http_info(revenue_search_id, school_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_revenue_search ...'
+      end
+      # verify the required parameter 'revenue_search_id' is set
+      if @api_client.config.client_side_validation && revenue_search_id.nil?
+        fail ArgumentError, "Missing the required parameter 'revenue_search_id' when calling DefaultApi.get_revenue_search"
+      end
+      # verify the required parameter 'school_id' is set
+      if @api_client.config.client_side_validation && school_id.nil?
+        fail ArgumentError, "Missing the required parameter 'school_id' when calling DefaultApi.get_revenue_search"
+      end
+      # resource path
+      local_var_path = '/api/v1/revenue_searches/{revenueSearchId}'.sub('{' + 'revenueSearchId' + '}', CGI.escape(revenue_search_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'school_id'] = school_id
+      query_params[:'year'] = opts[:'year'] if !opts[:'year'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SchoolFinancialDetail'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_revenue_search",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_revenue_search\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get school financial summary with revenue/expense breakdown by sport
+    # @param school_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :year 
+    # @return [SchoolFinancialSummary]
+    def get_revenue_searches(school_id, opts = {})
+      data, _status_code, _headers = get_revenue_searches_with_http_info(school_id, opts)
+      data
+    end
+
+    # Get school financial summary with revenue/expense breakdown by sport
+    # @param school_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :year 
+    # @return [Array<(SchoolFinancialSummary, Integer, Hash)>] SchoolFinancialSummary data, response status code and response headers
+    def get_revenue_searches_with_http_info(school_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_revenue_searches ...'
+      end
+      # verify the required parameter 'school_id' is set
+      if @api_client.config.client_side_validation && school_id.nil?
+        fail ArgumentError, "Missing the required parameter 'school_id' when calling DefaultApi.get_revenue_searches"
+      end
+      # resource path
+      local_var_path = '/api/v1/revenue_searches'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'school_id'] = school_id
+      query_params[:'year'] = opts[:'year'] if !opts[:'year'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SchoolFinancialSummary'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_revenue_searches",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_revenue_searches\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve a single school
     # @param school_id [Integer] ID of school to retrieve
     # @param [Hash] opts the optional parameters

@@ -120,6 +120,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_raw_contracts**](DefaultApi.md#get_raw_contracts) | **GET** /api/v1/raw_contracts |  |
 | [**get_requested_item**](DefaultApi.md#get_requested_item) | **GET** /api/v1/requested_items/{requestedItemId} |  |
 | [**get_requested_items**](DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items |  |
+| [**get_revenue_search**](DefaultApi.md#get_revenue_search) | **GET** /api/v1/revenue_searches/{revenueSearchId} |  |
+| [**get_revenue_searches**](DefaultApi.md#get_revenue_searches) | **GET** /api/v1/revenue_searches |  |
 | [**get_school**](DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} |  |
 | [**get_school_alternate_names**](DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names |  |
 | [**get_school_group**](DefaultApi.md#get_school_group) | **GET** /api/v1/school_groups/{schoolGroupId} |  |
@@ -9001,6 +9003,164 @@ end
 ### Return type
 
 [**RequestedItemCollection**](RequestedItemCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_revenue_search
+
+> <SchoolFinancialDetail> get_revenue_search(revenue_search_id, school_id, opts)
+
+
+
+Get revenue/expense line item detail with sport breakdown
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+revenue_search_id = 56 # Integer | 
+school_id = 56 # Integer | 
+opts = {
+  year: 56 # Integer | 
+}
+
+begin
+  
+  result = api_instance.get_revenue_search(revenue_search_id, school_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_revenue_search: #{e}"
+end
+```
+
+#### Using the get_revenue_search_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SchoolFinancialDetail>, Integer, Hash)> get_revenue_search_with_http_info(revenue_search_id, school_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_revenue_search_with_http_info(revenue_search_id, school_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SchoolFinancialDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_revenue_search_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **revenue_search_id** | **Integer** |  |  |
+| **school_id** | **Integer** |  |  |
+| **year** | **Integer** |  | [optional] |
+
+### Return type
+
+[**SchoolFinancialDetail**](SchoolFinancialDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_revenue_searches
+
+> <SchoolFinancialSummary> get_revenue_searches(school_id, opts)
+
+
+
+Get school financial summary with revenue/expense breakdown by sport
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | 
+opts = {
+  year: 56 # Integer | 
+}
+
+begin
+  
+  result = api_instance.get_revenue_searches(school_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_revenue_searches: #{e}"
+end
+```
+
+#### Using the get_revenue_searches_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SchoolFinancialSummary>, Integer, Hash)> get_revenue_searches_with_http_info(school_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_revenue_searches_with_http_info(school_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SchoolFinancialSummary>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_revenue_searches_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** |  |  |
+| **year** | **Integer** |  | [optional] |
+
+### Return type
+
+[**SchoolFinancialSummary**](SchoolFinancialSummary.md)
 
 ### Authorization
 

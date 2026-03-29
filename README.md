@@ -207,6 +207,8 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_raw_contracts**](docs/DefaultApi.md#get_raw_contracts) | **GET** /api/v1/raw_contracts | 
 *WinthropClient::DefaultApi* | [**get_requested_item**](docs/DefaultApi.md#get_requested_item) | **GET** /api/v1/requested_items/{requestedItemId} | 
 *WinthropClient::DefaultApi* | [**get_requested_items**](docs/DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items | 
+*WinthropClient::DefaultApi* | [**get_revenue_search**](docs/DefaultApi.md#get_revenue_search) | **GET** /api/v1/revenue_searches/{revenueSearchId} | 
+*WinthropClient::DefaultApi* | [**get_revenue_searches**](docs/DefaultApi.md#get_revenue_searches) | **GET** /api/v1/revenue_searches | 
 *WinthropClient::DefaultApi* | [**get_school**](docs/DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
 *WinthropClient::DefaultApi* | [**get_school_alternate_names**](docs/DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names | 
 *WinthropClient::DefaultApi* | [**get_school_group**](docs/DefaultApi.md#get_school_group) | **GET** /api/v1/school_groups/{schoolGroupId} | 
@@ -456,7 +458,14 @@ Class | Method | HTTP request | Description
  - [WinthropClient::RequestedItemCollection](docs/RequestedItemCollection.md)
  - [WinthropClient::School](docs/School.md)
  - [WinthropClient::SchoolCollection](docs/SchoolCollection.md)
+ - [WinthropClient::SchoolFinancialDetail](docs/SchoolFinancialDetail.md)
+ - [WinthropClient::SchoolFinancialDetailGroup](docs/SchoolFinancialDetailGroup.md)
+ - [WinthropClient::SchoolFinancialDetailSibling](docs/SchoolFinancialDetailSibling.md)
+ - [WinthropClient::SchoolFinancialDetailSport](docs/SchoolFinancialDetailSport.md)
+ - [WinthropClient::SchoolFinancialGroup](docs/SchoolFinancialGroup.md)
+ - [WinthropClient::SchoolFinancialSummary](docs/SchoolFinancialSummary.md)
  - [WinthropClient::SchoolGroupShow](docs/SchoolGroupShow.md)
+ - [WinthropClient::SchoolInfo](docs/SchoolInfo.md)
  - [WinthropClient::SchoolNoComp](docs/SchoolNoComp.md)
  - [WinthropClient::SchoolNoSeason](docs/SchoolNoSeason.md)
  - [WinthropClient::Scraper](docs/Scraper.md)
