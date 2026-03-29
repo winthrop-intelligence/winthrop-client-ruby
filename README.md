@@ -293,6 +293,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::AsstCoachEntry](docs/AsstCoachEntry.md)
  - [WinthropClient::AsstCoachSchool](docs/AsstCoachSchool.md)
  - [WinthropClient::AthleticProfileShow](docs/AthleticProfileShow.md)
+ - [WinthropClient::AthleticProfileShowContactsInner](docs/AthleticProfileShowContactsInner.md)
  - [WinthropClient::AthleticProfileShowDealsInner](docs/AthleticProfileShowDealsInner.md)
  - [WinthropClient::AthleticProfileShowFinancialInfo](docs/AthleticProfileShowFinancialInfo.md)
  - [WinthropClient::AthleticProfileShowFinancials](docs/AthleticProfileShowFinancials.md)

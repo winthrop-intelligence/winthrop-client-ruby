@@ -47,6 +47,8 @@ module WinthropClient
 
     attr_accessor :guarantees_total_count
 
+    attr_accessor :contacts
+
     attr_accessor :games
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -68,6 +70,7 @@ module WinthropClient
         :'deals' => :'deals',
         :'guarantees' => :'guarantees',
         :'guarantees_total_count' => :'guarantees_total_count',
+        :'contacts' => :'contacts',
         :'games' => :'games'
       }
     end
@@ -101,6 +104,7 @@ module WinthropClient
         :'deals' => :'Array<AthleticProfileShowDealsInner>',
         :'guarantees' => :'Array<AthleticProfileShowGuaranteesInner>',
         :'guarantees_total_count' => :'Integer',
+        :'contacts' => :'Array<AthleticProfileShowContactsInner>',
         :'games' => :'Array<AthleticProfileShowGamesInner>'
       }
     end
@@ -205,6 +209,12 @@ module WinthropClient
         self.guarantees_total_count = attributes[:'guarantees_total_count']
       end
 
+      if attributes.key?(:'contacts')
+        if (value = attributes[:'contacts']).is_a?(Array)
+          self.contacts = value
+        end
+      end
+
       if attributes.key?(:'games')
         if (value = attributes[:'games']).is_a?(Array)
           self.games = value
@@ -248,6 +258,7 @@ module WinthropClient
           deals == o.deals &&
           guarantees == o.guarantees &&
           guarantees_total_count == o.guarantees_total_count &&
+          contacts == o.contacts &&
           games == o.games
     end
 
@@ -260,7 +271,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [school, financial_info, sport_key, sport_name, year, tab_sports, non_revenue_sports, permissions, sports_overview, sponsored_count, personnel, personnel_total_count, financials, deals, guarantees, guarantees_total_count, games].hash
+      [school, financial_info, sport_key, sport_name, year, tab_sports, non_revenue_sports, permissions, sports_overview, sponsored_count, personnel, personnel_total_count, financials, deals, guarantees, guarantees_total_count, contacts, games].hash
     end
 
     # Builds the object from hash
