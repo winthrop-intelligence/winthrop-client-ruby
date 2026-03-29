@@ -20,6 +20,7 @@
 | **deals** | [**Array&lt;AthleticProfileShowDealsInner&gt;**](AthleticProfileShowDealsInner.md) |  | [optional] |
 | **guarantees** | [**Array&lt;AthleticProfileShowGuaranteesInner&gt;**](AthleticProfileShowGuaranteesInner.md) |  | [optional] |
 | **guarantees_total_count** | **Integer** |  | [optional] |
+| **games** | [**Array&lt;AthleticProfileShowGamesInner&gt;**](AthleticProfileShowGamesInner.md) |  | [optional] |
 
 ## Example
 
@@ -42,7 +43,8 @@ instance = WinthropClient::AthleticProfileShow.new(
   financials: null,
   deals: null,
   guarantees: null,
-  guarantees_total_count: null
+  guarantees_total_count: null,
+  games: null
 )
 ```
 

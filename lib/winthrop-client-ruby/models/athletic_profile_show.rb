@@ -47,6 +47,8 @@ module WinthropClient
 
     attr_accessor :guarantees_total_count
 
+    attr_accessor :games
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -65,7 +67,8 @@ module WinthropClient
         :'financials' => :'financials',
         :'deals' => :'deals',
         :'guarantees' => :'guarantees',
-        :'guarantees_total_count' => :'guarantees_total_count'
+        :'guarantees_total_count' => :'guarantees_total_count',
+        :'games' => :'games'
       }
     end
 
@@ -97,7 +100,8 @@ module WinthropClient
         :'financials' => :'AthleticProfileShowFinancials',
         :'deals' => :'Array<AthleticProfileShowDealsInner>',
         :'guarantees' => :'Array<AthleticProfileShowGuaranteesInner>',
-        :'guarantees_total_count' => :'Integer'
+        :'guarantees_total_count' => :'Integer',
+        :'games' => :'Array<AthleticProfileShowGamesInner>'
       }
     end
 
@@ -200,6 +204,12 @@ module WinthropClient
       if attributes.key?(:'guarantees_total_count')
         self.guarantees_total_count = attributes[:'guarantees_total_count']
       end
+
+      if attributes.key?(:'games')
+        if (value = attributes[:'games']).is_a?(Array)
+          self.games = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -237,7 +247,8 @@ module WinthropClient
           financials == o.financials &&
           deals == o.deals &&
           guarantees == o.guarantees &&
-          guarantees_total_count == o.guarantees_total_count
+          guarantees_total_count == o.guarantees_total_count &&
+          games == o.games
     end
 
     # @see the `==` method
@@ -249,7 +260,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [school, financial_info, sport_key, sport_name, year, tab_sports, non_revenue_sports, permissions, sports_overview, sponsored_count, personnel, personnel_total_count, financials, deals, guarantees, guarantees_total_count].hash
+      [school, financial_info, sport_key, sport_name, year, tab_sports, non_revenue_sports, permissions, sports_overview, sponsored_count, personnel, personnel_total_count, financials, deals, guarantees, guarantees_total_count, games].hash
     end
 
     # Builds the object from hash

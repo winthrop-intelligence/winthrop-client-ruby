@@ -297,6 +297,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::AthleticProfileShowFinancialInfo](docs/AthleticProfileShowFinancialInfo.md)
  - [WinthropClient::AthleticProfileShowFinancials](docs/AthleticProfileShowFinancials.md)
  - [WinthropClient::AthleticProfileShowFinancialsRevenuesInner](docs/AthleticProfileShowFinancialsRevenuesInner.md)
+ - [WinthropClient::AthleticProfileShowGamesInner](docs/AthleticProfileShowGamesInner.md)
  - [WinthropClient::AthleticProfileShowGuaranteesInner](docs/AthleticProfileShowGuaranteesInner.md)
  - [WinthropClient::AthleticProfileShowPermissions](docs/AthleticProfileShowPermissions.md)
  - [WinthropClient::AthleticProfileShowPersonnelInner](docs/AthleticProfileShowPersonnelInner.md)

@@ -16,6 +16,7 @@ docs/AthleticProfileShowDealsInner.md
 docs/AthleticProfileShowFinancialInfo.md
 docs/AthleticProfileShowFinancials.md
 docs/AthleticProfileShowFinancialsRevenuesInner.md
+docs/AthleticProfileShowGamesInner.md
 docs/AthleticProfileShowGuaranteesInner.md
 docs/AthleticProfileShowPermissions.md
 docs/AthleticProfileShowPersonnelInner.md
@@ -266,6 +267,7 @@ lib/winthrop-client-ruby/models/athletic_profile_show_deals_inner.rb
 lib/winthrop-client-ruby/models/athletic_profile_show_financial_info.rb
 lib/winthrop-client-ruby/models/athletic_profile_show_financials.rb
 lib/winthrop-client-ruby/models/athletic_profile_show_financials_revenues_inner.rb
+lib/winthrop-client-ruby/models/athletic_profile_show_games_inner.rb
 lib/winthrop-client-ruby/models/athletic_profile_show_guarantees_inner.rb
 lib/winthrop-client-ruby/models/athletic_profile_show_permissions.rb
 lib/winthrop-client-ruby/models/athletic_profile_show_personnel_inner.rb
@@ -489,16 +491,6 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
-spec/models/athletic_profile_show_deals_inner_spec.rb
-spec/models/athletic_profile_show_financial_info_spec.rb
-spec/models/athletic_profile_show_financials_revenues_inner_spec.rb
-spec/models/athletic_profile_show_financials_spec.rb
-spec/models/athletic_profile_show_guarantees_inner_spec.rb
-spec/models/athletic_profile_show_permissions_spec.rb
-spec/models/athletic_profile_show_personnel_inner_spec.rb
-spec/models/athletic_profile_show_school_spec.rb
-spec/models/athletic_profile_show_spec.rb
-spec/models/athletic_profile_show_sports_overview_inner_spec.rb
-spec/models/athletic_profile_show_tab_sports_inner_spec.rb
+spec/models/athletic_profile_show_games_inner_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
