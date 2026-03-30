@@ -1333,6 +1333,72 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Add a FilTeam to favorites
+    # @param create_team_schedule_favorite_request [CreateTeamScheduleFavoriteRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [CreateTeamScheduleFavorite201Response]
+    def create_team_schedule_favorite(create_team_schedule_favorite_request, opts = {})
+      data, _status_code, _headers = create_team_schedule_favorite_with_http_info(create_team_schedule_favorite_request, opts)
+      data
+    end
+
+    # Add a FilTeam to favorites
+    # @param create_team_schedule_favorite_request [CreateTeamScheduleFavoriteRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CreateTeamScheduleFavorite201Response, Integer, Hash)>] CreateTeamScheduleFavorite201Response data, response status code and response headers
+    def create_team_schedule_favorite_with_http_info(create_team_schedule_favorite_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_team_schedule_favorite ...'
+      end
+      # verify the required parameter 'create_team_schedule_favorite_request' is set
+      if @api_client.config.client_side_validation && create_team_schedule_favorite_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_team_schedule_favorite_request' when calling DefaultApi.create_team_schedule_favorite"
+      end
+      # resource path
+      local_var_path = '/api/v1/team_schedule_favorites'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_team_schedule_favorite_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CreateTeamScheduleFavorite201Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_team_schedule_favorite",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_team_schedule_favorite\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete a single Cashflow
     # @param cashflow_id [Integer] ID of the Cashflow
     # @param [Hash] opts the optional parameters
@@ -2106,6 +2172,126 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#delete_season\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Remove a FilTeam favorite
+    # @param id [Integer] The favorite record ID
+    # @param [Hash] opts the optional parameters
+    # @return [DeleteNote200Response]
+    def delete_team_schedule_favorite(id, opts = {})
+      data, _status_code, _headers = delete_team_schedule_favorite_with_http_info(id, opts)
+      data
+    end
+
+    # Remove a FilTeam favorite
+    # @param id [Integer] The favorite record ID
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(DeleteNote200Response, Integer, Hash)>] DeleteNote200Response data, response status code and response headers
+    def delete_team_schedule_favorite_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.delete_team_schedule_favorite ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.delete_team_schedule_favorite"
+      end
+      # resource path
+      local_var_path = '/api/v1/team_schedule_favorites/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'DeleteNote200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.delete_team_schedule_favorite",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#delete_team_schedule_favorite\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete the current user's note for a team.
+    # @param fil_team_id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_team_schedule_note(fil_team_id, opts = {})
+      delete_team_schedule_note_with_http_info(fil_team_id, opts)
+      nil
+    end
+
+    # Delete the current user&#39;s note for a team.
+    # @param fil_team_id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def delete_team_schedule_note_with_http_info(fil_team_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.delete_team_schedule_note ...'
+      end
+      # verify the required parameter 'fil_team_id' is set
+      if @api_client.config.client_side_validation && fil_team_id.nil?
+        fail ArgumentError, "Missing the required parameter 'fil_team_id' when calling DefaultApi.delete_team_schedule_note"
+      end
+      # resource path
+      local_var_path = '/api/v1/team_schedule_notes/{fil_team_id}'.sub('{' + 'fil_team_id' + '}', CGI.escape(fil_team_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.delete_team_schedule_note",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#delete_team_schedule_note\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -9277,6 +9463,487 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Get detailed team schedule info including school overview, season stats, contacts, and games for the scouting report tab.
+    # @param sport_name [String] Sport name (e.g. BASKETBALL_M)
+    # @param school_id [Integer] School ID
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :performance_year Performance year to load games for (defaults to current season year)
+    # @return [TeamScheduleDetail]
+    def get_team_schedule_detail(sport_name, school_id, opts = {})
+      data, _status_code, _headers = get_team_schedule_detail_with_http_info(sport_name, school_id, opts)
+      data
+    end
+
+    # Get detailed team schedule info including school overview, season stats, contacts, and games for the scouting report tab.
+    # @param sport_name [String] Sport name (e.g. BASKETBALL_M)
+    # @param school_id [Integer] School ID
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :performance_year Performance year to load games for (defaults to current season year)
+    # @return [Array<(TeamScheduleDetail, Integer, Hash)>] TeamScheduleDetail data, response status code and response headers
+    def get_team_schedule_detail_with_http_info(sport_name, school_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_team_schedule_detail ...'
+      end
+      # verify the required parameter 'sport_name' is set
+      if @api_client.config.client_side_validation && sport_name.nil?
+        fail ArgumentError, "Missing the required parameter 'sport_name' when calling DefaultApi.get_team_schedule_detail"
+      end
+      # verify the required parameter 'school_id' is set
+      if @api_client.config.client_side_validation && school_id.nil?
+        fail ArgumentError, "Missing the required parameter 'school_id' when calling DefaultApi.get_team_schedule_detail"
+      end
+      # resource path
+      local_var_path = '/api/v1/team_schedule_details/{sport_name}/{school_id}'.sub('{' + 'sport_name' + '}', CGI.escape(sport_name.to_s)).sub('{' + 'school_id' + '}', CGI.escape(school_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'performance_year'] = opts[:'performance_year'] if !opts[:'performance_year'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'TeamScheduleDetail'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_team_schedule_detail",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_team_schedule_detail\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get coaches and performance data for a team across recent seasons.
+    # @param sport_name [String] 
+    # @param school_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :performance_year Year to load coach roster for
+    # @return [TeamScheduleCoaches]
+    def get_team_schedule_detail_coaches(sport_name, school_id, opts = {})
+      data, _status_code, _headers = get_team_schedule_detail_coaches_with_http_info(sport_name, school_id, opts)
+      data
+    end
+
+    # Get coaches and performance data for a team across recent seasons.
+    # @param sport_name [String] 
+    # @param school_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :performance_year Year to load coach roster for
+    # @return [Array<(TeamScheduleCoaches, Integer, Hash)>] TeamScheduleCoaches data, response status code and response headers
+    def get_team_schedule_detail_coaches_with_http_info(sport_name, school_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_team_schedule_detail_coaches ...'
+      end
+      # verify the required parameter 'sport_name' is set
+      if @api_client.config.client_side_validation && sport_name.nil?
+        fail ArgumentError, "Missing the required parameter 'sport_name' when calling DefaultApi.get_team_schedule_detail_coaches"
+      end
+      # verify the required parameter 'school_id' is set
+      if @api_client.config.client_side_validation && school_id.nil?
+        fail ArgumentError, "Missing the required parameter 'school_id' when calling DefaultApi.get_team_schedule_detail_coaches"
+      end
+      # resource path
+      local_var_path = '/api/v1/team_schedule_details/{sport_name}/{school_id}/coaches'.sub('{' + 'sport_name' + '}', CGI.escape(sport_name.to_s)).sub('{' + 'school_id' + '}', CGI.escape(school_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'performance_year'] = opts[:'performance_year'] if !opts[:'performance_year'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'TeamScheduleCoaches'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_team_schedule_detail_coaches",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_team_schedule_detail_coaches\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get games wanted posts for a team.
+    # @param sport_name [String] 
+    # @param school_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [TeamScheduleGamePosts]
+    def get_team_schedule_detail_game_posts(sport_name, school_id, opts = {})
+      data, _status_code, _headers = get_team_schedule_detail_game_posts_with_http_info(sport_name, school_id, opts)
+      data
+    end
+
+    # Get games wanted posts for a team.
+    # @param sport_name [String] 
+    # @param school_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(TeamScheduleGamePosts, Integer, Hash)>] TeamScheduleGamePosts data, response status code and response headers
+    def get_team_schedule_detail_game_posts_with_http_info(sport_name, school_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_team_schedule_detail_game_posts ...'
+      end
+      # verify the required parameter 'sport_name' is set
+      if @api_client.config.client_side_validation && sport_name.nil?
+        fail ArgumentError, "Missing the required parameter 'sport_name' when calling DefaultApi.get_team_schedule_detail_game_posts"
+      end
+      # verify the required parameter 'school_id' is set
+      if @api_client.config.client_side_validation && school_id.nil?
+        fail ArgumentError, "Missing the required parameter 'school_id' when calling DefaultApi.get_team_schedule_detail_game_posts"
+      end
+      # resource path
+      local_var_path = '/api/v1/team_schedule_details/{sport_name}/{school_id}/game_posts'.sub('{' + 'sport_name' + '}', CGI.escape(sport_name.to_s)).sub('{' + 'school_id' + '}', CGI.escape(school_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'TeamScheduleGamePosts'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_team_schedule_detail_game_posts",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_team_schedule_detail_game_posts\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get the full game schedule list for a team and season year.
+    # @param sport_name [String] 
+    # @param school_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :year Season year (defaults to current schedule season year)
+    # @return [TeamScheduleSchedule]
+    def get_team_schedule_detail_schedule(sport_name, school_id, opts = {})
+      data, _status_code, _headers = get_team_schedule_detail_schedule_with_http_info(sport_name, school_id, opts)
+      data
+    end
+
+    # Get the full game schedule list for a team and season year.
+    # @param sport_name [String] 
+    # @param school_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :year Season year (defaults to current schedule season year)
+    # @return [Array<(TeamScheduleSchedule, Integer, Hash)>] TeamScheduleSchedule data, response status code and response headers
+    def get_team_schedule_detail_schedule_with_http_info(sport_name, school_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_team_schedule_detail_schedule ...'
+      end
+      # verify the required parameter 'sport_name' is set
+      if @api_client.config.client_side_validation && sport_name.nil?
+        fail ArgumentError, "Missing the required parameter 'sport_name' when calling DefaultApi.get_team_schedule_detail_schedule"
+      end
+      # verify the required parameter 'school_id' is set
+      if @api_client.config.client_side_validation && school_id.nil?
+        fail ArgumentError, "Missing the required parameter 'school_id' when calling DefaultApi.get_team_schedule_detail_schedule"
+      end
+      # resource path
+      local_var_path = '/api/v1/team_schedule_details/{sport_name}/{school_id}/schedule'.sub('{' + 'sport_name' + '}', CGI.escape(sport_name.to_s)).sub('{' + 'school_id' + '}', CGI.escape(school_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'year'] = opts[:'year'] if !opts[:'year'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'TeamScheduleSchedule'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_team_schedule_detail_schedule",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_team_schedule_detail_schedule\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve the current user's FilTeam favorites. Returns favoritable_id as a string to avoid JavaScript precision loss with large numeric IDs.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :detailed When set to \&quot;1\&quot;, includes category and favoritable name
+    # @return [Array<GetTeamScheduleFavorites200ResponseInner>]
+    def get_team_schedule_favorites(opts = {})
+      data, _status_code, _headers = get_team_schedule_favorites_with_http_info(opts)
+      data
+    end
+
+    # Retrieve the current user&#39;s FilTeam favorites. Returns favoritable_id as a string to avoid JavaScript precision loss with large numeric IDs.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :detailed When set to \&quot;1\&quot;, includes category and favoritable name
+    # @return [Array<(Array<GetTeamScheduleFavorites200ResponseInner>, Integer, Hash)>] Array<GetTeamScheduleFavorites200ResponseInner> data, response status code and response headers
+    def get_team_schedule_favorites_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_team_schedule_favorites ...'
+      end
+      allowable_values = ["1"]
+      if @api_client.config.client_side_validation && opts[:'detailed'] && !allowable_values.include?(opts[:'detailed'])
+        fail ArgumentError, "invalid value for \"detailed\", must be one of #{allowable_values}"
+      end
+      # resource path
+      local_var_path = '/api/v1/team_schedule_favorites'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'detailed'] = opts[:'detailed'] if !opts[:'detailed'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<GetTeamScheduleFavorites200ResponseInner>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_team_schedule_favorites",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_team_schedule_favorites\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get the current user's note for a team.
+    # @param fil_team_id [String] FilTeam ID
+    # @param [Hash] opts the optional parameters
+    # @return [TeamScheduleNote]
+    def get_team_schedule_note(fil_team_id, opts = {})
+      data, _status_code, _headers = get_team_schedule_note_with_http_info(fil_team_id, opts)
+      data
+    end
+
+    # Get the current user&#39;s note for a team.
+    # @param fil_team_id [String] FilTeam ID
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(TeamScheduleNote, Integer, Hash)>] TeamScheduleNote data, response status code and response headers
+    def get_team_schedule_note_with_http_info(fil_team_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_team_schedule_note ...'
+      end
+      # verify the required parameter 'fil_team_id' is set
+      if @api_client.config.client_side_validation && fil_team_id.nil?
+        fail ArgumentError, "Missing the required parameter 'fil_team_id' when calling DefaultApi.get_team_schedule_note"
+      end
+      # resource path
+      local_var_path = '/api/v1/team_schedule_notes/{fil_team_id}'.sub('{' + 'fil_team_id' + '}', CGI.escape(fil_team_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'TeamScheduleNote'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_team_schedule_note",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_team_schedule_note\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Search team schedules with enriched data including contacts, RPI, returning percentages, and guarantee contract info.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Object] :q Ransack query
+    # @option opts [String] :sport_name Sport name filter (e.g. BASKETBALL_M)
+    # @option opts [String] :exclude_already_scheduled Exclude schools already on the user&#39;s schedule
+    # @option opts [String] :exclude_conference Exclude schools in the user&#39;s conference
+    # @return [TeamScheduleSearchResultCollection]
+    def get_team_schedule_searches(opts = {})
+      data, _status_code, _headers = get_team_schedule_searches_with_http_info(opts)
+      data
+    end
+
+    # Search team schedules with enriched data including contacts, RPI, returning percentages, and guarantee contract info.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Object] :q Ransack query
+    # @option opts [String] :sport_name Sport name filter (e.g. BASKETBALL_M)
+    # @option opts [String] :exclude_already_scheduled Exclude schools already on the user&#39;s schedule
+    # @option opts [String] :exclude_conference Exclude schools in the user&#39;s conference
+    # @return [Array<(TeamScheduleSearchResultCollection, Integer, Hash)>] TeamScheduleSearchResultCollection data, response status code and response headers
+    def get_team_schedule_searches_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_team_schedule_searches ...'
+      end
+      allowable_values = ["1"]
+      if @api_client.config.client_side_validation && opts[:'exclude_already_scheduled'] && !allowable_values.include?(opts[:'exclude_already_scheduled'])
+        fail ArgumentError, "invalid value for \"exclude_already_scheduled\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["1"]
+      if @api_client.config.client_side_validation && opts[:'exclude_conference'] && !allowable_values.include?(opts[:'exclude_conference'])
+        fail ArgumentError, "invalid value for \"exclude_conference\", must be one of #{allowable_values}"
+      end
+      # resource path
+      local_var_path = '/api/v1/team_schedule_searches'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
+      query_params[:'sport_name'] = opts[:'sport_name'] if !opts[:'sport_name'].nil?
+      query_params[:'exclude_already_scheduled'] = opts[:'exclude_already_scheduled'] if !opts[:'exclude_already_scheduled'].nil?
+      query_params[:'exclude_conference'] = opts[:'exclude_conference'] if !opts[:'exclude_conference'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'TeamScheduleSearchResultCollection'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_team_schedule_searches",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_team_schedule_searches\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve a single user
     # @param user_id [Integer] ID of user to retrieve
     # @param [Hash] opts the optional parameters
@@ -10982,6 +11649,150 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#update_season\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a FilTeam favorite's category
+    # @param id [Integer] The favorite record ID
+    # @param update_team_schedule_favorite_request [UpdateTeamScheduleFavoriteRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [CreateTeamScheduleFavorite201Response]
+    def update_team_schedule_favorite(id, update_team_schedule_favorite_request, opts = {})
+      data, _status_code, _headers = update_team_schedule_favorite_with_http_info(id, update_team_schedule_favorite_request, opts)
+      data
+    end
+
+    # Update a FilTeam favorite&#39;s category
+    # @param id [Integer] The favorite record ID
+    # @param update_team_schedule_favorite_request [UpdateTeamScheduleFavoriteRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CreateTeamScheduleFavorite201Response, Integer, Hash)>] CreateTeamScheduleFavorite201Response data, response status code and response headers
+    def update_team_schedule_favorite_with_http_info(id, update_team_schedule_favorite_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_team_schedule_favorite ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.update_team_schedule_favorite"
+      end
+      # verify the required parameter 'update_team_schedule_favorite_request' is set
+      if @api_client.config.client_side_validation && update_team_schedule_favorite_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_team_schedule_favorite_request' when calling DefaultApi.update_team_schedule_favorite"
+      end
+      # resource path
+      local_var_path = '/api/v1/team_schedule_favorites/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_team_schedule_favorite_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CreateTeamScheduleFavorite201Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_team_schedule_favorite",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_team_schedule_favorite\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create or update the current user's note for a team.
+    # @param fil_team_id [String] 
+    # @param upsert_team_schedule_note_request [UpsertTeamScheduleNoteRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [TeamScheduleNote]
+    def upsert_team_schedule_note(fil_team_id, upsert_team_schedule_note_request, opts = {})
+      data, _status_code, _headers = upsert_team_schedule_note_with_http_info(fil_team_id, upsert_team_schedule_note_request, opts)
+      data
+    end
+
+    # Create or update the current user&#39;s note for a team.
+    # @param fil_team_id [String] 
+    # @param upsert_team_schedule_note_request [UpsertTeamScheduleNoteRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(TeamScheduleNote, Integer, Hash)>] TeamScheduleNote data, response status code and response headers
+    def upsert_team_schedule_note_with_http_info(fil_team_id, upsert_team_schedule_note_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.upsert_team_schedule_note ...'
+      end
+      # verify the required parameter 'fil_team_id' is set
+      if @api_client.config.client_side_validation && fil_team_id.nil?
+        fail ArgumentError, "Missing the required parameter 'fil_team_id' when calling DefaultApi.upsert_team_schedule_note"
+      end
+      # verify the required parameter 'upsert_team_schedule_note_request' is set
+      if @api_client.config.client_side_validation && upsert_team_schedule_note_request.nil?
+        fail ArgumentError, "Missing the required parameter 'upsert_team_schedule_note_request' when calling DefaultApi.upsert_team_schedule_note"
+      end
+      # resource path
+      local_var_path = '/api/v1/team_schedule_notes/{fil_team_id}'.sub('{' + 'fil_team_id' + '}', CGI.escape(fil_team_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(upsert_team_schedule_note_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'TeamScheduleNote'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.upsert_team_schedule_note",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#upsert_team_schedule_note\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

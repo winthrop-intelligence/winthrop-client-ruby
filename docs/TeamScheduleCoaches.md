@@ -7,7 +7,7 @@
 | **performance_year** | **Integer** |  | [optional] |
 | **performance_years** | **Array&lt;Integer&gt;** |  | [optional] |
 | **coaches** | [**Array&lt;TeamScheduleCoachesCoachesInner&gt;**](TeamScheduleCoachesCoachesInner.md) |  | [optional] |
-| **head_coaches** | **Array&lt;Array&lt;GetFavoritesCategories200ResponseInner&gt;&gt;** |  | [optional] |
+| **head_coaches** | **Array&lt;Array&lt;TeamScheduleCoachesHeadCoachesInnerInner&gt;&gt;** |  | [optional] |
 | **seasons** | [**Array&lt;TeamScheduleCoachesSeasonsInner&gt;**](TeamScheduleCoachesSeasonsInner.md) |  | [optional] |
 
 ## Example

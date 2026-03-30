@@ -52,7 +52,7 @@ module WinthropClient
         :'performance_year' => :'Integer',
         :'performance_years' => :'Array<Integer>',
         :'coaches' => :'Array<TeamScheduleCoachesCoachesInner>',
-        :'head_coaches' => :'Array<Array<GetFavoritesCategories200ResponseInner>>',
+        :'head_coaches' => :'Array<Array<TeamScheduleCoachesHeadCoachesInnerInner>>',
         :'seasons' => :'Array<TeamScheduleCoachesSeasonsInner>'
       }
     end
