@@ -156,7 +156,9 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_team_schedule_detail**](DefaultApi.md#get_team_schedule_detail) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id} |  |
 | [**get_team_schedule_detail_coaches**](DefaultApi.md#get_team_schedule_detail_coaches) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/coaches |  |
 | [**get_team_schedule_detail_game_posts**](DefaultApi.md#get_team_schedule_detail_game_posts) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/game_posts |  |
+| [**get_team_schedule_detail_player_data**](DefaultApi.md#get_team_schedule_detail_player_data) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/player_data |  |
 | [**get_team_schedule_detail_schedule**](DefaultApi.md#get_team_schedule_detail_schedule) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/schedule |  |
+| [**get_team_schedule_detail_schedule_overlap**](DefaultApi.md#get_team_schedule_detail_schedule_overlap) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/schedule_overlap |  |
 | [**get_team_schedule_favorites**](DefaultApi.md#get_team_schedule_favorites) | **GET** /api/v1/team_schedule_favorites |  |
 | [**get_team_schedule_note**](DefaultApi.md#get_team_schedule_note) | **GET** /api/v1/team_schedule_notes/{fil_team_id} |  |
 | [**get_team_schedule_searches**](DefaultApi.md#get_team_schedule_searches) | **GET** /api/v1/team_schedule_searches |  |
@@ -11804,6 +11806,82 @@ end
 - **Accept**: application/json
 
 
+## get_team_schedule_detail_player_data
+
+> <TeamSchedulePlayerData> get_team_schedule_detail_player_data(sport_name, school_id)
+
+
+
+Get player data for a team (Men's Basketball only).
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+sport_name = 'sport_name_example' # String | 
+school_id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_team_schedule_detail_player_data(sport_name, school_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_team_schedule_detail_player_data: #{e}"
+end
+```
+
+#### Using the get_team_schedule_detail_player_data_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TeamSchedulePlayerData>, Integer, Hash)> get_team_schedule_detail_player_data_with_http_info(sport_name, school_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_team_schedule_detail_player_data_with_http_info(sport_name, school_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TeamSchedulePlayerData>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_team_schedule_detail_player_data_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **sport_name** | **String** |  |  |
+| **school_id** | **Integer** |  |  |
+
+### Return type
+
+[**TeamSchedulePlayerData**](TeamSchedulePlayerData.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_team_schedule_detail_schedule
 
 > <TeamScheduleSchedule> get_team_schedule_detail_schedule(sport_name, school_id, opts)
@@ -11873,6 +11951,82 @@ end
 ### Return type
 
 [**TeamScheduleSchedule**](TeamScheduleSchedule.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_team_schedule_detail_schedule_overlap
+
+> <TeamScheduleOverlap> get_team_schedule_detail_schedule_overlap(sport_name, school_id)
+
+
+
+Check schedule overlap between a team and the current user's team.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+sport_name = 'sport_name_example' # String | 
+school_id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_team_schedule_detail_schedule_overlap(sport_name, school_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_team_schedule_detail_schedule_overlap: #{e}"
+end
+```
+
+#### Using the get_team_schedule_detail_schedule_overlap_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TeamScheduleOverlap>, Integer, Hash)> get_team_schedule_detail_schedule_overlap_with_http_info(sport_name, school_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_team_schedule_detail_schedule_overlap_with_http_info(sport_name, school_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TeamScheduleOverlap>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_team_schedule_detail_schedule_overlap_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **sport_name** | **String** |  |  |
+| **school_id** | **Integer** |  |  |
+
+### Return type
+
+[**TeamScheduleOverlap**](TeamScheduleOverlap.md)
 
 ### Authorization
 

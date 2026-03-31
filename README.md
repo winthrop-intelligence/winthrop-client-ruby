@@ -243,7 +243,9 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_team_schedule_detail**](docs/DefaultApi.md#get_team_schedule_detail) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id} | 
 *WinthropClient::DefaultApi* | [**get_team_schedule_detail_coaches**](docs/DefaultApi.md#get_team_schedule_detail_coaches) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/coaches | 
 *WinthropClient::DefaultApi* | [**get_team_schedule_detail_game_posts**](docs/DefaultApi.md#get_team_schedule_detail_game_posts) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/game_posts | 
+*WinthropClient::DefaultApi* | [**get_team_schedule_detail_player_data**](docs/DefaultApi.md#get_team_schedule_detail_player_data) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/player_data | 
 *WinthropClient::DefaultApi* | [**get_team_schedule_detail_schedule**](docs/DefaultApi.md#get_team_schedule_detail_schedule) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/schedule | 
+*WinthropClient::DefaultApi* | [**get_team_schedule_detail_schedule_overlap**](docs/DefaultApi.md#get_team_schedule_detail_schedule_overlap) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/schedule_overlap | 
 *WinthropClient::DefaultApi* | [**get_team_schedule_favorites**](docs/DefaultApi.md#get_team_schedule_favorites) | **GET** /api/v1/team_schedule_favorites | 
 *WinthropClient::DefaultApi* | [**get_team_schedule_note**](docs/DefaultApi.md#get_team_schedule_note) | **GET** /api/v1/team_schedule_notes/{fil_team_id} | 
 *WinthropClient::DefaultApi* | [**get_team_schedule_searches**](docs/DefaultApi.md#get_team_schedule_searches) | **GET** /api/v1/team_schedule_searches | 
@@ -530,6 +532,13 @@ Class | Method | HTTP request | Description
  - [WinthropClient::TeamScheduleGamePosts](docs/TeamScheduleGamePosts.md)
  - [WinthropClient::TeamScheduleGamePostsGamePostsInner](docs/TeamScheduleGamePostsGamePostsInner.md)
  - [WinthropClient::TeamScheduleNote](docs/TeamScheduleNote.md)
+ - [WinthropClient::TeamScheduleOverlap](docs/TeamScheduleOverlap.md)
+ - [WinthropClient::TeamScheduleOverlapTeamGamesInner](docs/TeamScheduleOverlapTeamGamesInner.md)
+ - [WinthropClient::TeamSchedulePlayerData](docs/TeamSchedulePlayerData.md)
+ - [WinthropClient::TeamSchedulePlayerDataRecruitsInner](docs/TeamSchedulePlayerDataRecruitsInner.md)
+ - [WinthropClient::TeamSchedulePlayerDataReturningPct](docs/TeamSchedulePlayerDataReturningPct.md)
+ - [WinthropClient::TeamSchedulePlayerDataReturningPlayersInner](docs/TeamSchedulePlayerDataReturningPlayersInner.md)
+ - [WinthropClient::TeamSchedulePlayerDataTransfersInner](docs/TeamSchedulePlayerDataTransfersInner.md)
  - [WinthropClient::TeamScheduleRecentContract](docs/TeamScheduleRecentContract.md)
  - [WinthropClient::TeamScheduleSchedule](docs/TeamScheduleSchedule.md)
  - [WinthropClient::TeamScheduleScheduleGamesInner](docs/TeamScheduleScheduleGamesInner.md)

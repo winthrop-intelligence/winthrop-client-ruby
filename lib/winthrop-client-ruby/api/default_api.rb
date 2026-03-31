@@ -9670,6 +9670,73 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Get player data for a team (Men's Basketball only).
+    # @param sport_name [String] 
+    # @param school_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [TeamSchedulePlayerData]
+    def get_team_schedule_detail_player_data(sport_name, school_id, opts = {})
+      data, _status_code, _headers = get_team_schedule_detail_player_data_with_http_info(sport_name, school_id, opts)
+      data
+    end
+
+    # Get player data for a team (Men&#39;s Basketball only).
+    # @param sport_name [String] 
+    # @param school_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(TeamSchedulePlayerData, Integer, Hash)>] TeamSchedulePlayerData data, response status code and response headers
+    def get_team_schedule_detail_player_data_with_http_info(sport_name, school_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_team_schedule_detail_player_data ...'
+      end
+      # verify the required parameter 'sport_name' is set
+      if @api_client.config.client_side_validation && sport_name.nil?
+        fail ArgumentError, "Missing the required parameter 'sport_name' when calling DefaultApi.get_team_schedule_detail_player_data"
+      end
+      # verify the required parameter 'school_id' is set
+      if @api_client.config.client_side_validation && school_id.nil?
+        fail ArgumentError, "Missing the required parameter 'school_id' when calling DefaultApi.get_team_schedule_detail_player_data"
+      end
+      # resource path
+      local_var_path = '/api/v1/team_schedule_details/{sport_name}/{school_id}/player_data'.sub('{' + 'sport_name' + '}', CGI.escape(sport_name.to_s)).sub('{' + 'school_id' + '}', CGI.escape(school_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'TeamSchedulePlayerData'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_team_schedule_detail_player_data",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_team_schedule_detail_player_data\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get the full game schedule list for a team and season year.
     # @param sport_name [String] 
     # @param school_id [Integer] 
@@ -9736,6 +9803,73 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_team_schedule_detail_schedule\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Check schedule overlap between a team and the current user's team.
+    # @param sport_name [String] 
+    # @param school_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [TeamScheduleOverlap]
+    def get_team_schedule_detail_schedule_overlap(sport_name, school_id, opts = {})
+      data, _status_code, _headers = get_team_schedule_detail_schedule_overlap_with_http_info(sport_name, school_id, opts)
+      data
+    end
+
+    # Check schedule overlap between a team and the current user&#39;s team.
+    # @param sport_name [String] 
+    # @param school_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(TeamScheduleOverlap, Integer, Hash)>] TeamScheduleOverlap data, response status code and response headers
+    def get_team_schedule_detail_schedule_overlap_with_http_info(sport_name, school_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_team_schedule_detail_schedule_overlap ...'
+      end
+      # verify the required parameter 'sport_name' is set
+      if @api_client.config.client_side_validation && sport_name.nil?
+        fail ArgumentError, "Missing the required parameter 'sport_name' when calling DefaultApi.get_team_schedule_detail_schedule_overlap"
+      end
+      # verify the required parameter 'school_id' is set
+      if @api_client.config.client_side_validation && school_id.nil?
+        fail ArgumentError, "Missing the required parameter 'school_id' when calling DefaultApi.get_team_schedule_detail_schedule_overlap"
+      end
+      # resource path
+      local_var_path = '/api/v1/team_schedule_details/{sport_name}/{school_id}/schedule_overlap'.sub('{' + 'sport_name' + '}', CGI.escape(sport_name.to_s)).sub('{' + 'school_id' + '}', CGI.escape(school_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'TeamScheduleOverlap'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_team_schedule_detail_schedule_overlap",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_team_schedule_detail_schedule_overlap\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
