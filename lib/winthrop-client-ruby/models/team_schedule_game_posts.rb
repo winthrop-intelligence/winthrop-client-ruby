@@ -15,11 +15,14 @@ require 'time'
 
 module WinthropClient
   class TeamScheduleGamePosts < ApiModelBase
+    attr_accessor :is_own_school
+
     attr_accessor :game_posts
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'is_own_school' => :'is_own_school',
         :'game_posts' => :'game_posts'
       }
     end
@@ -37,6 +40,7 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'is_own_school' => :'Boolean',
         :'game_posts' => :'Array<TeamScheduleGamePostsGamePostsInner>'
       }
     end
@@ -62,6 +66,10 @@ module WinthropClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'is_own_school')
+        self.is_own_school = attributes[:'is_own_school']
+      end
 
       if attributes.key?(:'game_posts')
         if (value = attributes[:'game_posts']).is_a?(Array)
@@ -90,6 +98,7 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          is_own_school == o.is_own_school &&
           game_posts == o.game_posts
     end
 
@@ -102,7 +111,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [game_posts].hash
+      [is_own_school, game_posts].hash
     end
 
     # Builds the object from hash

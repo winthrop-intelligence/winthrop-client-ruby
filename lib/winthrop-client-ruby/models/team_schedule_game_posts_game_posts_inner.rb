@@ -17,6 +17,8 @@ module WinthropClient
   class TeamScheduleGamePostsGamePostsInner < ApiModelBase
     attr_accessor :id
 
+    attr_accessor :game_post_id
+
     attr_accessor :display_date
 
     attr_accessor :game_types
@@ -35,10 +37,15 @@ module WinthropClient
 
     attr_accessor :active
 
+    attr_accessor :distance
+
+    attr_accessor :can_manage
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
+        :'game_post_id' => :'game_post_id',
         :'display_date' => :'display_date',
         :'game_types' => :'game_types',
         :'description' => :'description',
@@ -47,7 +54,9 @@ module WinthropClient
         :'city' => :'city',
         :'state_name' => :'state_name',
         :'created_at' => :'created_at',
-        :'active' => :'active'
+        :'active' => :'active',
+        :'distance' => :'distance',
+        :'can_manage' => :'can_manage'
       }
     end
 
@@ -65,6 +74,7 @@ module WinthropClient
     def self.openapi_types
       {
         :'id' => :'Integer',
+        :'game_post_id' => :'Integer',
         :'display_date' => :'String',
         :'game_types' => :'String',
         :'description' => :'String',
@@ -73,7 +83,9 @@ module WinthropClient
         :'city' => :'String',
         :'state_name' => :'String',
         :'created_at' => :'String',
-        :'active' => :'Boolean'
+        :'active' => :'Boolean',
+        :'distance' => :'Float',
+        :'can_manage' => :'Boolean'
       }
     end
 
@@ -88,6 +100,7 @@ module WinthropClient
         :'city',
         :'state_name',
         :'created_at',
+        :'distance',
       ])
     end
 
@@ -109,6 +122,10 @@ module WinthropClient
 
       if attributes.key?(:'id')
         self.id = attributes[:'id']
+      end
+
+      if attributes.key?(:'game_post_id')
+        self.game_post_id = attributes[:'game_post_id']
       end
 
       if attributes.key?(:'display_date')
@@ -146,6 +163,14 @@ module WinthropClient
       if attributes.key?(:'active')
         self.active = attributes[:'active']
       end
+
+      if attributes.key?(:'distance')
+        self.distance = attributes[:'distance']
+      end
+
+      if attributes.key?(:'can_manage')
+        self.can_manage = attributes[:'can_manage']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -169,6 +194,7 @@ module WinthropClient
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
+          game_post_id == o.game_post_id &&
           display_date == o.display_date &&
           game_types == o.game_types &&
           description == o.description &&
@@ -177,7 +203,9 @@ module WinthropClient
           city == o.city &&
           state_name == o.state_name &&
           created_at == o.created_at &&
-          active == o.active
+          active == o.active &&
+          distance == o.distance &&
+          can_manage == o.can_manage
     end
 
     # @see the `==` method
@@ -189,7 +217,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, display_date, game_types, description, last_rpi, avg_rpi, city, state_name, created_at, active].hash
+      [id, game_post_id, display_date, game_types, description, last_rpi, avg_rpi, city, state_name, created_at, active, distance, can_manage].hash
     end
 
     # Builds the object from hash
