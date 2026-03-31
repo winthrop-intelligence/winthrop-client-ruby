@@ -31,6 +31,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_favorites_category**](DefaultApi.md#delete_favorites_category) | **DELETE** /api/v1/favorites_categories/{id} |  |
 | [**delete_foia_label**](DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} |  |
 | [**delete_foia_request**](DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} |  |
+| [**delete_game_contract_raw_contract**](DefaultApi.md#delete_game_contract_raw_contract) | **DELETE** /api/v1/game_contracts/{game_contractId}/delete_raw_contract |  |
 | [**delete_game_post_search**](DefaultApi.md#delete_game_post_search) | **DELETE** /api/v1/game_post_searches/{gamePostSearchId} |  |
 | [**delete_job_post**](DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post |
 | [**delete_note**](DefaultApi.md#delete_note) | **DELETE** /api/v1/notes/{id} |  |
@@ -100,9 +101,11 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_foia_labels**](DefaultApi.md#get_foia_labels) | **GET** /api/v1/foia_labels |  |
 | [**get_foia_request**](DefaultApi.md#get_foia_request) | **GET** /api/v1/foia_requests/{foiaRequestId} |  |
 | [**get_foia_requests**](DefaultApi.md#get_foia_requests) | **GET** /api/v1/foia_requests |  |
+| [**get_gad_search_detail**](DefaultApi.md#get_gad_search_detail) | **GET** /api/v1/gad_searches/{id}/detail |  |
 | [**get_gad_searches**](DefaultApi.md#get_gad_searches) | **GET** /api/v1/gad_searches |  |
 | [**get_game**](DefaultApi.md#get_game) | **GET** /api/v1/games/{gameId} |  |
 | [**get_game_contract**](DefaultApi.md#get_game_contract) | **GET** /api/v1/game_contracts/{game_contractId} |  |
+| [**get_game_contract_series**](DefaultApi.md#get_game_contract_series) | **GET** /api/v1/game_contracts/{game_contractId}/series |  |
 | [**get_game_contracts**](DefaultApi.md#get_game_contracts) | **GET** /api/v1/game_contracts |  |
 | [**get_game_post**](DefaultApi.md#get_game_post) | **GET** /api/v1/game_posts/{gamePostId} |  |
 | [**get_game_post_search**](DefaultApi.md#get_game_post_search) | **GET** /api/v1/game_post_searches/{gamePostSearchId} |  |
@@ -128,6 +131,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_revenue_searches**](DefaultApi.md#get_revenue_searches) | **GET** /api/v1/revenue_searches |  |
 | [**get_school**](DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} |  |
 | [**get_school_alternate_names**](DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names |  |
+| [**get_school_game_contracts**](DefaultApi.md#get_school_game_contracts) | **GET** /api/v1/schools/{schoolId}/game_contracts |  |
 | [**get_school_group**](DefaultApi.md#get_school_group) | **GET** /api/v1/school_groups/{schoolGroupId} |  |
 | [**get_school_group_admin_compensation**](DefaultApi.md#get_school_group_admin_compensation) | **GET** /api/v1/school_groups/{schoolGroupId}/admin_compensation |  |
 | [**get_school_group_cashflow_stats**](DefaultApi.md#get_school_group_cashflow_stats) | **GET** /api/v1/school_groups/{schoolGroupId}/cashflow_stats |  |
@@ -171,7 +175,9 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_vendor**](DefaultApi.md#get_vendor) | **GET** /api/v1/vendors/{vendorId} |  |
 | [**get_vendors**](DefaultApi.md#get_vendors) | **GET** /api/v1/vendors |  |
 | [**get_wire_changes**](DefaultApi.md#get_wire_changes) | **GET** /api/v1/wire_changes |  |
+| [**regenerate_raw_contract_pdf**](DefaultApi.md#regenerate_raw_contract_pdf) | **POST** /api/v1/raw_contracts/{raw_contractId}/regenerate_pdf |  |
 | [**search_coaches**](DefaultApi.md#search_coaches) | **POST** /api/v1/coaches/search |  |
+| [**unstract_raw_contract_pdf_text**](DefaultApi.md#unstract_raw_contract_pdf_text) | **POST** /api/v1/raw_contracts/{raw_contractId}/unstract_pdf_text |  |
 | [**update_cashflow**](DefaultApi.md#update_cashflow) | **PUT** /api/v1/cashflows/{cashflowId} |  |
 | [**update_coach**](DefaultApi.md#update_coach) | **PATCH** /api/v1/coaches/{coachId} |  |
 | [**update_compensation**](DefaultApi.md#update_compensation) | **PATCH** /api/v1/compensations/{compensationId} |  |
@@ -181,6 +187,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_favorites_category**](DefaultApi.md#update_favorites_category) | **PATCH** /api/v1/favorites_categories/{id} |  |
 | [**update_foia_label**](DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} |  |
 | [**update_foia_request**](DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} |  |
+| [**update_game_contract**](DefaultApi.md#update_game_contract) | **PATCH** /api/v1/game_contracts/{game_contractId} |  |
 | [**update_game_post_search**](DefaultApi.md#update_game_post_search) | **PATCH** /api/v1/game_post_searches/{gamePostSearchId} |  |
 | [**update_job_post**](DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post |
 | [**update_note**](DefaultApi.md#update_note) | **PATCH** /api/v1/notes/{id} |  |
@@ -2209,6 +2216,79 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **foia_request_id** | **Integer** | ID of foia request to delete |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## delete_game_contract_raw_contract
+
+> delete_game_contract_raw_contract(game_contract_id)
+
+
+
+Delete the raw contract attached to a game contract
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+game_contract_id = 56 # Integer | ID of the GameContract
+
+begin
+  
+  api_instance.delete_game_contract_raw_contract(game_contract_id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_game_contract_raw_contract: #{e}"
+end
+```
+
+#### Using the delete_game_contract_raw_contract_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_game_contract_raw_contract_with_http_info(game_contract_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_game_contract_raw_contract_with_http_info(game_contract_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_game_contract_raw_contract_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **game_contract_id** | **Integer** | ID of the GameContract |  |
 
 ### Return type
 
@@ -7489,6 +7569,80 @@ end
 - **Accept**: application/json
 
 
+## get_gad_search_detail
+
+> <GadContractDetail> get_gad_search_detail(id)
+
+
+
+Retrieve detailed game contract data for the GAD detail page
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_gad_search_detail(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_gad_search_detail: #{e}"
+end
+```
+
+#### Using the get_gad_search_detail_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GadContractDetail>, Integer, Hash)> get_gad_search_detail_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_gad_search_detail_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GadContractDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_gad_search_detail_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**GadContractDetail**](GadContractDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_gad_searches
 
 > <GadSearchResultCollection> get_gad_searches(opts)
@@ -7706,6 +7860,80 @@ end
 ### Return type
 
 [**GameContract**](GameContract.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_game_contract_series
+
+> <GameContractSeriesResponse> get_game_contract_series(game_contract_id)
+
+
+
+Retrieve the series of game contracts related to this contract
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+game_contract_id = 56 # Integer | ID of the GameContract
+
+begin
+  
+  result = api_instance.get_game_contract_series(game_contract_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_game_contract_series: #{e}"
+end
+```
+
+#### Using the get_game_contract_series_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GameContractSeriesResponse>, Integer, Hash)> get_game_contract_series_with_http_info(game_contract_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_game_contract_series_with_http_info(game_contract_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GameContractSeriesResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_game_contract_series_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **game_contract_id** | **Integer** | ID of the GameContract |  |
+
+### Return type
+
+[**GameContractSeriesResponse**](GameContractSeriesResponse.md)
 
 ### Authorization
 
@@ -9625,6 +9853,80 @@ end
 ### Return type
 
 [**GetSchoolAlternateNames200Response**](GetSchoolAlternateNames200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_school_game_contracts
+
+> <SchoolGameContractsResponse> get_school_game_contracts(school_id)
+
+
+
+Retrieve game contracts for a school grouped by sport
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | ID of the School
+
+begin
+  
+  result = api_instance.get_school_game_contracts(school_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_school_game_contracts: #{e}"
+end
+```
+
+#### Using the get_school_game_contracts_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SchoolGameContractsResponse>, Integer, Hash)> get_school_game_contracts_with_http_info(school_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_school_game_contracts_with_http_info(school_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SchoolGameContractsResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_school_game_contracts_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** | ID of the School |  |
+
+### Return type
+
+[**SchoolGameContractsResponse**](SchoolGameContractsResponse.md)
 
 ### Authorization
 
@@ -12976,6 +13278,80 @@ end
 - **Accept**: application/json
 
 
+## regenerate_raw_contract_pdf
+
+> <RegenerateRawContractPdf200Response> regenerate_raw_contract_pdf(raw_contract_id)
+
+
+
+Regenerate the PDF for a raw contract
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+raw_contract_id = 56 # Integer | ID of the RawContract
+
+begin
+  
+  result = api_instance.regenerate_raw_contract_pdf(raw_contract_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->regenerate_raw_contract_pdf: #{e}"
+end
+```
+
+#### Using the regenerate_raw_contract_pdf_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RegenerateRawContractPdf200Response>, Integer, Hash)> regenerate_raw_contract_pdf_with_http_info(raw_contract_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.regenerate_raw_contract_pdf_with_http_info(raw_contract_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RegenerateRawContractPdf200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->regenerate_raw_contract_pdf_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **raw_contract_id** | **Integer** | ID of the RawContract |  |
+
+### Return type
+
+[**RegenerateRawContractPdf200Response**](RegenerateRawContractPdf200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## search_coaches
 
 > <CoachCollection> search_coaches(opts)
@@ -13041,6 +13417,84 @@ end
 ### Return type
 
 [**CoachCollection**](CoachCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## unstract_raw_contract_pdf_text
+
+> <RegenerateRawContractPdf200Response> unstract_raw_contract_pdf_text(raw_contract_id, opts)
+
+
+
+Extract text from a raw contract PDF
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+raw_contract_id = 56 # Integer | ID of the RawContract
+opts = {
+  unstract_raw_contract_pdf_text_request: WinthropClient::UnstractRawContractPdfTextRequest.new # UnstractRawContractPdfTextRequest | 
+}
+
+begin
+  
+  result = api_instance.unstract_raw_contract_pdf_text(raw_contract_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->unstract_raw_contract_pdf_text: #{e}"
+end
+```
+
+#### Using the unstract_raw_contract_pdf_text_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RegenerateRawContractPdf200Response>, Integer, Hash)> unstract_raw_contract_pdf_text_with_http_info(raw_contract_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.unstract_raw_contract_pdf_text_with_http_info(raw_contract_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RegenerateRawContractPdf200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->unstract_raw_contract_pdf_text_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **raw_contract_id** | **Integer** | ID of the RawContract |  |
+| **unstract_raw_contract_pdf_text_request** | [**UnstractRawContractPdfTextRequest**](UnstractRawContractPdfTextRequest.md) |  | [optional] |
+
+### Return type
+
+[**RegenerateRawContractPdf200Response**](RegenerateRawContractPdf200Response.md)
 
 ### Authorization
 
@@ -13733,6 +14187,112 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_game_contract
+
+> <DeleteNote200Response> update_game_contract(game_contract_id, opts)
+
+
+
+Update a GameContract
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+game_contract_id = 56 # Integer | ID of the GameContract
+opts = {
+  game_contract_home_school_id: 56, # Integer | 
+  game_contract_away_school_id: 56, # Integer | 
+  game_contract_sport_id: 56, # Integer | 
+  game_contract_game_type: 'game_contract_game_type_example', # String | 
+  game_contract_game_date: 'game_contract_game_date_example', # String | 
+  game_contract_game_date_tbd: 'game_contract_game_date_tbd_example', # String | 
+  game_contract_off_site_location: 'game_contract_off_site_location_example', # String | 
+  game_contract_comp_dollars: 'game_contract_comp_dollars_example', # String | 
+  game_contract_comp_tbd: 'game_contract_comp_tbd_example', # String | 
+  game_contract_variable: 'game_contract_variable_example', # String | 
+  game_contract_cancel_fee_dollars: 'game_contract_cancel_fee_dollars_example', # String | 
+  game_contract_cancelled: 'game_contract_cancelled_example', # String | 
+  game_contract_verified: 'game_contract_verified_example', # String | 
+  game_contract_signed_on: 'game_contract_signed_on_example', # String | 
+  raw_contract_file: File.new('/path/to/some/file') # File | 
+}
+
+begin
+  
+  result = api_instance.update_game_contract(game_contract_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_game_contract: #{e}"
+end
+```
+
+#### Using the update_game_contract_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DeleteNote200Response>, Integer, Hash)> update_game_contract_with_http_info(game_contract_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_game_contract_with_http_info(game_contract_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DeleteNote200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_game_contract_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **game_contract_id** | **Integer** | ID of the GameContract |  |
+| **game_contract_home_school_id** | **Integer** |  | [optional] |
+| **game_contract_away_school_id** | **Integer** |  | [optional] |
+| **game_contract_sport_id** | **Integer** |  | [optional] |
+| **game_contract_game_type** | **String** |  | [optional] |
+| **game_contract_game_date** | **String** |  | [optional] |
+| **game_contract_game_date_tbd** | **String** |  | [optional] |
+| **game_contract_off_site_location** | **String** |  | [optional] |
+| **game_contract_comp_dollars** | **String** |  | [optional] |
+| **game_contract_comp_tbd** | **String** |  | [optional] |
+| **game_contract_variable** | **String** |  | [optional] |
+| **game_contract_cancel_fee_dollars** | **String** |  | [optional] |
+| **game_contract_cancelled** | **String** |  | [optional] |
+| **game_contract_verified** | **String** |  | [optional] |
+| **game_contract_signed_on** | **String** |  | [optional] |
+| **raw_contract_file** | **File** |  | [optional] |
+
+### Return type
+
+[**DeleteNote200Response**](DeleteNote200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 
 

@@ -1816,6 +1816,65 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Delete the raw contract attached to a game contract
+    # @param game_contract_id [Integer] ID of the GameContract
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_game_contract_raw_contract(game_contract_id, opts = {})
+      delete_game_contract_raw_contract_with_http_info(game_contract_id, opts)
+      nil
+    end
+
+    # Delete the raw contract attached to a game contract
+    # @param game_contract_id [Integer] ID of the GameContract
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def delete_game_contract_raw_contract_with_http_info(game_contract_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.delete_game_contract_raw_contract ...'
+      end
+      # verify the required parameter 'game_contract_id' is set
+      if @api_client.config.client_side_validation && game_contract_id.nil?
+        fail ArgumentError, "Missing the required parameter 'game_contract_id' when calling DefaultApi.delete_game_contract_raw_contract"
+      end
+      # resource path
+      local_var_path = '/api/v1/game_contracts/{game_contractId}/delete_raw_contract'.sub('{' + 'game_contractId' + '}', CGI.escape(game_contract_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.delete_game_contract_raw_contract",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#delete_game_contract_raw_contract\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete a game post
     # @param game_post_search_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -6107,6 +6166,67 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Retrieve detailed game contract data for the GAD detail page
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [GadContractDetail]
+    def get_gad_search_detail(id, opts = {})
+      data, _status_code, _headers = get_gad_search_detail_with_http_info(id, opts)
+      data
+    end
+
+    # Retrieve detailed game contract data for the GAD detail page
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GadContractDetail, Integer, Hash)>] GadContractDetail data, response status code and response headers
+    def get_gad_search_detail_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_gad_search_detail ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.get_gad_search_detail"
+      end
+      # resource path
+      local_var_path = '/api/v1/gad_searches/{id}/detail'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GadContractDetail'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_gad_search_detail",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_gad_search_detail\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Search game contracts (GAD) with filtering and pagination
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
@@ -6289,6 +6409,67 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_game_contract\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve the series of game contracts related to this contract
+    # @param game_contract_id [Integer] ID of the GameContract
+    # @param [Hash] opts the optional parameters
+    # @return [GameContractSeriesResponse]
+    def get_game_contract_series(game_contract_id, opts = {})
+      data, _status_code, _headers = get_game_contract_series_with_http_info(game_contract_id, opts)
+      data
+    end
+
+    # Retrieve the series of game contracts related to this contract
+    # @param game_contract_id [Integer] ID of the GameContract
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GameContractSeriesResponse, Integer, Hash)>] GameContractSeriesResponse data, response status code and response headers
+    def get_game_contract_series_with_http_info(game_contract_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_game_contract_series ...'
+      end
+      # verify the required parameter 'game_contract_id' is set
+      if @api_client.config.client_side_validation && game_contract_id.nil?
+        fail ArgumentError, "Missing the required parameter 'game_contract_id' when calling DefaultApi.get_game_contract_series"
+      end
+      # resource path
+      local_var_path = '/api/v1/game_contracts/{game_contractId}/series'.sub('{' + 'game_contractId' + '}', CGI.escape(game_contract_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GameContractSeriesResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_game_contract_series",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_game_contract_series\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -7866,6 +8047,67 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_school_alternate_names\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve game contracts for a school grouped by sport
+    # @param school_id [Integer] ID of the School
+    # @param [Hash] opts the optional parameters
+    # @return [SchoolGameContractsResponse]
+    def get_school_game_contracts(school_id, opts = {})
+      data, _status_code, _headers = get_school_game_contracts_with_http_info(school_id, opts)
+      data
+    end
+
+    # Retrieve game contracts for a school grouped by sport
+    # @param school_id [Integer] ID of the School
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SchoolGameContractsResponse, Integer, Hash)>] SchoolGameContractsResponse data, response status code and response headers
+    def get_school_game_contracts_with_http_info(school_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_school_game_contracts ...'
+      end
+      # verify the required parameter 'school_id' is set
+      if @api_client.config.client_side_validation && school_id.nil?
+        fail ArgumentError, "Missing the required parameter 'school_id' when calling DefaultApi.get_school_game_contracts"
+      end
+      # resource path
+      local_var_path = '/api/v1/schools/{schoolId}/game_contracts'.sub('{' + 'schoolId' + '}', CGI.escape(school_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SchoolGameContractsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_school_game_contracts",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_school_game_contracts\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -10651,6 +10893,67 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Regenerate the PDF for a raw contract
+    # @param raw_contract_id [Integer] ID of the RawContract
+    # @param [Hash] opts the optional parameters
+    # @return [RegenerateRawContractPdf200Response]
+    def regenerate_raw_contract_pdf(raw_contract_id, opts = {})
+      data, _status_code, _headers = regenerate_raw_contract_pdf_with_http_info(raw_contract_id, opts)
+      data
+    end
+
+    # Regenerate the PDF for a raw contract
+    # @param raw_contract_id [Integer] ID of the RawContract
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(RegenerateRawContractPdf200Response, Integer, Hash)>] RegenerateRawContractPdf200Response data, response status code and response headers
+    def regenerate_raw_contract_pdf_with_http_info(raw_contract_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.regenerate_raw_contract_pdf ...'
+      end
+      # verify the required parameter 'raw_contract_id' is set
+      if @api_client.config.client_side_validation && raw_contract_id.nil?
+        fail ArgumentError, "Missing the required parameter 'raw_contract_id' when calling DefaultApi.regenerate_raw_contract_pdf"
+      end
+      # resource path
+      local_var_path = '/api/v1/raw_contracts/{raw_contractId}/regenerate_pdf'.sub('{' + 'raw_contractId' + '}', CGI.escape(raw_contract_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'RegenerateRawContractPdf200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.regenerate_raw_contract_pdf",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#regenerate_raw_contract_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Search Coaches by priority_ids
     # @param [Hash] opts the optional parameters
     # @option opts [Filters] :filters 
@@ -10709,6 +11012,74 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#search_coaches\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Extract text from a raw contract PDF
+    # @param raw_contract_id [Integer] ID of the RawContract
+    # @param [Hash] opts the optional parameters
+    # @option opts [UnstractRawContractPdfTextRequest] :unstract_raw_contract_pdf_text_request 
+    # @return [RegenerateRawContractPdf200Response]
+    def unstract_raw_contract_pdf_text(raw_contract_id, opts = {})
+      data, _status_code, _headers = unstract_raw_contract_pdf_text_with_http_info(raw_contract_id, opts)
+      data
+    end
+
+    # Extract text from a raw contract PDF
+    # @param raw_contract_id [Integer] ID of the RawContract
+    # @param [Hash] opts the optional parameters
+    # @option opts [UnstractRawContractPdfTextRequest] :unstract_raw_contract_pdf_text_request 
+    # @return [Array<(RegenerateRawContractPdf200Response, Integer, Hash)>] RegenerateRawContractPdf200Response data, response status code and response headers
+    def unstract_raw_contract_pdf_text_with_http_info(raw_contract_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.unstract_raw_contract_pdf_text ...'
+      end
+      # verify the required parameter 'raw_contract_id' is set
+      if @api_client.config.client_side_validation && raw_contract_id.nil?
+        fail ArgumentError, "Missing the required parameter 'raw_contract_id' when calling DefaultApi.unstract_raw_contract_pdf_text"
+      end
+      # resource path
+      local_var_path = '/api/v1/raw_contracts/{raw_contractId}/unstract_pdf_text'.sub('{' + 'raw_contractId' + '}', CGI.escape(raw_contract_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'unstract_raw_contract_pdf_text_request'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'RegenerateRawContractPdf200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.unstract_raw_contract_pdf_text",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#unstract_raw_contract_pdf_text\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -11357,6 +11728,117 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#update_foia_request\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a GameContract
+    # @param game_contract_id [Integer] ID of the GameContract
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :game_contract_home_school_id 
+    # @option opts [Integer] :game_contract_away_school_id 
+    # @option opts [Integer] :game_contract_sport_id 
+    # @option opts [String] :game_contract_game_type 
+    # @option opts [String] :game_contract_game_date 
+    # @option opts [String] :game_contract_game_date_tbd 
+    # @option opts [String] :game_contract_off_site_location 
+    # @option opts [String] :game_contract_comp_dollars 
+    # @option opts [String] :game_contract_comp_tbd 
+    # @option opts [String] :game_contract_variable 
+    # @option opts [String] :game_contract_cancel_fee_dollars 
+    # @option opts [String] :game_contract_cancelled 
+    # @option opts [String] :game_contract_verified 
+    # @option opts [String] :game_contract_signed_on 
+    # @option opts [File] :raw_contract_file 
+    # @return [DeleteNote200Response]
+    def update_game_contract(game_contract_id, opts = {})
+      data, _status_code, _headers = update_game_contract_with_http_info(game_contract_id, opts)
+      data
+    end
+
+    # Update a GameContract
+    # @param game_contract_id [Integer] ID of the GameContract
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :game_contract_home_school_id 
+    # @option opts [Integer] :game_contract_away_school_id 
+    # @option opts [Integer] :game_contract_sport_id 
+    # @option opts [String] :game_contract_game_type 
+    # @option opts [String] :game_contract_game_date 
+    # @option opts [String] :game_contract_game_date_tbd 
+    # @option opts [String] :game_contract_off_site_location 
+    # @option opts [String] :game_contract_comp_dollars 
+    # @option opts [String] :game_contract_comp_tbd 
+    # @option opts [String] :game_contract_variable 
+    # @option opts [String] :game_contract_cancel_fee_dollars 
+    # @option opts [String] :game_contract_cancelled 
+    # @option opts [String] :game_contract_verified 
+    # @option opts [String] :game_contract_signed_on 
+    # @option opts [File] :raw_contract_file 
+    # @return [Array<(DeleteNote200Response, Integer, Hash)>] DeleteNote200Response data, response status code and response headers
+    def update_game_contract_with_http_info(game_contract_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_game_contract ...'
+      end
+      # verify the required parameter 'game_contract_id' is set
+      if @api_client.config.client_side_validation && game_contract_id.nil?
+        fail ArgumentError, "Missing the required parameter 'game_contract_id' when calling DefaultApi.update_game_contract"
+      end
+      # resource path
+      local_var_path = '/api/v1/game_contracts/{game_contractId}'.sub('{' + 'game_contractId' + '}', CGI.escape(game_contract_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['multipart/form-data'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+      form_params['game_contract[home_school_id]'] = opts[:'game_contract_home_school_id'] if !opts[:'game_contract_home_school_id'].nil?
+      form_params['game_contract[away_school_id]'] = opts[:'game_contract_away_school_id'] if !opts[:'game_contract_away_school_id'].nil?
+      form_params['game_contract[sport_id]'] = opts[:'game_contract_sport_id'] if !opts[:'game_contract_sport_id'].nil?
+      form_params['game_contract[game_type]'] = opts[:'game_contract_game_type'] if !opts[:'game_contract_game_type'].nil?
+      form_params['game_contract[game_date]'] = opts[:'game_contract_game_date'] if !opts[:'game_contract_game_date'].nil?
+      form_params['game_contract[game_date_tbd]'] = opts[:'game_contract_game_date_tbd'] if !opts[:'game_contract_game_date_tbd'].nil?
+      form_params['game_contract[off_site_location]'] = opts[:'game_contract_off_site_location'] if !opts[:'game_contract_off_site_location'].nil?
+      form_params['game_contract[comp_dollars]'] = opts[:'game_contract_comp_dollars'] if !opts[:'game_contract_comp_dollars'].nil?
+      form_params['game_contract[comp_tbd]'] = opts[:'game_contract_comp_tbd'] if !opts[:'game_contract_comp_tbd'].nil?
+      form_params['game_contract[variable]'] = opts[:'game_contract_variable'] if !opts[:'game_contract_variable'].nil?
+      form_params['game_contract[cancel_fee_dollars]'] = opts[:'game_contract_cancel_fee_dollars'] if !opts[:'game_contract_cancel_fee_dollars'].nil?
+      form_params['game_contract[cancelled]'] = opts[:'game_contract_cancelled'] if !opts[:'game_contract_cancelled'].nil?
+      form_params['game_contract[verified]'] = opts[:'game_contract_verified'] if !opts[:'game_contract_verified'].nil?
+      form_params['game_contract[signed_on]'] = opts[:'game_contract_signed_on'] if !opts[:'game_contract_signed_on'].nil?
+      form_params['raw_contract_file'] = opts[:'raw_contract_file'] if !opts[:'raw_contract_file'].nil?
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'DeleteNote200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_game_contract",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_game_contract\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
