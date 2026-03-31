@@ -110,7 +110,6 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**create_position**](docs/DefaultApi.md#create_position) | **POST** /api/v1/positions | 
 *WinthropClient::DefaultApi* | [**create_requested_item**](docs/DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items | 
 *WinthropClient::DefaultApi* | [**create_season**](docs/DefaultApi.md#create_season) | **POST** /api/v1/seasons | 
-*WinthropClient::DefaultApi* | [**create_team_schedule_favorite**](docs/DefaultApi.md#create_team_schedule_favorite) | **POST** /api/v1/team_schedule_favorites | 
 *WinthropClient::DefaultApi* | [**delete_cashflow**](docs/DefaultApi.md#delete_cashflow) | **DELETE** /api/v1/cashflows/{cashflowId} | 
 *WinthropClient::DefaultApi* | [**delete_conference**](docs/DefaultApi.md#delete_conference) | **DELETE** /api/v1/conferences/{conferenceId} | 
 *WinthropClient::DefaultApi* | [**delete_conferenceship**](docs/DefaultApi.md#delete_conferenceship) | **DELETE** /api/v1/conferenceships/{conferenceshipId} | 
@@ -125,8 +124,6 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**delete_position**](docs/DefaultApi.md#delete_position) | **DELETE** /api/v1/positions/{positionId} | 
 *WinthropClient::DefaultApi* | [**delete_requested_item**](docs/DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} | 
 *WinthropClient::DefaultApi* | [**delete_season**](docs/DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} | 
-*WinthropClient::DefaultApi* | [**delete_team_schedule_favorite**](docs/DefaultApi.md#delete_team_schedule_favorite) | **DELETE** /api/v1/team_schedule_favorites/{id} | 
-*WinthropClient::DefaultApi* | [**delete_team_schedule_note**](docs/DefaultApi.md#delete_team_schedule_note) | **DELETE** /api/v1/team_schedule_notes/{fil_team_id} | 
 *WinthropClient::DefaultApi* | [**get_administrator**](docs/DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} | 
 *WinthropClient::DefaultApi* | [**get_administrator_searches**](docs/DefaultApi.md#get_administrator_searches) | **GET** /api/v1/administrator_searches | 
 *WinthropClient::DefaultApi* | [**get_administrators**](docs/DefaultApi.md#get_administrators) | **GET** /api/v1/administrators | 
@@ -244,15 +241,6 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_subscription**](docs/DefaultApi.md#get_subscription) | **GET** /api/v1/subscriptions/{subscriptionId} | 
 *WinthropClient::DefaultApi* | [**get_subscriptions**](docs/DefaultApi.md#get_subscriptions) | **GET** /api/v1/subscriptions | 
 *WinthropClient::DefaultApi* | [**get_system_settings**](docs/DefaultApi.md#get_system_settings) | **GET** /api/v1/system_setting | 
-*WinthropClient::DefaultApi* | [**get_team_schedule_detail**](docs/DefaultApi.md#get_team_schedule_detail) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id} | 
-*WinthropClient::DefaultApi* | [**get_team_schedule_detail_coaches**](docs/DefaultApi.md#get_team_schedule_detail_coaches) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/coaches | 
-*WinthropClient::DefaultApi* | [**get_team_schedule_detail_game_posts**](docs/DefaultApi.md#get_team_schedule_detail_game_posts) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/game_posts | 
-*WinthropClient::DefaultApi* | [**get_team_schedule_detail_player_data**](docs/DefaultApi.md#get_team_schedule_detail_player_data) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/player_data | 
-*WinthropClient::DefaultApi* | [**get_team_schedule_detail_schedule**](docs/DefaultApi.md#get_team_schedule_detail_schedule) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/schedule | 
-*WinthropClient::DefaultApi* | [**get_team_schedule_detail_schedule_overlap**](docs/DefaultApi.md#get_team_schedule_detail_schedule_overlap) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/schedule_overlap | 
-*WinthropClient::DefaultApi* | [**get_team_schedule_favorites**](docs/DefaultApi.md#get_team_schedule_favorites) | **GET** /api/v1/team_schedule_favorites | 
-*WinthropClient::DefaultApi* | [**get_team_schedule_note**](docs/DefaultApi.md#get_team_schedule_note) | **GET** /api/v1/team_schedule_notes/{fil_team_id} | 
-*WinthropClient::DefaultApi* | [**get_team_schedule_searches**](docs/DefaultApi.md#get_team_schedule_searches) | **GET** /api/v1/team_schedule_searches | 
 *WinthropClient::DefaultApi* | [**get_user**](docs/DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} | 
 *WinthropClient::DefaultApi* | [**get_user_activity_summaries**](docs/DefaultApi.md#get_user_activity_summaries) | **GET** /api/v1/user_activity_summaries | 
 *WinthropClient::DefaultApi* | [**get_user_activity_summary**](docs/DefaultApi.md#get_user_activity_summary) | **GET** /api/v1/user_activity_summaries/{user_activity_summaryId} | 
@@ -281,8 +269,6 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**update_position**](docs/DefaultApi.md#update_position) | **PATCH** /api/v1/positions/{positionId} | 
 *WinthropClient::DefaultApi* | [**update_requested_item**](docs/DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} | 
 *WinthropClient::DefaultApi* | [**update_season**](docs/DefaultApi.md#update_season) | **PUT** /api/v1/seasons/{seasonId} | 
-*WinthropClient::DefaultApi* | [**update_team_schedule_favorite**](docs/DefaultApi.md#update_team_schedule_favorite) | **PATCH** /api/v1/team_schedule_favorites/{id} | 
-*WinthropClient::DefaultApi* | [**upsert_team_schedule_note**](docs/DefaultApi.md#upsert_team_schedule_note) | **PUT** /api/v1/team_schedule_notes/{fil_team_id} | 
 *WinthropClient::DefaultApi* | [**user_me**](docs/DefaultApi.md#user_me) | **GET** /api/v1/users/me | 
 *WinthropClient::DefaultApi* | [**verify_user_intercollegiate_access**](docs/DefaultApi.md#verify_user_intercollegiate_access) | **GET** /api/v1/users/verify_user_intercollegiate_access | 
 *WinthropClient::DossierApi* | [**university_dossier_report_dossier_winad_id_get**](docs/DossierApi.md#university_dossier_report_dossier_winad_id_get) | **GET** /dossier/{winad_id}/ | University Dossier Report
@@ -395,8 +381,6 @@ Class | Method | HTTP request | Description
  - [WinthropClient::CreateGamePostSearchRequest](docs/CreateGamePostSearchRequest.md)
  - [WinthropClient::CreateGamePostSearchRequestGamePost](docs/CreateGamePostSearchRequestGamePost.md)
  - [WinthropClient::CreateNoteRequest](docs/CreateNoteRequest.md)
- - [WinthropClient::CreateTeamScheduleFavorite201Response](docs/CreateTeamScheduleFavorite201Response.md)
- - [WinthropClient::CreateTeamScheduleFavoriteRequest](docs/CreateTeamScheduleFavoriteRequest.md)
  - [WinthropClient::Deal](docs/Deal.md)
  - [WinthropClient::DealCollection](docs/DealCollection.md)
  - [WinthropClient::DealDetail](docs/DealDetail.md)
@@ -454,7 +438,6 @@ Class | Method | HTTP request | Description
  - [WinthropClient::GetLadFilterOptions200ResponsePositionTypesInner](docs/GetLadFilterOptions200ResponsePositionTypesInner.md)
  - [WinthropClient::GetSchoolAlternateNames200Response](docs/GetSchoolAlternateNames200Response.md)
  - [WinthropClient::GetSchoolAlternateNames404Response](docs/GetSchoolAlternateNames404Response.md)
- - [WinthropClient::GetTeamScheduleFavorites200ResponseInner](docs/GetTeamScheduleFavorites200ResponseInner.md)
  - [WinthropClient::GetWireChanges200Response](docs/GetWireChanges200Response.md)
  - [WinthropClient::HTTPValidationError](docs/HTTPValidationError.md)
  - [WinthropClient::HealthCheckFailure](docs/HealthCheckFailure.md)
@@ -493,7 +476,10 @@ Class | Method | HTTP request | Description
  - [WinthropClient::PredictFailure](docs/PredictFailure.md)
  - [WinthropClient::PredictSuccess](docs/PredictSuccess.md)
  - [WinthropClient::RawContract](docs/RawContract.md)
+ - [WinthropClient::RawContractBackTo](docs/RawContractBackTo.md)
  - [WinthropClient::RawContractCollection](docs/RawContractCollection.md)
+ - [WinthropClient::RawContractDealInfo](docs/RawContractDealInfo.md)
+ - [WinthropClient::RawContractDealInfoVendorsInner](docs/RawContractDealInfoVendorsInner.md)
  - [WinthropClient::RecordPositionEntry](docs/RecordPositionEntry.md)
  - [WinthropClient::RegenerateRawContractPdf200Response](docs/RegenerateRawContractPdf200Response.md)
  - [WinthropClient::RequestedItem](docs/RequestedItem.md)
@@ -533,36 +519,6 @@ Class | Method | HTTP request | Description
  - [WinthropClient::SubscriptionCollection](docs/SubscriptionCollection.md)
  - [WinthropClient::SystemSetting](docs/SystemSetting.md)
  - [WinthropClient::Tag](docs/Tag.md)
- - [WinthropClient::TeamScheduleCoaches](docs/TeamScheduleCoaches.md)
- - [WinthropClient::TeamScheduleCoachesCoachesInner](docs/TeamScheduleCoachesCoachesInner.md)
- - [WinthropClient::TeamScheduleCoachesHeadCoachesInnerInner](docs/TeamScheduleCoachesHeadCoachesInnerInner.md)
- - [WinthropClient::TeamScheduleCoachesSeasonsInner](docs/TeamScheduleCoachesSeasonsInner.md)
- - [WinthropClient::TeamScheduleContact](docs/TeamScheduleContact.md)
- - [WinthropClient::TeamScheduleDetail](docs/TeamScheduleDetail.md)
- - [WinthropClient::TeamScheduleDetailGame](docs/TeamScheduleDetailGame.md)
- - [WinthropClient::TeamScheduleDetailHeadCoach](docs/TeamScheduleDetailHeadCoach.md)
- - [WinthropClient::TeamScheduleDetailSchool](docs/TeamScheduleDetailSchool.md)
- - [WinthropClient::TeamScheduleDetailSeason](docs/TeamScheduleDetailSeason.md)
- - [WinthropClient::TeamScheduleDetailSport](docs/TeamScheduleDetailSport.md)
- - [WinthropClient::TeamScheduleFavoriteDetail](docs/TeamScheduleFavoriteDetail.md)
- - [WinthropClient::TeamScheduleFavoriteEntry](docs/TeamScheduleFavoriteEntry.md)
- - [WinthropClient::TeamScheduleGamePosts](docs/TeamScheduleGamePosts.md)
- - [WinthropClient::TeamScheduleGamePostsGamePostsInner](docs/TeamScheduleGamePostsGamePostsInner.md)
- - [WinthropClient::TeamScheduleNote](docs/TeamScheduleNote.md)
- - [WinthropClient::TeamScheduleOverlap](docs/TeamScheduleOverlap.md)
- - [WinthropClient::TeamScheduleOverlapTeamGamesInner](docs/TeamScheduleOverlapTeamGamesInner.md)
- - [WinthropClient::TeamSchedulePlayerData](docs/TeamSchedulePlayerData.md)
- - [WinthropClient::TeamSchedulePlayerDataRecruitsInner](docs/TeamSchedulePlayerDataRecruitsInner.md)
- - [WinthropClient::TeamSchedulePlayerDataReturningPct](docs/TeamSchedulePlayerDataReturningPct.md)
- - [WinthropClient::TeamSchedulePlayerDataReturningPlayersInner](docs/TeamSchedulePlayerDataReturningPlayersInner.md)
- - [WinthropClient::TeamSchedulePlayerDataTransfersInner](docs/TeamSchedulePlayerDataTransfersInner.md)
- - [WinthropClient::TeamScheduleRecentContract](docs/TeamScheduleRecentContract.md)
- - [WinthropClient::TeamScheduleSchedule](docs/TeamScheduleSchedule.md)
- - [WinthropClient::TeamScheduleScheduleGamesInner](docs/TeamScheduleScheduleGamesInner.md)
- - [WinthropClient::TeamScheduleSearchResult](docs/TeamScheduleSearchResult.md)
- - [WinthropClient::TeamScheduleSearchResultAwayContracts](docs/TeamScheduleSearchResultAwayContracts.md)
- - [WinthropClient::TeamScheduleSearchResultCollection](docs/TeamScheduleSearchResultCollection.md)
- - [WinthropClient::TeamScheduleSearchResultHomeContracts](docs/TeamScheduleSearchResultHomeContracts.md)
  - [WinthropClient::UnauthorizedError](docs/UnauthorizedError.md)
  - [WinthropClient::UnprocessableEntity](docs/UnprocessableEntity.md)
  - [WinthropClient::UnstractRawContractPdfTextRequest](docs/UnstractRawContractPdfTextRequest.md)
@@ -571,8 +527,6 @@ Class | Method | HTTP request | Description
  - [WinthropClient::UpdateGamePostSearchRequest](docs/UpdateGamePostSearchRequest.md)
  - [WinthropClient::UpdateGamePostSearchRequestGamePost](docs/UpdateGamePostSearchRequestGamePost.md)
  - [WinthropClient::UpdateNoteRequest](docs/UpdateNoteRequest.md)
- - [WinthropClient::UpdateTeamScheduleFavoriteRequest](docs/UpdateTeamScheduleFavoriteRequest.md)
- - [WinthropClient::UpsertTeamScheduleNoteRequest](docs/UpsertTeamScheduleNoteRequest.md)
  - [WinthropClient::User](docs/User.md)
  - [WinthropClient::UserActivitySummary](docs/UserActivitySummary.md)
  - [WinthropClient::UserActivitySummaryCollection](docs/UserActivitySummaryCollection.md)
