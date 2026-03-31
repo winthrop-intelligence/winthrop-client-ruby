@@ -10,6 +10,8 @@
 | **email** | **String** |  | [optional] |
 | **phone** | **String** |  | [optional] |
 | **photo_url** | **String** |  | [optional] |
+| **compensation** | **String** | Compensation label (e.g. &#39;Hourly&#39;) | [optional] |
+| **compensation_cents** | **Integer** | Total compensation in cents | [optional] |
 
 ## Example
 
@@ -22,7 +24,9 @@ instance = WinthropClient::TeamScheduleCoachesCoachesInner.new(
   title: null,
   email: null,
   phone: null,
-  photo_url: null
+  photo_url: null,
+  compensation: null,
+  compensation_cents: null
 )
 ```
 

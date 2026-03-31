@@ -19,6 +19,8 @@ module WinthropClient
 
     attr_accessor :performance_years
 
+    attr_accessor :sport_name
+
     attr_accessor :coaches
 
     attr_accessor :head_coaches
@@ -30,6 +32,7 @@ module WinthropClient
       {
         :'performance_year' => :'performance_year',
         :'performance_years' => :'performance_years',
+        :'sport_name' => :'sport_name',
         :'coaches' => :'coaches',
         :'head_coaches' => :'head_coaches',
         :'seasons' => :'seasons'
@@ -51,6 +54,7 @@ module WinthropClient
       {
         :'performance_year' => :'Integer',
         :'performance_years' => :'Array<Integer>',
+        :'sport_name' => :'String',
         :'coaches' => :'Array<TeamScheduleCoachesCoachesInner>',
         :'head_coaches' => :'Array<Array<TeamScheduleCoachesHeadCoachesInnerInner>>',
         :'seasons' => :'Array<TeamScheduleCoachesSeasonsInner>'
@@ -60,6 +64,7 @@ module WinthropClient
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'sport_name',
       ])
     end
 
@@ -87,6 +92,10 @@ module WinthropClient
         if (value = attributes[:'performance_years']).is_a?(Array)
           self.performance_years = value
         end
+      end
+
+      if attributes.key?(:'sport_name')
+        self.sport_name = attributes[:'sport_name']
       end
 
       if attributes.key?(:'coaches')
@@ -130,6 +139,7 @@ module WinthropClient
       self.class == o.class &&
           performance_year == o.performance_year &&
           performance_years == o.performance_years &&
+          sport_name == o.sport_name &&
           coaches == o.coaches &&
           head_coaches == o.head_coaches &&
           seasons == o.seasons
@@ -144,7 +154,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [performance_year, performance_years, coaches, head_coaches, seasons].hash
+      [performance_year, performance_years, sport_name, coaches, head_coaches, seasons].hash
     end
 
     # Builds the object from hash

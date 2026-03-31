@@ -16,6 +16,9 @@ require 'time'
 module WinthropClient
   # Scheduling contact for a school/sport
   class TeamScheduleContact < ApiModelBase
+    # Coach ID for linking to coach profile
+    attr_accessor :coach_id
+
     # Full name of the contact
     attr_accessor :name
 
@@ -27,13 +30,18 @@ module WinthropClient
     # Formatted phone number
     attr_accessor :phone
 
+    # URL to coach avatar image (small cropped variant)
+    attr_accessor :avatar_url
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'coach_id' => :'coach_id',
         :'name' => :'name',
         :'title' => :'title',
         :'email' => :'email',
-        :'phone' => :'phone'
+        :'phone' => :'phone',
+        :'avatar_url' => :'avatar_url'
       }
     end
 
@@ -50,20 +58,24 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'coach_id' => :'Integer',
         :'name' => :'String',
         :'title' => :'String',
         :'email' => :'String',
-        :'phone' => :'String'
+        :'phone' => :'String',
+        :'avatar_url' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'coach_id',
         :'name',
         :'title',
         :'email',
-        :'phone'
+        :'phone',
+        :'avatar_url'
       ])
     end
 
@@ -83,6 +95,10 @@ module WinthropClient
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'coach_id')
+        self.coach_id = attributes[:'coach_id']
+      end
+
       if attributes.key?(:'name')
         self.name = attributes[:'name']
       end
@@ -97,6 +113,10 @@ module WinthropClient
 
       if attributes.key?(:'phone')
         self.phone = attributes[:'phone']
+      end
+
+      if attributes.key?(:'avatar_url')
+        self.avatar_url = attributes[:'avatar_url']
       end
     end
 
@@ -120,10 +140,12 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          coach_id == o.coach_id &&
           name == o.name &&
           title == o.title &&
           email == o.email &&
-          phone == o.phone
+          phone == o.phone &&
+          avatar_url == o.avatar_url
     end
 
     # @see the `==` method
@@ -135,7 +157,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, title, email, phone].hash
+      [coach_id, name, title, email, phone, avatar_url].hash
     end
 
     # Builds the object from hash

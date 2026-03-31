@@ -27,6 +27,12 @@ module WinthropClient
 
     attr_accessor :photo_url
 
+    # Compensation label (e.g. 'Hourly')
+    attr_accessor :compensation
+
+    # Total compensation in cents
+    attr_accessor :compensation_cents
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -35,7 +41,9 @@ module WinthropClient
         :'title' => :'title',
         :'email' => :'email',
         :'phone' => :'phone',
-        :'photo_url' => :'photo_url'
+        :'photo_url' => :'photo_url',
+        :'compensation' => :'compensation',
+        :'compensation_cents' => :'compensation_cents'
       }
     end
 
@@ -57,7 +65,9 @@ module WinthropClient
         :'title' => :'String',
         :'email' => :'String',
         :'phone' => :'String',
-        :'photo_url' => :'String'
+        :'photo_url' => :'String',
+        :'compensation' => :'String',
+        :'compensation_cents' => :'Integer'
       }
     end
 
@@ -67,7 +77,9 @@ module WinthropClient
         :'title',
         :'email',
         :'phone',
-        :'photo_url'
+        :'photo_url',
+        :'compensation',
+        :'compensation_cents'
       ])
     end
 
@@ -110,6 +122,14 @@ module WinthropClient
       if attributes.key?(:'photo_url')
         self.photo_url = attributes[:'photo_url']
       end
+
+      if attributes.key?(:'compensation')
+        self.compensation = attributes[:'compensation']
+      end
+
+      if attributes.key?(:'compensation_cents')
+        self.compensation_cents = attributes[:'compensation_cents']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -137,7 +157,9 @@ module WinthropClient
           title == o.title &&
           email == o.email &&
           phone == o.phone &&
-          photo_url == o.photo_url
+          photo_url == o.photo_url &&
+          compensation == o.compensation &&
+          compensation_cents == o.compensation_cents
     end
 
     # @see the `==` method
@@ -149,7 +171,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, title, email, phone, photo_url].hash
+      [id, name, title, email, phone, photo_url, compensation, compensation_cents].hash
     end
 
     # Builds the object from hash

@@ -31,6 +31,16 @@ module WinthropClient
 
     attr_accessor :postseason
 
+    attr_accessor :home_record
+
+    attr_accessor :home_win_percent
+
+    attr_accessor :sos_ranking
+
+    attr_accessor :offensive_efficiency
+
+    attr_accessor :defensive_efficiency
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -41,7 +51,12 @@ module WinthropClient
         :'rpi' => :'rpi',
         :'record_str' => :'record_str',
         :'conference_record' => :'conference_record',
-        :'postseason' => :'postseason'
+        :'postseason' => :'postseason',
+        :'home_record' => :'home_record',
+        :'home_win_percent' => :'home_win_percent',
+        :'sos_ranking' => :'sos_ranking',
+        :'offensive_efficiency' => :'offensive_efficiency',
+        :'defensive_efficiency' => :'defensive_efficiency'
       }
     end
 
@@ -65,7 +80,12 @@ module WinthropClient
         :'rpi' => :'Integer',
         :'record_str' => :'String',
         :'conference_record' => :'String',
-        :'postseason' => :'String'
+        :'postseason' => :'String',
+        :'home_record' => :'String',
+        :'home_win_percent' => :'Float',
+        :'sos_ranking' => :'Integer',
+        :'offensive_efficiency' => :'Float',
+        :'defensive_efficiency' => :'Float'
       }
     end
 
@@ -78,7 +98,12 @@ module WinthropClient
         :'rpi',
         :'record_str',
         :'conference_record',
-        :'postseason'
+        :'postseason',
+        :'home_record',
+        :'home_win_percent',
+        :'sos_ranking',
+        :'offensive_efficiency',
+        :'defensive_efficiency'
       ])
     end
 
@@ -129,6 +154,26 @@ module WinthropClient
       if attributes.key?(:'postseason')
         self.postseason = attributes[:'postseason']
       end
+
+      if attributes.key?(:'home_record')
+        self.home_record = attributes[:'home_record']
+      end
+
+      if attributes.key?(:'home_win_percent')
+        self.home_win_percent = attributes[:'home_win_percent']
+      end
+
+      if attributes.key?(:'sos_ranking')
+        self.sos_ranking = attributes[:'sos_ranking']
+      end
+
+      if attributes.key?(:'offensive_efficiency')
+        self.offensive_efficiency = attributes[:'offensive_efficiency']
+      end
+
+      if attributes.key?(:'defensive_efficiency')
+        self.defensive_efficiency = attributes[:'defensive_efficiency']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -158,7 +203,12 @@ module WinthropClient
           rpi == o.rpi &&
           record_str == o.record_str &&
           conference_record == o.conference_record &&
-          postseason == o.postseason
+          postseason == o.postseason &&
+          home_record == o.home_record &&
+          home_win_percent == o.home_win_percent &&
+          sos_ranking == o.sos_ranking &&
+          offensive_efficiency == o.offensive_efficiency &&
+          defensive_efficiency == o.defensive_efficiency
     end
 
     # @see the `==` method
@@ -170,7 +220,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [year, wins, losses, ties, rpi, record_str, conference_record, postseason].hash
+      [year, wins, losses, ties, rpi, record_str, conference_record, postseason, home_record, home_win_percent, sos_ranking, offensive_efficiency, defensive_efficiency].hash
     end
 
     # Builds the object from hash

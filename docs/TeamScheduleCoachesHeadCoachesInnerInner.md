@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** |  | [optional] |
 | **name** | **String** |  | [optional] |
+| **photo_url** | **String** |  | [optional] |
 
 ## Example
 
@@ -14,7 +15,8 @@ require 'winthrop-client-ruby'
 
 instance = WinthropClient::TeamScheduleCoachesHeadCoachesInnerInner.new(
   id: null,
-  name: null
+  name: null,
+  photo_url: null
 )
 ```
 

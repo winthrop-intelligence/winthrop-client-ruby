@@ -39,6 +39,10 @@ module WinthropClient
 
     attr_accessor :has_contract
 
+    attr_accessor :compensation_cents
+
+    attr_accessor :game_contract_id
+
     attr_accessor :result
 
     attr_accessor :score
@@ -82,6 +86,8 @@ module WinthropClient
         :'opponent_avg_rpi' => :'opponent_avg_rpi',
         :'in_conference' => :'in_conference',
         :'has_contract' => :'has_contract',
+        :'compensation_cents' => :'compensation_cents',
+        :'game_contract_id' => :'game_contract_id',
         :'result' => :'result',
         :'score' => :'score',
         :'overtime' => :'overtime'
@@ -113,6 +119,8 @@ module WinthropClient
         :'opponent_avg_rpi' => :'Integer',
         :'in_conference' => :'Boolean',
         :'has_contract' => :'Boolean',
+        :'compensation_cents' => :'Integer',
+        :'game_contract_id' => :'Integer',
         :'result' => :'String',
         :'score' => :'String',
         :'overtime' => :'Integer'
@@ -130,6 +138,8 @@ module WinthropClient
         :'state_name',
         :'opponent_rpi',
         :'opponent_avg_rpi',
+        :'compensation_cents',
+        :'game_contract_id',
         :'result',
         :'score',
         :'overtime'
@@ -198,6 +208,14 @@ module WinthropClient
 
       if attributes.key?(:'has_contract')
         self.has_contract = attributes[:'has_contract']
+      end
+
+      if attributes.key?(:'compensation_cents')
+        self.compensation_cents = attributes[:'compensation_cents']
+      end
+
+      if attributes.key?(:'game_contract_id')
+        self.game_contract_id = attributes[:'game_contract_id']
       end
 
       if attributes.key?(:'result')
@@ -269,6 +287,8 @@ module WinthropClient
           opponent_avg_rpi == o.opponent_avg_rpi &&
           in_conference == o.in_conference &&
           has_contract == o.has_contract &&
+          compensation_cents == o.compensation_cents &&
+          game_contract_id == o.game_contract_id &&
           result == o.result &&
           score == o.score &&
           overtime == o.overtime
@@ -283,7 +303,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, game_date, game_date_display, opponent_id, opponent_name, location, city, state_name, opponent_rpi, opponent_avg_rpi, in_conference, has_contract, result, score, overtime].hash
+      [id, game_date, game_date_display, opponent_id, opponent_name, location, city, state_name, opponent_rpi, opponent_avg_rpi, in_conference, has_contract, compensation_cents, game_contract_id, result, score, overtime].hash
     end
 
     # Builds the object from hash

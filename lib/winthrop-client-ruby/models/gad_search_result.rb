@@ -14,7 +14,6 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  # A single guarantee/game contract search result
   class GadSearchResult < ApiModelBase
     attr_accessor :game_contract_id
 
@@ -41,8 +40,6 @@ module WinthropClient
     attr_accessor :away_school_logo_url
 
     attr_accessor :game_type
-
-    attr_accessor :game_type_short
 
     attr_accessor :comp_cents
 
@@ -84,7 +81,6 @@ module WinthropClient
         :'away_school_short_name' => :'away_school_short_name',
         :'away_school_logo_url' => :'away_school_logo_url',
         :'game_type' => :'game_type',
-        :'game_type_short' => :'game_type_short',
         :'comp_cents' => :'comp_cents',
         :'comp_tbd' => :'comp_tbd',
         :'variable' => :'variable',
@@ -126,7 +122,6 @@ module WinthropClient
         :'away_school_short_name' => :'String',
         :'away_school_logo_url' => :'String',
         :'game_type' => :'String',
-        :'game_type_short' => :'String',
         :'comp_cents' => :'Integer',
         :'comp_tbd' => :'Boolean',
         :'variable' => :'Boolean',
@@ -157,7 +152,6 @@ module WinthropClient
         :'away_school_short_name',
         :'away_school_logo_url',
         :'game_type',
-        :'game_type_short',
         :'comp_cents',
         :'comp_tbd',
         :'variable',
@@ -236,10 +230,6 @@ module WinthropClient
 
       if attributes.key?(:'game_type')
         self.game_type = attributes[:'game_type']
-      end
-
-      if attributes.key?(:'game_type_short')
-        self.game_type_short = attributes[:'game_type_short']
       end
 
       if attributes.key?(:'comp_cents')
@@ -324,7 +314,6 @@ module WinthropClient
           away_school_short_name == o.away_school_short_name &&
           away_school_logo_url == o.away_school_logo_url &&
           game_type == o.game_type &&
-          game_type_short == o.game_type_short &&
           comp_cents == o.comp_cents &&
           comp_tbd == o.comp_tbd &&
           variable == o.variable &&
@@ -348,7 +337,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [game_contract_id, sport_id, sport_name, sport_gender_code_class, home_school_id, home_school_name, home_school_short_name, home_school_logo_url, away_school_id, away_school_name, away_school_short_name, away_school_logo_url, game_type, game_type_short, comp_cents, comp_tbd, variable, cancel_fee_cents, cancelled, season_year, game_date, game_date_tbd, raw_contract_id, belongs_to_series, can_link_home_school, can_link_away_school].hash
+      [game_contract_id, sport_id, sport_name, sport_gender_code_class, home_school_id, home_school_name, home_school_short_name, home_school_logo_url, away_school_id, away_school_name, away_school_short_name, away_school_logo_url, game_type, comp_cents, comp_tbd, variable, cancel_fee_cents, cancelled, season_year, game_date, game_date_tbd, raw_contract_id, belongs_to_series, can_link_home_school, can_link_away_school].hash
     end
 
     # Builds the object from hash

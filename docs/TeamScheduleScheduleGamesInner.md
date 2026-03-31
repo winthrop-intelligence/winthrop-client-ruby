@@ -16,6 +16,8 @@
 | **opponent_avg_rpi** | **Integer** |  | [optional] |
 | **in_conference** | **Boolean** |  | [optional] |
 | **has_contract** | **Boolean** |  | [optional] |
+| **compensation_cents** | **Integer** |  | [optional] |
+| **game_contract_id** | **Integer** |  | [optional] |
 | **result** | **String** |  | [optional] |
 | **score** | **String** |  | [optional] |
 | **overtime** | **Integer** |  | [optional] |
@@ -38,6 +40,8 @@ instance = WinthropClient::TeamScheduleScheduleGamesInner.new(
   opponent_avg_rpi: null,
   in_conference: null,
   has_contract: null,
+  compensation_cents: null,
+  game_contract_id: null,
   result: null,
   score: null,
   overtime: null
