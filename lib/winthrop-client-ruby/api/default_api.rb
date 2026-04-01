@@ -1139,6 +1139,72 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Send password reset instructions to the given email address
+    # @param create_password_reset_request [CreatePasswordResetRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [CreatePasswordReset200Response]
+    def create_password_reset(create_password_reset_request, opts = {})
+      data, _status_code, _headers = create_password_reset_with_http_info(create_password_reset_request, opts)
+      data
+    end
+
+    # Send password reset instructions to the given email address
+    # @param create_password_reset_request [CreatePasswordResetRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CreatePasswordReset200Response, Integer, Hash)>] CreatePasswordReset200Response data, response status code and response headers
+    def create_password_reset_with_http_info(create_password_reset_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_password_reset ...'
+      end
+      # verify the required parameter 'create_password_reset_request' is set
+      if @api_client.config.client_side_validation && create_password_reset_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_password_reset_request' when calling DefaultApi.create_password_reset"
+      end
+      # resource path
+      local_var_path = '/api/v1/password_reset'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_password_reset_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CreatePasswordReset200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_password_reset",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_password_reset\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create a position. If season_id is omitted, a season will be created (or reused) when school_id, sport_id, and year are provided.
     # @param position [Position] Position attributes to create. Accepts season_id or school_id/sport_id/year, coach_id, title, creation_reason, and position_type_ids.
     # @param [Hash] opts the optional parameters
@@ -3301,67 +3367,6 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_coach_search_record\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Get coach recruiting tab data including class strength, conference comparison, budgets, and charts
-    # @param id [String] Coach ID or friendly slug
-    # @param [Hash] opts the optional parameters
-    # @return [CoachRecruitingTab]
-    def get_coach_search_recruiting(id, opts = {})
-      data, _status_code, _headers = get_coach_search_recruiting_with_http_info(id, opts)
-      data
-    end
-
-    # Get coach recruiting tab data including class strength, conference comparison, budgets, and charts
-    # @param id [String] Coach ID or friendly slug
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(CoachRecruitingTab, Integer, Hash)>] CoachRecruitingTab data, response status code and response headers
-    def get_coach_search_recruiting_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.get_coach_search_recruiting ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.get_coach_search_recruiting"
-      end
-      # resource path
-      local_var_path = '/api/v1/coach_searches/{id}/recruiting'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'CoachRecruitingTab'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.get_coach_search_recruiting",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#get_coach_search_recruiting\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -10276,6 +10281,61 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Send an OTP verification code to the authenticated user's email
+    # @param [Hash] opts the optional parameters
+    # @return [CreatePasswordReset200Response]
+    def send_otp_code(opts = {})
+      data, _status_code, _headers = send_otp_code_with_http_info(opts)
+      data
+    end
+
+    # Send an OTP verification code to the authenticated user&#39;s email
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CreatePasswordReset200Response, Integer, Hash)>] CreatePasswordReset200Response data, response status code and response headers
+    def send_otp_code_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.send_otp_code ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/otp/send_code'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CreatePasswordReset200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.send_otp_code",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#send_otp_code\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Extract text from a raw contract PDF
     # @param raw_contract_id [Integer] ID of the RawContract
     # @param [Hash] opts the optional parameters
@@ -11313,6 +11373,72 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Reset password using the token from the reset email
+    # @param update_password_reset_request [UpdatePasswordResetRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [UpdatePasswordReset200Response]
+    def update_password_reset(update_password_reset_request, opts = {})
+      data, _status_code, _headers = update_password_reset_with_http_info(update_password_reset_request, opts)
+      data
+    end
+
+    # Reset password using the token from the reset email
+    # @param update_password_reset_request [UpdatePasswordResetRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(UpdatePasswordReset200Response, Integer, Hash)>] UpdatePasswordReset200Response data, response status code and response headers
+    def update_password_reset_with_http_info(update_password_reset_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_password_reset ...'
+      end
+      # verify the required parameter 'update_password_reset_request' is set
+      if @api_client.config.client_side_validation && update_password_reset_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_password_reset_request' when calling DefaultApi.update_password_reset"
+      end
+      # resource path
+      local_var_path = '/api/v1/password_reset'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_password_reset_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'UpdatePasswordReset200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_password_reset",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_password_reset\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Update a position
     # @param position_id [Integer] ID of position to update
     # @param position [Position] Position attributes to update.
@@ -11580,6 +11706,72 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#user_me\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Verify an OTP code for the authenticated user
+    # @param verify_otp_code_request [VerifyOtpCodeRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [VerifyOtpCode200Response]
+    def verify_otp_code(verify_otp_code_request, opts = {})
+      data, _status_code, _headers = verify_otp_code_with_http_info(verify_otp_code_request, opts)
+      data
+    end
+
+    # Verify an OTP code for the authenticated user
+    # @param verify_otp_code_request [VerifyOtpCodeRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(VerifyOtpCode200Response, Integer, Hash)>] VerifyOtpCode200Response data, response status code and response headers
+    def verify_otp_code_with_http_info(verify_otp_code_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.verify_otp_code ...'
+      end
+      # verify the required parameter 'verify_otp_code_request' is set
+      if @api_client.config.client_side_validation && verify_otp_code_request.nil?
+        fail ArgumentError, "Missing the required parameter 'verify_otp_code_request' when calling DefaultApi.verify_otp_code"
+      end
+      # resource path
+      local_var_path = '/api/v1/otp/verify'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(verify_otp_code_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'VerifyOtpCode200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.verify_otp_code",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#verify_otp_code\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

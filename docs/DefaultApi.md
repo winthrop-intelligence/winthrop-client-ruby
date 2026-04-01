@@ -20,6 +20,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**create_game_post_search**](DefaultApi.md#create_game_post_search) | **POST** /api/v1/game_post_searches |  |
 | [**create_job_post**](DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post |
 | [**create_note**](DefaultApi.md#create_note) | **POST** /api/v1/notes |  |
+| [**create_password_reset**](DefaultApi.md#create_password_reset) | **POST** /api/v1/password_reset |  |
 | [**create_position**](DefaultApi.md#create_position) | **POST** /api/v1/positions |  |
 | [**create_requested_item**](DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items |  |
 | [**create_season**](DefaultApi.md#create_season) | **POST** /api/v1/seasons |  |
@@ -55,7 +56,6 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_coach_search_coworker_history**](DefaultApi.md#get_coach_search_coworker_history) | **GET** /api/v1/coach_searches/{id}/coworker_history |  |
 | [**get_coach_search_overview**](DefaultApi.md#get_coach_search_overview) | **GET** /api/v1/coach_searches/{id}/overview |  |
 | [**get_coach_search_record**](DefaultApi.md#get_coach_search_record) | **GET** /api/v1/coach_searches/{id}/record |  |
-| [**get_coach_search_recruiting**](DefaultApi.md#get_coach_search_recruiting) | **GET** /api/v1/coach_searches/{id}/recruiting |  |
 | [**get_coach_search_videos**](DefaultApi.md#get_coach_search_videos) | **GET** /api/v1/coach_searches/{id}/videos |  |
 | [**get_coach_searches**](DefaultApi.md#get_coach_searches) | **GET** /api/v1/coach_searches |  |
 | [**get_coaches**](DefaultApi.md#get_coaches) | **GET** /api/v1/coaches |  |
@@ -166,6 +166,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_wire_changes**](DefaultApi.md#get_wire_changes) | **GET** /api/v1/wire_changes |  |
 | [**regenerate_raw_contract_pdf**](DefaultApi.md#regenerate_raw_contract_pdf) | **POST** /api/v1/raw_contracts/{raw_contractId}/regenerate_pdf |  |
 | [**search_coaches**](DefaultApi.md#search_coaches) | **POST** /api/v1/coaches/search |  |
+| [**send_otp_code**](DefaultApi.md#send_otp_code) | **POST** /api/v1/otp/send_code |  |
 | [**unstract_raw_contract_pdf_text**](DefaultApi.md#unstract_raw_contract_pdf_text) | **POST** /api/v1/raw_contracts/{raw_contractId}/unstract_pdf_text |  |
 | [**update_cashflow**](DefaultApi.md#update_cashflow) | **PUT** /api/v1/cashflows/{cashflowId} |  |
 | [**update_coach**](DefaultApi.md#update_coach) | **PATCH** /api/v1/coaches/{coachId} |  |
@@ -180,10 +181,12 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_game_post_search**](DefaultApi.md#update_game_post_search) | **PATCH** /api/v1/game_post_searches/{gamePostSearchId} |  |
 | [**update_job_post**](DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post |
 | [**update_note**](DefaultApi.md#update_note) | **PATCH** /api/v1/notes/{id} |  |
+| [**update_password_reset**](DefaultApi.md#update_password_reset) | **PUT** /api/v1/password_reset |  |
 | [**update_position**](DefaultApi.md#update_position) | **PATCH** /api/v1/positions/{positionId} |  |
 | [**update_requested_item**](DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} |  |
 | [**update_season**](DefaultApi.md#update_season) | **PUT** /api/v1/seasons/{seasonId} |  |
 | [**user_me**](DefaultApi.md#user_me) | **GET** /api/v1/users/me |  |
+| [**verify_otp_code**](DefaultApi.md#verify_otp_code) | **POST** /api/v1/otp/verify |  |
 | [**verify_user_intercollegiate_access**](DefaultApi.md#verify_user_intercollegiate_access) | **GET** /api/v1/users/verify_user_intercollegiate_access |  |
 
 
@@ -1400,6 +1403,70 @@ end
 ### Authorization
 
 [ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_password_reset
+
+> <CreatePasswordReset200Response> create_password_reset(create_password_reset_request)
+
+
+
+Send password reset instructions to the given email address
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+
+api_instance = WinthropClient::DefaultApi.new
+create_password_reset_request = WinthropClient::CreatePasswordResetRequest.new({user: WinthropClient::CreatePasswordResetRequestUser.new({email: 'user@example.com'})}) # CreatePasswordResetRequest | 
+
+begin
+  
+  result = api_instance.create_password_reset(create_password_reset_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_password_reset: #{e}"
+end
+```
+
+#### Using the create_password_reset_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreatePasswordReset200Response>, Integer, Hash)> create_password_reset_with_http_info(create_password_reset_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_password_reset_with_http_info(create_password_reset_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreatePasswordReset200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_password_reset_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_password_reset_request** | [**CreatePasswordResetRequest**](CreatePasswordResetRequest.md) |  |  |
+
+### Return type
+
+[**CreatePasswordReset200Response**](CreatePasswordReset200Response.md)
+
+### Authorization
+
+No authorization required
 
 ### HTTP request headers
 
@@ -4019,80 +4086,6 @@ end
 ### Return type
 
 [**CoachRecordTab**](CoachRecordTab.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## get_coach_search_recruiting
-
-> <CoachRecruitingTab> get_coach_search_recruiting(id)
-
-
-
-Get coach recruiting tab data including class strength, conference comparison, budgets, and charts
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-id = 'id_example' # String | Coach ID or friendly slug
-
-begin
-  
-  result = api_instance.get_coach_search_recruiting(id)
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_coach_search_recruiting: #{e}"
-end
-```
-
-#### Using the get_coach_search_recruiting_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<CoachRecruitingTab>, Integer, Hash)> get_coach_search_recruiting_with_http_info(id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.get_coach_search_recruiting_with_http_info(id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <CoachRecruitingTab>
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_coach_search_recruiting_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **String** | Coach ID or friendly slug |  |
-
-### Return type
-
-[**CoachRecruitingTab**](CoachRecruitingTab.md)
 
 ### Authorization
 
@@ -12564,6 +12557,77 @@ end
 - **Accept**: application/json
 
 
+## send_otp_code
+
+> <CreatePasswordReset200Response> send_otp_code
+
+
+
+Send an OTP verification code to the authenticated user's email
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.send_otp_code
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->send_otp_code: #{e}"
+end
+```
+
+#### Using the send_otp_code_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreatePasswordReset200Response>, Integer, Hash)> send_otp_code_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.send_otp_code_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreatePasswordReset200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->send_otp_code_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**CreatePasswordReset200Response**](CreatePasswordReset200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## unstract_raw_contract_pdf_text
 
 > <RegenerateRawContractPdf200Response> unstract_raw_contract_pdf_text(raw_contract_id, opts)
@@ -13664,6 +13728,70 @@ end
 - **Accept**: application/json
 
 
+## update_password_reset
+
+> <UpdatePasswordReset200Response> update_password_reset(update_password_reset_request)
+
+
+
+Reset password using the token from the reset email
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+
+api_instance = WinthropClient::DefaultApi.new
+update_password_reset_request = WinthropClient::UpdatePasswordResetRequest.new({user: WinthropClient::UpdatePasswordResetRequestUser.new({reset_password_token: 'reset_password_token_example', password: 'password_example', password_confirmation: 'password_confirmation_example'})}) # UpdatePasswordResetRequest | 
+
+begin
+  
+  result = api_instance.update_password_reset(update_password_reset_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_password_reset: #{e}"
+end
+```
+
+#### Using the update_password_reset_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UpdatePasswordReset200Response>, Integer, Hash)> update_password_reset_with_http_info(update_password_reset_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_password_reset_with_http_info(update_password_reset_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UpdatePasswordReset200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_password_reset_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **update_password_reset_request** | [**UpdatePasswordResetRequest**](UpdatePasswordResetRequest.md) |  |  |
+
+### Return type
+
+[**UpdatePasswordReset200Response**](UpdatePasswordReset200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## update_position
 
 > <Position> update_position(position_id, position)
@@ -13960,6 +14088,80 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## verify_otp_code
+
+> <VerifyOtpCode200Response> verify_otp_code(verify_otp_code_request)
+
+
+
+Verify an OTP code for the authenticated user
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+verify_otp_code_request = WinthropClient::VerifyOtpCodeRequest.new({otp_code: '123456'}) # VerifyOtpCodeRequest | 
+
+begin
+  
+  result = api_instance.verify_otp_code(verify_otp_code_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->verify_otp_code: #{e}"
+end
+```
+
+#### Using the verify_otp_code_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<VerifyOtpCode200Response>, Integer, Hash)> verify_otp_code_with_http_info(verify_otp_code_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.verify_otp_code_with_http_info(verify_otp_code_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <VerifyOtpCode200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->verify_otp_code_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **verify_otp_code_request** | [**VerifyOtpCodeRequest**](VerifyOtpCodeRequest.md) |  |  |
+
+### Return type
+
+[**VerifyOtpCode200Response**](VerifyOtpCode200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

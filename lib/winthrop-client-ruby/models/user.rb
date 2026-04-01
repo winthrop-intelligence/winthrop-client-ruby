@@ -70,6 +70,9 @@ module WinthropClient
 
     attr_accessor :school_state
 
+    # Whether the user must verify OTP to access the application
+    attr_accessor :otp_required
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -119,7 +122,8 @@ module WinthropClient
         :'subscription_type' => :'subscription_type',
         :'schedule_sports' => :'schedule_sports',
         :'school_city' => :'school_city',
-        :'school_state' => :'school_state'
+        :'school_state' => :'school_state',
+        :'otp_required' => :'otp_required'
       }
     end
 
@@ -160,7 +164,8 @@ module WinthropClient
         :'subscription_type' => :'String',
         :'schedule_sports' => :'Array<UserScheduleSportsInner>',
         :'school_city' => :'String',
-        :'school_state' => :'String'
+        :'school_state' => :'String',
+        :'otp_required' => :'Boolean'
       }
     end
 
@@ -170,7 +175,7 @@ module WinthropClient
         :'permissible_sport_ids',
         :'subscription_type',
         :'school_city',
-        :'school_state'
+        :'school_state',
       ])
     end
 
@@ -297,6 +302,10 @@ module WinthropClient
       if attributes.key?(:'school_state')
         self.school_state = attributes[:'school_state']
       end
+
+      if attributes.key?(:'otp_required')
+        self.otp_required = attributes[:'otp_required']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -355,7 +364,8 @@ module WinthropClient
           subscription_type == o.subscription_type &&
           schedule_sports == o.schedule_sports &&
           school_city == o.school_city &&
-          school_state == o.school_state
+          school_state == o.school_state &&
+          otp_required == o.otp_required
     end
 
     # @see the `==` method
@@ -367,7 +377,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, email, first_name, last_name, created_at, updated_at, state, title, accountable_id, accountable_type, coach_id, divisions, roles, can_see_compensation, can_show_scouting, can_show_game_contract, is_sport_specific, is_d2_only, is_conference_only, permissible_sport_ids, coli_index, subscription_type, schedule_sports, school_city, school_state].hash
+      [id, email, first_name, last_name, created_at, updated_at, state, title, accountable_id, accountable_type, coach_id, divisions, roles, can_see_compensation, can_show_scouting, can_show_game_contract, is_sport_specific, is_d2_only, is_conference_only, permissible_sport_ids, coli_index, subscription_type, schedule_sports, school_city, school_state, otp_required].hash
     end
 
     # Builds the object from hash

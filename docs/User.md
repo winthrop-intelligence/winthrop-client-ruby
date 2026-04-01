@@ -29,6 +29,7 @@
 | **schedule_sports** | [**Array&lt;UserScheduleSportsInner&gt;**](UserScheduleSportsInner.md) | Sports the user can access for game scheduling | [optional] |
 | **school_city** | **String** |  | [optional] |
 | **school_state** | **String** |  | [optional] |
+| **otp_required** | **Boolean** | Whether the user must verify OTP to access the application | [optional] |
 
 ## Example
 
@@ -60,7 +61,8 @@ instance = WinthropClient::User.new(
   subscription_type: null,
   schedule_sports: null,
   school_city: null,
-  school_state: null
+  school_state: null,
+  otp_required: null
 )
 ```
 

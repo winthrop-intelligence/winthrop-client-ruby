@@ -107,6 +107,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**create_game_post_search**](docs/DefaultApi.md#create_game_post_search) | **POST** /api/v1/game_post_searches | 
 *WinthropClient::DefaultApi* | [**create_job_post**](docs/DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post
 *WinthropClient::DefaultApi* | [**create_note**](docs/DefaultApi.md#create_note) | **POST** /api/v1/notes | 
+*WinthropClient::DefaultApi* | [**create_password_reset**](docs/DefaultApi.md#create_password_reset) | **POST** /api/v1/password_reset | 
 *WinthropClient::DefaultApi* | [**create_position**](docs/DefaultApi.md#create_position) | **POST** /api/v1/positions | 
 *WinthropClient::DefaultApi* | [**create_requested_item**](docs/DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items | 
 *WinthropClient::DefaultApi* | [**create_season**](docs/DefaultApi.md#create_season) | **POST** /api/v1/seasons | 
@@ -142,7 +143,6 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_coach_search_coworker_history**](docs/DefaultApi.md#get_coach_search_coworker_history) | **GET** /api/v1/coach_searches/{id}/coworker_history | 
 *WinthropClient::DefaultApi* | [**get_coach_search_overview**](docs/DefaultApi.md#get_coach_search_overview) | **GET** /api/v1/coach_searches/{id}/overview | 
 *WinthropClient::DefaultApi* | [**get_coach_search_record**](docs/DefaultApi.md#get_coach_search_record) | **GET** /api/v1/coach_searches/{id}/record | 
-*WinthropClient::DefaultApi* | [**get_coach_search_recruiting**](docs/DefaultApi.md#get_coach_search_recruiting) | **GET** /api/v1/coach_searches/{id}/recruiting | 
 *WinthropClient::DefaultApi* | [**get_coach_search_videos**](docs/DefaultApi.md#get_coach_search_videos) | **GET** /api/v1/coach_searches/{id}/videos | 
 *WinthropClient::DefaultApi* | [**get_coach_searches**](docs/DefaultApi.md#get_coach_searches) | **GET** /api/v1/coach_searches | 
 *WinthropClient::DefaultApi* | [**get_coaches**](docs/DefaultApi.md#get_coaches) | **GET** /api/v1/coaches | 
@@ -253,6 +253,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_wire_changes**](docs/DefaultApi.md#get_wire_changes) | **GET** /api/v1/wire_changes | 
 *WinthropClient::DefaultApi* | [**regenerate_raw_contract_pdf**](docs/DefaultApi.md#regenerate_raw_contract_pdf) | **POST** /api/v1/raw_contracts/{raw_contractId}/regenerate_pdf | 
 *WinthropClient::DefaultApi* | [**search_coaches**](docs/DefaultApi.md#search_coaches) | **POST** /api/v1/coaches/search | 
+*WinthropClient::DefaultApi* | [**send_otp_code**](docs/DefaultApi.md#send_otp_code) | **POST** /api/v1/otp/send_code | 
 *WinthropClient::DefaultApi* | [**unstract_raw_contract_pdf_text**](docs/DefaultApi.md#unstract_raw_contract_pdf_text) | **POST** /api/v1/raw_contracts/{raw_contractId}/unstract_pdf_text | 
 *WinthropClient::DefaultApi* | [**update_cashflow**](docs/DefaultApi.md#update_cashflow) | **PUT** /api/v1/cashflows/{cashflowId} | 
 *WinthropClient::DefaultApi* | [**update_coach**](docs/DefaultApi.md#update_coach) | **PATCH** /api/v1/coaches/{coachId} | 
@@ -267,10 +268,12 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**update_game_post_search**](docs/DefaultApi.md#update_game_post_search) | **PATCH** /api/v1/game_post_searches/{gamePostSearchId} | 
 *WinthropClient::DefaultApi* | [**update_job_post**](docs/DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post
 *WinthropClient::DefaultApi* | [**update_note**](docs/DefaultApi.md#update_note) | **PATCH** /api/v1/notes/{id} | 
+*WinthropClient::DefaultApi* | [**update_password_reset**](docs/DefaultApi.md#update_password_reset) | **PUT** /api/v1/password_reset | 
 *WinthropClient::DefaultApi* | [**update_position**](docs/DefaultApi.md#update_position) | **PATCH** /api/v1/positions/{positionId} | 
 *WinthropClient::DefaultApi* | [**update_requested_item**](docs/DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} | 
 *WinthropClient::DefaultApi* | [**update_season**](docs/DefaultApi.md#update_season) | **PUT** /api/v1/seasons/{seasonId} | 
 *WinthropClient::DefaultApi* | [**user_me**](docs/DefaultApi.md#user_me) | **GET** /api/v1/users/me | 
+*WinthropClient::DefaultApi* | [**verify_otp_code**](docs/DefaultApi.md#verify_otp_code) | **POST** /api/v1/otp/verify | 
 *WinthropClient::DefaultApi* | [**verify_user_intercollegiate_access**](docs/DefaultApi.md#verify_user_intercollegiate_access) | **GET** /api/v1/users/verify_user_intercollegiate_access | 
 *WinthropClient::DossierApi* | [**university_dossier_report_dossier_winad_id_get**](docs/DossierApi.md#university_dossier_report_dossier_winad_id_get) | **GET** /dossier/{winad_id}/ | University Dossier Report
 *WinthropClient::IntercollegiateApi* | [**create_news_feeds**](docs/IntercollegiateApi.md#create_news_feeds) | **POST** /wi_jobs/news_feeds | 
@@ -346,10 +349,6 @@ Class | Method | HTTP request | Description
  - [WinthropClient::CoachProfile](docs/CoachProfile.md)
  - [WinthropClient::CoachProfileOverview](docs/CoachProfileOverview.md)
  - [WinthropClient::CoachRecordTab](docs/CoachRecordTab.md)
- - [WinthropClient::CoachRecruitingTab](docs/CoachRecruitingTab.md)
- - [WinthropClient::CoachRecruitingTabConferenceComparison](docs/CoachRecruitingTabConferenceComparison.md)
- - [WinthropClient::CoachRecruitingTabMetadata](docs/CoachRecruitingTabMetadata.md)
- - [WinthropClient::CoachRecruitingTabRecruitingBudgets](docs/CoachRecruitingTabRecruitingBudgets.md)
  - [WinthropClient::CoachSearchResult](docs/CoachSearchResult.md)
  - [WinthropClient::CoachSearchResultCollection](docs/CoachSearchResultCollection.md)
  - [WinthropClient::CoachSnapshot](docs/CoachSnapshot.md)
@@ -386,6 +385,9 @@ Class | Method | HTTP request | Description
  - [WinthropClient::CreateGamePostSearchRequest](docs/CreateGamePostSearchRequest.md)
  - [WinthropClient::CreateGamePostSearchRequestGamePost](docs/CreateGamePostSearchRequestGamePost.md)
  - [WinthropClient::CreateNoteRequest](docs/CreateNoteRequest.md)
+ - [WinthropClient::CreatePasswordReset200Response](docs/CreatePasswordReset200Response.md)
+ - [WinthropClient::CreatePasswordResetRequest](docs/CreatePasswordResetRequest.md)
+ - [WinthropClient::CreatePasswordResetRequestUser](docs/CreatePasswordResetRequestUser.md)
  - [WinthropClient::Deal](docs/Deal.md)
  - [WinthropClient::DealCollection](docs/DealCollection.md)
  - [WinthropClient::DealDetail](docs/DealDetail.md)
@@ -483,10 +485,6 @@ Class | Method | HTTP request | Description
  - [WinthropClient::RawContract](docs/RawContract.md)
  - [WinthropClient::RawContractCollection](docs/RawContractCollection.md)
  - [WinthropClient::RecordPositionEntry](docs/RecordPositionEntry.md)
- - [WinthropClient::RecruitingBudgetEntry](docs/RecruitingBudgetEntry.md)
- - [WinthropClient::RecruitingChartData](docs/RecruitingChartData.md)
- - [WinthropClient::RecruitingConferenceEntry](docs/RecruitingConferenceEntry.md)
- - [WinthropClient::RecruitingPositionEntry](docs/RecruitingPositionEntry.md)
  - [WinthropClient::RegenerateRawContractPdf200Response](docs/RegenerateRawContractPdf200Response.md)
  - [WinthropClient::RequestedItem](docs/RequestedItem.md)
  - [WinthropClient::RequestedItemCollection](docs/RequestedItemCollection.md)
@@ -512,6 +510,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::ScraperArgDef](docs/ScraperArgDef.md)
  - [WinthropClient::Season](docs/Season.md)
  - [WinthropClient::SeasonCollection](docs/SeasonCollection.md)
+ - [WinthropClient::SendOtpCode422Response](docs/SendOtpCode422Response.md)
  - [WinthropClient::SnapshotIncomeReport](docs/SnapshotIncomeReport.md)
  - [WinthropClient::Sport](docs/Sport.md)
  - [WinthropClient::SportCollection](docs/SportCollection.md)
@@ -533,6 +532,10 @@ Class | Method | HTTP request | Description
  - [WinthropClient::UpdateGamePostSearchRequest](docs/UpdateGamePostSearchRequest.md)
  - [WinthropClient::UpdateGamePostSearchRequestGamePost](docs/UpdateGamePostSearchRequestGamePost.md)
  - [WinthropClient::UpdateNoteRequest](docs/UpdateNoteRequest.md)
+ - [WinthropClient::UpdatePasswordReset200Response](docs/UpdatePasswordReset200Response.md)
+ - [WinthropClient::UpdatePasswordReset422Response](docs/UpdatePasswordReset422Response.md)
+ - [WinthropClient::UpdatePasswordResetRequest](docs/UpdatePasswordResetRequest.md)
+ - [WinthropClient::UpdatePasswordResetRequestUser](docs/UpdatePasswordResetRequestUser.md)
  - [WinthropClient::User](docs/User.md)
  - [WinthropClient::UserActivitySummary](docs/UserActivitySummary.md)
  - [WinthropClient::UserActivitySummaryCollection](docs/UserActivitySummaryCollection.md)
@@ -543,6 +546,8 @@ Class | Method | HTTP request | Description
  - [WinthropClient::ValidationError](docs/ValidationError.md)
  - [WinthropClient::Vendor](docs/Vendor.md)
  - [WinthropClient::VendorCollection](docs/VendorCollection.md)
+ - [WinthropClient::VerifyOtpCode200Response](docs/VerifyOtpCode200Response.md)
+ - [WinthropClient::VerifyOtpCodeRequest](docs/VerifyOtpCodeRequest.md)
  - [WinthropClient::VerifyUserIntercollegiateAccess200Response](docs/VerifyUserIntercollegiateAccess200Response.md)
  - [WinthropClient::VideoEntry](docs/VideoEntry.md)
  - [WinthropClient::WireChange](docs/WireChange.md)
