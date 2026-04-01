@@ -57,16 +57,6 @@ module WinthropClient
 
     attr_accessor :layout_preserved_pdf_text
 
-    attr_accessor :file_url
-
-    attr_accessor :has_file
-
-    attr_accessor :back_to
-
-    attr_accessor :contract_label
-
-    attr_accessor :deal_info
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -90,12 +80,7 @@ module WinthropClient
         :'migration_failure_reason' => :'migration_failure_reason',
         :'unstract_pdf_text' => :'unstract_pdf_text',
         :'unstract_responses_details' => :'unstract_responses_details',
-        :'layout_preserved_pdf_text' => :'layout_preserved_pdf_text',
-        :'file_url' => :'file_url',
-        :'has_file' => :'has_file',
-        :'back_to' => :'back_to',
-        :'contract_label' => :'contract_label',
-        :'deal_info' => :'deal_info'
+        :'layout_preserved_pdf_text' => :'layout_preserved_pdf_text'
       }
     end
 
@@ -132,22 +117,13 @@ module WinthropClient
         :'migration_failure_reason' => :'String',
         :'unstract_pdf_text' => :'String',
         :'unstract_responses_details' => :'String',
-        :'layout_preserved_pdf_text' => :'String',
-        :'file_url' => :'String',
-        :'has_file' => :'Boolean',
-        :'back_to' => :'RawContractBackTo',
-        :'contract_label' => :'String',
-        :'deal_info' => :'RawContractDealInfo'
+        :'layout_preserved_pdf_text' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'file_url',
-        :'back_to',
-        :'contract_label',
-        :'deal_info'
       ])
     end
 
@@ -250,26 +226,6 @@ module WinthropClient
       if attributes.key?(:'layout_preserved_pdf_text')
         self.layout_preserved_pdf_text = attributes[:'layout_preserved_pdf_text']
       end
-
-      if attributes.key?(:'file_url')
-        self.file_url = attributes[:'file_url']
-      end
-
-      if attributes.key?(:'has_file')
-        self.has_file = attributes[:'has_file']
-      end
-
-      if attributes.key?(:'back_to')
-        self.back_to = attributes[:'back_to']
-      end
-
-      if attributes.key?(:'contract_label')
-        self.contract_label = attributes[:'contract_label']
-      end
-
-      if attributes.key?(:'deal_info')
-        self.deal_info = attributes[:'deal_info']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -312,12 +268,7 @@ module WinthropClient
           migration_failure_reason == o.migration_failure_reason &&
           unstract_pdf_text == o.unstract_pdf_text &&
           unstract_responses_details == o.unstract_responses_details &&
-          layout_preserved_pdf_text == o.layout_preserved_pdf_text &&
-          file_url == o.file_url &&
-          has_file == o.has_file &&
-          back_to == o.back_to &&
-          contract_label == o.contract_label &&
-          deal_info == o.deal_info
+          layout_preserved_pdf_text == o.layout_preserved_pdf_text
     end
 
     # @see the `==` method
@@ -329,7 +280,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, asset_file_size, asset_content_type, asset_file_name, created_at, updated_at, contract_type_id, uploaded, deal_id, school_id, school_revenue_year, audited_financial_year, text, use_flexpaper, game_contracts_count, drive_id, migrated_successfully, migration_failure_reason, unstract_pdf_text, unstract_responses_details, layout_preserved_pdf_text, file_url, has_file, back_to, contract_label, deal_info].hash
+      [id, asset_file_size, asset_content_type, asset_file_name, created_at, updated_at, contract_type_id, uploaded, deal_id, school_id, school_revenue_year, audited_financial_year, text, use_flexpaper, game_contracts_count, drive_id, migrated_successfully, migration_failure_reason, unstract_pdf_text, unstract_responses_details, layout_preserved_pdf_text].hash
     end
 
     # Builds the object from hash
