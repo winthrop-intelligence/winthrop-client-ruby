@@ -25,6 +25,14 @@
 | **game_type** | **String** |  | [optional] |
 | **off_site_location** | **String** |  | [optional] |
 | **verified** | **Boolean** |  | [optional] |
+| **home_school_name** | **String** |  | [optional] |
+| **away_school_name** | **String** |  | [optional] |
+| **sport_name** | **String** |  | [optional] |
+| **belongs_to_series** | **Boolean** |  | [optional] |
+| **attendance** | **Integer** |  | [optional] |
+| **signed_on_formatted** | **String** |  | [optional] |
+| **file_url** | **String** |  | [optional] |
+| **has_file** | **Boolean** |  | [optional] |
 
 ## Example
 
@@ -52,7 +60,15 @@ instance = WinthropClient::GameContract.new(
   season_year: null,
   game_type: null,
   off_site_location: null,
-  verified: null
+  verified: null,
+  home_school_name: null,
+  away_school_name: null,
+  sport_name: null,
+  belongs_to_series: null,
+  attendance: null,
+  signed_on_formatted: null,
+  file_url: null,
+  has_file: null
 )
 ```
 
