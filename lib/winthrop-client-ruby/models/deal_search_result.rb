@@ -55,6 +55,8 @@ module WinthropClient
 
     attr_accessor :deal_detail
 
+    attr_accessor :raw_contract_id
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -77,7 +79,8 @@ module WinthropClient
         :'autorenew' => :'autorenew',
         :'archived' => :'archived',
         :'vendors' => :'vendors',
-        :'deal_detail' => :'deal_detail'
+        :'deal_detail' => :'deal_detail',
+        :'raw_contract_id' => :'raw_contract_id'
       }
     end
 
@@ -113,7 +116,8 @@ module WinthropClient
         :'autorenew' => :'Boolean',
         :'archived' => :'Boolean',
         :'vendors' => :'Array<DealDetailVendor>',
-        :'deal_detail' => :'DealDetail'
+        :'deal_detail' => :'DealDetail',
+        :'raw_contract_id' => :'Integer'
       }
     end
 
@@ -134,6 +138,7 @@ module WinthropClient
         :'summary',
         :'autorenew',
         :'archived',
+        :'raw_contract_id'
       ])
     end
 
@@ -236,6 +241,10 @@ module WinthropClient
       if attributes.key?(:'deal_detail')
         self.deal_detail = attributes[:'deal_detail']
       end
+
+      if attributes.key?(:'raw_contract_id')
+        self.raw_contract_id = attributes[:'raw_contract_id']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -277,7 +286,8 @@ module WinthropClient
           autorenew == o.autorenew &&
           archived == o.archived &&
           vendors == o.vendors &&
-          deal_detail == o.deal_detail
+          deal_detail == o.deal_detail &&
+          raw_contract_id == o.raw_contract_id
     end
 
     # @see the `==` method
@@ -289,7 +299,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, deal_id, school_id, school_name, conference_name, conference_id, division_id, deal_type_name, deal_type_id, vendor_names, start_year, end_year, start_at, end_at, created_at, summary, autorenew, archived, vendors, deal_detail].hash
+      [id, deal_id, school_id, school_name, conference_name, conference_id, division_id, deal_type_name, deal_type_id, vendor_names, start_year, end_year, start_at, end_at, created_at, summary, autorenew, archived, vendors, deal_detail, raw_contract_id].hash
     end
 
     # Builds the object from hash

@@ -24,6 +24,7 @@
 | **archived** | **Boolean** |  | [optional] |
 | **vendors** | [**Array&lt;DealDetailVendor&gt;**](DealDetailVendor.md) |  | [optional] |
 | **deal_detail** | [**DealDetail**](DealDetail.md) |  | [optional] |
+| **raw_contract_id** | **Integer** |  | [optional] |
 
 ## Example
 
@@ -50,7 +51,8 @@ instance = WinthropClient::DealSearchResult.new(
   autorenew: null,
   archived: null,
   vendors: null,
-  deal_detail: null
+  deal_detail: null,
+  raw_contract_id: null
 )
 ```
 
