@@ -25,11 +25,6 @@
 | **unstract_pdf_text** | **String** |  | [optional] |
 | **unstract_responses_details** | **String** |  | [optional] |
 | **layout_preserved_pdf_text** | **String** |  | [optional] |
-| **file_url** | **String** |  | [optional] |
-| **has_file** | **Boolean** |  | [optional] |
-| **back_to** | [**RawContractBackTo**](RawContractBackTo.md) |  | [optional] |
-| **contract_label** | **String** |  | [optional] |
-| **deal_info** | [**RawContractDealInfo**](RawContractDealInfo.md) |  | [optional] |
 
 ## Example
 
@@ -57,12 +52,7 @@ instance = WinthropClient::RawContract.new(
   migration_failure_reason: null,
   unstract_pdf_text: null,
   unstract_responses_details: null,
-  layout_preserved_pdf_text: null,
-  file_url: null,
-  has_file: null,
-  back_to: null,
-  contract_label: null,
-  deal_info: null
+  layout_preserved_pdf_text: null
 )
 ```
 
