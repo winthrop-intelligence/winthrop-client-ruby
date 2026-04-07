@@ -146,7 +146,6 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_coach_search_coworker_history**](docs/DefaultApi.md#get_coach_search_coworker_history) | **GET** /api/v1/coach_searches/{id}/coworker_history | 
 *WinthropClient::DefaultApi* | [**get_coach_search_overview**](docs/DefaultApi.md#get_coach_search_overview) | **GET** /api/v1/coach_searches/{id}/overview | 
 *WinthropClient::DefaultApi* | [**get_coach_search_record**](docs/DefaultApi.md#get_coach_search_record) | **GET** /api/v1/coach_searches/{id}/record | 
-*WinthropClient::DefaultApi* | [**get_coach_search_recruiting**](docs/DefaultApi.md#get_coach_search_recruiting) | **GET** /api/v1/coach_searches/{id}/recruiting | 
 *WinthropClient::DefaultApi* | [**get_coach_search_videos**](docs/DefaultApi.md#get_coach_search_videos) | **GET** /api/v1/coach_searches/{id}/videos | 
 *WinthropClient::DefaultApi* | [**get_coach_searches**](docs/DefaultApi.md#get_coach_searches) | **GET** /api/v1/coach_searches | 
 *WinthropClient::DefaultApi* | [**get_coaches**](docs/DefaultApi.md#get_coaches) | **GET** /api/v1/coaches | 
@@ -364,10 +363,6 @@ Class | Method | HTTP request | Description
  - [WinthropClient::CoachProfile](docs/CoachProfile.md)
  - [WinthropClient::CoachProfileOverview](docs/CoachProfileOverview.md)
  - [WinthropClient::CoachRecordTab](docs/CoachRecordTab.md)
- - [WinthropClient::CoachRecruitingTab](docs/CoachRecruitingTab.md)
- - [WinthropClient::CoachRecruitingTabConferenceComparison](docs/CoachRecruitingTabConferenceComparison.md)
- - [WinthropClient::CoachRecruitingTabMetadata](docs/CoachRecruitingTabMetadata.md)
- - [WinthropClient::CoachRecruitingTabRecruitingBudgets](docs/CoachRecruitingTabRecruitingBudgets.md)
  - [WinthropClient::CoachSearchResult](docs/CoachSearchResult.md)
  - [WinthropClient::CoachSearchResultCollection](docs/CoachSearchResultCollection.md)
  - [WinthropClient::CoachSnapshot](docs/CoachSnapshot.md)
@@ -510,10 +505,6 @@ Class | Method | HTTP request | Description
  - [WinthropClient::RawContractDealInfo](docs/RawContractDealInfo.md)
  - [WinthropClient::RawContractDealInfoVendorsInner](docs/RawContractDealInfoVendorsInner.md)
  - [WinthropClient::RecordPositionEntry](docs/RecordPositionEntry.md)
- - [WinthropClient::RecruitingBudgetEntry](docs/RecruitingBudgetEntry.md)
- - [WinthropClient::RecruitingChartData](docs/RecruitingChartData.md)
- - [WinthropClient::RecruitingConferenceEntry](docs/RecruitingConferenceEntry.md)
- - [WinthropClient::RecruitingPositionEntry](docs/RecruitingPositionEntry.md)
  - [WinthropClient::RegenerateRawContractPdf200Response](docs/RegenerateRawContractPdf200Response.md)
  - [WinthropClient::RequestedItem](docs/RequestedItem.md)
  - [WinthropClient::RequestedItemCollection](docs/RequestedItemCollection.md)
