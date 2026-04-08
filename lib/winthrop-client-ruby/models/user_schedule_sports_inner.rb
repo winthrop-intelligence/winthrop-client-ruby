@@ -15,8 +15,6 @@ require 'time'
 
 module WinthropClient
   class UserScheduleSportsInner < ApiModelBase
-    attr_accessor :id
-
     attr_accessor :name
 
     attr_accessor :label
@@ -24,7 +22,6 @@ module WinthropClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
         :'name' => :'name',
         :'label' => :'label'
       }
@@ -43,7 +40,6 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'Integer',
         :'name' => :'String',
         :'label' => :'String'
       }
@@ -70,10 +66,6 @@ module WinthropClient
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      end
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
@@ -104,7 +96,6 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
           name == o.name &&
           label == o.label
     end
@@ -118,7 +109,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, label].hash
+      [name, label].hash
     end
 
     # Builds the object from hash

@@ -47,7 +47,6 @@ docs/CoachCompensationTabChartDataConferenceAvgOverTimeInner.md
 docs/CoachCompensationTabChartDataCurrentBreakdown.md
 docs/CoachCompensationTabChartDataTotalCompOverTimeInner.md
 docs/CoachCompensationTabComparisons.md
-docs/CoachCompensationTabCompensationsInner.md
 docs/CoachCompensationTabSidebar.md
 docs/CoachCompensationTabSidebarCoachingStaffInner.md
 docs/CoachCompensationTabSidebarContractsInner.md
@@ -57,10 +56,6 @@ docs/CoachPositionEntry.md
 docs/CoachProfile.md
 docs/CoachProfileOverview.md
 docs/CoachRecordTab.md
-docs/CoachRecruitingTab.md
-docs/CoachRecruitingTabConferenceComparison.md
-docs/CoachRecruitingTabMetadata.md
-docs/CoachRecruitingTabRecruitingBudgets.md
 docs/CoachSearchResult.md
 docs/CoachSearchResultCollection.md
 docs/CoachSnapshot.md
@@ -207,10 +202,6 @@ docs/RawContractCollection.md
 docs/RawContractDealInfo.md
 docs/RawContractDealInfoVendorsInner.md
 docs/RecordPositionEntry.md
-docs/RecruitingBudgetEntry.md
-docs/RecruitingChartData.md
-docs/RecruitingConferenceEntry.md
-docs/RecruitingPositionEntry.md
 docs/RegenerateRawContractPdf200Response.md
 docs/ReportingApi.md
 docs/RequestedItem.md
@@ -365,7 +356,6 @@ lib/winthrop-client-ruby/models/coach_compensation_tab_chart_data_conference_avg
 lib/winthrop-client-ruby/models/coach_compensation_tab_chart_data_current_breakdown.rb
 lib/winthrop-client-ruby/models/coach_compensation_tab_chart_data_total_comp_over_time_inner.rb
 lib/winthrop-client-ruby/models/coach_compensation_tab_comparisons.rb
-lib/winthrop-client-ruby/models/coach_compensation_tab_compensations_inner.rb
 lib/winthrop-client-ruby/models/coach_compensation_tab_sidebar.rb
 lib/winthrop-client-ruby/models/coach_compensation_tab_sidebar_coaching_staff_inner.rb
 lib/winthrop-client-ruby/models/coach_compensation_tab_sidebar_contracts_inner.rb
@@ -375,10 +365,6 @@ lib/winthrop-client-ruby/models/coach_position_entry.rb
 lib/winthrop-client-ruby/models/coach_profile.rb
 lib/winthrop-client-ruby/models/coach_profile_overview.rb
 lib/winthrop-client-ruby/models/coach_record_tab.rb
-lib/winthrop-client-ruby/models/coach_recruiting_tab.rb
-lib/winthrop-client-ruby/models/coach_recruiting_tab_conference_comparison.rb
-lib/winthrop-client-ruby/models/coach_recruiting_tab_metadata.rb
-lib/winthrop-client-ruby/models/coach_recruiting_tab_recruiting_budgets.rb
 lib/winthrop-client-ruby/models/coach_search_result.rb
 lib/winthrop-client-ruby/models/coach_search_result_collection.rb
 lib/winthrop-client-ruby/models/coach_snapshot.rb
@@ -522,10 +508,6 @@ lib/winthrop-client-ruby/models/raw_contract_collection.rb
 lib/winthrop-client-ruby/models/raw_contract_deal_info.rb
 lib/winthrop-client-ruby/models/raw_contract_deal_info_vendors_inner.rb
 lib/winthrop-client-ruby/models/record_position_entry.rb
-lib/winthrop-client-ruby/models/recruiting_budget_entry.rb
-lib/winthrop-client-ruby/models/recruiting_chart_data.rb
-lib/winthrop-client-ruby/models/recruiting_conference_entry.rb
-lib/winthrop-client-ruby/models/recruiting_position_entry.rb
 lib/winthrop-client-ruby/models/regenerate_raw_contract_pdf200_response.rb
 lib/winthrop-client-ruby/models/requested_item.rb
 lib/winthrop-client-ruby/models/requested_item_collection.rb

@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **can_see_compensation** | **Boolean** |  |  |
 | **chart_data** | [**CoachCompensationTabChartData**](CoachCompensationTabChartData.md) |  | [optional] |
-| **compensations** | [**Array&lt;CoachCompensationTabCompensationsInner&gt;**](CoachCompensationTabCompensationsInner.md) |  |  |
+| **compensations** | [**Array&lt;CoachCompensationEntry&gt;**](CoachCompensationEntry.md) |  |  |
 | **total_compensations** | **Integer** |  |  |
 | **comparisons** | [**CoachCompensationTabComparisons**](CoachCompensationTabComparisons.md) |  | [optional] |
 | **sidebar** | [**CoachCompensationTabSidebar**](CoachCompensationTabSidebar.md) |  | [optional] |
