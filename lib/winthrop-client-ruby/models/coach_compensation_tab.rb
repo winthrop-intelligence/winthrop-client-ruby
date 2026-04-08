@@ -54,7 +54,7 @@ module WinthropClient
       {
         :'can_see_compensation' => :'Boolean',
         :'chart_data' => :'CoachCompensationTabChartData',
-        :'compensations' => :'Array<CoachCompensationEntry>',
+        :'compensations' => :'Array<CoachCompensationTabCompensationsInner>',
         :'total_compensations' => :'Integer',
         :'comparisons' => :'CoachCompensationTabComparisons',
         :'sidebar' => :'CoachCompensationTabSidebar'

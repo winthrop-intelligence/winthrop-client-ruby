@@ -59,7 +59,6 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_coach_search_coworker_history**](DefaultApi.md#get_coach_search_coworker_history) | **GET** /api/v1/coach_searches/{id}/coworker_history |  |
 | [**get_coach_search_overview**](DefaultApi.md#get_coach_search_overview) | **GET** /api/v1/coach_searches/{id}/overview |  |
 | [**get_coach_search_record**](DefaultApi.md#get_coach_search_record) | **GET** /api/v1/coach_searches/{id}/record |  |
-| [**get_coach_search_recruiting**](DefaultApi.md#get_coach_search_recruiting) | **GET** /api/v1/coach_searches/{id}/recruiting |  |
 | [**get_coach_search_videos**](DefaultApi.md#get_coach_search_videos) | **GET** /api/v1/coach_searches/{id}/videos |  |
 | [**get_coach_searches**](DefaultApi.md#get_coach_searches) | **GET** /api/v1/coach_searches |  |
 | [**get_coaches**](DefaultApi.md#get_coaches) | **GET** /api/v1/coaches |  |
@@ -4322,80 +4321,6 @@ end
 ### Return type
 
 [**CoachRecordTab**](CoachRecordTab.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## get_coach_search_recruiting
-
-> <CoachRecruitingTab> get_coach_search_recruiting(id)
-
-
-
-Get coach recruiting tab data including class strength, conference comparison, budgets, and charts
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-id = 'id_example' # String | Coach ID or friendly slug
-
-begin
-  
-  result = api_instance.get_coach_search_recruiting(id)
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_coach_search_recruiting: #{e}"
-end
-```
-
-#### Using the get_coach_search_recruiting_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<CoachRecruitingTab>, Integer, Hash)> get_coach_search_recruiting_with_http_info(id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.get_coach_search_recruiting_with_http_info(id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <CoachRecruitingTab>
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_coach_search_recruiting_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **String** | Coach ID or friendly slug |  |
-
-### Return type
-
-[**CoachRecruitingTab**](CoachRecruitingTab.md)
 
 ### Authorization
 

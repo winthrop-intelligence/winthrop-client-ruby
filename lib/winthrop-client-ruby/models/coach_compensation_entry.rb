@@ -37,20 +37,6 @@ module WinthropClient
 
     attr_accessor :raw_contract_id
 
-    attr_accessor :one_time_bonus_cents
-
-    attr_accessor :outside_income_cents
-
-    attr_accessor :contingent_bonus
-
-    attr_accessor :buyout_terms
-
-    attr_accessor :is_car_provided
-
-    attr_accessor :country_club_membership
-
-    attr_accessor :notes
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -64,14 +50,7 @@ module WinthropClient
         :'deferred_comp_cents' => :'deferred_comp_cents',
         :'compensation_type' => :'compensation_type',
         :'media_link' => :'media_link',
-        :'raw_contract_id' => :'raw_contract_id',
-        :'one_time_bonus_cents' => :'one_time_bonus_cents',
-        :'outside_income_cents' => :'outside_income_cents',
-        :'contingent_bonus' => :'contingent_bonus',
-        :'buyout_terms' => :'buyout_terms',
-        :'is_car_provided' => :'is_car_provided',
-        :'country_club_membership' => :'country_club_membership',
-        :'notes' => :'notes'
+        :'raw_contract_id' => :'raw_contract_id'
       }
     end
 
@@ -98,14 +77,7 @@ module WinthropClient
         :'deferred_comp_cents' => :'Integer',
         :'compensation_type' => :'String',
         :'media_link' => :'String',
-        :'raw_contract_id' => :'Integer',
-        :'one_time_bonus_cents' => :'Integer',
-        :'outside_income_cents' => :'Integer',
-        :'contingent_bonus' => :'Boolean',
-        :'buyout_terms' => :'String',
-        :'is_car_provided' => :'Boolean',
-        :'country_club_membership' => :'Boolean',
-        :'notes' => :'String'
+        :'raw_contract_id' => :'Integer'
       }
     end
 
@@ -117,12 +89,7 @@ module WinthropClient
         :'talent_fee_cents',
         :'deferred_comp_cents',
         :'media_link',
-        :'raw_contract_id',
-        :'one_time_bonus_cents',
-        :'outside_income_cents',
-        :'contingent_bonus',
-        :'buyout_terms',
-        :'notes'
+        :'raw_contract_id'
       ])
     end
 
@@ -194,34 +161,6 @@ module WinthropClient
 
       if attributes.key?(:'raw_contract_id')
         self.raw_contract_id = attributes[:'raw_contract_id']
-      end
-
-      if attributes.key?(:'one_time_bonus_cents')
-        self.one_time_bonus_cents = attributes[:'one_time_bonus_cents']
-      end
-
-      if attributes.key?(:'outside_income_cents')
-        self.outside_income_cents = attributes[:'outside_income_cents']
-      end
-
-      if attributes.key?(:'contingent_bonus')
-        self.contingent_bonus = attributes[:'contingent_bonus']
-      end
-
-      if attributes.key?(:'buyout_terms')
-        self.buyout_terms = attributes[:'buyout_terms']
-      end
-
-      if attributes.key?(:'is_car_provided')
-        self.is_car_provided = attributes[:'is_car_provided']
-      end
-
-      if attributes.key?(:'country_club_membership')
-        self.country_club_membership = attributes[:'country_club_membership']
-      end
-
-      if attributes.key?(:'notes')
-        self.notes = attributes[:'notes']
       end
     end
 
@@ -330,14 +269,7 @@ module WinthropClient
           deferred_comp_cents == o.deferred_comp_cents &&
           compensation_type == o.compensation_type &&
           media_link == o.media_link &&
-          raw_contract_id == o.raw_contract_id &&
-          one_time_bonus_cents == o.one_time_bonus_cents &&
-          outside_income_cents == o.outside_income_cents &&
-          contingent_bonus == o.contingent_bonus &&
-          buyout_terms == o.buyout_terms &&
-          is_car_provided == o.is_car_provided &&
-          country_club_membership == o.country_club_membership &&
-          notes == o.notes
+          raw_contract_id == o.raw_contract_id
     end
 
     # @see the `==` method
@@ -349,7 +281,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [year_str, school_name, school_id, position_sport, total_cents, base_salary_cents, talent_fee_cents, deferred_comp_cents, compensation_type, media_link, raw_contract_id, one_time_bonus_cents, outside_income_cents, contingent_bonus, buyout_terms, is_car_provided, country_club_membership, notes].hash
+      [year_str, school_name, school_id, position_sport, total_cents, base_salary_cents, talent_fee_cents, deferred_comp_cents, compensation_type, media_link, raw_contract_id].hash
     end
 
     # Builds the object from hash
