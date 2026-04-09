@@ -14,6 +14,7 @@ docs/AsstCoachSchool.md
 docs/AthleticProfileShow.md
 docs/AthleticProfileShowContactsInner.md
 docs/AthleticProfileShowDealsInner.md
+docs/AthleticProfileShowDealsInnerVendorsInner.md
 docs/AthleticProfileShowFinancialInfo.md
 docs/AthleticProfileShowFinancials.md
 docs/AthleticProfileShowFinancialsRevenuesInner.md
@@ -200,7 +201,6 @@ docs/RawContract.md
 docs/RawContractBackTo.md
 docs/RawContractCollection.md
 docs/RawContractDealInfo.md
-docs/RawContractDealInfoVendorsInner.md
 docs/RecordPositionEntry.md
 docs/RegenerateRawContractPdf200Response.md
 docs/ReportingApi.md
@@ -324,6 +324,7 @@ lib/winthrop-client-ruby/models/asst_coach_school.rb
 lib/winthrop-client-ruby/models/athletic_profile_show.rb
 lib/winthrop-client-ruby/models/athletic_profile_show_contacts_inner.rb
 lib/winthrop-client-ruby/models/athletic_profile_show_deals_inner.rb
+lib/winthrop-client-ruby/models/athletic_profile_show_deals_inner_vendors_inner.rb
 lib/winthrop-client-ruby/models/athletic_profile_show_financial_info.rb
 lib/winthrop-client-ruby/models/athletic_profile_show_financials.rb
 lib/winthrop-client-ruby/models/athletic_profile_show_financials_revenues_inner.rb
@@ -506,7 +507,6 @@ lib/winthrop-client-ruby/models/raw_contract.rb
 lib/winthrop-client-ruby/models/raw_contract_back_to.rb
 lib/winthrop-client-ruby/models/raw_contract_collection.rb
 lib/winthrop-client-ruby/models/raw_contract_deal_info.rb
-lib/winthrop-client-ruby/models/raw_contract_deal_info_vendors_inner.rb
 lib/winthrop-client-ruby/models/record_position_entry.rb
 lib/winthrop-client-ruby/models/regenerate_raw_contract_pdf200_response.rb
 lib/winthrop-client-ruby/models/requested_item.rb
@@ -609,5 +609,6 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
+spec/models/athletic_profile_show_deals_inner_vendors_inner_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
