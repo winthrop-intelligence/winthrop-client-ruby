@@ -3557,67 +3557,6 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Get coach recruiting tab data including class strength, conference comparison, budgets, and charts
-    # @param id [String] Coach ID or friendly slug
-    # @param [Hash] opts the optional parameters
-    # @return [CoachRecruitingTab]
-    def get_coach_search_recruiting(id, opts = {})
-      data, _status_code, _headers = get_coach_search_recruiting_with_http_info(id, opts)
-      data
-    end
-
-    # Get coach recruiting tab data including class strength, conference comparison, budgets, and charts
-    # @param id [String] Coach ID or friendly slug
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(CoachRecruitingTab, Integer, Hash)>] CoachRecruitingTab data, response status code and response headers
-    def get_coach_search_recruiting_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.get_coach_search_recruiting ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.get_coach_search_recruiting"
-      end
-      # resource path
-      local_var_path = '/api/v1/coach_searches/{id}/recruiting'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'CoachRecruitingTab'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.get_coach_search_recruiting",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#get_coach_search_recruiting\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Get coach videos tab data with all approved YouTube videos
     # @param id [String] Coach ID or friendly slug
     # @param [Hash] opts the optional parameters
