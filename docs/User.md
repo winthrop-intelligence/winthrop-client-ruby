@@ -17,7 +17,6 @@
 | **coach_id** | **Integer** |  | [optional] |
 | **divisions** | [**Array&lt;Division&gt;**](Division.md) |  | [optional] |
 | **roles** | **Array&lt;String&gt;** |  | [optional] |
-| **is_admin** | **Boolean** | Whether the user is a data admin or super admin | [optional] |
 | **can_see_compensation** | **Boolean** | Whether the user can view coach compensation data | [optional] |
 | **can_show_scouting** | **Boolean** | Whether the user can view scouting/team schedule links | [optional] |
 | **can_show_game_contract** | **Boolean** | Whether the user can view game contract/guarantee data | [optional] |
@@ -51,7 +50,6 @@ instance = WinthropClient::User.new(
   coach_id: 1,
   divisions: null,
   roles: null,
-  is_admin: null,
   can_see_compensation: null,
   can_show_scouting: null,
   can_show_game_contract: null,
