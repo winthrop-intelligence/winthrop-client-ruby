@@ -39,6 +39,11 @@
 | **school_city** | **String** |  | [optional] |
 | **school_state** | **String** |  | [optional] |
 | **otp_required** | **Boolean** | Whether the user must verify OTP to access the application | [optional] |
+| **time_zone** | **String** | User&#39;s time zone setting | [optional] |
+| **scheduling_notifications** | **Boolean** | Whether user receives scheduling notifications | [optional] |
+| **game_post_notifications** | **Boolean** | Whether user receives games wanted notifications | [optional] |
+| **games_digest** | **Boolean** | Whether user receives scheduling digest emails | [optional] |
+| **email_domain** | **String** | Email domain required by the user&#39;s account | [optional] |
 
 ## Example
 
@@ -80,7 +85,12 @@ instance = WinthropClient::User.new(
   schedule_sports: null,
   school_city: null,
   school_state: null,
-  otp_required: null
+  otp_required: null,
+  time_zone: null,
+  scheduling_notifications: null,
+  game_post_notifications: null,
+  games_digest: null,
+  email_domain: null
 )
 ```
 

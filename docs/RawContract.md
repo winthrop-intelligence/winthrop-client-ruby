@@ -25,7 +25,9 @@
 | **unstract_pdf_text** | **String** |  | [optional] |
 | **unstract_responses_details** | **String** |  | [optional] |
 | **layout_preserved_pdf_text** | **String** |  | [optional] |
-| **file_url** | **String** |  | [optional] |
+| **can_see_admin_view** | **Boolean** | Whether the current user can see the admin view for this contract | [optional] |
+| **pdf_preview_url** | **String** | Proxied URL for inline PDF viewing (no direct file access) | [optional] |
+| **pdf_download_url** | **String** | Direct download URL (admin only) | [optional] |
 | **has_file** | **Boolean** |  | [optional] |
 | **back_to** | [**RawContractBackTo**](RawContractBackTo.md) |  | [optional] |
 | **contract_label** | **String** |  | [optional] |
@@ -58,7 +60,9 @@ instance = WinthropClient::RawContract.new(
   unstract_pdf_text: null,
   unstract_responses_details: null,
   layout_preserved_pdf_text: null,
-  file_url: null,
+  can_see_admin_view: null,
+  pdf_preview_url: null,
+  pdf_download_url: null,
   has_file: null,
   back_to: null,
   contract_label: null,
