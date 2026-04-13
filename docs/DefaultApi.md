@@ -203,7 +203,6 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**user_me**](DefaultApi.md#user_me) | **GET** /api/v1/users/me |  |
 | [**verify_otp_code**](DefaultApi.md#verify_otp_code) | **POST** /api/v1/otp/verify |  |
 | [**verify_user_intercollegiate_access**](DefaultApi.md#verify_user_intercollegiate_access) | **GET** /api/v1/users/verify_user_intercollegiate_access |  |
-| [**view_raw_contract_file**](DefaultApi.md#view_raw_contract_file) | **GET** /api/v1/raw_contracts/{raw_contractId}/view_file |  |
 
 
 ## average_conference_comp
@@ -15404,78 +15403,4 @@ end
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
-
-
-## view_raw_contract_file
-
-> File view_raw_contract_file(raw_contract_id)
-
-
-
-Stream the raw contract PDF for inline viewing
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-raw_contract_id = 56 # Integer | ID of the RawContract
-
-begin
-  
-  result = api_instance.view_raw_contract_file(raw_contract_id)
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->view_raw_contract_file: #{e}"
-end
-```
-
-#### Using the view_raw_contract_file_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(File, Integer, Hash)> view_raw_contract_file_with_http_info(raw_contract_id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.view_raw_contract_file_with_http_info(raw_contract_id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => File
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->view_raw_contract_file_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **raw_contract_id** | **Integer** | ID of the RawContract |  |
-
-### Return type
-
-**File**
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/pdf
 

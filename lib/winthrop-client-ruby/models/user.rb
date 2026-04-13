@@ -50,6 +50,30 @@ module WinthropClient
     # Whether the user can view game contract/guarantee data
     attr_accessor :can_show_game_contract
 
+    # Whether the user can access the Coaches section
+    attr_accessor :can_see_coaches
+
+    # Whether the user can access the Administrators section
+    attr_accessor :can_see_administrators
+
+    # Whether the user can access the Financials section
+    attr_accessor :can_show_financials
+
+    # Whether the user can access the Vendors section
+    attr_accessor :can_show_deals
+
+    # Whether the user can access the Benchmark section
+    attr_accessor :can_show_benchmark
+
+    # Whether the user can access the Departments section
+    attr_accessor :can_show_athletic_profile
+
+    # Whether the user can access the Conferences section
+    attr_accessor :can_read_conference
+
+    # Whether the user can access the Games Wanted section
+    attr_accessor :can_show_game_post
+
     attr_accessor :is_sport_specific
 
     attr_accessor :is_d2_only
@@ -114,6 +138,14 @@ module WinthropClient
         :'can_see_compensation' => :'can_see_compensation',
         :'can_show_scouting' => :'can_show_scouting',
         :'can_show_game_contract' => :'can_show_game_contract',
+        :'can_see_coaches' => :'can_see_coaches',
+        :'can_see_administrators' => :'can_see_administrators',
+        :'can_show_financials' => :'can_show_financials',
+        :'can_show_deals' => :'can_show_deals',
+        :'can_show_benchmark' => :'can_show_benchmark',
+        :'can_show_athletic_profile' => :'can_show_athletic_profile',
+        :'can_read_conference' => :'can_read_conference',
+        :'can_show_game_post' => :'can_show_game_post',
         :'is_sport_specific' => :'is_sport_specific',
         :'is_d2_only' => :'is_d2_only',
         :'is_conference_only' => :'is_conference_only',
@@ -156,6 +188,14 @@ module WinthropClient
         :'can_see_compensation' => :'Boolean',
         :'can_show_scouting' => :'Boolean',
         :'can_show_game_contract' => :'Boolean',
+        :'can_see_coaches' => :'Boolean',
+        :'can_see_administrators' => :'Boolean',
+        :'can_show_financials' => :'Boolean',
+        :'can_show_deals' => :'Boolean',
+        :'can_show_benchmark' => :'Boolean',
+        :'can_show_athletic_profile' => :'Boolean',
+        :'can_read_conference' => :'Boolean',
+        :'can_show_game_post' => :'Boolean',
         :'is_sport_specific' => :'Boolean',
         :'is_d2_only' => :'Boolean',
         :'is_conference_only' => :'Boolean',
@@ -263,6 +303,38 @@ module WinthropClient
         self.can_show_game_contract = attributes[:'can_show_game_contract']
       end
 
+      if attributes.key?(:'can_see_coaches')
+        self.can_see_coaches = attributes[:'can_see_coaches']
+      end
+
+      if attributes.key?(:'can_see_administrators')
+        self.can_see_administrators = attributes[:'can_see_administrators']
+      end
+
+      if attributes.key?(:'can_show_financials')
+        self.can_show_financials = attributes[:'can_show_financials']
+      end
+
+      if attributes.key?(:'can_show_deals')
+        self.can_show_deals = attributes[:'can_show_deals']
+      end
+
+      if attributes.key?(:'can_show_benchmark')
+        self.can_show_benchmark = attributes[:'can_show_benchmark']
+      end
+
+      if attributes.key?(:'can_show_athletic_profile')
+        self.can_show_athletic_profile = attributes[:'can_show_athletic_profile']
+      end
+
+      if attributes.key?(:'can_read_conference')
+        self.can_read_conference = attributes[:'can_read_conference']
+      end
+
+      if attributes.key?(:'can_show_game_post')
+        self.can_show_game_post = attributes[:'can_show_game_post']
+      end
+
       if attributes.key?(:'is_sport_specific')
         self.is_sport_specific = attributes[:'is_sport_specific']
       end
@@ -356,6 +428,14 @@ module WinthropClient
           can_see_compensation == o.can_see_compensation &&
           can_show_scouting == o.can_show_scouting &&
           can_show_game_contract == o.can_show_game_contract &&
+          can_see_coaches == o.can_see_coaches &&
+          can_see_administrators == o.can_see_administrators &&
+          can_show_financials == o.can_show_financials &&
+          can_show_deals == o.can_show_deals &&
+          can_show_benchmark == o.can_show_benchmark &&
+          can_show_athletic_profile == o.can_show_athletic_profile &&
+          can_read_conference == o.can_read_conference &&
+          can_show_game_post == o.can_show_game_post &&
           is_sport_specific == o.is_sport_specific &&
           is_d2_only == o.is_d2_only &&
           is_conference_only == o.is_conference_only &&
@@ -377,7 +457,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, email, first_name, last_name, created_at, updated_at, state, title, accountable_id, accountable_type, coach_id, divisions, roles, can_see_compensation, can_show_scouting, can_show_game_contract, is_sport_specific, is_d2_only, is_conference_only, permissible_sport_ids, coli_index, subscription_type, schedule_sports, school_city, school_state, otp_required].hash
+      [id, email, first_name, last_name, created_at, updated_at, state, title, accountable_id, accountable_type, coach_id, divisions, roles, can_see_compensation, can_show_scouting, can_show_game_contract, can_see_coaches, can_see_administrators, can_show_financials, can_show_deals, can_show_benchmark, can_show_athletic_profile, can_read_conference, can_show_game_post, is_sport_specific, is_d2_only, is_conference_only, permissible_sport_ids, coli_index, subscription_type, schedule_sports, school_city, school_state, otp_required].hash
     end
 
     # Builds the object from hash
