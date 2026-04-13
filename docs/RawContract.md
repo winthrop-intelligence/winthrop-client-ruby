@@ -25,7 +25,6 @@
 | **unstract_pdf_text** | **String** |  | [optional] |
 | **unstract_responses_details** | **String** |  | [optional] |
 | **layout_preserved_pdf_text** | **String** |  | [optional] |
-| **can_see_admin_view** | **Boolean** | Whether the current user can see the admin view for this contract | [optional] |
 | **file_url** | **String** |  | [optional] |
 | **has_file** | **Boolean** |  | [optional] |
 | **back_to** | [**RawContractBackTo**](RawContractBackTo.md) |  | [optional] |
@@ -59,7 +58,6 @@ instance = WinthropClient::RawContract.new(
   unstract_pdf_text: null,
   unstract_responses_details: null,
   layout_preserved_pdf_text: null,
-  can_see_admin_view: null,
   file_url: null,
   has_file: null,
   back_to: null,
