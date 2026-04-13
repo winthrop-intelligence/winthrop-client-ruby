@@ -14,16 +14,13 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class SchoolGroupShow < ApiModelBase
-    attr_accessor :id
-
-    attr_accessor :name
+  class UpdateUserRequest < ApiModelBase
+    attr_accessor :user
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'name' => :'name'
+        :'user' => :'user'
       }
     end
 
@@ -40,8 +37,7 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'Integer',
-        :'name' => :'String'
+        :'user' => :'UpdateUserRequestUser'
       }
     end
 
@@ -55,24 +51,20 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::SchoolGroupShow` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::UpdateUserRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::SchoolGroupShow`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::UpdateUserRequest`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      end
-
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'user')
+        self.user = attributes[:'user']
       end
     end
 
@@ -96,8 +88,7 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          name == o.name
+          user == o.user
     end
 
     # @see the `==` method
@@ -109,7 +100,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name].hash
+      [user].hash
     end
 
     # Builds the object from hash

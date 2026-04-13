@@ -14,16 +14,18 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class SchoolGroupShow < ApiModelBase
-    attr_accessor :id
+  class TimeZoneOption < ApiModelBase
+    # Time zone identifier (e.g. \"Eastern Time (US & Canada)\")
+    attr_accessor :value
 
-    attr_accessor :name
+    # Display label with GMT offset (e.g. \"(GMT-05:00) Eastern Time (US & Canada)\")
+    attr_accessor :label
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'name' => :'name'
+        :'value' => :'value',
+        :'label' => :'label'
       }
     end
 
@@ -40,8 +42,8 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'Integer',
-        :'name' => :'String'
+        :'value' => :'String',
+        :'label' => :'String'
       }
     end
 
@@ -55,24 +57,24 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::SchoolGroupShow` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::TimeZoneOption` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::SchoolGroupShow`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::TimeZoneOption`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'value')
+        self.value = attributes[:'value']
       end
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'label')
+        self.label = attributes[:'label']
       end
     end
 
@@ -96,8 +98,8 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          name == o.name
+          value == o.value &&
+          label == o.label
     end
 
     # @see the `==` method
@@ -109,7 +111,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name].hash
+      [value, label].hash
     end
 
     # Builds the object from hash

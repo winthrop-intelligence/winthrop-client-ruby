@@ -14,16 +14,40 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class SchoolGroupShow < ApiModelBase
-    attr_accessor :id
+  class UpdateUserRequestUser < ApiModelBase
+    attr_accessor :first_name
 
-    attr_accessor :name
+    attr_accessor :last_name
+
+    attr_accessor :email
+
+    attr_accessor :time_zone
+
+    attr_accessor :scheduling_notifications
+
+    attr_accessor :game_post_notifications
+
+    attr_accessor :games_digest
+
+    attr_accessor :current_password
+
+    attr_accessor :password
+
+    attr_accessor :password_confirmation
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'name' => :'name'
+        :'first_name' => :'first_name',
+        :'last_name' => :'last_name',
+        :'email' => :'email',
+        :'time_zone' => :'time_zone',
+        :'scheduling_notifications' => :'scheduling_notifications',
+        :'game_post_notifications' => :'game_post_notifications',
+        :'games_digest' => :'games_digest',
+        :'current_password' => :'current_password',
+        :'password' => :'password',
+        :'password_confirmation' => :'password_confirmation'
       }
     end
 
@@ -40,8 +64,16 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'Integer',
-        :'name' => :'String'
+        :'first_name' => :'String',
+        :'last_name' => :'String',
+        :'email' => :'String',
+        :'time_zone' => :'String',
+        :'scheduling_notifications' => :'Boolean',
+        :'game_post_notifications' => :'Boolean',
+        :'games_digest' => :'Boolean',
+        :'current_password' => :'String',
+        :'password' => :'String',
+        :'password_confirmation' => :'String'
       }
     end
 
@@ -55,24 +87,56 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::SchoolGroupShow` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::UpdateUserRequestUser` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::SchoolGroupShow`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::UpdateUserRequestUser`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'first_name')
+        self.first_name = attributes[:'first_name']
       end
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'last_name')
+        self.last_name = attributes[:'last_name']
+      end
+
+      if attributes.key?(:'email')
+        self.email = attributes[:'email']
+      end
+
+      if attributes.key?(:'time_zone')
+        self.time_zone = attributes[:'time_zone']
+      end
+
+      if attributes.key?(:'scheduling_notifications')
+        self.scheduling_notifications = attributes[:'scheduling_notifications']
+      end
+
+      if attributes.key?(:'game_post_notifications')
+        self.game_post_notifications = attributes[:'game_post_notifications']
+      end
+
+      if attributes.key?(:'games_digest')
+        self.games_digest = attributes[:'games_digest']
+      end
+
+      if attributes.key?(:'current_password')
+        self.current_password = attributes[:'current_password']
+      end
+
+      if attributes.key?(:'password')
+        self.password = attributes[:'password']
+      end
+
+      if attributes.key?(:'password_confirmation')
+        self.password_confirmation = attributes[:'password_confirmation']
       end
     end
 
@@ -96,8 +160,16 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          name == o.name
+          first_name == o.first_name &&
+          last_name == o.last_name &&
+          email == o.email &&
+          time_zone == o.time_zone &&
+          scheduling_notifications == o.scheduling_notifications &&
+          game_post_notifications == o.game_post_notifications &&
+          games_digest == o.games_digest &&
+          current_password == o.current_password &&
+          password == o.password &&
+          password_confirmation == o.password_confirmation
     end
 
     # @see the `==` method
@@ -109,7 +181,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name].hash
+      [first_name, last_name, email, time_zone, scheduling_notifications, game_post_notifications, games_digest, current_password, password, password_confirmation].hash
     end
 
     # Builds the object from hash
