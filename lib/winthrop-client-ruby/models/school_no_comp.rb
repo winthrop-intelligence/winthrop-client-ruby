@@ -19,8 +19,6 @@ module WinthropClient
 
     attr_accessor :school_name
 
-    attr_accessor :coach_id
-
     attr_accessor :coach_name
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -28,7 +26,6 @@ module WinthropClient
       {
         :'school_id' => :'school_id',
         :'school_name' => :'school_name',
-        :'coach_id' => :'coach_id',
         :'coach_name' => :'coach_name'
       }
     end
@@ -48,7 +45,6 @@ module WinthropClient
       {
         :'school_id' => :'Integer',
         :'school_name' => :'String',
-        :'coach_id' => :'Integer',
         :'coach_name' => :'String'
       }
     end
@@ -56,7 +52,6 @@ module WinthropClient
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'coach_id',
         :'coach_name'
       ])
     end
@@ -83,10 +78,6 @@ module WinthropClient
 
       if attributes.key?(:'school_name')
         self.school_name = attributes[:'school_name']
-      end
-
-      if attributes.key?(:'coach_id')
-        self.coach_id = attributes[:'coach_id']
       end
 
       if attributes.key?(:'coach_name')
@@ -116,7 +107,6 @@ module WinthropClient
       self.class == o.class &&
           school_id == o.school_id &&
           school_name == o.school_name &&
-          coach_id == o.coach_id &&
           coach_name == o.coach_name
     end
 
@@ -129,7 +119,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [school_id, school_name, coach_id, coach_name].hash
+      [school_id, school_name, coach_name].hash
     end
 
     # Builds the object from hash

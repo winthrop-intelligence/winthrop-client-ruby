@@ -69,8 +69,6 @@ module WinthropClient
 
     attr_accessor :can_see_coworker_history
 
-    attr_accessor :can_see_recruiting
-
     attr_accessor :is_sport_specific
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -103,7 +101,6 @@ module WinthropClient
         :'can_see_compensation' => :'can_see_compensation',
         :'can_see_videos' => :'can_see_videos',
         :'can_see_coworker_history' => :'can_see_coworker_history',
-        :'can_see_recruiting' => :'can_see_recruiting',
         :'is_sport_specific' => :'is_sport_specific'
       }
     end
@@ -148,7 +145,6 @@ module WinthropClient
         :'can_see_compensation' => :'Boolean',
         :'can_see_videos' => :'Boolean',
         :'can_see_coworker_history' => :'Boolean',
-        :'can_see_recruiting' => :'Boolean',
         :'is_sport_specific' => :'Boolean'
       }
     end
@@ -323,12 +319,6 @@ module WinthropClient
         self.can_see_coworker_history = nil
       end
 
-      if attributes.key?(:'can_see_recruiting')
-        self.can_see_recruiting = attributes[:'can_see_recruiting']
-      else
-        self.can_see_recruiting = nil
-      end
-
       if attributes.key?(:'is_sport_specific')
         self.is_sport_specific = attributes[:'is_sport_specific']
       else
@@ -385,10 +375,6 @@ module WinthropClient
         invalid_properties.push('invalid value for "can_see_coworker_history", can_see_coworker_history cannot be nil.')
       end
 
-      if @can_see_recruiting.nil?
-        invalid_properties.push('invalid value for "can_see_recruiting", can_see_recruiting cannot be nil.')
-      end
-
       if @is_sport_specific.nil?
         invalid_properties.push('invalid value for "is_sport_specific", is_sport_specific cannot be nil.')
       end
@@ -411,7 +397,6 @@ module WinthropClient
       return false if @can_see_compensation.nil?
       return false if @can_see_videos.nil?
       return false if @can_see_coworker_history.nil?
-      return false if @can_see_recruiting.nil?
       return false if @is_sport_specific.nil?
       true
     end
@@ -527,16 +512,6 @@ module WinthropClient
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] can_see_recruiting Value to be assigned
-    def can_see_recruiting=(can_see_recruiting)
-      if can_see_recruiting.nil?
-        fail ArgumentError, 'can_see_recruiting cannot be nil'
-      end
-
-      @can_see_recruiting = can_see_recruiting
-    end
-
-    # Custom attribute writer method with validation
     # @param [Object] is_sport_specific Value to be assigned
     def is_sport_specific=(is_sport_specific)
       if is_sport_specific.nil?
@@ -578,7 +553,6 @@ module WinthropClient
           can_see_compensation == o.can_see_compensation &&
           can_see_videos == o.can_see_videos &&
           can_see_coworker_history == o.can_see_coworker_history &&
-          can_see_recruiting == o.can_see_recruiting &&
           is_sport_specific == o.is_sport_specific
     end
 
@@ -591,7 +565,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, first_name, last_name, email, phone, leader, hometown_city, hometown_state, alma_mater_name, alma_mater_year, twitter_handle, twitter_verified, linkedin, linkedin_verified, instagram_handle, instagram_verified, bio, coach_friendly_id, departing, current_school_name, current_school_id, current_sport_name, current_position_types, avatar_url, can_see_compensation, can_see_videos, can_see_coworker_history, can_see_recruiting, is_sport_specific].hash
+      [id, first_name, last_name, email, phone, leader, hometown_city, hometown_state, alma_mater_name, alma_mater_year, twitter_handle, twitter_verified, linkedin, linkedin_verified, instagram_handle, instagram_verified, bio, coach_friendly_id, departing, current_school_name, current_school_id, current_sport_name, current_position_types, avatar_url, can_see_compensation, can_see_videos, can_see_coworker_history, is_sport_specific].hash
     end
 
     # Builds the object from hash

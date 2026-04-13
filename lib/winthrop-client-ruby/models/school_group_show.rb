@@ -19,11 +19,14 @@ module WinthropClient
 
     attr_accessor :name
 
+    attr_accessor :schools
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'name' => :'name'
+        :'name' => :'name',
+        :'schools' => :'schools'
       }
     end
 
@@ -41,7 +44,8 @@ module WinthropClient
     def self.openapi_types
       {
         :'id' => :'Integer',
-        :'name' => :'String'
+        :'name' => :'String',
+        :'schools' => :'Array<IdName>'
       }
     end
 
@@ -74,6 +78,12 @@ module WinthropClient
       if attributes.key?(:'name')
         self.name = attributes[:'name']
       end
+
+      if attributes.key?(:'schools')
+        if (value = attributes[:'schools']).is_a?(Array)
+          self.schools = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -97,7 +107,8 @@ module WinthropClient
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          name == o.name
+          name == o.name &&
+          schools == o.schools
     end
 
     # @see the `==` method
@@ -109,7 +120,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name].hash
+      [id, name, schools].hash
     end
 
     # Builds the object from hash
