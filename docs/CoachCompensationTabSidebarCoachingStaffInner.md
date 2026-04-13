@@ -10,7 +10,6 @@
 | **initials** | **String** |  | [optional] |
 | **position_types** | **Array&lt;String&gt;** |  | [optional] |
 | **salary_cents** | **Integer** |  | [optional] |
-| **avatar_url** | **String** |  | [optional] |
 
 ## Example
 
@@ -23,8 +22,7 @@ instance = WinthropClient::CoachCompensationTabSidebarCoachingStaffInner.new(
   name: null,
   initials: null,
   position_types: null,
-  salary_cents: null,
-  avatar_url: null
+  salary_cents: null
 )
 ```
 

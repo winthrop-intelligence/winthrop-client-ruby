@@ -1337,72 +1337,6 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Create a new custom school group
-    # @param create_school_group_request [CreateSchoolGroupRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [SchoolGroupShow]
-    def create_school_group(create_school_group_request, opts = {})
-      data, _status_code, _headers = create_school_group_with_http_info(create_school_group_request, opts)
-      data
-    end
-
-    # Create a new custom school group
-    # @param create_school_group_request [CreateSchoolGroupRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(SchoolGroupShow, Integer, Hash)>] SchoolGroupShow data, response status code and response headers
-    def create_school_group_with_http_info(create_school_group_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.create_school_group ...'
-      end
-      # verify the required parameter 'create_school_group_request' is set
-      if @api_client.config.client_side_validation && create_school_group_request.nil?
-        fail ArgumentError, "Missing the required parameter 'create_school_group_request' when calling DefaultApi.create_school_group"
-      end
-      # resource path
-      local_var_path = '/api/v1/school_groups'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-        header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_school_group_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'SchoolGroupShow'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.create_school_group",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#create_school_group\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Create a new Season
     # @param [Hash] opts the optional parameters
     # @option opts [Season] :season 
@@ -2304,67 +2238,6 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#delete_requested_item\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Delete a custom school group
-    # @param school_group_id [Integer] ID of the School Group
-    # @param [Hash] opts the optional parameters
-    # @return [DeleteNote200Response]
-    def delete_school_group(school_group_id, opts = {})
-      data, _status_code, _headers = delete_school_group_with_http_info(school_group_id, opts)
-      data
-    end
-
-    # Delete a custom school group
-    # @param school_group_id [Integer] ID of the School Group
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(DeleteNote200Response, Integer, Hash)>] DeleteNote200Response data, response status code and response headers
-    def delete_school_group_with_http_info(school_group_id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.delete_school_group ...'
-      end
-      # verify the required parameter 'school_group_id' is set
-      if @api_client.config.client_side_validation && school_group_id.nil?
-        fail ArgumentError, "Missing the required parameter 'school_group_id' when calling DefaultApi.delete_school_group"
-      end
-      # resource path
-      local_var_path = '/api/v1/school_groups/{schoolGroupId}'.sub('{' + 'schoolGroupId' + '}', CGI.escape(school_group_id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'DeleteNote200Response'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.delete_school_group",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#delete_school_group\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -3680,6 +3553,67 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_coach_search_record\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get coach recruiting tab data including class strength, conference comparison, budgets, and charts
+    # @param id [String] Coach ID or friendly slug
+    # @param [Hash] opts the optional parameters
+    # @return [CoachRecruitingTab]
+    def get_coach_search_recruiting(id, opts = {})
+      data, _status_code, _headers = get_coach_search_recruiting_with_http_info(id, opts)
+      data
+    end
+
+    # Get coach recruiting tab data including class strength, conference comparison, budgets, and charts
+    # @param id [String] Coach ID or friendly slug
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CoachRecruitingTab, Integer, Hash)>] CoachRecruitingTab data, response status code and response headers
+    def get_coach_search_recruiting_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_coach_search_recruiting ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.get_coach_search_recruiting"
+      end
+      # resource path
+      local_var_path = '/api/v1/coach_searches/{id}/recruiting'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CoachRecruitingTab'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_coach_search_recruiting",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_coach_search_recruiting\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -8760,116 +8694,6 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Retrieve the current user's custom school groups with their schools
-    # @param [Hash] opts the optional parameters
-    # @return [Array<SchoolGroupShow>]
-    def get_school_groups(opts = {})
-      data, _status_code, _headers = get_school_groups_with_http_info(opts)
-      data
-    end
-
-    # Retrieve the current user&#39;s custom school groups with their schools
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Array<SchoolGroupShow>, Integer, Hash)>] Array<SchoolGroupShow> data, response status code and response headers
-    def get_school_groups_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.get_school_groups ...'
-      end
-      # resource path
-      local_var_path = '/api/v1/school_groups'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'Array<SchoolGroupShow>'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.get_school_groups",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#get_school_groups\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Retrieve D1 and D2 schools available for custom school group selection
-    # @param [Hash] opts the optional parameters
-    # @return [Array<IdName>]
-    def get_school_groups_available_schools(opts = {})
-      data, _status_code, _headers = get_school_groups_available_schools_with_http_info(opts)
-      data
-    end
-
-    # Retrieve D1 and D2 schools available for custom school group selection
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Array<IdName>, Integer, Hash)>] Array<IdName> data, response status code and response headers
-    def get_school_groups_available_schools_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.get_school_groups_available_schools ...'
-      end
-      # resource path
-      local_var_path = '/api/v1/school_groups/available_schools'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'Array<IdName>'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.get_school_groups_available_schools",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#get_school_groups_available_schools\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Retrieve some or all schools
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
@@ -10619,61 +10443,6 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_team_schedule_searches\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Retrieve all available time zones grouped by US priority zones and other zones
-    # @param [Hash] opts the optional parameters
-    # @return [GetTimeZones200Response]
-    def get_time_zones(opts = {})
-      data, _status_code, _headers = get_time_zones_with_http_info(opts)
-      data
-    end
-
-    # Retrieve all available time zones grouped by US priority zones and other zones
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(GetTimeZones200Response, Integer, Hash)>] GetTimeZones200Response data, response status code and response headers
-    def get_time_zones_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.get_time_zones ...'
-      end
-      # resource path
-      local_var_path = '/api/v1/time_zones'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'GetTimeZones200Response'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.get_time_zones",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#get_time_zones\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -12676,78 +12445,6 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Update an existing custom school group
-    # @param school_group_id [Integer] ID of the School Group
-    # @param update_school_group_request [UpdateSchoolGroupRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [SchoolGroupShow]
-    def update_school_group(school_group_id, update_school_group_request, opts = {})
-      data, _status_code, _headers = update_school_group_with_http_info(school_group_id, update_school_group_request, opts)
-      data
-    end
-
-    # Update an existing custom school group
-    # @param school_group_id [Integer] ID of the School Group
-    # @param update_school_group_request [UpdateSchoolGroupRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(SchoolGroupShow, Integer, Hash)>] SchoolGroupShow data, response status code and response headers
-    def update_school_group_with_http_info(school_group_id, update_school_group_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.update_school_group ...'
-      end
-      # verify the required parameter 'school_group_id' is set
-      if @api_client.config.client_side_validation && school_group_id.nil?
-        fail ArgumentError, "Missing the required parameter 'school_group_id' when calling DefaultApi.update_school_group"
-      end
-      # verify the required parameter 'update_school_group_request' is set
-      if @api_client.config.client_side_validation && update_school_group_request.nil?
-        fail ArgumentError, "Missing the required parameter 'update_school_group_request' when calling DefaultApi.update_school_group"
-      end
-      # resource path
-      local_var_path = '/api/v1/school_groups/{schoolGroupId}'.sub('{' + 'schoolGroupId' + '}', CGI.escape(school_group_id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-        header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_school_group_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'SchoolGroupShow'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.update_school_group",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#update_school_group\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Update a single Season
     # @param season_id [Integer] ID of the Season
     # @param season [Season] Season attributes to update
@@ -12888,78 +12585,6 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#update_team_schedule_favorite\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Update the current user's profile
-    # @param user_id [Integer] ID of user to update
-    # @param update_user_request [UpdateUserRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [User]
-    def update_user(user_id, update_user_request, opts = {})
-      data, _status_code, _headers = update_user_with_http_info(user_id, update_user_request, opts)
-      data
-    end
-
-    # Update the current user&#39;s profile
-    # @param user_id [Integer] ID of user to update
-    # @param update_user_request [UpdateUserRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(User, Integer, Hash)>] User data, response status code and response headers
-    def update_user_with_http_info(user_id, update_user_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.update_user ...'
-      end
-      # verify the required parameter 'user_id' is set
-      if @api_client.config.client_side_validation && user_id.nil?
-        fail ArgumentError, "Missing the required parameter 'user_id' when calling DefaultApi.update_user"
-      end
-      # verify the required parameter 'update_user_request' is set
-      if @api_client.config.client_side_validation && update_user_request.nil?
-        fail ArgumentError, "Missing the required parameter 'update_user_request' when calling DefaultApi.update_user"
-      end
-      # resource path
-      local_var_path = '/api/v1/users/{userId}'.sub('{' + 'userId' + '}', CGI.escape(user_id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-        header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_user_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'User'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.update_user",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#update_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -13215,6 +12840,67 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#verify_user_intercollegiate_access\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Stream the raw contract PDF for inline viewing
+    # @param raw_contract_id [Integer] ID of the RawContract
+    # @param [Hash] opts the optional parameters
+    # @return [File]
+    def view_raw_contract_file(raw_contract_id, opts = {})
+      data, _status_code, _headers = view_raw_contract_file_with_http_info(raw_contract_id, opts)
+      data
+    end
+
+    # Stream the raw contract PDF for inline viewing
+    # @param raw_contract_id [Integer] ID of the RawContract
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(File, Integer, Hash)>] File data, response status code and response headers
+    def view_raw_contract_file_with_http_info(raw_contract_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.view_raw_contract_file ...'
+      end
+      # verify the required parameter 'raw_contract_id' is set
+      if @api_client.config.client_side_validation && raw_contract_id.nil?
+        fail ArgumentError, "Missing the required parameter 'raw_contract_id' when calling DefaultApi.view_raw_contract_file"
+      end
+      # resource path
+      local_var_path = '/api/v1/raw_contracts/{raw_contractId}/view_file'.sub('{' + 'raw_contractId' + '}', CGI.escape(raw_contract_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/pdf']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'File'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.view_raw_contract_file",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#view_raw_contract_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

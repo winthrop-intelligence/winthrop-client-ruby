@@ -6,7 +6,6 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** |  | [optional] |
 | **name** | **String** |  | [optional] |
-| **schools** | [**Array&lt;IdName&gt;**](IdName.md) |  | [optional] |
 
 ## Example
 
@@ -15,8 +14,7 @@ require 'winthrop-client-ruby'
 
 instance = WinthropClient::SchoolGroupShow.new(
   id: null,
-  name: null,
-  schools: null
+  name: null
 )
 ```
 
