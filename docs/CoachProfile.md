@@ -31,7 +31,6 @@
 | **can_see_compensation** | **Boolean** |  |  |
 | **can_see_videos** | **Boolean** |  |  |
 | **can_see_coworker_history** | **Boolean** |  |  |
-| **can_see_recruiting** | **Boolean** |  |  |
 | **is_sport_specific** | **Boolean** |  |  |
 
 ## Example
@@ -67,7 +66,6 @@ instance = WinthropClient::CoachProfile.new(
   can_see_compensation: null,
   can_see_videos: null,
   can_see_coworker_history: null,
-  can_see_recruiting: null,
   is_sport_specific: null
 )
 ```

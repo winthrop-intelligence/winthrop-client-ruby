@@ -23,8 +23,6 @@ module WinthropClient
 
     attr_accessor :vendor_names
 
-    attr_accessor :vendors
-
     attr_accessor :summary
 
     attr_accessor :has_contract
@@ -38,7 +36,6 @@ module WinthropClient
         :'deal_type' => :'deal_type',
         :'term' => :'term',
         :'vendor_names' => :'vendor_names',
-        :'vendors' => :'vendors',
         :'summary' => :'summary',
         :'has_contract' => :'has_contract',
         :'raw_contract_id' => :'raw_contract_id'
@@ -62,7 +59,6 @@ module WinthropClient
         :'deal_type' => :'String',
         :'term' => :'String',
         :'vendor_names' => :'String',
-        :'vendors' => :'Array<AthleticProfileShowDealsInnerVendorsInner>',
         :'summary' => :'String',
         :'has_contract' => :'Boolean',
         :'raw_contract_id' => :'Integer'
@@ -109,12 +105,6 @@ module WinthropClient
         self.vendor_names = attributes[:'vendor_names']
       end
 
-      if attributes.key?(:'vendors')
-        if (value = attributes[:'vendors']).is_a?(Array)
-          self.vendors = value
-        end
-      end
-
       if attributes.key?(:'summary')
         self.summary = attributes[:'summary']
       end
@@ -152,7 +142,6 @@ module WinthropClient
           deal_type == o.deal_type &&
           term == o.term &&
           vendor_names == o.vendor_names &&
-          vendors == o.vendors &&
           summary == o.summary &&
           has_contract == o.has_contract &&
           raw_contract_id == o.raw_contract_id
@@ -167,7 +156,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, deal_type, term, vendor_names, vendors, summary, has_contract, raw_contract_id].hash
+      [id, deal_type, term, vendor_names, summary, has_contract, raw_contract_id].hash
     end
 
     # Builds the object from hash
