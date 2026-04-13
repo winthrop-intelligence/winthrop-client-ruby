@@ -146,6 +146,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_coach_search_coworker_history**](docs/DefaultApi.md#get_coach_search_coworker_history) | **GET** /api/v1/coach_searches/{id}/coworker_history | 
 *WinthropClient::DefaultApi* | [**get_coach_search_overview**](docs/DefaultApi.md#get_coach_search_overview) | **GET** /api/v1/coach_searches/{id}/overview | 
 *WinthropClient::DefaultApi* | [**get_coach_search_record**](docs/DefaultApi.md#get_coach_search_record) | **GET** /api/v1/coach_searches/{id}/record | 
+*WinthropClient::DefaultApi* | [**get_coach_search_recruiting**](docs/DefaultApi.md#get_coach_search_recruiting) | **GET** /api/v1/coach_searches/{id}/recruiting | 
 *WinthropClient::DefaultApi* | [**get_coach_search_videos**](docs/DefaultApi.md#get_coach_search_videos) | **GET** /api/v1/coach_searches/{id}/videos | 
 *WinthropClient::DefaultApi* | [**get_coach_searches**](docs/DefaultApi.md#get_coach_searches) | **GET** /api/v1/coach_searches | 
 *WinthropClient::DefaultApi* | [**get_coaches**](docs/DefaultApi.md#get_coaches) | **GET** /api/v1/coaches | 
@@ -254,7 +255,6 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_team_schedule_favorites**](docs/DefaultApi.md#get_team_schedule_favorites) | **GET** /api/v1/team_schedule_favorites | 
 *WinthropClient::DefaultApi* | [**get_team_schedule_note**](docs/DefaultApi.md#get_team_schedule_note) | **GET** /api/v1/team_schedule_notes/{fil_team_id} | 
 *WinthropClient::DefaultApi* | [**get_team_schedule_searches**](docs/DefaultApi.md#get_team_schedule_searches) | **GET** /api/v1/team_schedule_searches | 
-*WinthropClient::DefaultApi* | [**get_time_zones**](docs/DefaultApi.md#get_time_zones) | **GET** /api/v1/time_zones | 
 *WinthropClient::DefaultApi* | [**get_user**](docs/DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} | 
 *WinthropClient::DefaultApi* | [**get_user_activity_summaries**](docs/DefaultApi.md#get_user_activity_summaries) | **GET** /api/v1/user_activity_summaries | 
 *WinthropClient::DefaultApi* | [**get_user_activity_summary**](docs/DefaultApi.md#get_user_activity_summary) | **GET** /api/v1/user_activity_summaries/{user_activity_summaryId} | 
@@ -286,7 +286,6 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**update_requested_item**](docs/DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} | 
 *WinthropClient::DefaultApi* | [**update_season**](docs/DefaultApi.md#update_season) | **PUT** /api/v1/seasons/{seasonId} | 
 *WinthropClient::DefaultApi* | [**update_team_schedule_favorite**](docs/DefaultApi.md#update_team_schedule_favorite) | **PATCH** /api/v1/team_schedule_favorites/{id} | 
-*WinthropClient::DefaultApi* | [**update_user**](docs/DefaultApi.md#update_user) | **PATCH** /api/v1/users/{userId} | 
 *WinthropClient::DefaultApi* | [**upsert_team_schedule_note**](docs/DefaultApi.md#upsert_team_schedule_note) | **PUT** /api/v1/team_schedule_notes/{fil_team_id} | 
 *WinthropClient::DefaultApi* | [**user_me**](docs/DefaultApi.md#user_me) | **GET** /api/v1/users/me | 
 *WinthropClient::DefaultApi* | [**verify_otp_code**](docs/DefaultApi.md#verify_otp_code) | **POST** /api/v1/otp/verify | 
@@ -364,6 +363,10 @@ Class | Method | HTTP request | Description
  - [WinthropClient::CoachProfile](docs/CoachProfile.md)
  - [WinthropClient::CoachProfileOverview](docs/CoachProfileOverview.md)
  - [WinthropClient::CoachRecordTab](docs/CoachRecordTab.md)
+ - [WinthropClient::CoachRecruitingTab](docs/CoachRecruitingTab.md)
+ - [WinthropClient::CoachRecruitingTabConferenceComparison](docs/CoachRecruitingTabConferenceComparison.md)
+ - [WinthropClient::CoachRecruitingTabMetadata](docs/CoachRecruitingTabMetadata.md)
+ - [WinthropClient::CoachRecruitingTabRecruitingBudgets](docs/CoachRecruitingTabRecruitingBudgets.md)
  - [WinthropClient::CoachSearchResult](docs/CoachSearchResult.md)
  - [WinthropClient::CoachSearchResultCollection](docs/CoachSearchResultCollection.md)
  - [WinthropClient::CoachSnapshot](docs/CoachSnapshot.md)
@@ -463,7 +466,6 @@ Class | Method | HTTP request | Description
  - [WinthropClient::GetSchoolAlternateNames200Response](docs/GetSchoolAlternateNames200Response.md)
  - [WinthropClient::GetSchoolAlternateNames404Response](docs/GetSchoolAlternateNames404Response.md)
  - [WinthropClient::GetTeamScheduleFavorites200ResponseInner](docs/GetTeamScheduleFavorites200ResponseInner.md)
- - [WinthropClient::GetTimeZones200Response](docs/GetTimeZones200Response.md)
  - [WinthropClient::GetWireChanges200Response](docs/GetWireChanges200Response.md)
  - [WinthropClient::HTTPValidationError](docs/HTTPValidationError.md)
  - [WinthropClient::HealthCheckFailure](docs/HealthCheckFailure.md)
@@ -507,6 +509,10 @@ Class | Method | HTTP request | Description
  - [WinthropClient::RawContractDealInfo](docs/RawContractDealInfo.md)
  - [WinthropClient::RawContractDealInfoVendorsInner](docs/RawContractDealInfoVendorsInner.md)
  - [WinthropClient::RecordPositionEntry](docs/RecordPositionEntry.md)
+ - [WinthropClient::RecruitingBudgetEntry](docs/RecruitingBudgetEntry.md)
+ - [WinthropClient::RecruitingChartData](docs/RecruitingChartData.md)
+ - [WinthropClient::RecruitingConferenceEntry](docs/RecruitingConferenceEntry.md)
+ - [WinthropClient::RecruitingPositionEntry](docs/RecruitingPositionEntry.md)
  - [WinthropClient::RegenerateRawContractPdf200Response](docs/RegenerateRawContractPdf200Response.md)
  - [WinthropClient::RequestedItem](docs/RequestedItem.md)
  - [WinthropClient::RequestedItemCollection](docs/RequestedItemCollection.md)
@@ -576,7 +582,6 @@ Class | Method | HTTP request | Description
  - [WinthropClient::TeamScheduleSearchResultAwayContracts](docs/TeamScheduleSearchResultAwayContracts.md)
  - [WinthropClient::TeamScheduleSearchResultCollection](docs/TeamScheduleSearchResultCollection.md)
  - [WinthropClient::TeamScheduleSearchResultHomeContracts](docs/TeamScheduleSearchResultHomeContracts.md)
- - [WinthropClient::TimeZoneOption](docs/TimeZoneOption.md)
  - [WinthropClient::UnauthorizedError](docs/UnauthorizedError.md)
  - [WinthropClient::UnprocessableEntity](docs/UnprocessableEntity.md)
  - [WinthropClient::UnstractRawContractPdfTextRequest](docs/UnstractRawContractPdfTextRequest.md)
@@ -590,8 +595,6 @@ Class | Method | HTTP request | Description
  - [WinthropClient::UpdatePasswordResetRequest](docs/UpdatePasswordResetRequest.md)
  - [WinthropClient::UpdatePasswordResetRequestUser](docs/UpdatePasswordResetRequestUser.md)
  - [WinthropClient::UpdateTeamScheduleFavoriteRequest](docs/UpdateTeamScheduleFavoriteRequest.md)
- - [WinthropClient::UpdateUserRequest](docs/UpdateUserRequest.md)
- - [WinthropClient::UpdateUserRequestUser](docs/UpdateUserRequestUser.md)
  - [WinthropClient::UpsertTeamScheduleNoteRequest](docs/UpsertTeamScheduleNoteRequest.md)
  - [WinthropClient::User](docs/User.md)
  - [WinthropClient::UserActivitySummary](docs/UserActivitySummary.md)
