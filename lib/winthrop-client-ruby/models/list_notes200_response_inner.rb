@@ -17,7 +17,7 @@ module WinthropClient
   class ListNotes200ResponseInner < ApiModelBase
     attr_accessor :id
 
-    # The notable record's ID
+    # The notable record's ID (string to avoid JS precision loss)
     attr_accessor :notable_id
 
     # The model type (e.g. \"Coach\")
@@ -68,7 +68,7 @@ module WinthropClient
     def self.openapi_types
       {
         :'id' => :'Integer',
-        :'notable_id' => :'Integer',
+        :'notable_id' => :'String',
         :'notable_type' => :'String',
         :'content' => :'String',
         :'name' => :'String',

@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** |  |  |
-| **notable_id** | **Integer** | The notable record&#39;s ID |  |
+| **notable_id** | **String** | The notable record&#39;s ID (string to avoid JS precision loss) |  |
 | **notable_type** | **String** | The model type (e.g. \&quot;Coach\&quot;) |  |
 | **content** | **String** | The note text |  |
 | **name** | **String** | The notable record&#39;s name |  |
