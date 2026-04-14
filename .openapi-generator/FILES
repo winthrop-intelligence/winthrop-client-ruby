@@ -95,6 +95,8 @@ docs/CreateNoteRequest.md
 docs/CreatePasswordReset200Response.md
 docs/CreatePasswordResetRequest.md
 docs/CreatePasswordResetRequestUser.md
+docs/CreateSchoolGroupRequest.md
+docs/CreateSchoolGroupRequestSchoolGroup.md
 docs/CreateTeamScheduleFavorite201Response.md
 docs/CreateTeamScheduleFavoriteRequest.md
 docs/Deal.md
@@ -157,6 +159,7 @@ docs/GetLadFilterOptions200ResponsePositionTypesInner.md
 docs/GetSchoolAlternateNames200Response.md
 docs/GetSchoolAlternateNames404Response.md
 docs/GetTeamScheduleFavorites200ResponseInner.md
+docs/GetTimeZones200Response.md
 docs/GetWireChanges200Response.md
 docs/HTTPValidationError.md
 docs/HealthCheckFailure.md
@@ -274,6 +277,7 @@ docs/TeamScheduleSearchResult.md
 docs/TeamScheduleSearchResultAwayContracts.md
 docs/TeamScheduleSearchResultCollection.md
 docs/TeamScheduleSearchResultHomeContracts.md
+docs/TimeZoneOption.md
 docs/UnauthorizedError.md
 docs/UnprocessableEntity.md
 docs/UnstractRawContractPdfTextRequest.md
@@ -286,7 +290,11 @@ docs/UpdatePasswordReset200Response.md
 docs/UpdatePasswordReset400Response.md
 docs/UpdatePasswordResetRequest.md
 docs/UpdatePasswordResetRequestUser.md
+docs/UpdateSchoolGroupRequest.md
+docs/UpdateSchoolGroupRequestSchoolGroup.md
 docs/UpdateTeamScheduleFavoriteRequest.md
+docs/UpdateUserRequest.md
+docs/UpdateUserRequestUser.md
 docs/UpsertTeamScheduleNoteRequest.md
 docs/User.md
 docs/UserActivitySummary.md
@@ -406,6 +414,8 @@ lib/winthrop-client-ruby/models/create_note_request.rb
 lib/winthrop-client-ruby/models/create_password_reset200_response.rb
 lib/winthrop-client-ruby/models/create_password_reset_request.rb
 lib/winthrop-client-ruby/models/create_password_reset_request_user.rb
+lib/winthrop-client-ruby/models/create_school_group_request.rb
+lib/winthrop-client-ruby/models/create_school_group_request_school_group.rb
 lib/winthrop-client-ruby/models/create_team_schedule_favorite201_response.rb
 lib/winthrop-client-ruby/models/create_team_schedule_favorite_request.rb
 lib/winthrop-client-ruby/models/deal.rb
@@ -466,6 +476,7 @@ lib/winthrop-client-ruby/models/get_lad_filter_options200_response_position_type
 lib/winthrop-client-ruby/models/get_school_alternate_names200_response.rb
 lib/winthrop-client-ruby/models/get_school_alternate_names404_response.rb
 lib/winthrop-client-ruby/models/get_team_schedule_favorites200_response_inner.rb
+lib/winthrop-client-ruby/models/get_time_zones200_response.rb
 lib/winthrop-client-ruby/models/get_wire_changes200_response.rb
 lib/winthrop-client-ruby/models/health_check_failure.rb
 lib/winthrop-client-ruby/models/health_check_success.rb
@@ -579,6 +590,7 @@ lib/winthrop-client-ruby/models/team_schedule_search_result.rb
 lib/winthrop-client-ruby/models/team_schedule_search_result_away_contracts.rb
 lib/winthrop-client-ruby/models/team_schedule_search_result_collection.rb
 lib/winthrop-client-ruby/models/team_schedule_search_result_home_contracts.rb
+lib/winthrop-client-ruby/models/time_zone_option.rb
 lib/winthrop-client-ruby/models/unauthorized_error.rb
 lib/winthrop-client-ruby/models/unprocessable_entity.rb
 lib/winthrop-client-ruby/models/unstract_raw_contract_pdf_text_request.rb
@@ -591,7 +603,11 @@ lib/winthrop-client-ruby/models/update_password_reset200_response.rb
 lib/winthrop-client-ruby/models/update_password_reset400_response.rb
 lib/winthrop-client-ruby/models/update_password_reset_request.rb
 lib/winthrop-client-ruby/models/update_password_reset_request_user.rb
+lib/winthrop-client-ruby/models/update_school_group_request.rb
+lib/winthrop-client-ruby/models/update_school_group_request_school_group.rb
 lib/winthrop-client-ruby/models/update_team_schedule_favorite_request.rb
+lib/winthrop-client-ruby/models/update_user_request.rb
+lib/winthrop-client-ruby/models/update_user_request_user.rb
 lib/winthrop-client-ruby/models/upsert_team_schedule_note_request.rb
 lib/winthrop-client-ruby/models/user.rb
 lib/winthrop-client-ruby/models/user_activity_summary.rb
