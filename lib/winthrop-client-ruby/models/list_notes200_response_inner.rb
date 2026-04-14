@@ -14,16 +14,35 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class SchoolGroupShow < ApiModelBase
+  class ListNotes200ResponseInner < ApiModelBase
     attr_accessor :id
 
+    # The notable record's ID
+    attr_accessor :notable_id
+
+    # The model type (e.g. \"Coach\")
+    attr_accessor :notable_type
+
+    # The note text
+    attr_accessor :content
+
+    # The notable record's name
     attr_accessor :name
+
+    attr_accessor :created_at
+
+    attr_accessor :updated_at
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'name' => :'name'
+        :'notable_id' => :'notable_id',
+        :'notable_type' => :'notable_type',
+        :'content' => :'content',
+        :'name' => :'name',
+        :'created_at' => :'created_at',
+        :'updated_at' => :'updated_at'
       }
     end
 
@@ -41,7 +60,12 @@ module WinthropClient
     def self.openapi_types
       {
         :'id' => :'Integer',
-        :'name' => :'String'
+        :'notable_id' => :'Integer',
+        :'notable_type' => :'String',
+        :'content' => :'String',
+        :'name' => :'String',
+        :'created_at' => :'Time',
+        :'updated_at' => :'Time'
       }
     end
 
@@ -55,24 +79,54 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::SchoolGroupShow` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::ListNotes200ResponseInner` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::SchoolGroupShow`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::ListNotes200ResponseInner`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
       if attributes.key?(:'id')
         self.id = attributes[:'id']
+      else
+        self.id = nil
+      end
+
+      if attributes.key?(:'notable_id')
+        self.notable_id = attributes[:'notable_id']
+      else
+        self.notable_id = nil
+      end
+
+      if attributes.key?(:'notable_type')
+        self.notable_type = attributes[:'notable_type']
+      else
+        self.notable_type = nil
+      end
+
+      if attributes.key?(:'content')
+        self.content = attributes[:'content']
+      else
+        self.content = nil
       end
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
+      else
+        self.name = nil
+      end
+
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
       end
     end
 
@@ -81,6 +135,26 @@ module WinthropClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @id.nil?
+        invalid_properties.push('invalid value for "id", id cannot be nil.')
+      end
+
+      if @notable_id.nil?
+        invalid_properties.push('invalid value for "notable_id", notable_id cannot be nil.')
+      end
+
+      if @notable_type.nil?
+        invalid_properties.push('invalid value for "notable_type", notable_type cannot be nil.')
+      end
+
+      if @content.nil?
+        invalid_properties.push('invalid value for "content", content cannot be nil.')
+      end
+
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -88,7 +162,62 @@ module WinthropClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @id.nil?
+      return false if @notable_id.nil?
+      return false if @notable_type.nil?
+      return false if @content.nil?
+      return false if @name.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] id Value to be assigned
+    def id=(id)
+      if id.nil?
+        fail ArgumentError, 'id cannot be nil'
+      end
+
+      @id = id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] notable_id Value to be assigned
+    def notable_id=(notable_id)
+      if notable_id.nil?
+        fail ArgumentError, 'notable_id cannot be nil'
+      end
+
+      @notable_id = notable_id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] notable_type Value to be assigned
+    def notable_type=(notable_type)
+      if notable_type.nil?
+        fail ArgumentError, 'notable_type cannot be nil'
+      end
+
+      @notable_type = notable_type
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] content Value to be assigned
+    def content=(content)
+      if content.nil?
+        fail ArgumentError, 'content cannot be nil'
+      end
+
+      @content = content
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] name Value to be assigned
+    def name=(name)
+      if name.nil?
+        fail ArgumentError, 'name cannot be nil'
+      end
+
+      @name = name
     end
 
     # Checks equality by comparing each attribute.
@@ -97,7 +226,12 @@ module WinthropClient
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          name == o.name
+          notable_id == o.notable_id &&
+          notable_type == o.notable_type &&
+          content == o.content &&
+          name == o.name &&
+          created_at == o.created_at &&
+          updated_at == o.updated_at
     end
 
     # @see the `==` method
@@ -109,7 +243,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name].hash
+      [id, notable_id, notable_type, content, name, created_at, updated_at].hash
     end
 
     # Builds the object from hash
