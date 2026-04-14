@@ -11,6 +11,8 @@
 | **name** | **String** | The notable record&#39;s name |  |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
+| **school_id** | **Integer** | School ID for FilTeam notes | [optional] |
+| **sport_name** | **String** | Sport name for FilTeam notes | [optional] |
 
 ## Example
 
@@ -24,7 +26,9 @@ instance = WinthropClient::ListNotes200ResponseInner.new(
   content: null,
   name: null,
   created_at: null,
-  updated_at: null
+  updated_at: null,
+  school_id: null,
+  sport_name: null
 )
 ```
 

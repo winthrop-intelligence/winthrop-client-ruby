@@ -33,6 +33,12 @@ module WinthropClient
 
     attr_accessor :updated_at
 
+    # School ID for FilTeam notes
+    attr_accessor :school_id
+
+    # Sport name for FilTeam notes
+    attr_accessor :sport_name
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -42,7 +48,9 @@ module WinthropClient
         :'content' => :'content',
         :'name' => :'name',
         :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at'
+        :'updated_at' => :'updated_at',
+        :'school_id' => :'school_id',
+        :'sport_name' => :'sport_name'
       }
     end
 
@@ -65,13 +73,17 @@ module WinthropClient
         :'content' => :'String',
         :'name' => :'String',
         :'created_at' => :'Time',
-        :'updated_at' => :'Time'
+        :'updated_at' => :'Time',
+        :'school_id' => :'Integer',
+        :'sport_name' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'school_id',
+        :'sport_name'
       ])
     end
 
@@ -127,6 +139,14 @@ module WinthropClient
 
       if attributes.key?(:'updated_at')
         self.updated_at = attributes[:'updated_at']
+      end
+
+      if attributes.key?(:'school_id')
+        self.school_id = attributes[:'school_id']
+      end
+
+      if attributes.key?(:'sport_name')
+        self.sport_name = attributes[:'sport_name']
       end
     end
 
@@ -231,7 +251,9 @@ module WinthropClient
           content == o.content &&
           name == o.name &&
           created_at == o.created_at &&
-          updated_at == o.updated_at
+          updated_at == o.updated_at &&
+          school_id == o.school_id &&
+          sport_name == o.sport_name
     end
 
     # @see the `==` method
@@ -243,7 +265,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, notable_id, notable_type, content, name, created_at, updated_at].hash
+      [id, notable_id, notable_type, content, name, created_at, updated_at, school_id, sport_name].hash
     end
 
     # Builds the object from hash
