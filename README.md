@@ -264,6 +264,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_vendor**](docs/DefaultApi.md#get_vendor) | **GET** /api/v1/vendors/{vendorId} | 
 *WinthropClient::DefaultApi* | [**get_vendors**](docs/DefaultApi.md#get_vendors) | **GET** /api/v1/vendors | 
 *WinthropClient::DefaultApi* | [**get_wire_changes**](docs/DefaultApi.md#get_wire_changes) | **GET** /api/v1/wire_changes | 
+*WinthropClient::DefaultApi* | [**list_notes**](docs/DefaultApi.md#list_notes) | **GET** /api/v1/notes/list | 
 *WinthropClient::DefaultApi* | [**regenerate_raw_contract_pdf**](docs/DefaultApi.md#regenerate_raw_contract_pdf) | **POST** /api/v1/raw_contracts/{raw_contractId}/regenerate_pdf | 
 *WinthropClient::DefaultApi* | [**search_coaches**](docs/DefaultApi.md#search_coaches) | **POST** /api/v1/coaches/search | 
 *WinthropClient::DefaultApi* | [**send_otp_code**](docs/DefaultApi.md#send_otp_code) | **POST** /api/v1/otp/send_code | 
@@ -485,6 +486,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::Link](docs/Link.md)
  - [WinthropClient::LinkCollection](docs/LinkCollection.md)
  - [WinthropClient::LinkCollection1](docs/LinkCollection1.md)
+ - [WinthropClient::ListNotes200ResponseInner](docs/ListNotes200ResponseInner.md)
  - [WinthropClient::LocationInner](docs/LocationInner.md)
  - [WinthropClient::Logo](docs/Logo.md)
  - [WinthropClient::Meta](docs/Meta.md)

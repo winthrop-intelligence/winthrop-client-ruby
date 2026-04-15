@@ -181,6 +181,7 @@ docs/JobSport.md
 docs/Link.md
 docs/LinkCollection.md
 docs/LinkCollection1.md
+docs/ListNotes200ResponseInner.md
 docs/LocationInner.md
 docs/Logo.md
 docs/Meta.md
@@ -496,6 +497,7 @@ lib/winthrop-client-ruby/models/job_sport.rb
 lib/winthrop-client-ruby/models/link.rb
 lib/winthrop-client-ruby/models/link_collection.rb
 lib/winthrop-client-ruby/models/link_collection1.rb
+lib/winthrop-client-ruby/models/list_notes200_response_inner.rb
 lib/winthrop-client-ruby/models/location_inner.rb
 lib/winthrop-client-ruby/models/logo.rb
 lib/winthrop-client-ruby/models/meta.rb

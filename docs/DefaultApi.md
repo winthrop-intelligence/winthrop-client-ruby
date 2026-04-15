@@ -177,6 +177,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_vendor**](DefaultApi.md#get_vendor) | **GET** /api/v1/vendors/{vendorId} |  |
 | [**get_vendors**](DefaultApi.md#get_vendors) | **GET** /api/v1/vendors |  |
 | [**get_wire_changes**](DefaultApi.md#get_wire_changes) | **GET** /api/v1/wire_changes |  |
+| [**list_notes**](DefaultApi.md#list_notes) | **GET** /api/v1/notes/list |  |
 | [**regenerate_raw_contract_pdf**](DefaultApi.md#regenerate_raw_contract_pdf) | **POST** /api/v1/raw_contracts/{raw_contractId}/regenerate_pdf |  |
 | [**search_coaches**](DefaultApi.md#search_coaches) | **POST** /api/v1/coaches/search |  |
 | [**send_otp_code**](DefaultApi.md#send_otp_code) | **POST** /api/v1/otp/send_code |  |
@@ -13410,6 +13411,77 @@ end
 ### Return type
 
 [**GetWireChanges200Response**](GetWireChanges200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_notes
+
+> <Array<ListNotes200ResponseInner>> list_notes
+
+
+
+Retrieve all of the current user's notes, ordered by most recent first. Includes the notable record's name.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.list_notes
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_notes: #{e}"
+end
+```
+
+#### Using the list_notes_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<ListNotes200ResponseInner>>, Integer, Hash)> list_notes_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_notes_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<ListNotes200ResponseInner>>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_notes_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Array&lt;ListNotes200ResponseInner&gt;**](ListNotes200ResponseInner.md)
 
 ### Authorization
 
