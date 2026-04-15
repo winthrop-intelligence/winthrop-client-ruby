@@ -14,6 +14,7 @@ docs/AsstCoachSchool.md
 docs/AthleticProfileShow.md
 docs/AthleticProfileShowContactsInner.md
 docs/AthleticProfileShowDealsInner.md
+docs/AthleticProfileShowDealsInnerVendorsInner.md
 docs/AthleticProfileShowFinancialInfo.md
 docs/AthleticProfileShowFinancials.md
 docs/AthleticProfileShowFinancialsRevenuesInner.md
@@ -56,6 +57,10 @@ docs/CoachPositionEntry.md
 docs/CoachProfile.md
 docs/CoachProfileOverview.md
 docs/CoachRecordTab.md
+docs/CoachRecruitingTab.md
+docs/CoachRecruitingTabConferenceComparison.md
+docs/CoachRecruitingTabMetadata.md
+docs/CoachRecruitingTabRecruitingBudgets.md
 docs/CoachSearchResult.md
 docs/CoachSearchResultCollection.md
 docs/CoachSnapshot.md
@@ -95,8 +100,6 @@ docs/CreateNoteRequest.md
 docs/CreatePasswordReset200Response.md
 docs/CreatePasswordResetRequest.md
 docs/CreatePasswordResetRequestUser.md
-docs/CreateSchoolGroupRequest.md
-docs/CreateSchoolGroupRequestSchoolGroup.md
 docs/CreateTeamScheduleFavorite201Response.md
 docs/CreateTeamScheduleFavoriteRequest.md
 docs/Deal.md
@@ -159,7 +162,6 @@ docs/GetLadFilterOptions200ResponsePositionTypesInner.md
 docs/GetSchoolAlternateNames200Response.md
 docs/GetSchoolAlternateNames404Response.md
 docs/GetTeamScheduleFavorites200ResponseInner.md
-docs/GetTimeZones200Response.md
 docs/GetWireChanges200Response.md
 docs/HTTPValidationError.md
 docs/HealthCheckFailure.md
@@ -179,7 +181,6 @@ docs/JobSport.md
 docs/Link.md
 docs/LinkCollection.md
 docs/LinkCollection1.md
-docs/ListNotes200ResponseInner.md
 docs/LocationInner.md
 docs/Logo.md
 docs/Meta.md
@@ -204,8 +205,11 @@ docs/RawContract.md
 docs/RawContractBackTo.md
 docs/RawContractCollection.md
 docs/RawContractDealInfo.md
-docs/RawContractDealInfoVendorsInner.md
 docs/RecordPositionEntry.md
+docs/RecruitingBudgetEntry.md
+docs/RecruitingChartData.md
+docs/RecruitingConferenceEntry.md
+docs/RecruitingPositionEntry.md
 docs/RegenerateRawContractPdf200Response.md
 docs/ReportingApi.md
 docs/RequestedItem.md
@@ -277,7 +281,6 @@ docs/TeamScheduleSearchResult.md
 docs/TeamScheduleSearchResultAwayContracts.md
 docs/TeamScheduleSearchResultCollection.md
 docs/TeamScheduleSearchResultHomeContracts.md
-docs/TimeZoneOption.md
 docs/UnauthorizedError.md
 docs/UnprocessableEntity.md
 docs/UnstractRawContractPdfTextRequest.md
@@ -290,11 +293,7 @@ docs/UpdatePasswordReset200Response.md
 docs/UpdatePasswordReset400Response.md
 docs/UpdatePasswordResetRequest.md
 docs/UpdatePasswordResetRequestUser.md
-docs/UpdateSchoolGroupRequest.md
-docs/UpdateSchoolGroupRequestSchoolGroup.md
 docs/UpdateTeamScheduleFavoriteRequest.md
-docs/UpdateUserRequest.md
-docs/UpdateUserRequestUser.md
 docs/UpsertTeamScheduleNoteRequest.md
 docs/User.md
 docs/UserActivitySummary.md
@@ -333,6 +332,7 @@ lib/winthrop-client-ruby/models/asst_coach_school.rb
 lib/winthrop-client-ruby/models/athletic_profile_show.rb
 lib/winthrop-client-ruby/models/athletic_profile_show_contacts_inner.rb
 lib/winthrop-client-ruby/models/athletic_profile_show_deals_inner.rb
+lib/winthrop-client-ruby/models/athletic_profile_show_deals_inner_vendors_inner.rb
 lib/winthrop-client-ruby/models/athletic_profile_show_financial_info.rb
 lib/winthrop-client-ruby/models/athletic_profile_show_financials.rb
 lib/winthrop-client-ruby/models/athletic_profile_show_financials_revenues_inner.rb
@@ -374,6 +374,10 @@ lib/winthrop-client-ruby/models/coach_position_entry.rb
 lib/winthrop-client-ruby/models/coach_profile.rb
 lib/winthrop-client-ruby/models/coach_profile_overview.rb
 lib/winthrop-client-ruby/models/coach_record_tab.rb
+lib/winthrop-client-ruby/models/coach_recruiting_tab.rb
+lib/winthrop-client-ruby/models/coach_recruiting_tab_conference_comparison.rb
+lib/winthrop-client-ruby/models/coach_recruiting_tab_metadata.rb
+lib/winthrop-client-ruby/models/coach_recruiting_tab_recruiting_budgets.rb
 lib/winthrop-client-ruby/models/coach_search_result.rb
 lib/winthrop-client-ruby/models/coach_search_result_collection.rb
 lib/winthrop-client-ruby/models/coach_snapshot.rb
@@ -414,8 +418,6 @@ lib/winthrop-client-ruby/models/create_note_request.rb
 lib/winthrop-client-ruby/models/create_password_reset200_response.rb
 lib/winthrop-client-ruby/models/create_password_reset_request.rb
 lib/winthrop-client-ruby/models/create_password_reset_request_user.rb
-lib/winthrop-client-ruby/models/create_school_group_request.rb
-lib/winthrop-client-ruby/models/create_school_group_request_school_group.rb
 lib/winthrop-client-ruby/models/create_team_schedule_favorite201_response.rb
 lib/winthrop-client-ruby/models/create_team_schedule_favorite_request.rb
 lib/winthrop-client-ruby/models/deal.rb
@@ -476,7 +478,6 @@ lib/winthrop-client-ruby/models/get_lad_filter_options200_response_position_type
 lib/winthrop-client-ruby/models/get_school_alternate_names200_response.rb
 lib/winthrop-client-ruby/models/get_school_alternate_names404_response.rb
 lib/winthrop-client-ruby/models/get_team_schedule_favorites200_response_inner.rb
-lib/winthrop-client-ruby/models/get_time_zones200_response.rb
 lib/winthrop-client-ruby/models/get_wire_changes200_response.rb
 lib/winthrop-client-ruby/models/health_check_failure.rb
 lib/winthrop-client-ruby/models/health_check_success.rb
@@ -495,7 +496,6 @@ lib/winthrop-client-ruby/models/job_sport.rb
 lib/winthrop-client-ruby/models/link.rb
 lib/winthrop-client-ruby/models/link_collection.rb
 lib/winthrop-client-ruby/models/link_collection1.rb
-lib/winthrop-client-ruby/models/list_notes200_response_inner.rb
 lib/winthrop-client-ruby/models/location_inner.rb
 lib/winthrop-client-ruby/models/logo.rb
 lib/winthrop-client-ruby/models/meta.rb
@@ -519,8 +519,11 @@ lib/winthrop-client-ruby/models/raw_contract.rb
 lib/winthrop-client-ruby/models/raw_contract_back_to.rb
 lib/winthrop-client-ruby/models/raw_contract_collection.rb
 lib/winthrop-client-ruby/models/raw_contract_deal_info.rb
-lib/winthrop-client-ruby/models/raw_contract_deal_info_vendors_inner.rb
 lib/winthrop-client-ruby/models/record_position_entry.rb
+lib/winthrop-client-ruby/models/recruiting_budget_entry.rb
+lib/winthrop-client-ruby/models/recruiting_chart_data.rb
+lib/winthrop-client-ruby/models/recruiting_conference_entry.rb
+lib/winthrop-client-ruby/models/recruiting_position_entry.rb
 lib/winthrop-client-ruby/models/regenerate_raw_contract_pdf200_response.rb
 lib/winthrop-client-ruby/models/requested_item.rb
 lib/winthrop-client-ruby/models/requested_item_collection.rb
@@ -590,7 +593,6 @@ lib/winthrop-client-ruby/models/team_schedule_search_result.rb
 lib/winthrop-client-ruby/models/team_schedule_search_result_away_contracts.rb
 lib/winthrop-client-ruby/models/team_schedule_search_result_collection.rb
 lib/winthrop-client-ruby/models/team_schedule_search_result_home_contracts.rb
-lib/winthrop-client-ruby/models/time_zone_option.rb
 lib/winthrop-client-ruby/models/unauthorized_error.rb
 lib/winthrop-client-ruby/models/unprocessable_entity.rb
 lib/winthrop-client-ruby/models/unstract_raw_contract_pdf_text_request.rb
@@ -603,11 +605,7 @@ lib/winthrop-client-ruby/models/update_password_reset200_response.rb
 lib/winthrop-client-ruby/models/update_password_reset400_response.rb
 lib/winthrop-client-ruby/models/update_password_reset_request.rb
 lib/winthrop-client-ruby/models/update_password_reset_request_user.rb
-lib/winthrop-client-ruby/models/update_school_group_request.rb
-lib/winthrop-client-ruby/models/update_school_group_request_school_group.rb
 lib/winthrop-client-ruby/models/update_team_schedule_favorite_request.rb
-lib/winthrop-client-ruby/models/update_user_request.rb
-lib/winthrop-client-ruby/models/update_user_request_user.rb
 lib/winthrop-client-ruby/models/upsert_team_schedule_note_request.rb
 lib/winthrop-client-ruby/models/user.rb
 lib/winthrop-client-ruby/models/user_activity_summary.rb

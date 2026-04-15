@@ -23,7 +23,6 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**create_password_reset**](DefaultApi.md#create_password_reset) | **POST** /api/v1/password_reset |  |
 | [**create_position**](DefaultApi.md#create_position) | **POST** /api/v1/positions |  |
 | [**create_requested_item**](DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items |  |
-| [**create_school_group**](DefaultApi.md#create_school_group) | **POST** /api/v1/school_groups |  |
 | [**create_season**](DefaultApi.md#create_season) | **POST** /api/v1/seasons |  |
 | [**create_team_schedule_favorite**](DefaultApi.md#create_team_schedule_favorite) | **POST** /api/v1/team_schedule_favorites |  |
 | [**delete_cashflow**](DefaultApi.md#delete_cashflow) | **DELETE** /api/v1/cashflows/{cashflowId} |  |
@@ -39,7 +38,6 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_note**](DefaultApi.md#delete_note) | **DELETE** /api/v1/notes/{id} |  |
 | [**delete_position**](DefaultApi.md#delete_position) | **DELETE** /api/v1/positions/{positionId} |  |
 | [**delete_requested_item**](DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} |  |
-| [**delete_school_group**](DefaultApi.md#delete_school_group) | **DELETE** /api/v1/school_groups/{schoolGroupId} |  |
 | [**delete_season**](DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} |  |
 | [**delete_team_schedule_favorite**](DefaultApi.md#delete_team_schedule_favorite) | **DELETE** /api/v1/team_schedule_favorites/{id} |  |
 | [**delete_team_schedule_note**](DefaultApi.md#delete_team_schedule_note) | **DELETE** /api/v1/team_schedule_notes/{fil_team_id} |  |
@@ -61,6 +59,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_coach_search_coworker_history**](DefaultApi.md#get_coach_search_coworker_history) | **GET** /api/v1/coach_searches/{id}/coworker_history |  |
 | [**get_coach_search_overview**](DefaultApi.md#get_coach_search_overview) | **GET** /api/v1/coach_searches/{id}/overview |  |
 | [**get_coach_search_record**](DefaultApi.md#get_coach_search_record) | **GET** /api/v1/coach_searches/{id}/record |  |
+| [**get_coach_search_recruiting**](DefaultApi.md#get_coach_search_recruiting) | **GET** /api/v1/coach_searches/{id}/recruiting |  |
 | [**get_coach_search_videos**](DefaultApi.md#get_coach_search_videos) | **GET** /api/v1/coach_searches/{id}/videos |  |
 | [**get_coach_searches**](DefaultApi.md#get_coach_searches) | **GET** /api/v1/coach_searches |  |
 | [**get_coaches**](DefaultApi.md#get_coaches) | **GET** /api/v1/coaches |  |
@@ -142,8 +141,6 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_school_group_directors_cup**](DefaultApi.md#get_school_group_directors_cup) | **GET** /api/v1/school_groups/{schoolGroupId}/directors_cup |  |
 | [**get_school_group_position_stats**](DefaultApi.md#get_school_group_position_stats) | **GET** /api/v1/school_groups/{schoolGroupId}/position_stats |  |
 | [**get_school_group_sport_compensation**](DefaultApi.md#get_school_group_sport_compensation) | **GET** /api/v1/school_groups/{schoolGroupId}/sport_compensation |  |
-| [**get_school_groups**](DefaultApi.md#get_school_groups) | **GET** /api/v1/school_groups |  |
-| [**get_school_groups_available_schools**](DefaultApi.md#get_school_groups_available_schools) | **GET** /api/v1/school_groups/available_schools |  |
 | [**get_schools**](DefaultApi.md#get_schools) | **GET** /api/v1/schools |  |
 | [**get_schools_alma_mater**](DefaultApi.md#get_schools_alma_mater) | **GET** /api/v1/schools/alma_mater |  |
 | [**get_season**](DefaultApi.md#get_season) | **GET** /api/v1/seasons/{seasonId} |  |
@@ -171,7 +168,6 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_team_schedule_favorites**](DefaultApi.md#get_team_schedule_favorites) | **GET** /api/v1/team_schedule_favorites |  |
 | [**get_team_schedule_note**](DefaultApi.md#get_team_schedule_note) | **GET** /api/v1/team_schedule_notes/{fil_team_id} |  |
 | [**get_team_schedule_searches**](DefaultApi.md#get_team_schedule_searches) | **GET** /api/v1/team_schedule_searches |  |
-| [**get_time_zones**](DefaultApi.md#get_time_zones) | **GET** /api/v1/time_zones |  |
 | [**get_user**](DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} |  |
 | [**get_user_activity_summaries**](DefaultApi.md#get_user_activity_summaries) | **GET** /api/v1/user_activity_summaries |  |
 | [**get_user_activity_summary**](DefaultApi.md#get_user_activity_summary) | **GET** /api/v1/user_activity_summaries/{user_activity_summaryId} |  |
@@ -181,7 +177,6 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_vendor**](DefaultApi.md#get_vendor) | **GET** /api/v1/vendors/{vendorId} |  |
 | [**get_vendors**](DefaultApi.md#get_vendors) | **GET** /api/v1/vendors |  |
 | [**get_wire_changes**](DefaultApi.md#get_wire_changes) | **GET** /api/v1/wire_changes |  |
-| [**list_notes**](DefaultApi.md#list_notes) | **GET** /api/v1/notes/list |  |
 | [**regenerate_raw_contract_pdf**](DefaultApi.md#regenerate_raw_contract_pdf) | **POST** /api/v1/raw_contracts/{raw_contractId}/regenerate_pdf |  |
 | [**search_coaches**](DefaultApi.md#search_coaches) | **POST** /api/v1/coaches/search |  |
 | [**send_otp_code**](DefaultApi.md#send_otp_code) | **POST** /api/v1/otp/send_code |  |
@@ -202,15 +197,12 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_password_reset**](DefaultApi.md#update_password_reset) | **PUT** /api/v1/password_reset |  |
 | [**update_position**](DefaultApi.md#update_position) | **PATCH** /api/v1/positions/{positionId} |  |
 | [**update_requested_item**](DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} |  |
-| [**update_school_group**](DefaultApi.md#update_school_group) | **PATCH** /api/v1/school_groups/{schoolGroupId} |  |
 | [**update_season**](DefaultApi.md#update_season) | **PUT** /api/v1/seasons/{seasonId} |  |
 | [**update_team_schedule_favorite**](DefaultApi.md#update_team_schedule_favorite) | **PATCH** /api/v1/team_schedule_favorites/{id} |  |
-| [**update_user**](DefaultApi.md#update_user) | **PATCH** /api/v1/users/{userId} |  |
 | [**upsert_team_schedule_note**](DefaultApi.md#upsert_team_schedule_note) | **PUT** /api/v1/team_schedule_notes/{fil_team_id} |  |
 | [**user_me**](DefaultApi.md#user_me) | **GET** /api/v1/users/me |  |
 | [**verify_otp_code**](DefaultApi.md#verify_otp_code) | **POST** /api/v1/otp/verify |  |
 | [**verify_user_intercollegiate_access**](DefaultApi.md#verify_user_intercollegiate_access) | **GET** /api/v1/users/verify_user_intercollegiate_access |  |
-| [**view_raw_contract_file**](DefaultApi.md#view_raw_contract_file) | **GET** /api/v1/raw_contracts/{raw_contractId}/view_file |  |
 
 
 ## average_conference_comp
@@ -1645,80 +1637,6 @@ end
 - **Accept**: application/json
 
 
-## create_school_group
-
-> <SchoolGroupShow> create_school_group(create_school_group_request)
-
-
-
-Create a new custom school group
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-create_school_group_request = WinthropClient::CreateSchoolGroupRequest.new({school_group: WinthropClient::CreateSchoolGroupRequestSchoolGroup.new({name: 'name_example'})}) # CreateSchoolGroupRequest | 
-
-begin
-  
-  result = api_instance.create_school_group(create_school_group_request)
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->create_school_group: #{e}"
-end
-```
-
-#### Using the create_school_group_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<SchoolGroupShow>, Integer, Hash)> create_school_group_with_http_info(create_school_group_request)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.create_school_group_with_http_info(create_school_group_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <SchoolGroupShow>
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->create_school_group_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **create_school_group_request** | [**CreateSchoolGroupRequest**](CreateSchoolGroupRequest.md) |  |  |
-
-### Return type
-
-[**SchoolGroupShow**](SchoolGroupShow.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
 ## create_season
 
 > <Season> create_season(opts)
@@ -2820,80 +2738,6 @@ nil (empty response body)
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
-
-
-## delete_school_group
-
-> <DeleteNote200Response> delete_school_group(school_group_id)
-
-
-
-Delete a custom school group
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-school_group_id = 56 # Integer | ID of the School Group
-
-begin
-  
-  result = api_instance.delete_school_group(school_group_id)
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->delete_school_group: #{e}"
-end
-```
-
-#### Using the delete_school_group_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<DeleteNote200Response>, Integer, Hash)> delete_school_group_with_http_info(school_group_id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.delete_school_group_with_http_info(school_group_id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <DeleteNote200Response>
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->delete_school_group_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **school_group_id** | **Integer** | ID of the School Group |  |
-
-### Return type
-
-[**DeleteNote200Response**](DeleteNote200Response.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
 
 
 ## delete_season
@@ -4478,6 +4322,80 @@ end
 ### Return type
 
 [**CoachRecordTab**](CoachRecordTab.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_coach_search_recruiting
+
+> <CoachRecruitingTab> get_coach_search_recruiting(id)
+
+
+
+Get coach recruiting tab data including class strength, conference comparison, budgets, and charts
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 'id_example' # String | Coach ID or friendly slug
+
+begin
+  
+  result = api_instance.get_coach_search_recruiting(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_coach_search_recruiting: #{e}"
+end
+```
+
+#### Using the get_coach_search_recruiting_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CoachRecruitingTab>, Integer, Hash)> get_coach_search_recruiting_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_coach_search_recruiting_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CoachRecruitingTab>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_coach_search_recruiting_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | Coach ID or friendly slug |  |
+
+### Return type
+
+[**CoachRecruitingTab**](CoachRecruitingTab.md)
 
 ### Authorization
 
@@ -10707,148 +10625,6 @@ end
 - **Accept**: application/json
 
 
-## get_school_groups
-
-> <Array<SchoolGroupShow>> get_school_groups
-
-
-
-Retrieve the current user's custom school groups with their schools
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-
-begin
-  
-  result = api_instance.get_school_groups
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_school_groups: #{e}"
-end
-```
-
-#### Using the get_school_groups_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<Array<SchoolGroupShow>>, Integer, Hash)> get_school_groups_with_http_info
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.get_school_groups_with_http_info
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <Array<SchoolGroupShow>>
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_school_groups_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**Array&lt;SchoolGroupShow&gt;**](SchoolGroupShow.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## get_school_groups_available_schools
-
-> <Array<IdName>> get_school_groups_available_schools
-
-
-
-Retrieve D1 and D2 schools available for custom school group selection
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-
-begin
-  
-  result = api_instance.get_school_groups_available_schools
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_school_groups_available_schools: #{e}"
-end
-```
-
-#### Using the get_school_groups_available_schools_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<Array<IdName>>, Integer, Hash)> get_school_groups_available_schools_with_http_info
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.get_school_groups_available_schools_with_http_info
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <Array<IdName>>
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_school_groups_available_schools_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**Array&lt;IdName&gt;**](IdName.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
 ## get_schools
 
 > <SchoolCollection> get_schools(opts)
@@ -12943,77 +12719,6 @@ end
 - **Accept**: application/json
 
 
-## get_time_zones
-
-> <GetTimeZones200Response> get_time_zones
-
-
-
-Retrieve all available time zones grouped by US priority zones and other zones
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-
-begin
-  
-  result = api_instance.get_time_zones
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_time_zones: #{e}"
-end
-```
-
-#### Using the get_time_zones_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<GetTimeZones200Response>, Integer, Hash)> get_time_zones_with_http_info
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.get_time_zones_with_http_info
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <GetTimeZones200Response>
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_time_zones_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**GetTimeZones200Response**](GetTimeZones200Response.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
 ## get_user
 
 > <User> get_user(user_id)
@@ -13705,77 +13410,6 @@ end
 ### Return type
 
 [**GetWireChanges200Response**](GetWireChanges200Response.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## list_notes
-
-> <Array<ListNotes200ResponseInner>> list_notes
-
-
-
-Retrieve all of the current user's notes, ordered by most recent first. Includes the notable record's name.
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-
-begin
-  
-  result = api_instance.list_notes
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->list_notes: #{e}"
-end
-```
-
-#### Using the list_notes_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<Array<ListNotes200ResponseInner>>, Integer, Hash)> list_notes_with_http_info
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.list_notes_with_http_info
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <Array<ListNotes200ResponseInner>>
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->list_notes_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**Array&lt;ListNotes200ResponseInner&gt;**](ListNotes200ResponseInner.md)
 
 ### Authorization
 
@@ -15324,82 +14958,6 @@ end
 - **Accept**: application/json
 
 
-## update_school_group
-
-> <SchoolGroupShow> update_school_group(school_group_id, update_school_group_request)
-
-
-
-Update an existing custom school group
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-school_group_id = 56 # Integer | ID of the School Group
-update_school_group_request = WinthropClient::UpdateSchoolGroupRequest.new({school_group: WinthropClient::UpdateSchoolGroupRequestSchoolGroup.new}) # UpdateSchoolGroupRequest | 
-
-begin
-  
-  result = api_instance.update_school_group(school_group_id, update_school_group_request)
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->update_school_group: #{e}"
-end
-```
-
-#### Using the update_school_group_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<SchoolGroupShow>, Integer, Hash)> update_school_group_with_http_info(school_group_id, update_school_group_request)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.update_school_group_with_http_info(school_group_id, update_school_group_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <SchoolGroupShow>
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->update_school_group_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **school_group_id** | **Integer** | ID of the School Group |  |
-| **update_school_group_request** | [**UpdateSchoolGroupRequest**](UpdateSchoolGroupRequest.md) |  |  |
-
-### Return type
-
-[**SchoolGroupShow**](SchoolGroupShow.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
 ## update_season
 
 > <Season> update_season(season_id, season)
@@ -15541,82 +15099,6 @@ end
 ### Return type
 
 [**CreateTeamScheduleFavorite201Response**](CreateTeamScheduleFavorite201Response.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## update_user
-
-> <User> update_user(user_id, update_user_request)
-
-
-
-Update the current user's profile
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-user_id = 56 # Integer | ID of user to update
-update_user_request = WinthropClient::UpdateUserRequest.new # UpdateUserRequest | 
-
-begin
-  
-  result = api_instance.update_user(user_id, update_user_request)
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->update_user: #{e}"
-end
-```
-
-#### Using the update_user_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<User>, Integer, Hash)> update_user_with_http_info(user_id, update_user_request)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.update_user_with_http_info(user_id, update_user_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <User>
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->update_user_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **user_id** | **Integer** | ID of user to update |  |
-| **update_user_request** | [**UpdateUserRequest**](UpdateUserRequest.md) |  |  |
-
-### Return type
-
-[**User**](User.md)
 
 ### Authorization
 
@@ -15921,78 +15403,4 @@ end
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
-
-
-## view_raw_contract_file
-
-> File view_raw_contract_file(raw_contract_id)
-
-
-
-Stream the raw contract PDF for inline viewing
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-raw_contract_id = 56 # Integer | ID of the RawContract
-
-begin
-  
-  result = api_instance.view_raw_contract_file(raw_contract_id)
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->view_raw_contract_file: #{e}"
-end
-```
-
-#### Using the view_raw_contract_file_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(File, Integer, Hash)> view_raw_contract_file_with_http_info(raw_contract_id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.view_raw_contract_file_with_http_info(raw_contract_id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => File
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->view_raw_contract_file_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **raw_contract_id** | **Integer** | ID of the RawContract |  |
-
-### Return type
-
-**File**
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/pdf
 
