@@ -259,6 +259,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_team_schedule_favorites**](docs/DefaultApi.md#get_team_schedule_favorites) | **GET** /api/v1/team_schedule_favorites | 
 *WinthropClient::DefaultApi* | [**get_team_schedule_note**](docs/DefaultApi.md#get_team_schedule_note) | **GET** /api/v1/team_schedule_notes/{fil_team_id} | 
 *WinthropClient::DefaultApi* | [**get_team_schedule_searches**](docs/DefaultApi.md#get_team_schedule_searches) | **GET** /api/v1/team_schedule_searches | 
+*WinthropClient::DefaultApi* | [**get_time_zones**](docs/DefaultApi.md#get_time_zones) | **GET** /api/v1/time_zones | 
 *WinthropClient::DefaultApi* | [**get_user**](docs/DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} | 
 *WinthropClient::DefaultApi* | [**get_user_activity_summaries**](docs/DefaultApi.md#get_user_activity_summaries) | **GET** /api/v1/user_activity_summaries | 
 *WinthropClient::DefaultApi* | [**get_user_activity_summary**](docs/DefaultApi.md#get_user_activity_summary) | **GET** /api/v1/user_activity_summaries/{user_activity_summaryId} | 
@@ -292,6 +293,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**update_school_group**](docs/DefaultApi.md#update_school_group) | **PATCH** /api/v1/school_groups/{schoolGroupId} | 
 *WinthropClient::DefaultApi* | [**update_season**](docs/DefaultApi.md#update_season) | **PUT** /api/v1/seasons/{seasonId} | 
 *WinthropClient::DefaultApi* | [**update_team_schedule_favorite**](docs/DefaultApi.md#update_team_schedule_favorite) | **PATCH** /api/v1/team_schedule_favorites/{id} | 
+*WinthropClient::DefaultApi* | [**update_user**](docs/DefaultApi.md#update_user) | **PATCH** /api/v1/users/{userId} | 
 *WinthropClient::DefaultApi* | [**upsert_team_schedule_note**](docs/DefaultApi.md#upsert_team_schedule_note) | **PUT** /api/v1/team_schedule_notes/{fil_team_id} | 
 *WinthropClient::DefaultApi* | [**user_me**](docs/DefaultApi.md#user_me) | **GET** /api/v1/users/me | 
 *WinthropClient::DefaultApi* | [**verify_otp_code**](docs/DefaultApi.md#verify_otp_code) | **POST** /api/v1/otp/verify | 
@@ -476,6 +478,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::GetSchoolAlternateNames200Response](docs/GetSchoolAlternateNames200Response.md)
  - [WinthropClient::GetSchoolAlternateNames404Response](docs/GetSchoolAlternateNames404Response.md)
  - [WinthropClient::GetTeamScheduleFavorites200ResponseInner](docs/GetTeamScheduleFavorites200ResponseInner.md)
+ - [WinthropClient::GetTimeZones200Response](docs/GetTimeZones200Response.md)
  - [WinthropClient::GetWireChanges200Response](docs/GetWireChanges200Response.md)
  - [WinthropClient::HTTPValidationError](docs/HTTPValidationError.md)
  - [WinthropClient::HealthCheckFailure](docs/HealthCheckFailure.md)
@@ -592,6 +595,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::TeamScheduleSearchResultAwayContracts](docs/TeamScheduleSearchResultAwayContracts.md)
  - [WinthropClient::TeamScheduleSearchResultCollection](docs/TeamScheduleSearchResultCollection.md)
  - [WinthropClient::TeamScheduleSearchResultHomeContracts](docs/TeamScheduleSearchResultHomeContracts.md)
+ - [WinthropClient::TimeZoneOption](docs/TimeZoneOption.md)
  - [WinthropClient::UnauthorizedError](docs/UnauthorizedError.md)
  - [WinthropClient::UnprocessableEntity](docs/UnprocessableEntity.md)
  - [WinthropClient::UnstractRawContractPdfTextRequest](docs/UnstractRawContractPdfTextRequest.md)
@@ -607,6 +611,8 @@ Class | Method | HTTP request | Description
  - [WinthropClient::UpdateSchoolGroupRequest](docs/UpdateSchoolGroupRequest.md)
  - [WinthropClient::UpdateSchoolGroupRequestSchoolGroup](docs/UpdateSchoolGroupRequestSchoolGroup.md)
  - [WinthropClient::UpdateTeamScheduleFavoriteRequest](docs/UpdateTeamScheduleFavoriteRequest.md)
+ - [WinthropClient::UpdateUserRequest](docs/UpdateUserRequest.md)
+ - [WinthropClient::UpdateUserRequestUser](docs/UpdateUserRequestUser.md)
  - [WinthropClient::UpsertTeamScheduleNoteRequest](docs/UpsertTeamScheduleNoteRequest.md)
  - [WinthropClient::User](docs/User.md)
  - [WinthropClient::UserActivitySummary](docs/UserActivitySummary.md)

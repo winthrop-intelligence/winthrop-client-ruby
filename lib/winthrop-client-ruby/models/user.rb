@@ -100,6 +100,21 @@ module WinthropClient
     # Whether the user must verify OTP to access the application
     attr_accessor :otp_required
 
+    # User's time zone setting
+    attr_accessor :time_zone
+
+    # Whether user receives scheduling notifications
+    attr_accessor :scheduling_notifications
+
+    # Whether user receives games wanted notifications
+    attr_accessor :game_post_notifications
+
+    # Whether user receives scheduling digest emails
+    attr_accessor :games_digest
+
+    # Email domain required by the user's account
+    attr_accessor :email_domain
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -159,7 +174,12 @@ module WinthropClient
         :'schedule_sports' => :'schedule_sports',
         :'school_city' => :'school_city',
         :'school_state' => :'school_state',
-        :'otp_required' => :'otp_required'
+        :'otp_required' => :'otp_required',
+        :'time_zone' => :'time_zone',
+        :'scheduling_notifications' => :'scheduling_notifications',
+        :'game_post_notifications' => :'game_post_notifications',
+        :'games_digest' => :'games_digest',
+        :'email_domain' => :'email_domain'
       }
     end
 
@@ -210,7 +230,12 @@ module WinthropClient
         :'schedule_sports' => :'Array<UserScheduleSportsInner>',
         :'school_city' => :'String',
         :'school_state' => :'String',
-        :'otp_required' => :'Boolean'
+        :'otp_required' => :'Boolean',
+        :'time_zone' => :'String',
+        :'scheduling_notifications' => :'Boolean',
+        :'game_post_notifications' => :'Boolean',
+        :'games_digest' => :'Boolean',
+        :'email_domain' => :'String'
       }
     end
 
@@ -221,6 +246,8 @@ module WinthropClient
         :'subscription_type',
         :'school_city',
         :'school_state',
+        :'time_zone',
+        :'email_domain'
       ])
     end
 
@@ -387,6 +414,26 @@ module WinthropClient
       if attributes.key?(:'otp_required')
         self.otp_required = attributes[:'otp_required']
       end
+
+      if attributes.key?(:'time_zone')
+        self.time_zone = attributes[:'time_zone']
+      end
+
+      if attributes.key?(:'scheduling_notifications')
+        self.scheduling_notifications = attributes[:'scheduling_notifications']
+      end
+
+      if attributes.key?(:'game_post_notifications')
+        self.game_post_notifications = attributes[:'game_post_notifications']
+      end
+
+      if attributes.key?(:'games_digest')
+        self.games_digest = attributes[:'games_digest']
+      end
+
+      if attributes.key?(:'email_domain')
+        self.email_domain = attributes[:'email_domain']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -455,7 +502,12 @@ module WinthropClient
           schedule_sports == o.schedule_sports &&
           school_city == o.school_city &&
           school_state == o.school_state &&
-          otp_required == o.otp_required
+          otp_required == o.otp_required &&
+          time_zone == o.time_zone &&
+          scheduling_notifications == o.scheduling_notifications &&
+          game_post_notifications == o.game_post_notifications &&
+          games_digest == o.games_digest &&
+          email_domain == o.email_domain
     end
 
     # @see the `==` method
@@ -467,7 +519,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, email, first_name, last_name, created_at, updated_at, state, title, accountable_id, accountable_type, coach_id, divisions, roles, can_see_compensation, can_show_scouting, can_show_game_contract, can_see_coaches, can_see_administrators, can_show_financials, can_show_deals, can_show_benchmark, can_show_athletic_profile, can_read_conference, can_show_game_post, can_see_school_groups, is_sport_specific, is_d2_only, is_conference_only, permissible_sport_ids, coli_index, subscription_type, schedule_sports, school_city, school_state, otp_required].hash
+      [id, email, first_name, last_name, created_at, updated_at, state, title, accountable_id, accountable_type, coach_id, divisions, roles, can_see_compensation, can_show_scouting, can_show_game_contract, can_see_coaches, can_see_administrators, can_show_financials, can_show_deals, can_show_benchmark, can_show_athletic_profile, can_read_conference, can_show_game_post, can_see_school_groups, is_sport_specific, is_d2_only, is_conference_only, permissible_sport_ids, coli_index, subscription_type, schedule_sports, school_city, school_state, otp_required, time_zone, scheduling_notifications, game_post_notifications, games_digest, email_domain].hash
     end
 
     # Builds the object from hash

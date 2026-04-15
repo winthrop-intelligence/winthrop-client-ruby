@@ -10684,6 +10684,61 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Retrieve all available time zones grouped by US priority zones and other zones
+    # @param [Hash] opts the optional parameters
+    # @return [GetTimeZones200Response]
+    def get_time_zones(opts = {})
+      data, _status_code, _headers = get_time_zones_with_http_info(opts)
+      data
+    end
+
+    # Retrieve all available time zones grouped by US priority zones and other zones
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GetTimeZones200Response, Integer, Hash)>] GetTimeZones200Response data, response status code and response headers
+    def get_time_zones_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_time_zones ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/time_zones'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GetTimeZones200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_time_zones",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_time_zones\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve a single user
     # @param user_id [Integer] ID of user to retrieve
     # @param [Hash] opts the optional parameters
@@ -12949,6 +13004,78 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#update_team_schedule_favorite\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update the current user's profile
+    # @param user_id [Integer] ID of user to update
+    # @param update_user_request [UpdateUserRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [User]
+    def update_user(user_id, update_user_request, opts = {})
+      data, _status_code, _headers = update_user_with_http_info(user_id, update_user_request, opts)
+      data
+    end
+
+    # Update the current user&#39;s profile
+    # @param user_id [Integer] ID of user to update
+    # @param update_user_request [UpdateUserRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(User, Integer, Hash)>] User data, response status code and response headers
+    def update_user_with_http_info(user_id, update_user_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_user ...'
+      end
+      # verify the required parameter 'user_id' is set
+      if @api_client.config.client_side_validation && user_id.nil?
+        fail ArgumentError, "Missing the required parameter 'user_id' when calling DefaultApi.update_user"
+      end
+      # verify the required parameter 'update_user_request' is set
+      if @api_client.config.client_side_validation && update_user_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_user_request' when calling DefaultApi.update_user"
+      end
+      # resource path
+      local_var_path = '/api/v1/users/{userId}'.sub('{' + 'userId' + '}', CGI.escape(user_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_user_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'User'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_user",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
