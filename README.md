@@ -296,6 +296,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**user_me**](docs/DefaultApi.md#user_me) | **GET** /api/v1/users/me | 
 *WinthropClient::DefaultApi* | [**verify_otp_code**](docs/DefaultApi.md#verify_otp_code) | **POST** /api/v1/otp/verify | 
 *WinthropClient::DefaultApi* | [**verify_user_intercollegiate_access**](docs/DefaultApi.md#verify_user_intercollegiate_access) | **GET** /api/v1/users/verify_user_intercollegiate_access | 
+*WinthropClient::DefaultApi* | [**view_raw_contract_file**](docs/DefaultApi.md#view_raw_contract_file) | **GET** /api/v1/raw_contracts/{raw_contractId}/view_file | 
 *WinthropClient::DossierApi* | [**university_dossier_report_dossier_winad_id_get**](docs/DossierApi.md#university_dossier_report_dossier_winad_id_get) | **GET** /dossier/{winad_id}/ | University Dossier Report
 *WinthropClient::IntercollegiateApi* | [**create_news_feeds**](docs/IntercollegiateApi.md#create_news_feeds) | **POST** /wi_jobs/news_feeds | 
 *WinthropClient::IntercollegiateApi* | [**get_job_post**](docs/IntercollegiateApi.md#get_job_post) | **GET** /wi_jobs/job_posts/{jobPostId} | 
