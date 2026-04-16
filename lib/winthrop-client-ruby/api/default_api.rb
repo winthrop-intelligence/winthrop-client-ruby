@@ -1531,6 +1531,67 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Delete a user from the current account
+    # @param account_user_id [Integer] ID of the user to delete
+    # @param [Hash] opts the optional parameters
+    # @return [DeleteAccountUser200Response]
+    def delete_account_user(account_user_id, opts = {})
+      data, _status_code, _headers = delete_account_user_with_http_info(account_user_id, opts)
+      data
+    end
+
+    # Delete a user from the current account
+    # @param account_user_id [Integer] ID of the user to delete
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(DeleteAccountUser200Response, Integer, Hash)>] DeleteAccountUser200Response data, response status code and response headers
+    def delete_account_user_with_http_info(account_user_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.delete_account_user ...'
+      end
+      # verify the required parameter 'account_user_id' is set
+      if @api_client.config.client_side_validation && account_user_id.nil?
+        fail ArgumentError, "Missing the required parameter 'account_user_id' when calling DefaultApi.delete_account_user"
+      end
+      # resource path
+      local_var_path = '/api/v1/account_users/{accountUserId}'.sub('{' + 'accountUserId' + '}', CGI.escape(account_user_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'DeleteAccountUser200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.delete_account_user",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#delete_account_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete a single Cashflow
     # @param cashflow_id [Integer] ID of the Cashflow
     # @param [Hash] opts the optional parameters
@@ -2132,7 +2193,7 @@ module WinthropClient
     # Delete a note
     # @param id [Integer] 
     # @param [Hash] opts the optional parameters
-    # @return [DeleteNote200Response]
+    # @return [DeleteAccountUser200Response]
     def delete_note(id, opts = {})
       data, _status_code, _headers = delete_note_with_http_info(id, opts)
       data
@@ -2141,7 +2202,7 @@ module WinthropClient
     # Delete a note
     # @param id [Integer] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(DeleteNote200Response, Integer, Hash)>] DeleteNote200Response data, response status code and response headers
+    # @return [Array<(DeleteAccountUser200Response, Integer, Hash)>] DeleteAccountUser200Response data, response status code and response headers
     def delete_note_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.delete_note ...'
@@ -2168,7 +2229,7 @@ module WinthropClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'DeleteNote200Response'
+      return_type = opts[:debug_return_type] || 'DeleteAccountUser200Response'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
@@ -2311,7 +2372,7 @@ module WinthropClient
     # Delete a custom school group
     # @param school_group_id [Integer] ID of the School Group
     # @param [Hash] opts the optional parameters
-    # @return [DeleteNote200Response]
+    # @return [DeleteAccountUser200Response]
     def delete_school_group(school_group_id, opts = {})
       data, _status_code, _headers = delete_school_group_with_http_info(school_group_id, opts)
       data
@@ -2320,7 +2381,7 @@ module WinthropClient
     # Delete a custom school group
     # @param school_group_id [Integer] ID of the School Group
     # @param [Hash] opts the optional parameters
-    # @return [Array<(DeleteNote200Response, Integer, Hash)>] DeleteNote200Response data, response status code and response headers
+    # @return [Array<(DeleteAccountUser200Response, Integer, Hash)>] DeleteAccountUser200Response data, response status code and response headers
     def delete_school_group_with_http_info(school_group_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.delete_school_group ...'
@@ -2347,7 +2408,7 @@ module WinthropClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'DeleteNote200Response'
+      return_type = opts[:debug_return_type] || 'DeleteAccountUser200Response'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
@@ -2431,7 +2492,7 @@ module WinthropClient
     # Remove a FilTeam favorite
     # @param id [Integer] The favorite record ID
     # @param [Hash] opts the optional parameters
-    # @return [DeleteNote200Response]
+    # @return [DeleteAccountUser200Response]
     def delete_team_schedule_favorite(id, opts = {})
       data, _status_code, _headers = delete_team_schedule_favorite_with_http_info(id, opts)
       data
@@ -2440,7 +2501,7 @@ module WinthropClient
     # Remove a FilTeam favorite
     # @param id [Integer] The favorite record ID
     # @param [Hash] opts the optional parameters
-    # @return [Array<(DeleteNote200Response, Integer, Hash)>] DeleteNote200Response data, response status code and response headers
+    # @return [Array<(DeleteAccountUser200Response, Integer, Hash)>] DeleteAccountUser200Response data, response status code and response headers
     def delete_team_schedule_favorite_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.delete_team_schedule_favorite ...'
@@ -2467,7 +2528,7 @@ module WinthropClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'DeleteNote200Response'
+      return_type = opts[:debug_return_type] || 'DeleteAccountUser200Response'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
@@ -2544,6 +2605,61 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#delete_team_schedule_note\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve all users for the current user's account with their computed access permissions
+    # @param [Hash] opts the optional parameters
+    # @return [AccountUsersResponse]
+    def get_account_users(opts = {})
+      data, _status_code, _headers = get_account_users_with_http_info(opts)
+      data
+    end
+
+    # Retrieve all users for the current user&#39;s account with their computed access permissions
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AccountUsersResponse, Integer, Hash)>] AccountUsersResponse data, response status code and response headers
+    def get_account_users_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_account_users ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/account_users'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AccountUsersResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_account_users",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_account_users\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -12279,7 +12395,7 @@ module WinthropClient
     # @option opts [String] :game_contract_verified 
     # @option opts [String] :game_contract_signed_on 
     # @option opts [File] :raw_contract_file 
-    # @return [DeleteNote200Response]
+    # @return [DeleteAccountUser200Response]
     def update_game_contract(game_contract_id, opts = {})
       data, _status_code, _headers = update_game_contract_with_http_info(game_contract_id, opts)
       data
@@ -12303,7 +12419,7 @@ module WinthropClient
     # @option opts [String] :game_contract_verified 
     # @option opts [String] :game_contract_signed_on 
     # @option opts [File] :raw_contract_file 
-    # @return [Array<(DeleteNote200Response, Integer, Hash)>] DeleteNote200Response data, response status code and response headers
+    # @return [Array<(DeleteAccountUser200Response, Integer, Hash)>] DeleteAccountUser200Response data, response status code and response headers
     def update_game_contract_with_http_info(game_contract_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.update_game_contract ...'
@@ -12350,7 +12466,7 @@ module WinthropClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'DeleteNote200Response'
+      return_type = opts[:debug_return_type] || 'DeleteAccountUser200Response'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']

@@ -113,6 +113,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**create_school_group**](docs/DefaultApi.md#create_school_group) | **POST** /api/v1/school_groups | 
 *WinthropClient::DefaultApi* | [**create_season**](docs/DefaultApi.md#create_season) | **POST** /api/v1/seasons | 
 *WinthropClient::DefaultApi* | [**create_team_schedule_favorite**](docs/DefaultApi.md#create_team_schedule_favorite) | **POST** /api/v1/team_schedule_favorites | 
+*WinthropClient::DefaultApi* | [**delete_account_user**](docs/DefaultApi.md#delete_account_user) | **DELETE** /api/v1/account_users/{accountUserId} | 
 *WinthropClient::DefaultApi* | [**delete_cashflow**](docs/DefaultApi.md#delete_cashflow) | **DELETE** /api/v1/cashflows/{cashflowId} | 
 *WinthropClient::DefaultApi* | [**delete_conference**](docs/DefaultApi.md#delete_conference) | **DELETE** /api/v1/conferences/{conferenceId} | 
 *WinthropClient::DefaultApi* | [**delete_conferenceship**](docs/DefaultApi.md#delete_conferenceship) | **DELETE** /api/v1/conferenceships/{conferenceshipId} | 
@@ -130,6 +131,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**delete_season**](docs/DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} | 
 *WinthropClient::DefaultApi* | [**delete_team_schedule_favorite**](docs/DefaultApi.md#delete_team_schedule_favorite) | **DELETE** /api/v1/team_schedule_favorites/{id} | 
 *WinthropClient::DefaultApi* | [**delete_team_schedule_note**](docs/DefaultApi.md#delete_team_schedule_note) | **DELETE** /api/v1/team_schedule_notes/{fil_team_id} | 
+*WinthropClient::DefaultApi* | [**get_account_users**](docs/DefaultApi.md#get_account_users) | **GET** /api/v1/account_users | 
 *WinthropClient::DefaultApi* | [**get_administrator**](docs/DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} | 
 *WinthropClient::DefaultApi* | [**get_administrator_searches**](docs/DefaultApi.md#get_administrator_searches) | **GET** /api/v1/administrator_searches | 
 *WinthropClient::DefaultApi* | [**get_administrators**](docs/DefaultApi.md#get_administrators) | **GET** /api/v1/administrators | 
@@ -321,6 +323,9 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [WinthropClient::AccountInfo](docs/AccountInfo.md)
+ - [WinthropClient::AccountUser](docs/AccountUser.md)
+ - [WinthropClient::AccountUsersResponse](docs/AccountUsersResponse.md)
  - [WinthropClient::AdminCompensationSubdivision](docs/AdminCompensationSubdivision.md)
  - [WinthropClient::Administrator](docs/Administrator.md)
  - [WinthropClient::AdministratorCollection](docs/AdministratorCollection.md)
@@ -428,9 +433,9 @@ Class | Method | HTTP request | Description
  - [WinthropClient::DealSearchResultCollection](docs/DealSearchResultCollection.md)
  - [WinthropClient::DealStatus](docs/DealStatus.md)
  - [WinthropClient::DealStatusCollection](docs/DealStatusCollection.md)
+ - [WinthropClient::DeleteAccountUser200Response](docs/DeleteAccountUser200Response.md)
  - [WinthropClient::DeleteFavorite200Response](docs/DeleteFavorite200Response.md)
  - [WinthropClient::DeleteGamePostSearch200Response](docs/DeleteGamePostSearch200Response.md)
- - [WinthropClient::DeleteNote200Response](docs/DeleteNote200Response.md)
  - [WinthropClient::DepartmentSearchResult](docs/DepartmentSearchResult.md)
  - [WinthropClient::DepartmentSearchResultCollection](docs/DepartmentSearchResultCollection.md)
  - [WinthropClient::DepartmentSearchResultDepartment](docs/DepartmentSearchResultDepartment.md)

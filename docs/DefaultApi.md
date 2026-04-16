@@ -26,6 +26,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**create_school_group**](DefaultApi.md#create_school_group) | **POST** /api/v1/school_groups |  |
 | [**create_season**](DefaultApi.md#create_season) | **POST** /api/v1/seasons |  |
 | [**create_team_schedule_favorite**](DefaultApi.md#create_team_schedule_favorite) | **POST** /api/v1/team_schedule_favorites |  |
+| [**delete_account_user**](DefaultApi.md#delete_account_user) | **DELETE** /api/v1/account_users/{accountUserId} |  |
 | [**delete_cashflow**](DefaultApi.md#delete_cashflow) | **DELETE** /api/v1/cashflows/{cashflowId} |  |
 | [**delete_conference**](DefaultApi.md#delete_conference) | **DELETE** /api/v1/conferences/{conferenceId} |  |
 | [**delete_conferenceship**](DefaultApi.md#delete_conferenceship) | **DELETE** /api/v1/conferenceships/{conferenceshipId} |  |
@@ -43,6 +44,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_season**](DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} |  |
 | [**delete_team_schedule_favorite**](DefaultApi.md#delete_team_schedule_favorite) | **DELETE** /api/v1/team_schedule_favorites/{id} |  |
 | [**delete_team_schedule_note**](DefaultApi.md#delete_team_schedule_note) | **DELETE** /api/v1/team_schedule_notes/{fil_team_id} |  |
+| [**get_account_users**](DefaultApi.md#get_account_users) | **GET** /api/v1/account_users |  |
 | [**get_administrator**](DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} |  |
 | [**get_administrator_searches**](DefaultApi.md#get_administrator_searches) | **GET** /api/v1/administrator_searches |  |
 | [**get_administrators**](DefaultApi.md#get_administrators) | **GET** /api/v1/administrators |  |
@@ -1870,6 +1872,80 @@ end
 - **Accept**: application/json
 
 
+## delete_account_user
+
+> <DeleteAccountUser200Response> delete_account_user(account_user_id)
+
+
+
+Delete a user from the current account
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+account_user_id = 56 # Integer | ID of the user to delete
+
+begin
+  
+  result = api_instance.delete_account_user(account_user_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_account_user: #{e}"
+end
+```
+
+#### Using the delete_account_user_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DeleteAccountUser200Response>, Integer, Hash)> delete_account_user_with_http_info(account_user_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_account_user_with_http_info(account_user_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DeleteAccountUser200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_account_user_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **account_user_id** | **Integer** | ID of the user to delete |  |
+
+### Return type
+
+[**DeleteAccountUser200Response**](DeleteAccountUser200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## delete_cashflow
 
 > delete_cashflow(cashflow_id)
@@ -2605,7 +2681,7 @@ nil (empty response body)
 
 ## delete_note
 
-> <DeleteNote200Response> delete_note(id)
+> <DeleteAccountUser200Response> delete_note(id)
 
 
 
@@ -2643,7 +2719,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<DeleteNote200Response>, Integer, Hash)> delete_note_with_http_info(id)
+> <Array(<DeleteAccountUser200Response>, Integer, Hash)> delete_note_with_http_info(id)
 
 ```ruby
 begin
@@ -2651,7 +2727,7 @@ begin
   data, status_code, headers = api_instance.delete_note_with_http_info(id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <DeleteNote200Response>
+  p data # => <DeleteAccountUser200Response>
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->delete_note_with_http_info: #{e}"
 end
@@ -2665,7 +2741,7 @@ end
 
 ### Return type
 
-[**DeleteNote200Response**](DeleteNote200Response.md)
+[**DeleteAccountUser200Response**](DeleteAccountUser200Response.md)
 
 ### Authorization
 
@@ -2825,7 +2901,7 @@ nil (empty response body)
 
 ## delete_school_group
 
-> <DeleteNote200Response> delete_school_group(school_group_id)
+> <DeleteAccountUser200Response> delete_school_group(school_group_id)
 
 
 
@@ -2863,7 +2939,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<DeleteNote200Response>, Integer, Hash)> delete_school_group_with_http_info(school_group_id)
+> <Array(<DeleteAccountUser200Response>, Integer, Hash)> delete_school_group_with_http_info(school_group_id)
 
 ```ruby
 begin
@@ -2871,7 +2947,7 @@ begin
   data, status_code, headers = api_instance.delete_school_group_with_http_info(school_group_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <DeleteNote200Response>
+  p data # => <DeleteAccountUser200Response>
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->delete_school_group_with_http_info: #{e}"
 end
@@ -2885,7 +2961,7 @@ end
 
 ### Return type
 
-[**DeleteNote200Response**](DeleteNote200Response.md)
+[**DeleteAccountUser200Response**](DeleteAccountUser200Response.md)
 
 ### Authorization
 
@@ -2972,7 +3048,7 @@ nil (empty response body)
 
 ## delete_team_schedule_favorite
 
-> <DeleteNote200Response> delete_team_schedule_favorite(id)
+> <DeleteAccountUser200Response> delete_team_schedule_favorite(id)
 
 
 
@@ -3010,7 +3086,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<DeleteNote200Response>, Integer, Hash)> delete_team_schedule_favorite_with_http_info(id)
+> <Array(<DeleteAccountUser200Response>, Integer, Hash)> delete_team_schedule_favorite_with_http_info(id)
 
 ```ruby
 begin
@@ -3018,7 +3094,7 @@ begin
   data, status_code, headers = api_instance.delete_team_schedule_favorite_with_http_info(id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <DeleteNote200Response>
+  p data # => <DeleteAccountUser200Response>
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->delete_team_schedule_favorite_with_http_info: #{e}"
 end
@@ -3032,7 +3108,7 @@ end
 
 ### Return type
 
-[**DeleteNote200Response**](DeleteNote200Response.md)
+[**DeleteAccountUser200Response**](DeleteAccountUser200Response.md)
 
 ### Authorization
 
@@ -3115,6 +3191,77 @@ nil (empty response body)
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+
+## get_account_users
+
+> <AccountUsersResponse> get_account_users
+
+
+
+Retrieve all users for the current user's account with their computed access permissions
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_account_users
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_account_users: #{e}"
+end
+```
+
+#### Using the get_account_users_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AccountUsersResponse>, Integer, Hash)> get_account_users_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_account_users_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AccountUsersResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_account_users_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**AccountUsersResponse**](AccountUsersResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## get_administrator
@@ -14847,7 +14994,7 @@ end
 
 ## update_game_contract
 
-> <DeleteNote200Response> update_game_contract(game_contract_id, opts)
+> <DeleteAccountUser200Response> update_game_contract(game_contract_id, opts)
 
 
 
@@ -14902,7 +15049,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<DeleteNote200Response>, Integer, Hash)> update_game_contract_with_http_info(game_contract_id, opts)
+> <Array(<DeleteAccountUser200Response>, Integer, Hash)> update_game_contract_with_http_info(game_contract_id, opts)
 
 ```ruby
 begin
@@ -14910,7 +15057,7 @@ begin
   data, status_code, headers = api_instance.update_game_contract_with_http_info(game_contract_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <DeleteNote200Response>
+  p data # => <DeleteAccountUser200Response>
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->update_game_contract_with_http_info: #{e}"
 end
@@ -14939,7 +15086,7 @@ end
 
 ### Return type
 
-[**DeleteNote200Response**](DeleteNote200Response.md)
+[**DeleteAccountUser200Response**](DeleteAccountUser200Response.md)
 
 ### Authorization
 
