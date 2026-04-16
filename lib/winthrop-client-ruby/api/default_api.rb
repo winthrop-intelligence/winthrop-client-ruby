@@ -2675,67 +2675,6 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Retrieve a single account user with their current roles, sports, and form metadata for editing
-    # @param account_user_id [Integer] ID of the user to retrieve
-    # @param [Hash] opts the optional parameters
-    # @return [EditAccountUserResponse]
-    def get_account_user(account_user_id, opts = {})
-      data, _status_code, _headers = get_account_user_with_http_info(account_user_id, opts)
-      data
-    end
-
-    # Retrieve a single account user with their current roles, sports, and form metadata for editing
-    # @param account_user_id [Integer] ID of the user to retrieve
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(EditAccountUserResponse, Integer, Hash)>] EditAccountUserResponse data, response status code and response headers
-    def get_account_user_with_http_info(account_user_id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.get_account_user ...'
-      end
-      # verify the required parameter 'account_user_id' is set
-      if @api_client.config.client_side_validation && account_user_id.nil?
-        fail ArgumentError, "Missing the required parameter 'account_user_id' when calling DefaultApi.get_account_user"
-      end
-      # resource path
-      local_var_path = '/api/v1/account_users/{accountUserId}'.sub('{' + 'accountUserId' + '}', CGI.escape(account_user_id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'EditAccountUserResponse'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.get_account_user",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#get_account_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Validate a confirmation token and return the user's name and email for the account activation form
     # @param confirmation_token [String] The confirmation token from the invitation email
     # @param [Hash] opts the optional parameters
@@ -5760,6 +5699,67 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_divisions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a single account user with their current roles, sports, and form metadata for editing
+    # @param account_user_id [Integer] ID of the user to edit
+    # @param [Hash] opts the optional parameters
+    # @return [EditAccountUserResponse]
+    def get_edit_account_user(account_user_id, opts = {})
+      data, _status_code, _headers = get_edit_account_user_with_http_info(account_user_id, opts)
+      data
+    end
+
+    # Retrieve a single account user with their current roles, sports, and form metadata for editing
+    # @param account_user_id [Integer] ID of the user to edit
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EditAccountUserResponse, Integer, Hash)>] EditAccountUserResponse data, response status code and response headers
+    def get_edit_account_user_with_http_info(account_user_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_edit_account_user ...'
+      end
+      # verify the required parameter 'account_user_id' is set
+      if @api_client.config.client_side_validation && account_user_id.nil?
+        fail ArgumentError, "Missing the required parameter 'account_user_id' when calling DefaultApi.get_edit_account_user"
+      end
+      # resource path
+      local_var_path = '/api/v1/account_users/{accountUserId}/edit'.sub('{' + 'accountUserId' + '}', CGI.escape(account_user_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'EditAccountUserResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_edit_account_user",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_edit_account_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

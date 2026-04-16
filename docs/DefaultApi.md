@@ -45,7 +45,6 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_season**](DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} |  |
 | [**delete_team_schedule_favorite**](DefaultApi.md#delete_team_schedule_favorite) | **DELETE** /api/v1/team_schedule_favorites/{id} |  |
 | [**delete_team_schedule_note**](DefaultApi.md#delete_team_schedule_note) | **DELETE** /api/v1/team_schedule_notes/{fil_team_id} |  |
-| [**get_account_user**](DefaultApi.md#get_account_user) | **GET** /api/v1/account_users/{accountUserId} |  |
 | [**get_account_user_activation**](DefaultApi.md#get_account_user_activation) | **GET** /api/v1/account_user_activation |  |
 | [**get_account_users**](DefaultApi.md#get_account_users) | **GET** /api/v1/account_users |  |
 | [**get_administrator**](DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} |  |
@@ -94,6 +93,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_department_searches**](DefaultApi.md#get_department_searches) | **GET** /api/v1/department_searches |  |
 | [**get_division**](DefaultApi.md#get_division) | **GET** /api/v1/divisions/{divisionId} |  |
 | [**get_divisions**](DefaultApi.md#get_divisions) | **GET** /api/v1/divisions |  |
+| [**get_edit_account_user**](DefaultApi.md#get_edit_account_user) | **GET** /api/v1/account_users/{accountUserId}/edit |  |
 | [**get_favorites**](DefaultApi.md#get_favorites) | **GET** /api/v1/favorites |  |
 | [**get_favorites_categories**](DefaultApi.md#get_favorites_categories) | **GET** /api/v1/favorites_categories |  |
 | [**get_filter_options**](DefaultApi.md#get_filter_options) | **GET** /api/v1/filter_options |  |
@@ -3271,80 +3271,6 @@ nil (empty response body)
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
-
-
-## get_account_user
-
-> <EditAccountUserResponse> get_account_user(account_user_id)
-
-
-
-Retrieve a single account user with their current roles, sports, and form metadata for editing
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-account_user_id = 56 # Integer | ID of the user to retrieve
-
-begin
-  
-  result = api_instance.get_account_user(account_user_id)
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_account_user: #{e}"
-end
-```
-
-#### Using the get_account_user_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<EditAccountUserResponse>, Integer, Hash)> get_account_user_with_http_info(account_user_id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.get_account_user_with_http_info(account_user_id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <EditAccountUserResponse>
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_account_user_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **account_user_id** | **Integer** | ID of the user to retrieve |  |
-
-### Return type
-
-[**EditAccountUserResponse**](EditAccountUserResponse.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
 
 
 ## get_account_user_activation
@@ -7016,6 +6942,80 @@ end
 ### Return type
 
 [**DivisionCollection**](DivisionCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_edit_account_user
+
+> <EditAccountUserResponse> get_edit_account_user(account_user_id)
+
+
+
+Retrieve a single account user with their current roles, sports, and form metadata for editing
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+account_user_id = 56 # Integer | ID of the user to edit
+
+begin
+  
+  result = api_instance.get_edit_account_user(account_user_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_edit_account_user: #{e}"
+end
+```
+
+#### Using the get_edit_account_user_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EditAccountUserResponse>, Integer, Hash)> get_edit_account_user_with_http_info(account_user_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_edit_account_user_with_http_info(account_user_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EditAccountUserResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_edit_account_user_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **account_user_id** | **Integer** | ID of the user to edit |  |
+
+### Return type
+
+[**EditAccountUserResponse**](EditAccountUserResponse.md)
 
 ### Authorization
 
