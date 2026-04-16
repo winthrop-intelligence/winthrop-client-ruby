@@ -96,6 +96,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**average_school_comp**](docs/DefaultApi.md#average_school_comp) | **GET** /api/v1/compensations/average_school_comp | 
 *WinthropClient::DefaultApi* | [**average_subdivision_comp**](docs/DefaultApi.md#average_subdivision_comp) | **GET** /api/v1/compensations/average_subdivision_comp | 
 *WinthropClient::DefaultApi* | [**compare_coli**](docs/DefaultApi.md#compare_coli) | **GET** /api/v1/schools/compare_coli | 
+*WinthropClient::DefaultApi* | [**create_account_user**](docs/DefaultApi.md#create_account_user) | **POST** /api/v1/account_users | 
 *WinthropClient::DefaultApi* | [**create_cashflow**](docs/DefaultApi.md#create_cashflow) | **POST** /api/v1/cashflows | 
 *WinthropClient::DefaultApi* | [**create_coach**](docs/DefaultApi.md#create_coach) | **POST** /api/v1/coaches | 
 *WinthropClient::DefaultApi* | [**create_conference**](docs/DefaultApi.md#create_conference) | **POST** /api/v1/conferences | 
@@ -212,6 +213,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_lad_filter_options**](docs/DefaultApi.md#get_lad_filter_options) | **GET** /api/v1/lad_filter_options | 
 *WinthropClient::DefaultApi* | [**get_ncaa_financial_report_status**](docs/DefaultApi.md#get_ncaa_financial_report_status) | **GET** /api/v1/ncaa_financial_report_statuses/{ncaaFinancialReportStatusId} | 
 *WinthropClient::DefaultApi* | [**get_ncaa_financial_report_statuses**](docs/DefaultApi.md#get_ncaa_financial_report_statuses) | **GET** /api/v1/ncaa_financial_report_statuses | 
+*WinthropClient::DefaultApi* | [**get_new_account_user**](docs/DefaultApi.md#get_new_account_user) | **GET** /api/v1/account_users/new | 
 *WinthropClient::DefaultApi* | [**get_news_feed**](docs/DefaultApi.md#get_news_feed) | **GET** /wi_jobs/news_feeds/{newsFeedId} | Get a news feed
 *WinthropClient::DefaultApi* | [**get_note**](docs/DefaultApi.md#get_note) | **GET** /api/v1/notes | 
 *WinthropClient::DefaultApi* | [**get_position**](docs/DefaultApi.md#get_position) | **GET** /api/v1/positions/{positionId} | 
@@ -412,6 +414,9 @@ Class | Method | HTTP request | Description
  - [WinthropClient::ContractCollection](docs/ContractCollection.md)
  - [WinthropClient::CoworkerEntry](docs/CoworkerEntry.md)
  - [WinthropClient::CoworkerTenure](docs/CoworkerTenure.md)
+ - [WinthropClient::CreateAccountUser422Response](docs/CreateAccountUser422Response.md)
+ - [WinthropClient::CreateAccountUserRequest](docs/CreateAccountUserRequest.md)
+ - [WinthropClient::CreateAccountUserRequestUser](docs/CreateAccountUserRequestUser.md)
  - [WinthropClient::CreateFavorite201Response](docs/CreateFavorite201Response.md)
  - [WinthropClient::CreateFavoriteRequest](docs/CreateFavoriteRequest.md)
  - [WinthropClient::CreateFavoritesCategoryRequest](docs/CreateFavoritesCategoryRequest.md)
@@ -508,6 +513,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::Meta](docs/Meta.md)
  - [WinthropClient::NcaaFinancialReportStatus](docs/NcaaFinancialReportStatus.md)
  - [WinthropClient::NcaaFinancialReportStatusCollection](docs/NcaaFinancialReportStatusCollection.md)
+ - [WinthropClient::NewAccountUserResponse](docs/NewAccountUserResponse.md)
  - [WinthropClient::NewsFeed](docs/NewsFeed.md)
  - [WinthropClient::NewsFeedCollection](docs/NewsFeedCollection.md)
  - [WinthropClient::Note](docs/Note.md)
@@ -534,6 +540,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::RegenerateRawContractPdf200Response](docs/RegenerateRawContractPdf200Response.md)
  - [WinthropClient::RequestedItem](docs/RequestedItem.md)
  - [WinthropClient::RequestedItemCollection](docs/RequestedItemCollection.md)
+ - [WinthropClient::RoleOption](docs/RoleOption.md)
  - [WinthropClient::School](docs/School.md)
  - [WinthropClient::SchoolCollection](docs/SchoolCollection.md)
  - [WinthropClient::SchoolContractEntry](docs/SchoolContractEntry.md)
@@ -564,6 +571,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::SportCompensationRankingsSchoolsInner](docs/SportCompensationRankingsSchoolsInner.md)
  - [WinthropClient::SportCompensationResponse](docs/SportCompensationResponse.md)
  - [WinthropClient::SportCompensationSubdivision](docs/SportCompensationSubdivision.md)
+ - [WinthropClient::SportOption](docs/SportOption.md)
  - [WinthropClient::Subdivision](docs/Subdivision.md)
  - [WinthropClient::SubdivisionCollection](docs/SubdivisionCollection.md)
  - [WinthropClient::Subscription](docs/Subscription.md)
@@ -610,7 +618,6 @@ Class | Method | HTTP request | Description
  - [WinthropClient::UpdateGamePostSearchRequestGamePost](docs/UpdateGamePostSearchRequestGamePost.md)
  - [WinthropClient::UpdateNoteRequest](docs/UpdateNoteRequest.md)
  - [WinthropClient::UpdatePasswordReset200Response](docs/UpdatePasswordReset200Response.md)
- - [WinthropClient::UpdatePasswordReset400Response](docs/UpdatePasswordReset400Response.md)
  - [WinthropClient::UpdatePasswordResetRequest](docs/UpdatePasswordResetRequest.md)
  - [WinthropClient::UpdatePasswordResetRequestUser](docs/UpdatePasswordResetRequestUser.md)
  - [WinthropClient::UpdateSchoolGroupRequest](docs/UpdateSchoolGroupRequest.md)

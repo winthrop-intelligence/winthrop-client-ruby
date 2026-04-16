@@ -9,6 +9,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**average_school_comp**](DefaultApi.md#average_school_comp) | **GET** /api/v1/compensations/average_school_comp |  |
 | [**average_subdivision_comp**](DefaultApi.md#average_subdivision_comp) | **GET** /api/v1/compensations/average_subdivision_comp |  |
 | [**compare_coli**](DefaultApi.md#compare_coli) | **GET** /api/v1/schools/compare_coli |  |
+| [**create_account_user**](DefaultApi.md#create_account_user) | **POST** /api/v1/account_users |  |
 | [**create_cashflow**](DefaultApi.md#create_cashflow) | **POST** /api/v1/cashflows |  |
 | [**create_coach**](DefaultApi.md#create_coach) | **POST** /api/v1/coaches |  |
 | [**create_conference**](DefaultApi.md#create_conference) | **POST** /api/v1/conferences |  |
@@ -125,6 +126,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_lad_filter_options**](DefaultApi.md#get_lad_filter_options) | **GET** /api/v1/lad_filter_options |  |
 | [**get_ncaa_financial_report_status**](DefaultApi.md#get_ncaa_financial_report_status) | **GET** /api/v1/ncaa_financial_report_statuses/{ncaaFinancialReportStatusId} |  |
 | [**get_ncaa_financial_report_statuses**](DefaultApi.md#get_ncaa_financial_report_statuses) | **GET** /api/v1/ncaa_financial_report_statuses |  |
+| [**get_new_account_user**](DefaultApi.md#get_new_account_user) | **GET** /api/v1/account_users/new |  |
 | [**get_news_feed**](DefaultApi.md#get_news_feed) | **GET** /wi_jobs/news_feeds/{newsFeedId} | Get a news feed |
 | [**get_note**](DefaultApi.md#get_note) | **GET** /api/v1/notes |  |
 | [**get_position**](DefaultApi.md#get_position) | **GET** /api/v1/positions/{positionId} |  |
@@ -611,6 +613,80 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## create_account_user
+
+> <AccountUser> create_account_user(create_account_user_request)
+
+
+
+Create a new user for the current account. The email prefix is combined with the account email domain. The new user receives an invitation email.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_account_user_request = WinthropClient::CreateAccountUserRequest.new({user: WinthropClient::CreateAccountUserRequestUser.new({first_name: 'first_name_example', last_name: 'last_name_example', email: 'email_example'})}) # CreateAccountUserRequest | 
+
+begin
+  
+  result = api_instance.create_account_user(create_account_user_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_account_user: #{e}"
+end
+```
+
+#### Using the create_account_user_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AccountUser>, Integer, Hash)> create_account_user_with_http_info(create_account_user_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_account_user_with_http_info(create_account_user_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AccountUser>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_account_user_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_account_user_request** | [**CreateAccountUserRequest**](CreateAccountUserRequest.md) |  |  |
+
+### Return type
+
+[**AccountUser**](AccountUser.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -9382,6 +9458,77 @@ end
 ### Return type
 
 [**NcaaFinancialReportStatusCollection**](NcaaFinancialReportStatusCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_new_account_user
+
+> <NewAccountUserResponse> get_new_account_user
+
+
+
+Retrieve form metadata for creating a new account user including available role options based on subscription, schedulable sports, and email domain
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_new_account_user
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_new_account_user: #{e}"
+end
+```
+
+#### Using the get_new_account_user_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<NewAccountUserResponse>, Integer, Hash)> get_new_account_user_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_new_account_user_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <NewAccountUserResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_new_account_user_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**NewAccountUserResponse**](NewAccountUserResponse.md)
 
 ### Authorization
 

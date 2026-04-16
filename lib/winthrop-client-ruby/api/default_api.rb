@@ -427,6 +427,72 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Create a new user for the current account. The email prefix is combined with the account email domain. The new user receives an invitation email.
+    # @param create_account_user_request [CreateAccountUserRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AccountUser]
+    def create_account_user(create_account_user_request, opts = {})
+      data, _status_code, _headers = create_account_user_with_http_info(create_account_user_request, opts)
+      data
+    end
+
+    # Create a new user for the current account. The email prefix is combined with the account email domain. The new user receives an invitation email.
+    # @param create_account_user_request [CreateAccountUserRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AccountUser, Integer, Hash)>] AccountUser data, response status code and response headers
+    def create_account_user_with_http_info(create_account_user_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_account_user ...'
+      end
+      # verify the required parameter 'create_account_user_request' is set
+      if @api_client.config.client_side_validation && create_account_user_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_account_user_request' when calling DefaultApi.create_account_user"
+      end
+      # resource path
+      local_var_path = '/api/v1/account_users'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_account_user_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AccountUser'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_account_user",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_account_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create a new Cashflow
     # @param [Hash] opts the optional parameters
     # @option opts [Cashflow] :cashflow 
@@ -7652,6 +7718,61 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_ncaa_financial_report_statuses\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve form metadata for creating a new account user including available role options based on subscription, schedulable sports, and email domain
+    # @param [Hash] opts the optional parameters
+    # @return [NewAccountUserResponse]
+    def get_new_account_user(opts = {})
+      data, _status_code, _headers = get_new_account_user_with_http_info(opts)
+      data
+    end
+
+    # Retrieve form metadata for creating a new account user including available role options based on subscription, schedulable sports, and email domain
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(NewAccountUserResponse, Integer, Hash)>] NewAccountUserResponse data, response status code and response headers
+    def get_new_account_user_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_new_account_user ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/account_users/new'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'NewAccountUserResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_new_account_user",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_new_account_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
