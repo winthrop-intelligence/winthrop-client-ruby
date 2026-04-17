@@ -49,7 +49,6 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_team_schedule_favorite**](DefaultApi.md#delete_team_schedule_favorite) | **DELETE** /api/v1/team_schedule_favorites/{id} |  |
 | [**delete_team_schedule_note**](DefaultApi.md#delete_team_schedule_note) | **DELETE** /api/v1/team_schedule_notes/{fil_team_id} |  |
 | [**delete_upload**](DefaultApi.md#delete_upload) | **DELETE** /api/v1/uploads/{uploadId} |  |
-| [**get_account**](DefaultApi.md#get_account) | **GET** /api/v1/accounts/{id} |  |
 | [**get_account_user_activation**](DefaultApi.md#get_account_user_activation) | **GET** /api/v1/account_user_activation |  |
 | [**get_account_users**](DefaultApi.md#get_account_users) | **GET** /api/v1/account_users |  |
 | [**get_administrator**](DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} |  |
@@ -3572,80 +3571,6 @@ end
 ### Return type
 
 [**DeleteAccountUser200Response**](DeleteAccountUser200Response.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## get_account
-
-> <AccountDetail> get_account(id)
-
-
-
-Retrieve an account with subscriptions, invoices, and billing addresses
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-id = 56 # Integer | The account ID
-
-begin
-  
-  result = api_instance.get_account(id)
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_account: #{e}"
-end
-```
-
-#### Using the get_account_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<AccountDetail>, Integer, Hash)> get_account_with_http_info(id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.get_account_with_http_info(id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <AccountDetail>
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_account_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | The account ID |  |
-
-### Return type
-
-[**AccountDetail**](AccountDetail.md)
 
 ### Authorization
 

@@ -136,7 +136,6 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**delete_team_schedule_favorite**](docs/DefaultApi.md#delete_team_schedule_favorite) | **DELETE** /api/v1/team_schedule_favorites/{id} | 
 *WinthropClient::DefaultApi* | [**delete_team_schedule_note**](docs/DefaultApi.md#delete_team_schedule_note) | **DELETE** /api/v1/team_schedule_notes/{fil_team_id} | 
 *WinthropClient::DefaultApi* | [**delete_upload**](docs/DefaultApi.md#delete_upload) | **DELETE** /api/v1/uploads/{uploadId} | 
-*WinthropClient::DefaultApi* | [**get_account**](docs/DefaultApi.md#get_account) | **GET** /api/v1/accounts/{id} | 
 *WinthropClient::DefaultApi* | [**get_account_user_activation**](docs/DefaultApi.md#get_account_user_activation) | **GET** /api/v1/account_user_activation | 
 *WinthropClient::DefaultApi* | [**get_account_users**](docs/DefaultApi.md#get_account_users) | **GET** /api/v1/account_users | 
 *WinthropClient::DefaultApi* | [**get_administrator**](docs/DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} | 
@@ -339,11 +338,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
- - [WinthropClient::AccountBillingAddress](docs/AccountBillingAddress.md)
- - [WinthropClient::AccountDetail](docs/AccountDetail.md)
  - [WinthropClient::AccountInfo](docs/AccountInfo.md)
- - [WinthropClient::AccountInvoice](docs/AccountInvoice.md)
- - [WinthropClient::AccountSubscription](docs/AccountSubscription.md)
  - [WinthropClient::AccountUser](docs/AccountUser.md)
  - [WinthropClient::AccountUsersResponse](docs/AccountUsersResponse.md)
  - [WinthropClient::AdminCompensationSubdivision](docs/AdminCompensationSubdivision.md)

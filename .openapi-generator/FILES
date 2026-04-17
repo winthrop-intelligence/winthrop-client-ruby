@@ -5,11 +5,7 @@
 Gemfile
 README.md
 Rakefile
-docs/AccountBillingAddress.md
-docs/AccountDetail.md
 docs/AccountInfo.md
-docs/AccountInvoice.md
-docs/AccountSubscription.md
 docs/AccountUser.md
 docs/AccountUsersResponse.md
 docs/AdminCompensationSubdivision.md
@@ -361,11 +357,7 @@ lib/winthrop-client-ruby/api_client.rb
 lib/winthrop-client-ruby/api_error.rb
 lib/winthrop-client-ruby/api_model_base.rb
 lib/winthrop-client-ruby/configuration.rb
-lib/winthrop-client-ruby/models/account_billing_address.rb
-lib/winthrop-client-ruby/models/account_detail.rb
 lib/winthrop-client-ruby/models/account_info.rb
-lib/winthrop-client-ruby/models/account_invoice.rb
-lib/winthrop-client-ruby/models/account_subscription.rb
 lib/winthrop-client-ruby/models/account_user.rb
 lib/winthrop-client-ruby/models/account_users_response.rb
 lib/winthrop-client-ruby/models/admin_compensation_subdivision.rb
