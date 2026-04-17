@@ -320,6 +320,7 @@ docs/UpdateSchoolGroupRequestSchoolGroup.md
 docs/UpdateTeamScheduleFavoriteRequest.md
 docs/UpdateUserRequest.md
 docs/UpdateUserRequestUser.md
+docs/UploadDetail.md
 docs/UploadItem.md
 docs/UploadsResponse.md
 docs/UpsertTeamScheduleNoteRequest.md
@@ -660,6 +661,7 @@ lib/winthrop-client-ruby/models/update_school_group_request_school_group.rb
 lib/winthrop-client-ruby/models/update_team_schedule_favorite_request.rb
 lib/winthrop-client-ruby/models/update_user_request.rb
 lib/winthrop-client-ruby/models/update_user_request_user.rb
+lib/winthrop-client-ruby/models/upload_detail.rb
 lib/winthrop-client-ruby/models/upload_item.rb
 lib/winthrop-client-ruby/models/uploads_response.rb
 lib/winthrop-client-ruby/models/upsert_team_schedule_note_request.rb
@@ -681,8 +683,6 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
-spec/models/create_upload201_response_spec.rb
-spec/models/upload_item_spec.rb
-spec/models/uploads_response_spec.rb
+spec/models/upload_detail_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

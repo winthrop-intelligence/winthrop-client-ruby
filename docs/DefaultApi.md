@@ -181,6 +181,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_team_schedule_note**](DefaultApi.md#get_team_schedule_note) | **GET** /api/v1/team_schedule_notes/{fil_team_id} |  |
 | [**get_team_schedule_searches**](DefaultApi.md#get_team_schedule_searches) | **GET** /api/v1/team_schedule_searches |  |
 | [**get_time_zones**](DefaultApi.md#get_time_zones) | **GET** /api/v1/time_zones |  |
+| [**get_upload**](DefaultApi.md#get_upload) | **GET** /api/v1/uploads/{uploadId} |  |
+| [**get_upload_file**](DefaultApi.md#get_upload_file) | **GET** /api/v1/uploads/{uploadId}/file |  |
 | [**get_uploads**](DefaultApi.md#get_uploads) | **GET** /api/v1/uploads |  |
 | [**get_user**](DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} |  |
 | [**get_user_activity_summaries**](DefaultApi.md#get_user_activity_summaries) | **GET** /api/v1/user_activity_summaries |  |
@@ -13676,6 +13678,153 @@ This endpoint does not need any parameter.
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+
+## get_upload
+
+> <UploadDetail> get_upload(upload_id)
+
+
+
+Retrieve a single upload with its metadata
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+upload_id = 56 # Integer | ID of the upload
+
+begin
+  
+  result = api_instance.get_upload(upload_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_upload: #{e}"
+end
+```
+
+#### Using the get_upload_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UploadDetail>, Integer, Hash)> get_upload_with_http_info(upload_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_upload_with_http_info(upload_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UploadDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_upload_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **upload_id** | **Integer** | ID of the upload |  |
+
+### Return type
+
+[**UploadDetail**](UploadDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_upload_file
+
+> get_upload_file(upload_id)
+
+
+
+Redirect to the uploaded file for viewing/downloading
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+upload_id = 56 # Integer | ID of the upload
+
+begin
+  
+  api_instance.get_upload_file(upload_id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_upload_file: #{e}"
+end
+```
+
+#### Using the get_upload_file_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> get_upload_file_with_http_info(upload_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_upload_file_with_http_info(upload_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_upload_file_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **upload_id** | **Integer** | ID of the upload |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 
 ## get_uploads

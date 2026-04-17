@@ -11223,6 +11223,126 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Retrieve a single upload with its metadata
+    # @param upload_id [Integer] ID of the upload
+    # @param [Hash] opts the optional parameters
+    # @return [UploadDetail]
+    def get_upload(upload_id, opts = {})
+      data, _status_code, _headers = get_upload_with_http_info(upload_id, opts)
+      data
+    end
+
+    # Retrieve a single upload with its metadata
+    # @param upload_id [Integer] ID of the upload
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(UploadDetail, Integer, Hash)>] UploadDetail data, response status code and response headers
+    def get_upload_with_http_info(upload_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_upload ...'
+      end
+      # verify the required parameter 'upload_id' is set
+      if @api_client.config.client_side_validation && upload_id.nil?
+        fail ArgumentError, "Missing the required parameter 'upload_id' when calling DefaultApi.get_upload"
+      end
+      # resource path
+      local_var_path = '/api/v1/uploads/{uploadId}'.sub('{' + 'uploadId' + '}', CGI.escape(upload_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'UploadDetail'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_upload",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_upload\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Redirect to the uploaded file for viewing/downloading
+    # @param upload_id [Integer] ID of the upload
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def get_upload_file(upload_id, opts = {})
+      get_upload_file_with_http_info(upload_id, opts)
+      nil
+    end
+
+    # Redirect to the uploaded file for viewing/downloading
+    # @param upload_id [Integer] ID of the upload
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def get_upload_file_with_http_info(upload_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_upload_file ...'
+      end
+      # verify the required parameter 'upload_id' is set
+      if @api_client.config.client_side_validation && upload_id.nil?
+        fail ArgumentError, "Missing the required parameter 'upload_id' when calling DefaultApi.get_upload_file"
+      end
+      # resource path
+      local_var_path = '/api/v1/uploads/{uploadId}/file'.sub('{' + 'uploadId' + '}', CGI.escape(upload_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_upload_file",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_upload_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve paginated list of uploaded contracts for the current account
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)

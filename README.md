@@ -268,6 +268,8 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_team_schedule_note**](docs/DefaultApi.md#get_team_schedule_note) | **GET** /api/v1/team_schedule_notes/{fil_team_id} | 
 *WinthropClient::DefaultApi* | [**get_team_schedule_searches**](docs/DefaultApi.md#get_team_schedule_searches) | **GET** /api/v1/team_schedule_searches | 
 *WinthropClient::DefaultApi* | [**get_time_zones**](docs/DefaultApi.md#get_time_zones) | **GET** /api/v1/time_zones | 
+*WinthropClient::DefaultApi* | [**get_upload**](docs/DefaultApi.md#get_upload) | **GET** /api/v1/uploads/{uploadId} | 
+*WinthropClient::DefaultApi* | [**get_upload_file**](docs/DefaultApi.md#get_upload_file) | **GET** /api/v1/uploads/{uploadId}/file | 
 *WinthropClient::DefaultApi* | [**get_uploads**](docs/DefaultApi.md#get_uploads) | **GET** /api/v1/uploads | 
 *WinthropClient::DefaultApi* | [**get_user**](docs/DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} | 
 *WinthropClient::DefaultApi* | [**get_user_activity_summaries**](docs/DefaultApi.md#get_user_activity_summaries) | **GET** /api/v1/user_activity_summaries | 
@@ -641,6 +643,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::UpdateTeamScheduleFavoriteRequest](docs/UpdateTeamScheduleFavoriteRequest.md)
  - [WinthropClient::UpdateUserRequest](docs/UpdateUserRequest.md)
  - [WinthropClient::UpdateUserRequestUser](docs/UpdateUserRequestUser.md)
+ - [WinthropClient::UploadDetail](docs/UploadDetail.md)
  - [WinthropClient::UploadItem](docs/UploadItem.md)
  - [WinthropClient::UploadsResponse](docs/UploadsResponse.md)
  - [WinthropClient::UpsertTeamScheduleNoteRequest](docs/UpsertTeamScheduleNoteRequest.md)
