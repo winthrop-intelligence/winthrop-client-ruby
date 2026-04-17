@@ -5,7 +5,11 @@
 Gemfile
 README.md
 Rakefile
+docs/AccountBillingAddress.md
+docs/AccountDetail.md
 docs/AccountInfo.md
+docs/AccountInvoice.md
+docs/AccountSubscription.md
 docs/AccountUser.md
 docs/AccountUsersResponse.md
 docs/AdminCompensationSubdivision.md
@@ -353,7 +357,11 @@ lib/winthrop-client-ruby/api_client.rb
 lib/winthrop-client-ruby/api_error.rb
 lib/winthrop-client-ruby/api_model_base.rb
 lib/winthrop-client-ruby/configuration.rb
+lib/winthrop-client-ruby/models/account_billing_address.rb
+lib/winthrop-client-ruby/models/account_detail.rb
 lib/winthrop-client-ruby/models/account_info.rb
+lib/winthrop-client-ruby/models/account_invoice.rb
+lib/winthrop-client-ruby/models/account_subscription.rb
 lib/winthrop-client-ruby/models/account_user.rb
 lib/winthrop-client-ruby/models/account_users_response.rb
 lib/winthrop-client-ruby/models/admin_compensation_subdivision.rb
@@ -685,13 +693,5 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
-spec/models/contact_search_coach_options_coaches_inner_spec.rb
-spec/models/contact_search_coach_options_spec.rb
-spec/models/contact_search_coach_options_sports_inner_spec.rb
-spec/models/contact_search_collection_spec.rb
-spec/models/contact_search_entry_spec.rb
-spec/models/create_contact_search_request_contact_spec.rb
-spec/models/create_contact_search_request_spec.rb
-spec/models/delete_contact_search200_response_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

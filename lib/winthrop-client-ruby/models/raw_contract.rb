@@ -60,6 +60,9 @@ module WinthropClient
     # Whether the current user can see the admin view for this contract
     attr_accessor :can_see_admin_view
 
+    # Whether the current user can download this contract's PDF
+    attr_accessor :can_download
+
     # Proxied URL for inline PDF viewing (no direct file access)
     attr_accessor :pdf_preview_url
 
@@ -99,6 +102,7 @@ module WinthropClient
         :'unstract_responses_details' => :'unstract_responses_details',
         :'layout_preserved_pdf_text' => :'layout_preserved_pdf_text',
         :'can_see_admin_view' => :'can_see_admin_view',
+        :'can_download' => :'can_download',
         :'pdf_preview_url' => :'pdf_preview_url',
         :'pdf_download_url' => :'pdf_download_url',
         :'has_file' => :'has_file',
@@ -143,6 +147,7 @@ module WinthropClient
         :'unstract_responses_details' => :'String',
         :'layout_preserved_pdf_text' => :'String',
         :'can_see_admin_view' => :'Boolean',
+        :'can_download' => :'Boolean',
         :'pdf_preview_url' => :'String',
         :'pdf_download_url' => :'String',
         :'has_file' => :'Boolean',
@@ -267,6 +272,10 @@ module WinthropClient
         self.can_see_admin_view = attributes[:'can_see_admin_view']
       end
 
+      if attributes.key?(:'can_download')
+        self.can_download = attributes[:'can_download']
+      end
+
       if attributes.key?(:'pdf_preview_url')
         self.pdf_preview_url = attributes[:'pdf_preview_url']
       end
@@ -334,6 +343,7 @@ module WinthropClient
           unstract_responses_details == o.unstract_responses_details &&
           layout_preserved_pdf_text == o.layout_preserved_pdf_text &&
           can_see_admin_view == o.can_see_admin_view &&
+          can_download == o.can_download &&
           pdf_preview_url == o.pdf_preview_url &&
           pdf_download_url == o.pdf_download_url &&
           has_file == o.has_file &&
@@ -351,7 +361,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, asset_file_size, asset_content_type, asset_file_name, created_at, updated_at, contract_type_id, uploaded, deal_id, school_id, school_revenue_year, audited_financial_year, text, use_flexpaper, game_contracts_count, drive_id, migrated_successfully, migration_failure_reason, unstract_pdf_text, unstract_responses_details, layout_preserved_pdf_text, can_see_admin_view, pdf_preview_url, pdf_download_url, has_file, back_to, contract_label, deal_info].hash
+      [id, asset_file_size, asset_content_type, asset_file_name, created_at, updated_at, contract_type_id, uploaded, deal_id, school_id, school_revenue_year, audited_financial_year, text, use_flexpaper, game_contracts_count, drive_id, migrated_successfully, migration_failure_reason, unstract_pdf_text, unstract_responses_details, layout_preserved_pdf_text, can_see_admin_view, can_download, pdf_preview_url, pdf_download_url, has_file, back_to, contract_label, deal_info].hash
     end
 
     # Builds the object from hash

@@ -18,7 +18,11 @@ require 'winthrop-client-ruby/version'
 require 'winthrop-client-ruby/configuration'
 
 # Models
+require 'winthrop-client-ruby/models/account_billing_address'
+require 'winthrop-client-ruby/models/account_detail'
 require 'winthrop-client-ruby/models/account_info'
+require 'winthrop-client-ruby/models/account_invoice'
+require 'winthrop-client-ruby/models/account_subscription'
 require 'winthrop-client-ruby/models/account_user'
 require 'winthrop-client-ruby/models/account_users_response'
 require 'winthrop-client-ruby/models/admin_compensation_subdivision'
