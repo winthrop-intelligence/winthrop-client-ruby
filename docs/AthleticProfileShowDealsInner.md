@@ -8,7 +8,7 @@
 | **deal_type** | **String** |  | [optional] |
 | **term** | **String** |  | [optional] |
 | **vendor_names** | **String** |  | [optional] |
-| **vendors** | [**Array&lt;ContactSearchCoachOptionsCoachesInner&gt;**](ContactSearchCoachOptionsCoachesInner.md) |  | [optional] |
+| **vendors** | [**Array&lt;AthleticProfileShowDealsInnerVendorsInner&gt;**](AthleticProfileShowDealsInnerVendorsInner.md) |  | [optional] |
 | **summary** | **String** |  | [optional] |
 | **has_contract** | **Boolean** |  | [optional] |
 | **raw_contract_id** | **Integer** |  | [optional] |

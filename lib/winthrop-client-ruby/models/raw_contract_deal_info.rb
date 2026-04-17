@@ -86,7 +86,7 @@ module WinthropClient
         :'school_name' => :'String',
         :'school_id' => :'Integer',
         :'vendor_name' => :'String',
-        :'vendors' => :'Array<ContactSearchCoachOptionsCoachesInner>',
+        :'vendors' => :'Array<AthleticProfileShowDealsInnerVendorsInner>',
         :'deal_type_name' => :'String',
         :'start_year' => :'Integer',
         :'end_year' => :'Integer',

@@ -5,11 +5,7 @@
 Gemfile
 README.md
 Rakefile
-docs/AccountBillingAddress.md
-docs/AccountDetail.md
 docs/AccountInfo.md
-docs/AccountInvoice.md
-docs/AccountSubscription.md
 docs/AccountUser.md
 docs/AccountUsersResponse.md
 docs/AdminCompensationSubdivision.md
@@ -21,6 +17,7 @@ docs/AsstCoachSchool.md
 docs/AthleticProfileShow.md
 docs/AthleticProfileShowContactsInner.md
 docs/AthleticProfileShowDealsInner.md
+docs/AthleticProfileShowDealsInnerVendorsInner.md
 docs/AthleticProfileShowFinancialInfo.md
 docs/AthleticProfileShowFinancials.md
 docs/AthleticProfileShowFinancialsRevenuesInner.md
@@ -93,11 +90,6 @@ docs/Conferenceship.md
 docs/ConferenceshipCollection.md
 docs/Contact.md
 docs/ContactCollection.md
-docs/ContactSearchCoachOptions.md
-docs/ContactSearchCoachOptionsCoachesInner.md
-docs/ContactSearchCoachOptionsSportsInner.md
-docs/ContactSearchCollection.md
-docs/ContactSearchEntry.md
 docs/Contract.md
 docs/ContractCollection.md
 docs/CoworkerEntry.md
@@ -105,8 +97,6 @@ docs/CoworkerTenure.md
 docs/CreateAccountUser422Response.md
 docs/CreateAccountUserRequest.md
 docs/CreateAccountUserRequestUser.md
-docs/CreateContactSearchRequest.md
-docs/CreateContactSearchRequestContact.md
 docs/CreateFavorite201Response.md
 docs/CreateFavoriteRequest.md
 docs/CreateFavoritesCategoryRequest.md
@@ -120,6 +110,7 @@ docs/CreateSchoolGroupRequest.md
 docs/CreateSchoolGroupRequestSchoolGroup.md
 docs/CreateTeamScheduleFavorite201Response.md
 docs/CreateTeamScheduleFavoriteRequest.md
+docs/CreateUpload201Response.md
 docs/Deal.md
 docs/DealCollection.md
 docs/DealDetail.md
@@ -130,8 +121,8 @@ docs/DealStatus.md
 docs/DealStatusCollection.md
 docs/DefaultApi.md
 docs/DeleteAccountUser200Response.md
-docs/DeleteContactSearch200Response.md
 docs/DeleteFavorite200Response.md
+docs/DeleteGamePostSearch200Response.md
 docs/DepartmentSearchResult.md
 docs/DepartmentSearchResultCollection.md
 docs/DepartmentSearchResultDepartment.md
@@ -287,6 +278,7 @@ docs/TeamScheduleDetailGame.md
 docs/TeamScheduleDetailHeadCoach.md
 docs/TeamScheduleDetailSchool.md
 docs/TeamScheduleDetailSeason.md
+docs/TeamScheduleDetailSport.md
 docs/TeamScheduleFavoriteDetail.md
 docs/TeamScheduleFavoriteEntry.md
 docs/TeamScheduleGamePosts.md
@@ -328,6 +320,8 @@ docs/UpdateSchoolGroupRequestSchoolGroup.md
 docs/UpdateTeamScheduleFavoriteRequest.md
 docs/UpdateUserRequest.md
 docs/UpdateUserRequestUser.md
+docs/UploadItem.md
+docs/UploadsResponse.md
 docs/UpsertTeamScheduleNoteRequest.md
 docs/User.md
 docs/UserActivitySummary.md
@@ -357,11 +351,7 @@ lib/winthrop-client-ruby/api_client.rb
 lib/winthrop-client-ruby/api_error.rb
 lib/winthrop-client-ruby/api_model_base.rb
 lib/winthrop-client-ruby/configuration.rb
-lib/winthrop-client-ruby/models/account_billing_address.rb
-lib/winthrop-client-ruby/models/account_detail.rb
 lib/winthrop-client-ruby/models/account_info.rb
-lib/winthrop-client-ruby/models/account_invoice.rb
-lib/winthrop-client-ruby/models/account_subscription.rb
 lib/winthrop-client-ruby/models/account_user.rb
 lib/winthrop-client-ruby/models/account_users_response.rb
 lib/winthrop-client-ruby/models/admin_compensation_subdivision.rb
@@ -373,6 +363,7 @@ lib/winthrop-client-ruby/models/asst_coach_school.rb
 lib/winthrop-client-ruby/models/athletic_profile_show.rb
 lib/winthrop-client-ruby/models/athletic_profile_show_contacts_inner.rb
 lib/winthrop-client-ruby/models/athletic_profile_show_deals_inner.rb
+lib/winthrop-client-ruby/models/athletic_profile_show_deals_inner_vendors_inner.rb
 lib/winthrop-client-ruby/models/athletic_profile_show_financial_info.rb
 lib/winthrop-client-ruby/models/athletic_profile_show_financials.rb
 lib/winthrop-client-ruby/models/athletic_profile_show_financials_revenues_inner.rb
@@ -445,11 +436,6 @@ lib/winthrop-client-ruby/models/conferenceship.rb
 lib/winthrop-client-ruby/models/conferenceship_collection.rb
 lib/winthrop-client-ruby/models/contact.rb
 lib/winthrop-client-ruby/models/contact_collection.rb
-lib/winthrop-client-ruby/models/contact_search_coach_options.rb
-lib/winthrop-client-ruby/models/contact_search_coach_options_coaches_inner.rb
-lib/winthrop-client-ruby/models/contact_search_coach_options_sports_inner.rb
-lib/winthrop-client-ruby/models/contact_search_collection.rb
-lib/winthrop-client-ruby/models/contact_search_entry.rb
 lib/winthrop-client-ruby/models/contract.rb
 lib/winthrop-client-ruby/models/contract_collection.rb
 lib/winthrop-client-ruby/models/coworker_entry.rb
@@ -457,8 +443,6 @@ lib/winthrop-client-ruby/models/coworker_tenure.rb
 lib/winthrop-client-ruby/models/create_account_user422_response.rb
 lib/winthrop-client-ruby/models/create_account_user_request.rb
 lib/winthrop-client-ruby/models/create_account_user_request_user.rb
-lib/winthrop-client-ruby/models/create_contact_search_request.rb
-lib/winthrop-client-ruby/models/create_contact_search_request_contact.rb
 lib/winthrop-client-ruby/models/create_favorite201_response.rb
 lib/winthrop-client-ruby/models/create_favorite_request.rb
 lib/winthrop-client-ruby/models/create_favorites_category_request.rb
@@ -472,6 +456,7 @@ lib/winthrop-client-ruby/models/create_school_group_request.rb
 lib/winthrop-client-ruby/models/create_school_group_request_school_group.rb
 lib/winthrop-client-ruby/models/create_team_schedule_favorite201_response.rb
 lib/winthrop-client-ruby/models/create_team_schedule_favorite_request.rb
+lib/winthrop-client-ruby/models/create_upload201_response.rb
 lib/winthrop-client-ruby/models/deal.rb
 lib/winthrop-client-ruby/models/deal_collection.rb
 lib/winthrop-client-ruby/models/deal_detail.rb
@@ -481,8 +466,8 @@ lib/winthrop-client-ruby/models/deal_search_result_collection.rb
 lib/winthrop-client-ruby/models/deal_status.rb
 lib/winthrop-client-ruby/models/deal_status_collection.rb
 lib/winthrop-client-ruby/models/delete_account_user200_response.rb
-lib/winthrop-client-ruby/models/delete_contact_search200_response.rb
 lib/winthrop-client-ruby/models/delete_favorite200_response.rb
+lib/winthrop-client-ruby/models/delete_game_post_search200_response.rb
 lib/winthrop-client-ruby/models/department_search_result.rb
 lib/winthrop-client-ruby/models/department_search_result_collection.rb
 lib/winthrop-client-ruby/models/department_search_result_department.rb
@@ -633,6 +618,7 @@ lib/winthrop-client-ruby/models/team_schedule_detail_game.rb
 lib/winthrop-client-ruby/models/team_schedule_detail_head_coach.rb
 lib/winthrop-client-ruby/models/team_schedule_detail_school.rb
 lib/winthrop-client-ruby/models/team_schedule_detail_season.rb
+lib/winthrop-client-ruby/models/team_schedule_detail_sport.rb
 lib/winthrop-client-ruby/models/team_schedule_favorite_detail.rb
 lib/winthrop-client-ruby/models/team_schedule_favorite_entry.rb
 lib/winthrop-client-ruby/models/team_schedule_game_posts.rb
@@ -674,6 +660,8 @@ lib/winthrop-client-ruby/models/update_school_group_request_school_group.rb
 lib/winthrop-client-ruby/models/update_team_schedule_favorite_request.rb
 lib/winthrop-client-ruby/models/update_user_request.rb
 lib/winthrop-client-ruby/models/update_user_request_user.rb
+lib/winthrop-client-ruby/models/upload_item.rb
+lib/winthrop-client-ruby/models/uploads_response.rb
 lib/winthrop-client-ruby/models/upsert_team_schedule_note_request.rb
 lib/winthrop-client-ruby/models/user.rb
 lib/winthrop-client-ruby/models/user_activity_summary.rb
@@ -693,5 +681,8 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
+spec/models/create_upload201_response_spec.rb
+spec/models/upload_item_spec.rb
+spec/models/uploads_response_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

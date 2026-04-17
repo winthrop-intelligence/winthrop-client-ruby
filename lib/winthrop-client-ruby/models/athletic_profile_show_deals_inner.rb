@@ -62,7 +62,7 @@ module WinthropClient
         :'deal_type' => :'String',
         :'term' => :'String',
         :'vendor_names' => :'String',
-        :'vendors' => :'Array<ContactSearchCoachOptionsCoachesInner>',
+        :'vendors' => :'Array<AthleticProfileShowDealsInnerVendorsInner>',
         :'summary' => :'String',
         :'has_contract' => :'Boolean',
         :'raw_contract_id' => :'Integer'

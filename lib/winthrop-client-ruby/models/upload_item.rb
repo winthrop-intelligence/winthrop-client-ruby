@@ -14,43 +14,22 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class TeamScheduleDetail < ApiModelBase
-    attr_accessor :school
+  class UploadItem < ApiModelBase
+    attr_accessor :id
 
-    attr_accessor :sport
+    attr_accessor :filename
 
-    attr_accessor :season_year
+    attr_accessor :uploaded_by
 
-    attr_accessor :performance_year
-
-    attr_accessor :season
-
-    attr_accessor :head_coach
-
-    attr_accessor :non_conf_games_count
-
-    attr_accessor :fil_team_id
-
-    attr_accessor :available_years
-
-    attr_accessor :contacts
-
-    attr_accessor :games
+    attr_accessor :created_at
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'school' => :'school',
-        :'sport' => :'sport',
-        :'season_year' => :'season_year',
-        :'performance_year' => :'performance_year',
-        :'season' => :'season',
-        :'head_coach' => :'head_coach',
-        :'non_conf_games_count' => :'non_conf_games_count',
-        :'fil_team_id' => :'fil_team_id',
-        :'available_years' => :'available_years',
-        :'contacts' => :'contacts',
-        :'games' => :'games'
+        :'id' => :'id',
+        :'filename' => :'filename',
+        :'uploaded_by' => :'uploaded_by',
+        :'created_at' => :'created_at'
       }
     end
 
@@ -67,24 +46,17 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'school' => :'TeamScheduleDetailSchool',
-        :'sport' => :'TeamScheduleDetailSport',
-        :'season_year' => :'Integer',
-        :'performance_year' => :'Integer',
-        :'season' => :'TeamScheduleDetailSeason',
-        :'head_coach' => :'TeamScheduleDetailHeadCoach',
-        :'non_conf_games_count' => :'Integer',
-        :'fil_team_id' => :'String',
-        :'available_years' => :'Array<Integer>',
-        :'contacts' => :'Array<TeamScheduleContact>',
-        :'games' => :'Array<TeamScheduleDetailGame>'
+        :'id' => :'Integer',
+        :'filename' => :'String',
+        :'uploaded_by' => :'String',
+        :'created_at' => :'Time'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'fil_team_id',
+        :'filename',
       ])
     end
 
@@ -92,66 +64,32 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::TeamScheduleDetail` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::UploadItem` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::TeamScheduleDetail`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::UploadItem`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'school')
-        self.school = attributes[:'school']
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'sport')
-        self.sport = attributes[:'sport']
+      if attributes.key?(:'filename')
+        self.filename = attributes[:'filename']
       end
 
-      if attributes.key?(:'season_year')
-        self.season_year = attributes[:'season_year']
+      if attributes.key?(:'uploaded_by')
+        self.uploaded_by = attributes[:'uploaded_by']
       end
 
-      if attributes.key?(:'performance_year')
-        self.performance_year = attributes[:'performance_year']
-      end
-
-      if attributes.key?(:'season')
-        self.season = attributes[:'season']
-      end
-
-      if attributes.key?(:'head_coach')
-        self.head_coach = attributes[:'head_coach']
-      end
-
-      if attributes.key?(:'non_conf_games_count')
-        self.non_conf_games_count = attributes[:'non_conf_games_count']
-      end
-
-      if attributes.key?(:'fil_team_id')
-        self.fil_team_id = attributes[:'fil_team_id']
-      end
-
-      if attributes.key?(:'available_years')
-        if (value = attributes[:'available_years']).is_a?(Array)
-          self.available_years = value
-        end
-      end
-
-      if attributes.key?(:'contacts')
-        if (value = attributes[:'contacts']).is_a?(Array)
-          self.contacts = value
-        end
-      end
-
-      if attributes.key?(:'games')
-        if (value = attributes[:'games']).is_a?(Array)
-          self.games = value
-        end
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
       end
     end
 
@@ -175,17 +113,10 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          school == o.school &&
-          sport == o.sport &&
-          season_year == o.season_year &&
-          performance_year == o.performance_year &&
-          season == o.season &&
-          head_coach == o.head_coach &&
-          non_conf_games_count == o.non_conf_games_count &&
-          fil_team_id == o.fil_team_id &&
-          available_years == o.available_years &&
-          contacts == o.contacts &&
-          games == o.games
+          id == o.id &&
+          filename == o.filename &&
+          uploaded_by == o.uploaded_by &&
+          created_at == o.created_at
     end
 
     # @see the `==` method
@@ -197,7 +128,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [school, sport, season_year, performance_year, season, head_coach, non_conf_games_count, fil_team_id, available_years, contacts, games].hash
+      [id, filename, uploaded_by, created_at].hash
     end
 
     # Builds the object from hash

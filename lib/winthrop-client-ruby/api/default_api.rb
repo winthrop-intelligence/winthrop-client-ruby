@@ -745,68 +745,6 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Create a new scheduling contact
-    # @param [Hash] opts the optional parameters
-    # @option opts [CreateContactSearchRequest] :create_contact_search_request 
-    # @return [ContactSearchEntry]
-    def create_contact_search(opts = {})
-      data, _status_code, _headers = create_contact_search_with_http_info(opts)
-      data
-    end
-
-    # Create a new scheduling contact
-    # @param [Hash] opts the optional parameters
-    # @option opts [CreateContactSearchRequest] :create_contact_search_request 
-    # @return [Array<(ContactSearchEntry, Integer, Hash)>] ContactSearchEntry data, response status code and response headers
-    def create_contact_search_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.create_contact_search ...'
-      end
-      # resource path
-      local_var_path = '/api/v1/contact_searches'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-        header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'create_contact_search_request'])
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'ContactSearchEntry'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.create_contact_search",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#create_contact_search\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Add a favorite for the current user
     # @param create_favorite_request [CreateFavoriteRequest] 
     # @param [Hash] opts the optional parameters
@@ -1659,6 +1597,69 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Upload one or more PDF contract files
+    # @param [Hash] opts the optional parameters
+    # @option opts [Array<File>] :files PDF files to upload
+    # @return [CreateUpload201Response]
+    def create_upload(opts = {})
+      data, _status_code, _headers = create_upload_with_http_info(opts)
+      data
+    end
+
+    # Upload one or more PDF contract files
+    # @param [Hash] opts the optional parameters
+    # @option opts [Array<File>] :files PDF files to upload
+    # @return [Array<(CreateUpload201Response, Integer, Hash)>] CreateUpload201Response data, response status code and response headers
+    def create_upload_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_upload ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/uploads'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['multipart/form-data'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+      form_params['files'] = @api_client.build_collection_param(opts[:'files'], :csv) if !opts[:'files'].nil?
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CreateUpload201Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_upload",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_upload\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete a user from the current account
     # @param account_user_id [Integer] ID of the user to delete
     # @param [Hash] opts the optional parameters
@@ -1893,67 +1894,6 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#delete_conferenceship\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Delete a scheduling contact
-    # @param id [Integer] ID of contact to delete
-    # @param [Hash] opts the optional parameters
-    # @return [DeleteContactSearch200Response]
-    def delete_contact_search(id, opts = {})
-      data, _status_code, _headers = delete_contact_search_with_http_info(id, opts)
-      data
-    end
-
-    # Delete a scheduling contact
-    # @param id [Integer] ID of contact to delete
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(DeleteContactSearch200Response, Integer, Hash)>] DeleteContactSearch200Response data, response status code and response headers
-    def delete_contact_search_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.delete_contact_search ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.delete_contact_search"
-      end
-      # resource path
-      local_var_path = '/api/v1/contact_searches/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'DeleteContactSearch200Response'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.delete_contact_search",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#delete_contact_search\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -2260,7 +2200,7 @@ module WinthropClient
     # Delete a game post
     # @param game_post_search_id [Integer] 
     # @param [Hash] opts the optional parameters
-    # @return [DeleteContactSearch200Response]
+    # @return [DeleteGamePostSearch200Response]
     def delete_game_post_search(game_post_search_id, opts = {})
       data, _status_code, _headers = delete_game_post_search_with_http_info(game_post_search_id, opts)
       data
@@ -2269,7 +2209,7 @@ module WinthropClient
     # Delete a game post
     # @param game_post_search_id [Integer] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(DeleteContactSearch200Response, Integer, Hash)>] DeleteContactSearch200Response data, response status code and response headers
+    # @return [Array<(DeleteGamePostSearch200Response, Integer, Hash)>] DeleteGamePostSearch200Response data, response status code and response headers
     def delete_game_post_search_with_http_info(game_post_search_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.delete_game_post_search ...'
@@ -2296,7 +2236,7 @@ module WinthropClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'DeleteContactSearch200Response'
+      return_type = opts[:debug_return_type] || 'DeleteGamePostSearch200Response'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
@@ -2798,29 +2738,29 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Retrieve an account with subscriptions, invoices, and billing addresses
-    # @param id [Integer] The account ID
+    # Delete an uploaded contract
+    # @param upload_id [Integer] ID of the upload to delete
     # @param [Hash] opts the optional parameters
-    # @return [AccountDetail]
-    def get_account(id, opts = {})
-      data, _status_code, _headers = get_account_with_http_info(id, opts)
+    # @return [DeleteAccountUser200Response]
+    def delete_upload(upload_id, opts = {})
+      data, _status_code, _headers = delete_upload_with_http_info(upload_id, opts)
       data
     end
 
-    # Retrieve an account with subscriptions, invoices, and billing addresses
-    # @param id [Integer] The account ID
+    # Delete an uploaded contract
+    # @param upload_id [Integer] ID of the upload to delete
     # @param [Hash] opts the optional parameters
-    # @return [Array<(AccountDetail, Integer, Hash)>] AccountDetail data, response status code and response headers
-    def get_account_with_http_info(id, opts = {})
+    # @return [Array<(DeleteAccountUser200Response, Integer, Hash)>] DeleteAccountUser200Response data, response status code and response headers
+    def delete_upload_with_http_info(upload_id, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.get_account ...'
+        @api_client.config.logger.debug 'Calling API: DefaultApi.delete_upload ...'
       end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.get_account"
+      # verify the required parameter 'upload_id' is set
+      if @api_client.config.client_side_validation && upload_id.nil?
+        fail ArgumentError, "Missing the required parameter 'upload_id' when calling DefaultApi.delete_upload"
       end
       # resource path
-      local_var_path = '/api/v1/accounts/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/api/v1/uploads/{uploadId}'.sub('{' + 'uploadId' + '}', CGI.escape(upload_id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2837,13 +2777,13 @@ module WinthropClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'AccountDetail'
+      return_type = opts[:debug_return_type] || 'DeleteAccountUser200Response'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
 
       new_options = opts.merge(
-        :operation => :"DefaultApi.get_account",
+        :operation => :"DefaultApi.delete_upload",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -2852,9 +2792,9 @@ module WinthropClient
         :return_type => return_type
       )
 
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#get_account\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: DefaultApi#delete_upload\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -5194,125 +5134,6 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_contact\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Retrieve coach options for the scheduling contacts form
-    # @param [Hash] opts the optional parameters
-    # @return [ContactSearchCoachOptions]
-    def get_contact_search_coach_options(opts = {})
-      data, _status_code, _headers = get_contact_search_coach_options_with_http_info(opts)
-      data
-    end
-
-    # Retrieve coach options for the scheduling contacts form
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(ContactSearchCoachOptions, Integer, Hash)>] ContactSearchCoachOptions data, response status code and response headers
-    def get_contact_search_coach_options_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.get_contact_search_coach_options ...'
-      end
-      # resource path
-      local_var_path = '/api/v1/contact_searches/coach_options'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'ContactSearchCoachOptions'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.get_contact_search_coach_options",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#get_contact_search_coach_options\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Retrieve scheduling contacts for the current account's school
-    # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
-    # @option opts [Object] :q Ransack query
-    # @return [ContactSearchCollection]
-    def get_contact_searches(opts = {})
-      data, _status_code, _headers = get_contact_searches_with_http_info(opts)
-      data
-    end
-
-    # Retrieve scheduling contacts for the current account&#39;s school
-    # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
-    # @option opts [Object] :q Ransack query
-    # @return [Array<(ContactSearchCollection, Integer, Hash)>] ContactSearchCollection data, response status code and response headers
-    def get_contact_searches_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.get_contact_searches ...'
-      end
-      # resource path
-      local_var_path = '/api/v1/contact_searches'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
-      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
-      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'ContactSearchCollection'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.get_contact_searches",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#get_contact_searches\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -11398,6 +11219,64 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_time_zones\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve paginated list of uploaded contracts for the current account
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @return [UploadsResponse]
+    def get_uploads(opts = {})
+      data, _status_code, _headers = get_uploads_with_http_info(opts)
+      data
+    end
+
+    # Retrieve paginated list of uploaded contracts for the current account
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @return [Array<(UploadsResponse, Integer, Hash)>] UploadsResponse data, response status code and response headers
+    def get_uploads_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_uploads ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/uploads'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'UploadsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_uploads",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_uploads\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
