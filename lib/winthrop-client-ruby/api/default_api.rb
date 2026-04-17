@@ -427,72 +427,6 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Create a new user for the current account. The email prefix is combined with the account email domain. The new user receives an invitation email.
-    # @param create_account_user_request [CreateAccountUserRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [AccountUser]
-    def create_account_user(create_account_user_request, opts = {})
-      data, _status_code, _headers = create_account_user_with_http_info(create_account_user_request, opts)
-      data
-    end
-
-    # Create a new user for the current account. The email prefix is combined with the account email domain. The new user receives an invitation email.
-    # @param create_account_user_request [CreateAccountUserRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(AccountUser, Integer, Hash)>] AccountUser data, response status code and response headers
-    def create_account_user_with_http_info(create_account_user_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.create_account_user ...'
-      end
-      # verify the required parameter 'create_account_user_request' is set
-      if @api_client.config.client_side_validation && create_account_user_request.nil?
-        fail ArgumentError, "Missing the required parameter 'create_account_user_request' when calling DefaultApi.create_account_user"
-      end
-      # resource path
-      local_var_path = '/api/v1/account_users'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-        header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_account_user_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'AccountUser'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.create_account_user",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#create_account_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Create a new Cashflow
     # @param [Hash] opts the optional parameters
     # @option opts [Cashflow] :cashflow 
@@ -1597,67 +1531,6 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Delete a user from the current account
-    # @param account_user_id [Integer] ID of the user to delete
-    # @param [Hash] opts the optional parameters
-    # @return [DeleteAccountUser200Response]
-    def delete_account_user(account_user_id, opts = {})
-      data, _status_code, _headers = delete_account_user_with_http_info(account_user_id, opts)
-      data
-    end
-
-    # Delete a user from the current account
-    # @param account_user_id [Integer] ID of the user to delete
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(DeleteAccountUser200Response, Integer, Hash)>] DeleteAccountUser200Response data, response status code and response headers
-    def delete_account_user_with_http_info(account_user_id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.delete_account_user ...'
-      end
-      # verify the required parameter 'account_user_id' is set
-      if @api_client.config.client_side_validation && account_user_id.nil?
-        fail ArgumentError, "Missing the required parameter 'account_user_id' when calling DefaultApi.delete_account_user"
-      end
-      # resource path
-      local_var_path = '/api/v1/account_users/{accountUserId}'.sub('{' + 'accountUserId' + '}', CGI.escape(account_user_id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'DeleteAccountUser200Response'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.delete_account_user",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#delete_account_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Delete a single Cashflow
     # @param cashflow_id [Integer] ID of the Cashflow
     # @param [Hash] opts the optional parameters
@@ -2259,7 +2132,7 @@ module WinthropClient
     # Delete a note
     # @param id [Integer] 
     # @param [Hash] opts the optional parameters
-    # @return [DeleteAccountUser200Response]
+    # @return [DeleteNote200Response]
     def delete_note(id, opts = {})
       data, _status_code, _headers = delete_note_with_http_info(id, opts)
       data
@@ -2268,7 +2141,7 @@ module WinthropClient
     # Delete a note
     # @param id [Integer] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(DeleteAccountUser200Response, Integer, Hash)>] DeleteAccountUser200Response data, response status code and response headers
+    # @return [Array<(DeleteNote200Response, Integer, Hash)>] DeleteNote200Response data, response status code and response headers
     def delete_note_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.delete_note ...'
@@ -2295,7 +2168,7 @@ module WinthropClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'DeleteAccountUser200Response'
+      return_type = opts[:debug_return_type] || 'DeleteNote200Response'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
@@ -2438,7 +2311,7 @@ module WinthropClient
     # Delete a custom school group
     # @param school_group_id [Integer] ID of the School Group
     # @param [Hash] opts the optional parameters
-    # @return [DeleteAccountUser200Response]
+    # @return [DeleteNote200Response]
     def delete_school_group(school_group_id, opts = {})
       data, _status_code, _headers = delete_school_group_with_http_info(school_group_id, opts)
       data
@@ -2447,7 +2320,7 @@ module WinthropClient
     # Delete a custom school group
     # @param school_group_id [Integer] ID of the School Group
     # @param [Hash] opts the optional parameters
-    # @return [Array<(DeleteAccountUser200Response, Integer, Hash)>] DeleteAccountUser200Response data, response status code and response headers
+    # @return [Array<(DeleteNote200Response, Integer, Hash)>] DeleteNote200Response data, response status code and response headers
     def delete_school_group_with_http_info(school_group_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.delete_school_group ...'
@@ -2474,7 +2347,7 @@ module WinthropClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'DeleteAccountUser200Response'
+      return_type = opts[:debug_return_type] || 'DeleteNote200Response'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
@@ -2558,7 +2431,7 @@ module WinthropClient
     # Remove a FilTeam favorite
     # @param id [Integer] The favorite record ID
     # @param [Hash] opts the optional parameters
-    # @return [DeleteAccountUser200Response]
+    # @return [DeleteNote200Response]
     def delete_team_schedule_favorite(id, opts = {})
       data, _status_code, _headers = delete_team_schedule_favorite_with_http_info(id, opts)
       data
@@ -2567,7 +2440,7 @@ module WinthropClient
     # Remove a FilTeam favorite
     # @param id [Integer] The favorite record ID
     # @param [Hash] opts the optional parameters
-    # @return [Array<(DeleteAccountUser200Response, Integer, Hash)>] DeleteAccountUser200Response data, response status code and response headers
+    # @return [Array<(DeleteNote200Response, Integer, Hash)>] DeleteNote200Response data, response status code and response headers
     def delete_team_schedule_favorite_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.delete_team_schedule_favorite ...'
@@ -2594,7 +2467,7 @@ module WinthropClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'DeleteAccountUser200Response'
+      return_type = opts[:debug_return_type] || 'DeleteNote200Response'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
@@ -2675,85 +2548,29 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Validate a confirmation token and return the user's name and email for the account activation form
-    # @param confirmation_token [String] The confirmation token from the invitation email
+    # Retrieve an account with subscriptions, invoices, and billing addresses
+    # @param id [Integer] 
     # @param [Hash] opts the optional parameters
-    # @return [GetAccountUserActivation200Response]
-    def get_account_user_activation(confirmation_token, opts = {})
-      data, _status_code, _headers = get_account_user_activation_with_http_info(confirmation_token, opts)
+    # @return [AccountDetail]
+    def get_account(id, opts = {})
+      data, _status_code, _headers = get_account_with_http_info(id, opts)
       data
     end
 
-    # Validate a confirmation token and return the user&#39;s name and email for the account activation form
-    # @param confirmation_token [String] The confirmation token from the invitation email
+    # Retrieve an account with subscriptions, invoices, and billing addresses
+    # @param id [Integer] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(GetAccountUserActivation200Response, Integer, Hash)>] GetAccountUserActivation200Response data, response status code and response headers
-    def get_account_user_activation_with_http_info(confirmation_token, opts = {})
+    # @return [Array<(AccountDetail, Integer, Hash)>] AccountDetail data, response status code and response headers
+    def get_account_with_http_info(id, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.get_account_user_activation ...'
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_account ...'
       end
-      # verify the required parameter 'confirmation_token' is set
-      if @api_client.config.client_side_validation && confirmation_token.nil?
-        fail ArgumentError, "Missing the required parameter 'confirmation_token' when calling DefaultApi.get_account_user_activation"
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.get_account"
       end
       # resource path
-      local_var_path = '/api/v1/account_user_activation'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-      query_params[:'confirmation_token'] = confirmation_token
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'GetAccountUserActivation200Response'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || []
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.get_account_user_activation",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#get_account_user_activation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Retrieve all users for the current user's account with their computed access permissions
-    # @param [Hash] opts the optional parameters
-    # @return [AccountUsersResponse]
-    def get_account_users(opts = {})
-      data, _status_code, _headers = get_account_users_with_http_info(opts)
-      data
-    end
-
-    # Retrieve all users for the current user&#39;s account with their computed access permissions
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(AccountUsersResponse, Integer, Hash)>] AccountUsersResponse data, response status code and response headers
-    def get_account_users_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.get_account_users ...'
-      end
-      # resource path
-      local_var_path = '/api/v1/account_users'
+      local_var_path = '/api/v1/accounts/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2770,13 +2587,13 @@ module WinthropClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'AccountUsersResponse'
+      return_type = opts[:debug_return_type] || 'AccountDetail'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
 
       new_options = opts.merge(
-        :operation => :"DefaultApi.get_account_users",
+        :operation => :"DefaultApi.get_account",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -2787,7 +2604,7 @@ module WinthropClient
 
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#get_account_users\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: DefaultApi#get_account\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -5703,67 +5520,6 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Retrieve a single account user with their current roles, sports, and form metadata for editing
-    # @param account_user_id [Integer] ID of the user to edit
-    # @param [Hash] opts the optional parameters
-    # @return [EditAccountUserResponse]
-    def get_edit_account_user(account_user_id, opts = {})
-      data, _status_code, _headers = get_edit_account_user_with_http_info(account_user_id, opts)
-      data
-    end
-
-    # Retrieve a single account user with their current roles, sports, and form metadata for editing
-    # @param account_user_id [Integer] ID of the user to edit
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(EditAccountUserResponse, Integer, Hash)>] EditAccountUserResponse data, response status code and response headers
-    def get_edit_account_user_with_http_info(account_user_id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.get_edit_account_user ...'
-      end
-      # verify the required parameter 'account_user_id' is set
-      if @api_client.config.client_side_validation && account_user_id.nil?
-        fail ArgumentError, "Missing the required parameter 'account_user_id' when calling DefaultApi.get_edit_account_user"
-      end
-      # resource path
-      local_var_path = '/api/v1/account_users/{accountUserId}/edit'.sub('{' + 'accountUserId' + '}', CGI.escape(account_user_id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'EditAccountUserResponse'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.get_edit_account_user",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#get_edit_account_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Retrieve the current user's favorites for a given type. Pass detailed=1 for category info.
     # @param favoritable_type [String] The model type (e.g. \&quot;Coach\&quot;)
     # @param [Hash] opts the optional parameters
@@ -7841,61 +7597,6 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_ncaa_financial_report_statuses\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Retrieve form metadata for creating a new account user including available role options based on subscription, schedulable sports, and email domain
-    # @param [Hash] opts the optional parameters
-    # @return [NewAccountUserResponse]
-    def get_new_account_user(opts = {})
-      data, _status_code, _headers = get_new_account_user_with_http_info(opts)
-      data
-    end
-
-    # Retrieve form metadata for creating a new account user including available role options based on subscription, schedulable sports, and email domain
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(NewAccountUserResponse, Integer, Hash)>] NewAccountUserResponse data, response status code and response headers
-    def get_new_account_user_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.get_new_account_user ...'
-      end
-      # resource path
-      local_var_path = '/api/v1/account_users/new'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'NewAccountUserResponse'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.get_new_account_user",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#get_new_account_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -11973,144 +11674,6 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Update an account user's roles and sport access
-    # @param account_user_id [Integer] ID of the user to update
-    # @param update_account_user_request [UpdateAccountUserRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [DeleteAccountUser200Response]
-    def update_account_user(account_user_id, update_account_user_request, opts = {})
-      data, _status_code, _headers = update_account_user_with_http_info(account_user_id, update_account_user_request, opts)
-      data
-    end
-
-    # Update an account user&#39;s roles and sport access
-    # @param account_user_id [Integer] ID of the user to update
-    # @param update_account_user_request [UpdateAccountUserRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(DeleteAccountUser200Response, Integer, Hash)>] DeleteAccountUser200Response data, response status code and response headers
-    def update_account_user_with_http_info(account_user_id, update_account_user_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.update_account_user ...'
-      end
-      # verify the required parameter 'account_user_id' is set
-      if @api_client.config.client_side_validation && account_user_id.nil?
-        fail ArgumentError, "Missing the required parameter 'account_user_id' when calling DefaultApi.update_account_user"
-      end
-      # verify the required parameter 'update_account_user_request' is set
-      if @api_client.config.client_side_validation && update_account_user_request.nil?
-        fail ArgumentError, "Missing the required parameter 'update_account_user_request' when calling DefaultApi.update_account_user"
-      end
-      # resource path
-      local_var_path = '/api/v1/account_users/{accountUserId}'.sub('{' + 'accountUserId' + '}', CGI.escape(account_user_id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-        header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_account_user_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'DeleteAccountUser200Response'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.update_account_user",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#update_account_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Set password and activate the account for an invited user
-    # @param update_account_user_activation_request [UpdateAccountUserActivationRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [UpdateAccountUserActivation200Response]
-    def update_account_user_activation(update_account_user_activation_request, opts = {})
-      data, _status_code, _headers = update_account_user_activation_with_http_info(update_account_user_activation_request, opts)
-      data
-    end
-
-    # Set password and activate the account for an invited user
-    # @param update_account_user_activation_request [UpdateAccountUserActivationRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(UpdateAccountUserActivation200Response, Integer, Hash)>] UpdateAccountUserActivation200Response data, response status code and response headers
-    def update_account_user_activation_with_http_info(update_account_user_activation_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.update_account_user_activation ...'
-      end
-      # verify the required parameter 'update_account_user_activation_request' is set
-      if @api_client.config.client_side_validation && update_account_user_activation_request.nil?
-        fail ArgumentError, "Missing the required parameter 'update_account_user_activation_request' when calling DefaultApi.update_account_user_activation"
-      end
-      # resource path
-      local_var_path = '/api/v1/account_user_activation'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-        header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_account_user_activation_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'UpdateAccountUserActivation200Response'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || []
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.update_account_user_activation",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#update_account_user_activation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Update a single Cashflow
     # @param cashflow_id [Integer] ID of the Cashflow
     # @param cashflow [Cashflow] Cashflow attributes to update
@@ -12777,7 +12340,7 @@ module WinthropClient
     # @option opts [String] :game_contract_verified 
     # @option opts [String] :game_contract_signed_on 
     # @option opts [File] :raw_contract_file 
-    # @return [DeleteAccountUser200Response]
+    # @return [DeleteNote200Response]
     def update_game_contract(game_contract_id, opts = {})
       data, _status_code, _headers = update_game_contract_with_http_info(game_contract_id, opts)
       data
@@ -12801,7 +12364,7 @@ module WinthropClient
     # @option opts [String] :game_contract_verified 
     # @option opts [String] :game_contract_signed_on 
     # @option opts [File] :raw_contract_file 
-    # @return [Array<(DeleteAccountUser200Response, Integer, Hash)>] DeleteAccountUser200Response data, response status code and response headers
+    # @return [Array<(DeleteNote200Response, Integer, Hash)>] DeleteNote200Response data, response status code and response headers
     def update_game_contract_with_http_info(game_contract_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.update_game_contract ...'
@@ -12848,7 +12411,7 @@ module WinthropClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'DeleteAccountUser200Response'
+      return_type = opts[:debug_return_type] || 'DeleteNote200Response'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']

@@ -16,6 +16,7 @@
 | **reminders** | **Boolean** |  | [optional] |
 | **subscription_id** | **Integer** |  | [optional] |
 | **created_by_name** | **String** |  | [optional] |
+| **can_read** | **Boolean** | Whether the current user can view this invoice&#39;s PDF | [optional] |
 
 ## Example
 
@@ -34,7 +35,8 @@ instance = WinthropClient::AccountInvoice.new(
   status: null,
   reminders: null,
   subscription_id: null,
-  created_by_name: null
+  created_by_name: null,
+  can_read: null
 )
 ```
 

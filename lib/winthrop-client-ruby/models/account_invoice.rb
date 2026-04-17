@@ -39,6 +39,9 @@ module WinthropClient
 
     attr_accessor :created_by_name
 
+    # Whether the current user can view this invoice's PDF
+    attr_accessor :can_read
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -75,7 +78,8 @@ module WinthropClient
         :'status' => :'status',
         :'reminders' => :'reminders',
         :'subscription_id' => :'subscription_id',
-        :'created_by_name' => :'created_by_name'
+        :'created_by_name' => :'created_by_name',
+        :'can_read' => :'can_read'
       }
     end
 
@@ -103,7 +107,8 @@ module WinthropClient
         :'status' => :'String',
         :'reminders' => :'Boolean',
         :'subscription_id' => :'Integer',
-        :'created_by_name' => :'String'
+        :'created_by_name' => :'String',
+        :'can_read' => :'Boolean'
       }
     end
 
@@ -114,7 +119,7 @@ module WinthropClient
         :'purchase_order_number',
         :'due_date_notes',
         :'payment_received',
-        :'created_by_name'
+        :'created_by_name',
       ])
     end
 
@@ -181,6 +186,10 @@ module WinthropClient
       if attributes.key?(:'created_by_name')
         self.created_by_name = attributes[:'created_by_name']
       end
+
+      if attributes.key?(:'can_read')
+        self.can_read = attributes[:'can_read']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -226,7 +235,8 @@ module WinthropClient
           status == o.status &&
           reminders == o.reminders &&
           subscription_id == o.subscription_id &&
-          created_by_name == o.created_by_name
+          created_by_name == o.created_by_name &&
+          can_read == o.can_read
     end
 
     # @see the `==` method
@@ -238,7 +248,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, invoice_date, description, amount_cents, purchase_order_number, due_date, due_date_notes, payment_received, status, reminders, subscription_id, created_by_name].hash
+      [id, invoice_date, description, amount_cents, purchase_order_number, due_date, due_date_notes, payment_received, status, reminders, subscription_id, created_by_name, can_read].hash
     end
 
     # Builds the object from hash
