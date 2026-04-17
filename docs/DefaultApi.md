@@ -14,6 +14,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**create_coach**](DefaultApi.md#create_coach) | **POST** /api/v1/coaches |  |
 | [**create_conference**](DefaultApi.md#create_conference) | **POST** /api/v1/conferences |  |
 | [**create_conferenceship**](DefaultApi.md#create_conferenceship) | **POST** /api/v1/conferenceships |  |
+| [**create_contact_search**](DefaultApi.md#create_contact_search) | **POST** /api/v1/contact_searches |  |
 | [**create_favorite**](DefaultApi.md#create_favorite) | **POST** /api/v1/favorites |  |
 | [**create_favorites_category**](DefaultApi.md#create_favorites_category) | **POST** /api/v1/favorites_categories |  |
 | [**create_foia_label**](DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels |  |
@@ -31,6 +32,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_cashflow**](DefaultApi.md#delete_cashflow) | **DELETE** /api/v1/cashflows/{cashflowId} |  |
 | [**delete_conference**](DefaultApi.md#delete_conference) | **DELETE** /api/v1/conferences/{conferenceId} |  |
 | [**delete_conferenceship**](DefaultApi.md#delete_conferenceship) | **DELETE** /api/v1/conferenceships/{conferenceshipId} |  |
+| [**delete_contact_search**](DefaultApi.md#delete_contact_search) | **DELETE** /api/v1/contact_searches/{id} |  |
 | [**delete_favorite**](DefaultApi.md#delete_favorite) | **DELETE** /api/v1/favorites/{id} |  |
 | [**delete_favorites_category**](DefaultApi.md#delete_favorites_category) | **DELETE** /api/v1/favorites_categories/{id} |  |
 | [**delete_foia_label**](DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} |  |
@@ -45,7 +47,6 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_season**](DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} |  |
 | [**delete_team_schedule_favorite**](DefaultApi.md#delete_team_schedule_favorite) | **DELETE** /api/v1/team_schedule_favorites/{id} |  |
 | [**delete_team_schedule_note**](DefaultApi.md#delete_team_schedule_note) | **DELETE** /api/v1/team_schedule_notes/{fil_team_id} |  |
-| [**get_account**](DefaultApi.md#get_account) | **GET** /api/v1/accounts/{id} |  |
 | [**get_account_user_activation**](DefaultApi.md#get_account_user_activation) | **GET** /api/v1/account_user_activation |  |
 | [**get_account_users**](DefaultApi.md#get_account_users) | **GET** /api/v1/account_users |  |
 | [**get_administrator**](DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} |  |
@@ -83,6 +84,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_conferenceship**](DefaultApi.md#get_conferenceship) | **GET** /api/v1/conferenceships/{conferenceshipId} |  |
 | [**get_conferenceships**](DefaultApi.md#get_conferenceships) | **GET** /api/v1/conferenceships |  |
 | [**get_contact**](DefaultApi.md#get_contact) | **GET** /api/v1/contacts/{contactId} |  |
+| [**get_contact_search_coach_options**](DefaultApi.md#get_contact_search_coach_options) | **GET** /api/v1/contact_searches/coach_options |  |
+| [**get_contact_searches**](DefaultApi.md#get_contact_searches) | **GET** /api/v1/contact_searches |  |
 | [**get_contacts**](DefaultApi.md#get_contacts) | **GET** /api/v1/contacts |  |
 | [**get_contract**](DefaultApi.md#get_contract) | **GET** /api/v1/contracts/{contractId} |  |
 | [**get_contracts**](DefaultApi.md#get_contracts) | **GET** /api/v1/contracts |  |
@@ -986,6 +989,82 @@ end
 ### Return type
 
 [**Conferenceship**](Conferenceship.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_contact_search
+
+> <ContactSearchEntry> create_contact_search(opts)
+
+
+
+Create a new scheduling contact
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  create_contact_search_request: WinthropClient::CreateContactSearchRequest.new # CreateContactSearchRequest | 
+}
+
+begin
+  
+  result = api_instance.create_contact_search(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_contact_search: #{e}"
+end
+```
+
+#### Using the create_contact_search_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ContactSearchEntry>, Integer, Hash)> create_contact_search_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_contact_search_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ContactSearchEntry>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_contact_search_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_contact_search_request** | [**CreateContactSearchRequest**](CreateContactSearchRequest.md) |  | [optional] |
+
+### Return type
+
+[**ContactSearchEntry**](ContactSearchEntry.md)
 
 ### Authorization
 
@@ -2246,6 +2325,80 @@ nil (empty response body)
 - **Accept**: Not defined
 
 
+## delete_contact_search
+
+> <DeleteContactSearch200Response> delete_contact_search(id)
+
+
+
+Delete a scheduling contact
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | ID of contact to delete
+
+begin
+  
+  result = api_instance.delete_contact_search(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_contact_search: #{e}"
+end
+```
+
+#### Using the delete_contact_search_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DeleteContactSearch200Response>, Integer, Hash)> delete_contact_search_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_contact_search_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DeleteContactSearch200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_contact_search_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | ID of contact to delete |  |
+
+### Return type
+
+[**DeleteContactSearch200Response**](DeleteContactSearch200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## delete_favorite
 
 > <DeleteFavorite200Response> delete_favorite(id)
@@ -2615,7 +2768,7 @@ nil (empty response body)
 
 ## delete_game_post_search
 
-> <DeleteGamePostSearch200Response> delete_game_post_search(game_post_search_id)
+> <DeleteContactSearch200Response> delete_game_post_search(game_post_search_id)
 
 
 
@@ -2653,7 +2806,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<DeleteGamePostSearch200Response>, Integer, Hash)> delete_game_post_search_with_http_info(game_post_search_id)
+> <Array(<DeleteContactSearch200Response>, Integer, Hash)> delete_game_post_search_with_http_info(game_post_search_id)
 
 ```ruby
 begin
@@ -2661,7 +2814,7 @@ begin
   data, status_code, headers = api_instance.delete_game_post_search_with_http_info(game_post_search_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <DeleteGamePostSearch200Response>
+  p data # => <DeleteContactSearch200Response>
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->delete_game_post_search_with_http_info: #{e}"
 end
@@ -2675,7 +2828,7 @@ end
 
 ### Return type
 
-[**DeleteGamePostSearch200Response**](DeleteGamePostSearch200Response.md)
+[**DeleteContactSearch200Response**](DeleteContactSearch200Response.md)
 
 ### Authorization
 
@@ -3272,80 +3425,6 @@ nil (empty response body)
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
-
-
-## get_account
-
-> <AccountDetail> get_account(id)
-
-
-
-Retrieve an account with subscriptions, invoices, and billing addresses
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-id = 56 # Integer | The account ID
-
-begin
-  
-  result = api_instance.get_account(id)
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_account: #{e}"
-end
-```
-
-#### Using the get_account_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<AccountDetail>, Integer, Hash)> get_account_with_http_info(id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.get_account_with_http_info(id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <AccountDetail>
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_account_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | The account ID |  |
-
-### Return type
-
-[**AccountDetail**](AccountDetail.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
 
 
 ## get_account_user_activation
@@ -6163,6 +6242,157 @@ end
 ### Return type
 
 [**Contact**](Contact.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_contact_search_coach_options
+
+> <ContactSearchCoachOptions> get_contact_search_coach_options
+
+
+
+Retrieve coach options for the scheduling contacts form
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_contact_search_coach_options
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_contact_search_coach_options: #{e}"
+end
+```
+
+#### Using the get_contact_search_coach_options_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ContactSearchCoachOptions>, Integer, Hash)> get_contact_search_coach_options_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_contact_search_coach_options_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ContactSearchCoachOptions>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_contact_search_coach_options_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ContactSearchCoachOptions**](ContactSearchCoachOptions.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_contact_searches
+
+> <ContactSearchCollection> get_contact_searches(opts)
+
+
+
+Retrieve scheduling contacts for the current account's school
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  
+  result = api_instance.get_contact_searches(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_contact_searches: #{e}"
+end
+```
+
+#### Using the get_contact_searches_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ContactSearchCollection>, Integer, Hash)> get_contact_searches_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_contact_searches_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ContactSearchCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_contact_searches_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**ContactSearchCollection**](ContactSearchCollection.md)
 
 ### Authorization
 

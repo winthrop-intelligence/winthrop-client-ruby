@@ -14,34 +14,34 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class AthleticProfileShowDealsInner < ApiModelBase
+  class ContactSearchEntry < ApiModelBase
     attr_accessor :id
 
-    attr_accessor :deal_type
+    attr_accessor :school_id
 
-    attr_accessor :term
+    attr_accessor :coach_id
 
-    attr_accessor :vendor_names
+    attr_accessor :sport_id
 
-    attr_accessor :vendors
+    attr_accessor :coach_name
 
-    attr_accessor :summary
+    attr_accessor :sport_name_display
 
-    attr_accessor :has_contract
+    attr_accessor :created_at
 
-    attr_accessor :raw_contract_id
+    attr_accessor :updated_at
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'deal_type' => :'deal_type',
-        :'term' => :'term',
-        :'vendor_names' => :'vendor_names',
-        :'vendors' => :'vendors',
-        :'summary' => :'summary',
-        :'has_contract' => :'has_contract',
-        :'raw_contract_id' => :'raw_contract_id'
+        :'school_id' => :'school_id',
+        :'coach_id' => :'coach_id',
+        :'sport_id' => :'sport_id',
+        :'coach_name' => :'coach_name',
+        :'sport_name_display' => :'sport_name_display',
+        :'created_at' => :'created_at',
+        :'updated_at' => :'updated_at'
       }
     end
 
@@ -59,21 +59,21 @@ module WinthropClient
     def self.openapi_types
       {
         :'id' => :'Integer',
-        :'deal_type' => :'String',
-        :'term' => :'String',
-        :'vendor_names' => :'String',
-        :'vendors' => :'Array<ContactSearchCoachOptionsCoachesInner>',
-        :'summary' => :'String',
-        :'has_contract' => :'Boolean',
-        :'raw_contract_id' => :'Integer'
+        :'school_id' => :'Integer',
+        :'coach_id' => :'Integer',
+        :'sport_id' => :'Integer',
+        :'coach_name' => :'String',
+        :'sport_name_display' => :'String',
+        :'created_at' => :'Time',
+        :'updated_at' => :'Time'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'summary',
-        :'raw_contract_id'
+        :'coach_name',
+        :'sport_name_display',
       ])
     end
 
@@ -81,14 +81,14 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::AthleticProfileShowDealsInner` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::ContactSearchEntry` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::AthleticProfileShowDealsInner`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::ContactSearchEntry`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -97,34 +97,32 @@ module WinthropClient
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'deal_type')
-        self.deal_type = attributes[:'deal_type']
+      if attributes.key?(:'school_id')
+        self.school_id = attributes[:'school_id']
       end
 
-      if attributes.key?(:'term')
-        self.term = attributes[:'term']
+      if attributes.key?(:'coach_id')
+        self.coach_id = attributes[:'coach_id']
       end
 
-      if attributes.key?(:'vendor_names')
-        self.vendor_names = attributes[:'vendor_names']
+      if attributes.key?(:'sport_id')
+        self.sport_id = attributes[:'sport_id']
       end
 
-      if attributes.key?(:'vendors')
-        if (value = attributes[:'vendors']).is_a?(Array)
-          self.vendors = value
-        end
+      if attributes.key?(:'coach_name')
+        self.coach_name = attributes[:'coach_name']
       end
 
-      if attributes.key?(:'summary')
-        self.summary = attributes[:'summary']
+      if attributes.key?(:'sport_name_display')
+        self.sport_name_display = attributes[:'sport_name_display']
       end
 
-      if attributes.key?(:'has_contract')
-        self.has_contract = attributes[:'has_contract']
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
       end
 
-      if attributes.key?(:'raw_contract_id')
-        self.raw_contract_id = attributes[:'raw_contract_id']
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
       end
     end
 
@@ -149,13 +147,13 @@ module WinthropClient
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          deal_type == o.deal_type &&
-          term == o.term &&
-          vendor_names == o.vendor_names &&
-          vendors == o.vendors &&
-          summary == o.summary &&
-          has_contract == o.has_contract &&
-          raw_contract_id == o.raw_contract_id
+          school_id == o.school_id &&
+          coach_id == o.coach_id &&
+          sport_id == o.sport_id &&
+          coach_name == o.coach_name &&
+          sport_name_display == o.sport_name_display &&
+          created_at == o.created_at &&
+          updated_at == o.updated_at
     end
 
     # @see the `==` method
@@ -167,7 +165,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, deal_type, term, vendor_names, vendors, summary, has_contract, raw_contract_id].hash
+      [id, school_id, coach_id, sport_id, coach_name, sport_name_display, created_at, updated_at].hash
     end
 
     # Builds the object from hash

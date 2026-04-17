@@ -14,34 +14,16 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class AthleticProfileShowDealsInner < ApiModelBase
+  class ContactSearchCoachOptionsCoachesInner < ApiModelBase
     attr_accessor :id
 
-    attr_accessor :deal_type
-
-    attr_accessor :term
-
-    attr_accessor :vendor_names
-
-    attr_accessor :vendors
-
-    attr_accessor :summary
-
-    attr_accessor :has_contract
-
-    attr_accessor :raw_contract_id
+    attr_accessor :name
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'deal_type' => :'deal_type',
-        :'term' => :'term',
-        :'vendor_names' => :'vendor_names',
-        :'vendors' => :'vendors',
-        :'summary' => :'summary',
-        :'has_contract' => :'has_contract',
-        :'raw_contract_id' => :'raw_contract_id'
+        :'name' => :'name'
       }
     end
 
@@ -59,21 +41,13 @@ module WinthropClient
     def self.openapi_types
       {
         :'id' => :'Integer',
-        :'deal_type' => :'String',
-        :'term' => :'String',
-        :'vendor_names' => :'String',
-        :'vendors' => :'Array<ContactSearchCoachOptionsCoachesInner>',
-        :'summary' => :'String',
-        :'has_contract' => :'Boolean',
-        :'raw_contract_id' => :'Integer'
+        :'name' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'summary',
-        :'raw_contract_id'
       ])
     end
 
@@ -81,14 +55,14 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::AthleticProfileShowDealsInner` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::ContactSearchCoachOptionsCoachesInner` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::AthleticProfileShowDealsInner`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::ContactSearchCoachOptionsCoachesInner`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -97,34 +71,8 @@ module WinthropClient
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'deal_type')
-        self.deal_type = attributes[:'deal_type']
-      end
-
-      if attributes.key?(:'term')
-        self.term = attributes[:'term']
-      end
-
-      if attributes.key?(:'vendor_names')
-        self.vendor_names = attributes[:'vendor_names']
-      end
-
-      if attributes.key?(:'vendors')
-        if (value = attributes[:'vendors']).is_a?(Array)
-          self.vendors = value
-        end
-      end
-
-      if attributes.key?(:'summary')
-        self.summary = attributes[:'summary']
-      end
-
-      if attributes.key?(:'has_contract')
-        self.has_contract = attributes[:'has_contract']
-      end
-
-      if attributes.key?(:'raw_contract_id')
-        self.raw_contract_id = attributes[:'raw_contract_id']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
     end
 
@@ -149,13 +97,7 @@ module WinthropClient
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          deal_type == o.deal_type &&
-          term == o.term &&
-          vendor_names == o.vendor_names &&
-          vendors == o.vendors &&
-          summary == o.summary &&
-          has_contract == o.has_contract &&
-          raw_contract_id == o.raw_contract_id
+          name == o.name
     end
 
     # @see the `==` method
@@ -167,7 +109,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, deal_type, term, vendor_names, vendors, summary, has_contract, raw_contract_id].hash
+      [id, name].hash
     end
 
     # Builds the object from hash

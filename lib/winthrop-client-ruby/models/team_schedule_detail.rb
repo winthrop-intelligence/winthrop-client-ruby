@@ -68,7 +68,7 @@ module WinthropClient
     def self.openapi_types
       {
         :'school' => :'TeamScheduleDetailSchool',
-        :'sport' => :'TeamScheduleDetailSport',
+        :'sport' => :'ContactSearchCoachOptionsSportsInner',
         :'season_year' => :'Integer',
         :'performance_year' => :'Integer',
         :'season' => :'TeamScheduleDetailSeason',
