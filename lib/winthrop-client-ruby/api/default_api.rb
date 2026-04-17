@@ -1632,7 +1632,7 @@ module WinthropClient
 
       # form parameters
       form_params = opts[:form_params] || {}
-      form_params['files'] = @api_client.build_collection_param(opts[:'files'], :csv) if !opts[:'files'].nil?
+      form_params['files[]'] = @api_client.build_collection_param(opts[:'files'], :csv) if !opts[:'files'].nil?
 
       # http body (model)
       post_body = opts[:debug_body]
