@@ -21,6 +21,7 @@ module WinthropClient
 
     attr_accessor :uploaded_by
 
+    # Pre-formatted date string in the user's timezone
     attr_accessor :created_at
 
     attr_accessor :has_file
@@ -52,7 +53,7 @@ module WinthropClient
         :'id' => :'Integer',
         :'filename' => :'String',
         :'uploaded_by' => :'String',
-        :'created_at' => :'Time',
+        :'created_at' => :'String',
         :'has_file' => :'Boolean'
       }
     end

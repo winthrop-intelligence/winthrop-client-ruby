@@ -7,7 +7,7 @@
 | **id** | **Integer** |  | [optional] |
 | **filename** | **String** |  | [optional] |
 | **uploaded_by** | **String** |  | [optional] |
-| **created_at** | **Time** |  | [optional] |
+| **created_at** | **String** | Pre-formatted date string in the user&#39;s timezone | [optional] |
 | **has_file** | **Boolean** |  | [optional] |
 
 ## Example

@@ -21,6 +21,7 @@ module WinthropClient
 
     attr_accessor :uploaded_by
 
+    # Pre-formatted date string in the user's timezone
     attr_accessor :created_at
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -49,7 +50,7 @@ module WinthropClient
         :'id' => :'Integer',
         :'filename' => :'String',
         :'uploaded_by' => :'String',
-        :'created_at' => :'Time'
+        :'created_at' => :'String'
       }
     end
 
