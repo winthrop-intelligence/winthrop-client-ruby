@@ -15,6 +15,8 @@ require 'time'
 
 module WinthropClient
   class AccountUsersResponse < ApiModelBase
+    attr_accessor :meta
+
     attr_accessor :account
 
     attr_accessor :users
@@ -22,6 +24,7 @@ module WinthropClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'meta' => :'meta',
         :'account' => :'account',
         :'users' => :'users'
       }
@@ -40,6 +43,7 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'meta' => :'Meta',
         :'account' => :'AccountInfo',
         :'users' => :'Array<AccountUser>'
       }
@@ -66,6 +70,10 @@ module WinthropClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'meta')
+        self.meta = attributes[:'meta']
+      end
 
       if attributes.key?(:'account')
         self.account = attributes[:'account']
@@ -98,6 +106,7 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          meta == o.meta &&
           account == o.account &&
           users == o.users
     end
@@ -111,7 +120,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account, users].hash
+      [meta, account, users].hash
     end
 
     # Builds the object from hash

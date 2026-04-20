@@ -2922,16 +2922,18 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Retrieve all users for the current user's account with their computed access permissions
+    # Retrieve paginated list of users for the current user's account with their computed access permissions
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
     # @return [AccountUsersResponse]
     def get_account_users(opts = {})
       data, _status_code, _headers = get_account_users_with_http_info(opts)
       data
     end
 
-    # Retrieve all users for the current user&#39;s account with their computed access permissions
+    # Retrieve paginated list of users for the current user&#39;s account with their computed access permissions
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
     # @return [Array<(AccountUsersResponse, Integer, Hash)>] AccountUsersResponse data, response status code and response headers
     def get_account_users_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -2942,6 +2944,7 @@ module WinthropClient
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

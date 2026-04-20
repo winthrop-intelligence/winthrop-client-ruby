@@ -3569,11 +3569,11 @@ No authorization required
 
 ## get_account_users
 
-> <AccountUsersResponse> get_account_users
+> <AccountUsersResponse> get_account_users(opts)
 
 
 
-Retrieve all users for the current user's account with their computed access permissions
+Retrieve paginated list of users for the current user's account with their computed access permissions
 
 ### Examples
 
@@ -3592,10 +3592,13 @@ WinthropClient.configure do |config|
 end
 
 api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56 # Integer | results page to retrieve.
+}
 
 begin
   
-  result = api_instance.get_account_users
+  result = api_instance.get_account_users(opts)
   p result
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->get_account_users: #{e}"
@@ -3606,12 +3609,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AccountUsersResponse>, Integer, Hash)> get_account_users_with_http_info
+> <Array(<AccountUsersResponse>, Integer, Hash)> get_account_users_with_http_info(opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.get_account_users_with_http_info
+  data, status_code, headers = api_instance.get_account_users_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AccountUsersResponse>
@@ -3622,7 +3625,9 @@ end
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
 
 ### Return type
 
