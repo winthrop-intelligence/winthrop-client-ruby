@@ -31,6 +31,9 @@ module WinthropClient
 
     attr_accessor :title
 
+    # The user's account ID
+    attr_accessor :account_id
+
     attr_accessor :accountable_id
 
     attr_accessor :accountable_type
@@ -76,6 +79,9 @@ module WinthropClient
 
     # Whether the user can access Custom School Groups
     attr_accessor :can_see_school_groups
+
+    # Whether the user can view account management
+    attr_accessor :can_read_account
 
     attr_accessor :is_sport_specific
 
@@ -148,6 +154,7 @@ module WinthropClient
         :'updated_at' => :'updated_at',
         :'state' => :'state',
         :'title' => :'title',
+        :'account_id' => :'account_id',
         :'accountable_id' => :'accountable_id',
         :'accountable_type' => :'accountable_type',
         :'coach_id' => :'coach_id',
@@ -165,6 +172,7 @@ module WinthropClient
         :'can_read_conference' => :'can_read_conference',
         :'can_show_game_post' => :'can_show_game_post',
         :'can_see_school_groups' => :'can_see_school_groups',
+        :'can_read_account' => :'can_read_account',
         :'is_sport_specific' => :'is_sport_specific',
         :'is_d2_only' => :'is_d2_only',
         :'is_conference_only' => :'is_conference_only',
@@ -204,6 +212,7 @@ module WinthropClient
         :'updated_at' => :'Time',
         :'state' => :'String',
         :'title' => :'String',
+        :'account_id' => :'Integer',
         :'accountable_id' => :'Integer',
         :'accountable_type' => :'String',
         :'coach_id' => :'Integer',
@@ -221,6 +230,7 @@ module WinthropClient
         :'can_read_conference' => :'Boolean',
         :'can_show_game_post' => :'Boolean',
         :'can_see_school_groups' => :'Boolean',
+        :'can_read_account' => :'Boolean',
         :'is_sport_specific' => :'Boolean',
         :'is_d2_only' => :'Boolean',
         :'is_conference_only' => :'Boolean',
@@ -242,6 +252,7 @@ module WinthropClient
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'account_id',
         :'permissible_sport_ids',
         :'subscription_type',
         :'school_city',
@@ -297,6 +308,10 @@ module WinthropClient
 
       if attributes.key?(:'title')
         self.title = attributes[:'title']
+      end
+
+      if attributes.key?(:'account_id')
+        self.account_id = attributes[:'account_id']
       end
 
       if attributes.key?(:'accountable_id')
@@ -369,6 +384,10 @@ module WinthropClient
 
       if attributes.key?(:'can_see_school_groups')
         self.can_see_school_groups = attributes[:'can_see_school_groups']
+      end
+
+      if attributes.key?(:'can_read_account')
+        self.can_read_account = attributes[:'can_read_account']
       end
 
       if attributes.key?(:'is_sport_specific')
@@ -476,6 +495,7 @@ module WinthropClient
           updated_at == o.updated_at &&
           state == o.state &&
           title == o.title &&
+          account_id == o.account_id &&
           accountable_id == o.accountable_id &&
           accountable_type == o.accountable_type &&
           coach_id == o.coach_id &&
@@ -493,6 +513,7 @@ module WinthropClient
           can_read_conference == o.can_read_conference &&
           can_show_game_post == o.can_show_game_post &&
           can_see_school_groups == o.can_see_school_groups &&
+          can_read_account == o.can_read_account &&
           is_sport_specific == o.is_sport_specific &&
           is_d2_only == o.is_d2_only &&
           is_conference_only == o.is_conference_only &&
@@ -519,7 +540,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, email, first_name, last_name, created_at, updated_at, state, title, accountable_id, accountable_type, coach_id, divisions, roles, can_see_compensation, can_show_scouting, can_show_game_contract, can_see_coaches, can_see_administrators, can_show_financials, can_show_deals, can_show_benchmark, can_show_athletic_profile, can_read_conference, can_show_game_post, can_see_school_groups, is_sport_specific, is_d2_only, is_conference_only, permissible_sport_ids, coli_index, subscription_type, schedule_sports, school_city, school_state, otp_required, time_zone, scheduling_notifications, game_post_notifications, games_digest, email_domain].hash
+      [id, email, first_name, last_name, created_at, updated_at, state, title, account_id, accountable_id, accountable_type, coach_id, divisions, roles, can_see_compensation, can_show_scouting, can_show_game_contract, can_see_coaches, can_see_administrators, can_show_financials, can_show_deals, can_show_benchmark, can_show_athletic_profile, can_read_conference, can_show_game_post, can_see_school_groups, can_read_account, is_sport_specific, is_d2_only, is_conference_only, permissible_sport_ids, coli_index, subscription_type, schedule_sports, school_city, school_state, otp_required, time_zone, scheduling_notifications, game_post_notifications, games_digest, email_domain].hash
     end
 
     # Builds the object from hash

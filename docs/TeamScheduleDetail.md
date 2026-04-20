@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **school** | [**TeamScheduleDetailSchool**](TeamScheduleDetailSchool.md) |  | [optional] |
-| **sport** | [**ContactSearchCoachOptionsSportsInner**](ContactSearchCoachOptionsSportsInner.md) |  | [optional] |
+| **sport** | [**TeamScheduleDetailSport**](TeamScheduleDetailSport.md) |  | [optional] |
 | **season_year** | **Integer** |  | [optional] |
 | **performance_year** | **Integer** |  | [optional] |
 | **season** | [**TeamScheduleDetailSeason**](TeamScheduleDetailSeason.md) |  | [optional] |

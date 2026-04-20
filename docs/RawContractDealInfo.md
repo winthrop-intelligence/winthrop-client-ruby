@@ -8,7 +8,7 @@
 | **school_name** | **String** |  | [optional] |
 | **school_id** | **Integer** |  | [optional] |
 | **vendor_name** | **String** |  | [optional] |
-| **vendors** | [**Array&lt;ContactSearchCoachOptionsCoachesInner&gt;**](ContactSearchCoachOptionsCoachesInner.md) |  | [optional] |
+| **vendors** | [**Array&lt;AthleticProfileShowDealsInnerVendorsInner&gt;**](AthleticProfileShowDealsInnerVendorsInner.md) |  | [optional] |
 | **deal_type_name** | **String** |  | [optional] |
 | **start_year** | **Integer** |  | [optional] |
 | **end_year** | **Integer** |  | [optional] |
