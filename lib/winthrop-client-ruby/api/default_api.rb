@@ -745,6 +745,68 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Create a new scheduling contact
+    # @param [Hash] opts the optional parameters
+    # @option opts [CreateContactSearchRequest] :create_contact_search_request 
+    # @return [ContactSearchEntry]
+    def create_contact_search(opts = {})
+      data, _status_code, _headers = create_contact_search_with_http_info(opts)
+      data
+    end
+
+    # Create a new scheduling contact
+    # @param [Hash] opts the optional parameters
+    # @option opts [CreateContactSearchRequest] :create_contact_search_request 
+    # @return [Array<(ContactSearchEntry, Integer, Hash)>] ContactSearchEntry data, response status code and response headers
+    def create_contact_search_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_contact_search ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/contact_searches'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'create_contact_search_request'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ContactSearchEntry'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_contact_search",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_contact_search\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Add a favorite for the current user
     # @param create_favorite_request [CreateFavoriteRequest] 
     # @param [Hash] opts the optional parameters
@@ -1898,6 +1960,67 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Delete a scheduling contact
+    # @param id [Integer] ID of contact to delete
+    # @param [Hash] opts the optional parameters
+    # @return [DeleteContactSearch200Response]
+    def delete_contact_search(id, opts = {})
+      data, _status_code, _headers = delete_contact_search_with_http_info(id, opts)
+      data
+    end
+
+    # Delete a scheduling contact
+    # @param id [Integer] ID of contact to delete
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(DeleteContactSearch200Response, Integer, Hash)>] DeleteContactSearch200Response data, response status code and response headers
+    def delete_contact_search_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.delete_contact_search ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.delete_contact_search"
+      end
+      # resource path
+      local_var_path = '/api/v1/contact_searches/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'DeleteContactSearch200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.delete_contact_search",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#delete_contact_search\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Remove a favorite by its ID
     # @param id [Integer] The favorite record ID
     # @param [Hash] opts the optional parameters
@@ -2200,7 +2323,7 @@ module WinthropClient
     # Delete a game post
     # @param game_post_search_id [Integer] 
     # @param [Hash] opts the optional parameters
-    # @return [DeleteGamePostSearch200Response]
+    # @return [DeleteContactSearch200Response]
     def delete_game_post_search(game_post_search_id, opts = {})
       data, _status_code, _headers = delete_game_post_search_with_http_info(game_post_search_id, opts)
       data
@@ -2209,7 +2332,7 @@ module WinthropClient
     # Delete a game post
     # @param game_post_search_id [Integer] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(DeleteGamePostSearch200Response, Integer, Hash)>] DeleteGamePostSearch200Response data, response status code and response headers
+    # @return [Array<(DeleteContactSearch200Response, Integer, Hash)>] DeleteContactSearch200Response data, response status code and response headers
     def delete_game_post_search_with_http_info(game_post_search_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.delete_game_post_search ...'
@@ -2236,7 +2359,7 @@ module WinthropClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'DeleteGamePostSearch200Response'
+      return_type = opts[:debug_return_type] || 'DeleteContactSearch200Response'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
@@ -5198,6 +5321,125 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_contact\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve coach options for the scheduling contacts form
+    # @param [Hash] opts the optional parameters
+    # @return [ContactSearchCoachOptions]
+    def get_contact_search_coach_options(opts = {})
+      data, _status_code, _headers = get_contact_search_coach_options_with_http_info(opts)
+      data
+    end
+
+    # Retrieve coach options for the scheduling contacts form
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ContactSearchCoachOptions, Integer, Hash)>] ContactSearchCoachOptions data, response status code and response headers
+    def get_contact_search_coach_options_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_contact_search_coach_options ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/contact_searches/coach_options'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ContactSearchCoachOptions'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_contact_search_coach_options",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_contact_search_coach_options\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve scheduling contacts for the current account's school
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Object] :q Ransack query
+    # @return [ContactSearchCollection]
+    def get_contact_searches(opts = {})
+      data, _status_code, _headers = get_contact_searches_with_http_info(opts)
+      data
+    end
+
+    # Retrieve scheduling contacts for the current account&#39;s school
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Object] :q Ransack query
+    # @return [Array<(ContactSearchCollection, Integer, Hash)>] ContactSearchCollection data, response status code and response headers
+    def get_contact_searches_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_contact_searches ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/contact_searches'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ContactSearchCollection'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_contact_searches",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_contact_searches\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
