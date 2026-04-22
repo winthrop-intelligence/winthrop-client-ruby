@@ -40,6 +40,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_favorites_category**](DefaultApi.md#delete_favorites_category) | **DELETE** /api/v1/favorites_categories/{id} |  |
 | [**delete_foia_label**](DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} |  |
 | [**delete_foia_request**](DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} |  |
+| [**delete_game**](DefaultApi.md#delete_game) | **DELETE** /api/v1/games/{gameId} |  |
 | [**delete_game_contract_raw_contract**](DefaultApi.md#delete_game_contract_raw_contract) | **DELETE** /api/v1/game_contracts/{game_contractId}/delete_raw_contract |  |
 | [**delete_game_post**](DefaultApi.md#delete_game_post) | **DELETE** /api/v1/game_posts/{gamePostId} |  |
 | [**delete_game_post_search**](DefaultApi.md#delete_game_post_search) | **DELETE** /api/v1/game_post_searches/{gamePostSearchId} |  |
@@ -219,6 +220,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_favorites_category**](DefaultApi.md#update_favorites_category) | **PATCH** /api/v1/favorites_categories/{id} |  |
 | [**update_foia_label**](DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} |  |
 | [**update_foia_request**](DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} |  |
+| [**update_game**](DefaultApi.md#update_game) | **PATCH** /api/v1/games/{gameId} |  |
 | [**update_game_contract**](DefaultApi.md#update_game_contract) | **PATCH** /api/v1/game_contracts/{game_contractId} |  |
 | [**update_game_post_search**](DefaultApi.md#update_game_post_search) | **PATCH** /api/v1/game_post_searches/{gamePostSearchId} |  |
 | [**update_job_post**](DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post |
@@ -1385,7 +1387,7 @@ end
 
 ## create_game
 
-> <Game> create_game(create_game_request)
+> <GameDetail> create_game(create_game_request)
 
 
 
@@ -1423,7 +1425,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Game>, Integer, Hash)> create_game_with_http_info(create_game_request)
+> <Array(<GameDetail>, Integer, Hash)> create_game_with_http_info(create_game_request)
 
 ```ruby
 begin
@@ -1431,7 +1433,7 @@ begin
   data, status_code, headers = api_instance.create_game_with_http_info(create_game_request)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Game>
+  p data # => <GameDetail>
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->create_game_with_http_info: #{e}"
 end
@@ -1445,7 +1447,7 @@ end
 
 ### Return type
 
-[**Game**](Game.md)
+[**GameDetail**](GameDetail.md)
 
 ### Authorization
 
@@ -2913,6 +2915,79 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **foia_request_id** | **Integer** | ID of foia request to delete |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## delete_game
+
+> delete_game(game_id)
+
+
+
+Delete a game
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+game_id = 56 # Integer | ID of game to delete
+
+begin
+  
+  api_instance.delete_game(game_id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_game: #{e}"
+end
+```
+
+#### Using the delete_game_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_game_with_http_info(game_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_game_with_http_info(game_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_game_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **game_id** | **Integer** | ID of game to delete |  |
 
 ### Return type
 
@@ -9156,7 +9231,7 @@ end
 
 ## get_game
 
-> <Game> get_game(game_id)
+> <GameDetail> get_game(game_id)
 
 
 
@@ -9194,7 +9269,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Game>, Integer, Hash)> get_game_with_http_info(game_id)
+> <Array(<GameDetail>, Integer, Hash)> get_game_with_http_info(game_id)
 
 ```ruby
 begin
@@ -9202,7 +9277,7 @@ begin
   data, status_code, headers = api_instance.get_game_with_http_info(game_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Game>
+  p data # => <GameDetail>
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->get_game_with_http_info: #{e}"
 end
@@ -9216,7 +9291,7 @@ end
 
 ### Return type
 
-[**Game**](Game.md)
+[**GameDetail**](GameDetail.md)
 
 ### Authorization
 
@@ -16571,6 +16646,82 @@ end
 ### Return type
 
 [**FoiaRequest**](FoiaRequest.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_game
+
+> <GameDetail> update_game(game_id, create_game_request)
+
+
+
+Update a game
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+game_id = 56 # Integer | ID of game to update
+create_game_request = WinthropClient::CreateGameRequest.new({game: WinthropClient::CreateGameRequestGame.new}) # CreateGameRequest | 
+
+begin
+  
+  result = api_instance.update_game(game_id, create_game_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_game: #{e}"
+end
+```
+
+#### Using the update_game_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GameDetail>, Integer, Hash)> update_game_with_http_info(game_id, create_game_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_game_with_http_info(game_id, create_game_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GameDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_game_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **game_id** | **Integer** | ID of game to update |  |
+| **create_game_request** | [**CreateGameRequest**](CreateGameRequest.md) |  |  |
+
+### Return type
+
+[**GameDetail**](GameDetail.md)
 
 ### Authorization
 

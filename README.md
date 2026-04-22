@@ -127,6 +127,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**delete_favorites_category**](docs/DefaultApi.md#delete_favorites_category) | **DELETE** /api/v1/favorites_categories/{id} | 
 *WinthropClient::DefaultApi* | [**delete_foia_label**](docs/DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} | 
 *WinthropClient::DefaultApi* | [**delete_foia_request**](docs/DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} | 
+*WinthropClient::DefaultApi* | [**delete_game**](docs/DefaultApi.md#delete_game) | **DELETE** /api/v1/games/{gameId} | 
 *WinthropClient::DefaultApi* | [**delete_game_contract_raw_contract**](docs/DefaultApi.md#delete_game_contract_raw_contract) | **DELETE** /api/v1/game_contracts/{game_contractId}/delete_raw_contract | 
 *WinthropClient::DefaultApi* | [**delete_game_post**](docs/DefaultApi.md#delete_game_post) | **DELETE** /api/v1/game_posts/{gamePostId} | 
 *WinthropClient::DefaultApi* | [**delete_game_post_search**](docs/DefaultApi.md#delete_game_post_search) | **DELETE** /api/v1/game_post_searches/{gamePostSearchId} | 
@@ -306,6 +307,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**update_favorites_category**](docs/DefaultApi.md#update_favorites_category) | **PATCH** /api/v1/favorites_categories/{id} | 
 *WinthropClient::DefaultApi* | [**update_foia_label**](docs/DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} | 
 *WinthropClient::DefaultApi* | [**update_foia_request**](docs/DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} | 
+*WinthropClient::DefaultApi* | [**update_game**](docs/DefaultApi.md#update_game) | **PATCH** /api/v1/games/{gameId} | 
 *WinthropClient::DefaultApi* | [**update_game_contract**](docs/DefaultApi.md#update_game_contract) | **PATCH** /api/v1/game_contracts/{game_contractId} | 
 *WinthropClient::DefaultApi* | [**update_game_post_search**](docs/DefaultApi.md#update_game_post_search) | **PATCH** /api/v1/game_post_searches/{gamePostSearchId} | 
 *WinthropClient::DefaultApi* | [**update_job_post**](docs/DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post
@@ -505,6 +507,8 @@ Class | Method | HTTP request | Description
  - [WinthropClient::GameContractCollection](docs/GameContractCollection.md)
  - [WinthropClient::GameContractSeriesEntry](docs/GameContractSeriesEntry.md)
  - [WinthropClient::GameContractSeriesResponse](docs/GameContractSeriesResponse.md)
+ - [WinthropClient::GameDetail](docs/GameDetail.md)
+ - [WinthropClient::GameDetailAllOfGameContract](docs/GameDetailAllOfGameContract.md)
  - [WinthropClient::GamePost](docs/GamePost.md)
  - [WinthropClient::GamePostCollection](docs/GamePostCollection.md)
  - [WinthropClient::GamePostContact](docs/GamePostContact.md)

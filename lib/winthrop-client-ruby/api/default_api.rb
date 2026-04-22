@@ -1074,7 +1074,7 @@ module WinthropClient
     # Create a game
     # @param create_game_request [CreateGameRequest] 
     # @param [Hash] opts the optional parameters
-    # @return [Game]
+    # @return [GameDetail]
     def create_game(create_game_request, opts = {})
       data, _status_code, _headers = create_game_with_http_info(create_game_request, opts)
       data
@@ -1083,7 +1083,7 @@ module WinthropClient
     # Create a game
     # @param create_game_request [CreateGameRequest] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(Game, Integer, Hash)>] Game data, response status code and response headers
+    # @return [Array<(GameDetail, Integer, Hash)>] GameDetail data, response status code and response headers
     def create_game_with_http_info(create_game_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.create_game ...'
@@ -1115,7 +1115,7 @@ module WinthropClient
       post_body = opts[:debug_body] || @api_client.object_to_http_body(create_game_request)
 
       # return_type
-      return_type = opts[:debug_return_type] || 'Game'
+      return_type = opts[:debug_return_type] || 'GameDetail'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
@@ -2389,6 +2389,65 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#delete_foia_request\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete a game
+    # @param game_id [Integer] ID of game to delete
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_game(game_id, opts = {})
+      delete_game_with_http_info(game_id, opts)
+      nil
+    end
+
+    # Delete a game
+    # @param game_id [Integer] ID of game to delete
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def delete_game_with_http_info(game_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.delete_game ...'
+      end
+      # verify the required parameter 'game_id' is set
+      if @api_client.config.client_side_validation && game_id.nil?
+        fail ArgumentError, "Missing the required parameter 'game_id' when calling DefaultApi.delete_game"
+      end
+      # resource path
+      local_var_path = '/api/v1/games/{gameId}'.sub('{' + 'gameId' + '}', CGI.escape(game_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.delete_game",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#delete_game\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -7474,7 +7533,7 @@ module WinthropClient
     # Retrieve a single game
     # @param game_id [Integer] ID of game to retrieve
     # @param [Hash] opts the optional parameters
-    # @return [Game]
+    # @return [GameDetail]
     def get_game(game_id, opts = {})
       data, _status_code, _headers = get_game_with_http_info(game_id, opts)
       data
@@ -7483,7 +7542,7 @@ module WinthropClient
     # Retrieve a single game
     # @param game_id [Integer] ID of game to retrieve
     # @param [Hash] opts the optional parameters
-    # @return [Array<(Game, Integer, Hash)>] Game data, response status code and response headers
+    # @return [Array<(GameDetail, Integer, Hash)>] GameDetail data, response status code and response headers
     def get_game_with_http_info(game_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_game ...'
@@ -7510,7 +7569,7 @@ module WinthropClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'Game'
+      return_type = opts[:debug_return_type] || 'GameDetail'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
@@ -13718,6 +13777,78 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#update_foia_request\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a game
+    # @param game_id [Integer] ID of game to update
+    # @param create_game_request [CreateGameRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [GameDetail]
+    def update_game(game_id, create_game_request, opts = {})
+      data, _status_code, _headers = update_game_with_http_info(game_id, create_game_request, opts)
+      data
+    end
+
+    # Update a game
+    # @param game_id [Integer] ID of game to update
+    # @param create_game_request [CreateGameRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GameDetail, Integer, Hash)>] GameDetail data, response status code and response headers
+    def update_game_with_http_info(game_id, create_game_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_game ...'
+      end
+      # verify the required parameter 'game_id' is set
+      if @api_client.config.client_side_validation && game_id.nil?
+        fail ArgumentError, "Missing the required parameter 'game_id' when calling DefaultApi.update_game"
+      end
+      # verify the required parameter 'create_game_request' is set
+      if @api_client.config.client_side_validation && create_game_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_game_request' when calling DefaultApi.update_game"
+      end
+      # resource path
+      local_var_path = '/api/v1/games/{gameId}'.sub('{' + 'gameId' + '}', CGI.escape(game_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_game_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GameDetail'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_game",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_game\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
