@@ -14,25 +14,42 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class CoachCompensationTabSidebarContractsInner < ApiModelBase
+  # A scheduled game for one of the grid's schools, viewed from that school's perspective
+  class ScheduleGridGame < ApiModelBase
     attr_accessor :id
 
-    attr_accessor :raw_contract_id
+    attr_accessor :game_date
 
-    attr_accessor :start_on
+    attr_accessor :opponent_id
 
-    attr_accessor :end_on
+    attr_accessor :opponent_name
 
-    attr_accessor :at_will
+    attr_accessor :opponent_short_name
+
+    attr_accessor :opponent_logo_url
+
+    attr_accessor :is_home
+
+    attr_accessor :neutral
+
+    # Associated game contract comp (cents), if any
+    attr_accessor :guarantee_cents
+
+    attr_accessor :in_conference
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'raw_contract_id' => :'raw_contract_id',
-        :'start_on' => :'start_on',
-        :'end_on' => :'end_on',
-        :'at_will' => :'at_will'
+        :'game_date' => :'game_date',
+        :'opponent_id' => :'opponent_id',
+        :'opponent_name' => :'opponent_name',
+        :'opponent_short_name' => :'opponent_short_name',
+        :'opponent_logo_url' => :'opponent_logo_url',
+        :'is_home' => :'is_home',
+        :'neutral' => :'neutral',
+        :'guarantee_cents' => :'guarantee_cents',
+        :'in_conference' => :'in_conference'
       }
     end
 
@@ -50,18 +67,28 @@ module WinthropClient
     def self.openapi_types
       {
         :'id' => :'Integer',
-        :'raw_contract_id' => :'Integer',
-        :'start_on' => :'String',
-        :'end_on' => :'String',
-        :'at_will' => :'Boolean'
+        :'game_date' => :'Date',
+        :'opponent_id' => :'Integer',
+        :'opponent_name' => :'String',
+        :'opponent_short_name' => :'String',
+        :'opponent_logo_url' => :'String',
+        :'is_home' => :'Boolean',
+        :'neutral' => :'Boolean',
+        :'guarantee_cents' => :'Integer',
+        :'in_conference' => :'Boolean'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'raw_contract_id',
-        :'at_will'
+        :'game_date',
+        :'opponent_id',
+        :'opponent_name',
+        :'opponent_short_name',
+        :'opponent_logo_url',
+        :'guarantee_cents',
+        :'in_conference'
       ])
     end
 
@@ -69,14 +96,14 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::CoachCompensationTabSidebarContractsInner` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::ScheduleGridGame` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::CoachCompensationTabSidebarContractsInner`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::ScheduleGridGame`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -85,20 +112,40 @@ module WinthropClient
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'raw_contract_id')
-        self.raw_contract_id = attributes[:'raw_contract_id']
+      if attributes.key?(:'game_date')
+        self.game_date = attributes[:'game_date']
       end
 
-      if attributes.key?(:'start_on')
-        self.start_on = attributes[:'start_on']
+      if attributes.key?(:'opponent_id')
+        self.opponent_id = attributes[:'opponent_id']
       end
 
-      if attributes.key?(:'end_on')
-        self.end_on = attributes[:'end_on']
+      if attributes.key?(:'opponent_name')
+        self.opponent_name = attributes[:'opponent_name']
       end
 
-      if attributes.key?(:'at_will')
-        self.at_will = attributes[:'at_will']
+      if attributes.key?(:'opponent_short_name')
+        self.opponent_short_name = attributes[:'opponent_short_name']
+      end
+
+      if attributes.key?(:'opponent_logo_url')
+        self.opponent_logo_url = attributes[:'opponent_logo_url']
+      end
+
+      if attributes.key?(:'is_home')
+        self.is_home = attributes[:'is_home']
+      end
+
+      if attributes.key?(:'neutral')
+        self.neutral = attributes[:'neutral']
+      end
+
+      if attributes.key?(:'guarantee_cents')
+        self.guarantee_cents = attributes[:'guarantee_cents']
+      end
+
+      if attributes.key?(:'in_conference')
+        self.in_conference = attributes[:'in_conference']
       end
     end
 
@@ -123,10 +170,15 @@ module WinthropClient
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          raw_contract_id == o.raw_contract_id &&
-          start_on == o.start_on &&
-          end_on == o.end_on &&
-          at_will == o.at_will
+          game_date == o.game_date &&
+          opponent_id == o.opponent_id &&
+          opponent_name == o.opponent_name &&
+          opponent_short_name == o.opponent_short_name &&
+          opponent_logo_url == o.opponent_logo_url &&
+          is_home == o.is_home &&
+          neutral == o.neutral &&
+          guarantee_cents == o.guarantee_cents &&
+          in_conference == o.in_conference
     end
 
     # @see the `==` method
@@ -138,7 +190,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, raw_contract_id, start_on, end_on, at_will].hash
+      [id, game_date, opponent_id, opponent_name, opponent_short_name, opponent_logo_url, is_home, neutral, guarantee_cents, in_conference].hash
     end
 
     # Builds the object from hash

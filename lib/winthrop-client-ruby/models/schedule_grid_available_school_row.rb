@@ -14,25 +14,43 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class CoachCompensationTabSidebarContractsInner < ApiModelBase
+  # Candidate school returned by the available-schools finder
+  class ScheduleGridAvailableSchoolRow < ApiModelBase
     attr_accessor :id
 
-    attr_accessor :raw_contract_id
+    attr_accessor :name
 
-    attr_accessor :start_on
+    attr_accessor :short_name
 
-    attr_accessor :end_on
+    attr_accessor :logo_url
 
-    attr_accessor :at_will
+    attr_accessor :primary_contact_name
+
+    attr_accessor :primary_contact_phone
+
+    attr_accessor :subdivision_name
+
+    # Current USNWR ranking (omitted when blank)
+    attr_accessor :rank
+
+    # Distance from user_school_id in miles (omitted when distance filtering is not active)
+    attr_accessor :distance_miles
+
+    attr_accessor :nearest_post
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'raw_contract_id' => :'raw_contract_id',
-        :'start_on' => :'start_on',
-        :'end_on' => :'end_on',
-        :'at_will' => :'at_will'
+        :'name' => :'name',
+        :'short_name' => :'short_name',
+        :'logo_url' => :'logo_url',
+        :'primary_contact_name' => :'primary_contact_name',
+        :'primary_contact_phone' => :'primary_contact_phone',
+        :'subdivision_name' => :'subdivision_name',
+        :'rank' => :'rank',
+        :'distance_miles' => :'distance_miles',
+        :'nearest_post' => :'nearest_post'
       }
     end
 
@@ -50,18 +68,29 @@ module WinthropClient
     def self.openapi_types
       {
         :'id' => :'Integer',
-        :'raw_contract_id' => :'Integer',
-        :'start_on' => :'String',
-        :'end_on' => :'String',
-        :'at_will' => :'Boolean'
+        :'name' => :'String',
+        :'short_name' => :'String',
+        :'logo_url' => :'String',
+        :'primary_contact_name' => :'String',
+        :'primary_contact_phone' => :'String',
+        :'subdivision_name' => :'String',
+        :'rank' => :'Integer',
+        :'distance_miles' => :'Integer',
+        :'nearest_post' => :'ScheduleGridAvailableSchoolPost'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'raw_contract_id',
-        :'at_will'
+        :'name',
+        :'short_name',
+        :'logo_url',
+        :'primary_contact_name',
+        :'primary_contact_phone',
+        :'subdivision_name',
+        :'rank',
+        :'distance_miles',
       ])
     end
 
@@ -69,14 +98,14 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::CoachCompensationTabSidebarContractsInner` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::ScheduleGridAvailableSchoolRow` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::CoachCompensationTabSidebarContractsInner`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::ScheduleGridAvailableSchoolRow`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -85,20 +114,40 @@ module WinthropClient
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'raw_contract_id')
-        self.raw_contract_id = attributes[:'raw_contract_id']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'start_on')
-        self.start_on = attributes[:'start_on']
+      if attributes.key?(:'short_name')
+        self.short_name = attributes[:'short_name']
       end
 
-      if attributes.key?(:'end_on')
-        self.end_on = attributes[:'end_on']
+      if attributes.key?(:'logo_url')
+        self.logo_url = attributes[:'logo_url']
       end
 
-      if attributes.key?(:'at_will')
-        self.at_will = attributes[:'at_will']
+      if attributes.key?(:'primary_contact_name')
+        self.primary_contact_name = attributes[:'primary_contact_name']
+      end
+
+      if attributes.key?(:'primary_contact_phone')
+        self.primary_contact_phone = attributes[:'primary_contact_phone']
+      end
+
+      if attributes.key?(:'subdivision_name')
+        self.subdivision_name = attributes[:'subdivision_name']
+      end
+
+      if attributes.key?(:'rank')
+        self.rank = attributes[:'rank']
+      end
+
+      if attributes.key?(:'distance_miles')
+        self.distance_miles = attributes[:'distance_miles']
+      end
+
+      if attributes.key?(:'nearest_post')
+        self.nearest_post = attributes[:'nearest_post']
       end
     end
 
@@ -123,10 +172,15 @@ module WinthropClient
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          raw_contract_id == o.raw_contract_id &&
-          start_on == o.start_on &&
-          end_on == o.end_on &&
-          at_will == o.at_will
+          name == o.name &&
+          short_name == o.short_name &&
+          logo_url == o.logo_url &&
+          primary_contact_name == o.primary_contact_name &&
+          primary_contact_phone == o.primary_contact_phone &&
+          subdivision_name == o.subdivision_name &&
+          rank == o.rank &&
+          distance_miles == o.distance_miles &&
+          nearest_post == o.nearest_post
     end
 
     # @see the `==` method
@@ -138,7 +192,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, raw_contract_id, start_on, end_on, at_will].hash
+      [id, name, short_name, logo_url, primary_contact_name, primary_contact_phone, subdivision_name, rank, distance_miles, nearest_post].hash
     end
 
     # Builds the object from hash

@@ -14,25 +14,36 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class CoachCompensationTabSidebarContractsInner < ApiModelBase
-    attr_accessor :id
+  # Schedule grid payload for a single sport and season
+  class ScheduleGridView < ApiModelBase
+    attr_accessor :year
 
-    attr_accessor :raw_contract_id
+    attr_accessor :sport_id
 
-    attr_accessor :start_on
+    # First Monday of November for the given year
+    attr_accessor :season_start
 
-    attr_accessor :end_on
+    # December 31 of the given year
+    attr_accessor :season_end
 
-    attr_accessor :at_will
+    attr_accessor :schools
+
+    # Games keyed by school_id (as a string). Each school's list is filtered to games where that school is home or away.
+    attr_accessor :games
+
+    # Active game posts keyed by school_id (as a string)
+    attr_accessor :game_posts
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'raw_contract_id' => :'raw_contract_id',
-        :'start_on' => :'start_on',
-        :'end_on' => :'end_on',
-        :'at_will' => :'at_will'
+        :'year' => :'year',
+        :'sport_id' => :'sport_id',
+        :'season_start' => :'season_start',
+        :'season_end' => :'season_end',
+        :'schools' => :'schools',
+        :'games' => :'games',
+        :'game_posts' => :'game_posts'
       }
     end
 
@@ -49,19 +60,19 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'Integer',
-        :'raw_contract_id' => :'Integer',
-        :'start_on' => :'String',
-        :'end_on' => :'String',
-        :'at_will' => :'Boolean'
+        :'year' => :'Integer',
+        :'sport_id' => :'Integer',
+        :'season_start' => :'Date',
+        :'season_end' => :'Date',
+        :'schools' => :'Array<ScheduleGridSchool>',
+        :'games' => :'Hash<String, Array<ScheduleGridGame>>',
+        :'game_posts' => :'Hash<String, Array<ScheduleGridGamePost>>'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'raw_contract_id',
-        :'at_will'
       ])
     end
 
@@ -69,36 +80,50 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::CoachCompensationTabSidebarContractsInner` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::ScheduleGridView` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::CoachCompensationTabSidebarContractsInner`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::ScheduleGridView`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'year')
+        self.year = attributes[:'year']
       end
 
-      if attributes.key?(:'raw_contract_id')
-        self.raw_contract_id = attributes[:'raw_contract_id']
+      if attributes.key?(:'sport_id')
+        self.sport_id = attributes[:'sport_id']
       end
 
-      if attributes.key?(:'start_on')
-        self.start_on = attributes[:'start_on']
+      if attributes.key?(:'season_start')
+        self.season_start = attributes[:'season_start']
       end
 
-      if attributes.key?(:'end_on')
-        self.end_on = attributes[:'end_on']
+      if attributes.key?(:'season_end')
+        self.season_end = attributes[:'season_end']
       end
 
-      if attributes.key?(:'at_will')
-        self.at_will = attributes[:'at_will']
+      if attributes.key?(:'schools')
+        if (value = attributes[:'schools']).is_a?(Array)
+          self.schools = value
+        end
+      end
+
+      if attributes.key?(:'games')
+        if (value = attributes[:'games']).is_a?(Hash)
+          self.games = value
+        end
+      end
+
+      if attributes.key?(:'game_posts')
+        if (value = attributes[:'game_posts']).is_a?(Hash)
+          self.game_posts = value
+        end
       end
     end
 
@@ -122,11 +147,13 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          raw_contract_id == o.raw_contract_id &&
-          start_on == o.start_on &&
-          end_on == o.end_on &&
-          at_will == o.at_will
+          year == o.year &&
+          sport_id == o.sport_id &&
+          season_start == o.season_start &&
+          season_end == o.season_end &&
+          schools == o.schools &&
+          games == o.games &&
+          game_posts == o.game_posts
     end
 
     # @see the `==` method
@@ -138,7 +165,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, raw_contract_id, start_on, end_on, at_will].hash
+      [year, sport_id, season_start, season_end, schools, games, game_posts].hash
     end
 
     # Builds the object from hash

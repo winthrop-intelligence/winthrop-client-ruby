@@ -19,6 +19,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**create_favorites_category**](DefaultApi.md#create_favorites_category) | **POST** /api/v1/favorites_categories |  |
 | [**create_foia_label**](DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels |  |
 | [**create_foia_request**](DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests |  |
+| [**create_game**](DefaultApi.md#create_game) | **POST** /api/v1/games |  |
+| [**create_game_post**](DefaultApi.md#create_game_post) | **POST** /api/v1/game_posts |  |
 | [**create_game_post_search**](DefaultApi.md#create_game_post_search) | **POST** /api/v1/game_post_searches |  |
 | [**create_job_post**](DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post |
 | [**create_note**](DefaultApi.md#create_note) | **POST** /api/v1/notes |  |
@@ -39,6 +41,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_foia_label**](DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} |  |
 | [**delete_foia_request**](DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} |  |
 | [**delete_game_contract_raw_contract**](DefaultApi.md#delete_game_contract_raw_contract) | **DELETE** /api/v1/game_contracts/{game_contractId}/delete_raw_contract |  |
+| [**delete_game_post**](DefaultApi.md#delete_game_post) | **DELETE** /api/v1/game_posts/{gamePostId} |  |
 | [**delete_game_post_search**](DefaultApi.md#delete_game_post_search) | **DELETE** /api/v1/game_post_searches/{gamePostSearchId} |  |
 | [**delete_job_post**](DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post |
 | [**delete_note**](DefaultApi.md#delete_note) | **DELETE** /api/v1/notes/{id} |  |
@@ -146,6 +149,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_requested_items**](DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items |  |
 | [**get_revenue_search**](DefaultApi.md#get_revenue_search) | **GET** /api/v1/revenue_searches/{revenueSearchId} |  |
 | [**get_revenue_searches**](DefaultApi.md#get_revenue_searches) | **GET** /api/v1/revenue_searches |  |
+| [**get_schedule_grid**](DefaultApi.md#get_schedule_grid) | **GET** /api/v1/schedule_grid/{sport_name} |  |
+| [**get_schedule_grid_available_schools**](DefaultApi.md#get_schedule_grid_available_schools) | **GET** /api/v1/schedule_grid/{sport_name}/available_schools |  |
 | [**get_school**](DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} |  |
 | [**get_school_alternate_names**](DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names |  |
 | [**get_school_game_contracts**](DefaultApi.md#get_school_game_contracts) | **GET** /api/v1/schools/{schoolId}/game_contracts |  |
@@ -1367,6 +1372,154 @@ end
 ### Return type
 
 [**FoiaRequest**](FoiaRequest.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_game
+
+> <Game> create_game(create_game_request)
+
+
+
+Create a game
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_game_request = WinthropClient::CreateGameRequest.new({game: WinthropClient::CreateGameRequestGame.new}) # CreateGameRequest | 
+
+begin
+  
+  result = api_instance.create_game(create_game_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_game: #{e}"
+end
+```
+
+#### Using the create_game_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Game>, Integer, Hash)> create_game_with_http_info(create_game_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_game_with_http_info(create_game_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Game>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_game_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_game_request** | [**CreateGameRequest**](CreateGameRequest.md) |  |  |
+
+### Return type
+
+[**Game**](Game.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_game_post
+
+> <GamePost> create_game_post(create_game_post_search_request)
+
+
+
+Create a game post for the current user's school
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_game_post_search_request = WinthropClient::CreateGamePostSearchRequest.new({game_post: WinthropClient::CreateGamePostSearchRequestGamePost.new({sport_id: 37, start_date: Date.today})}) # CreateGamePostSearchRequest | 
+
+begin
+  
+  result = api_instance.create_game_post(create_game_post_search_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_game_post: #{e}"
+end
+```
+
+#### Using the create_game_post_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GamePost>, Integer, Hash)> create_game_post_with_http_info(create_game_post_search_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_game_post_with_http_info(create_game_post_search_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GamePost>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_game_post_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_game_post_search_request** | [**CreateGamePostSearchRequest**](CreateGamePostSearchRequest.md) |  |  |
+
+### Return type
+
+[**GamePost**](GamePost.md)
 
 ### Authorization
 
@@ -2833,6 +2986,79 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **game_contract_id** | **Integer** | ID of the GameContract |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## delete_game_post
+
+> delete_game_post(game_post_id)
+
+
+
+Delete a game post
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+game_post_id = 56 # Integer | ID of the GamePost
+
+begin
+  
+  api_instance.delete_game_post(game_post_id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_game_post: #{e}"
+end
+```
+
+#### Using the delete_game_post_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_game_post_with_http_info(game_post_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_game_post_with_http_info(game_post_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_game_post_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **game_post_id** | **Integer** | ID of the GamePost |  |
 
 ### Return type
 
@@ -10981,6 +11207,178 @@ end
 ### Return type
 
 [**SchoolFinancialSummary**](SchoolFinancialSummary.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_schedule_grid
+
+> <ScheduleGridView> get_schedule_grid(sport_name, opts)
+
+
+
+Retrieve the schedule grid for a sport — season window, schools, games, and active game posts for up to eight selected schools.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+sport_name = 'sport_name_example' # String | Sport name (e.g. FOOTBALL, BASKETBALL_M)
+opts = {
+  school_ids: [37], # Array<Integer> | School IDs to include on the grid (max 8, ordering is preserved)
+  year: 2026 # Integer | Four-digit season year. Defaults to the current year when omitted or invalid.
+}
+
+begin
+  
+  result = api_instance.get_schedule_grid(sport_name, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_schedule_grid: #{e}"
+end
+```
+
+#### Using the get_schedule_grid_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ScheduleGridView>, Integer, Hash)> get_schedule_grid_with_http_info(sport_name, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_schedule_grid_with_http_info(sport_name, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ScheduleGridView>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_schedule_grid_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **sport_name** | **String** | Sport name (e.g. FOOTBALL, BASKETBALL_M) |  |
+| **school_ids** | [**Array&lt;Integer&gt;**](Integer.md) | School IDs to include on the grid (max 8, ordering is preserved) | [optional] |
+| **year** | **Integer** | Four-digit season year. Defaults to the current year when omitted or invalid. | [optional] |
+
+### Return type
+
+[**ScheduleGridView**](ScheduleGridView.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_schedule_grid_available_schools
+
+> <ScheduleGridAvailableSchools> get_schedule_grid_available_schools(sport_name, target_date, opts)
+
+
+
+Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, and distance.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+sport_name = 'sport_name_example' # String | Sport name (e.g. FOOTBALL, BASKETBALL_M)
+target_date = Date.parse('2013-10-20') # Date | Target date in ISO format (YYYY-MM-DD)
+opts = {
+  window_days: 56, # Integer | Number of days on either side of target_date to include (default 1)
+  deal_types: ['inner_example'], # Array<String> | Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered)
+  quality_tier: 'power_4', # String | Restrict to a subdivision tier
+  max_distance_miles: 56, # Integer | Maximum distance (miles) from the user's school. Requires user_school_id to resolve a coordinate origin.
+  user_school_id: 56, # Integer | Requesting user's school. Used as the origin for distance filtering and is always excluded from results.
+  exclude_school_ids: [37], # Array<Integer> | Additional school IDs to exclude from results (e.g. schools already on the grid)
+  limit: 56 # Integer | Maximum rows to return (default 50, capped at 100)
+}
+
+begin
+  
+  result = api_instance.get_schedule_grid_available_schools(sport_name, target_date, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_schedule_grid_available_schools: #{e}"
+end
+```
+
+#### Using the get_schedule_grid_available_schools_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ScheduleGridAvailableSchools>, Integer, Hash)> get_schedule_grid_available_schools_with_http_info(sport_name, target_date, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_schedule_grid_available_schools_with_http_info(sport_name, target_date, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ScheduleGridAvailableSchools>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_schedule_grid_available_schools_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **sport_name** | **String** | Sport name (e.g. FOOTBALL, BASKETBALL_M) |  |
+| **target_date** | **Date** | Target date in ISO format (YYYY-MM-DD) |  |
+| **window_days** | **Integer** | Number of days on either side of target_date to include (default 1) | [optional][default to 1] |
+| **deal_types** | [**Array&lt;String&gt;**](String.md) | Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered) | [optional] |
+| **quality_tier** | **String** | Restrict to a subdivision tier | [optional] |
+| **max_distance_miles** | **Integer** | Maximum distance (miles) from the user&#39;s school. Requires user_school_id to resolve a coordinate origin. | [optional] |
+| **user_school_id** | **Integer** | Requesting user&#39;s school. Used as the origin for distance filtering and is always excluded from results. | [optional] |
+| **exclude_school_ids** | [**Array&lt;Integer&gt;**](Integer.md) | Additional school IDs to exclude from results (e.g. schools already on the grid) | [optional] |
+| **limit** | **Integer** | Maximum rows to return (default 50, capped at 100) | [optional][default to 50] |
+
+### Return type
+
+[**ScheduleGridAvailableSchools**](ScheduleGridAvailableSchools.md)
 
 ### Authorization
 

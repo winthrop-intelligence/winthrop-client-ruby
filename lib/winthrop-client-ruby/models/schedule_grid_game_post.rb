@@ -14,25 +14,24 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class CoachCompensationTabSidebarContractsInner < ApiModelBase
+  # Active game post for a grid school, trimmed for the grid view
+  class ScheduleGridGamePost < ApiModelBase
     attr_accessor :id
 
-    attr_accessor :raw_contract_id
+    attr_accessor :start_date
 
-    attr_accessor :start_on
+    attr_accessor :end_date
 
-    attr_accessor :end_on
-
-    attr_accessor :at_will
+    # Game type names (e.g. HomeAndHome, GuaranteeNeeded)
+    attr_accessor :game_types
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'raw_contract_id' => :'raw_contract_id',
-        :'start_on' => :'start_on',
-        :'end_on' => :'end_on',
-        :'at_will' => :'at_will'
+        :'start_date' => :'start_date',
+        :'end_date' => :'end_date',
+        :'game_types' => :'game_types'
       }
     end
 
@@ -50,18 +49,17 @@ module WinthropClient
     def self.openapi_types
       {
         :'id' => :'Integer',
-        :'raw_contract_id' => :'Integer',
-        :'start_on' => :'String',
-        :'end_on' => :'String',
-        :'at_will' => :'Boolean'
+        :'start_date' => :'Date',
+        :'end_date' => :'Date',
+        :'game_types' => :'Array<String>'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'raw_contract_id',
-        :'at_will'
+        :'start_date',
+        :'end_date',
       ])
     end
 
@@ -69,14 +67,14 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::CoachCompensationTabSidebarContractsInner` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::ScheduleGridGamePost` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::CoachCompensationTabSidebarContractsInner`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::ScheduleGridGamePost`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -85,20 +83,18 @@ module WinthropClient
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'raw_contract_id')
-        self.raw_contract_id = attributes[:'raw_contract_id']
+      if attributes.key?(:'start_date')
+        self.start_date = attributes[:'start_date']
       end
 
-      if attributes.key?(:'start_on')
-        self.start_on = attributes[:'start_on']
+      if attributes.key?(:'end_date')
+        self.end_date = attributes[:'end_date']
       end
 
-      if attributes.key?(:'end_on')
-        self.end_on = attributes[:'end_on']
-      end
-
-      if attributes.key?(:'at_will')
-        self.at_will = attributes[:'at_will']
+      if attributes.key?(:'game_types')
+        if (value = attributes[:'game_types']).is_a?(Array)
+          self.game_types = value
+        end
       end
     end
 
@@ -123,10 +119,9 @@ module WinthropClient
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          raw_contract_id == o.raw_contract_id &&
-          start_on == o.start_on &&
-          end_on == o.end_on &&
-          at_will == o.at_will
+          start_date == o.start_date &&
+          end_date == o.end_date &&
+          game_types == o.game_types
     end
 
     # @see the `==` method
@@ -138,7 +133,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, raw_contract_id, start_on, end_on, at_will].hash
+      [id, start_date, end_date, game_types].hash
     end
 
     # Builds the object from hash
