@@ -1,0 +1,34 @@
+# WinthropClient::ListNotes200ResponseInner
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **notable_id** | **String** | The notable record&#39;s ID (string to avoid JS precision loss) |  |
+| **notable_type** | **String** | The model type (e.g. \&quot;Coach\&quot;) |  |
+| **content** | **String** | The note text |  |
+| **name** | **String** | The notable record&#39;s name |  |
+| **created_at** | **Time** |  | [optional] |
+| **updated_at** | **Time** |  | [optional] |
+| **school_id** | **Integer** | School ID for FilTeam notes | [optional] |
+| **sport_name** | **String** | Sport name for FilTeam notes | [optional] |
+
+## Example
+
+```ruby
+require 'winthrop-client-ruby'
+
+instance = WinthropClient::ListNotes200ResponseInner.new(
+  id: null,
+  notable_id: null,
+  notable_type: null,
+  content: null,
+  name: null,
+  created_at: null,
+  updated_at: null,
+  school_id: null,
+  sport_name: null
+)
+```
+

@@ -26,8 +26,8 @@
 | **external_years_experience** | **Integer** |  | [optional] |
 | **athletic_years_of_experience** | **Integer** |  | [optional] |
 | **avatar_scraping_disabled** | **Boolean** |  | [optional] |
-| **latest_salary** | **Integer** |  | [optional] |
-| **latest_salary_year** | **Integer** |  | [optional] |
+| **latest_salary** | **Integer** | Only included when the user has coach_compensation permission for this coach. For leader/administrator coaches, this requires administrator_compensation access. | [optional] |
+| **latest_salary_year** | **Integer** | Only included when the user has coach_compensation permission for this coach. For leader/administrator coaches, this requires administrator_compensation access. | [optional] |
 | **last_bio_text_updated_at** | **Time** |  | [optional] |
 | **instagram_scraping_disabled** | **Boolean** |  | [optional] |
 | **linkedin_scraping_disabled** | **Boolean** |  | [optional] |

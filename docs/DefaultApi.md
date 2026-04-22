@@ -9,32 +9,53 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**average_school_comp**](DefaultApi.md#average_school_comp) | **GET** /api/v1/compensations/average_school_comp |  |
 | [**average_subdivision_comp**](DefaultApi.md#average_subdivision_comp) | **GET** /api/v1/compensations/average_subdivision_comp |  |
 | [**compare_coli**](DefaultApi.md#compare_coli) | **GET** /api/v1/schools/compare_coli |  |
+| [**create_account_user**](DefaultApi.md#create_account_user) | **POST** /api/v1/account_users |  |
 | [**create_cashflow**](DefaultApi.md#create_cashflow) | **POST** /api/v1/cashflows |  |
 | [**create_coach**](DefaultApi.md#create_coach) | **POST** /api/v1/coaches |  |
 | [**create_conference**](DefaultApi.md#create_conference) | **POST** /api/v1/conferences |  |
 | [**create_conferenceship**](DefaultApi.md#create_conferenceship) | **POST** /api/v1/conferenceships |  |
+| [**create_contact_search**](DefaultApi.md#create_contact_search) | **POST** /api/v1/contact_searches |  |
 | [**create_favorite**](DefaultApi.md#create_favorite) | **POST** /api/v1/favorites |  |
 | [**create_favorites_category**](DefaultApi.md#create_favorites_category) | **POST** /api/v1/favorites_categories |  |
 | [**create_foia_label**](DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels |  |
 | [**create_foia_request**](DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests |  |
+| [**create_game_post_search**](DefaultApi.md#create_game_post_search) | **POST** /api/v1/game_post_searches |  |
 | [**create_job_post**](DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post |
+| [**create_note**](DefaultApi.md#create_note) | **POST** /api/v1/notes |  |
+| [**create_password_reset**](DefaultApi.md#create_password_reset) | **POST** /api/v1/password_reset |  |
 | [**create_position**](DefaultApi.md#create_position) | **POST** /api/v1/positions |  |
 | [**create_requested_item**](DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items |  |
+| [**create_school_group**](DefaultApi.md#create_school_group) | **POST** /api/v1/school_groups |  |
 | [**create_season**](DefaultApi.md#create_season) | **POST** /api/v1/seasons |  |
+| [**create_team_schedule_favorite**](DefaultApi.md#create_team_schedule_favorite) | **POST** /api/v1/team_schedule_favorites |  |
+| [**create_upload**](DefaultApi.md#create_upload) | **POST** /api/v1/uploads |  |
+| [**delete_account_user**](DefaultApi.md#delete_account_user) | **DELETE** /api/v1/account_users/{accountUserId} |  |
 | [**delete_cashflow**](DefaultApi.md#delete_cashflow) | **DELETE** /api/v1/cashflows/{cashflowId} |  |
 | [**delete_conference**](DefaultApi.md#delete_conference) | **DELETE** /api/v1/conferences/{conferenceId} |  |
 | [**delete_conferenceship**](DefaultApi.md#delete_conferenceship) | **DELETE** /api/v1/conferenceships/{conferenceshipId} |  |
+| [**delete_contact_search**](DefaultApi.md#delete_contact_search) | **DELETE** /api/v1/contact_searches/{id} |  |
 | [**delete_favorite**](DefaultApi.md#delete_favorite) | **DELETE** /api/v1/favorites/{id} |  |
 | [**delete_favorites_category**](DefaultApi.md#delete_favorites_category) | **DELETE** /api/v1/favorites_categories/{id} |  |
 | [**delete_foia_label**](DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} |  |
 | [**delete_foia_request**](DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} |  |
+| [**delete_game_contract_raw_contract**](DefaultApi.md#delete_game_contract_raw_contract) | **DELETE** /api/v1/game_contracts/{game_contractId}/delete_raw_contract |  |
+| [**delete_game_post_search**](DefaultApi.md#delete_game_post_search) | **DELETE** /api/v1/game_post_searches/{gamePostSearchId} |  |
 | [**delete_job_post**](DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post |
+| [**delete_note**](DefaultApi.md#delete_note) | **DELETE** /api/v1/notes/{id} |  |
 | [**delete_position**](DefaultApi.md#delete_position) | **DELETE** /api/v1/positions/{positionId} |  |
 | [**delete_requested_item**](DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} |  |
+| [**delete_school_group**](DefaultApi.md#delete_school_group) | **DELETE** /api/v1/school_groups/{schoolGroupId} |  |
 | [**delete_season**](DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} |  |
+| [**delete_team_schedule_favorite**](DefaultApi.md#delete_team_schedule_favorite) | **DELETE** /api/v1/team_schedule_favorites/{id} |  |
+| [**delete_team_schedule_note**](DefaultApi.md#delete_team_schedule_note) | **DELETE** /api/v1/team_schedule_notes/{fil_team_id} |  |
+| [**delete_upload**](DefaultApi.md#delete_upload) | **DELETE** /api/v1/uploads/{uploadId} |  |
+| [**get_account**](DefaultApi.md#get_account) | **GET** /api/v1/accounts/{id} |  |
+| [**get_account_user_activation**](DefaultApi.md#get_account_user_activation) | **GET** /api/v1/account_user_activation |  |
+| [**get_account_users**](DefaultApi.md#get_account_users) | **GET** /api/v1/account_users |  |
 | [**get_administrator**](DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} |  |
 | [**get_administrator_searches**](DefaultApi.md#get_administrator_searches) | **GET** /api/v1/administrator_searches |  |
 | [**get_administrators**](DefaultApi.md#get_administrators) | **GET** /api/v1/administrators |  |
+| [**get_athletic_profile_search**](DefaultApi.md#get_athletic_profile_search) | **GET** /api/v1/athletic_profile_searches/{athleticProfileSearchId} |  |
 | [**get_audited_financial_report_status**](DefaultApi.md#get_audited_financial_report_status) | **GET** /api/v1/audited_financial_report_statuses/{auditedFinancialReportStatusId} |  |
 | [**get_audited_financial_report_statuses**](DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses |  |
 | [**get_cashflow**](DefaultApi.md#get_cashflow) | **GET** /api/v1/cashflows/{cashflowId} |  |
@@ -49,6 +70,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_coach_search_coworker_history**](DefaultApi.md#get_coach_search_coworker_history) | **GET** /api/v1/coach_searches/{id}/coworker_history |  |
 | [**get_coach_search_overview**](DefaultApi.md#get_coach_search_overview) | **GET** /api/v1/coach_searches/{id}/overview |  |
 | [**get_coach_search_record**](DefaultApi.md#get_coach_search_record) | **GET** /api/v1/coach_searches/{id}/record |  |
+| [**get_coach_search_recruiting**](DefaultApi.md#get_coach_search_recruiting) | **GET** /api/v1/coach_searches/{id}/recruiting |  |
 | [**get_coach_search_videos**](DefaultApi.md#get_coach_search_videos) | **GET** /api/v1/coach_searches/{id}/videos |  |
 | [**get_coach_searches**](DefaultApi.md#get_coach_searches) | **GET** /api/v1/coach_searches |  |
 | [**get_coaches**](DefaultApi.md#get_coaches) | **GET** /api/v1/coaches |  |
@@ -65,6 +87,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_conferenceship**](DefaultApi.md#get_conferenceship) | **GET** /api/v1/conferenceships/{conferenceshipId} |  |
 | [**get_conferenceships**](DefaultApi.md#get_conferenceships) | **GET** /api/v1/conferenceships |  |
 | [**get_contact**](DefaultApi.md#get_contact) | **GET** /api/v1/contacts/{contactId} |  |
+| [**get_contact_search_coach_options**](DefaultApi.md#get_contact_search_coach_options) | **GET** /api/v1/contact_searches/coach_options |  |
+| [**get_contact_searches**](DefaultApi.md#get_contact_searches) | **GET** /api/v1/contact_searches |  |
 | [**get_contacts**](DefaultApi.md#get_contacts) | **GET** /api/v1/contacts |  |
 | [**get_contract**](DefaultApi.md#get_contract) | **GET** /api/v1/contracts/{contractId} |  |
 | [**get_contracts**](DefaultApi.md#get_contracts) | **GET** /api/v1/contracts |  |
@@ -76,6 +100,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_department_searches**](DefaultApi.md#get_department_searches) | **GET** /api/v1/department_searches |  |
 | [**get_division**](DefaultApi.md#get_division) | **GET** /api/v1/divisions/{divisionId} |  |
 | [**get_divisions**](DefaultApi.md#get_divisions) | **GET** /api/v1/divisions |  |
+| [**get_edit_account_user**](DefaultApi.md#get_edit_account_user) | **GET** /api/v1/account_users/{accountUserId}/edit |  |
 | [**get_favorites**](DefaultApi.md#get_favorites) | **GET** /api/v1/favorites |  |
 | [**get_favorites_categories**](DefaultApi.md#get_favorites_categories) | **GET** /api/v1/favorites_categories |  |
 | [**get_filter_options**](DefaultApi.md#get_filter_options) | **GET** /api/v1/filter_options |  |
@@ -92,11 +117,14 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_foia_labels**](DefaultApi.md#get_foia_labels) | **GET** /api/v1/foia_labels |  |
 | [**get_foia_request**](DefaultApi.md#get_foia_request) | **GET** /api/v1/foia_requests/{foiaRequestId} |  |
 | [**get_foia_requests**](DefaultApi.md#get_foia_requests) | **GET** /api/v1/foia_requests |  |
+| [**get_gad_search_detail**](DefaultApi.md#get_gad_search_detail) | **GET** /api/v1/gad_searches/{id}/detail |  |
 | [**get_gad_searches**](DefaultApi.md#get_gad_searches) | **GET** /api/v1/gad_searches |  |
 | [**get_game**](DefaultApi.md#get_game) | **GET** /api/v1/games/{gameId} |  |
 | [**get_game_contract**](DefaultApi.md#get_game_contract) | **GET** /api/v1/game_contracts/{game_contractId} |  |
+| [**get_game_contract_series**](DefaultApi.md#get_game_contract_series) | **GET** /api/v1/game_contracts/{game_contractId}/series |  |
 | [**get_game_contracts**](DefaultApi.md#get_game_contracts) | **GET** /api/v1/game_contracts |  |
 | [**get_game_post**](DefaultApi.md#get_game_post) | **GET** /api/v1/game_posts/{gamePostId} |  |
+| [**get_game_post_search**](DefaultApi.md#get_game_post_search) | **GET** /api/v1/game_post_searches/{gamePostSearchId} |  |
 | [**get_game_post_searches**](DefaultApi.md#get_game_post_searches) | **GET** /api/v1/game_post_searches |  |
 | [**get_game_posts**](DefaultApi.md#get_game_posts) | **GET** /api/v1/game_posts |  |
 | [**get_games**](DefaultApi.md#get_games) | **GET** /api/v1/games |  |
@@ -107,15 +135,20 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_lad_filter_options**](DefaultApi.md#get_lad_filter_options) | **GET** /api/v1/lad_filter_options |  |
 | [**get_ncaa_financial_report_status**](DefaultApi.md#get_ncaa_financial_report_status) | **GET** /api/v1/ncaa_financial_report_statuses/{ncaaFinancialReportStatusId} |  |
 | [**get_ncaa_financial_report_statuses**](DefaultApi.md#get_ncaa_financial_report_statuses) | **GET** /api/v1/ncaa_financial_report_statuses |  |
+| [**get_new_account_user**](DefaultApi.md#get_new_account_user) | **GET** /api/v1/account_users/new |  |
 | [**get_news_feed**](DefaultApi.md#get_news_feed) | **GET** /wi_jobs/news_feeds/{newsFeedId} | Get a news feed |
+| [**get_note**](DefaultApi.md#get_note) | **GET** /api/v1/notes |  |
 | [**get_position**](DefaultApi.md#get_position) | **GET** /api/v1/positions/{positionId} |  |
 | [**get_positions**](DefaultApi.md#get_positions) | **GET** /api/v1/positions |  |
 | [**get_raw_contract**](DefaultApi.md#get_raw_contract) | **GET** /api/v1/raw_contracts/{raw_contractId} |  |
 | [**get_raw_contracts**](DefaultApi.md#get_raw_contracts) | **GET** /api/v1/raw_contracts |  |
 | [**get_requested_item**](DefaultApi.md#get_requested_item) | **GET** /api/v1/requested_items/{requestedItemId} |  |
 | [**get_requested_items**](DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items |  |
+| [**get_revenue_search**](DefaultApi.md#get_revenue_search) | **GET** /api/v1/revenue_searches/{revenueSearchId} |  |
+| [**get_revenue_searches**](DefaultApi.md#get_revenue_searches) | **GET** /api/v1/revenue_searches |  |
 | [**get_school**](DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} |  |
 | [**get_school_alternate_names**](DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names |  |
+| [**get_school_game_contracts**](DefaultApi.md#get_school_game_contracts) | **GET** /api/v1/schools/{schoolId}/game_contracts |  |
 | [**get_school_group**](DefaultApi.md#get_school_group) | **GET** /api/v1/school_groups/{schoolGroupId} |  |
 | [**get_school_group_admin_compensation**](DefaultApi.md#get_school_group_admin_compensation) | **GET** /api/v1/school_groups/{schoolGroupId}/admin_compensation |  |
 | [**get_school_group_cashflow_stats**](DefaultApi.md#get_school_group_cashflow_stats) | **GET** /api/v1/school_groups/{schoolGroupId}/cashflow_stats |  |
@@ -123,6 +156,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_school_group_directors_cup**](DefaultApi.md#get_school_group_directors_cup) | **GET** /api/v1/school_groups/{schoolGroupId}/directors_cup |  |
 | [**get_school_group_position_stats**](DefaultApi.md#get_school_group_position_stats) | **GET** /api/v1/school_groups/{schoolGroupId}/position_stats |  |
 | [**get_school_group_sport_compensation**](DefaultApi.md#get_school_group_sport_compensation) | **GET** /api/v1/school_groups/{schoolGroupId}/sport_compensation |  |
+| [**get_school_groups**](DefaultApi.md#get_school_groups) | **GET** /api/v1/school_groups |  |
+| [**get_school_groups_available_schools**](DefaultApi.md#get_school_groups_available_schools) | **GET** /api/v1/school_groups/available_schools |  |
 | [**get_schools**](DefaultApi.md#get_schools) | **GET** /api/v1/schools |  |
 | [**get_schools_alma_mater**](DefaultApi.md#get_schools_alma_mater) | **GET** /api/v1/schools/alma_mater |  |
 | [**get_season**](DefaultApi.md#get_season) | **GET** /api/v1/seasons/{seasonId} |  |
@@ -141,6 +176,19 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_subscription**](DefaultApi.md#get_subscription) | **GET** /api/v1/subscriptions/{subscriptionId} |  |
 | [**get_subscriptions**](DefaultApi.md#get_subscriptions) | **GET** /api/v1/subscriptions |  |
 | [**get_system_settings**](DefaultApi.md#get_system_settings) | **GET** /api/v1/system_setting |  |
+| [**get_team_schedule_detail**](DefaultApi.md#get_team_schedule_detail) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id} |  |
+| [**get_team_schedule_detail_coaches**](DefaultApi.md#get_team_schedule_detail_coaches) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/coaches |  |
+| [**get_team_schedule_detail_game_posts**](DefaultApi.md#get_team_schedule_detail_game_posts) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/game_posts |  |
+| [**get_team_schedule_detail_player_data**](DefaultApi.md#get_team_schedule_detail_player_data) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/player_data |  |
+| [**get_team_schedule_detail_schedule**](DefaultApi.md#get_team_schedule_detail_schedule) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/schedule |  |
+| [**get_team_schedule_detail_schedule_overlap**](DefaultApi.md#get_team_schedule_detail_schedule_overlap) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/schedule_overlap |  |
+| [**get_team_schedule_favorites**](DefaultApi.md#get_team_schedule_favorites) | **GET** /api/v1/team_schedule_favorites |  |
+| [**get_team_schedule_note**](DefaultApi.md#get_team_schedule_note) | **GET** /api/v1/team_schedule_notes/{fil_team_id} |  |
+| [**get_team_schedule_searches**](DefaultApi.md#get_team_schedule_searches) | **GET** /api/v1/team_schedule_searches |  |
+| [**get_time_zones**](DefaultApi.md#get_time_zones) | **GET** /api/v1/time_zones |  |
+| [**get_upload**](DefaultApi.md#get_upload) | **GET** /api/v1/uploads/{uploadId} |  |
+| [**get_upload_file**](DefaultApi.md#get_upload_file) | **GET** /api/v1/uploads/{uploadId}/file |  |
+| [**get_uploads**](DefaultApi.md#get_uploads) | **GET** /api/v1/uploads |  |
 | [**get_user**](DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} |  |
 | [**get_user_activity_summaries**](DefaultApi.md#get_user_activity_summaries) | **GET** /api/v1/user_activity_summaries |  |
 | [**get_user_activity_summary**](DefaultApi.md#get_user_activity_summary) | **GET** /api/v1/user_activity_summaries/{user_activity_summaryId} |  |
@@ -150,7 +198,13 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_vendor**](DefaultApi.md#get_vendor) | **GET** /api/v1/vendors/{vendorId} |  |
 | [**get_vendors**](DefaultApi.md#get_vendors) | **GET** /api/v1/vendors |  |
 | [**get_wire_changes**](DefaultApi.md#get_wire_changes) | **GET** /api/v1/wire_changes |  |
+| [**list_notes**](DefaultApi.md#list_notes) | **GET** /api/v1/notes/list |  |
+| [**regenerate_raw_contract_pdf**](DefaultApi.md#regenerate_raw_contract_pdf) | **POST** /api/v1/raw_contracts/{raw_contractId}/regenerate_pdf |  |
 | [**search_coaches**](DefaultApi.md#search_coaches) | **POST** /api/v1/coaches/search |  |
+| [**send_otp_code**](DefaultApi.md#send_otp_code) | **POST** /api/v1/otp/send_code |  |
+| [**unstract_raw_contract_pdf_text**](DefaultApi.md#unstract_raw_contract_pdf_text) | **POST** /api/v1/raw_contracts/{raw_contractId}/unstract_pdf_text |  |
+| [**update_account_user**](DefaultApi.md#update_account_user) | **PATCH** /api/v1/account_users/{accountUserId} |  |
+| [**update_account_user_activation**](DefaultApi.md#update_account_user_activation) | **PATCH** /api/v1/account_user_activation |  |
 | [**update_cashflow**](DefaultApi.md#update_cashflow) | **PUT** /api/v1/cashflows/{cashflowId} |  |
 | [**update_coach**](DefaultApi.md#update_coach) | **PATCH** /api/v1/coaches/{coachId} |  |
 | [**update_compensation**](DefaultApi.md#update_compensation) | **PATCH** /api/v1/compensations/{compensationId} |  |
@@ -160,12 +214,22 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_favorites_category**](DefaultApi.md#update_favorites_category) | **PATCH** /api/v1/favorites_categories/{id} |  |
 | [**update_foia_label**](DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} |  |
 | [**update_foia_request**](DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} |  |
+| [**update_game_contract**](DefaultApi.md#update_game_contract) | **PATCH** /api/v1/game_contracts/{game_contractId} |  |
+| [**update_game_post_search**](DefaultApi.md#update_game_post_search) | **PATCH** /api/v1/game_post_searches/{gamePostSearchId} |  |
 | [**update_job_post**](DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post |
+| [**update_note**](DefaultApi.md#update_note) | **PATCH** /api/v1/notes/{id} |  |
+| [**update_password_reset**](DefaultApi.md#update_password_reset) | **PUT** /api/v1/password_reset |  |
 | [**update_position**](DefaultApi.md#update_position) | **PATCH** /api/v1/positions/{positionId} |  |
 | [**update_requested_item**](DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} |  |
+| [**update_school_group**](DefaultApi.md#update_school_group) | **PATCH** /api/v1/school_groups/{schoolGroupId} |  |
 | [**update_season**](DefaultApi.md#update_season) | **PUT** /api/v1/seasons/{seasonId} |  |
+| [**update_team_schedule_favorite**](DefaultApi.md#update_team_schedule_favorite) | **PATCH** /api/v1/team_schedule_favorites/{id} |  |
+| [**update_user**](DefaultApi.md#update_user) | **PATCH** /api/v1/users/{userId} |  |
+| [**upsert_team_schedule_note**](DefaultApi.md#upsert_team_schedule_note) | **PUT** /api/v1/team_schedule_notes/{fil_team_id} |  |
 | [**user_me**](DefaultApi.md#user_me) | **GET** /api/v1/users/me |  |
+| [**verify_otp_code**](DefaultApi.md#verify_otp_code) | **POST** /api/v1/otp/verify |  |
 | [**verify_user_intercollegiate_access**](DefaultApi.md#verify_user_intercollegiate_access) | **GET** /api/v1/users/verify_user_intercollegiate_access |  |
+| [**view_raw_contract_file**](DefaultApi.md#view_raw_contract_file) | **GET** /api/v1/raw_contracts/{raw_contractId}/view_file |  |
 
 
 ## average_conference_comp
@@ -566,6 +630,80 @@ end
 - **Accept**: application/json
 
 
+## create_account_user
+
+> <AccountUser> create_account_user(create_account_user_request)
+
+
+
+Create a new user for the current account. The email prefix is combined with the account email domain. The new user receives an invitation email.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_account_user_request = WinthropClient::CreateAccountUserRequest.new({user: WinthropClient::CreateAccountUserRequestUser.new({first_name: 'first_name_example', last_name: 'last_name_example', email: 'email_example'})}) # CreateAccountUserRequest | 
+
+begin
+  
+  result = api_instance.create_account_user(create_account_user_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_account_user: #{e}"
+end
+```
+
+#### Using the create_account_user_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AccountUser>, Integer, Hash)> create_account_user_with_http_info(create_account_user_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_account_user_with_http_info(create_account_user_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AccountUser>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_account_user_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_account_user_request** | [**CreateAccountUserRequest**](CreateAccountUserRequest.md) |  |  |
+
+### Return type
+
+[**AccountUser**](AccountUser.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_cashflow
 
 > <Cashflow> create_cashflow(opts)
@@ -857,6 +995,82 @@ end
 ### Return type
 
 [**Conferenceship**](Conferenceship.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_contact_search
+
+> <ContactSearchEntry> create_contact_search(opts)
+
+
+
+Create a new scheduling contact
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  create_contact_search_request: WinthropClient::CreateContactSearchRequest.new # CreateContactSearchRequest | 
+}
+
+begin
+  
+  result = api_instance.create_contact_search(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_contact_search: #{e}"
+end
+```
+
+#### Using the create_contact_search_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ContactSearchEntry>, Integer, Hash)> create_contact_search_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_contact_search_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ContactSearchEntry>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_contact_search_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_contact_search_request** | [**CreateContactSearchRequest**](CreateContactSearchRequest.md) |  | [optional] |
+
+### Return type
+
+[**ContactSearchEntry**](ContactSearchEntry.md)
 
 ### Authorization
 
@@ -1164,6 +1378,80 @@ end
 - **Accept**: application/json
 
 
+## create_game_post_search
+
+> <GamePostDetail> create_game_post_search(create_game_post_search_request)
+
+
+
+Create a new game post
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_game_post_search_request = WinthropClient::CreateGamePostSearchRequest.new({game_post: WinthropClient::CreateGamePostSearchRequestGamePost.new({sport_id: 37, start_date: Date.today})}) # CreateGamePostSearchRequest | 
+
+begin
+  
+  result = api_instance.create_game_post_search(create_game_post_search_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_game_post_search: #{e}"
+end
+```
+
+#### Using the create_game_post_search_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GamePostDetail>, Integer, Hash)> create_game_post_search_with_http_info(create_game_post_search_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_game_post_search_with_http_info(create_game_post_search_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GamePostDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_game_post_search_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_game_post_search_request** | [**CreateGamePostSearchRequest**](CreateGamePostSearchRequest.md) |  |  |
+
+### Return type
+
+[**GamePostDetail**](GamePostDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_job_post
 
 > <JobPost> create_job_post(opts)
@@ -1233,6 +1521,144 @@ end
 ### Authorization
 
 [ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_note
+
+> <Note> create_note(create_note_request)
+
+
+
+Create a note for the current user on a notable object
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_note_request = WinthropClient::CreateNoteRequest.new({notable_type: 'notable_type_example', notable_id: 37, content: 'content_example'}) # CreateNoteRequest | 
+
+begin
+  
+  result = api_instance.create_note(create_note_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_note: #{e}"
+end
+```
+
+#### Using the create_note_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Note>, Integer, Hash)> create_note_with_http_info(create_note_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_note_with_http_info(create_note_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Note>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_note_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_note_request** | [**CreateNoteRequest**](CreateNoteRequest.md) |  |  |
+
+### Return type
+
+[**Note**](Note.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_password_reset
+
+> <CreatePasswordReset200Response> create_password_reset(create_password_reset_request)
+
+
+
+Send password reset instructions to the given email address
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+
+api_instance = WinthropClient::DefaultApi.new
+create_password_reset_request = WinthropClient::CreatePasswordResetRequest.new({user: WinthropClient::CreatePasswordResetRequestUser.new({email: 'user@example.com'})}) # CreatePasswordResetRequest | 
+
+begin
+  
+  result = api_instance.create_password_reset(create_password_reset_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_password_reset: #{e}"
+end
+```
+
+#### Using the create_password_reset_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreatePasswordReset200Response>, Integer, Hash)> create_password_reset_with_http_info(create_password_reset_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_password_reset_with_http_info(create_password_reset_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreatePasswordReset200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_password_reset_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_password_reset_request** | [**CreatePasswordResetRequest**](CreatePasswordResetRequest.md) |  |  |
+
+### Return type
+
+[**CreatePasswordReset200Response**](CreatePasswordReset200Response.md)
+
+### Authorization
+
+No authorization required
 
 ### HTTP request headers
 
@@ -1388,6 +1814,80 @@ end
 - **Accept**: application/json
 
 
+## create_school_group
+
+> <SchoolGroupShow> create_school_group(create_school_group_request)
+
+
+
+Create a new custom school group
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_school_group_request = WinthropClient::CreateSchoolGroupRequest.new({school_group: WinthropClient::CreateSchoolGroupRequestSchoolGroup.new({name: 'name_example'})}) # CreateSchoolGroupRequest | 
+
+begin
+  
+  result = api_instance.create_school_group(create_school_group_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_school_group: #{e}"
+end
+```
+
+#### Using the create_school_group_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SchoolGroupShow>, Integer, Hash)> create_school_group_with_http_info(create_school_group_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_school_group_with_http_info(create_school_group_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SchoolGroupShow>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_school_group_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_school_group_request** | [**CreateSchoolGroupRequest**](CreateSchoolGroupRequest.md) |  |  |
+
+### Return type
+
+[**SchoolGroupShow**](SchoolGroupShow.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_season
 
 > <Season> create_season(opts)
@@ -1461,6 +1961,230 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_team_schedule_favorite
+
+> <CreateTeamScheduleFavorite201Response> create_team_schedule_favorite(create_team_schedule_favorite_request)
+
+
+
+Add a FilTeam to favorites
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_team_schedule_favorite_request = WinthropClient::CreateTeamScheduleFavoriteRequest.new({favoritable_id: 'favoritable_id_example'}) # CreateTeamScheduleFavoriteRequest | 
+
+begin
+  
+  result = api_instance.create_team_schedule_favorite(create_team_schedule_favorite_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_team_schedule_favorite: #{e}"
+end
+```
+
+#### Using the create_team_schedule_favorite_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateTeamScheduleFavorite201Response>, Integer, Hash)> create_team_schedule_favorite_with_http_info(create_team_schedule_favorite_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_team_schedule_favorite_with_http_info(create_team_schedule_favorite_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateTeamScheduleFavorite201Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_team_schedule_favorite_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_team_schedule_favorite_request** | [**CreateTeamScheduleFavoriteRequest**](CreateTeamScheduleFavoriteRequest.md) |  |  |
+
+### Return type
+
+[**CreateTeamScheduleFavorite201Response**](CreateTeamScheduleFavorite201Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_upload
+
+> <CreateUpload201Response> create_upload(opts)
+
+
+
+Upload one or more PDF contract files
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  files: [File.new('/path/to/some/file')] # Array<File> | PDF files to upload
+}
+
+begin
+  
+  result = api_instance.create_upload(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_upload: #{e}"
+end
+```
+
+#### Using the create_upload_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateUpload201Response>, Integer, Hash)> create_upload_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_upload_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateUpload201Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_upload_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **files** | **Array&lt;File&gt;** | PDF files to upload | [optional] |
+
+### Return type
+
+[**CreateUpload201Response**](CreateUpload201Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+
+## delete_account_user
+
+> <DeleteAccountUser200Response> delete_account_user(account_user_id)
+
+
+
+Delete a user from the current account
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+account_user_id = 56 # Integer | ID of the user to delete
+
+begin
+  
+  result = api_instance.delete_account_user(account_user_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_account_user: #{e}"
+end
+```
+
+#### Using the delete_account_user_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DeleteAccountUser200Response>, Integer, Hash)> delete_account_user_with_http_info(account_user_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_account_user_with_http_info(account_user_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DeleteAccountUser200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_account_user_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **account_user_id** | **Integer** | ID of the user to delete |  |
+
+### Return type
+
+[**DeleteAccountUser200Response**](DeleteAccountUser200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
@@ -1681,6 +2405,80 @@ nil (empty response body)
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+
+## delete_contact_search
+
+> <DeleteContactSearch200Response> delete_contact_search(id)
+
+
+
+Delete a scheduling contact
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | ID of contact to delete
+
+begin
+  
+  result = api_instance.delete_contact_search(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_contact_search: #{e}"
+end
+```
+
+#### Using the delete_contact_search_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DeleteContactSearch200Response>, Integer, Hash)> delete_contact_search_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_contact_search_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DeleteContactSearch200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_contact_search_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | ID of contact to delete |  |
+
+### Return type
+
+[**DeleteContactSearch200Response**](DeleteContactSearch200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## delete_favorite
@@ -1977,6 +2775,153 @@ nil (empty response body)
 - **Accept**: Not defined
 
 
+## delete_game_contract_raw_contract
+
+> delete_game_contract_raw_contract(game_contract_id)
+
+
+
+Delete the raw contract attached to a game contract
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+game_contract_id = 56 # Integer | ID of the GameContract
+
+begin
+  
+  api_instance.delete_game_contract_raw_contract(game_contract_id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_game_contract_raw_contract: #{e}"
+end
+```
+
+#### Using the delete_game_contract_raw_contract_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_game_contract_raw_contract_with_http_info(game_contract_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_game_contract_raw_contract_with_http_info(game_contract_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_game_contract_raw_contract_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **game_contract_id** | **Integer** | ID of the GameContract |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## delete_game_post_search
+
+> <DeleteContactSearch200Response> delete_game_post_search(game_post_search_id)
+
+
+
+Delete a game post
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+game_post_search_id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.delete_game_post_search(game_post_search_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_game_post_search: #{e}"
+end
+```
+
+#### Using the delete_game_post_search_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DeleteContactSearch200Response>, Integer, Hash)> delete_game_post_search_with_http_info(game_post_search_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_game_post_search_with_http_info(game_post_search_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DeleteContactSearch200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_game_post_search_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **game_post_search_id** | **Integer** |  |  |
+
+### Return type
+
+[**DeleteContactSearch200Response**](DeleteContactSearch200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## delete_job_post
 
 > delete_job_post(job_post_id)
@@ -2048,6 +2993,80 @@ nil (empty response body)
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+
+## delete_note
+
+> <DeleteAccountUser200Response> delete_note(id)
+
+
+
+Delete a note
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.delete_note(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_note: #{e}"
+end
+```
+
+#### Using the delete_note_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DeleteAccountUser200Response>, Integer, Hash)> delete_note_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_note_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DeleteAccountUser200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_note_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**DeleteAccountUser200Response**](DeleteAccountUser200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## delete_position
@@ -2196,6 +3215,80 @@ nil (empty response body)
 - **Accept**: Not defined
 
 
+## delete_school_group
+
+> <DeleteAccountUser200Response> delete_school_group(school_group_id)
+
+
+
+Delete a custom school group
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_group_id = 56 # Integer | ID of the School Group
+
+begin
+  
+  result = api_instance.delete_school_group(school_group_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_school_group: #{e}"
+end
+```
+
+#### Using the delete_school_group_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DeleteAccountUser200Response>, Integer, Hash)> delete_school_group_with_http_info(school_group_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_school_group_with_http_info(school_group_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DeleteAccountUser200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_school_group_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_group_id** | **Integer** | ID of the School Group |  |
+
+### Return type
+
+[**DeleteAccountUser200Response**](DeleteAccountUser200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## delete_season
 
 > delete_season(season_id)
@@ -2267,6 +3360,441 @@ nil (empty response body)
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+
+## delete_team_schedule_favorite
+
+> <DeleteAccountUser200Response> delete_team_schedule_favorite(id)
+
+
+
+Remove a FilTeam favorite
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | The favorite record ID
+
+begin
+  
+  result = api_instance.delete_team_schedule_favorite(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_team_schedule_favorite: #{e}"
+end
+```
+
+#### Using the delete_team_schedule_favorite_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DeleteAccountUser200Response>, Integer, Hash)> delete_team_schedule_favorite_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_team_schedule_favorite_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DeleteAccountUser200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_team_schedule_favorite_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | The favorite record ID |  |
+
+### Return type
+
+[**DeleteAccountUser200Response**](DeleteAccountUser200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_team_schedule_note
+
+> delete_team_schedule_note(fil_team_id)
+
+
+
+Delete the current user's note for a team.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+fil_team_id = 'fil_team_id_example' # String | 
+
+begin
+  
+  api_instance.delete_team_schedule_note(fil_team_id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_team_schedule_note: #{e}"
+end
+```
+
+#### Using the delete_team_schedule_note_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_team_schedule_note_with_http_info(fil_team_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_team_schedule_note_with_http_info(fil_team_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_team_schedule_note_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **fil_team_id** | **String** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## delete_upload
+
+> <DeleteAccountUser200Response> delete_upload(upload_id)
+
+
+
+Delete an uploaded contract
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+upload_id = 56 # Integer | ID of the upload to delete
+
+begin
+  
+  result = api_instance.delete_upload(upload_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_upload: #{e}"
+end
+```
+
+#### Using the delete_upload_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DeleteAccountUser200Response>, Integer, Hash)> delete_upload_with_http_info(upload_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_upload_with_http_info(upload_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DeleteAccountUser200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_upload_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **upload_id** | **Integer** | ID of the upload to delete |  |
+
+### Return type
+
+[**DeleteAccountUser200Response**](DeleteAccountUser200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_account
+
+> <AccountDetail> get_account(id)
+
+
+
+Retrieve an account with subscriptions, invoices, and billing addresses
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_account(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_account: #{e}"
+end
+```
+
+#### Using the get_account_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AccountDetail>, Integer, Hash)> get_account_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_account_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AccountDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_account_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AccountDetail**](AccountDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_account_user_activation
+
+> <GetAccountUserActivation200Response> get_account_user_activation(confirmation_token)
+
+
+
+Validate a confirmation token and return the user's name and email for the account activation form
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+
+api_instance = WinthropClient::DefaultApi.new
+confirmation_token = 'confirmation_token_example' # String | The confirmation token from the invitation email
+
+begin
+  
+  result = api_instance.get_account_user_activation(confirmation_token)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_account_user_activation: #{e}"
+end
+```
+
+#### Using the get_account_user_activation_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetAccountUserActivation200Response>, Integer, Hash)> get_account_user_activation_with_http_info(confirmation_token)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_account_user_activation_with_http_info(confirmation_token)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetAccountUserActivation200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_account_user_activation_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **confirmation_token** | **String** | The confirmation token from the invitation email |  |
+
+### Return type
+
+[**GetAccountUserActivation200Response**](GetAccountUserActivation200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_account_users
+
+> <AccountUsersResponse> get_account_users(opts)
+
+
+
+Retrieve paginated list of users for the current user's account with their computed access permissions
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56 # Integer | results page to retrieve.
+}
+
+begin
+  
+  result = api_instance.get_account_users(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_account_users: #{e}"
+end
+```
+
+#### Using the get_account_users_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AccountUsersResponse>, Integer, Hash)> get_account_users_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_account_users_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AccountUsersResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_account_users_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+
+### Return type
+
+[**AccountUsersResponse**](AccountUsersResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## get_administrator
@@ -2496,6 +4024,86 @@ end
 ### Return type
 
 [**AdministratorCollection**](AdministratorCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_athletic_profile_search
+
+> <AthleticProfileShow> get_athletic_profile_search(athletic_profile_search_id, opts)
+
+
+
+Get school athletic profile with overview data
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+athletic_profile_search_id = 56 # Integer | School ID
+opts = {
+  sport: 'sport_example', # String | Sport key (defaults to ADMIN for department overview)
+  year: 56 # Integer | Performance year
+}
+
+begin
+  
+  result = api_instance.get_athletic_profile_search(athletic_profile_search_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_athletic_profile_search: #{e}"
+end
+```
+
+#### Using the get_athletic_profile_search_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AthleticProfileShow>, Integer, Hash)> get_athletic_profile_search_with_http_info(athletic_profile_search_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_athletic_profile_search_with_http_info(athletic_profile_search_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AthleticProfileShow>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_athletic_profile_search_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **athletic_profile_search_id** | **Integer** | School ID |  |
+| **sport** | **String** | Sport key (defaults to ADMIN for department overview) | [optional][default to &#39;ADMIN&#39;] |
+| **year** | **Integer** | Performance year | [optional] |
+
+### Return type
+
+[**AthleticProfileShow**](AthleticProfileShow.md)
 
 ### Authorization
 
@@ -3551,6 +5159,80 @@ end
 ### Return type
 
 [**CoachRecordTab**](CoachRecordTab.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_coach_search_recruiting
+
+> <CoachRecruitingTab> get_coach_search_recruiting(id)
+
+
+
+Get coach recruiting tab data including class strength, conference comparison, budgets, and charts
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 'id_example' # String | Coach ID or friendly slug
+
+begin
+  
+  result = api_instance.get_coach_search_recruiting(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_coach_search_recruiting: #{e}"
+end
+```
+
+#### Using the get_coach_search_recruiting_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CoachRecruitingTab>, Integer, Hash)> get_coach_search_recruiting_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_coach_search_recruiting_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CoachRecruitingTab>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_coach_search_recruiting_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | Coach ID or friendly slug |  |
+
+### Return type
+
+[**CoachRecruitingTab**](CoachRecruitingTab.md)
 
 ### Authorization
 
@@ -4806,6 +6488,157 @@ end
 - **Accept**: application/json
 
 
+## get_contact_search_coach_options
+
+> <ContactSearchCoachOptions> get_contact_search_coach_options
+
+
+
+Retrieve coach options for the scheduling contacts form
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_contact_search_coach_options
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_contact_search_coach_options: #{e}"
+end
+```
+
+#### Using the get_contact_search_coach_options_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ContactSearchCoachOptions>, Integer, Hash)> get_contact_search_coach_options_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_contact_search_coach_options_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ContactSearchCoachOptions>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_contact_search_coach_options_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ContactSearchCoachOptions**](ContactSearchCoachOptions.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_contact_searches
+
+> <ContactSearchCollection> get_contact_searches(opts)
+
+
+
+Retrieve scheduling contacts for the current account's school
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  
+  result = api_instance.get_contact_searches(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_contact_searches: #{e}"
+end
+```
+
+#### Using the get_contact_searches_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ContactSearchCollection>, Integer, Hash)> get_contact_searches_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_contact_searches_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ContactSearchCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_contact_searches_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**ContactSearchCollection**](ContactSearchCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_contacts
 
 > <ContactCollection> get_contacts(opts)
@@ -5649,6 +7482,80 @@ end
 ### Return type
 
 [**DivisionCollection**](DivisionCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_edit_account_user
+
+> <EditAccountUserResponse> get_edit_account_user(account_user_id)
+
+
+
+Retrieve a single account user with their current roles, sports, and form metadata for editing
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+account_user_id = 56 # Integer | ID of the user to edit
+
+begin
+  
+  result = api_instance.get_edit_account_user(account_user_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_edit_account_user: #{e}"
+end
+```
+
+#### Using the get_edit_account_user_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EditAccountUserResponse>, Integer, Hash)> get_edit_account_user_with_http_info(account_user_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_edit_account_user_with_http_info(account_user_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EditAccountUserResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_edit_account_user_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **account_user_id** | **Integer** | ID of the user to edit |  |
+
+### Return type
+
+[**EditAccountUserResponse**](EditAccountUserResponse.md)
 
 ### Authorization
 
@@ -6867,6 +8774,80 @@ end
 - **Accept**: application/json
 
 
+## get_gad_search_detail
+
+> <GadContractDetail> get_gad_search_detail(id)
+
+
+
+Retrieve detailed game contract data for the GAD detail page
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_gad_search_detail(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_gad_search_detail: #{e}"
+end
+```
+
+#### Using the get_gad_search_detail_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GadContractDetail>, Integer, Hash)> get_gad_search_detail_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_gad_search_detail_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GadContractDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_gad_search_detail_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**GadContractDetail**](GadContractDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_gad_searches
 
 > <GadSearchResultCollection> get_gad_searches(opts)
@@ -7095,6 +9076,80 @@ end
 - **Accept**: application/json
 
 
+## get_game_contract_series
+
+> <GameContractSeriesResponse> get_game_contract_series(game_contract_id)
+
+
+
+Retrieve the series of game contracts related to this contract
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+game_contract_id = 56 # Integer | ID of the GameContract
+
+begin
+  
+  result = api_instance.get_game_contract_series(game_contract_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_game_contract_series: #{e}"
+end
+```
+
+#### Using the get_game_contract_series_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GameContractSeriesResponse>, Integer, Hash)> get_game_contract_series_with_http_info(game_contract_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_game_contract_series_with_http_info(game_contract_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GameContractSeriesResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_game_contract_series_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **game_contract_id** | **Integer** | ID of the GameContract |  |
+
+### Return type
+
+[**GameContractSeriesResponse**](GameContractSeriesResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_game_contracts
 
 > <GameContractCollection> get_game_contracts(opts)
@@ -7238,6 +9293,80 @@ end
 ### Return type
 
 [**GamePost**](GamePost.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_game_post_search
+
+> <GamePostDetail> get_game_post_search(game_post_search_id)
+
+
+
+Get a single game post with enriched details including contacts
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+game_post_search_id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_game_post_search(game_post_search_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_game_post_search: #{e}"
+end
+```
+
+#### Using the get_game_post_search_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GamePostDetail>, Integer, Hash)> get_game_post_search_with_http_info(game_post_search_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_game_post_search_with_http_info(game_post_search_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GamePostDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_game_post_search_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **game_post_search_id** | **Integer** |  |  |
+
+### Return type
+
+[**GamePostDetail**](GamePostDetail.md)
 
 ### Authorization
 
@@ -8022,6 +10151,77 @@ end
 - **Accept**: application/json
 
 
+## get_new_account_user
+
+> <NewAccountUserResponse> get_new_account_user
+
+
+
+Retrieve form metadata for creating a new account user including available role options based on subscription, schedulable sports, and email domain
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_new_account_user
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_new_account_user: #{e}"
+end
+```
+
+#### Using the get_new_account_user_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<NewAccountUserResponse>, Integer, Hash)> get_new_account_user_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_new_account_user_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <NewAccountUserResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_new_account_user_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**NewAccountUserResponse**](NewAccountUserResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_news_feed
 
 > <NewsFeed> get_news_feed(news_feed_id)
@@ -8085,6 +10285,82 @@ end
 ### Return type
 
 [**NewsFeed**](NewsFeed.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_note
+
+> <Note> get_note(notable_type, notable_id)
+
+
+
+Retrieve the current user's note for a given notable object. Returns null if no note exists.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+notable_type = 'notable_type_example' # String | The model type (e.g. \"Coach\")
+notable_id = 56 # Integer | The ID of the notable record
+
+begin
+  
+  result = api_instance.get_note(notable_type, notable_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_note: #{e}"
+end
+```
+
+#### Using the get_note_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Note>, Integer, Hash)> get_note_with_http_info(notable_type, notable_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_note_with_http_info(notable_type, notable_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Note>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_note_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **notable_type** | **String** | The model type (e.g. \&quot;Coach\&quot;) |  |
+| **notable_id** | **Integer** | The ID of the notable record |  |
+
+### Return type
+
+[**Note**](Note.md)
 
 ### Authorization
 
@@ -8558,6 +10834,164 @@ end
 - **Accept**: application/json
 
 
+## get_revenue_search
+
+> <SchoolFinancialDetail> get_revenue_search(revenue_search_id, school_id, opts)
+
+
+
+Get revenue/expense line item detail with sport breakdown
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+revenue_search_id = 56 # Integer | 
+school_id = 56 # Integer | 
+opts = {
+  year: 56 # Integer | 
+}
+
+begin
+  
+  result = api_instance.get_revenue_search(revenue_search_id, school_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_revenue_search: #{e}"
+end
+```
+
+#### Using the get_revenue_search_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SchoolFinancialDetail>, Integer, Hash)> get_revenue_search_with_http_info(revenue_search_id, school_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_revenue_search_with_http_info(revenue_search_id, school_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SchoolFinancialDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_revenue_search_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **revenue_search_id** | **Integer** |  |  |
+| **school_id** | **Integer** |  |  |
+| **year** | **Integer** |  | [optional] |
+
+### Return type
+
+[**SchoolFinancialDetail**](SchoolFinancialDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_revenue_searches
+
+> <SchoolFinancialSummary> get_revenue_searches(school_id, opts)
+
+
+
+Get school financial summary with revenue/expense breakdown by sport
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | 
+opts = {
+  year: 56 # Integer | 
+}
+
+begin
+  
+  result = api_instance.get_revenue_searches(school_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_revenue_searches: #{e}"
+end
+```
+
+#### Using the get_revenue_searches_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SchoolFinancialSummary>, Integer, Hash)> get_revenue_searches_with_http_info(school_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_revenue_searches_with_http_info(school_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SchoolFinancialSummary>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_revenue_searches_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** |  |  |
+| **year** | **Integer** |  | [optional] |
+
+### Return type
+
+[**SchoolFinancialSummary**](SchoolFinancialSummary.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_school
 
 > <School> get_school(school_id)
@@ -8695,6 +11129,80 @@ end
 ### Return type
 
 [**GetSchoolAlternateNames200Response**](GetSchoolAlternateNames200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_school_game_contracts
+
+> <SchoolGameContractsResponse> get_school_game_contracts(school_id)
+
+
+
+Retrieve game contracts for a school grouped by sport
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | ID of the School
+
+begin
+  
+  result = api_instance.get_school_game_contracts(school_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_school_game_contracts: #{e}"
+end
+```
+
+#### Using the get_school_game_contracts_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SchoolGameContractsResponse>, Integer, Hash)> get_school_game_contracts_with_http_info(school_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_school_game_contracts_with_http_info(school_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SchoolGameContractsResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_school_game_contracts_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** | ID of the School |  |
+
+### Return type
+
+[**SchoolGameContractsResponse**](SchoolGameContractsResponse.md)
 
 ### Authorization
 
@@ -9239,6 +11747,148 @@ end
 ### Return type
 
 [**SportCompensationResponse**](SportCompensationResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_school_groups
+
+> <Array<SchoolGroupShow>> get_school_groups
+
+
+
+Retrieve the current user's custom school groups with their schools
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_school_groups
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_school_groups: #{e}"
+end
+```
+
+#### Using the get_school_groups_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<SchoolGroupShow>>, Integer, Hash)> get_school_groups_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_school_groups_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<SchoolGroupShow>>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_school_groups_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Array&lt;SchoolGroupShow&gt;**](SchoolGroupShow.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_school_groups_available_schools
+
+> <Array<IdName>> get_school_groups_available_schools
+
+
+
+Retrieve D1 and D2 schools available for custom school group selection
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_school_groups_available_schools
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_school_groups_available_schools: #{e}"
+end
+```
+
+#### Using the get_school_groups_available_schools_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<IdName>>, Integer, Hash)> get_school_groups_available_schools_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_school_groups_available_schools_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<IdName>>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_school_groups_available_schools_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Array&lt;IdName&gt;**](IdName.md)
 
 ### Authorization
 
@@ -10640,6 +13290,1004 @@ This endpoint does not need any parameter.
 - **Accept**: application/json
 
 
+## get_team_schedule_detail
+
+> <TeamScheduleDetail> get_team_schedule_detail(sport_name, school_id, opts)
+
+
+
+Get detailed team schedule info including school overview, season stats, contacts, and games for the scouting report tab.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+sport_name = 'sport_name_example' # String | Sport name (e.g. BASKETBALL_M)
+school_id = 56 # Integer | School ID
+opts = {
+  performance_year: 56 # Integer | Performance year to load games for (defaults to current season year)
+}
+
+begin
+  
+  result = api_instance.get_team_schedule_detail(sport_name, school_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_team_schedule_detail: #{e}"
+end
+```
+
+#### Using the get_team_schedule_detail_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TeamScheduleDetail>, Integer, Hash)> get_team_schedule_detail_with_http_info(sport_name, school_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_team_schedule_detail_with_http_info(sport_name, school_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TeamScheduleDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_team_schedule_detail_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **sport_name** | **String** | Sport name (e.g. BASKETBALL_M) |  |
+| **school_id** | **Integer** | School ID |  |
+| **performance_year** | **Integer** | Performance year to load games for (defaults to current season year) | [optional] |
+
+### Return type
+
+[**TeamScheduleDetail**](TeamScheduleDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_team_schedule_detail_coaches
+
+> <TeamScheduleCoaches> get_team_schedule_detail_coaches(sport_name, school_id, opts)
+
+
+
+Get coaches and performance data for a team across recent seasons.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+sport_name = 'sport_name_example' # String | 
+school_id = 56 # Integer | 
+opts = {
+  performance_year: 56 # Integer | Year to load coach roster for
+}
+
+begin
+  
+  result = api_instance.get_team_schedule_detail_coaches(sport_name, school_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_team_schedule_detail_coaches: #{e}"
+end
+```
+
+#### Using the get_team_schedule_detail_coaches_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TeamScheduleCoaches>, Integer, Hash)> get_team_schedule_detail_coaches_with_http_info(sport_name, school_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_team_schedule_detail_coaches_with_http_info(sport_name, school_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TeamScheduleCoaches>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_team_schedule_detail_coaches_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **sport_name** | **String** |  |  |
+| **school_id** | **Integer** |  |  |
+| **performance_year** | **Integer** | Year to load coach roster for | [optional] |
+
+### Return type
+
+[**TeamScheduleCoaches**](TeamScheduleCoaches.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_team_schedule_detail_game_posts
+
+> <TeamScheduleGamePosts> get_team_schedule_detail_game_posts(sport_name, school_id)
+
+
+
+Get games wanted posts for a team.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+sport_name = 'sport_name_example' # String | 
+school_id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_team_schedule_detail_game_posts(sport_name, school_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_team_schedule_detail_game_posts: #{e}"
+end
+```
+
+#### Using the get_team_schedule_detail_game_posts_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TeamScheduleGamePosts>, Integer, Hash)> get_team_schedule_detail_game_posts_with_http_info(sport_name, school_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_team_schedule_detail_game_posts_with_http_info(sport_name, school_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TeamScheduleGamePosts>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_team_schedule_detail_game_posts_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **sport_name** | **String** |  |  |
+| **school_id** | **Integer** |  |  |
+
+### Return type
+
+[**TeamScheduleGamePosts**](TeamScheduleGamePosts.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_team_schedule_detail_player_data
+
+> <TeamSchedulePlayerData> get_team_schedule_detail_player_data(sport_name, school_id)
+
+
+
+Get player data for a team (Men's Basketball only).
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+sport_name = 'sport_name_example' # String | 
+school_id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_team_schedule_detail_player_data(sport_name, school_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_team_schedule_detail_player_data: #{e}"
+end
+```
+
+#### Using the get_team_schedule_detail_player_data_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TeamSchedulePlayerData>, Integer, Hash)> get_team_schedule_detail_player_data_with_http_info(sport_name, school_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_team_schedule_detail_player_data_with_http_info(sport_name, school_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TeamSchedulePlayerData>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_team_schedule_detail_player_data_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **sport_name** | **String** |  |  |
+| **school_id** | **Integer** |  |  |
+
+### Return type
+
+[**TeamSchedulePlayerData**](TeamSchedulePlayerData.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_team_schedule_detail_schedule
+
+> <TeamScheduleSchedule> get_team_schedule_detail_schedule(sport_name, school_id, opts)
+
+
+
+Get the full game schedule list for a team and season year.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+sport_name = 'sport_name_example' # String | 
+school_id = 56 # Integer | 
+opts = {
+  year: 56 # Integer | Season year (defaults to current schedule season year)
+}
+
+begin
+  
+  result = api_instance.get_team_schedule_detail_schedule(sport_name, school_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_team_schedule_detail_schedule: #{e}"
+end
+```
+
+#### Using the get_team_schedule_detail_schedule_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TeamScheduleSchedule>, Integer, Hash)> get_team_schedule_detail_schedule_with_http_info(sport_name, school_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_team_schedule_detail_schedule_with_http_info(sport_name, school_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TeamScheduleSchedule>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_team_schedule_detail_schedule_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **sport_name** | **String** |  |  |
+| **school_id** | **Integer** |  |  |
+| **year** | **Integer** | Season year (defaults to current schedule season year) | [optional] |
+
+### Return type
+
+[**TeamScheduleSchedule**](TeamScheduleSchedule.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_team_schedule_detail_schedule_overlap
+
+> <TeamScheduleOverlap> get_team_schedule_detail_schedule_overlap(sport_name, school_id)
+
+
+
+Check schedule overlap between a team and the current user's team.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+sport_name = 'sport_name_example' # String | 
+school_id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_team_schedule_detail_schedule_overlap(sport_name, school_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_team_schedule_detail_schedule_overlap: #{e}"
+end
+```
+
+#### Using the get_team_schedule_detail_schedule_overlap_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TeamScheduleOverlap>, Integer, Hash)> get_team_schedule_detail_schedule_overlap_with_http_info(sport_name, school_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_team_schedule_detail_schedule_overlap_with_http_info(sport_name, school_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TeamScheduleOverlap>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_team_schedule_detail_schedule_overlap_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **sport_name** | **String** |  |  |
+| **school_id** | **Integer** |  |  |
+
+### Return type
+
+[**TeamScheduleOverlap**](TeamScheduleOverlap.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_team_schedule_favorites
+
+> <Array<GetTeamScheduleFavorites200ResponseInner>> get_team_schedule_favorites(opts)
+
+
+
+Retrieve the current user's FilTeam favorites. Returns favoritable_id as a string to avoid JavaScript precision loss with large numeric IDs.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  detailed: '1' # String | When set to \"1\", includes category and favoritable name
+}
+
+begin
+  
+  result = api_instance.get_team_schedule_favorites(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_team_schedule_favorites: #{e}"
+end
+```
+
+#### Using the get_team_schedule_favorites_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<GetTeamScheduleFavorites200ResponseInner>>, Integer, Hash)> get_team_schedule_favorites_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_team_schedule_favorites_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<GetTeamScheduleFavorites200ResponseInner>>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_team_schedule_favorites_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **detailed** | **String** | When set to \&quot;1\&quot;, includes category and favoritable name | [optional] |
+
+### Return type
+
+[**Array&lt;GetTeamScheduleFavorites200ResponseInner&gt;**](GetTeamScheduleFavorites200ResponseInner.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_team_schedule_note
+
+> <TeamScheduleNote> get_team_schedule_note(fil_team_id)
+
+
+
+Get the current user's note for a team.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+fil_team_id = 'fil_team_id_example' # String | FilTeam ID
+
+begin
+  
+  result = api_instance.get_team_schedule_note(fil_team_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_team_schedule_note: #{e}"
+end
+```
+
+#### Using the get_team_schedule_note_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TeamScheduleNote>, Integer, Hash)> get_team_schedule_note_with_http_info(fil_team_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_team_schedule_note_with_http_info(fil_team_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TeamScheduleNote>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_team_schedule_note_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **fil_team_id** | **String** | FilTeam ID |  |
+
+### Return type
+
+[**TeamScheduleNote**](TeamScheduleNote.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_team_schedule_searches
+
+> <TeamScheduleSearchResultCollection> get_team_schedule_searches(opts)
+
+
+
+Search team schedules with enriched data including contacts, RPI, returning percentages, and guarantee contract info.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... }, # Object | Ransack query
+  sport_name: 'sport_name_example', # String | Sport name filter (e.g. BASKETBALL_M)
+  exclude_already_scheduled: '1', # String | Exclude schools already on the user's schedule
+  exclude_conference: '1' # String | Exclude schools in the user's conference
+}
+
+begin
+  
+  result = api_instance.get_team_schedule_searches(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_team_schedule_searches: #{e}"
+end
+```
+
+#### Using the get_team_schedule_searches_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TeamScheduleSearchResultCollection>, Integer, Hash)> get_team_schedule_searches_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_team_schedule_searches_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TeamScheduleSearchResultCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_team_schedule_searches_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+| **sport_name** | **String** | Sport name filter (e.g. BASKETBALL_M) | [optional] |
+| **exclude_already_scheduled** | **String** | Exclude schools already on the user&#39;s schedule | [optional] |
+| **exclude_conference** | **String** | Exclude schools in the user&#39;s conference | [optional] |
+
+### Return type
+
+[**TeamScheduleSearchResultCollection**](TeamScheduleSearchResultCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_time_zones
+
+> <GetTimeZones200Response> get_time_zones
+
+
+
+Retrieve all available time zones grouped by US priority zones and other zones
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_time_zones
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_time_zones: #{e}"
+end
+```
+
+#### Using the get_time_zones_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetTimeZones200Response>, Integer, Hash)> get_time_zones_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_time_zones_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetTimeZones200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_time_zones_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GetTimeZones200Response**](GetTimeZones200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_upload
+
+> <UploadDetail> get_upload(upload_id)
+
+
+
+Retrieve a single upload with its metadata
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+upload_id = 56 # Integer | ID of the upload
+
+begin
+  
+  result = api_instance.get_upload(upload_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_upload: #{e}"
+end
+```
+
+#### Using the get_upload_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UploadDetail>, Integer, Hash)> get_upload_with_http_info(upload_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_upload_with_http_info(upload_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UploadDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_upload_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **upload_id** | **Integer** | ID of the upload |  |
+
+### Return type
+
+[**UploadDetail**](UploadDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_upload_file
+
+> get_upload_file(upload_id)
+
+
+
+Redirect to the uploaded file for viewing/downloading
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+upload_id = 56 # Integer | ID of the upload
+
+begin
+  
+  api_instance.get_upload_file(upload_id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_upload_file: #{e}"
+end
+```
+
+#### Using the get_upload_file_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> get_upload_file_with_http_info(upload_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_upload_file_with_http_info(upload_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_upload_file_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **upload_id** | **Integer** | ID of the upload |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## get_uploads
+
+> <UploadsResponse> get_uploads(opts)
+
+
+
+Retrieve paginated list of uploaded contracts for the current account
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56 # Integer | results page to retrieve.
+}
+
+begin
+  
+  result = api_instance.get_uploads(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_uploads: #{e}"
+end
+```
+
+#### Using the get_uploads_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UploadsResponse>, Integer, Hash)> get_uploads_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_uploads_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UploadsResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_uploads_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+
+### Return type
+
+[**UploadsResponse**](UploadsResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_user
 
 > <User> get_user(user_id)
@@ -11342,6 +14990,151 @@ end
 - **Accept**: application/json
 
 
+## list_notes
+
+> <Array<ListNotes200ResponseInner>> list_notes
+
+
+
+Retrieve all of the current user's notes, ordered by most recent first. Includes the notable record's name.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.list_notes
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_notes: #{e}"
+end
+```
+
+#### Using the list_notes_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<ListNotes200ResponseInner>>, Integer, Hash)> list_notes_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_notes_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<ListNotes200ResponseInner>>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_notes_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Array&lt;ListNotes200ResponseInner&gt;**](ListNotes200ResponseInner.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## regenerate_raw_contract_pdf
+
+> <RegenerateRawContractPdf200Response> regenerate_raw_contract_pdf(raw_contract_id)
+
+
+
+Regenerate the PDF for a raw contract
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+raw_contract_id = 56 # Integer | ID of the RawContract
+
+begin
+  
+  result = api_instance.regenerate_raw_contract_pdf(raw_contract_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->regenerate_raw_contract_pdf: #{e}"
+end
+```
+
+#### Using the regenerate_raw_contract_pdf_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RegenerateRawContractPdf200Response>, Integer, Hash)> regenerate_raw_contract_pdf_with_http_info(raw_contract_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.regenerate_raw_contract_pdf_with_http_info(raw_contract_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RegenerateRawContractPdf200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->regenerate_raw_contract_pdf_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **raw_contract_id** | **Integer** | ID of the RawContract |  |
+
+### Return type
+
+[**RegenerateRawContractPdf200Response**](RegenerateRawContractPdf200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## search_coaches
 
 > <CoachCollection> search_coaches(opts)
@@ -11411,6 +15204,295 @@ end
 ### Authorization
 
 [ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## send_otp_code
+
+> <CreatePasswordReset200Response> send_otp_code
+
+
+
+Send an OTP verification code to the authenticated user's email
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.send_otp_code
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->send_otp_code: #{e}"
+end
+```
+
+#### Using the send_otp_code_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreatePasswordReset200Response>, Integer, Hash)> send_otp_code_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.send_otp_code_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreatePasswordReset200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->send_otp_code_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**CreatePasswordReset200Response**](CreatePasswordReset200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## unstract_raw_contract_pdf_text
+
+> <RegenerateRawContractPdf200Response> unstract_raw_contract_pdf_text(raw_contract_id, opts)
+
+
+
+Extract text from a raw contract PDF
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+raw_contract_id = 56 # Integer | ID of the RawContract
+opts = {
+  unstract_raw_contract_pdf_text_request: WinthropClient::UnstractRawContractPdfTextRequest.new # UnstractRawContractPdfTextRequest | 
+}
+
+begin
+  
+  result = api_instance.unstract_raw_contract_pdf_text(raw_contract_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->unstract_raw_contract_pdf_text: #{e}"
+end
+```
+
+#### Using the unstract_raw_contract_pdf_text_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RegenerateRawContractPdf200Response>, Integer, Hash)> unstract_raw_contract_pdf_text_with_http_info(raw_contract_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.unstract_raw_contract_pdf_text_with_http_info(raw_contract_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RegenerateRawContractPdf200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->unstract_raw_contract_pdf_text_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **raw_contract_id** | **Integer** | ID of the RawContract |  |
+| **unstract_raw_contract_pdf_text_request** | [**UnstractRawContractPdfTextRequest**](UnstractRawContractPdfTextRequest.md) |  | [optional] |
+
+### Return type
+
+[**RegenerateRawContractPdf200Response**](RegenerateRawContractPdf200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_account_user
+
+> <DeleteAccountUser200Response> update_account_user(account_user_id, update_account_user_request)
+
+
+
+Update an account user's roles and sport access
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+account_user_id = 56 # Integer | ID of the user to update
+update_account_user_request = WinthropClient::UpdateAccountUserRequest.new({user: WinthropClient::UpdateAccountUserRequestUser.new({role_symbols: ['role_symbols_example']})}) # UpdateAccountUserRequest | 
+
+begin
+  
+  result = api_instance.update_account_user(account_user_id, update_account_user_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_account_user: #{e}"
+end
+```
+
+#### Using the update_account_user_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DeleteAccountUser200Response>, Integer, Hash)> update_account_user_with_http_info(account_user_id, update_account_user_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_account_user_with_http_info(account_user_id, update_account_user_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DeleteAccountUser200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_account_user_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **account_user_id** | **Integer** | ID of the user to update |  |
+| **update_account_user_request** | [**UpdateAccountUserRequest**](UpdateAccountUserRequest.md) |  |  |
+
+### Return type
+
+[**DeleteAccountUser200Response**](DeleteAccountUser200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_account_user_activation
+
+> <UpdateAccountUserActivation200Response> update_account_user_activation(update_account_user_activation_request)
+
+
+
+Set password and activate the account for an invited user
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+
+api_instance = WinthropClient::DefaultApi.new
+update_account_user_activation_request = WinthropClient::UpdateAccountUserActivationRequest.new({confirmation_token: 'confirmation_token_example', user: WinthropClient::UpdateAccountUserActivationRequestUser.new({password: 'password_example', password_confirmation: 'password_confirmation_example'})}) # UpdateAccountUserActivationRequest | 
+
+begin
+  
+  result = api_instance.update_account_user_activation(update_account_user_activation_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_account_user_activation: #{e}"
+end
+```
+
+#### Using the update_account_user_activation_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UpdateAccountUserActivation200Response>, Integer, Hash)> update_account_user_activation_with_http_info(update_account_user_activation_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_account_user_activation_with_http_info(update_account_user_activation_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UpdateAccountUserActivation200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_account_user_activation_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **update_account_user_activation_request** | [**UpdateAccountUserActivationRequest**](UpdateAccountUserActivationRequest.md) |  |  |
+
+### Return type
+
+[**UpdateAccountUserActivation200Response**](UpdateAccountUserActivation200Response.md)
+
+### Authorization
+
+No authorization required
 
 ### HTTP request headers
 
@@ -12102,6 +16184,190 @@ end
 - **Accept**: application/json
 
 
+## update_game_contract
+
+> <DeleteAccountUser200Response> update_game_contract(game_contract_id, opts)
+
+
+
+Update a GameContract
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+game_contract_id = 56 # Integer | ID of the GameContract
+opts = {
+  game_contract_home_school_id: 56, # Integer | 
+  game_contract_away_school_id: 56, # Integer | 
+  game_contract_sport_id: 56, # Integer | 
+  game_contract_game_type: 'game_contract_game_type_example', # String | 
+  game_contract_game_date: 'game_contract_game_date_example', # String | 
+  game_contract_game_date_tbd: 'game_contract_game_date_tbd_example', # String | 
+  game_contract_off_site_location: 'game_contract_off_site_location_example', # String | 
+  game_contract_comp_dollars: 'game_contract_comp_dollars_example', # String | 
+  game_contract_comp_tbd: 'game_contract_comp_tbd_example', # String | 
+  game_contract_variable: 'game_contract_variable_example', # String | 
+  game_contract_cancel_fee_dollars: 'game_contract_cancel_fee_dollars_example', # String | 
+  game_contract_cancelled: 'game_contract_cancelled_example', # String | 
+  game_contract_verified: 'game_contract_verified_example', # String | 
+  game_contract_signed_on: 'game_contract_signed_on_example', # String | 
+  raw_contract_file: File.new('/path/to/some/file') # File | 
+}
+
+begin
+  
+  result = api_instance.update_game_contract(game_contract_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_game_contract: #{e}"
+end
+```
+
+#### Using the update_game_contract_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DeleteAccountUser200Response>, Integer, Hash)> update_game_contract_with_http_info(game_contract_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_game_contract_with_http_info(game_contract_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DeleteAccountUser200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_game_contract_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **game_contract_id** | **Integer** | ID of the GameContract |  |
+| **game_contract_home_school_id** | **Integer** |  | [optional] |
+| **game_contract_away_school_id** | **Integer** |  | [optional] |
+| **game_contract_sport_id** | **Integer** |  | [optional] |
+| **game_contract_game_type** | **String** |  | [optional] |
+| **game_contract_game_date** | **String** |  | [optional] |
+| **game_contract_game_date_tbd** | **String** |  | [optional] |
+| **game_contract_off_site_location** | **String** |  | [optional] |
+| **game_contract_comp_dollars** | **String** |  | [optional] |
+| **game_contract_comp_tbd** | **String** |  | [optional] |
+| **game_contract_variable** | **String** |  | [optional] |
+| **game_contract_cancel_fee_dollars** | **String** |  | [optional] |
+| **game_contract_cancelled** | **String** |  | [optional] |
+| **game_contract_verified** | **String** |  | [optional] |
+| **game_contract_signed_on** | **String** |  | [optional] |
+| **raw_contract_file** | **File** |  | [optional] |
+
+### Return type
+
+[**DeleteAccountUser200Response**](DeleteAccountUser200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+
+## update_game_post_search
+
+> <GamePostDetail> update_game_post_search(game_post_search_id, opts)
+
+
+
+Update a game post. Accepts status/expires_on for expire/renew, or full form fields for editing.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+game_post_search_id = 56 # Integer | 
+opts = {
+  update_game_post_search_request: WinthropClient::UpdateGamePostSearchRequest.new # UpdateGamePostSearchRequest | 
+}
+
+begin
+  
+  result = api_instance.update_game_post_search(game_post_search_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_game_post_search: #{e}"
+end
+```
+
+#### Using the update_game_post_search_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GamePostDetail>, Integer, Hash)> update_game_post_search_with_http_info(game_post_search_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_game_post_search_with_http_info(game_post_search_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GamePostDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_game_post_search_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **game_post_search_id** | **Integer** |  |  |
+| **update_game_post_search_request** | [**UpdateGamePostSearchRequest**](UpdateGamePostSearchRequest.md) |  | [optional] |
+
+### Return type
+
+[**GamePostDetail**](GamePostDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## update_job_post
 
 > <JobPost> update_job_post(job_post_id, opts)
@@ -12173,6 +16439,146 @@ end
 ### Authorization
 
 [ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_note
+
+> <Note> update_note(id, update_note_request)
+
+
+
+Update a note's content
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+update_note_request = WinthropClient::UpdateNoteRequest.new({content: 'content_example'}) # UpdateNoteRequest | 
+
+begin
+  
+  result = api_instance.update_note(id, update_note_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_note: #{e}"
+end
+```
+
+#### Using the update_note_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Note>, Integer, Hash)> update_note_with_http_info(id, update_note_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_note_with_http_info(id, update_note_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Note>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_note_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **update_note_request** | [**UpdateNoteRequest**](UpdateNoteRequest.md) |  |  |
+
+### Return type
+
+[**Note**](Note.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_password_reset
+
+> <UpdatePasswordReset200Response> update_password_reset(update_password_reset_request)
+
+
+
+Reset password using the token from the reset email
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+
+api_instance = WinthropClient::DefaultApi.new
+update_password_reset_request = WinthropClient::UpdatePasswordResetRequest.new({user: WinthropClient::UpdatePasswordResetRequestUser.new({reset_password_token: 'reset_password_token_example', password: 'password_example', password_confirmation: 'password_confirmation_example'})}) # UpdatePasswordResetRequest | 
+
+begin
+  
+  result = api_instance.update_password_reset(update_password_reset_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_password_reset: #{e}"
+end
+```
+
+#### Using the update_password_reset_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UpdatePasswordReset200Response>, Integer, Hash)> update_password_reset_with_http_info(update_password_reset_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_password_reset_with_http_info(update_password_reset_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UpdatePasswordReset200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_password_reset_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **update_password_reset_request** | [**UpdatePasswordResetRequest**](UpdatePasswordResetRequest.md) |  |  |
+
+### Return type
+
+[**UpdatePasswordReset200Response**](UpdatePasswordReset200Response.md)
+
+### Authorization
+
+No authorization required
 
 ### HTTP request headers
 
@@ -12332,6 +16738,82 @@ end
 - **Accept**: application/json
 
 
+## update_school_group
+
+> <SchoolGroupShow> update_school_group(school_group_id, update_school_group_request)
+
+
+
+Update an existing custom school group
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_group_id = 56 # Integer | ID of the School Group
+update_school_group_request = WinthropClient::UpdateSchoolGroupRequest.new({school_group: WinthropClient::UpdateSchoolGroupRequestSchoolGroup.new}) # UpdateSchoolGroupRequest | 
+
+begin
+  
+  result = api_instance.update_school_group(school_group_id, update_school_group_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_school_group: #{e}"
+end
+```
+
+#### Using the update_school_group_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SchoolGroupShow>, Integer, Hash)> update_school_group_with_http_info(school_group_id, update_school_group_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_school_group_with_http_info(school_group_id, update_school_group_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SchoolGroupShow>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_school_group_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_group_id** | **Integer** | ID of the School Group |  |
+| **update_school_group_request** | [**UpdateSchoolGroupRequest**](UpdateSchoolGroupRequest.md) |  |  |
+
+### Return type
+
+[**SchoolGroupShow**](SchoolGroupShow.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## update_season
 
 > <Season> update_season(season_id, season)
@@ -12397,6 +16879,234 @@ end
 ### Return type
 
 [**Season**](Season.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_team_schedule_favorite
+
+> <CreateTeamScheduleFavorite201Response> update_team_schedule_favorite(id, update_team_schedule_favorite_request)
+
+
+
+Update a FilTeam favorite's category
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | The favorite record ID
+update_team_schedule_favorite_request = WinthropClient::UpdateTeamScheduleFavoriteRequest.new # UpdateTeamScheduleFavoriteRequest | 
+
+begin
+  
+  result = api_instance.update_team_schedule_favorite(id, update_team_schedule_favorite_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_team_schedule_favorite: #{e}"
+end
+```
+
+#### Using the update_team_schedule_favorite_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateTeamScheduleFavorite201Response>, Integer, Hash)> update_team_schedule_favorite_with_http_info(id, update_team_schedule_favorite_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_team_schedule_favorite_with_http_info(id, update_team_schedule_favorite_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateTeamScheduleFavorite201Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_team_schedule_favorite_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | The favorite record ID |  |
+| **update_team_schedule_favorite_request** | [**UpdateTeamScheduleFavoriteRequest**](UpdateTeamScheduleFavoriteRequest.md) |  |  |
+
+### Return type
+
+[**CreateTeamScheduleFavorite201Response**](CreateTeamScheduleFavorite201Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_user
+
+> <User> update_user(user_id, update_user_request)
+
+
+
+Update the current user's profile
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+user_id = 56 # Integer | ID of user to update
+update_user_request = WinthropClient::UpdateUserRequest.new # UpdateUserRequest | 
+
+begin
+  
+  result = api_instance.update_user(user_id, update_user_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_user: #{e}"
+end
+```
+
+#### Using the update_user_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<User>, Integer, Hash)> update_user_with_http_info(user_id, update_user_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_user_with_http_info(user_id, update_user_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <User>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_user_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **user_id** | **Integer** | ID of user to update |  |
+| **update_user_request** | [**UpdateUserRequest**](UpdateUserRequest.md) |  |  |
+
+### Return type
+
+[**User**](User.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## upsert_team_schedule_note
+
+> <TeamScheduleNote> upsert_team_schedule_note(fil_team_id, upsert_team_schedule_note_request)
+
+
+
+Create or update the current user's note for a team.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+fil_team_id = 'fil_team_id_example' # String | 
+upsert_team_schedule_note_request = WinthropClient::UpsertTeamScheduleNoteRequest.new({content: 'content_example'}) # UpsertTeamScheduleNoteRequest | 
+
+begin
+  
+  result = api_instance.upsert_team_schedule_note(fil_team_id, upsert_team_schedule_note_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->upsert_team_schedule_note: #{e}"
+end
+```
+
+#### Using the upsert_team_schedule_note_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TeamScheduleNote>, Integer, Hash)> upsert_team_schedule_note_with_http_info(fil_team_id, upsert_team_schedule_note_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.upsert_team_schedule_note_with_http_info(fil_team_id, upsert_team_schedule_note_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TeamScheduleNote>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->upsert_team_schedule_note_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **fil_team_id** | **String** |  |  |
+| **upsert_team_schedule_note_request** | [**UpsertTeamScheduleNoteRequest**](UpsertTeamScheduleNoteRequest.md) |  |  |
+
+### Return type
+
+[**TeamScheduleNote**](TeamScheduleNote.md)
 
 ### Authorization
 
@@ -12479,6 +17189,80 @@ This endpoint does not need any parameter.
 - **Accept**: application/json
 
 
+## verify_otp_code
+
+> <VerifyOtpCode200Response> verify_otp_code(verify_otp_code_request)
+
+
+
+Verify an OTP code for the authenticated user
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+verify_otp_code_request = WinthropClient::VerifyOtpCodeRequest.new({otp_code: '123456'}) # VerifyOtpCodeRequest | 
+
+begin
+  
+  result = api_instance.verify_otp_code(verify_otp_code_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->verify_otp_code: #{e}"
+end
+```
+
+#### Using the verify_otp_code_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<VerifyOtpCode200Response>, Integer, Hash)> verify_otp_code_with_http_info(verify_otp_code_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.verify_otp_code_with_http_info(verify_otp_code_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <VerifyOtpCode200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->verify_otp_code_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **verify_otp_code_request** | [**VerifyOtpCodeRequest**](VerifyOtpCodeRequest.md) |  |  |
+
+### Return type
+
+[**VerifyOtpCode200Response**](VerifyOtpCode200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## verify_user_intercollegiate_access
 
 > <VerifyUserIntercollegiateAccess200Response> verify_user_intercollegiate_access(user_email)
@@ -12551,4 +17335,78 @@ end
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+
+## view_raw_contract_file
+
+> File view_raw_contract_file(raw_contract_id)
+
+
+
+Stream the raw contract PDF for inline viewing
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+raw_contract_id = 56 # Integer | ID of the RawContract
+
+begin
+  
+  result = api_instance.view_raw_contract_file(raw_contract_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->view_raw_contract_file: #{e}"
+end
+```
+
+#### Using the view_raw_contract_file_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(File, Integer, Hash)> view_raw_contract_file_with_http_info(raw_contract_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.view_raw_contract_file_with_http_info(raw_contract_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => File
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->view_raw_contract_file_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **raw_contract_id** | **Integer** | ID of the RawContract |  |
+
+### Return type
+
+**File**
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/pdf
 
