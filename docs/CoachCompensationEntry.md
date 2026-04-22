@@ -15,6 +15,13 @@
 | **compensation_type** | **String** |  |  |
 | **media_link** | **String** |  | [optional] |
 | **raw_contract_id** | **Integer** |  | [optional] |
+| **one_time_bonus_cents** | **Integer** |  | [optional] |
+| **outside_income_cents** | **Integer** |  | [optional] |
+| **contingent_bonus** | **Boolean** |  | [optional] |
+| **buyout_terms** | **String** |  | [optional] |
+| **is_car_provided** | **Boolean** |  | [optional] |
+| **country_club_membership** | **Boolean** |  | [optional] |
+| **notes** | **String** |  | [optional] |
 
 ## Example
 
@@ -32,7 +39,14 @@ instance = WinthropClient::CoachCompensationEntry.new(
   deferred_comp_cents: null,
   compensation_type: null,
   media_link: null,
-  raw_contract_id: null
+  raw_contract_id: null,
+  one_time_bonus_cents: null,
+  outside_income_cents: null,
+  contingent_bonus: null,
+  buyout_terms: null,
+  is_car_provided: null,
+  country_club_membership: null,
+  notes: null
 )
 ```
 

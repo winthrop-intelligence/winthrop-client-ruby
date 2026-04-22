@@ -16,8 +16,8 @@
 | **conference_id** | **Integer** |  | [optional] |
 | **division_id** | **Integer** |  | [optional] |
 | **geo_division_id** | **Integer** |  | [optional] |
-| **compensation_id** | **Integer** |  | [optional] |
-| **contract_id** | **Integer** |  | [optional] |
+| **compensation_id** | **Integer** | Only included in /administrator_searches responses when the user has administrator_compensation permission. | [optional] |
+| **contract_id** | **Integer** | Only included in /administrator_searches responses when the user can view this administrator&#39;s contract. | [optional] |
 | **year** | **Integer** |  | [optional] |
 | **position_title** | **String** |  | [optional] |
 | **school_name** | **String** |  | [optional] |
@@ -25,29 +25,29 @@
 | **state** | **String** |  | [optional] |
 | **usnwr_ranking** | **Integer** |  | [optional] |
 | **directors_cup_ranking** | **Integer** |  | [optional] |
-| **compensation_cents** | **Integer** |  | [optional] |
-| **compensation_base_salary_cents** | **Integer** |  | [optional] |
-| **compensation_type** | **String** |  | [optional] |
-| **compensation_outside_income_cents** | **Integer** |  | [optional] |
-| **compensation_deferred_comp_cents** | **Integer** |  | [optional] |
-| **compensation_one_time_bonus_cents** | **Integer** |  | [optional] |
-| **compensation_contingent_bonus** | **Boolean** |  | [optional] |
-| **compensation_buyout_terms** | **String** |  | [optional] |
-| **compensation_is_car_provided** | **Boolean** |  | [optional] |
-| **compensation_country_club_dues_cents** | **Integer** |  | [optional] |
-| **compensation_country_club_membership_paid** | **Boolean** |  | [optional] |
-| **compensation_talent_fee** | **Integer** |  | [optional] |
-| **compensation_media_link** | **String** |  | [optional] |
-| **raw_contract_id** | **Integer** |  | [optional] |
-| **contract_starts_on** | **Date** |  | [optional] |
-| **contract_expires_on** | **Date** |  | [optional] |
-| **contract_at_will** | **Boolean** |  | [optional] |
+| **compensation_cents** | **Integer** | Only included in /administrator_searches responses when the user has administrator_compensation permission. | [optional] |
+| **compensation_base_salary_cents** | **Integer** | Only included in /administrator_searches responses when the user has administrator_compensation permission. | [optional] |
+| **compensation_type** | **String** | Only included in /administrator_searches responses when the user has administrator_compensation permission. | [optional] |
+| **compensation_outside_income_cents** | **Integer** | Only included in /administrator_searches responses when the user has administrator_compensation permission. | [optional] |
+| **compensation_deferred_comp_cents** | **Integer** | Only included in /administrator_searches responses when the user has administrator_compensation permission. | [optional] |
+| **compensation_one_time_bonus_cents** | **Integer** | Only included in /administrator_searches responses when the user has administrator_compensation permission. | [optional] |
+| **compensation_contingent_bonus** | **Boolean** | Only included in /administrator_searches responses when the user has administrator_compensation permission. | [optional] |
+| **compensation_buyout_terms** | **String** | Only included in /administrator_searches responses when the user has administrator_compensation permission. | [optional] |
+| **compensation_is_car_provided** | **Boolean** | Only included in /administrator_searches responses when the user has administrator_compensation permission. | [optional] |
+| **compensation_country_club_dues_cents** | **Integer** | Only included in /administrator_searches responses when the user has administrator_compensation permission. | [optional] |
+| **compensation_country_club_membership_paid** | **Boolean** | Only included in /administrator_searches responses when the user has administrator_compensation permission. | [optional] |
+| **compensation_talent_fee** | **Integer** | Only included in /administrator_searches responses when the user has administrator_compensation permission. | [optional] |
+| **compensation_media_link** | **String** | Only included in /administrator_searches responses when the user has administrator_compensation permission. | [optional] |
+| **raw_contract_id** | **Integer** | Only included in /administrator_searches responses when the user can view this administrator&#39;s raw contract. | [optional] |
+| **contract_starts_on** | **Date** | Only included in /administrator_searches responses when the user can view this administrator&#39;s contract. | [optional] |
+| **contract_expires_on** | **Date** | Only included in /administrator_searches responses when the user can view this administrator&#39;s contract. | [optional] |
+| **contract_at_will** | **Boolean** | Only included in /administrator_searches responses when the user can view this administrator&#39;s contract. | [optional] |
 | **diversity** | **Boolean** |  | [optional] |
 | **gender** | **String** |  | [optional] |
 | **alma_mater_id** | **Integer** |  | [optional] |
 | **private** | **Boolean** |  | [optional] |
 | **sport_id** | **Integer** |  | [optional] |
-| **coli** | **Float** |  | [optional] |
+| **coli** | **Float** | Only included in /administrator_searches responses when the user has administrator_compensation permission. | [optional] |
 | **coach** | [**Coach**](Coach.md) |  | [optional] |
 | **departments** | [**Array&lt;PositionType&gt;**](PositionType.md) |  | [optional] |
 
