@@ -76,6 +76,7 @@ module WinthropClient
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'report_label',
         :'football',
         :'basketball_m',
         :'basketball_w',

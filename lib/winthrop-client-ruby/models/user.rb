@@ -44,6 +44,9 @@ module WinthropClient
 
     attr_accessor :roles
 
+    # Whether the user is a data admin or super admin
+    attr_accessor :is_admin
+
     # Whether the user can view coach compensation data
     attr_accessor :can_see_compensation
 
@@ -160,6 +163,7 @@ module WinthropClient
         :'coach_id' => :'coach_id',
         :'divisions' => :'divisions',
         :'roles' => :'roles',
+        :'is_admin' => :'is_admin',
         :'can_see_compensation' => :'can_see_compensation',
         :'can_show_scouting' => :'can_show_scouting',
         :'can_show_game_contract' => :'can_show_game_contract',
@@ -218,6 +222,7 @@ module WinthropClient
         :'coach_id' => :'Integer',
         :'divisions' => :'Array<Division>',
         :'roles' => :'Array<String>',
+        :'is_admin' => :'Boolean',
         :'can_see_compensation' => :'Boolean',
         :'can_show_scouting' => :'Boolean',
         :'can_show_game_contract' => :'Boolean',
@@ -336,6 +341,10 @@ module WinthropClient
         if (value = attributes[:'roles']).is_a?(Array)
           self.roles = value
         end
+      end
+
+      if attributes.key?(:'is_admin')
+        self.is_admin = attributes[:'is_admin']
       end
 
       if attributes.key?(:'can_see_compensation')
@@ -501,6 +510,7 @@ module WinthropClient
           coach_id == o.coach_id &&
           divisions == o.divisions &&
           roles == o.roles &&
+          is_admin == o.is_admin &&
           can_see_compensation == o.can_see_compensation &&
           can_show_scouting == o.can_show_scouting &&
           can_show_game_contract == o.can_show_game_contract &&
@@ -540,7 +550,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, email, first_name, last_name, created_at, updated_at, state, title, account_id, accountable_id, accountable_type, coach_id, divisions, roles, can_see_compensation, can_show_scouting, can_show_game_contract, can_see_coaches, can_see_administrators, can_show_financials, can_show_deals, can_show_benchmark, can_show_athletic_profile, can_read_conference, can_show_game_post, can_see_school_groups, can_read_account, is_sport_specific, is_d2_only, is_conference_only, permissible_sport_ids, coli_index, subscription_type, schedule_sports, school_city, school_state, otp_required, time_zone, scheduling_notifications, game_post_notifications, games_digest, email_domain].hash
+      [id, email, first_name, last_name, created_at, updated_at, state, title, account_id, accountable_id, accountable_type, coach_id, divisions, roles, is_admin, can_see_compensation, can_show_scouting, can_show_game_contract, can_see_coaches, can_see_administrators, can_show_financials, can_show_deals, can_show_benchmark, can_show_athletic_profile, can_read_conference, can_show_game_post, can_see_school_groups, can_read_account, is_sport_specific, is_d2_only, is_conference_only, permissible_sport_ids, coli_index, subscription_type, schedule_sports, school_city, school_state, otp_required, time_zone, scheduling_notifications, game_post_notifications, games_digest, email_domain].hash
     end
 
     # Builds the object from hash

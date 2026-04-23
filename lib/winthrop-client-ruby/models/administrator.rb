@@ -14,7 +14,6 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  # Administrator search result. In /administrator_searches responses, compensation fields are only included when the user has administrator_compensation permission, and contract fields are only included when the user can view the related contract or raw contract.
   class Administrator < ApiModelBase
     attr_accessor :id
 
@@ -41,10 +40,8 @@ module WinthropClient
 
     attr_accessor :geo_division_id
 
-    # Only included in /administrator_searches responses when the user has administrator_compensation permission.
     attr_accessor :compensation_id
 
-    # Only included in /administrator_searches responses when the user can view this administrator's contract.
     attr_accessor :contract_id
 
     attr_accessor :year
@@ -61,55 +58,38 @@ module WinthropClient
 
     attr_accessor :directors_cup_ranking
 
-    # Only included in /administrator_searches responses when the user has administrator_compensation permission.
     attr_accessor :compensation_cents
 
-    # Only included in /administrator_searches responses when the user has administrator_compensation permission.
     attr_accessor :compensation_base_salary_cents
 
-    # Only included in /administrator_searches responses when the user has administrator_compensation permission.
     attr_accessor :compensation_type
 
-    # Only included in /administrator_searches responses when the user has administrator_compensation permission.
     attr_accessor :compensation_outside_income_cents
 
-    # Only included in /administrator_searches responses when the user has administrator_compensation permission.
     attr_accessor :compensation_deferred_comp_cents
 
-    # Only included in /administrator_searches responses when the user has administrator_compensation permission.
     attr_accessor :compensation_one_time_bonus_cents
 
-    # Only included in /administrator_searches responses when the user has administrator_compensation permission.
     attr_accessor :compensation_contingent_bonus
 
-    # Only included in /administrator_searches responses when the user has administrator_compensation permission.
     attr_accessor :compensation_buyout_terms
 
-    # Only included in /administrator_searches responses when the user has administrator_compensation permission.
     attr_accessor :compensation_is_car_provided
 
-    # Only included in /administrator_searches responses when the user has administrator_compensation permission.
     attr_accessor :compensation_country_club_dues_cents
 
-    # Only included in /administrator_searches responses when the user has administrator_compensation permission.
     attr_accessor :compensation_country_club_membership_paid
 
-    # Only included in /administrator_searches responses when the user has administrator_compensation permission.
     attr_accessor :compensation_talent_fee
 
-    # Only included in /administrator_searches responses when the user has administrator_compensation permission.
     attr_accessor :compensation_media_link
 
-    # Only included in /administrator_searches responses when the user can view this administrator's raw contract.
     attr_accessor :raw_contract_id
 
-    # Only included in /administrator_searches responses when the user can view this administrator's contract.
     attr_accessor :contract_starts_on
 
-    # Only included in /administrator_searches responses when the user can view this administrator's contract.
     attr_accessor :contract_expires_on
 
-    # Only included in /administrator_searches responses when the user can view this administrator's contract.
     attr_accessor :contract_at_will
 
     attr_accessor :diversity
@@ -122,7 +102,6 @@ module WinthropClient
 
     attr_accessor :sport_id
 
-    # Only included in /administrator_searches responses when the user has administrator_compensation permission.
     attr_accessor :coli
 
     attr_accessor :coach
