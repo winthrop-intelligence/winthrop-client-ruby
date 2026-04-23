@@ -8,6 +8,8 @@
 | **name** | **String** |  | [optional] |
 | **name_id** | **String** |  | [optional] |
 | **short_name** | **String** |  | [optional] |
+| **report_id** | **String** |  | [optional] |
+| **report_label** | **String** |  | [optional] |
 
 ## Example
 
@@ -18,7 +20,9 @@ instance = WinthropClient::CashflowGroupItem.new(
   id: null,
   name: null,
   name_id: null,
-  short_name: null
+  short_name: null,
+  report_id: null,
+  report_label: null
 )
 ```
 

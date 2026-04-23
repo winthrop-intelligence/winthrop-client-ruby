@@ -8,6 +8,7 @@
 | **name_id** | **String** |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **short_name** | **String** |  | [optional] |
+| **report_label** | **String** |  | [optional] |
 | **sports** | [**Array&lt;CashflowSportStat&gt;**](CashflowSportStat.md) |  | [optional] |
 
 ## Example
@@ -20,6 +21,7 @@ instance = WinthropClient::CashflowGroupStats.new(
   name_id: null,
   name: null,
   short_name: null,
+  report_label: null,
   sports: null
 )
 ```

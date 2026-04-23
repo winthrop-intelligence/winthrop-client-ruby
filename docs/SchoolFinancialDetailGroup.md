@@ -8,6 +8,7 @@
 | **name** | **String** |  | [optional] |
 | **name_id** | **String** |  | [optional] |
 | **cashflow_type** | **String** |  | [optional] |
+| **report_label** | **String** |  | [optional] |
 
 ## Example
 
@@ -18,7 +19,8 @@ instance = WinthropClient::SchoolFinancialDetailGroup.new(
   id: null,
   name: null,
   name_id: null,
-  cashflow_type: null
+  cashflow_type: null,
+  report_label: null
 )
 ```
 
