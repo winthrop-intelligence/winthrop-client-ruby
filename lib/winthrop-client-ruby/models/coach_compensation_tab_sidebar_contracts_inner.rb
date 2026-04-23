@@ -25,6 +25,12 @@ module WinthropClient
 
     attr_accessor :at_will
 
+    attr_accessor :has_file
+
+    attr_accessor :can_download
+
+    attr_accessor :asset_file_name
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -32,7 +38,10 @@ module WinthropClient
         :'raw_contract_id' => :'raw_contract_id',
         :'start_on' => :'start_on',
         :'end_on' => :'end_on',
-        :'at_will' => :'at_will'
+        :'at_will' => :'at_will',
+        :'has_file' => :'has_file',
+        :'can_download' => :'can_download',
+        :'asset_file_name' => :'asset_file_name'
       }
     end
 
@@ -53,7 +62,10 @@ module WinthropClient
         :'raw_contract_id' => :'Integer',
         :'start_on' => :'String',
         :'end_on' => :'String',
-        :'at_will' => :'Boolean'
+        :'at_will' => :'Boolean',
+        :'has_file' => :'Boolean',
+        :'can_download' => :'Boolean',
+        :'asset_file_name' => :'String'
       }
     end
 
@@ -61,7 +73,8 @@ module WinthropClient
     def self.openapi_nullable
       Set.new([
         :'raw_contract_id',
-        :'at_will'
+        :'at_will',
+        :'asset_file_name'
       ])
     end
 
@@ -100,6 +113,18 @@ module WinthropClient
       if attributes.key?(:'at_will')
         self.at_will = attributes[:'at_will']
       end
+
+      if attributes.key?(:'has_file')
+        self.has_file = attributes[:'has_file']
+      end
+
+      if attributes.key?(:'can_download')
+        self.can_download = attributes[:'can_download']
+      end
+
+      if attributes.key?(:'asset_file_name')
+        self.asset_file_name = attributes[:'asset_file_name']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -126,7 +151,10 @@ module WinthropClient
           raw_contract_id == o.raw_contract_id &&
           start_on == o.start_on &&
           end_on == o.end_on &&
-          at_will == o.at_will
+          at_will == o.at_will &&
+          has_file == o.has_file &&
+          can_download == o.can_download &&
+          asset_file_name == o.asset_file_name
     end
 
     # @see the `==` method
@@ -138,7 +166,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, raw_contract_id, start_on, end_on, at_will].hash
+      [id, raw_contract_id, start_on, end_on, at_will, has_file, can_download, asset_file_name].hash
     end
 
     # Builds the object from hash

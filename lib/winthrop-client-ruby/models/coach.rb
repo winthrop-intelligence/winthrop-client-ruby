@@ -60,10 +60,8 @@ module WinthropClient
 
     attr_accessor :avatar_scraping_disabled
 
-    # Only included when the user has coach_compensation permission for this coach. For leader/administrator coaches, this requires administrator_compensation access.
     attr_accessor :latest_salary
 
-    # Only included when the user has coach_compensation permission for this coach. For leader/administrator coaches, this requires administrator_compensation access.
     attr_accessor :latest_salary_year
 
     attr_accessor :last_bio_text_updated_at
