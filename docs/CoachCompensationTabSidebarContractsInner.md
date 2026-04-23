@@ -9,9 +9,6 @@
 | **start_on** | **String** |  | [optional] |
 | **end_on** | **String** |  | [optional] |
 | **at_will** | **Boolean** |  | [optional] |
-| **has_file** | **Boolean** |  | [optional] |
-| **can_download** | **Boolean** |  | [optional] |
-| **asset_file_name** | **String** |  | [optional] |
 
 ## Example
 
@@ -23,10 +20,7 @@ instance = WinthropClient::CoachCompensationTabSidebarContractsInner.new(
   raw_contract_id: null,
   start_on: null,
   end_on: null,
-  at_will: null,
-  has_file: null,
-  can_download: null,
-  asset_file_name: null
+  at_will: null
 )
 ```
 
