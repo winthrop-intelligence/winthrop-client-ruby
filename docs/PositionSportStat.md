@@ -11,6 +11,7 @@
 | **low_position_num** | **Float** |  | [optional] |
 | **median_position_num** | **Float** |  | [optional] |
 | **count** | **Integer** |  | [optional] |
+| **entries** | [**Array&lt;PositionEntry&gt;**](PositionEntry.md) |  | [optional] |
 
 ## Example
 
@@ -24,7 +25,8 @@ instance = WinthropClient::PositionSportStat.new(
   high_position_num: null,
   low_position_num: null,
   median_position_num: null,
-  count: null
+  count: null,
+  entries: null
 )
 ```
 
