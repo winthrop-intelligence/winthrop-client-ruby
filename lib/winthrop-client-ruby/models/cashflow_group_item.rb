@@ -23,13 +23,19 @@ module WinthropClient
 
     attr_accessor :short_name
 
+    attr_accessor :report_id
+
+    attr_accessor :report_label
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
         :'name' => :'name',
         :'name_id' => :'name_id',
-        :'short_name' => :'short_name'
+        :'short_name' => :'short_name',
+        :'report_id' => :'report_id',
+        :'report_label' => :'report_label'
       }
     end
 
@@ -49,14 +55,17 @@ module WinthropClient
         :'id' => :'Integer',
         :'name' => :'String',
         :'name_id' => :'String',
-        :'short_name' => :'String'
+        :'short_name' => :'String',
+        :'report_id' => :'String',
+        :'report_label' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'short_name'
+        :'short_name',
+        :'report_id',
       ])
     end
 
@@ -91,6 +100,14 @@ module WinthropClient
       if attributes.key?(:'short_name')
         self.short_name = attributes[:'short_name']
       end
+
+      if attributes.key?(:'report_id')
+        self.report_id = attributes[:'report_id']
+      end
+
+      if attributes.key?(:'report_label')
+        self.report_label = attributes[:'report_label']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -116,7 +133,9 @@ module WinthropClient
           id == o.id &&
           name == o.name &&
           name_id == o.name_id &&
-          short_name == o.short_name
+          short_name == o.short_name &&
+          report_id == o.report_id &&
+          report_label == o.report_label
     end
 
     # @see the `==` method
@@ -128,7 +147,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, name_id, short_name].hash
+      [id, name, name_id, short_name, report_id, report_label].hash
     end
 
     # Builds the object from hash
