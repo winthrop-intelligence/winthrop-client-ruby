@@ -38,6 +38,7 @@ docs/AverageCompensation.md
 docs/COLIAdjusted.md
 docs/Cashflow.md
 docs/CashflowCollection.md
+docs/CashflowEntry.md
 docs/CashflowGroupItem.md
 docs/CashflowGroupStats.md
 docs/CashflowGroupsResponse.md
@@ -220,6 +221,7 @@ docs/PerformanceChartData.md
 docs/PerformanceChartRecord.md
 docs/Position.md
 docs/PositionCollection.md
+docs/PositionEntry.md
 docs/PositionSportStat.md
 docs/PositionType.md
 docs/PositionTypeGroup.md
@@ -393,6 +395,7 @@ lib/winthrop-client-ruby/models/avatar.rb
 lib/winthrop-client-ruby/models/average_compensation.rb
 lib/winthrop-client-ruby/models/cashflow.rb
 lib/winthrop-client-ruby/models/cashflow_collection.rb
+lib/winthrop-client-ruby/models/cashflow_entry.rb
 lib/winthrop-client-ruby/models/cashflow_group_item.rb
 lib/winthrop-client-ruby/models/cashflow_group_stats.rb
 lib/winthrop-client-ruby/models/cashflow_groups_response.rb
@@ -572,6 +575,7 @@ lib/winthrop-client-ruby/models/performance_chart_data.rb
 lib/winthrop-client-ruby/models/performance_chart_record.rb
 lib/winthrop-client-ruby/models/position.rb
 lib/winthrop-client-ruby/models/position_collection.rb
+lib/winthrop-client-ruby/models/position_entry.rb
 lib/winthrop-client-ruby/models/position_sport_stat.rb
 lib/winthrop-client-ruby/models/position_type.rb
 lib/winthrop-client-ruby/models/position_type_group.rb
@@ -701,5 +705,7 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
+spec/models/cashflow_entry_spec.rb
+spec/models/position_entry_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

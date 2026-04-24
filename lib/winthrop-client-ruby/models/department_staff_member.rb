@@ -17,16 +17,25 @@ module WinthropClient
   class DepartmentStaffMember < ApiModelBase
     attr_accessor :id
 
+    attr_accessor :coach_id
+
     attr_accessor :coach_name
 
     attr_accessor :total_comp
+
+    attr_accessor :position_title
+
+    attr_accessor :photo_url
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
+        :'coach_id' => :'coach_id',
         :'coach_name' => :'coach_name',
-        :'total_comp' => :'total_comp'
+        :'total_comp' => :'total_comp',
+        :'position_title' => :'position_title',
+        :'photo_url' => :'photo_url'
       }
     end
 
@@ -44,15 +53,20 @@ module WinthropClient
     def self.openapi_types
       {
         :'id' => :'Integer',
+        :'coach_id' => :'Integer',
         :'coach_name' => :'String',
-        :'total_comp' => :'Integer'
+        :'total_comp' => :'Integer',
+        :'position_title' => :'String',
+        :'photo_url' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'total_comp'
+        :'total_comp',
+        :'position_title',
+        :'photo_url'
       ])
     end
 
@@ -76,12 +90,24 @@ module WinthropClient
         self.id = attributes[:'id']
       end
 
+      if attributes.key?(:'coach_id')
+        self.coach_id = attributes[:'coach_id']
+      end
+
       if attributes.key?(:'coach_name')
         self.coach_name = attributes[:'coach_name']
       end
 
       if attributes.key?(:'total_comp')
         self.total_comp = attributes[:'total_comp']
+      end
+
+      if attributes.key?(:'position_title')
+        self.position_title = attributes[:'position_title']
+      end
+
+      if attributes.key?(:'photo_url')
+        self.photo_url = attributes[:'photo_url']
       end
     end
 
@@ -106,8 +132,11 @@ module WinthropClient
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
+          coach_id == o.coach_id &&
           coach_name == o.coach_name &&
-          total_comp == o.total_comp
+          total_comp == o.total_comp &&
+          position_title == o.position_title &&
+          photo_url == o.photo_url
     end
 
     # @see the `==` method
@@ -119,7 +148,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, coach_name, total_comp].hash
+      [id, coach_id, coach_name, total_comp, position_title, photo_url].hash
     end
 
     # Builds the object from hash

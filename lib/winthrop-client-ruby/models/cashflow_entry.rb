@@ -14,22 +14,18 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class SchoolFinancialDetailSibling < ApiModelBase
-    attr_accessor :group_id
+  # Per-school cashflow record backing an aggregate stat
+  class CashflowEntry < ApiModelBase
+    attr_accessor :school
 
-    attr_accessor :name
-
-    attr_accessor :name_id
-
-    attr_accessor :total
+    # Cashflow amount in dollars
+    attr_accessor :amount
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'group_id' => :'group_id',
-        :'name' => :'name',
-        :'name_id' => :'name_id',
-        :'total' => :'total'
+        :'school' => :'school',
+        :'amount' => :'amount'
       }
     end
 
@@ -46,16 +42,15 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'group_id' => :'Integer',
-        :'name' => :'String',
-        :'name_id' => :'String',
-        :'total' => :'Integer'
+        :'school' => :'String',
+        :'amount' => :'Float'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'amount'
       ])
     end
 
@@ -63,32 +58,24 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::SchoolFinancialDetailSibling` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::CashflowEntry` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::SchoolFinancialDetailSibling`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::CashflowEntry`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'group_id')
-        self.group_id = attributes[:'group_id']
+      if attributes.key?(:'school')
+        self.school = attributes[:'school']
       end
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'name_id')
-        self.name_id = attributes[:'name_id']
-      end
-
-      if attributes.key?(:'total')
-        self.total = attributes[:'total']
+      if attributes.key?(:'amount')
+        self.amount = attributes[:'amount']
       end
     end
 
@@ -112,10 +99,8 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          group_id == o.group_id &&
-          name == o.name &&
-          name_id == o.name_id &&
-          total == o.total
+          school == o.school &&
+          amount == o.amount
     end
 
     # @see the `==` method
@@ -127,7 +112,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [group_id, name, name_id, total].hash
+      [school, amount].hash
     end
 
     # Builds the object from hash

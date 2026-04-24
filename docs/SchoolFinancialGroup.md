@@ -7,7 +7,6 @@
 | **group_id** | **Integer** |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **name_id** | **String** |  | [optional] |
-| **report_label** | **String** |  | [optional] |
 | **football** | **Integer** |  | [optional] |
 | **basketball_m** | **Integer** |  | [optional] |
 | **basketball_w** | **Integer** |  | [optional] |
@@ -23,7 +22,6 @@ instance = WinthropClient::SchoolFinancialGroup.new(
   group_id: null,
   name: null,
   name_id: null,
-  report_label: null,
   football: null,
   basketball_m: null,
   basketball_w: null,
