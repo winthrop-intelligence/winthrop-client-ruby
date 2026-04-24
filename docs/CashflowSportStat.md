@@ -11,7 +11,6 @@
 | **low** | **Float** |  | [optional] |
 | **median** | **Float** |  | [optional] |
 | **count** | **Integer** |  | [optional] |
-| **entries** | [**Array&lt;CashflowEntry&gt;**](CashflowEntry.md) |  | [optional] |
 
 ## Example
 
@@ -25,8 +24,7 @@ instance = WinthropClient::CashflowSportStat.new(
   high: null,
   low: null,
   median: null,
-  count: null,
-  entries: null
+  count: null
 )
 ```
 

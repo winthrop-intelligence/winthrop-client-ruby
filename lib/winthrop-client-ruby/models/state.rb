@@ -14,44 +14,20 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class CreateGameRequestGame < ApiModelBase
-    attr_accessor :home_school_id
+  # A US state. Returned by /filter_options/states.
+  class State < ApiModelBase
+    attr_accessor :id
 
-    attr_accessor :away_school_id
+    attr_accessor :name
 
-    attr_accessor :sport_id
-
-    attr_accessor :game_date
-
-    # 4-digit season year; mutually exclusive with game_date.
-    attr_accessor :season_year_tbd
-
-    attr_accessor :neutral
-
-    # Only meaningful when neutral is true.
-    attr_accessor :city
-
-    # Only meaningful when neutral is true.
-    attr_accessor :state_id
-
-    attr_accessor :description
-
-    # Link/unlink an existing GameContract.
-    attr_accessor :game_contract_id
+    attr_accessor :name_display
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'home_school_id' => :'home_school_id',
-        :'away_school_id' => :'away_school_id',
-        :'sport_id' => :'sport_id',
-        :'game_date' => :'game_date',
-        :'season_year_tbd' => :'season_year_tbd',
-        :'neutral' => :'neutral',
-        :'city' => :'city',
-        :'state_id' => :'state_id',
-        :'description' => :'description',
-        :'game_contract_id' => :'game_contract_id'
+        :'id' => :'id',
+        :'name' => :'name',
+        :'name_display' => :'name_display'
       }
     end
 
@@ -68,28 +44,16 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'home_school_id' => :'Integer',
-        :'away_school_id' => :'Integer',
-        :'sport_id' => :'Integer',
-        :'game_date' => :'Date',
-        :'season_year_tbd' => :'Integer',
-        :'neutral' => :'Boolean',
-        :'city' => :'String',
-        :'state_id' => :'Integer',
-        :'description' => :'String',
-        :'game_contract_id' => :'Integer'
+        :'id' => :'Integer',
+        :'name' => :'String',
+        :'name_display' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'game_date',
-        :'season_year_tbd',
-        :'city',
-        :'state_id',
-        :'description',
-        :'game_contract_id'
+        :'name_display'
       ])
     end
 
@@ -97,56 +61,32 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::CreateGameRequestGame` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::State` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::CreateGameRequestGame`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::State`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'home_school_id')
-        self.home_school_id = attributes[:'home_school_id']
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
+      else
+        self.id = nil
       end
 
-      if attributes.key?(:'away_school_id')
-        self.away_school_id = attributes[:'away_school_id']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
+      else
+        self.name = nil
       end
 
-      if attributes.key?(:'sport_id')
-        self.sport_id = attributes[:'sport_id']
-      end
-
-      if attributes.key?(:'game_date')
-        self.game_date = attributes[:'game_date']
-      end
-
-      if attributes.key?(:'season_year_tbd')
-        self.season_year_tbd = attributes[:'season_year_tbd']
-      end
-
-      if attributes.key?(:'neutral')
-        self.neutral = attributes[:'neutral']
-      end
-
-      if attributes.key?(:'city')
-        self.city = attributes[:'city']
-      end
-
-      if attributes.key?(:'state_id')
-        self.state_id = attributes[:'state_id']
-      end
-
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
-      end
-
-      if attributes.key?(:'game_contract_id')
-        self.game_contract_id = attributes[:'game_contract_id']
+      if attributes.key?(:'name_display')
+        self.name_display = attributes[:'name_display']
       end
     end
 
@@ -155,6 +95,14 @@ module WinthropClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @id.nil?
+        invalid_properties.push('invalid value for "id", id cannot be nil.')
+      end
+
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -162,7 +110,29 @@ module WinthropClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @id.nil?
+      return false if @name.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] id Value to be assigned
+    def id=(id)
+      if id.nil?
+        fail ArgumentError, 'id cannot be nil'
+      end
+
+      @id = id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] name Value to be assigned
+    def name=(name)
+      if name.nil?
+        fail ArgumentError, 'name cannot be nil'
+      end
+
+      @name = name
     end
 
     # Checks equality by comparing each attribute.
@@ -170,16 +140,9 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          home_school_id == o.home_school_id &&
-          away_school_id == o.away_school_id &&
-          sport_id == o.sport_id &&
-          game_date == o.game_date &&
-          season_year_tbd == o.season_year_tbd &&
-          neutral == o.neutral &&
-          city == o.city &&
-          state_id == o.state_id &&
-          description == o.description &&
-          game_contract_id == o.game_contract_id
+          id == o.id &&
+          name == o.name &&
+          name_display == o.name_display
     end
 
     # @see the `==` method
@@ -191,7 +154,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [home_school_id, away_school_id, sport_id, game_date, season_year_tbd, neutral, city, state_id, description, game_contract_id].hash
+      [id, name, name_display].hash
     end
 
     # Builds the object from hash
