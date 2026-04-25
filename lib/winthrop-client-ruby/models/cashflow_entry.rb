@@ -14,34 +14,18 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class CoachCompensationTabSidebarContractsInner < ApiModelBase
-    attr_accessor :id
+  # Per-school cashflow record backing an aggregate stat
+  class CashflowEntry < ApiModelBase
+    attr_accessor :school
 
-    attr_accessor :raw_contract_id
-
-    attr_accessor :start_on
-
-    attr_accessor :end_on
-
-    attr_accessor :at_will
-
-    attr_accessor :has_file
-
-    attr_accessor :can_download
-
-    attr_accessor :asset_file_name
+    # Cashflow amount in dollars
+    attr_accessor :amount
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'raw_contract_id' => :'raw_contract_id',
-        :'start_on' => :'start_on',
-        :'end_on' => :'end_on',
-        :'at_will' => :'at_will',
-        :'has_file' => :'has_file',
-        :'can_download' => :'can_download',
-        :'asset_file_name' => :'asset_file_name'
+        :'school' => :'school',
+        :'amount' => :'amount'
       }
     end
 
@@ -58,23 +42,15 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'Integer',
-        :'raw_contract_id' => :'Integer',
-        :'start_on' => :'String',
-        :'end_on' => :'String',
-        :'at_will' => :'Boolean',
-        :'has_file' => :'Boolean',
-        :'can_download' => :'Boolean',
-        :'asset_file_name' => :'String'
+        :'school' => :'String',
+        :'amount' => :'Float'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'raw_contract_id',
-        :'at_will',
-        :'asset_file_name'
+        :'amount'
       ])
     end
 
@@ -82,48 +58,24 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::CoachCompensationTabSidebarContractsInner` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::CashflowEntry` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::CoachCompensationTabSidebarContractsInner`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::CashflowEntry`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'school')
+        self.school = attributes[:'school']
       end
 
-      if attributes.key?(:'raw_contract_id')
-        self.raw_contract_id = attributes[:'raw_contract_id']
-      end
-
-      if attributes.key?(:'start_on')
-        self.start_on = attributes[:'start_on']
-      end
-
-      if attributes.key?(:'end_on')
-        self.end_on = attributes[:'end_on']
-      end
-
-      if attributes.key?(:'at_will')
-        self.at_will = attributes[:'at_will']
-      end
-
-      if attributes.key?(:'has_file')
-        self.has_file = attributes[:'has_file']
-      end
-
-      if attributes.key?(:'can_download')
-        self.can_download = attributes[:'can_download']
-      end
-
-      if attributes.key?(:'asset_file_name')
-        self.asset_file_name = attributes[:'asset_file_name']
+      if attributes.key?(:'amount')
+        self.amount = attributes[:'amount']
       end
     end
 
@@ -147,14 +99,8 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          raw_contract_id == o.raw_contract_id &&
-          start_on == o.start_on &&
-          end_on == o.end_on &&
-          at_will == o.at_will &&
-          has_file == o.has_file &&
-          can_download == o.can_download &&
-          asset_file_name == o.asset_file_name
+          school == o.school &&
+          amount == o.amount
     end
 
     # @see the `==` method
@@ -166,7 +112,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, raw_contract_id, start_on, end_on, at_will, has_file, can_download, asset_file_name].hash
+      [school, amount].hash
     end
 
     # Builds the object from hash
