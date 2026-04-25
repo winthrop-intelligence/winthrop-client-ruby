@@ -29,6 +29,8 @@ module WinthropClient
 
     attr_accessor :count
 
+    attr_accessor :entries
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -60,7 +62,8 @@ module WinthropClient
         :'high_position_num' => :'high_position_num',
         :'low_position_num' => :'low_position_num',
         :'median_position_num' => :'median_position_num',
-        :'count' => :'count'
+        :'count' => :'count',
+        :'entries' => :'entries'
       }
     end
 
@@ -83,7 +86,8 @@ module WinthropClient
         :'high_position_num' => :'Float',
         :'low_position_num' => :'Float',
         :'median_position_num' => :'Float',
-        :'count' => :'Integer'
+        :'count' => :'Integer',
+        :'entries' => :'Array<PositionEntry>'
       }
     end
 
@@ -140,6 +144,12 @@ module WinthropClient
       if attributes.key?(:'count')
         self.count = attributes[:'count']
       end
+
+      if attributes.key?(:'entries')
+        if (value = attributes[:'entries']).is_a?(Array)
+          self.entries = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -180,7 +190,8 @@ module WinthropClient
           high_position_num == o.high_position_num &&
           low_position_num == o.low_position_num &&
           median_position_num == o.median_position_num &&
-          count == o.count
+          count == o.count &&
+          entries == o.entries
     end
 
     # @see the `==` method
@@ -192,7 +203,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [sport_id, sport_name, gender_code, high_position_num, low_position_num, median_position_num, count].hash
+      [sport_id, sport_name, gender_code, high_position_num, low_position_num, median_position_num, count, entries].hash
     end
 
     # Builds the object from hash
