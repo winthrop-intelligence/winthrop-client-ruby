@@ -23,6 +23,8 @@ module WinthropClient
 
     attr_accessor :short_name
 
+    attr_accessor :report_label
+
     attr_accessor :sports
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -32,6 +34,7 @@ module WinthropClient
         :'name_id' => :'name_id',
         :'name' => :'name',
         :'short_name' => :'short_name',
+        :'report_label' => :'report_label',
         :'sports' => :'sports'
       }
     end
@@ -53,6 +56,7 @@ module WinthropClient
         :'name_id' => :'String',
         :'name' => :'String',
         :'short_name' => :'String',
+        :'report_label' => :'String',
         :'sports' => :'Array<CashflowSportStat>'
       }
     end
@@ -63,6 +67,7 @@ module WinthropClient
         :'name_id',
         :'name',
         :'short_name',
+        :'report_label',
       ])
     end
 
@@ -98,6 +103,10 @@ module WinthropClient
         self.short_name = attributes[:'short_name']
       end
 
+      if attributes.key?(:'report_label')
+        self.report_label = attributes[:'report_label']
+      end
+
       if attributes.key?(:'sports')
         if (value = attributes[:'sports']).is_a?(Array)
           self.sports = value
@@ -129,6 +138,7 @@ module WinthropClient
           name_id == o.name_id &&
           name == o.name &&
           short_name == o.short_name &&
+          report_label == o.report_label &&
           sports == o.sports
     end
 
@@ -141,7 +151,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [group_id, name_id, name, short_name, sports].hash
+      [group_id, name_id, name, short_name, report_label, sports].hash
     end
 
     # Builds the object from hash

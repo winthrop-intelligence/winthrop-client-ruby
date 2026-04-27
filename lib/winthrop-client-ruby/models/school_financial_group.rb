@@ -21,6 +21,8 @@ module WinthropClient
 
     attr_accessor :name_id
 
+    attr_accessor :report_label
+
     attr_accessor :football
 
     attr_accessor :basketball_m
@@ -37,6 +39,7 @@ module WinthropClient
         :'group_id' => :'group_id',
         :'name' => :'name',
         :'name_id' => :'name_id',
+        :'report_label' => :'report_label',
         :'football' => :'football',
         :'basketball_m' => :'basketball_m',
         :'basketball_w' => :'basketball_w',
@@ -61,6 +64,7 @@ module WinthropClient
         :'group_id' => :'Integer',
         :'name' => :'String',
         :'name_id' => :'String',
+        :'report_label' => :'String',
         :'football' => :'Integer',
         :'basketball_m' => :'Integer',
         :'basketball_w' => :'Integer',
@@ -72,6 +76,7 @@ module WinthropClient
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'report_label',
         :'football',
         :'basketball_m',
         :'basketball_w',
@@ -106,6 +111,10 @@ module WinthropClient
 
       if attributes.key?(:'name_id')
         self.name_id = attributes[:'name_id']
+      end
+
+      if attributes.key?(:'report_label')
+        self.report_label = attributes[:'report_label']
       end
 
       if attributes.key?(:'football')
@@ -152,6 +161,7 @@ module WinthropClient
           group_id == o.group_id &&
           name == o.name &&
           name_id == o.name_id &&
+          report_label == o.report_label &&
           football == o.football &&
           basketball_m == o.basketball_m &&
           basketball_w == o.basketball_w &&
@@ -168,7 +178,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [group_id, name, name_id, football, basketball_m, basketball_w, other, total].hash
+      [group_id, name, name_id, report_label, football, basketball_m, basketball_w, other, total].hash
     end
 
     # Builds the object from hash

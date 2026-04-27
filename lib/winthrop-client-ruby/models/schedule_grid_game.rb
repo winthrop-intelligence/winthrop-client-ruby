@@ -37,6 +37,19 @@ module WinthropClient
 
     attr_accessor :in_conference
 
+    attr_accessor :home_school_id
+
+    attr_accessor :away_school_id
+
+    # Final home-school score for completed games; null for games that have not been played
+    attr_accessor :home_school_score
+
+    # Final away-school score for completed games; null for games that have not been played
+    attr_accessor :away_school_score
+
+    # True when the game went to overtime
+    attr_accessor :overtime
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -49,7 +62,12 @@ module WinthropClient
         :'is_home' => :'is_home',
         :'neutral' => :'neutral',
         :'guarantee_cents' => :'guarantee_cents',
-        :'in_conference' => :'in_conference'
+        :'in_conference' => :'in_conference',
+        :'home_school_id' => :'home_school_id',
+        :'away_school_id' => :'away_school_id',
+        :'home_school_score' => :'home_school_score',
+        :'away_school_score' => :'away_school_score',
+        :'overtime' => :'overtime'
       }
     end
 
@@ -75,7 +93,12 @@ module WinthropClient
         :'is_home' => :'Boolean',
         :'neutral' => :'Boolean',
         :'guarantee_cents' => :'Integer',
-        :'in_conference' => :'Boolean'
+        :'in_conference' => :'Boolean',
+        :'home_school_id' => :'Integer',
+        :'away_school_id' => :'Integer',
+        :'home_school_score' => :'Integer',
+        :'away_school_score' => :'Integer',
+        :'overtime' => :'Boolean'
       }
     end
 
@@ -88,7 +111,12 @@ module WinthropClient
         :'opponent_short_name',
         :'opponent_logo_url',
         :'guarantee_cents',
-        :'in_conference'
+        :'in_conference',
+        :'home_school_id',
+        :'away_school_id',
+        :'home_school_score',
+        :'away_school_score',
+        :'overtime'
       ])
     end
 
@@ -147,6 +175,26 @@ module WinthropClient
       if attributes.key?(:'in_conference')
         self.in_conference = attributes[:'in_conference']
       end
+
+      if attributes.key?(:'home_school_id')
+        self.home_school_id = attributes[:'home_school_id']
+      end
+
+      if attributes.key?(:'away_school_id')
+        self.away_school_id = attributes[:'away_school_id']
+      end
+
+      if attributes.key?(:'home_school_score')
+        self.home_school_score = attributes[:'home_school_score']
+      end
+
+      if attributes.key?(:'away_school_score')
+        self.away_school_score = attributes[:'away_school_score']
+      end
+
+      if attributes.key?(:'overtime')
+        self.overtime = attributes[:'overtime']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -178,7 +226,12 @@ module WinthropClient
           is_home == o.is_home &&
           neutral == o.neutral &&
           guarantee_cents == o.guarantee_cents &&
-          in_conference == o.in_conference
+          in_conference == o.in_conference &&
+          home_school_id == o.home_school_id &&
+          away_school_id == o.away_school_id &&
+          home_school_score == o.home_school_score &&
+          away_school_score == o.away_school_score &&
+          overtime == o.overtime
     end
 
     # @see the `==` method
@@ -190,7 +243,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, game_date, opponent_id, opponent_name, opponent_short_name, opponent_logo_url, is_home, neutral, guarantee_cents, in_conference].hash
+      [id, game_date, opponent_id, opponent_name, opponent_short_name, opponent_logo_url, is_home, neutral, guarantee_cents, in_conference, home_school_id, away_school_id, home_school_score, away_school_score, overtime].hash
     end
 
     # Builds the object from hash

@@ -14,6 +14,11 @@
 | **neutral** | **Boolean** |  | [optional] |
 | **guarantee_cents** | **Integer** | Associated game contract comp (cents), if any | [optional] |
 | **in_conference** | **Boolean** |  | [optional] |
+| **home_school_id** | **Integer** |  | [optional] |
+| **away_school_id** | **Integer** |  | [optional] |
+| **home_school_score** | **Integer** | Final home-school score for completed games; null for games that have not been played | [optional] |
+| **away_school_score** | **Integer** | Final away-school score for completed games; null for games that have not been played | [optional] |
+| **overtime** | **Boolean** | True when the game went to overtime | [optional] |
 
 ## Example
 
@@ -30,7 +35,12 @@ instance = WinthropClient::ScheduleGridGame.new(
   is_home: null,
   neutral: null,
   guarantee_cents: null,
-  in_conference: null
+  in_conference: null,
+  home_school_id: null,
+  away_school_id: null,
+  home_school_score: null,
+  away_school_score: null,
+  overtime: null
 )
 ```
 

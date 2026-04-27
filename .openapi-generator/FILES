@@ -33,12 +33,12 @@ docs/AthleticProfileShowSportsOverviewInner.md
 docs/AthleticProfileShowTabSportsInner.md
 docs/AuditedFinancialReportStatus.md
 docs/AuditedFinancialReportStatusCollection.md
+docs/AvailableGameContract.md
 docs/Avatar.md
 docs/AverageCompensation.md
 docs/COLIAdjusted.md
 docs/Cashflow.md
 docs/CashflowCollection.md
-docs/CashflowEntry.md
 docs/CashflowGroupItem.md
 docs/CashflowGroupStats.md
 docs/CashflowGroupsResponse.md
@@ -113,6 +113,8 @@ docs/CreateFavoriteRequest.md
 docs/CreateFavoritesCategoryRequest.md
 docs/CreateGamePostSearchRequest.md
 docs/CreateGamePostSearchRequestGamePost.md
+docs/CreateGameRequest.md
+docs/CreateGameRequestGame.md
 docs/CreateNoteRequest.md
 docs/CreatePasswordReset200Response.md
 docs/CreatePasswordResetRequest.md
@@ -167,6 +169,8 @@ docs/GameContract.md
 docs/GameContractCollection.md
 docs/GameContractSeriesEntry.md
 docs/GameContractSeriesResponse.md
+docs/GameDetail.md
+docs/GameDetailAllOfGameContract.md
 docs/GamePost.md
 docs/GamePostCollection.md
 docs/GamePostContact.md
@@ -221,7 +225,6 @@ docs/PerformanceChartData.md
 docs/PerformanceChartRecord.md
 docs/Position.md
 docs/PositionCollection.md
-docs/PositionEntry.md
 docs/PositionSportStat.md
 docs/PositionType.md
 docs/PositionTypeGroup.md
@@ -242,6 +245,13 @@ docs/ReportingApi.md
 docs/RequestedItem.md
 docs/RequestedItemCollection.md
 docs/RoleOption.md
+docs/ScheduleGridAvailableSchoolPost.md
+docs/ScheduleGridAvailableSchoolRow.md
+docs/ScheduleGridAvailableSchools.md
+docs/ScheduleGridGame.md
+docs/ScheduleGridGamePost.md
+docs/ScheduleGridSchool.md
+docs/ScheduleGridView.md
 docs/School.md
 docs/SchoolCollection.md
 docs/SchoolContractEntry.md
@@ -274,6 +284,7 @@ docs/SportCompensationRankingsSchoolsInner.md
 docs/SportCompensationResponse.md
 docs/SportCompensationSubdivision.md
 docs/SportOption.md
+docs/State.md
 docs/Subdivision.md
 docs/SubdivisionCollection.md
 docs/Subscription.md
@@ -391,11 +402,11 @@ lib/winthrop-client-ruby/models/athletic_profile_show_sports_overview_inner.rb
 lib/winthrop-client-ruby/models/athletic_profile_show_tab_sports_inner.rb
 lib/winthrop-client-ruby/models/audited_financial_report_status.rb
 lib/winthrop-client-ruby/models/audited_financial_report_status_collection.rb
+lib/winthrop-client-ruby/models/available_game_contract.rb
 lib/winthrop-client-ruby/models/avatar.rb
 lib/winthrop-client-ruby/models/average_compensation.rb
 lib/winthrop-client-ruby/models/cashflow.rb
 lib/winthrop-client-ruby/models/cashflow_collection.rb
-lib/winthrop-client-ruby/models/cashflow_entry.rb
 lib/winthrop-client-ruby/models/cashflow_group_item.rb
 lib/winthrop-client-ruby/models/cashflow_group_stats.rb
 lib/winthrop-client-ruby/models/cashflow_groups_response.rb
@@ -471,6 +482,8 @@ lib/winthrop-client-ruby/models/create_favorite_request.rb
 lib/winthrop-client-ruby/models/create_favorites_category_request.rb
 lib/winthrop-client-ruby/models/create_game_post_search_request.rb
 lib/winthrop-client-ruby/models/create_game_post_search_request_game_post.rb
+lib/winthrop-client-ruby/models/create_game_request.rb
+lib/winthrop-client-ruby/models/create_game_request_game.rb
 lib/winthrop-client-ruby/models/create_note_request.rb
 lib/winthrop-client-ruby/models/create_password_reset200_response.rb
 lib/winthrop-client-ruby/models/create_password_reset_request.rb
@@ -523,6 +536,8 @@ lib/winthrop-client-ruby/models/game_contract.rb
 lib/winthrop-client-ruby/models/game_contract_collection.rb
 lib/winthrop-client-ruby/models/game_contract_series_entry.rb
 lib/winthrop-client-ruby/models/game_contract_series_response.rb
+lib/winthrop-client-ruby/models/game_detail.rb
+lib/winthrop-client-ruby/models/game_detail_all_of_game_contract.rb
 lib/winthrop-client-ruby/models/game_post.rb
 lib/winthrop-client-ruby/models/game_post_collection.rb
 lib/winthrop-client-ruby/models/game_post_contact.rb
@@ -575,7 +590,6 @@ lib/winthrop-client-ruby/models/performance_chart_data.rb
 lib/winthrop-client-ruby/models/performance_chart_record.rb
 lib/winthrop-client-ruby/models/position.rb
 lib/winthrop-client-ruby/models/position_collection.rb
-lib/winthrop-client-ruby/models/position_entry.rb
 lib/winthrop-client-ruby/models/position_sport_stat.rb
 lib/winthrop-client-ruby/models/position_type.rb
 lib/winthrop-client-ruby/models/position_type_group.rb
@@ -595,6 +609,13 @@ lib/winthrop-client-ruby/models/regenerate_raw_contract_pdf200_response.rb
 lib/winthrop-client-ruby/models/requested_item.rb
 lib/winthrop-client-ruby/models/requested_item_collection.rb
 lib/winthrop-client-ruby/models/role_option.rb
+lib/winthrop-client-ruby/models/schedule_grid_available_school_post.rb
+lib/winthrop-client-ruby/models/schedule_grid_available_school_row.rb
+lib/winthrop-client-ruby/models/schedule_grid_available_schools.rb
+lib/winthrop-client-ruby/models/schedule_grid_game.rb
+lib/winthrop-client-ruby/models/schedule_grid_game_post.rb
+lib/winthrop-client-ruby/models/schedule_grid_school.rb
+lib/winthrop-client-ruby/models/schedule_grid_view.rb
 lib/winthrop-client-ruby/models/school.rb
 lib/winthrop-client-ruby/models/school_collection.rb
 lib/winthrop-client-ruby/models/school_contract_entry.rb
@@ -626,6 +647,7 @@ lib/winthrop-client-ruby/models/sport_compensation_rankings_schools_inner.rb
 lib/winthrop-client-ruby/models/sport_compensation_response.rb
 lib/winthrop-client-ruby/models/sport_compensation_subdivision.rb
 lib/winthrop-client-ruby/models/sport_option.rb
+lib/winthrop-client-ruby/models/state.rb
 lib/winthrop-client-ruby/models/subdivision.rb
 lib/winthrop-client-ruby/models/subdivision_collection.rb
 lib/winthrop-client-ruby/models/subscription.rb
