@@ -1071,138 +1071,6 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Create a game
-    # @param create_game_request [CreateGameRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [GameDetail]
-    def create_game(create_game_request, opts = {})
-      data, _status_code, _headers = create_game_with_http_info(create_game_request, opts)
-      data
-    end
-
-    # Create a game
-    # @param create_game_request [CreateGameRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(GameDetail, Integer, Hash)>] GameDetail data, response status code and response headers
-    def create_game_with_http_info(create_game_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.create_game ...'
-      end
-      # verify the required parameter 'create_game_request' is set
-      if @api_client.config.client_side_validation && create_game_request.nil?
-        fail ArgumentError, "Missing the required parameter 'create_game_request' when calling DefaultApi.create_game"
-      end
-      # resource path
-      local_var_path = '/api/v1/games'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-        header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_game_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'GameDetail'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.create_game",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#create_game\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Create a game post for the current user's school
-    # @param create_game_post_search_request [CreateGamePostSearchRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [GamePost]
-    def create_game_post(create_game_post_search_request, opts = {})
-      data, _status_code, _headers = create_game_post_with_http_info(create_game_post_search_request, opts)
-      data
-    end
-
-    # Create a game post for the current user&#39;s school
-    # @param create_game_post_search_request [CreateGamePostSearchRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(GamePost, Integer, Hash)>] GamePost data, response status code and response headers
-    def create_game_post_with_http_info(create_game_post_search_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.create_game_post ...'
-      end
-      # verify the required parameter 'create_game_post_search_request' is set
-      if @api_client.config.client_side_validation && create_game_post_search_request.nil?
-        fail ArgumentError, "Missing the required parameter 'create_game_post_search_request' when calling DefaultApi.create_game_post"
-      end
-      # resource path
-      local_var_path = '/api/v1/game_posts'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-        header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_game_post_search_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'GamePost'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.create_game_post",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#create_game_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Create a new game post
     # @param create_game_post_search_request [CreateGamePostSearchRequest] 
     # @param [Hash] opts the optional parameters
@@ -2393,65 +2261,6 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Delete a game
-    # @param game_id [Integer] ID of game to delete
-    # @param [Hash] opts the optional parameters
-    # @return [nil]
-    def delete_game(game_id, opts = {})
-      delete_game_with_http_info(game_id, opts)
-      nil
-    end
-
-    # Delete a game
-    # @param game_id [Integer] ID of game to delete
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def delete_game_with_http_info(game_id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.delete_game ...'
-      end
-      # verify the required parameter 'game_id' is set
-      if @api_client.config.client_side_validation && game_id.nil?
-        fail ArgumentError, "Missing the required parameter 'game_id' when calling DefaultApi.delete_game"
-      end
-      # resource path
-      local_var_path = '/api/v1/games/{gameId}'.sub('{' + 'gameId' + '}', CGI.escape(game_id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type]
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.delete_game",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#delete_game\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Delete the raw contract attached to a game contract
     # @param game_contract_id [Integer] ID of the GameContract
     # @param [Hash] opts the optional parameters
@@ -2507,65 +2316,6 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#delete_game_contract_raw_contract\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Delete a game post
-    # @param game_post_id [Integer] ID of the GamePost
-    # @param [Hash] opts the optional parameters
-    # @return [nil]
-    def delete_game_post(game_post_id, opts = {})
-      delete_game_post_with_http_info(game_post_id, opts)
-      nil
-    end
-
-    # Delete a game post
-    # @param game_post_id [Integer] ID of the GamePost
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def delete_game_post_with_http_info(game_post_id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.delete_game_post ...'
-      end
-      # verify the required parameter 'game_post_id' is set
-      if @api_client.config.client_side_validation && game_post_id.nil?
-        fail ArgumentError, "Missing the required parameter 'game_post_id' when calling DefaultApi.delete_game_post"
-      end
-      # resource path
-      local_var_path = '/api/v1/game_posts/{gamePostId}'.sub('{' + 'gamePostId' + '}', CGI.escape(game_post_id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type]
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.delete_game_post",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#delete_game_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -6696,7 +6446,7 @@ module WinthropClient
 
     # Retrieve static filter options for coach/admin search (years, divisions, sports, position types, geo regions)
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :context Filter context: &#39;gad&#39; returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball)
+    # @option opts [String] :context Filter context: &#39;gad&#39; returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball); &#39;financial&#39; returns only NCAA financial report sports with finance-specific display labels
     # @return [GetFilterOptions200Response]
     def get_filter_options(opts = {})
       data, _status_code, _headers = get_filter_options_with_http_info(opts)
@@ -6705,13 +6455,13 @@ module WinthropClient
 
     # Retrieve static filter options for coach/admin search (years, divisions, sports, position types, geo regions)
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :context Filter context: &#39;gad&#39; returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball)
+    # @option opts [String] :context Filter context: &#39;gad&#39; returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball); &#39;financial&#39; returns only NCAA financial report sports with finance-specific display labels
     # @return [Array<(GetFilterOptions200Response, Integer, Hash)>] GetFilterOptions200Response data, response status code and response headers
     def get_filter_options_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_filter_options ...'
       end
-      allowable_values = ["gad"]
+      allowable_values = ["gad", "financial"]
       if @api_client.config.client_side_validation && opts[:'context'] && !allowable_values.include?(opts[:'context'])
         fail ArgumentError, "invalid value for \"context\", must be one of #{allowable_values}"
       end
@@ -7097,61 +6847,6 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_filter_options_schools\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Retrieve all US states, ordered by name. Used by the Edit Game sheet's neutral-venue picker.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<State>]
-    def get_filter_options_states(opts = {})
-      data, _status_code, _headers = get_filter_options_states_with_http_info(opts)
-      data
-    end
-
-    # Retrieve all US states, ordered by name. Used by the Edit Game sheet&#39;s neutral-venue picker.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Array<State>, Integer, Hash)>] Array<State> data, response status code and response headers
-    def get_filter_options_states_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.get_filter_options_states ...'
-      end
-      # resource path
-      local_var_path = '/api/v1/filter_options/states'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'Array<State>'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.get_filter_options_states",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#get_filter_options_states\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -7714,7 +7409,7 @@ module WinthropClient
     # Retrieve a single game
     # @param game_id [Integer] ID of game to retrieve
     # @param [Hash] opts the optional parameters
-    # @return [GameDetail]
+    # @return [Game]
     def get_game(game_id, opts = {})
       data, _status_code, _headers = get_game_with_http_info(game_id, opts)
       data
@@ -7723,7 +7418,7 @@ module WinthropClient
     # Retrieve a single game
     # @param game_id [Integer] ID of game to retrieve
     # @param [Hash] opts the optional parameters
-    # @return [Array<(GameDetail, Integer, Hash)>] GameDetail data, response status code and response headers
+    # @return [Array<(Game, Integer, Hash)>] Game data, response status code and response headers
     def get_game_with_http_info(game_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_game ...'
@@ -7750,7 +7445,7 @@ module WinthropClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'GameDetail'
+      return_type = opts[:debug_return_type] || 'Game'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
@@ -8268,70 +7963,6 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_games\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # List GameContracts compatible with the given sport + school pair, for the Edit Game sheet's Contract picker. Matches either direction (home=A,away=B or home=B,away=A). Uses `GameContract.filtered_for_game`. Capped at 50 rows, ordered by game date descending. 
-    # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :sport_id 
-    # @option opts [Integer] :home_school_id 
-    # @option opts [Integer] :away_school_id 
-    # @return [Array<AvailableGameContract>]
-    def get_games_available_contracts(opts = {})
-      data, _status_code, _headers = get_games_available_contracts_with_http_info(opts)
-      data
-    end
-
-    # List GameContracts compatible with the given sport + school pair, for the Edit Game sheet&#39;s Contract picker. Matches either direction (home&#x3D;A,away&#x3D;B or home&#x3D;B,away&#x3D;A). Uses &#x60;GameContract.filtered_for_game&#x60;. Capped at 50 rows, ordered by game date descending. 
-    # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :sport_id 
-    # @option opts [Integer] :home_school_id 
-    # @option opts [Integer] :away_school_id 
-    # @return [Array<(Array<AvailableGameContract>, Integer, Hash)>] Array<AvailableGameContract> data, response status code and response headers
-    def get_games_available_contracts_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.get_games_available_contracts ...'
-      end
-      # resource path
-      local_var_path = '/api/v1/games/available_contracts'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-      query_params[:'sport_id'] = opts[:'sport_id'] if !opts[:'sport_id'].nil?
-      query_params[:'home_school_id'] = opts[:'home_school_id'] if !opts[:'home_school_id'].nil?
-      query_params[:'away_school_id'] = opts[:'away_school_id'] if !opts[:'away_school_id'].nil?
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'Array<AvailableGameContract>'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.get_games_available_contracts",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#get_games_available_contracts\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -9464,237 +9095,6 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_revenue_searches\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Retrieve the schedule grid for a sport — season window, schools, games, and active game posts for up to eight selected schools.
-    # @param sport_name [String] Sport name (e.g. FOOTBALL, BASKETBALL_M)
-    # @param [Hash] opts the optional parameters
-    # @option opts [Array<Integer>] :school_ids School IDs to include on the grid (max 8, ordering is preserved)
-    # @option opts [Integer] :year Four-digit season year. Defaults to the current year when omitted or invalid.
-    # @return [ScheduleGridView]
-    def get_schedule_grid(sport_name, opts = {})
-      data, _status_code, _headers = get_schedule_grid_with_http_info(sport_name, opts)
-      data
-    end
-
-    # Retrieve the schedule grid for a sport — season window, schools, games, and active game posts for up to eight selected schools.
-    # @param sport_name [String] Sport name (e.g. FOOTBALL, BASKETBALL_M)
-    # @param [Hash] opts the optional parameters
-    # @option opts [Array<Integer>] :school_ids School IDs to include on the grid (max 8, ordering is preserved)
-    # @option opts [Integer] :year Four-digit season year. Defaults to the current year when omitted or invalid.
-    # @return [Array<(ScheduleGridView, Integer, Hash)>] ScheduleGridView data, response status code and response headers
-    def get_schedule_grid_with_http_info(sport_name, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.get_schedule_grid ...'
-      end
-      # verify the required parameter 'sport_name' is set
-      if @api_client.config.client_side_validation && sport_name.nil?
-        fail ArgumentError, "Missing the required parameter 'sport_name' when calling DefaultApi.get_schedule_grid"
-      end
-      # resource path
-      local_var_path = '/api/v1/schedule_grid/{sport_name}'.sub('{' + 'sport_name' + '}', CGI.escape(sport_name.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-      query_params[:'school_ids'] = @api_client.build_collection_param(opts[:'school_ids'], :multi) if !opts[:'school_ids'].nil?
-      query_params[:'year'] = opts[:'year'] if !opts[:'year'].nil?
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'ScheduleGridView'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.get_schedule_grid",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#get_schedule_grid\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, and distance.
-    # @param sport_name [String] Sport name (e.g. FOOTBALL, BASKETBALL_M)
-    # @param target_date [Date] Target date in ISO format (YYYY-MM-DD)
-    # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :window_days Number of days on either side of target_date to include (default 1) (default to 1)
-    # @option opts [Array<String>] :deal_types Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered)
-    # @option opts [String] :quality_tier Restrict to a subdivision tier
-    # @option opts [Integer] :max_distance_miles Maximum distance (miles) from the user&#39;s school. Requires user_school_id to resolve a coordinate origin.
-    # @option opts [Integer] :user_school_id Requesting user&#39;s school. Used as the origin for distance filtering and is always excluded from results.
-    # @option opts [Array<Integer>] :exclude_school_ids Additional school IDs to exclude from results (e.g. schools already on the grid)
-    # @option opts [Integer] :limit Maximum rows to return (default 50, capped at 100) (default to 50)
-    # @return [ScheduleGridAvailableSchools]
-    def get_schedule_grid_available_schools(sport_name, target_date, opts = {})
-      data, _status_code, _headers = get_schedule_grid_available_schools_with_http_info(sport_name, target_date, opts)
-      data
-    end
-
-    # Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, and distance.
-    # @param sport_name [String] Sport name (e.g. FOOTBALL, BASKETBALL_M)
-    # @param target_date [Date] Target date in ISO format (YYYY-MM-DD)
-    # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :window_days Number of days on either side of target_date to include (default 1) (default to 1)
-    # @option opts [Array<String>] :deal_types Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered)
-    # @option opts [String] :quality_tier Restrict to a subdivision tier
-    # @option opts [Integer] :max_distance_miles Maximum distance (miles) from the user&#39;s school. Requires user_school_id to resolve a coordinate origin.
-    # @option opts [Integer] :user_school_id Requesting user&#39;s school. Used as the origin for distance filtering and is always excluded from results.
-    # @option opts [Array<Integer>] :exclude_school_ids Additional school IDs to exclude from results (e.g. schools already on the grid)
-    # @option opts [Integer] :limit Maximum rows to return (default 50, capped at 100) (default to 50)
-    # @return [Array<(ScheduleGridAvailableSchools, Integer, Hash)>] ScheduleGridAvailableSchools data, response status code and response headers
-    def get_schedule_grid_available_schools_with_http_info(sport_name, target_date, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.get_schedule_grid_available_schools ...'
-      end
-      # verify the required parameter 'sport_name' is set
-      if @api_client.config.client_side_validation && sport_name.nil?
-        fail ArgumentError, "Missing the required parameter 'sport_name' when calling DefaultApi.get_schedule_grid_available_schools"
-      end
-      # verify the required parameter 'target_date' is set
-      if @api_client.config.client_side_validation && target_date.nil?
-        fail ArgumentError, "Missing the required parameter 'target_date' when calling DefaultApi.get_schedule_grid_available_schools"
-      end
-      allowable_values = ["power_4", "mid_major", "smaller"]
-      if @api_client.config.client_side_validation && opts[:'quality_tier'] && !allowable_values.include?(opts[:'quality_tier'])
-        fail ArgumentError, "invalid value for \"quality_tier\", must be one of #{allowable_values}"
-      end
-      if @api_client.config.client_side_validation && !opts[:'limit'].nil? && opts[:'limit'] > 100
-        fail ArgumentError, 'invalid value for "opts[:"limit"]" when calling DefaultApi.get_schedule_grid_available_schools, must be smaller than or equal to 100.'
-      end
-
-      # resource path
-      local_var_path = '/api/v1/schedule_grid/{sport_name}/available_schools'.sub('{' + 'sport_name' + '}', CGI.escape(sport_name.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-      query_params[:'target_date'] = target_date
-      query_params[:'window_days'] = opts[:'window_days'] if !opts[:'window_days'].nil?
-      query_params[:'deal_types'] = @api_client.build_collection_param(opts[:'deal_types'], :multi) if !opts[:'deal_types'].nil?
-      query_params[:'quality_tier'] = opts[:'quality_tier'] if !opts[:'quality_tier'].nil?
-      query_params[:'max_distance_miles'] = opts[:'max_distance_miles'] if !opts[:'max_distance_miles'].nil?
-      query_params[:'user_school_id'] = opts[:'user_school_id'] if !opts[:'user_school_id'].nil?
-      query_params[:'exclude_school_ids'] = @api_client.build_collection_param(opts[:'exclude_school_ids'], :multi) if !opts[:'exclude_school_ids'].nil?
-      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'ScheduleGridAvailableSchools'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.get_schedule_grid_available_schools",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#get_schedule_grid_available_schools\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Retrieve the completed-games schedule grid for a past season — season window, schools, and final results for up to eight selected schools. Game posts are not returned for completed seasons.
-    # @param sport_name [String] Sport name (e.g. FOOTBALL, BASKETBALL_M)
-    # @param [Hash] opts the optional parameters
-    # @option opts [Array<Integer>] :school_ids School IDs to include on the grid (max 8, ordering is preserved)
-    # @option opts [Integer] :year Four-digit season year. Defaults to the current year when omitted or invalid.
-    # @return [ScheduleGridView]
-    def get_schedule_grid_completed(sport_name, opts = {})
-      data, _status_code, _headers = get_schedule_grid_completed_with_http_info(sport_name, opts)
-      data
-    end
-
-    # Retrieve the completed-games schedule grid for a past season — season window, schools, and final results for up to eight selected schools. Game posts are not returned for completed seasons.
-    # @param sport_name [String] Sport name (e.g. FOOTBALL, BASKETBALL_M)
-    # @param [Hash] opts the optional parameters
-    # @option opts [Array<Integer>] :school_ids School IDs to include on the grid (max 8, ordering is preserved)
-    # @option opts [Integer] :year Four-digit season year. Defaults to the current year when omitted or invalid.
-    # @return [Array<(ScheduleGridView, Integer, Hash)>] ScheduleGridView data, response status code and response headers
-    def get_schedule_grid_completed_with_http_info(sport_name, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.get_schedule_grid_completed ...'
-      end
-      # verify the required parameter 'sport_name' is set
-      if @api_client.config.client_side_validation && sport_name.nil?
-        fail ArgumentError, "Missing the required parameter 'sport_name' when calling DefaultApi.get_schedule_grid_completed"
-      end
-      # resource path
-      local_var_path = '/api/v1/schedule_grid/{sport_name}/completed'.sub('{' + 'sport_name' + '}', CGI.escape(sport_name.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-      query_params[:'school_ids'] = @api_client.build_collection_param(opts[:'school_ids'], :multi) if !opts[:'school_ids'].nil?
-      query_params[:'year'] = opts[:'year'] if !opts[:'year'].nil?
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'ScheduleGridView'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.get_schedule_grid_completed",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#get_schedule_grid_completed\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -14089,78 +13489,6 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#update_foia_request\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Update a game
-    # @param game_id [Integer] ID of game to update
-    # @param create_game_request [CreateGameRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [GameDetail]
-    def update_game(game_id, create_game_request, opts = {})
-      data, _status_code, _headers = update_game_with_http_info(game_id, create_game_request, opts)
-      data
-    end
-
-    # Update a game
-    # @param game_id [Integer] ID of game to update
-    # @param create_game_request [CreateGameRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(GameDetail, Integer, Hash)>] GameDetail data, response status code and response headers
-    def update_game_with_http_info(game_id, create_game_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.update_game ...'
-      end
-      # verify the required parameter 'game_id' is set
-      if @api_client.config.client_side_validation && game_id.nil?
-        fail ArgumentError, "Missing the required parameter 'game_id' when calling DefaultApi.update_game"
-      end
-      # verify the required parameter 'create_game_request' is set
-      if @api_client.config.client_side_validation && create_game_request.nil?
-        fail ArgumentError, "Missing the required parameter 'create_game_request' when calling DefaultApi.update_game"
-      end
-      # resource path
-      local_var_path = '/api/v1/games/{gameId}'.sub('{' + 'gameId' + '}', CGI.escape(game_id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-        header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_game_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'GameDetail'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
-
-      new_options = opts.merge(
-        :operation => :"DefaultApi.update_game",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#update_game\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
