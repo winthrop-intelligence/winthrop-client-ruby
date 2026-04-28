@@ -36,6 +36,7 @@ module WinthropClient
     # Distance from user_school_id in miles (omitted when distance filtering is not active)
     attr_accessor :distance_miles
 
+    # Nearest active GamePost to target_date in the window. Null when the school has no openness recorded for the window (assumed-eligible).
     attr_accessor :nearest_post
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -91,6 +92,7 @@ module WinthropClient
         :'subdivision_name',
         :'rank',
         :'distance_miles',
+        :'nearest_post'
       ])
     end
 

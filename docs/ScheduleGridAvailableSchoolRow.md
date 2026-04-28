@@ -13,7 +13,7 @@
 | **subdivision_name** | **String** |  | [optional] |
 | **rank** | **Integer** | Current USNWR ranking (omitted when blank) | [optional] |
 | **distance_miles** | **Integer** | Distance from user_school_id in miles (omitted when distance filtering is not active) | [optional] |
-| **nearest_post** | [**ScheduleGridAvailableSchoolPost**](ScheduleGridAvailableSchoolPost.md) |  | [optional] |
+| **nearest_post** | [**ScheduleGridAvailableSchoolPost**](ScheduleGridAvailableSchoolPost.md) | Nearest active GamePost to target_date in the window. Null when the school has no openness recorded for the window (assumed-eligible). | [optional] |
 
 ## Example
 
