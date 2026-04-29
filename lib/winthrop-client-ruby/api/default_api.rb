@@ -6696,7 +6696,7 @@ module WinthropClient
 
     # Retrieve static filter options for coach/admin search (years, divisions, sports, position types, geo regions)
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :context Filter context: &#39;gad&#39; returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball); &#39;financial&#39; returns only NCAA financial report sports with finance-specific display labels
+    # @option opts [String] :context Filter context: &#39;gad&#39; returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball)
     # @return [GetFilterOptions200Response]
     def get_filter_options(opts = {})
       data, _status_code, _headers = get_filter_options_with_http_info(opts)
@@ -6705,13 +6705,13 @@ module WinthropClient
 
     # Retrieve static filter options for coach/admin search (years, divisions, sports, position types, geo regions)
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :context Filter context: &#39;gad&#39; returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball); &#39;financial&#39; returns only NCAA financial report sports with finance-specific display labels
+    # @option opts [String] :context Filter context: &#39;gad&#39; returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball)
     # @return [Array<(GetFilterOptions200Response, Integer, Hash)>] GetFilterOptions200Response data, response status code and response headers
     def get_filter_options_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_filter_options ...'
       end
-      allowable_values = ["gad", "financial"]
+      allowable_values = ["gad"]
       if @api_client.config.client_side_validation && opts[:'context'] && !allowable_values.include?(opts[:'context'])
         fail ArgumentError, "invalid value for \"context\", must be one of #{allowable_values}"
       end
@@ -10447,7 +10447,7 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Retrieve some or all schools
+    # Retrieve schools for the scheduling search surface. Results are hardcoded to Division I schools only (WINAD-9417 / WINAD-9422); the filter lives at the query layer and cannot be disabled via params. Supports pagination (default `per_page=100`) and Ransack filtering via `q`. 
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
     # @option opts [Integer] :per_page number of results per page. (default to 20)
@@ -10458,7 +10458,7 @@ module WinthropClient
       data
     end
 
-    # Retrieve some or all schools
+    # Retrieve schools for the scheduling search surface. Results are hardcoded to Division I schools only (WINAD-9417 / WINAD-9422); the filter lives at the query layer and cannot be disabled via params. Supports pagination (default &#x60;per_page&#x3D;100&#x60;) and Ransack filtering via &#x60;q&#x60;. 
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
     # @option opts [Integer] :per_page number of results per page. (default to 20)
@@ -10562,6 +10562,61 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_schools_alma_mater\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Return the total number of Division I schools. Like `/schools`, this is hardcoded to D1 only and is intended for the scheduling search surface. 
+    # @param [Hash] opts the optional parameters
+    # @return [GetSchoolsCount200Response]
+    def get_schools_count(opts = {})
+      data, _status_code, _headers = get_schools_count_with_http_info(opts)
+      data
+    end
+
+    # Return the total number of Division I schools. Like &#x60;/schools&#x60;, this is hardcoded to D1 only and is intended for the scheduling search surface. 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GetSchoolsCount200Response, Integer, Hash)>] GetSchoolsCount200Response data, response status code and response headers
+    def get_schools_count_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_schools_count ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/schools/count'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GetSchoolsCount200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_schools_count",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_schools_count\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

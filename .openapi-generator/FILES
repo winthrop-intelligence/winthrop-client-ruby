@@ -189,6 +189,7 @@ docs/GetLadFilterOptions200Response.md
 docs/GetLadFilterOptions200ResponsePositionTypesInner.md
 docs/GetSchoolAlternateNames200Response.md
 docs/GetSchoolAlternateNames404Response.md
+docs/GetSchoolsCount200Response.md
 docs/GetTeamScheduleFavorites200ResponseInner.md
 docs/GetTimeZones200Response.md
 docs/GetWireChanges200Response.md
@@ -558,6 +559,7 @@ lib/winthrop-client-ruby/models/get_lad_filter_options200_response.rb
 lib/winthrop-client-ruby/models/get_lad_filter_options200_response_position_types_inner.rb
 lib/winthrop-client-ruby/models/get_school_alternate_names200_response.rb
 lib/winthrop-client-ruby/models/get_school_alternate_names404_response.rb
+lib/winthrop-client-ruby/models/get_schools_count200_response.rb
 lib/winthrop-client-ruby/models/get_team_schedule_favorites200_response_inner.rb
 lib/winthrop-client-ruby/models/get_time_zones200_response.rb
 lib/winthrop-client-ruby/models/get_wire_changes200_response.rb
@@ -731,5 +733,6 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
+spec/models/get_schools_count200_response_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

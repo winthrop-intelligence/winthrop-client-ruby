@@ -258,6 +258,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_school_groups_available_schools**](docs/DefaultApi.md#get_school_groups_available_schools) | **GET** /api/v1/school_groups/available_schools | 
 *WinthropClient::DefaultApi* | [**get_schools**](docs/DefaultApi.md#get_schools) | **GET** /api/v1/schools | 
 *WinthropClient::DefaultApi* | [**get_schools_alma_mater**](docs/DefaultApi.md#get_schools_alma_mater) | **GET** /api/v1/schools/alma_mater | 
+*WinthropClient::DefaultApi* | [**get_schools_count**](docs/DefaultApi.md#get_schools_count) | **GET** /api/v1/schools/count | 
 *WinthropClient::DefaultApi* | [**get_season**](docs/DefaultApi.md#get_season) | **GET** /api/v1/seasons/{seasonId} | 
 *WinthropClient::DefaultApi* | [**get_seasons**](docs/DefaultApi.md#get_seasons) | **GET** /api/v1/seasons | 
 *WinthropClient::DefaultApi* | [**get_similar_coaches**](docs/DefaultApi.md#get_similar_coaches) | **GET** /api/v1/coaches/{coachId}/similar_coaches | 
@@ -533,6 +534,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::GetLadFilterOptions200ResponsePositionTypesInner](docs/GetLadFilterOptions200ResponsePositionTypesInner.md)
  - [WinthropClient::GetSchoolAlternateNames200Response](docs/GetSchoolAlternateNames200Response.md)
  - [WinthropClient::GetSchoolAlternateNames404Response](docs/GetSchoolAlternateNames404Response.md)
+ - [WinthropClient::GetSchoolsCount200Response](docs/GetSchoolsCount200Response.md)
  - [WinthropClient::GetTeamScheduleFavorites200ResponseInner](docs/GetTeamScheduleFavorites200ResponseInner.md)
  - [WinthropClient::GetTimeZones200Response](docs/GetTimeZones200Response.md)
  - [WinthropClient::GetWireChanges200Response](docs/GetWireChanges200Response.md)

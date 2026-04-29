@@ -171,6 +171,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_school_groups_available_schools**](DefaultApi.md#get_school_groups_available_schools) | **GET** /api/v1/school_groups/available_schools |  |
 | [**get_schools**](DefaultApi.md#get_schools) | **GET** /api/v1/schools |  |
 | [**get_schools_alma_mater**](DefaultApi.md#get_schools_alma_mater) | **GET** /api/v1/schools/alma_mater |  |
+| [**get_schools_count**](DefaultApi.md#get_schools_count) | **GET** /api/v1/schools/count |  |
 | [**get_season**](DefaultApi.md#get_season) | **GET** /api/v1/seasons/{seasonId} |  |
 | [**get_seasons**](DefaultApi.md#get_seasons) | **GET** /api/v1/seasons |  |
 | [**get_similar_coaches**](DefaultApi.md#get_similar_coaches) | **GET** /api/v1/coaches/{coachId}/similar_coaches |  |
@@ -8200,7 +8201,7 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  context: 'gad' # String | Filter context: 'gad' returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball); 'financial' returns only NCAA financial report sports with finance-specific display labels
+  context: 'gad' # String | Filter context: 'gad' returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball)
 }
 
 begin
@@ -8234,7 +8235,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **context** | **String** | Filter context: &#39;gad&#39; returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball); &#39;financial&#39; returns only NCAA financial report sports with finance-specific display labels | [optional] |
+| **context** | **String** | Filter context: &#39;gad&#39; returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball) | [optional] |
 
 ### Return type
 
@@ -12767,7 +12768,7 @@ This endpoint does not need any parameter.
 
 
 
-Retrieve some or all schools
+Retrieve schools for the scheduling search surface. Results are hardcoded to Division I schools only (WINAD-9417 / WINAD-9422); the filter lives at the query layer and cannot be disabled via params. Supports pagination (default `per_page=100`) and Ransack filtering via `q`. 
 
 ### Examples
 
@@ -12901,6 +12902,77 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**Array&lt;IdName&gt;**](IdName.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_schools_count
+
+> <GetSchoolsCount200Response> get_schools_count
+
+
+
+Return the total number of Division I schools. Like `/schools`, this is hardcoded to D1 only and is intended for the scheduling search surface. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_schools_count
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_schools_count: #{e}"
+end
+```
+
+#### Using the get_schools_count_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetSchoolsCount200Response>, Integer, Hash)> get_schools_count_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_schools_count_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetSchoolsCount200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_schools_count_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GetSchoolsCount200Response**](GetSchoolsCount200Response.md)
 
 ### Authorization
 
