@@ -9,6 +9,7 @@
 | **short_name** | **String** |  | [optional] |
 | **logo_url** | **String** |  | [optional] |
 | **primary_contact_name** | **String** |  | [optional] |
+| **primary_contact_email** | **String** |  | [optional] |
 | **primary_contact_phone** | **String** |  | [optional] |
 
 ## Example
@@ -22,6 +23,7 @@ instance = WinthropClient::ScheduleGridSchool.new(
   short_name: null,
   logo_url: null,
   primary_contact_name: null,
+  primary_contact_email: null,
   primary_contact_phone: null
 )
 ```

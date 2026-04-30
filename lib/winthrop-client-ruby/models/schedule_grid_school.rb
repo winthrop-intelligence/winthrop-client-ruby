@@ -26,6 +26,8 @@ module WinthropClient
 
     attr_accessor :primary_contact_name
 
+    attr_accessor :primary_contact_email
+
     attr_accessor :primary_contact_phone
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -36,6 +38,7 @@ module WinthropClient
         :'short_name' => :'short_name',
         :'logo_url' => :'logo_url',
         :'primary_contact_name' => :'primary_contact_name',
+        :'primary_contact_email' => :'primary_contact_email',
         :'primary_contact_phone' => :'primary_contact_phone'
       }
     end
@@ -58,6 +61,7 @@ module WinthropClient
         :'short_name' => :'String',
         :'logo_url' => :'String',
         :'primary_contact_name' => :'String',
+        :'primary_contact_email' => :'String',
         :'primary_contact_phone' => :'String'
       }
     end
@@ -69,6 +73,7 @@ module WinthropClient
         :'short_name',
         :'logo_url',
         :'primary_contact_name',
+        :'primary_contact_email',
         :'primary_contact_phone'
       ])
     end
@@ -109,6 +114,10 @@ module WinthropClient
         self.primary_contact_name = attributes[:'primary_contact_name']
       end
 
+      if attributes.key?(:'primary_contact_email')
+        self.primary_contact_email = attributes[:'primary_contact_email']
+      end
+
       if attributes.key?(:'primary_contact_phone')
         self.primary_contact_phone = attributes[:'primary_contact_phone']
       end
@@ -139,6 +148,7 @@ module WinthropClient
           short_name == o.short_name &&
           logo_url == o.logo_url &&
           primary_contact_name == o.primary_contact_name &&
+          primary_contact_email == o.primary_contact_email &&
           primary_contact_phone == o.primary_contact_phone
     end
 
@@ -151,7 +161,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, short_name, logo_url, primary_contact_name, primary_contact_phone].hash
+      [id, name, short_name, logo_url, primary_contact_name, primary_contact_email, primary_contact_phone].hash
     end
 
     # Builds the object from hash

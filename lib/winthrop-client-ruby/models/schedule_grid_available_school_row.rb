@@ -26,6 +26,8 @@ module WinthropClient
 
     attr_accessor :primary_contact_name
 
+    attr_accessor :primary_contact_email
+
     attr_accessor :primary_contact_phone
 
     attr_accessor :subdivision_name
@@ -47,6 +49,7 @@ module WinthropClient
         :'short_name' => :'short_name',
         :'logo_url' => :'logo_url',
         :'primary_contact_name' => :'primary_contact_name',
+        :'primary_contact_email' => :'primary_contact_email',
         :'primary_contact_phone' => :'primary_contact_phone',
         :'subdivision_name' => :'subdivision_name',
         :'rank' => :'rank',
@@ -73,6 +76,7 @@ module WinthropClient
         :'short_name' => :'String',
         :'logo_url' => :'String',
         :'primary_contact_name' => :'String',
+        :'primary_contact_email' => :'String',
         :'primary_contact_phone' => :'String',
         :'subdivision_name' => :'String',
         :'rank' => :'Integer',
@@ -88,6 +92,7 @@ module WinthropClient
         :'short_name',
         :'logo_url',
         :'primary_contact_name',
+        :'primary_contact_email',
         :'primary_contact_phone',
         :'subdivision_name',
         :'rank',
@@ -130,6 +135,10 @@ module WinthropClient
 
       if attributes.key?(:'primary_contact_name')
         self.primary_contact_name = attributes[:'primary_contact_name']
+      end
+
+      if attributes.key?(:'primary_contact_email')
+        self.primary_contact_email = attributes[:'primary_contact_email']
       end
 
       if attributes.key?(:'primary_contact_phone')
@@ -178,6 +187,7 @@ module WinthropClient
           short_name == o.short_name &&
           logo_url == o.logo_url &&
           primary_contact_name == o.primary_contact_name &&
+          primary_contact_email == o.primary_contact_email &&
           primary_contact_phone == o.primary_contact_phone &&
           subdivision_name == o.subdivision_name &&
           rank == o.rank &&
@@ -194,7 +204,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, short_name, logo_url, primary_contact_name, primary_contact_phone, subdivision_name, rank, distance_miles, nearest_post].hash
+      [id, name, short_name, logo_url, primary_contact_name, primary_contact_email, primary_contact_phone, subdivision_name, rank, distance_miles, nearest_post].hash
     end
 
     # Builds the object from hash
