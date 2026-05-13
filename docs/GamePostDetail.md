@@ -7,9 +7,11 @@
 | **id** | **Integer** |  | [optional] |
 | **school_id** | **Integer** |  | [optional] |
 | **school_name** | **String** |  | [optional] |
+| **school_short_name** | **String** |  | [optional] |
 | **sport_id** | **Integer** |  | [optional] |
 | **sport_name** | **String** |  | [optional] |
 | **sport_slug** | **String** | Sport name for URL construction (e.g. FOOTBALL, BASKETBALL_M) | [optional] |
+| **sport_abbreviation** | **String** | Short sport label (e.g. MBB, FB) | [optional] |
 | **start_date** | **Date** |  | [optional] |
 | **end_date** | **Date** |  | [optional] |
 | **description** | **String** |  | [optional] |
@@ -32,9 +34,11 @@ instance = WinthropClient::GamePostDetail.new(
   id: null,
   school_id: null,
   school_name: null,
+  school_short_name: null,
   sport_id: null,
   sport_name: null,
   sport_slug: null,
+  sport_abbreviation: null,
   start_date: null,
   end_date: null,
   description: null,
