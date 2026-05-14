@@ -86,6 +86,12 @@ module WinthropClient
     # Whether the user can view account management
     attr_accessor :can_read_account
 
+    # Whether the user can launch Intercollegiate direct access
+    attr_accessor :can_launch_intercollegiate
+
+    # Final Intercollegiate launch or marketing URL for the user
+    attr_accessor :intercollegiate_url
+
     attr_accessor :is_sport_specific
 
     attr_accessor :is_d2_only
@@ -177,6 +183,8 @@ module WinthropClient
         :'can_show_game_post' => :'can_show_game_post',
         :'can_see_school_groups' => :'can_see_school_groups',
         :'can_read_account' => :'can_read_account',
+        :'can_launch_intercollegiate' => :'can_launch_intercollegiate',
+        :'intercollegiate_url' => :'intercollegiate_url',
         :'is_sport_specific' => :'is_sport_specific',
         :'is_d2_only' => :'is_d2_only',
         :'is_conference_only' => :'is_conference_only',
@@ -236,6 +244,8 @@ module WinthropClient
         :'can_show_game_post' => :'Boolean',
         :'can_see_school_groups' => :'Boolean',
         :'can_read_account' => :'Boolean',
+        :'can_launch_intercollegiate' => :'Boolean',
+        :'intercollegiate_url' => :'String',
         :'is_sport_specific' => :'Boolean',
         :'is_d2_only' => :'Boolean',
         :'is_conference_only' => :'Boolean',
@@ -258,6 +268,7 @@ module WinthropClient
     def self.openapi_nullable
       Set.new([
         :'account_id',
+        :'intercollegiate_url',
         :'permissible_sport_ids',
         :'subscription_type',
         :'school_city',
@@ -399,6 +410,14 @@ module WinthropClient
         self.can_read_account = attributes[:'can_read_account']
       end
 
+      if attributes.key?(:'can_launch_intercollegiate')
+        self.can_launch_intercollegiate = attributes[:'can_launch_intercollegiate']
+      end
+
+      if attributes.key?(:'intercollegiate_url')
+        self.intercollegiate_url = attributes[:'intercollegiate_url']
+      end
+
       if attributes.key?(:'is_sport_specific')
         self.is_sport_specific = attributes[:'is_sport_specific']
       end
@@ -524,6 +543,8 @@ module WinthropClient
           can_show_game_post == o.can_show_game_post &&
           can_see_school_groups == o.can_see_school_groups &&
           can_read_account == o.can_read_account &&
+          can_launch_intercollegiate == o.can_launch_intercollegiate &&
+          intercollegiate_url == o.intercollegiate_url &&
           is_sport_specific == o.is_sport_specific &&
           is_d2_only == o.is_d2_only &&
           is_conference_only == o.is_conference_only &&
@@ -550,7 +571,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, email, first_name, last_name, created_at, updated_at, state, title, account_id, accountable_id, accountable_type, coach_id, divisions, roles, is_admin, can_see_compensation, can_show_scouting, can_show_game_contract, can_see_coaches, can_see_administrators, can_show_financials, can_show_deals, can_show_benchmark, can_show_athletic_profile, can_read_conference, can_show_game_post, can_see_school_groups, can_read_account, is_sport_specific, is_d2_only, is_conference_only, permissible_sport_ids, coli_index, subscription_type, schedule_sports, school_city, school_state, otp_required, time_zone, scheduling_notifications, game_post_notifications, games_digest, email_domain].hash
+      [id, email, first_name, last_name, created_at, updated_at, state, title, account_id, accountable_id, accountable_type, coach_id, divisions, roles, is_admin, can_see_compensation, can_show_scouting, can_show_game_contract, can_see_coaches, can_see_administrators, can_show_financials, can_show_deals, can_show_benchmark, can_show_athletic_profile, can_read_conference, can_show_game_post, can_see_school_groups, can_read_account, can_launch_intercollegiate, intercollegiate_url, is_sport_specific, is_d2_only, is_conference_only, permissible_sport_ids, coli_index, subscription_type, schedule_sports, school_city, school_state, otp_required, time_zone, scheduling_notifications, game_post_notifications, games_digest, email_domain].hash
     end
 
     # Builds the object from hash
