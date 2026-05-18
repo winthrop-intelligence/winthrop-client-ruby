@@ -11704,7 +11704,7 @@ end
 api_instance = WinthropClient::DefaultApi.new
 sport_name = 'sport_name_example' # String | Sport name (e.g. FOOTBALL, BASKETBALL_M)
 opts = {
-  school_ids: [37], # Array<Integer> | School IDs to include on the grid (max 8, ordering is preserved)
+  school_ids: [37], # Array<Integer> | School IDs to include on the grid (max 12, ordering is preserved)
   year: 2026 # Integer | Four-digit season year. Defaults to the current year when omitted or invalid.
 }
 
@@ -11740,7 +11740,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **sport_name** | **String** | Sport name (e.g. FOOTBALL, BASKETBALL_M) |  |
-| **school_ids** | [**Array&lt;Integer&gt;**](Integer.md) | School IDs to include on the grid (max 8, ordering is preserved) | [optional] |
+| **school_ids** | [**Array&lt;Integer&gt;**](Integer.md) | School IDs to include on the grid (max 12, ordering is preserved) | [optional] |
 | **year** | **Integer** | Four-digit season year. Defaults to the current year when omitted or invalid. | [optional] |
 
 ### Return type
@@ -11876,7 +11876,7 @@ end
 api_instance = WinthropClient::DefaultApi.new
 sport_name = 'sport_name_example' # String | Sport name (e.g. FOOTBALL, BASKETBALL_M)
 opts = {
-  school_ids: [37], # Array<Integer> | School IDs to include on the grid (max 8, ordering is preserved)
+  school_ids: [37], # Array<Integer> | School IDs to include on the grid (max 12, ordering is preserved)
   year: 2024 # Integer | Four-digit season year. Defaults to the current year when omitted or invalid.
 }
 
@@ -11912,7 +11912,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **sport_name** | **String** | Sport name (e.g. FOOTBALL, BASKETBALL_M) |  |
-| **school_ids** | [**Array&lt;Integer&gt;**](Integer.md) | School IDs to include on the grid (max 8, ordering is preserved) | [optional] |
+| **school_ids** | [**Array&lt;Integer&gt;**](Integer.md) | School IDs to include on the grid (max 12, ordering is preserved) | [optional] |
 | **year** | **Integer** | Four-digit season year. Defaults to the current year when omitted or invalid. | [optional] |
 
 ### Return type

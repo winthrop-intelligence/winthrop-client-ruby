@@ -11,6 +11,7 @@
 | **position_sport** | **String** |  |  |
 | **record** | **String** |  | [optional] |
 | **rpi** | **String** |  | [optional] |
+| **net_rank** | **String** |  | [optional] |
 | **apr_asr** | **String** |  | [optional] |
 | **coach_apr** | **Float** |  | [optional] |
 | **departing** | **Boolean** |  | [optional] |
@@ -28,6 +29,7 @@ instance = WinthropClient::CoachPositionEntry.new(
   position_sport: null,
   record: null,
   rpi: null,
+  net_rank: null,
   apr_asr: null,
   coach_apr: null,
   departing: null

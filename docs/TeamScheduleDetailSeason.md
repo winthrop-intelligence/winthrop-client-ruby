@@ -8,7 +8,9 @@
 | **losses** | **Integer** |  | [optional] |
 | **record_str** | **String** |  | [optional] |
 | **rpi** | **Integer** |  | [optional] |
+| **net_rank** | **Integer** |  | [optional] |
 | **avg_rpi** | **Integer** |  | [optional] |
+| **avg_net_rank** | **Integer** |  | [optional] |
 
 ## Example
 
@@ -20,7 +22,9 @@ instance = WinthropClient::TeamScheduleDetailSeason.new(
   losses: null,
   record_str: null,
   rpi: null,
-  avg_rpi: null
+  net_rank: null,
+  avg_rpi: null,
+  avg_net_rank: null
 )
 ```
 

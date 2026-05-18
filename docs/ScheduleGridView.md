@@ -11,6 +11,7 @@
 | **schools** | [**Array&lt;ScheduleGridSchool&gt;**](ScheduleGridSchool.md) |  | [optional] |
 | **games** | **Hash&lt;String, Array&lt;ScheduleGridGame&gt;&gt;** | Games keyed by school_id (as a string). Each school&#39;s list is filtered to games where that school is home or away. | [optional] |
 | **game_posts** | **Hash&lt;String, Array&lt;ScheduleGridGamePost&gt;&gt;** | Active game posts keyed by school_id (as a string) | [optional] |
+| **onboarding** | [**ScheduleGridOnboarding**](ScheduleGridOnboarding.md) |  | [optional] |
 
 ## Example
 
@@ -24,7 +25,8 @@ instance = WinthropClient::ScheduleGridView.new(
   season_end: null,
   schools: null,
   games: null,
-  game_posts: null
+  game_posts: null,
+  onboarding: null
 )
 ```
 

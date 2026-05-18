@@ -14,6 +14,8 @@
 | **state_name** | **String** |  | [optional] |
 | **opponent_rpi** | **Integer** |  | [optional] |
 | **opponent_avg_rpi** | **Integer** |  | [optional] |
+| **opponent_net_rank** | **Integer** |  | [optional] |
+| **opponent_avg_net_rank** | **Integer** |  | [optional] |
 | **result** | **String** |  | [optional] |
 | **score** | **String** |  | [optional] |
 | **overtime** | **Integer** |  | [optional] |
@@ -35,6 +37,8 @@ instance = WinthropClient::TeamScheduleDetailGame.new(
   state_name: null,
   opponent_rpi: null,
   opponent_avg_rpi: null,
+  opponent_net_rank: null,
+  opponent_avg_net_rank: null,
   result: null,
   score: null,
   overtime: null,

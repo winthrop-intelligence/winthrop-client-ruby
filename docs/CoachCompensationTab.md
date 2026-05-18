@@ -10,6 +10,7 @@
 | **total_compensations** | **Integer** |  |  |
 | **comparisons** | [**CoachCompensationTabComparisons**](CoachCompensationTabComparisons.md) |  | [optional] |
 | **sidebar** | [**CoachCompensationTabSidebar**](CoachCompensationTabSidebar.md) |  | [optional] |
+| **quartiles** | [**CoachCompensationTabQuartiles**](CoachCompensationTabQuartiles.md) |  | [optional] |
 
 ## Example
 
@@ -22,7 +23,8 @@ instance = WinthropClient::CoachCompensationTab.new(
   compensations: null,
   total_compensations: null,
   comparisons: null,
-  sidebar: null
+  sidebar: null,
+  quartiles: null
 )
 ```
 
