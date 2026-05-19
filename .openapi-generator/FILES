@@ -206,6 +206,9 @@ docs/IdName.md
 docs/IncomeReport.md
 docs/IncomeReportCollection.md
 docs/IntercollegiateApi.md
+docs/InvoiceReportAccount.md
+docs/InvoiceReportResult.md
+docs/InvoiceReportRow.md
 docs/Job.md
 docs/JobCandidate.md
 docs/JobCollection.md
@@ -585,6 +588,9 @@ lib/winthrop-client-ruby/models/http_validation_error.rb
 lib/winthrop-client-ruby/models/id_name.rb
 lib/winthrop-client-ruby/models/income_report.rb
 lib/winthrop-client-ruby/models/income_report_collection.rb
+lib/winthrop-client-ruby/models/invoice_report_account.rb
+lib/winthrop-client-ruby/models/invoice_report_result.rb
+lib/winthrop-client-ruby/models/invoice_report_row.rb
 lib/winthrop-client-ruby/models/job.rb
 lib/winthrop-client-ruby/models/job_candidate.rb
 lib/winthrop-client-ruby/models/job_collection.rb
@@ -752,8 +758,8 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
-spec/models/coach_compensation_tab_quartiles_rows_inner_spec.rb
-spec/models/coach_compensation_tab_quartiles_spec.rb
-spec/models/schedule_grid_onboarding_spec.rb
+spec/models/invoice_report_account_spec.rb
+spec/models/invoice_report_result_spec.rb
+spec/models/invoice_report_row_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
