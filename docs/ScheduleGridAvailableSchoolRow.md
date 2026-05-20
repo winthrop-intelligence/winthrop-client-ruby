@@ -12,7 +12,7 @@
 | **primary_contact_email** | **String** |  | [optional] |
 | **primary_contact_phone** | **String** |  | [optional] |
 | **subdivision_name** | **String** |  | [optional] |
-| **rank** | **Integer** | Current USNWR ranking (omitted when blank) | [optional] |
+| **rank** | **Integer** | Latest known NET rank for the requested sport (omitted when blank) | [optional] |
 | **distance_miles** | **Integer** | Distance from user_school_id in miles (omitted when distance filtering is not active) | [optional] |
 | **nearest_post** | [**ScheduleGridAvailableSchoolPost**](ScheduleGridAvailableSchoolPost.md) | Nearest active GamePost to target_date in the window. Null when the school has no openness recorded for the window (assumed-eligible). | [optional] |
 

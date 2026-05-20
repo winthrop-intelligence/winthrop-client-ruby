@@ -28,6 +28,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**create_password_reset**](DefaultApi.md#create_password_reset) | **POST** /api/v1/password_reset |  |
 | [**create_position**](DefaultApi.md#create_position) | **POST** /api/v1/positions |  |
 | [**create_requested_item**](DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items |  |
+| [**create_schedule_intent**](DefaultApi.md#create_schedule_intent) | **POST** /api/v1/schedule_intents |  |
 | [**create_school_group**](DefaultApi.md#create_school_group) | **POST** /api/v1/school_groups |  |
 | [**create_season**](DefaultApi.md#create_season) | **POST** /api/v1/seasons |  |
 | [**create_team_schedule_favorite**](DefaultApi.md#create_team_schedule_favorite) | **POST** /api/v1/team_schedule_favorites |  |
@@ -49,6 +50,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_note**](DefaultApi.md#delete_note) | **DELETE** /api/v1/notes/{id} |  |
 | [**delete_position**](DefaultApi.md#delete_position) | **DELETE** /api/v1/positions/{positionId} |  |
 | [**delete_requested_item**](DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} |  |
+| [**delete_schedule_intent**](DefaultApi.md#delete_schedule_intent) | **DELETE** /api/v1/schedule_intents/{scheduleIntentId} |  |
 | [**delete_school_group**](DefaultApi.md#delete_school_group) | **DELETE** /api/v1/school_groups/{schoolGroupId} |  |
 | [**delete_season**](DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} |  |
 | [**delete_team_schedule_favorite**](DefaultApi.md#delete_team_schedule_favorite) | **DELETE** /api/v1/team_schedule_favorites/{id} |  |
@@ -235,6 +237,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_password_reset**](DefaultApi.md#update_password_reset) | **PUT** /api/v1/password_reset |  |
 | [**update_position**](DefaultApi.md#update_position) | **PATCH** /api/v1/positions/{positionId} |  |
 | [**update_requested_item**](DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} |  |
+| [**update_schedule_intent**](DefaultApi.md#update_schedule_intent) | **PATCH** /api/v1/schedule_intents/{scheduleIntentId} |  |
 | [**update_school_group**](DefaultApi.md#update_school_group) | **PATCH** /api/v1/school_groups/{schoolGroupId} |  |
 | [**update_season**](DefaultApi.md#update_season) | **PUT** /api/v1/seasons/{seasonId} |  |
 | [**update_team_schedule_favorite**](DefaultApi.md#update_team_schedule_favorite) | **PATCH** /api/v1/team_schedule_favorites/{id} |  |
@@ -2050,6 +2053,80 @@ end
 - **Accept**: application/json
 
 
+## create_schedule_intent
+
+> <ScheduleIntentDetail> create_schedule_intent(create_schedule_intent_request)
+
+
+
+Create a private /schedules grid marker (WINAD-9646). This is NOT a public Games Wanted post — it never reaches the /game_posts feed, the school-detail badge, or the digest email.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_schedule_intent_request = WinthropClient::CreateScheduleIntentRequest.new({schedule_intent: WinthropClient::CreateScheduleIntentRequestScheduleIntent.new({sport_id: 37, date: Date.today})}) # CreateScheduleIntentRequest | 
+
+begin
+  
+  result = api_instance.create_schedule_intent(create_schedule_intent_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_schedule_intent: #{e}"
+end
+```
+
+#### Using the create_schedule_intent_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ScheduleIntentDetail>, Integer, Hash)> create_schedule_intent_with_http_info(create_schedule_intent_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_schedule_intent_with_http_info(create_schedule_intent_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ScheduleIntentDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_schedule_intent_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_schedule_intent_request** | [**CreateScheduleIntentRequest**](CreateScheduleIntentRequest.md) |  |  |
+
+### Return type
+
+[**ScheduleIntentDetail**](ScheduleIntentDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_school_group
 
 > <SchoolGroupShow> create_school_group(create_school_group_request)
@@ -3582,6 +3659,79 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **requested_item_id** | **Integer** | ID of requested item to delete |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## delete_schedule_intent
+
+> delete_schedule_intent(schedule_intent_id)
+
+
+
+Delete a private /schedules grid marker
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+schedule_intent_id = 56 # Integer | 
+
+begin
+  
+  api_instance.delete_schedule_intent(schedule_intent_id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_schedule_intent: #{e}"
+end
+```
+
+#### Using the delete_schedule_intent_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_schedule_intent_with_http_info(schedule_intent_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_schedule_intent_with_http_info(schedule_intent_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_schedule_intent_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **schedule_intent_id** | **Integer** |  |  |
 
 ### Return type
 
@@ -17811,6 +17961,84 @@ end
 ### Return type
 
 [**RequestedItem**](RequestedItem.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_schedule_intent
+
+> <ScheduleIntentDetail> update_schedule_intent(schedule_intent_id, opts)
+
+
+
+Update a private /schedules grid marker (replace its game-type designations).
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+schedule_intent_id = 56 # Integer | 
+opts = {
+  update_schedule_intent_request: WinthropClient::UpdateScheduleIntentRequest.new # UpdateScheduleIntentRequest | 
+}
+
+begin
+  
+  result = api_instance.update_schedule_intent(schedule_intent_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_schedule_intent: #{e}"
+end
+```
+
+#### Using the update_schedule_intent_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ScheduleIntentDetail>, Integer, Hash)> update_schedule_intent_with_http_info(schedule_intent_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_schedule_intent_with_http_info(schedule_intent_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ScheduleIntentDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_schedule_intent_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **schedule_intent_id** | **Integer** |  |  |
+| **update_schedule_intent_request** | [**UpdateScheduleIntentRequest**](UpdateScheduleIntentRequest.md) |  | [optional] |
+
+### Return type
+
+[**ScheduleIntentDetail**](ScheduleIntentDetail.md)
 
 ### Authorization
 
