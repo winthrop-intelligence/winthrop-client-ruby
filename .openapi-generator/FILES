@@ -126,6 +126,8 @@ docs/CreateNoteRequest.md
 docs/CreatePasswordReset200Response.md
 docs/CreatePasswordResetRequest.md
 docs/CreatePasswordResetRequestUser.md
+docs/CreateScheduleIntentRequest.md
+docs/CreateScheduleIntentRequestScheduleIntent.md
 docs/CreateSchoolGroupRequest.md
 docs/CreateSchoolGroupRequestSchoolGroup.md
 docs/CreateTeamScheduleFavorite201Response.md
@@ -262,10 +264,11 @@ docs/ScheduleGridAvailableSchoolPost.md
 docs/ScheduleGridAvailableSchoolRow.md
 docs/ScheduleGridAvailableSchools.md
 docs/ScheduleGridGame.md
-docs/ScheduleGridGamePost.md
 docs/ScheduleGridOnboarding.md
+docs/ScheduleGridScheduleIntent.md
 docs/ScheduleGridSchool.md
 docs/ScheduleGridView.md
+docs/ScheduleIntentDetail.md
 docs/School.md
 docs/SchoolCollection.md
 docs/SchoolContractEntry.md
@@ -352,6 +355,8 @@ docs/UpdateNoteRequest.md
 docs/UpdatePasswordReset200Response.md
 docs/UpdatePasswordResetRequest.md
 docs/UpdatePasswordResetRequestUser.md
+docs/UpdateScheduleIntentRequest.md
+docs/UpdateScheduleIntentRequestScheduleIntent.md
 docs/UpdateSchoolGroupRequest.md
 docs/UpdateSchoolGroupRequestSchoolGroup.md
 docs/UpdateTeamScheduleFavoriteRequest.md
@@ -511,6 +516,8 @@ lib/winthrop-client-ruby/models/create_note_request.rb
 lib/winthrop-client-ruby/models/create_password_reset200_response.rb
 lib/winthrop-client-ruby/models/create_password_reset_request.rb
 lib/winthrop-client-ruby/models/create_password_reset_request_user.rb
+lib/winthrop-client-ruby/models/create_schedule_intent_request.rb
+lib/winthrop-client-ruby/models/create_schedule_intent_request_schedule_intent.rb
 lib/winthrop-client-ruby/models/create_school_group_request.rb
 lib/winthrop-client-ruby/models/create_school_group_request_school_group.rb
 lib/winthrop-client-ruby/models/create_team_schedule_favorite201_response.rb
@@ -642,10 +649,11 @@ lib/winthrop-client-ruby/models/schedule_grid_available_school_post.rb
 lib/winthrop-client-ruby/models/schedule_grid_available_school_row.rb
 lib/winthrop-client-ruby/models/schedule_grid_available_schools.rb
 lib/winthrop-client-ruby/models/schedule_grid_game.rb
-lib/winthrop-client-ruby/models/schedule_grid_game_post.rb
 lib/winthrop-client-ruby/models/schedule_grid_onboarding.rb
+lib/winthrop-client-ruby/models/schedule_grid_schedule_intent.rb
 lib/winthrop-client-ruby/models/schedule_grid_school.rb
 lib/winthrop-client-ruby/models/schedule_grid_view.rb
+lib/winthrop-client-ruby/models/schedule_intent_detail.rb
 lib/winthrop-client-ruby/models/school.rb
 lib/winthrop-client-ruby/models/school_collection.rb
 lib/winthrop-client-ruby/models/school_contract_entry.rb
@@ -731,6 +739,8 @@ lib/winthrop-client-ruby/models/update_note_request.rb
 lib/winthrop-client-ruby/models/update_password_reset200_response.rb
 lib/winthrop-client-ruby/models/update_password_reset_request.rb
 lib/winthrop-client-ruby/models/update_password_reset_request_user.rb
+lib/winthrop-client-ruby/models/update_schedule_intent_request.rb
+lib/winthrop-client-ruby/models/update_schedule_intent_request_schedule_intent.rb
 lib/winthrop-client-ruby/models/update_school_group_request.rb
 lib/winthrop-client-ruby/models/update_school_group_request_school_group.rb
 lib/winthrop-client-ruby/models/update_team_schedule_favorite_request.rb
@@ -758,8 +768,11 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
-spec/models/invoice_report_account_spec.rb
-spec/models/invoice_report_result_spec.rb
-spec/models/invoice_report_row_spec.rb
+spec/models/create_schedule_intent_request_schedule_intent_spec.rb
+spec/models/create_schedule_intent_request_spec.rb
+spec/models/schedule_grid_schedule_intent_spec.rb
+spec/models/schedule_intent_detail_spec.rb
+spec/models/update_schedule_intent_request_schedule_intent_spec.rb
+spec/models/update_schedule_intent_request_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
