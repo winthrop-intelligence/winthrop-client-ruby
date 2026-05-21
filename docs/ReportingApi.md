@@ -407,7 +407,7 @@ end
 
 ## get_invoices
 
-> Object get_invoices(opts)
+> <InvoiceReportResult> get_invoices(opts)
 
 
 
@@ -448,7 +448,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(Object, Integer, Hash)> get_invoices_with_http_info(opts)
+> <Array(<InvoiceReportResult>, Integer, Hash)> get_invoices_with_http_info(opts)
 
 ```ruby
 begin
@@ -456,7 +456,7 @@ begin
   data, status_code, headers = api_instance.get_invoices_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => Object
+  p data # => <InvoiceReportResult>
 rescue WinthropClient::ApiError => e
   puts "Error when calling ReportingApi->get_invoices_with_http_info: #{e}"
 end
@@ -471,7 +471,7 @@ end
 
 ### Return type
 
-**Object**
+[**InvoiceReportResult**](InvoiceReportResult.md)
 
 ### Authorization
 

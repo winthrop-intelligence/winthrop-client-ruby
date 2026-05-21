@@ -50,7 +50,7 @@ instance = WinthropClient::Coach.new(
   leader: false,
   bio: https://rolltide.com/staff-directory/greg-byrne/519,
   bio_text: Example Bio Text,
-  dob: Tue Jan 01 00:00:00 UTC 2019,
+  dob: Mon Dec 31 18:00:00 CST 2018,
   alma_mater_id: 1,
   alma_mater_year: 2009,
   hometown_city: Omaha,

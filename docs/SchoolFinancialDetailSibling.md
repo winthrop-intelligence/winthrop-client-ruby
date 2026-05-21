@@ -7,6 +7,7 @@
 | **group_id** | **Integer** |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **name_id** | **String** |  | [optional] |
+| **report_label** | **String** |  | [optional] |
 | **total** | **Integer** |  | [optional] |
 
 ## Example
@@ -18,6 +19,7 @@ instance = WinthropClient::SchoolFinancialDetailSibling.new(
   group_id: null,
   name: null,
   name_id: null,
+  report_label: null,
   total: null
 )
 ```

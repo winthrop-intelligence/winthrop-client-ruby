@@ -35,6 +35,17 @@
 | **home_losses** | **Integer** |  | [optional] |
 | **home_win_percent** | **Float** |  | [optional] |
 | **asr** | **Integer** |  | [optional] |
+| **away_wins** | **Integer** |  | [optional] |
+| **away_losses** | **Integer** |  | [optional] |
+| **neutral_wins** | **Integer** |  | [optional] |
+| **neutral_losses** | **Integer** |  | [optional] |
+| **non_division_wins** | **Integer** |  | [optional] |
+| **non_division_losses** | **Integer** |  | [optional] |
+| **net_rank** | **Integer** |  | [optional] |
+| **prev_net_rank** | **Integer** |  | [optional] |
+| **non_conference_sos_ranking** | **Integer** |  | [optional] |
+| **conference_sos_ranking** | **Integer** |  | [optional] |
+| **ranking_through_date** | **Date** |  | [optional] |
 | **head_coach** | [**Coach**](Coach.md) |  | [optional] |
 | **assistant_coaches** | [**Array&lt;Coach&gt;**](Coach.md) |  | [optional] |
 
@@ -75,6 +86,17 @@ instance = WinthropClient::Season.new(
   home_losses: null,
   home_win_percent: null,
   asr: null,
+  away_wins: null,
+  away_losses: null,
+  neutral_wins: null,
+  neutral_losses: null,
+  non_division_wins: null,
+  non_division_losses: null,
+  net_rank: null,
+  prev_net_rank: null,
+  non_conference_sos_ranking: null,
+  conference_sos_ranking: null,
+  ranking_through_date: null,
   head_coach: null,
   assistant_coaches: null
 )

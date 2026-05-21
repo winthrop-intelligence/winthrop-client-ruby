@@ -18,6 +18,7 @@
 | **coach_id** | **Integer** |  | [optional] |
 | **divisions** | [**Array&lt;Division&gt;**](Division.md) |  | [optional] |
 | **roles** | **Array&lt;String&gt;** |  | [optional] |
+| **is_admin** | **Boolean** | Whether the user is a data admin or super admin | [optional] |
 | **can_see_compensation** | **Boolean** | Whether the user can view coach compensation data | [optional] |
 | **can_show_scouting** | **Boolean** | Whether the user can view scouting/team schedule links | [optional] |
 | **can_show_game_contract** | **Boolean** | Whether the user can view game contract/guarantee data | [optional] |
@@ -31,6 +32,8 @@
 | **can_show_game_post** | **Boolean** | Whether the user can access the Games Wanted section | [optional] |
 | **can_see_school_groups** | **Boolean** | Whether the user can access Custom School Groups | [optional] |
 | **can_read_account** | **Boolean** | Whether the user can view account management | [optional] |
+| **can_launch_intercollegiate** | **Boolean** | Whether the user can launch Intercollegiate direct access | [optional] |
+| **intercollegiate_url** | **String** | Final Intercollegiate launch or marketing URL for the user | [optional] |
 | **is_sport_specific** | **Boolean** |  | [optional] |
 | **is_d2_only** | **Boolean** |  | [optional] |
 | **is_conference_only** | **Boolean** |  | [optional] |
@@ -67,6 +70,7 @@ instance = WinthropClient::User.new(
   coach_id: 1,
   divisions: null,
   roles: null,
+  is_admin: null,
   can_see_compensation: null,
   can_show_scouting: null,
   can_show_game_contract: null,
@@ -80,6 +84,8 @@ instance = WinthropClient::User.new(
   can_show_game_post: null,
   can_see_school_groups: null,
   can_read_account: null,
+  can_launch_intercollegiate: null,
+  intercollegiate_url: null,
   is_sport_specific: null,
   is_d2_only: null,
   is_conference_only: null,

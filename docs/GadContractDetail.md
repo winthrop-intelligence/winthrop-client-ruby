@@ -28,6 +28,8 @@
 | **has_raw_contract** | **Boolean** |  | [optional] |
 | **raw_contract_url** | **String** |  | [optional] |
 | **raw_contract_filename** | **String** |  | [optional] |
+| **can_download_raw_contract** | **Boolean** |  | [optional] |
+| **can_see_admin_view** | **Boolean** |  | [optional] |
 | **belongs_to_series** | **Boolean** |  | [optional] |
 | **verified** | **Boolean** |  | [optional] |
 | **unstract_text_state** | **String** |  | [optional] |
@@ -69,6 +71,8 @@ instance = WinthropClient::GadContractDetail.new(
   has_raw_contract: null,
   raw_contract_url: null,
   raw_contract_filename: null,
+  can_download_raw_contract: null,
+  can_see_admin_view: null,
   belongs_to_series: null,
   verified: null,
   unstract_text_state: null,

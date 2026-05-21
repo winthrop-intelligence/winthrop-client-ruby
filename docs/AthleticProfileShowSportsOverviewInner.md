@@ -12,6 +12,7 @@
 | **record** | **String** |  | [optional] |
 | **apr** | **Integer** |  | [optional] |
 | **rpi** | **Integer** |  | [optional] |
+| **net_rank** | **Integer** |  | [optional] |
 | **head_coach_comp_cents** | **Integer** |  | [optional] |
 | **asst_pool_cents** | **Integer** |  | [optional] |
 
@@ -29,6 +30,7 @@ instance = WinthropClient::AthleticProfileShowSportsOverviewInner.new(
   record: null,
   apr: null,
   rpi: null,
+  net_rank: null,
   head_coach_comp_cents: null,
   asst_pool_cents: null
 )

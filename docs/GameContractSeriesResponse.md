@@ -13,8 +13,11 @@
 | **game_type** | **String** |  | [optional] |
 | **season_year** | **Integer** |  | [optional] |
 | **cancel_fee_cents** | **Integer** |  | [optional] |
+| **raw_contract_id** | **Integer** |  | [optional] |
 | **has_raw_contract** | **Boolean** |  | [optional] |
+| **can_download_raw_contract** | **Boolean** |  | [optional] |
 | **raw_contract_url** | **String** |  | [optional] |
+| **raw_contract_filename** | **String** |  | [optional] |
 | **data** | [**Array&lt;GameContractSeriesEntry&gt;**](GameContractSeriesEntry.md) |  | [optional] |
 
 ## Example
@@ -32,8 +35,11 @@ instance = WinthropClient::GameContractSeriesResponse.new(
   game_type: null,
   season_year: null,
   cancel_fee_cents: null,
+  raw_contract_id: null,
   has_raw_contract: null,
+  can_download_raw_contract: null,
   raw_contract_url: null,
+  raw_contract_filename: null,
   data: null
 )
 ```
