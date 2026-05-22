@@ -23,7 +23,7 @@ instance = WinthropClient::GameDetailAllOfGameContract.new(
   game_type: HomeAndHome,
   comp_cents: 150000,
   cancel_fee_cents: 50000,
-  signed_on: Tue May 14 19:00:00 CDT 2024,
+  signed_on: Wed May 15 00:00:00 UTC 2024,
   off_site_location: Mercedes-Benz Stadium, Atlanta,
   file_url: https://app.example.com/rails/active_storage/blobs/.../contract.pdf,
   has_file: true
