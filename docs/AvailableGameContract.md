@@ -23,7 +23,7 @@ instance = WinthropClient::AvailableGameContract.new(
   sport_name: MBB,
   home_school_name: Duke,
   away_school_name: UNC,
-  game_date: Sat Nov 21 18:00:00 CST 2026,
+  game_date: Sun Nov 22 00:00:00 UTC 2026,
   game_date_tbd: TBD 2026,
   game_type: Guarantee,
   comp_cents: 12500000
