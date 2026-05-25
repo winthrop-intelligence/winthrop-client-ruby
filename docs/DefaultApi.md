@@ -11913,7 +11913,7 @@ end
 
 
 
-Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, and distance.
+Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, NET ranking tier, and distance.
 
 ### Examples
 
@@ -11938,6 +11938,7 @@ opts = {
   window_days: 56, # Integer | Number of days on either side of target_date to include (default 1)
   deal_types: ['inner_example'], # Array<String> | Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered)
   quality_tier: 'power_4', # String | Restrict to a subdivision tier
+  net_ranking_tier: 'top_50', # String | Restrict to a NET ranking band (latest non-null NET rank for the requested sport). Schools without a NET rank are excluded from every named tier; omit the param to leave results unfiltered.
   max_distance_miles: 56, # Integer | Maximum distance (miles) from the user's school. Requires user_school_id to resolve a coordinate origin.
   user_school_id: 56, # Integer | Requesting user's school. Used as the origin for distance filtering and is always excluded from results.
   exclude_school_ids: [37], # Array<Integer> | Additional school IDs to exclude from results (e.g. schools already on the grid)
@@ -11980,6 +11981,7 @@ end
 | **window_days** | **Integer** | Number of days on either side of target_date to include (default 1) | [optional][default to 1] |
 | **deal_types** | [**Array&lt;String&gt;**](String.md) | Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered) | [optional] |
 | **quality_tier** | **String** | Restrict to a subdivision tier | [optional] |
+| **net_ranking_tier** | **String** | Restrict to a NET ranking band (latest non-null NET rank for the requested sport). Schools without a NET rank are excluded from every named tier; omit the param to leave results unfiltered. | [optional] |
 | **max_distance_miles** | **Integer** | Maximum distance (miles) from the user&#39;s school. Requires user_school_id to resolve a coordinate origin. | [optional] |
 | **user_school_id** | **Integer** | Requesting user&#39;s school. Used as the origin for distance filtering and is always excluded from results. | [optional] |
 | **exclude_school_ids** | [**Array&lt;Integer&gt;**](Integer.md) | Additional school IDs to exclude from results (e.g. schools already on the grid) | [optional] |
