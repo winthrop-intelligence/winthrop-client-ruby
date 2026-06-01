@@ -255,6 +255,7 @@ docs/RecruitingChartData.md
 docs/RecruitingConferenceEntry.md
 docs/RecruitingPositionEntry.md
 docs/RegenerateRawContractPdf200Response.md
+docs/RemoteJobPost.md
 docs/ReportingApi.md
 docs/RequestedItem.md
 docs/RequestedItemCollection.md
@@ -641,6 +642,7 @@ lib/winthrop-client-ruby/models/recruiting_chart_data.rb
 lib/winthrop-client-ruby/models/recruiting_conference_entry.rb
 lib/winthrop-client-ruby/models/recruiting_position_entry.rb
 lib/winthrop-client-ruby/models/regenerate_raw_contract_pdf200_response.rb
+lib/winthrop-client-ruby/models/remote_job_post.rb
 lib/winthrop-client-ruby/models/requested_item.rb
 lib/winthrop-client-ruby/models/requested_item_collection.rb
 lib/winthrop-client-ruby/models/role_option.rb
@@ -768,5 +770,6 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
+spec/models/remote_job_post_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
