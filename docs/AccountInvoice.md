@@ -11,7 +11,6 @@
 | **purchase_order_number** | **String** |  | [optional] |
 | **due_date** | **Date** |  | [optional] |
 | **due_date_notes** | **String** |  | [optional] |
-| **notes** | **String** | Internal invoice notes. Null unless the caller has super admin access. | [optional] |
 | **payment_received** | **Date** |  | [optional] |
 | **status** | **String** |  | [optional] |
 | **reminders** | **Boolean** |  | [optional] |
@@ -32,7 +31,6 @@ instance = WinthropClient::AccountInvoice.new(
   purchase_order_number: null,
   due_date: null,
   due_date_notes: null,
-  notes: null,
   payment_received: null,
   status: null,
   reminders: null,
