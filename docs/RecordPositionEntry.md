@@ -12,6 +12,7 @@
 | **record** | **String** |  | [optional] |
 | **rpi** | **String** |  | [optional] |
 | **net_rank** | **String** |  | [optional] |
+| **ap_rank** | **String** |  | [optional] |
 | **apr_asr** | **String** |  | [optional] |
 | **coach_apr** | **Float** |  | [optional] |
 | **departing** | **Boolean** |  | [optional] |
@@ -32,6 +33,7 @@ instance = WinthropClient::RecordPositionEntry.new(
   record: null,
   rpi: null,
   net_rank: null,
+  ap_rank: null,
   apr_asr: null,
   coach_apr: null,
   departing: null,

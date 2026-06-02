@@ -10,6 +10,7 @@
 | **ties** | **Integer** |  | [optional] |
 | **rpi** | **Integer** |  | [optional] |
 | **net_rank** | **Integer** |  | [optional] |
+| **ap_rank** | **Integer** |  | [optional] |
 | **record_str** | **String** |  | [optional] |
 | **conference_record** | **String** |  | [optional] |
 | **postseason** | **String** |  | [optional] |
@@ -31,6 +32,7 @@ instance = WinthropClient::TeamScheduleCoachesSeasonsInner.new(
   ties: null,
   rpi: null,
   net_rank: null,
+  ap_rank: null,
   record_str: null,
   conference_record: null,
   postseason: null,

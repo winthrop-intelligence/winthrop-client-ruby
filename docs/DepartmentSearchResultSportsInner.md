@@ -18,6 +18,7 @@
 | **conference_record** | **String** |  | [optional] |
 | **rpi** | **Integer** |  | [optional] |
 | **net_rank** | **Integer** |  | [optional] |
+| **ap_rank** | **Integer** |  | [optional] |
 
 ## Example
 
@@ -38,7 +39,8 @@ instance = WinthropClient::DepartmentSearchResultSportsInner.new(
   record: null,
   conference_record: null,
   rpi: null,
-  net_rank: null
+  net_rank: null,
+  ap_rank: null
 )
 ```
 

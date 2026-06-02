@@ -9,6 +9,7 @@
 | **losses** | **Integer** |  | [optional] |
 | **rpi** | **Float** |  | [optional] |
 | **net_rank** | **Float** |  | [optional] |
+| **ap_rank** | **Float** |  | [optional] |
 | **sos** | **Float** |  | [optional] |
 
 ## Example
@@ -22,6 +23,7 @@ instance = WinthropClient::SchoolSportSeason.new(
   losses: null,
   rpi: null,
   net_rank: null,
+  ap_rank: null,
   sos: null
 )
 ```
