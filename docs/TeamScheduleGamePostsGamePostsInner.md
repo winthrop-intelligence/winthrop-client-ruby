@@ -11,8 +11,10 @@
 | **description** | **String** |  | [optional] |
 | **last_rpi** | **Integer** |  | [optional] |
 | **last_net_rank** | **Integer** |  | [optional] |
+| **last_ap_rank** | **Integer** |  | [optional] |
 | **avg_rpi** | **Integer** |  | [optional] |
 | **avg_net_rank** | **Integer** |  | [optional] |
+| **avg_ap_rank** | **Integer** |  | [optional] |
 | **city** | **String** |  | [optional] |
 | **state_name** | **String** |  | [optional] |
 | **created_at** | **String** |  | [optional] |
@@ -33,8 +35,10 @@ instance = WinthropClient::TeamScheduleGamePostsGamePostsInner.new(
   description: null,
   last_rpi: null,
   last_net_rank: null,
+  last_ap_rank: null,
   avg_rpi: null,
   avg_net_rank: null,
+  avg_ap_rank: null,
   city: null,
   state_name: null,
   created_at: null,

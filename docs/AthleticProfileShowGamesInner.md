@@ -14,6 +14,7 @@
 | **state_name** | **String** |  | [optional] |
 | **rpi** | **String** |  | [optional] |
 | **net_rank** | **String** |  | [optional] |
+| **ap_rank** | **String** |  | [optional] |
 | **compensation_cents** | **Integer** |  | [optional] |
 | **game_contract_id** | **Integer** |  | [optional] |
 
@@ -33,6 +34,7 @@ instance = WinthropClient::AthleticProfileShowGamesInner.new(
   state_name: null,
   rpi: null,
   net_rank: null,
+  ap_rank: null,
   compensation_cents: null,
   game_contract_id: null
 )

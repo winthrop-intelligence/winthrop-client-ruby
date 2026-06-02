@@ -43,6 +43,9 @@
 | **non_division_losses** | **Integer** |  | [optional] |
 | **net_rank** | **Integer** |  | [optional] |
 | **prev_net_rank** | **Integer** |  | [optional] |
+| **ap_rank** | **Integer** |  | [optional] |
+| **prev_ap_rank** | **Integer** |  | [optional] |
+| **torvik_rank** | **Integer** |  | [optional][readonly] |
 | **non_conference_sos_ranking** | **Integer** |  | [optional] |
 | **conference_sos_ranking** | **Integer** |  | [optional] |
 | **ranking_through_date** | **Date** |  | [optional] |
@@ -94,6 +97,9 @@ instance = WinthropClient::Season.new(
   non_division_losses: null,
   net_rank: null,
   prev_net_rank: null,
+  ap_rank: null,
+  prev_ap_rank: null,
+  torvik_rank: null,
   non_conference_sos_ranking: null,
   conference_sos_ranking: null,
   ranking_through_date: null,
