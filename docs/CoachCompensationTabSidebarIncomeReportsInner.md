@@ -7,6 +7,7 @@
 | **id** | **Integer** |  | [optional] |
 | **raw_contract_id** | **Integer** |  | [optional] |
 | **year** | **Integer** |  | [optional] |
+| **has_file** | **Boolean** |  | [optional] |
 
 ## Example
 
@@ -16,7 +17,8 @@ require 'winthrop-client-ruby'
 instance = WinthropClient::CoachCompensationTabSidebarIncomeReportsInner.new(
   id: null,
   raw_contract_id: null,
-  year: null
+  year: null,
+  has_file: null
 )
 ```
 
