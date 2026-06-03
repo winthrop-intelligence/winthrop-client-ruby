@@ -246,6 +246,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**user_me**](DefaultApi.md#user_me) | **GET** /api/v1/users/me |  |
 | [**verify_otp_code**](DefaultApi.md#verify_otp_code) | **POST** /api/v1/otp/verify |  |
 | [**verify_user_intercollegiate_access**](DefaultApi.md#verify_user_intercollegiate_access) | **GET** /api/v1/users/verify_user_intercollegiate_access |  |
+| [**view_invoice_file**](DefaultApi.md#view_invoice_file) | **GET** /api/v1/subscriptions/{subscriptionId}/invoices/{invoiceId}/view_file |  |
 | [**view_raw_contract_file**](DefaultApi.md#view_raw_contract_file) | **GET** /api/v1/raw_contracts/{raw_contractId}/view_file |  |
 
 
@@ -18649,6 +18650,82 @@ end
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+
+## view_invoice_file
+
+> File view_invoice_file(subscription_id, invoice_id)
+
+
+
+Stream the generated invoice PDF for inline viewing
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+subscription_id = 56 # Integer | ID of the Subscription
+invoice_id = 56 # Integer | ID of the Invoice
+
+begin
+  
+  result = api_instance.view_invoice_file(subscription_id, invoice_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->view_invoice_file: #{e}"
+end
+```
+
+#### Using the view_invoice_file_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(File, Integer, Hash)> view_invoice_file_with_http_info(subscription_id, invoice_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.view_invoice_file_with_http_info(subscription_id, invoice_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => File
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->view_invoice_file_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **subscription_id** | **Integer** | ID of the Subscription |  |
+| **invoice_id** | **Integer** | ID of the Invoice |  |
+
+### Return type
+
+**File**
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/pdf
 
 
 ## view_raw_contract_file
