@@ -26,7 +26,6 @@
 | **division_name** | **String** |  | [optional] |
 | **last_rpi** | **Integer** | Most recent RPI ranking | [optional] |
 | **last_net_rank** | **Integer** | Most recent NET ranking | [optional] |
-| **last_ap_rank** | **Integer** | Most recent AP ranking | [optional] |
 | **distance** | **Float** | Distance in miles from user&#39;s school | [optional] |
 | **avg_guarantee_paid** | **Float** |  | [optional] |
 | **avg_guarantee_received** | **Float** |  | [optional] |
@@ -34,7 +33,6 @@
 | **created_by_name** | **String** | Full name of the user who created the game post | [optional] |
 | **avg_rpi** | **Integer** | 5-year average RPI ranking | [optional] |
 | **avg_net_rank** | **Integer** | 5-year average NET ranking | [optional] |
-| **avg_ap_rank** | **Integer** | 5-year average AP ranking | [optional] |
 | **school_logo_url** | **String** | URL to school logo image (small variant) | [optional] |
 | **latitude** | **Float** |  | [optional] |
 | **longitude** | **Float** |  | [optional] |
@@ -68,7 +66,6 @@ instance = WinthropClient::GamePostSearchResult.new(
   division_name: null,
   last_rpi: null,
   last_net_rank: null,
-  last_ap_rank: null,
   distance: null,
   avg_guarantee_paid: null,
   avg_guarantee_received: null,
@@ -76,7 +73,6 @@ instance = WinthropClient::GamePostSearchResult.new(
   created_by_name: null,
   avg_rpi: null,
   avg_net_rank: null,
-  avg_ap_rank: null,
   school_logo_url: null,
   latitude: null,
   longitude: null,

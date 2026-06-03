@@ -27,7 +27,6 @@
 | **season_conference_num_positions** | **Integer** |  | [optional] |
 | **rpi** | **Float** |  | [optional] |
 | **net_rank** | **Float** |  | [optional] |
-| **ap_rank** | **Float** |  | [optional] |
 | **compensation_cents** | **Integer** | Total compensation in cents (included based on authorization) | [optional] |
 | **base_salary_cents** | **Integer** | Base salary in cents (included based on authorization) | [optional] |
 | **coli** | **Float** | School&#39;s cost-of-living index (included based on authorization) | [optional] |
@@ -76,7 +75,6 @@ instance = WinthropClient::CoachSearchResult.new(
   season_conference_num_positions: null,
   rpi: null,
   net_rank: null,
-  ap_rank: null,
   compensation_cents: null,
   base_salary_cents: null,
   coli: null,
