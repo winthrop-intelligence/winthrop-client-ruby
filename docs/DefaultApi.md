@@ -29,6 +29,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**create_position**](DefaultApi.md#create_position) | **POST** /api/v1/positions |  |
 | [**create_requested_item**](DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items |  |
 | [**create_schedule_intent**](DefaultApi.md#create_schedule_intent) | **POST** /api/v1/schedule_intents |  |
+| [**create_schedule_tournament**](DefaultApi.md#create_schedule_tournament) | **POST** /api/v1/schedule_tournaments |  |
 | [**create_school_group**](DefaultApi.md#create_school_group) | **POST** /api/v1/school_groups |  |
 | [**create_season**](DefaultApi.md#create_season) | **POST** /api/v1/seasons |  |
 | [**create_team_schedule_favorite**](DefaultApi.md#create_team_schedule_favorite) | **POST** /api/v1/team_schedule_favorites |  |
@@ -51,6 +52,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_position**](DefaultApi.md#delete_position) | **DELETE** /api/v1/positions/{positionId} |  |
 | [**delete_requested_item**](DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} |  |
 | [**delete_schedule_intent**](DefaultApi.md#delete_schedule_intent) | **DELETE** /api/v1/schedule_intents/{scheduleIntentId} |  |
+| [**delete_schedule_tournament**](DefaultApi.md#delete_schedule_tournament) | **DELETE** /api/v1/schedule_tournaments/{scheduleTournamentId} |  |
 | [**delete_school_group**](DefaultApi.md#delete_school_group) | **DELETE** /api/v1/school_groups/{schoolGroupId} |  |
 | [**delete_season**](DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} |  |
 | [**delete_team_schedule_favorite**](DefaultApi.md#delete_team_schedule_favorite) | **DELETE** /api/v1/team_schedule_favorites/{id} |  |
@@ -2128,6 +2130,80 @@ end
 - **Accept**: application/json
 
 
+## create_schedule_tournament
+
+> <ScheduleTournamentDetail> create_schedule_tournament(create_schedule_tournament_request)
+
+
+
+Create a private /schedules grid multi-team event (MTE) placeholder (WINAD-9818). Always scoped to the current user's account school (the school is taken from the session, not the request body) plus a permitted sport on a single date; opponents may be unknown when the event is added so no opponent FK is stored. At most one tournament per (school, sport, date). A tournament takes over the whole cell, so creating one destroys any overlapping ScheduleIntent availability marker for that cell. Cells render as \"Tournament Name (MTE)\".
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_schedule_tournament_request = WinthropClient::CreateScheduleTournamentRequest.new({schedule_tournament: WinthropClient::CreateScheduleTournamentRequestScheduleTournament.new({sport_id: 37, date: Date.today, name: 'name_example'})}) # CreateScheduleTournamentRequest | 
+
+begin
+  
+  result = api_instance.create_schedule_tournament(create_schedule_tournament_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_schedule_tournament: #{e}"
+end
+```
+
+#### Using the create_schedule_tournament_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ScheduleTournamentDetail>, Integer, Hash)> create_schedule_tournament_with_http_info(create_schedule_tournament_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_schedule_tournament_with_http_info(create_schedule_tournament_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ScheduleTournamentDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_schedule_tournament_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_schedule_tournament_request** | [**CreateScheduleTournamentRequest**](CreateScheduleTournamentRequest.md) |  |  |
+
+### Return type
+
+[**ScheduleTournamentDetail**](ScheduleTournamentDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_school_group
 
 > <SchoolGroupShow> create_school_group(create_school_group_request)
@@ -3733,6 +3809,79 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **schedule_intent_id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## delete_schedule_tournament
+
+> delete_schedule_tournament(schedule_tournament_id)
+
+
+
+Delete a private /schedules grid multi-team event (MTE) placeholder.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+schedule_tournament_id = 56 # Integer | 
+
+begin
+  
+  api_instance.delete_schedule_tournament(schedule_tournament_id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_schedule_tournament: #{e}"
+end
+```
+
+#### Using the delete_schedule_tournament_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_schedule_tournament_with_http_info(schedule_tournament_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_schedule_tournament_with_http_info(schedule_tournament_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_schedule_tournament_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **schedule_tournament_id** | **Integer** |  |  |
 
 ### Return type
 
@@ -11834,7 +11983,7 @@ end
 
 
 
-Retrieve the schedule grid for a sport — season window, schools, games, and active game posts for up to eight selected schools.
+Retrieve the schedule grid for a sport — season window, schools (with scheduling contacts), games, private ScheduleIntent availability markers, private ScheduleTournament multi-team event (MTE) placeholders, and empty-schedule onboarding state for up to twelve selected schools.
 
 ### Examples
 
@@ -11856,7 +12005,7 @@ api_instance = WinthropClient::DefaultApi.new
 sport_name = 'sport_name_example' # String | Sport name (e.g. FOOTBALL, BASKETBALL_M)
 opts = {
   school_ids: [37], # Array<Integer> | School IDs to include on the grid (max 12, ordering is preserved)
-  year: 2026 # Integer | Four-digit season year. Defaults to the current year when omitted or invalid.
+  year: 2026 # Integer | Four-digit season year. Defaults to the current schedule season year when omitted. Must fall within the supported range (current season year - 4 through current season year + 1); malformed or out-of-range values return 422.
 }
 
 begin
@@ -11892,7 +12041,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **sport_name** | **String** | Sport name (e.g. FOOTBALL, BASKETBALL_M) |  |
 | **school_ids** | [**Array&lt;Integer&gt;**](Integer.md) | School IDs to include on the grid (max 12, ordering is preserved) | [optional] |
-| **year** | **Integer** | Four-digit season year. Defaults to the current year when omitted or invalid. | [optional] |
+| **year** | **Integer** | Four-digit season year. Defaults to the current schedule season year when omitted. Must fall within the supported range (current season year - 4 through current season year + 1); malformed or out-of-range values return 422. | [optional] |
 
 ### Return type
 
@@ -11939,11 +12088,10 @@ opts = {
   window_days: 56, # Integer | Number of days on either side of target_date to include (default 1)
   deal_types: ['inner_example'], # Array<String> | Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered)
   quality_tier: 'power_4', # String | Restrict to a subdivision tier
-  net_ranking_tier: 'top_50', # String | Restrict to a NET ranking band (latest non-null NET rank for the requested sport). Schools without a NET rank are excluded from every named tier; omit the param to leave results unfiltered.
+  net_ranking_tier: 'top_50', # String | Restrict to a NET ranking band (latest non-null NET rank for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without a NET rank are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered.
   max_distance_miles: 56, # Integer | Maximum distance (miles) from the user's school. Requires user_school_id to resolve a coordinate origin.
   user_school_id: 56, # Integer | Requesting user's school. Used as the origin for distance filtering and is always excluded from results.
-  exclude_school_ids: [37], # Array<Integer> | Additional school IDs to exclude from results (e.g. schools already on the grid)
-  limit: 56 # Integer | Maximum rows to return (default 50, capped at 100)
+  exclude_school_ids: [37] # Array<Integer> | Additional school IDs to exclude from results (e.g. schools already on the grid)
 }
 
 begin
@@ -11982,11 +12130,10 @@ end
 | **window_days** | **Integer** | Number of days on either side of target_date to include (default 1) | [optional][default to 1] |
 | **deal_types** | [**Array&lt;String&gt;**](String.md) | Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered) | [optional] |
 | **quality_tier** | **String** | Restrict to a subdivision tier | [optional] |
-| **net_ranking_tier** | **String** | Restrict to a NET ranking band (latest non-null NET rank for the requested sport). Schools without a NET rank are excluded from every named tier; omit the param to leave results unfiltered. | [optional] |
+| **net_ranking_tier** | **String** | Restrict to a NET ranking band (latest non-null NET rank for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as &#x60;custom_&lt;min&gt;_&lt;max&gt;&#x60;, where either bound may be blank for an open-ended range (e.g. &#x60;custom_50_&#x60; &#x3D;&gt; 50 and up, &#x60;custom__120&#x60; &#x3D;&gt; up to 120). Schools without a NET rank are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered. | [optional] |
 | **max_distance_miles** | **Integer** | Maximum distance (miles) from the user&#39;s school. Requires user_school_id to resolve a coordinate origin. | [optional] |
 | **user_school_id** | **Integer** | Requesting user&#39;s school. Used as the origin for distance filtering and is always excluded from results. | [optional] |
 | **exclude_school_ids** | [**Array&lt;Integer&gt;**](Integer.md) | Additional school IDs to exclude from results (e.g. schools already on the grid) | [optional] |
-| **limit** | **Integer** | Maximum rows to return (default 50, capped at 100) | [optional][default to 50] |
 
 ### Return type
 
@@ -12008,7 +12155,7 @@ end
 
 
 
-Retrieve the completed-games schedule grid for a past season — season window, schools, and final results for up to eight selected schools. Game posts are not returned for completed seasons.
+Retrieve the completed-games schedule grid for a past season — season window, schools, and final results for up to twelve selected schools. ScheduleIntent and ScheduleTournament markers are not returned for completed seasons (both keys are emitted as empty objects).
 
 ### Examples
 
@@ -12030,7 +12177,7 @@ api_instance = WinthropClient::DefaultApi.new
 sport_name = 'sport_name_example' # String | Sport name (e.g. FOOTBALL, BASKETBALL_M)
 opts = {
   school_ids: [37], # Array<Integer> | School IDs to include on the grid (max 12, ordering is preserved)
-  year: 2024 # Integer | Four-digit season year. Defaults to the current year when omitted or invalid.
+  year: 2024 # Integer | Four-digit season year. Defaults to the current schedule season year when omitted. Must fall within the supported range (current season year - 4 through current season year + 1); malformed or out-of-range values return 422.
 }
 
 begin
@@ -12066,7 +12213,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **sport_name** | **String** | Sport name (e.g. FOOTBALL, BASKETBALL_M) |  |
 | **school_ids** | [**Array&lt;Integer&gt;**](Integer.md) | School IDs to include on the grid (max 12, ordering is preserved) | [optional] |
-| **year** | **Integer** | Four-digit season year. Defaults to the current year when omitted or invalid. | [optional] |
+| **year** | **Integer** | Four-digit season year. Defaults to the current schedule season year when omitted. Must fall within the supported range (current season year - 4 through current season year + 1); malformed or out-of-range values return 422. | [optional] |
 
 ### Return type
 
