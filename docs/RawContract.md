@@ -27,6 +27,7 @@
 | **layout_preserved_pdf_text** | **String** |  | [optional] |
 | **can_see_admin_view** | **Boolean** | Whether the current user can see the admin view for this contract | [optional] |
 | **can_download** | **Boolean** | Whether the current user can download this contract&#39;s PDF | [optional] |
+| **school_name** | **String** | Short or full name of the school the raw contract is tied to (matches school_id). Null when no school is linked. | [optional] |
 | **pdf_preview_url** | **String** | Proxied URL for inline PDF viewing (no direct file access) | [optional] |
 | **pdf_download_url** | **String** | Direct download URL (admin only) | [optional] |
 | **has_file** | **Boolean** |  | [optional] |
@@ -63,6 +64,7 @@ instance = WinthropClient::RawContract.new(
   layout_preserved_pdf_text: null,
   can_see_admin_view: null,
   can_download: null,
+  school_name: null,
   pdf_preview_url: null,
   pdf_download_url: null,
   has_file: null,

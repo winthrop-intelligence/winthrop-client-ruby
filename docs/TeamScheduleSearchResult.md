@@ -16,10 +16,8 @@
 | **sport_name** | **String** |  | [optional] |
 | **last_rpi** | **Integer** | Most recent RPI ranking | [optional] |
 | **last_net_rank** | **Integer** | Most recent NET ranking | [optional] |
-| **last_ap_rank** | **Integer** | Most recent AP ranking | [optional] |
 | **avg_rpi** | **Integer** | 5-year average RPI ranking | [optional] |
 | **avg_net_rank** | **Integer** | 5-year average NET ranking | [optional] |
-| **avg_ap_rank** | **Integer** | 5-year average AP ranking | [optional] |
 | **distance** | **Float** | Distance in miles from user&#39;s school | [optional] |
 | **avg_guarantee_paid_cents** | **Integer** |  | [optional] |
 | **avg_guarantee_received_cents** | **Integer** |  | [optional] |
@@ -53,10 +51,8 @@ instance = WinthropClient::TeamScheduleSearchResult.new(
   sport_name: null,
   last_rpi: null,
   last_net_rank: null,
-  last_ap_rank: null,
   avg_rpi: null,
   avg_net_rank: null,
-  avg_ap_rank: null,
   distance: null,
   avg_guarantee_paid_cents: null,
   avg_guarantee_received_cents: null,
