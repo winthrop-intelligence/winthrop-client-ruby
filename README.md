@@ -116,6 +116,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**create_position**](docs/DefaultApi.md#create_position) | **POST** /api/v1/positions | 
 *WinthropClient::DefaultApi* | [**create_requested_item**](docs/DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items | 
 *WinthropClient::DefaultApi* | [**create_schedule_intent**](docs/DefaultApi.md#create_schedule_intent) | **POST** /api/v1/schedule_intents | 
+*WinthropClient::DefaultApi* | [**create_schedule_tournament**](docs/DefaultApi.md#create_schedule_tournament) | **POST** /api/v1/schedule_tournaments | 
 *WinthropClient::DefaultApi* | [**create_school_group**](docs/DefaultApi.md#create_school_group) | **POST** /api/v1/school_groups | 
 *WinthropClient::DefaultApi* | [**create_season**](docs/DefaultApi.md#create_season) | **POST** /api/v1/seasons | 
 *WinthropClient::DefaultApi* | [**create_team_schedule_favorite**](docs/DefaultApi.md#create_team_schedule_favorite) | **POST** /api/v1/team_schedule_favorites | 
@@ -138,6 +139,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**delete_position**](docs/DefaultApi.md#delete_position) | **DELETE** /api/v1/positions/{positionId} | 
 *WinthropClient::DefaultApi* | [**delete_requested_item**](docs/DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} | 
 *WinthropClient::DefaultApi* | [**delete_schedule_intent**](docs/DefaultApi.md#delete_schedule_intent) | **DELETE** /api/v1/schedule_intents/{scheduleIntentId} | 
+*WinthropClient::DefaultApi* | [**delete_schedule_tournament**](docs/DefaultApi.md#delete_schedule_tournament) | **DELETE** /api/v1/schedule_tournaments/{scheduleTournamentId} | 
 *WinthropClient::DefaultApi* | [**delete_school_group**](docs/DefaultApi.md#delete_school_group) | **DELETE** /api/v1/school_groups/{schoolGroupId} | 
 *WinthropClient::DefaultApi* | [**delete_season**](docs/DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} | 
 *WinthropClient::DefaultApi* | [**delete_team_schedule_favorite**](docs/DefaultApi.md#delete_team_schedule_favorite) | **DELETE** /api/v1/team_schedule_favorites/{id} | 
@@ -333,6 +335,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**user_me**](docs/DefaultApi.md#user_me) | **GET** /api/v1/users/me | 
 *WinthropClient::DefaultApi* | [**verify_otp_code**](docs/DefaultApi.md#verify_otp_code) | **POST** /api/v1/otp/verify | 
 *WinthropClient::DefaultApi* | [**verify_user_intercollegiate_access**](docs/DefaultApi.md#verify_user_intercollegiate_access) | **GET** /api/v1/users/verify_user_intercollegiate_access | 
+*WinthropClient::DefaultApi* | [**view_invoice_file**](docs/DefaultApi.md#view_invoice_file) | **GET** /api/v1/subscriptions/{subscriptionId}/invoices/{invoiceId}/view_file | 
 *WinthropClient::DefaultApi* | [**view_raw_contract_file**](docs/DefaultApi.md#view_raw_contract_file) | **GET** /api/v1/raw_contracts/{raw_contractId}/view_file | 
 *WinthropClient::DossierApi* | [**university_dossier_report_dossier_winad_id_get**](docs/DossierApi.md#university_dossier_report_dossier_winad_id_get) | **GET** /dossier/{winad_id}/ | University Dossier Report
 *WinthropClient::IntercollegiateApi* | [**create_job_post**](docs/IntercollegiateApi.md#create_job_post) | **POST** /wi_jobs/job_posts | 
@@ -485,6 +488,8 @@ Class | Method | HTTP request | Description
  - [WinthropClient::CreatePasswordResetRequestUser](docs/CreatePasswordResetRequestUser.md)
  - [WinthropClient::CreateScheduleIntentRequest](docs/CreateScheduleIntentRequest.md)
  - [WinthropClient::CreateScheduleIntentRequestScheduleIntent](docs/CreateScheduleIntentRequestScheduleIntent.md)
+ - [WinthropClient::CreateScheduleTournamentRequest](docs/CreateScheduleTournamentRequest.md)
+ - [WinthropClient::CreateScheduleTournamentRequestScheduleTournament](docs/CreateScheduleTournamentRequestScheduleTournament.md)
  - [WinthropClient::CreateSchoolGroupRequest](docs/CreateSchoolGroupRequest.md)
  - [WinthropClient::CreateSchoolGroupRequestSchoolGroup](docs/CreateSchoolGroupRequestSchoolGroup.md)
  - [WinthropClient::CreateTeamScheduleFavorite201Response](docs/CreateTeamScheduleFavorite201Response.md)
@@ -619,9 +624,11 @@ Class | Method | HTTP request | Description
  - [WinthropClient::ScheduleGridGame](docs/ScheduleGridGame.md)
  - [WinthropClient::ScheduleGridOnboarding](docs/ScheduleGridOnboarding.md)
  - [WinthropClient::ScheduleGridScheduleIntent](docs/ScheduleGridScheduleIntent.md)
+ - [WinthropClient::ScheduleGridScheduleTournament](docs/ScheduleGridScheduleTournament.md)
  - [WinthropClient::ScheduleGridSchool](docs/ScheduleGridSchool.md)
  - [WinthropClient::ScheduleGridView](docs/ScheduleGridView.md)
  - [WinthropClient::ScheduleIntentDetail](docs/ScheduleIntentDetail.md)
+ - [WinthropClient::ScheduleTournamentDetail](docs/ScheduleTournamentDetail.md)
  - [WinthropClient::School](docs/School.md)
  - [WinthropClient::SchoolCollection](docs/SchoolCollection.md)
  - [WinthropClient::SchoolContractEntry](docs/SchoolContractEntry.md)

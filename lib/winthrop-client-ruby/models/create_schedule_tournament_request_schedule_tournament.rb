@@ -14,32 +14,20 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  # One of the up-to-twelve schools rendered as a column on the schedule grid
-  class ScheduleGridSchool < ApiModelBase
-    attr_accessor :id
+  class CreateScheduleTournamentRequestScheduleTournament < ApiModelBase
+    attr_accessor :sport_id
 
+    attr_accessor :date
+
+    # Tournament name (e.g. \"Maui Invitational\"). Trimmed before validation; must be 3–30 characters after trimming.
     attr_accessor :name
-
-    attr_accessor :short_name
-
-    attr_accessor :logo_url
-
-    attr_accessor :primary_contact_name
-
-    attr_accessor :primary_contact_email
-
-    attr_accessor :primary_contact_phone
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'name' => :'name',
-        :'short_name' => :'short_name',
-        :'logo_url' => :'logo_url',
-        :'primary_contact_name' => :'primary_contact_name',
-        :'primary_contact_email' => :'primary_contact_email',
-        :'primary_contact_phone' => :'primary_contact_phone'
+        :'sport_id' => :'sport_id',
+        :'date' => :'date',
+        :'name' => :'name'
       }
     end
 
@@ -56,25 +44,15 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'Integer',
-        :'name' => :'String',
-        :'short_name' => :'String',
-        :'logo_url' => :'String',
-        :'primary_contact_name' => :'String',
-        :'primary_contact_email' => :'String',
-        :'primary_contact_phone' => :'String'
+        :'sport_id' => :'Integer',
+        :'date' => :'Date',
+        :'name' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'name',
-        :'short_name',
-        :'logo_url',
-        :'primary_contact_name',
-        :'primary_contact_email',
-        :'primary_contact_phone'
       ])
     end
 
@@ -82,44 +60,34 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::ScheduleGridSchool` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::CreateScheduleTournamentRequestScheduleTournament` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::ScheduleGridSchool`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::CreateScheduleTournamentRequestScheduleTournament`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'sport_id')
+        self.sport_id = attributes[:'sport_id']
+      else
+        self.sport_id = nil
+      end
+
+      if attributes.key?(:'date')
+        self.date = attributes[:'date']
+      else
+        self.date = nil
       end
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'short_name')
-        self.short_name = attributes[:'short_name']
-      end
-
-      if attributes.key?(:'logo_url')
-        self.logo_url = attributes[:'logo_url']
-      end
-
-      if attributes.key?(:'primary_contact_name')
-        self.primary_contact_name = attributes[:'primary_contact_name']
-      end
-
-      if attributes.key?(:'primary_contact_email')
-        self.primary_contact_email = attributes[:'primary_contact_email']
-      end
-
-      if attributes.key?(:'primary_contact_phone')
-        self.primary_contact_phone = attributes[:'primary_contact_phone']
+      else
+        self.name = nil
       end
     end
 
@@ -128,6 +96,26 @@ module WinthropClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @sport_id.nil?
+        invalid_properties.push('invalid value for "sport_id", sport_id cannot be nil.')
+      end
+
+      if @date.nil?
+        invalid_properties.push('invalid value for "date", date cannot be nil.')
+      end
+
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      end
+
+      if @name.to_s.length > 30
+        invalid_properties.push('invalid value for "name", the character length must be smaller than or equal to 30.')
+      end
+
+      if @name.to_s.length < 3
+        invalid_properties.push('invalid value for "name", the character length must be greater than or equal to 3.')
+      end
+
       invalid_properties
     end
 
@@ -135,7 +123,50 @@ module WinthropClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @sport_id.nil?
+      return false if @date.nil?
+      return false if @name.nil?
+      return false if @name.to_s.length > 30
+      return false if @name.to_s.length < 3
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] sport_id Value to be assigned
+    def sport_id=(sport_id)
+      if sport_id.nil?
+        fail ArgumentError, 'sport_id cannot be nil'
+      end
+
+      @sport_id = sport_id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] date Value to be assigned
+    def date=(date)
+      if date.nil?
+        fail ArgumentError, 'date cannot be nil'
+      end
+
+      @date = date
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] name Value to be assigned
+    def name=(name)
+      if name.nil?
+        fail ArgumentError, 'name cannot be nil'
+      end
+
+      if name.to_s.length > 30
+        fail ArgumentError, 'invalid value for "name", the character length must be smaller than or equal to 30.'
+      end
+
+      if name.to_s.length < 3
+        fail ArgumentError, 'invalid value for "name", the character length must be greater than or equal to 3.'
+      end
+
+      @name = name
     end
 
     # Checks equality by comparing each attribute.
@@ -143,13 +174,9 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          name == o.name &&
-          short_name == o.short_name &&
-          logo_url == o.logo_url &&
-          primary_contact_name == o.primary_contact_name &&
-          primary_contact_email == o.primary_contact_email &&
-          primary_contact_phone == o.primary_contact_phone
+          sport_id == o.sport_id &&
+          date == o.date &&
+          name == o.name
     end
 
     # @see the `==` method
@@ -161,7 +188,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, short_name, logo_url, primary_contact_name, primary_contact_email, primary_contact_phone].hash
+      [sport_id, date, name].hash
     end
 
     # Builds the object from hash

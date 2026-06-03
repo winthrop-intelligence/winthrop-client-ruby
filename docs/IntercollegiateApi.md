@@ -38,7 +38,7 @@ WinthropClient.configure do |config|
 end
 
 api_instance = WinthropClient::IntercollegiateApi.new
-remote_job_post = WinthropClient::RemoteJobPost.new({id: 11222, title: 'Assistant Coach', link: 'https://example.com/jobs/assistant-coach', school_id: 12345, updated_at: Time.parse('2019-01-01T00:00Z')}) # RemoteJobPost | 
+remote_job_post = WinthropClient::RemoteJobPost.new({id: 11222, title: 'Assistant Coach', link: 'https://example.com/jobs/assistant-coach', work_type: 'full time', description_md: 'Lead practices', salary_summary: '$40,000', school_id: 12345, expired: false, created_at: Time.parse('2019-01-01T00:00Z'), updated_at: Time.parse('2019-01-01T00:00Z'), annual_salary: 40000, min_salary: 35000, max_salary: 45000, pay_period: 'annual', required_years_of_experience: 2}) # RemoteJobPost | 
 
 begin
   
@@ -489,7 +489,7 @@ end
 
 api_instance = WinthropClient::IntercollegiateApi.new
 job_post_id = 56 # Integer | Remote ID of job post to update
-remote_job_post = WinthropClient::RemoteJobPost.new({id: 11222, title: 'Assistant Coach', link: 'https://example.com/jobs/assistant-coach', school_id: 12345, updated_at: Time.parse('2019-01-01T00:00Z')}) # RemoteJobPost | 
+remote_job_post = WinthropClient::RemoteJobPost.new({id: 11222, title: 'Assistant Coach', link: 'https://example.com/jobs/assistant-coach', work_type: 'full time', description_md: 'Lead practices', salary_summary: '$40,000', school_id: 12345, expired: false, created_at: Time.parse('2019-01-01T00:00Z'), updated_at: Time.parse('2019-01-01T00:00Z'), annual_salary: 40000, min_salary: 35000, max_salary: 45000, pay_period: 'annual', required_years_of_experience: 2}) # RemoteJobPost | 
 
 begin
   
