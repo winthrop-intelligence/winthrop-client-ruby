@@ -11,6 +11,7 @@
 | **primary_contact_name** | **String** |  | [optional] |
 | **primary_contact_email** | **String** |  | [optional] |
 | **primary_contact_phone** | **String** |  | [optional] |
+| **rank** | **Integer** | Latest sport-appropriate ranking shown next to the school name (NET for basketball, AP for football, RPI otherwise). Null when the school has no ranked season for the sport. | [optional] |
 
 ## Example
 
@@ -24,7 +25,8 @@ instance = WinthropClient::ScheduleGridSchool.new(
   logo_url: null,
   primary_contact_name: null,
   primary_contact_email: null,
-  primary_contact_phone: null
+  primary_contact_phone: null,
+  rank: null
 )
 ```
 
