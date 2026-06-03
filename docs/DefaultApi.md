@@ -16301,7 +16301,7 @@ end
 
 
 
-Search Coaches by priority_ids
+Search coaches by priority_ids and Ransack filters
 
 ### Examples
 

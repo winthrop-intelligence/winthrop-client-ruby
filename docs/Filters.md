@@ -4,7 +4,10 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **filters** | **Object** | Key-value pairs for filtering coaches | [optional] |
+| **priority_ids** | **Array&lt;Integer&gt;** | Coach IDs to prioritize at the top of the result set. | [optional] |
+| **page** | **Integer** |  | [optional][default to 1] |
+| **per_page** | **Integer** |  | [optional][default to 100] |
+| **q** | **Hash&lt;String, Object&gt;** | Ransack query parameters for filtering coaches. | [optional] |
 
 ## Example
 
@@ -12,7 +15,10 @@
 require 'winthrop-client-ruby'
 
 instance = WinthropClient::Filters.new(
-  filters: {&quot;priority_ids&quot;:[1,2],&quot;page&quot;:1,&quot;per_page&quot;:100,&quot;q&quot;:{}}
+  priority_ids: null,
+  page: null,
+  per_page: null,
+  q: null
 )
 ```
 
