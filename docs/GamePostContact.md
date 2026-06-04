@@ -10,6 +10,8 @@
 | **email** | **String** |  | [optional] |
 | **phone** | **String** |  | [optional] |
 | **phone_dial** | **String** |  | [optional] |
+| **mobile_phone** | **String** |  | [optional] |
+| **mobile_phone_dial** | **String** |  | [optional] |
 
 ## Example
 
@@ -22,7 +24,9 @@ instance = WinthropClient::GamePostContact.new(
   position: null,
   email: null,
   phone: null,
-  phone_dial: null
+  phone_dial: null,
+  mobile_phone: null,
+  mobile_phone_dial: null
 )
 ```
 
