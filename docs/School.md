@@ -43,6 +43,7 @@
 | **conference** | [**Conference**](Conference.md) |  | [optional] |
 | **division** | [**Division**](Division.md) |  | [optional] |
 | **subdivisions** | [**Array&lt;Subdivision&gt;**](Subdivision.md) |  | [optional] |
+| **rank** | **Integer** | Latest sport-appropriate ranking (NET for basketball, AP for football, RPI otherwise). Included only when the index is queried with &#x60;sport_name&#x60;; when included, the value is null for a school with no ranked season for that sport. | [optional] |
 
 ## Example
 
@@ -88,7 +89,8 @@ instance = WinthropClient::School.new(
   ncaa_id: 306,
   conference: null,
   division: null,
-  subdivisions: null
+  subdivisions: null,
+  rank: null
 )
 ```
 
