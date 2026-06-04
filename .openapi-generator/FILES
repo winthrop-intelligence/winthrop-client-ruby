@@ -776,9 +776,5 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
-spec/models/create_schedule_tournament_request_schedule_tournament_spec.rb
-spec/models/create_schedule_tournament_request_spec.rb
-spec/models/schedule_grid_schedule_tournament_spec.rb
-spec/models/schedule_tournament_detail_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
