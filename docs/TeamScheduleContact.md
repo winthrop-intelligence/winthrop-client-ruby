@@ -9,6 +9,7 @@
 | **title** | **String** | Position title (e.g. Director of Football Operations) | [optional] |
 | **email** | **String** |  | [optional] |
 | **phone** | **String** | Formatted phone number | [optional] |
+| **mobile_phone** | **String** | Formatted mobile/cell phone number | [optional] |
 | **avatar_url** | **String** | URL to coach avatar image (small cropped variant) | [optional] |
 
 ## Example
@@ -22,6 +23,7 @@ instance = WinthropClient::TeamScheduleContact.new(
   title: null,
   email: null,
   phone: null,
+  mobile_phone: null,
   avatar_url: null
 )
 ```
