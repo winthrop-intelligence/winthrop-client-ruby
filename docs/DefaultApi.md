@@ -9759,7 +9759,7 @@ end
 
 
 
-Search game contracts (GAD) with filtering and pagination
+Search game contracts (GAD) with filtering and pagination. Optionally returns school-summary (median paid/received) and cohort-summary (NCAA cohort benchmark) aggregates alongside the paginated agreements.
 
 ### Examples
 
@@ -9781,7 +9781,13 @@ api_instance = WinthropClient::DefaultApi.new
 opts = {
   page: 56, # Integer | results page to retrieve.
   per_page: 56, # Integer | number of results per page.
-  q: { ... } # Object | Ransack query
+  q: { ... }, # Object | Ransack query
+  distance_school_type: 'home', # String | Top-level distance side (paired with q[distance_lt]). Only honored when the caller's account is tied to a school.
+  include_school_summary: true, # Boolean | When true, also compute a per-school median paid_out / received block. Requires q[sport_id_eq] and a school filter (home_school_id_eq, away_school_id_eq, or home_school_id_or_away_school_id_eq). Mutually exclusive with include_cohort_summary.
+  season_window: 'last_3_completed_seasons', # String | Window for school-summary / cohort-summary aggregations. last_3_completed_seasons auto-fills season_year_gteq/lteq with the three most recent completed NCAA academic years.
+  include_cohort_summary: true, # Boolean | When true, also compute median/mean/min/max/count across the filtered cohort. Requires q[sport_id_eq]. Mutually exclusive with include_school_summary.
+  buyer_cohort: 'P4', # String | Restrict the buyer (home/paying) side to one NCAA cohort. Resolved server-side via Subdivision / Division taxonomy.
+  seller_cohort: 'P4' # String | Restrict the seller (away/paid) side to one NCAA cohort.
 }
 
 begin
@@ -9818,6 +9824,12 @@ end
 | **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
 | **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query | [optional] |
+| **distance_school_type** | **String** | Top-level distance side (paired with q[distance_lt]). Only honored when the caller&#39;s account is tied to a school. | [optional] |
+| **include_school_summary** | **Boolean** | When true, also compute a per-school median paid_out / received block. Requires q[sport_id_eq] and a school filter (home_school_id_eq, away_school_id_eq, or home_school_id_or_away_school_id_eq). Mutually exclusive with include_cohort_summary. | [optional] |
+| **season_window** | **String** | Window for school-summary / cohort-summary aggregations. last_3_completed_seasons auto-fills season_year_gteq/lteq with the three most recent completed NCAA academic years. | [optional] |
+| **include_cohort_summary** | **Boolean** | When true, also compute median/mean/min/max/count across the filtered cohort. Requires q[sport_id_eq]. Mutually exclusive with include_school_summary. | [optional] |
+| **buyer_cohort** | **String** | Restrict the buyer (home/paying) side to one NCAA cohort. Resolved server-side via Subdivision / Division taxonomy. | [optional] |
+| **seller_cohort** | **String** | Restrict the seller (away/paid) side to one NCAA cohort. | [optional] |
 
 ### Return type
 
@@ -12059,11 +12071,11 @@ end
 
 ## get_schedule_grid_available_schools
 
-> <ScheduleGridAvailableSchools> get_schedule_grid_available_schools(sport_name, target_date, opts)
+> <ScheduleGridAvailableSchools> get_schedule_grid_available_schools(sport_name, opts)
 
 
 
-Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, NET ranking tier, and distance.
+Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, NET ranking tier, and distance. Omit target_date for an \"Any date\" market browse (no window). Set match_tournaments=true to match schools advertising a ScheduleTournament (MTE) instead of a deal-type post.
 
 ### Examples
 
@@ -12083,9 +12095,11 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 sport_name = 'sport_name_example' # String | Sport name (e.g. FOOTBALL, BASKETBALL_M)
-target_date = Date.parse('2013-10-20') # Date | Target date in ISO format (YYYY-MM-DD)
 opts = {
-  window_days: 56, # Integer | Number of days on either side of target_date to include (default 1)
+  target_date: Date.parse('2013-10-20'), # Date | Target date in ISO format (YYYY-MM-DD). Omit (blank) for an \"Any date\" market browse that ignores the window and surfaces signals across all dates. A present-but-malformed value is rejected with 400.
+  window_days: 56, # Integer | Number of days on either side of target_date to include (default 1). Ignored in \"Any date\" mode.
+  include_no_conflict: true, # Boolean | When true (default), include assumed-eligible schools that have no marked conflict (no availability signal). Set false to drop them. Only meaningful in Specific-date mode.
+  match_tournaments: true, # Boolean | When true (the MTE intent), match only schools advertising a ScheduleTournament for the sport rather than a deal-type availability post; deal_types and assumed-eligible rows are ignored.
   deal_types: ['inner_example'], # Array<String> | Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered)
   quality_tier: 'power_4', # String | Restrict to a subdivision tier
   net_ranking_tier: 'top_50', # String | Restrict to a NET ranking band (latest non-null NET rank for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without a NET rank are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered.
@@ -12096,7 +12110,7 @@ opts = {
 
 begin
   
-  result = api_instance.get_schedule_grid_available_schools(sport_name, target_date, opts)
+  result = api_instance.get_schedule_grid_available_schools(sport_name, opts)
   p result
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->get_schedule_grid_available_schools: #{e}"
@@ -12107,12 +12121,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ScheduleGridAvailableSchools>, Integer, Hash)> get_schedule_grid_available_schools_with_http_info(sport_name, target_date, opts)
+> <Array(<ScheduleGridAvailableSchools>, Integer, Hash)> get_schedule_grid_available_schools_with_http_info(sport_name, opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.get_schedule_grid_available_schools_with_http_info(sport_name, target_date, opts)
+  data, status_code, headers = api_instance.get_schedule_grid_available_schools_with_http_info(sport_name, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ScheduleGridAvailableSchools>
@@ -12126,8 +12140,10 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **sport_name** | **String** | Sport name (e.g. FOOTBALL, BASKETBALL_M) |  |
-| **target_date** | **Date** | Target date in ISO format (YYYY-MM-DD) |  |
-| **window_days** | **Integer** | Number of days on either side of target_date to include (default 1) | [optional][default to 1] |
+| **target_date** | **Date** | Target date in ISO format (YYYY-MM-DD). Omit (blank) for an \&quot;Any date\&quot; market browse that ignores the window and surfaces signals across all dates. A present-but-malformed value is rejected with 400. | [optional] |
+| **window_days** | **Integer** | Number of days on either side of target_date to include (default 1). Ignored in \&quot;Any date\&quot; mode. | [optional][default to 1] |
+| **include_no_conflict** | **Boolean** | When true (default), include assumed-eligible schools that have no marked conflict (no availability signal). Set false to drop them. Only meaningful in Specific-date mode. | [optional][default to true] |
+| **match_tournaments** | **Boolean** | When true (the MTE intent), match only schools advertising a ScheduleTournament for the sport rather than a deal-type availability post; deal_types and assumed-eligible rows are ignored. | [optional][default to false] |
 | **deal_types** | [**Array&lt;String&gt;**](String.md) | Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered) | [optional] |
 | **quality_tier** | **String** | Restrict to a subdivision tier | [optional] |
 | **net_ranking_tier** | **String** | Restrict to a NET ranking band (latest non-null NET rank for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as &#x60;custom_&lt;min&gt;_&lt;max&gt;&#x60;, where either bound may be blank for an open-ended range (e.g. &#x60;custom_50_&#x60; &#x3D;&gt; 50 and up, &#x60;custom__120&#x60; &#x3D;&gt; up to 120). Schools without a NET rank are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered. | [optional] |
