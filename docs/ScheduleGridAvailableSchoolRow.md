@@ -11,6 +11,7 @@
 | **primary_contact_name** | **String** |  | [optional] |
 | **primary_contact_email** | **String** |  | [optional] |
 | **primary_contact_phone** | **String** |  | [optional] |
+| **primary_contact_mobile_phone** | **String** |  | [optional] |
 | **subdivision_name** | **String** |  | [optional] |
 | **rank** | **Integer** | Latest known NET rank for the requested sport (omitted when blank) | [optional] |
 | **distance_miles** | **Integer** | Distance from user_school_id in miles (omitted when distance filtering is not active) | [optional] |
@@ -29,6 +30,7 @@ instance = WinthropClient::ScheduleGridAvailableSchoolRow.new(
   primary_contact_name: null,
   primary_contact_email: null,
   primary_contact_phone: null,
+  primary_contact_mobile_phone: null,
   subdivision_name: null,
   rank: null,
   distance_miles: null,
