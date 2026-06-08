@@ -11868,6 +11868,74 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Retrieve token-scoped subscription order details
+    # @param subscription_acceptance_id [String] ID or slug of the Subscription
+    # @param acceptance_token [String] Token from the subscription order email
+    # @param [Hash] opts the optional parameters
+    # @return [SubscriptionAcceptance]
+    def get_subscription_acceptance(subscription_acceptance_id, acceptance_token, opts = {})
+      data, _status_code, _headers = get_subscription_acceptance_with_http_info(subscription_acceptance_id, acceptance_token, opts)
+      data
+    end
+
+    # Retrieve token-scoped subscription order details
+    # @param subscription_acceptance_id [String] ID or slug of the Subscription
+    # @param acceptance_token [String] Token from the subscription order email
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SubscriptionAcceptance, Integer, Hash)>] SubscriptionAcceptance data, response status code and response headers
+    def get_subscription_acceptance_with_http_info(subscription_acceptance_id, acceptance_token, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_subscription_acceptance ...'
+      end
+      # verify the required parameter 'subscription_acceptance_id' is set
+      if @api_client.config.client_side_validation && subscription_acceptance_id.nil?
+        fail ArgumentError, "Missing the required parameter 'subscription_acceptance_id' when calling DefaultApi.get_subscription_acceptance"
+      end
+      # verify the required parameter 'acceptance_token' is set
+      if @api_client.config.client_side_validation && acceptance_token.nil?
+        fail ArgumentError, "Missing the required parameter 'acceptance_token' when calling DefaultApi.get_subscription_acceptance"
+      end
+      # resource path
+      local_var_path = '/api/v1/subscription_acceptances/{subscriptionAcceptanceId}'.sub('{' + 'subscriptionAcceptanceId' + '}', CGI.escape(subscription_acceptance_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'acceptance_token'] = acceptance_token
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SubscriptionAcceptance'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_subscription_acceptance",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_subscription_acceptance\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve the all subscriptions
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
@@ -15310,6 +15378,85 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Accept a token-scoped subscription order
+    # @param subscription_acceptance_id [String] ID or slug of the Subscription
+    # @param acceptance_token [String] Token from the subscription order email
+    # @param update_subscription_acceptance_request [UpdateSubscriptionAcceptanceRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [SubscriptionAcceptance]
+    def update_subscription_acceptance(subscription_acceptance_id, acceptance_token, update_subscription_acceptance_request, opts = {})
+      data, _status_code, _headers = update_subscription_acceptance_with_http_info(subscription_acceptance_id, acceptance_token, update_subscription_acceptance_request, opts)
+      data
+    end
+
+    # Accept a token-scoped subscription order
+    # @param subscription_acceptance_id [String] ID or slug of the Subscription
+    # @param acceptance_token [String] Token from the subscription order email
+    # @param update_subscription_acceptance_request [UpdateSubscriptionAcceptanceRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SubscriptionAcceptance, Integer, Hash)>] SubscriptionAcceptance data, response status code and response headers
+    def update_subscription_acceptance_with_http_info(subscription_acceptance_id, acceptance_token, update_subscription_acceptance_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_subscription_acceptance ...'
+      end
+      # verify the required parameter 'subscription_acceptance_id' is set
+      if @api_client.config.client_side_validation && subscription_acceptance_id.nil?
+        fail ArgumentError, "Missing the required parameter 'subscription_acceptance_id' when calling DefaultApi.update_subscription_acceptance"
+      end
+      # verify the required parameter 'acceptance_token' is set
+      if @api_client.config.client_side_validation && acceptance_token.nil?
+        fail ArgumentError, "Missing the required parameter 'acceptance_token' when calling DefaultApi.update_subscription_acceptance"
+      end
+      # verify the required parameter 'update_subscription_acceptance_request' is set
+      if @api_client.config.client_side_validation && update_subscription_acceptance_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_subscription_acceptance_request' when calling DefaultApi.update_subscription_acceptance"
+      end
+      # resource path
+      local_var_path = '/api/v1/subscription_acceptances/{subscriptionAcceptanceId}'.sub('{' + 'subscriptionAcceptanceId' + '}', CGI.escape(subscription_acceptance_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'acceptance_token'] = acceptance_token
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_subscription_acceptance_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SubscriptionAcceptance'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_subscription_acceptance",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_subscription_acceptance\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Update a FilTeam favorite's category
     # @param id [Integer] The favorite record ID
     # @param update_team_schedule_favorite_request [UpdateTeamScheduleFavoriteRequest] 
@@ -15833,6 +15980,74 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#view_raw_contract_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve the token-scoped subscription contract PDF for inline viewing
+    # @param subscription_acceptance_id [String] ID or slug of the Subscription
+    # @param acceptance_token [String] Token from the subscription order email
+    # @param [Hash] opts the optional parameters
+    # @return [File]
+    def view_subscription_acceptance_contract(subscription_acceptance_id, acceptance_token, opts = {})
+      data, _status_code, _headers = view_subscription_acceptance_contract_with_http_info(subscription_acceptance_id, acceptance_token, opts)
+      data
+    end
+
+    # Retrieve the token-scoped subscription contract PDF for inline viewing
+    # @param subscription_acceptance_id [String] ID or slug of the Subscription
+    # @param acceptance_token [String] Token from the subscription order email
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(File, Integer, Hash)>] File data, response status code and response headers
+    def view_subscription_acceptance_contract_with_http_info(subscription_acceptance_id, acceptance_token, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.view_subscription_acceptance_contract ...'
+      end
+      # verify the required parameter 'subscription_acceptance_id' is set
+      if @api_client.config.client_side_validation && subscription_acceptance_id.nil?
+        fail ArgumentError, "Missing the required parameter 'subscription_acceptance_id' when calling DefaultApi.view_subscription_acceptance_contract"
+      end
+      # verify the required parameter 'acceptance_token' is set
+      if @api_client.config.client_side_validation && acceptance_token.nil?
+        fail ArgumentError, "Missing the required parameter 'acceptance_token' when calling DefaultApi.view_subscription_acceptance_contract"
+      end
+      # resource path
+      local_var_path = '/api/v1/subscription_acceptances/{subscriptionAcceptanceId}/contract'.sub('{' + 'subscriptionAcceptanceId' + '}', CGI.escape(subscription_acceptance_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'acceptance_token'] = acceptance_token
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/pdf', 'application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'File'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.view_subscription_acceptance_contract",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#view_subscription_acceptance_contract\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

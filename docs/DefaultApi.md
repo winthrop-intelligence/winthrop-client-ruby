@@ -191,6 +191,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_subdivision_sport_compensation**](DefaultApi.md#get_subdivision_sport_compensation) | **GET** /api/v1/subdivisions/{subdivisionId}/sport_compensation |  |
 | [**get_subdivisions**](DefaultApi.md#get_subdivisions) | **GET** /api/v1/subdivisions |  |
 | [**get_subscription**](DefaultApi.md#get_subscription) | **GET** /api/v1/subscriptions/{subscriptionId} |  |
+| [**get_subscription_acceptance**](DefaultApi.md#get_subscription_acceptance) | **GET** /api/v1/subscription_acceptances/{subscriptionAcceptanceId} |  |
 | [**get_subscriptions**](DefaultApi.md#get_subscriptions) | **GET** /api/v1/subscriptions |  |
 | [**get_system_settings**](DefaultApi.md#get_system_settings) | **GET** /api/v1/system_setting |  |
 | [**get_team_schedule_detail**](DefaultApi.md#get_team_schedule_detail) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id} |  |
@@ -242,6 +243,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_schedule_intent**](DefaultApi.md#update_schedule_intent) | **PATCH** /api/v1/schedule_intents/{scheduleIntentId} |  |
 | [**update_school_group**](DefaultApi.md#update_school_group) | **PATCH** /api/v1/school_groups/{schoolGroupId} |  |
 | [**update_season**](DefaultApi.md#update_season) | **PUT** /api/v1/seasons/{seasonId} |  |
+| [**update_subscription_acceptance**](DefaultApi.md#update_subscription_acceptance) | **PATCH** /api/v1/subscription_acceptances/{subscriptionAcceptanceId} |  |
 | [**update_team_schedule_favorite**](DefaultApi.md#update_team_schedule_favorite) | **PATCH** /api/v1/team_schedule_favorites/{id} |  |
 | [**update_user**](DefaultApi.md#update_user) | **PATCH** /api/v1/users/{userId} |  |
 | [**upsert_team_schedule_note**](DefaultApi.md#upsert_team_schedule_note) | **PUT** /api/v1/team_schedule_notes/{fil_team_id} |  |
@@ -250,6 +252,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**verify_user_intercollegiate_access**](DefaultApi.md#verify_user_intercollegiate_access) | **GET** /api/v1/users/verify_user_intercollegiate_access |  |
 | [**view_invoice_file**](DefaultApi.md#view_invoice_file) | **GET** /api/v1/subscriptions/{subscriptionId}/invoices/{invoiceId}/view_file |  |
 | [**view_raw_contract_file**](DefaultApi.md#view_raw_contract_file) | **GET** /api/v1/raw_contracts/{raw_contractId}/view_file |  |
+| [**view_subscription_acceptance_contract**](DefaultApi.md#view_subscription_acceptance_contract) | **GET** /api/v1/subscription_acceptances/{subscriptionAcceptanceId}/contract |  |
 
 
 ## average_conference_comp
@@ -14465,6 +14468,72 @@ end
 - **Accept**: application/json
 
 
+## get_subscription_acceptance
+
+> <SubscriptionAcceptance> get_subscription_acceptance(subscription_acceptance_id, acceptance_token)
+
+
+
+Retrieve token-scoped subscription order details
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+
+api_instance = WinthropClient::DefaultApi.new
+subscription_acceptance_id = 'subscription_acceptance_id_example' # String | ID or slug of the Subscription
+acceptance_token = 'acceptance_token_example' # String | Token from the subscription order email
+
+begin
+  
+  result = api_instance.get_subscription_acceptance(subscription_acceptance_id, acceptance_token)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_subscription_acceptance: #{e}"
+end
+```
+
+#### Using the get_subscription_acceptance_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SubscriptionAcceptance>, Integer, Hash)> get_subscription_acceptance_with_http_info(subscription_acceptance_id, acceptance_token)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_subscription_acceptance_with_http_info(subscription_acceptance_id, acceptance_token)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SubscriptionAcceptance>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_subscription_acceptance_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **subscription_acceptance_id** | **String** | ID or slug of the Subscription |  |
+| **acceptance_token** | **String** | Token from the subscription order email |  |
+
+### Return type
+
+[**SubscriptionAcceptance**](SubscriptionAcceptance.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_subscriptions
 
 > <SubscriptionCollection> get_subscriptions(opts)
@@ -18370,6 +18439,74 @@ end
 - **Accept**: application/json
 
 
+## update_subscription_acceptance
+
+> <SubscriptionAcceptance> update_subscription_acceptance(subscription_acceptance_id, acceptance_token, update_subscription_acceptance_request)
+
+
+
+Accept a token-scoped subscription order
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+
+api_instance = WinthropClient::DefaultApi.new
+subscription_acceptance_id = 'subscription_acceptance_id_example' # String | ID or slug of the Subscription
+acceptance_token = 'acceptance_token_example' # String | Token from the subscription order email
+update_subscription_acceptance_request = WinthropClient::UpdateSubscriptionAcceptanceRequest.new({subscription: WinthropClient::UpdateSubscriptionAcceptanceRequestSubscription.new({contract_term: 12, contract_accepted: true})}) # UpdateSubscriptionAcceptanceRequest | 
+
+begin
+  
+  result = api_instance.update_subscription_acceptance(subscription_acceptance_id, acceptance_token, update_subscription_acceptance_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_subscription_acceptance: #{e}"
+end
+```
+
+#### Using the update_subscription_acceptance_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SubscriptionAcceptance>, Integer, Hash)> update_subscription_acceptance_with_http_info(subscription_acceptance_id, acceptance_token, update_subscription_acceptance_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_subscription_acceptance_with_http_info(subscription_acceptance_id, acceptance_token, update_subscription_acceptance_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SubscriptionAcceptance>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_subscription_acceptance_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **subscription_acceptance_id** | **String** | ID or slug of the Subscription |  |
+| **acceptance_token** | **String** | Token from the subscription order email |  |
+| **update_subscription_acceptance_request** | [**UpdateSubscriptionAcceptanceRequest**](UpdateSubscriptionAcceptanceRequest.md) |  |  |
+
+### Return type
+
+[**SubscriptionAcceptance**](SubscriptionAcceptance.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## update_team_schedule_favorite
 
 > <CreateTeamScheduleFavorite201Response> update_team_schedule_favorite(id, update_team_schedule_favorite_request)
@@ -18965,4 +19102,70 @@ end
 
 - **Content-Type**: Not defined
 - **Accept**: application/pdf
+
+
+## view_subscription_acceptance_contract
+
+> File view_subscription_acceptance_contract(subscription_acceptance_id, acceptance_token)
+
+
+
+Retrieve the token-scoped subscription contract PDF for inline viewing
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+
+api_instance = WinthropClient::DefaultApi.new
+subscription_acceptance_id = 'subscription_acceptance_id_example' # String | ID or slug of the Subscription
+acceptance_token = 'acceptance_token_example' # String | Token from the subscription order email
+
+begin
+  
+  result = api_instance.view_subscription_acceptance_contract(subscription_acceptance_id, acceptance_token)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->view_subscription_acceptance_contract: #{e}"
+end
+```
+
+#### Using the view_subscription_acceptance_contract_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(File, Integer, Hash)> view_subscription_acceptance_contract_with_http_info(subscription_acceptance_id, acceptance_token)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.view_subscription_acceptance_contract_with_http_info(subscription_acceptance_id, acceptance_token)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => File
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->view_subscription_acceptance_contract_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **subscription_acceptance_id** | **String** | ID or slug of the Subscription |  |
+| **acceptance_token** | **String** | Token from the subscription order email |  |
+
+### Return type
+
+**File**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/pdf, application/json
 

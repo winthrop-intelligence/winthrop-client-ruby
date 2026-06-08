@@ -108,6 +108,7 @@ docs/ContactSearchCollection.md
 docs/ContactSearchEntry.md
 docs/Contract.md
 docs/ContractCollection.md
+docs/ContractTermOption.md
 docs/CoworkerEntry.md
 docs/CoworkerTenure.md
 docs/CreateAccountUser422Response.md
@@ -317,6 +318,8 @@ docs/State.md
 docs/Subdivision.md
 docs/SubdivisionCollection.md
 docs/Subscription.md
+docs/SubscriptionAcceptance.md
+docs/SubscriptionAcceptanceErrors.md
 docs/SubscriptionCollection.md
 docs/SystemSetting.md
 docs/Tag.md
@@ -371,6 +374,8 @@ docs/UpdateScheduleIntentRequest.md
 docs/UpdateScheduleIntentRequestScheduleIntent.md
 docs/UpdateSchoolGroupRequest.md
 docs/UpdateSchoolGroupRequestSchoolGroup.md
+docs/UpdateSubscriptionAcceptanceRequest.md
+docs/UpdateSubscriptionAcceptanceRequestSubscription.md
 docs/UpdateTeamScheduleFavoriteRequest.md
 docs/UpdateUserRequest.md
 docs/UpdateUserRequestUser.md
@@ -510,6 +515,7 @@ lib/winthrop-client-ruby/models/contact_search_collection.rb
 lib/winthrop-client-ruby/models/contact_search_entry.rb
 lib/winthrop-client-ruby/models/contract.rb
 lib/winthrop-client-ruby/models/contract_collection.rb
+lib/winthrop-client-ruby/models/contract_term_option.rb
 lib/winthrop-client-ruby/models/coworker_entry.rb
 lib/winthrop-client-ruby/models/coworker_tenure.rb
 lib/winthrop-client-ruby/models/create_account_user422_response.rb
@@ -713,6 +719,8 @@ lib/winthrop-client-ruby/models/state.rb
 lib/winthrop-client-ruby/models/subdivision.rb
 lib/winthrop-client-ruby/models/subdivision_collection.rb
 lib/winthrop-client-ruby/models/subscription.rb
+lib/winthrop-client-ruby/models/subscription_acceptance.rb
+lib/winthrop-client-ruby/models/subscription_acceptance_errors.rb
 lib/winthrop-client-ruby/models/subscription_collection.rb
 lib/winthrop-client-ruby/models/system_setting.rb
 lib/winthrop-client-ruby/models/tag.rb
@@ -767,6 +775,8 @@ lib/winthrop-client-ruby/models/update_schedule_intent_request.rb
 lib/winthrop-client-ruby/models/update_schedule_intent_request_schedule_intent.rb
 lib/winthrop-client-ruby/models/update_school_group_request.rb
 lib/winthrop-client-ruby/models/update_school_group_request_school_group.rb
+lib/winthrop-client-ruby/models/update_subscription_acceptance_request.rb
+lib/winthrop-client-ruby/models/update_subscription_acceptance_request_subscription.rb
 lib/winthrop-client-ruby/models/update_team_schedule_favorite_request.rb
 lib/winthrop-client-ruby/models/update_user_request.rb
 lib/winthrop-client-ruby/models/update_user_request_user.rb
@@ -792,5 +802,10 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
+spec/models/contract_term_option_spec.rb
+spec/models/subscription_acceptance_errors_spec.rb
+spec/models/subscription_acceptance_spec.rb
+spec/models/update_subscription_acceptance_request_spec.rb
+spec/models/update_subscription_acceptance_request_subscription_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
