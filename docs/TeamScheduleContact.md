@@ -10,6 +10,8 @@
 | **email** | **String** |  | [optional] |
 | **phone** | **String** | Formatted phone number | [optional] |
 | **mobile_phone** | **String** | Formatted mobile/cell phone number | [optional] |
+| **scheduling_phone** | **String** | User-controlled scheduling phone (textable); null when unset | [optional] |
+| **scheduling_phone_dial** | **String** | Dial-ready form of the scheduling phone for tel links | [optional] |
 | **avatar_url** | **String** | URL to coach avatar image (small cropped variant) | [optional] |
 
 ## Example
@@ -24,6 +26,8 @@ instance = WinthropClient::TeamScheduleContact.new(
   email: null,
   phone: null,
   mobile_phone: null,
+  scheduling_phone: null,
+  scheduling_phone_dial: null,
   avatar_url: null
 )
 ```

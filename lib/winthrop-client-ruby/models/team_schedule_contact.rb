@@ -33,6 +33,12 @@ module WinthropClient
     # Formatted mobile/cell phone number
     attr_accessor :mobile_phone
 
+    # User-controlled scheduling phone (textable); null when unset
+    attr_accessor :scheduling_phone
+
+    # Dial-ready form of the scheduling phone for tel links
+    attr_accessor :scheduling_phone_dial
+
     # URL to coach avatar image (small cropped variant)
     attr_accessor :avatar_url
 
@@ -45,6 +51,8 @@ module WinthropClient
         :'email' => :'email',
         :'phone' => :'phone',
         :'mobile_phone' => :'mobile_phone',
+        :'scheduling_phone' => :'scheduling_phone',
+        :'scheduling_phone_dial' => :'scheduling_phone_dial',
         :'avatar_url' => :'avatar_url'
       }
     end
@@ -68,6 +76,8 @@ module WinthropClient
         :'email' => :'String',
         :'phone' => :'String',
         :'mobile_phone' => :'String',
+        :'scheduling_phone' => :'String',
+        :'scheduling_phone_dial' => :'String',
         :'avatar_url' => :'String'
       }
     end
@@ -81,6 +91,8 @@ module WinthropClient
         :'email',
         :'phone',
         :'mobile_phone',
+        :'scheduling_phone',
+        :'scheduling_phone_dial',
         :'avatar_url'
       ])
     end
@@ -125,6 +137,14 @@ module WinthropClient
         self.mobile_phone = attributes[:'mobile_phone']
       end
 
+      if attributes.key?(:'scheduling_phone')
+        self.scheduling_phone = attributes[:'scheduling_phone']
+      end
+
+      if attributes.key?(:'scheduling_phone_dial')
+        self.scheduling_phone_dial = attributes[:'scheduling_phone_dial']
+      end
+
       if attributes.key?(:'avatar_url')
         self.avatar_url = attributes[:'avatar_url']
       end
@@ -156,6 +176,8 @@ module WinthropClient
           email == o.email &&
           phone == o.phone &&
           mobile_phone == o.mobile_phone &&
+          scheduling_phone == o.scheduling_phone &&
+          scheduling_phone_dial == o.scheduling_phone_dial &&
           avatar_url == o.avatar_url
     end
 
@@ -168,7 +190,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [coach_id, name, title, email, phone, mobile_phone, avatar_url].hash
+      [coach_id, name, title, email, phone, mobile_phone, scheduling_phone, scheduling_phone_dial, avatar_url].hash
     end
 
     # Builds the object from hash
