@@ -8,6 +8,7 @@
 | **last_name** | **String** |  | [optional] |
 | **email** | **String** |  | [optional] |
 | **time_zone** | **String** |  | [optional] |
+| **scheduling_phone** | **String** |  | [optional] |
 | **scheduling_notifications** | **Boolean** |  | [optional] |
 | **game_post_notifications** | **Boolean** |  | [optional] |
 | **games_digest** | **Boolean** |  | [optional] |
@@ -25,6 +26,7 @@ instance = WinthropClient::UpdateUserRequestUser.new(
   last_name: null,
   email: null,
   time_zone: null,
+  scheduling_phone: null,
   scheduling_notifications: null,
   game_post_notifications: null,
   games_digest: null,

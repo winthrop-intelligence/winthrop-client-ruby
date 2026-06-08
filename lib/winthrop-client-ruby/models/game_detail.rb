@@ -58,10 +58,10 @@ module WinthropClient
     attr_accessor :state_name
 
     # Latest NET ranking for the home team, or null when not loaded yet
-    attr_accessor :home_school_net_rank
+    attr_accessor :home_school_net_ranking
 
     # Latest NET ranking for the away team, or null when not loaded yet
-    attr_accessor :away_school_net_rank
+    attr_accessor :away_school_net_ranking
 
     # Latest strength-of-schedule ranking for the home team, or null when not loaded yet
     attr_accessor :home_school_sos_ranking
@@ -98,8 +98,8 @@ module WinthropClient
         :'home_school_name' => :'home_school_name',
         :'away_school_name' => :'away_school_name',
         :'state_name' => :'state_name',
-        :'home_school_net_rank' => :'home_school_net_rank',
-        :'away_school_net_rank' => :'away_school_net_rank',
+        :'home_school_net_ranking' => :'home_school_net_ranking',
+        :'away_school_net_ranking' => :'away_school_net_ranking',
         :'home_school_sos_ranking' => :'home_school_sos_ranking',
         :'away_school_sos_ranking' => :'away_school_sos_ranking',
         :'rankings_season_year' => :'rankings_season_year',
@@ -141,8 +141,8 @@ module WinthropClient
         :'home_school_name' => :'String',
         :'away_school_name' => :'String',
         :'state_name' => :'String',
-        :'home_school_net_rank' => :'Integer',
-        :'away_school_net_rank' => :'Integer',
+        :'home_school_net_ranking' => :'Integer',
+        :'away_school_net_ranking' => :'Integer',
         :'home_school_sos_ranking' => :'Integer',
         :'away_school_sos_ranking' => :'Integer',
         :'rankings_season_year' => :'Integer',
@@ -156,8 +156,8 @@ module WinthropClient
         :'home_school_name',
         :'away_school_name',
         :'state_name',
-        :'home_school_net_rank',
-        :'away_school_net_rank',
+        :'home_school_net_ranking',
+        :'away_school_net_ranking',
         :'home_school_sos_ranking',
         :'away_school_sos_ranking',
         :'rankings_season_year',
@@ -274,12 +274,12 @@ module WinthropClient
         self.state_name = attributes[:'state_name']
       end
 
-      if attributes.key?(:'home_school_net_rank')
-        self.home_school_net_rank = attributes[:'home_school_net_rank']
+      if attributes.key?(:'home_school_net_ranking')
+        self.home_school_net_ranking = attributes[:'home_school_net_ranking']
       end
 
-      if attributes.key?(:'away_school_net_rank')
-        self.away_school_net_rank = attributes[:'away_school_net_rank']
+      if attributes.key?(:'away_school_net_ranking')
+        self.away_school_net_ranking = attributes[:'away_school_net_ranking']
       end
 
       if attributes.key?(:'home_school_sos_ranking')
@@ -355,8 +355,8 @@ module WinthropClient
           home_school_name == o.home_school_name &&
           away_school_name == o.away_school_name &&
           state_name == o.state_name &&
-          home_school_net_rank == o.home_school_net_rank &&
-          away_school_net_rank == o.away_school_net_rank &&
+          home_school_net_ranking == o.home_school_net_ranking &&
+          away_school_net_ranking == o.away_school_net_ranking &&
           home_school_sos_ranking == o.home_school_sos_ranking &&
           away_school_sos_ranking == o.away_school_sos_ranking &&
           rankings_season_year == o.rankings_season_year &&
@@ -372,7 +372,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, home_school_id, away_school_id, sport_id, game_date, created_at, updated_at, neutral, city, game_contract_id, state_id, description, in_conference, season_year_tbd, home_school_score, away_school_score, overtime, season_year, home_school_name, away_school_name, state_name, home_school_net_rank, away_school_net_rank, home_school_sos_ranking, away_school_sos_ranking, rankings_season_year, game_contract].hash
+      [id, home_school_id, away_school_id, sport_id, game_date, created_at, updated_at, neutral, city, game_contract_id, state_id, description, in_conference, season_year_tbd, home_school_score, away_school_score, overtime, season_year, home_school_name, away_school_name, state_name, home_school_net_ranking, away_school_net_ranking, home_school_sos_ranking, away_school_sos_ranking, rankings_season_year, game_contract].hash
     end
 
     # Builds the object from hash

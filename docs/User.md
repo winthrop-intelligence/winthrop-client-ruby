@@ -45,6 +45,8 @@
 | **school_state** | **String** |  | [optional] |
 | **otp_required** | **Boolean** | Whether the user must verify OTP to access the application | [optional] |
 | **time_zone** | **String** | User&#39;s time zone setting | [optional] |
+| **scheduling_phone** | **String** | User-controlled scheduling phone number (textable cell preferred), stored separately from scraped coach phone and never overwritten by directory imports | [optional] |
+| **scheduling_phone_default** | **String** | Existing phone number on file used to prefill the Edit Profile scheduling-phone field when no scheduling phone has been saved | [optional] |
 | **scheduling_notifications** | **Boolean** | Whether user receives scheduling notifications | [optional] |
 | **game_post_notifications** | **Boolean** | Whether user receives games wanted notifications | [optional] |
 | **games_digest** | **Boolean** | Whether user receives scheduling digest emails | [optional] |
@@ -97,6 +99,8 @@ instance = WinthropClient::User.new(
   school_state: null,
   otp_required: null,
   time_zone: null,
+  scheduling_phone: null,
+  scheduling_phone_default: null,
   scheduling_notifications: null,
   game_post_notifications: null,
   games_digest: null,

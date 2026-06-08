@@ -25,8 +25,8 @@
 | **home_school_name** | **String** |  | [optional] |
 | **away_school_name** | **String** |  | [optional] |
 | **state_name** | **String** |  | [optional] |
-| **home_school_net_rank** | **Integer** | Latest NET ranking for the home team, or null when not loaded yet | [optional] |
-| **away_school_net_rank** | **Integer** | Latest NET ranking for the away team, or null when not loaded yet | [optional] |
+| **home_school_net_ranking** | **Integer** | Latest NET ranking for the home team, or null when not loaded yet | [optional] |
+| **away_school_net_ranking** | **Integer** | Latest NET ranking for the away team, or null when not loaded yet | [optional] |
 | **home_school_sos_ranking** | **Integer** | Latest strength-of-schedule ranking for the home team, or null when not loaded yet | [optional] |
 | **away_school_sos_ranking** | **Integer** | Latest strength-of-schedule ranking for the away team, or null when not loaded yet | [optional] |
 | **rankings_season_year** | **Integer** | Season year the displayed NET/SOS rankings are from, or null when neither team has a ranked season | [optional] |
@@ -59,8 +59,8 @@ instance = WinthropClient::GameDetail.new(
   home_school_name: Michigan,
   away_school_name: Ohio State,
   state_name: Michigan,
-  home_school_net_rank: 38,
-  away_school_net_rank: 31,
+  home_school_net_ranking: 38,
+  away_school_net_ranking: 31,
   home_school_sos_ranking: 42,
   away_school_sos_ranking: 35,
   rankings_season_year: 2026,

@@ -118,6 +118,12 @@ module WinthropClient
     # User's time zone setting
     attr_accessor :time_zone
 
+    # User-controlled scheduling phone number (textable cell preferred), stored separately from scraped coach phone and never overwritten by directory imports
+    attr_accessor :scheduling_phone
+
+    # Existing phone number on file used to prefill the Edit Profile scheduling-phone field when no scheduling phone has been saved
+    attr_accessor :scheduling_phone_default
+
     # Whether user receives scheduling notifications
     attr_accessor :scheduling_notifications
 
@@ -196,6 +202,8 @@ module WinthropClient
         :'school_state' => :'school_state',
         :'otp_required' => :'otp_required',
         :'time_zone' => :'time_zone',
+        :'scheduling_phone' => :'scheduling_phone',
+        :'scheduling_phone_default' => :'scheduling_phone_default',
         :'scheduling_notifications' => :'scheduling_notifications',
         :'game_post_notifications' => :'game_post_notifications',
         :'games_digest' => :'games_digest',
@@ -257,6 +265,8 @@ module WinthropClient
         :'school_state' => :'String',
         :'otp_required' => :'Boolean',
         :'time_zone' => :'String',
+        :'scheduling_phone' => :'String',
+        :'scheduling_phone_default' => :'String',
         :'scheduling_notifications' => :'Boolean',
         :'game_post_notifications' => :'Boolean',
         :'games_digest' => :'Boolean',
@@ -274,6 +284,8 @@ module WinthropClient
         :'school_city',
         :'school_state',
         :'time_zone',
+        :'scheduling_phone',
+        :'scheduling_phone_default',
         :'email_domain'
       ])
     end
@@ -466,6 +478,14 @@ module WinthropClient
         self.time_zone = attributes[:'time_zone']
       end
 
+      if attributes.key?(:'scheduling_phone')
+        self.scheduling_phone = attributes[:'scheduling_phone']
+      end
+
+      if attributes.key?(:'scheduling_phone_default')
+        self.scheduling_phone_default = attributes[:'scheduling_phone_default']
+      end
+
       if attributes.key?(:'scheduling_notifications')
         self.scheduling_notifications = attributes[:'scheduling_notifications']
       end
@@ -556,6 +576,8 @@ module WinthropClient
           school_state == o.school_state &&
           otp_required == o.otp_required &&
           time_zone == o.time_zone &&
+          scheduling_phone == o.scheduling_phone &&
+          scheduling_phone_default == o.scheduling_phone_default &&
           scheduling_notifications == o.scheduling_notifications &&
           game_post_notifications == o.game_post_notifications &&
           games_digest == o.games_digest &&
@@ -571,7 +593,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, email, first_name, last_name, created_at, updated_at, state, title, account_id, accountable_id, accountable_type, coach_id, divisions, roles, is_admin, can_see_compensation, can_show_scouting, can_show_game_contract, can_see_coaches, can_see_administrators, can_show_financials, can_show_deals, can_show_benchmark, can_show_athletic_profile, can_read_conference, can_show_game_post, can_see_school_groups, can_read_account, can_launch_intercollegiate, intercollegiate_url, is_sport_specific, is_d2_only, is_conference_only, permissible_sport_ids, coli_index, subscription_type, schedule_sports, school_city, school_state, otp_required, time_zone, scheduling_notifications, game_post_notifications, games_digest, email_domain].hash
+      [id, email, first_name, last_name, created_at, updated_at, state, title, account_id, accountable_id, accountable_type, coach_id, divisions, roles, is_admin, can_see_compensation, can_show_scouting, can_show_game_contract, can_see_coaches, can_see_administrators, can_show_financials, can_show_deals, can_show_benchmark, can_show_athletic_profile, can_read_conference, can_show_game_post, can_see_school_groups, can_read_account, can_launch_intercollegiate, intercollegiate_url, is_sport_specific, is_d2_only, is_conference_only, permissible_sport_ids, coli_index, subscription_type, schedule_sports, school_city, school_state, otp_required, time_zone, scheduling_phone, scheduling_phone_default, scheduling_notifications, game_post_notifications, games_digest, email_domain].hash
     end
 
     # Builds the object from hash
