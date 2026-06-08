@@ -29,6 +29,7 @@
 | **away_school_net_rank** | **Integer** | Latest NET ranking for the away team, or null when not loaded yet | [optional] |
 | **home_school_sos_ranking** | **Integer** | Latest strength-of-schedule ranking for the home team, or null when not loaded yet | [optional] |
 | **away_school_sos_ranking** | **Integer** | Latest strength-of-schedule ranking for the away team, or null when not loaded yet | [optional] |
+| **rankings_season_year** | **Integer** | Season year the displayed NET/SOS rankings are from, or null when neither team has a ranked season | [optional] |
 | **game_contract** | [**GameDetailAllOfGameContract**](GameDetailAllOfGameContract.md) |  | [optional] |
 
 ## Example
@@ -62,6 +63,7 @@ instance = WinthropClient::GameDetail.new(
   away_school_net_rank: 31,
   home_school_sos_ranking: 42,
   away_school_sos_ranking: 35,
+  rankings_season_year: 2026,
   game_contract: null
 )
 ```

@@ -69,6 +69,9 @@ module WinthropClient
     # Latest strength-of-schedule ranking for the away team, or null when not loaded yet
     attr_accessor :away_school_sos_ranking
 
+    # Season year the displayed NET/SOS rankings are from, or null when neither team has a ranked season
+    attr_accessor :rankings_season_year
+
     attr_accessor :game_contract
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -99,6 +102,7 @@ module WinthropClient
         :'away_school_net_rank' => :'away_school_net_rank',
         :'home_school_sos_ranking' => :'home_school_sos_ranking',
         :'away_school_sos_ranking' => :'away_school_sos_ranking',
+        :'rankings_season_year' => :'rankings_season_year',
         :'game_contract' => :'game_contract'
       }
     end
@@ -141,6 +145,7 @@ module WinthropClient
         :'away_school_net_rank' => :'Integer',
         :'home_school_sos_ranking' => :'Integer',
         :'away_school_sos_ranking' => :'Integer',
+        :'rankings_season_year' => :'Integer',
         :'game_contract' => :'GameDetailAllOfGameContract'
       }
     end
@@ -155,6 +160,7 @@ module WinthropClient
         :'away_school_net_rank',
         :'home_school_sos_ranking',
         :'away_school_sos_ranking',
+        :'rankings_season_year',
         :'game_contract'
       ])
     end
@@ -284,6 +290,10 @@ module WinthropClient
         self.away_school_sos_ranking = attributes[:'away_school_sos_ranking']
       end
 
+      if attributes.key?(:'rankings_season_year')
+        self.rankings_season_year = attributes[:'rankings_season_year']
+      end
+
       if attributes.key?(:'game_contract')
         self.game_contract = attributes[:'game_contract']
       end
@@ -349,6 +359,7 @@ module WinthropClient
           away_school_net_rank == o.away_school_net_rank &&
           home_school_sos_ranking == o.home_school_sos_ranking &&
           away_school_sos_ranking == o.away_school_sos_ranking &&
+          rankings_season_year == o.rankings_season_year &&
           game_contract == o.game_contract
     end
 
@@ -361,7 +372,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, home_school_id, away_school_id, sport_id, game_date, created_at, updated_at, neutral, city, game_contract_id, state_id, description, in_conference, season_year_tbd, home_school_score, away_school_score, overtime, season_year, home_school_name, away_school_name, state_name, home_school_net_rank, away_school_net_rank, home_school_sos_ranking, away_school_sos_ranking, game_contract].hash
+      [id, home_school_id, away_school_id, sport_id, game_date, created_at, updated_at, neutral, city, game_contract_id, state_id, description, in_conference, season_year_tbd, home_school_score, away_school_score, overtime, season_year, home_school_name, away_school_name, state_name, home_school_net_rank, away_school_net_rank, home_school_sos_ranking, away_school_sos_ranking, rankings_season_year, game_contract].hash
     end
 
     # Builds the object from hash
