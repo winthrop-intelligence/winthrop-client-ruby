@@ -198,6 +198,8 @@ docs/GamePostDetail.md
 docs/GamePostDetailCreatedBy.md
 docs/GamePostSearchResult.md
 docs/GamePostSearchResultCollection.md
+docs/GamePostSearchResultGamesInner.md
+docs/GamePostSearchResultScheduleIntentsInner.md
 docs/GameType.md
 docs/GeoRegion.md
 docs/GetAccountUserActivation200Response.md
@@ -603,6 +605,8 @@ lib/winthrop-client-ruby/models/game_post_detail.rb
 lib/winthrop-client-ruby/models/game_post_detail_created_by.rb
 lib/winthrop-client-ruby/models/game_post_search_result.rb
 lib/winthrop-client-ruby/models/game_post_search_result_collection.rb
+lib/winthrop-client-ruby/models/game_post_search_result_games_inner.rb
+lib/winthrop-client-ruby/models/game_post_search_result_schedule_intents_inner.rb
 lib/winthrop-client-ruby/models/game_type.rb
 lib/winthrop-client-ruby/models/geo_region.rb
 lib/winthrop-client-ruby/models/get_account_user_activation200_response.rb
