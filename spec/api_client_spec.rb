@@ -89,6 +89,80 @@ describe WinthropClient::ApiClient do
     end
   end
 
+  describe '#call_api authentication retry' do
+    let(:config) { WinthropClient::Configuration.new }
+    let(:api_client) { WinthropClient::ApiClient.new(config) }
+    let(:unauthorized_response) do
+      double(
+        'unauthorized_response',
+        code: 401,
+        success?: false,
+        timed_out?: false,
+        headers: {},
+        body: 'unauthorized',
+        status_message: 'Unauthorized'
+      )
+    end
+    let(:success_response) do
+      double(
+        'success_response',
+        code: 200,
+        success?: true,
+        timed_out?: false,
+        headers: {},
+        body: '',
+        status_message: 'OK'
+      )
+    end
+
+    it 'clears the DeviceToken cache, rebuilds auth headers, and retries once after a 401' do
+      tokens = ['old-access-token', 'new-access-token']
+      headers = []
+      config.access_token_getter = proc { tokens.shift }
+
+      request1 = double('request1', run: unauthorized_response)
+      request2 = double('request2', run: success_response)
+      allow(WinthropClient::DeviceToken).to receive(:clear_cache)
+      allow(Typhoeus::Request).to receive(:new) do |_url, opts|
+        headers << opts[:headers]['Authorization']
+        headers.length == 1 ? request1 : request2
+      end
+
+      data, code, _response_headers = api_client.call_api(:get, '/test', auth_names: ['Oauth2'])
+
+      expect(data).to be_nil
+      expect(code).to eq(200)
+      expect(headers).to eq(['Bearer old-access-token', 'Bearer new-access-token'])
+      expect(WinthropClient::DeviceToken).to have_received(:clear_cache).once
+      expect(Typhoeus::Request).to have_received(:new).twice
+    end
+
+    it 'raises an authentication error when the retry is also a 401' do
+      config.access_token_getter = proc { 'access-token' }
+      request1 = double('request1', run: unauthorized_response)
+      request2 = double('request2', run: unauthorized_response)
+      allow(WinthropClient::DeviceToken).to receive(:clear_cache)
+      allow(Typhoeus::Request).to receive(:new).and_return(request1, request2)
+
+      expect {
+        api_client.call_api(:get, '/test', auth_names: ['Oauth2'])
+      }.to raise_error(WinthropClient::ApiError, /Authentication failed/)
+      expect(Typhoeus::Request).to have_received(:new).twice
+    end
+
+    it 'does not retry static OAuth access tokens' do
+      config.access_token = 'static-token'
+      request = double('request', run: unauthorized_response)
+      allow(WinthropClient::DeviceToken).to receive(:clear_cache)
+      allow(Typhoeus::Request).to receive(:new).and_return(request)
+
+      expect {
+        api_client.call_api(:get, '/test', auth_names: ['Oauth2'])
+      }.to raise_error(WinthropClient::ApiError)
+      expect(Typhoeus::Request).to have_received(:new).once
+      expect(WinthropClient::DeviceToken).not_to have_received(:clear_cache)
+    end
+  end
 
 
   describe '#deserialize' do
