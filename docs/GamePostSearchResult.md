@@ -32,6 +32,8 @@
 | **avg_guarantee_received** | **Float** |  | [optional] |
 | **game_types_display** | **String** | Comma-separated list of game type names | [optional] |
 | **created_by_name** | **String** | Full name of the user who created the game post | [optional] |
+| **created_by_scheduling_phone** | **String** | Post creator&#39;s user-controlled scheduling phone (textable); null when unset | [optional] |
+| **created_by_scheduling_phone_dial** | **String** | Dial-ready form of the creator&#39;s scheduling phone for tel links | [optional] |
 | **avg_rpi** | **Integer** | 5-year average RPI ranking | [optional] |
 | **avg_net_rank** | **Integer** | 5-year average NET ranking | [optional] |
 | **avg_ap_rank** | **Integer** | 5-year average AP ranking | [optional] |
@@ -74,6 +76,8 @@ instance = WinthropClient::GamePostSearchResult.new(
   avg_guarantee_received: null,
   game_types_display: null,
   created_by_name: null,
+  created_by_scheduling_phone: null,
+  created_by_scheduling_phone_dial: null,
   avg_rpi: null,
   avg_net_rank: null,
   avg_ap_rank: null,
