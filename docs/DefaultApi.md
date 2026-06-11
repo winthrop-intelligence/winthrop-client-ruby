@@ -141,6 +141,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_game_posts**](DefaultApi.md#get_game_posts) | **GET** /api/v1/game_posts |  |
 | [**get_games**](DefaultApi.md#get_games) | **GET** /api/v1/games |  |
 | [**get_games_available_contracts**](DefaultApi.md#get_games_available_contracts) | **GET** /api/v1/games/available_contracts |  |
+| [**get_guarantee_benchmarks**](DefaultApi.md#get_guarantee_benchmarks) | **GET** /api/v1/guarantee_benchmarks |  |
 | [**get_income_report**](DefaultApi.md#get_income_report) | **GET** /api/v1/income_reports/{incomeReportId} |  |
 | [**get_income_reports**](DefaultApi.md#get_income_reports) | **GET** /api/v1/income_reports |  |
 | [**get_job_post**](DefaultApi.md#get_job_post) | **GET** /central_jobs/job_posts/{jobPostId} | Get a job post |
@@ -10607,6 +10608,80 @@ end
 ### Return type
 
 [**Array&lt;AvailableGameContract&gt;**](AvailableGameContract.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_guarantee_benchmarks
+
+> <GuaranteeBenchmarkTable> get_guarantee_benchmarks(sport_id)
+
+
+
+NCAA guarantee benchmarks for the scheduling sidebar (WINAD-9903). Returns, per Opponent Quality tier (power_4 / mid_major / smaller), the median/mean/min/max/count of game guarantees the tier pays out (home/buyer side) and receives (away/seller side) for one sport over the last three completed seasons. Permission filtered via the caller's ability.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+sport_id = 56 # Integer | The sport to benchmark. Required; a missing or unknown sport returns a structured error block instead of tier data.
+
+begin
+  
+  result = api_instance.get_guarantee_benchmarks(sport_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_guarantee_benchmarks: #{e}"
+end
+```
+
+#### Using the get_guarantee_benchmarks_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GuaranteeBenchmarkTable>, Integer, Hash)> get_guarantee_benchmarks_with_http_info(sport_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_guarantee_benchmarks_with_http_info(sport_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GuaranteeBenchmarkTable>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_guarantee_benchmarks_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **sport_id** | **Integer** | The sport to benchmark. Required; a missing or unknown sport returns a structured error block instead of tier data. |  |
+
+### Return type
+
+[**GuaranteeBenchmarkTable**](GuaranteeBenchmarkTable.md)
 
 ### Authorization
 
