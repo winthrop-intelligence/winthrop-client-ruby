@@ -137,10 +137,12 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_game_contracts**](DefaultApi.md#get_game_contracts) | **GET** /api/v1/game_contracts |  |
 | [**get_game_post**](DefaultApi.md#get_game_post) | **GET** /api/v1/game_posts/{gamePostId} |  |
 | [**get_game_post_search**](DefaultApi.md#get_game_post_search) | **GET** /api/v1/game_post_searches/{gamePostSearchId} |  |
+| [**get_game_post_search_gap_counts**](DefaultApi.md#get_game_post_search_gap_counts) | **GET** /api/v1/game_post_searches/gap_counts |  |
 | [**get_game_post_searches**](DefaultApi.md#get_game_post_searches) | **GET** /api/v1/game_post_searches |  |
 | [**get_game_posts**](DefaultApi.md#get_game_posts) | **GET** /api/v1/game_posts |  |
 | [**get_games**](DefaultApi.md#get_games) | **GET** /api/v1/games |  |
 | [**get_games_available_contracts**](DefaultApi.md#get_games_available_contracts) | **GET** /api/v1/games/available_contracts |  |
+| [**get_guarantee_benchmarks**](DefaultApi.md#get_guarantee_benchmarks) | **GET** /api/v1/guarantee_benchmarks |  |
 | [**get_income_report**](DefaultApi.md#get_income_report) | **GET** /api/v1/income_reports/{incomeReportId} |  |
 | [**get_income_reports**](DefaultApi.md#get_income_reports) | **GET** /api/v1/income_reports |  |
 | [**get_job_post**](DefaultApi.md#get_job_post) | **GET** /central_jobs/job_posts/{jobPostId} | Get a job post |
@@ -10298,6 +10300,84 @@ end
 - **Accept**: application/json
 
 
+## get_game_post_search_gap_counts
+
+> <GamePostGapCountCollection> get_game_post_search_gap_counts(windows, opts)
+
+
+
+Counts-only companion to the game post search for the sidebar schedule-gaps module (WINAD-9904). Accepts the same q filters as the search plus 1-10 date windows, and returns the number of active feed posts overlapping each window — each count equals what applying that window as a date filter to the search would return.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+windows = ['2026-09-01..2026-09-30'] # Array<String> | 1-10 inclusive date windows as YYYY-MM-DD..YYYY-MM-DD ranges
+opts = {
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  
+  result = api_instance.get_game_post_search_gap_counts(windows, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_game_post_search_gap_counts: #{e}"
+end
+```
+
+#### Using the get_game_post_search_gap_counts_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GamePostGapCountCollection>, Integer, Hash)> get_game_post_search_gap_counts_with_http_info(windows, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_game_post_search_gap_counts_with_http_info(windows, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GamePostGapCountCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_game_post_search_gap_counts_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **windows** | [**Array&lt;String&gt;**](String.md) | 1-10 inclusive date windows as YYYY-MM-DD..YYYY-MM-DD ranges |  |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**GamePostGapCountCollection**](GamePostGapCountCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_game_post_searches
 
 > <GamePostSearchResultCollection> get_game_post_searches(opts)
@@ -10607,6 +10687,80 @@ end
 ### Return type
 
 [**Array&lt;AvailableGameContract&gt;**](AvailableGameContract.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_guarantee_benchmarks
+
+> <GuaranteeBenchmarkTable> get_guarantee_benchmarks(sport_id)
+
+
+
+NCAA guarantee benchmarks for the scheduling sidebar (WINAD-9903). Returns, per Opponent Quality tier (power_4 / mid_major / smaller), the median/mean/min/max/count of game guarantees the tier pays out (home/buyer side) and receives (away/seller side) for one sport over the last three completed seasons. Permission filtered via the caller's ability.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+sport_id = 56 # Integer | The sport to benchmark. Required; a missing or unknown sport returns a structured error block instead of tier data.
+
+begin
+  
+  result = api_instance.get_guarantee_benchmarks(sport_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_guarantee_benchmarks: #{e}"
+end
+```
+
+#### Using the get_guarantee_benchmarks_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GuaranteeBenchmarkTable>, Integer, Hash)> get_guarantee_benchmarks_with_http_info(sport_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_guarantee_benchmarks_with_http_info(sport_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GuaranteeBenchmarkTable>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_guarantee_benchmarks_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **sport_id** | **Integer** | The sport to benchmark. Required; a missing or unknown sport returns a structured error block instead of tier data. |  |
+
+### Return type
+
+[**GuaranteeBenchmarkTable**](GuaranteeBenchmarkTable.md)
 
 ### Authorization
 
