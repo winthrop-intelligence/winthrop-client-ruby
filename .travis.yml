@@ -8,4 +8,4 @@ script:
   - bundle install --path vendor/bundle
   - bundle exec rspec
   - gem build winthrop-client-ruby.gemspec
-  - gem install ./winthrop-client-ruby-1.53.13.gem
+  - gem install ./winthrop-client-ruby-1.53.14-dev.9904.gem
