@@ -251,6 +251,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_schedule_grid**](docs/DefaultApi.md#get_schedule_grid) | **GET** /api/v1/schedule_grid/{sport_name} | 
 *WinthropClient::DefaultApi* | [**get_schedule_grid_available_schools**](docs/DefaultApi.md#get_schedule_grid_available_schools) | **GET** /api/v1/schedule_grid/{sport_name}/available_schools | 
 *WinthropClient::DefaultApi* | [**get_schedule_grid_completed**](docs/DefaultApi.md#get_schedule_grid_completed) | **GET** /api/v1/schedule_grid/{sport_name}/completed | 
+*WinthropClient::DefaultApi* | [**get_schedule_updates**](docs/DefaultApi.md#get_schedule_updates) | **GET** /api/v1/schedule_updates | 
 *WinthropClient::DefaultApi* | [**get_school**](docs/DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
 *WinthropClient::DefaultApi* | [**get_school_alternate_names**](docs/DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names | 
 *WinthropClient::DefaultApi* | [**get_school_game_contracts**](docs/DefaultApi.md#get_school_game_contracts) | **GET** /api/v1/schools/{schoolId}/game_contracts | 
@@ -647,6 +648,8 @@ Class | Method | HTTP request | Description
  - [WinthropClient::ScheduleGridView](docs/ScheduleGridView.md)
  - [WinthropClient::ScheduleIntentDetail](docs/ScheduleIntentDetail.md)
  - [WinthropClient::ScheduleTournamentDetail](docs/ScheduleTournamentDetail.md)
+ - [WinthropClient::ScheduleUpdate](docs/ScheduleUpdate.md)
+ - [WinthropClient::ScheduleUpdateCollection](docs/ScheduleUpdateCollection.md)
  - [WinthropClient::School](docs/School.md)
  - [WinthropClient::SchoolCollection](docs/SchoolCollection.md)
  - [WinthropClient::SchoolContractEntry](docs/SchoolContractEntry.md)

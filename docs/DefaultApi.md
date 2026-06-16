@@ -164,6 +164,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_schedule_grid**](DefaultApi.md#get_schedule_grid) | **GET** /api/v1/schedule_grid/{sport_name} |  |
 | [**get_schedule_grid_available_schools**](DefaultApi.md#get_schedule_grid_available_schools) | **GET** /api/v1/schedule_grid/{sport_name}/available_schools |  |
 | [**get_schedule_grid_completed**](DefaultApi.md#get_schedule_grid_completed) | **GET** /api/v1/schedule_grid/{sport_name}/completed |  |
+| [**get_schedule_updates**](DefaultApi.md#get_schedule_updates) | **GET** /api/v1/schedule_updates |  |
 | [**get_school**](DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} |  |
 | [**get_school_alternate_names**](DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names |  |
 | [**get_school_game_contracts**](DefaultApi.md#get_school_game_contracts) | **GET** /api/v1/schools/{schoolId}/game_contracts |  |
@@ -12391,6 +12392,84 @@ end
 ### Return type
 
 [**ScheduleGridView**](ScheduleGridView.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_schedule_updates
+
+> <ScheduleUpdateCollection> get_schedule_updates(sport_name, opts)
+
+
+
+Recently Updated dashboard sidebar module (WINAD-9930). Returns the schools whose schedules changed most recently for a sport — games added, availabilities added / adjusted / removed (a filled date), and MTE slots — one row per school keyed by its latest update, newest first. Each row's change summary aggregates that school's edits in the 24h window ending at its latest update.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+sport_name = 'sport_name_example' # String | Sport name (e.g. FOOTBALL, BASKETBALL_M)
+opts = {
+  limit: 8 # Integer | Max rows to return (default 8, capped at 25).
+}
+
+begin
+  
+  result = api_instance.get_schedule_updates(sport_name, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_schedule_updates: #{e}"
+end
+```
+
+#### Using the get_schedule_updates_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ScheduleUpdateCollection>, Integer, Hash)> get_schedule_updates_with_http_info(sport_name, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_schedule_updates_with_http_info(sport_name, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ScheduleUpdateCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_schedule_updates_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **sport_name** | **String** | Sport name (e.g. FOOTBALL, BASKETBALL_M) |  |
+| **limit** | **Integer** | Max rows to return (default 8, capped at 25). | [optional][default to 8] |
+
+### Return type
+
+[**ScheduleUpdateCollection**](ScheduleUpdateCollection.md)
 
 ### Authorization
 

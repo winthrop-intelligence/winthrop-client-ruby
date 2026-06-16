@@ -10178,6 +10178,75 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Recently Updated dashboard sidebar module (WINAD-9930). Returns the schools whose schedules changed most recently for a sport — games added, availabilities added / adjusted / removed (a filled date), and MTE slots — one row per school keyed by its latest update, newest first. Each row's change summary aggregates that school's edits in the 24h window ending at its latest update.
+    # @param sport_name [String] Sport name (e.g. FOOTBALL, BASKETBALL_M)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :limit Max rows to return (default 8, capped at 25). (default to 8)
+    # @return [ScheduleUpdateCollection]
+    def get_schedule_updates(sport_name, opts = {})
+      data, _status_code, _headers = get_schedule_updates_with_http_info(sport_name, opts)
+      data
+    end
+
+    # Recently Updated dashboard sidebar module (WINAD-9930). Returns the schools whose schedules changed most recently for a sport — games added, availabilities added / adjusted / removed (a filled date), and MTE slots — one row per school keyed by its latest update, newest first. Each row&#39;s change summary aggregates that school&#39;s edits in the 24h window ending at its latest update.
+    # @param sport_name [String] Sport name (e.g. FOOTBALL, BASKETBALL_M)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :limit Max rows to return (default 8, capped at 25). (default to 8)
+    # @return [Array<(ScheduleUpdateCollection, Integer, Hash)>] ScheduleUpdateCollection data, response status code and response headers
+    def get_schedule_updates_with_http_info(sport_name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_schedule_updates ...'
+      end
+      # verify the required parameter 'sport_name' is set
+      if @api_client.config.client_side_validation && sport_name.nil?
+        fail ArgumentError, "Missing the required parameter 'sport_name' when calling DefaultApi.get_schedule_updates"
+      end
+      if @api_client.config.client_side_validation && !opts[:'limit'].nil? && opts[:'limit'] > 25
+        fail ArgumentError, 'invalid value for "opts[:"limit"]" when calling DefaultApi.get_schedule_updates, must be smaller than or equal to 25.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/schedule_updates'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'sport_name'] = sport_name
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ScheduleUpdateCollection'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_schedule_updates",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_schedule_updates\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve a single school
     # @param school_id [Integer] ID of school to retrieve
     # @param [Hash] opts the optional parameters

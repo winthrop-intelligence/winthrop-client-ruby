@@ -290,6 +290,8 @@ docs/ScheduleGridSchool.md
 docs/ScheduleGridView.md
 docs/ScheduleIntentDetail.md
 docs/ScheduleTournamentDetail.md
+docs/ScheduleUpdate.md
+docs/ScheduleUpdateCollection.md
 docs/School.md
 docs/SchoolCollection.md
 docs/SchoolContractEntry.md
@@ -700,6 +702,8 @@ lib/winthrop-client-ruby/models/schedule_grid_school.rb
 lib/winthrop-client-ruby/models/schedule_grid_view.rb
 lib/winthrop-client-ruby/models/schedule_intent_detail.rb
 lib/winthrop-client-ruby/models/schedule_tournament_detail.rb
+lib/winthrop-client-ruby/models/schedule_update.rb
+lib/winthrop-client-ruby/models/schedule_update_collection.rb
 lib/winthrop-client-ruby/models/school.rb
 lib/winthrop-client-ruby/models/school_collection.rb
 lib/winthrop-client-ruby/models/school_contract_entry.rb
@@ -818,13 +822,7 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
-spec/models/game_post_gap_count_collection_data_inner_spec.rb
-spec/models/game_post_gap_count_collection_spec.rb
-spec/models/game_post_search_result_games_inner_spec.rb
-spec/models/game_post_search_result_schedule_intents_inner_spec.rb
-spec/models/guarantee_benchmark_error_spec.rb
-spec/models/guarantee_benchmark_stats_spec.rb
-spec/models/guarantee_benchmark_table_spec.rb
-spec/models/guarantee_benchmark_tier_spec.rb
+spec/models/schedule_update_collection_spec.rb
+spec/models/schedule_update_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
