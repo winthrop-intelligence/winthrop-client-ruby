@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **sport_id** | **Integer** |  |  |
-| **start_date** | **Date** |  |  |
+| **date** | **Date** | WINAD-9908: the post&#39;s single open day. Optional; replaces the legacy start_date in the slim-create payload (start_date is left null on these posts). | [optional] |
 | **description** | **String** |  | [optional] |
 | **game_type_ids** | **Array&lt;Integer&gt;** |  | [optional] |
 
@@ -16,7 +16,7 @@ require 'winthrop-client-ruby'
 
 instance = WinthropClient::BulkCreateGamePostSearchesRequestPostsInner.new(
   sport_id: null,
-  start_date: null,
+  date: null,
   description: null,
   game_type_ids: null
 )

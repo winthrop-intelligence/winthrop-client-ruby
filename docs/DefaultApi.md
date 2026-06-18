@@ -604,7 +604,7 @@ WinthropClient.configure do |config|
 end
 
 api_instance = WinthropClient::DefaultApi.new
-bulk_create_game_post_searches_request = WinthropClient::BulkCreateGamePostSearchesRequest.new({posts: [WinthropClient::BulkCreateGamePostSearchesRequestPostsInner.new({sport_id: 37, start_date: Date.today})]}) # BulkCreateGamePostSearchesRequest | 
+bulk_create_game_post_searches_request = WinthropClient::BulkCreateGamePostSearchesRequest.new({posts: [WinthropClient::BulkCreateGamePostSearchesRequestPostsInner.new({sport_id: 37})]}) # BulkCreateGamePostSearchesRequest | 
 
 begin
   

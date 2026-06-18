@@ -17,7 +17,8 @@ module WinthropClient
   class BulkCreateGamePostSearchesRequestPostsInner < ApiModelBase
     attr_accessor :sport_id
 
-    attr_accessor :start_date
+    # WINAD-9908: the post's single open day. Optional; replaces the legacy start_date in the slim-create payload (start_date is left null on these posts).
+    attr_accessor :date
 
     attr_accessor :description
 
@@ -27,7 +28,7 @@ module WinthropClient
     def self.attribute_map
       {
         :'sport_id' => :'sport_id',
-        :'start_date' => :'start_date',
+        :'date' => :'date',
         :'description' => :'description',
         :'game_type_ids' => :'game_type_ids'
       }
@@ -47,7 +48,7 @@ module WinthropClient
     def self.openapi_types
       {
         :'sport_id' => :'Integer',
-        :'start_date' => :'Date',
+        :'date' => :'Date',
         :'description' => :'String',
         :'game_type_ids' => :'Array<Integer>'
       }
@@ -81,10 +82,8 @@ module WinthropClient
         self.sport_id = nil
       end
 
-      if attributes.key?(:'start_date')
-        self.start_date = attributes[:'start_date']
-      else
-        self.start_date = nil
+      if attributes.key?(:'date')
+        self.date = attributes[:'date']
       end
 
       if attributes.key?(:'description')
@@ -107,10 +106,6 @@ module WinthropClient
         invalid_properties.push('invalid value for "sport_id", sport_id cannot be nil.')
       end
 
-      if @start_date.nil?
-        invalid_properties.push('invalid value for "start_date", start_date cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -119,7 +114,6 @@ module WinthropClient
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @sport_id.nil?
-      return false if @start_date.nil?
       true
     end
 
@@ -133,23 +127,13 @@ module WinthropClient
       @sport_id = sport_id
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] start_date Value to be assigned
-    def start_date=(start_date)
-      if start_date.nil?
-        fail ArgumentError, 'start_date cannot be nil'
-      end
-
-      @start_date = start_date
-    end
-
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
           sport_id == o.sport_id &&
-          start_date == o.start_date &&
+          date == o.date &&
           description == o.description &&
           game_type_ids == o.game_type_ids
     end
@@ -163,7 +147,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [sport_id, start_date, description, game_type_ids].hash
+      [sport_id, date, description, game_type_ids].hash
     end
 
     # Builds the object from hash
