@@ -41,6 +41,9 @@
 | **latitude** | **Float** |  | [optional] |
 | **longitude** | **Float** |  | [optional] |
 | **can_manage** | **Boolean** | Whether the current user can manage this game post | [optional] |
+| **posts** | [**Array&lt;GamePostSearchResultPostsInner&gt;**](GamePostSearchResultPostsInner.md) | WINAD-9909: the posting school&#39;s own active Games Wanted posts for this sport (one day per post). These are the card&#39;s date chips. The feed is grouped one row per school, so this aggregates every post for the school. | [optional] |
+| **games** | [**Array&lt;GamePostSearchResultGamesInner&gt;**](GamePostSearchResultGamesInner.md) | Games already on the posting school&#39;s schedule for this sport, within the current scheduling-season window. Opponent fields are relative to the posting school. | [optional] |
+| **schedule_intents** | [**Array&lt;GamePostSearchResultScheduleIntentsInner&gt;**](GamePostSearchResultScheduleIntentsInner.md) | Private schedule-intent (requested availability) markers for the posting school and sport, within the current scheduling-season window. Only present for sports the requesting schedule user is permitted to see. | [optional] |
 
 ## Example
 
@@ -84,7 +87,10 @@ instance = WinthropClient::GamePostSearchResult.new(
   school_logo_url: null,
   latitude: null,
   longitude: null,
-  can_manage: null
+  can_manage: null,
+  posts: null,
+  games: null,
+  schedule_intents: null
 )
 ```
 
