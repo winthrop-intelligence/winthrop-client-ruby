@@ -14,20 +14,19 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class GamePostSearchResultCollection < ApiModelBase
-    attr_accessor :data
+  class PageView < ApiModelBase
+    attr_accessor :id
 
-    attr_accessor :meta
+    attr_accessor :route
 
-    # Raw count of active posts matching the filters (the \"N active posts\" headline). Only present/meaningful when group_by_school=true: cards are then grouped one per school, so meta.total_entries counts schools while this counts posts. Absent for the per-post listing (group_by_school false/absent).
-    attr_accessor :active_posts_total
+    attr_accessor :created_at
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'data' => :'data',
-        :'meta' => :'meta',
-        :'active_posts_total' => :'active_posts_total'
+        :'id' => :'id',
+        :'route' => :'route',
+        :'created_at' => :'created_at'
       }
     end
 
@@ -44,9 +43,9 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'data' => :'Array<GamePostSearchResult>',
-        :'meta' => :'Meta',
-        :'active_posts_total' => :'Integer'
+        :'id' => :'Integer',
+        :'route' => :'String',
+        :'created_at' => :'Time'
       }
     end
 
@@ -60,30 +59,28 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::GamePostSearchResultCollection` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::PageView` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::GamePostSearchResultCollection`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::PageView`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'data')
-        if (value = attributes[:'data']).is_a?(Array)
-          self.data = value
-        end
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'meta')
-        self.meta = attributes[:'meta']
+      if attributes.key?(:'route')
+        self.route = attributes[:'route']
       end
 
-      if attributes.key?(:'active_posts_total')
-        self.active_posts_total = attributes[:'active_posts_total']
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
       end
     end
 
@@ -107,9 +104,9 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          data == o.data &&
-          meta == o.meta &&
-          active_posts_total == o.active_posts_total
+          id == o.id &&
+          route == o.route &&
+          created_at == o.created_at
     end
 
     # @see the `==` method
@@ -121,7 +118,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data, meta, active_posts_total].hash
+      [id, route, created_at].hash
     end
 
     # Builds the object from hash

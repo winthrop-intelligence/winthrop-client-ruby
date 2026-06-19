@@ -113,6 +113,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**create_game_post_search**](docs/DefaultApi.md#create_game_post_search) | **POST** /api/v1/game_post_searches | 
 *WinthropClient::DefaultApi* | [**create_job_post**](docs/DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post
 *WinthropClient::DefaultApi* | [**create_note**](docs/DefaultApi.md#create_note) | **POST** /api/v1/notes | 
+*WinthropClient::DefaultApi* | [**create_page_view**](docs/DefaultApi.md#create_page_view) | **POST** /api/v1/page_views | 
 *WinthropClient::DefaultApi* | [**create_password_reset**](docs/DefaultApi.md#create_password_reset) | **POST** /api/v1/password_reset | 
 *WinthropClient::DefaultApi* | [**create_position**](docs/DefaultApi.md#create_position) | **POST** /api/v1/positions | 
 *WinthropClient::DefaultApi* | [**create_requested_item**](docs/DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items | 
@@ -491,6 +492,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::CreateGameRequest](docs/CreateGameRequest.md)
  - [WinthropClient::CreateGameRequestGame](docs/CreateGameRequestGame.md)
  - [WinthropClient::CreateNoteRequest](docs/CreateNoteRequest.md)
+ - [WinthropClient::CreatePageViewRequest](docs/CreatePageViewRequest.md)
  - [WinthropClient::CreatePasswordReset200Response](docs/CreatePasswordReset200Response.md)
  - [WinthropClient::CreatePasswordResetRequest](docs/CreatePasswordResetRequest.md)
  - [WinthropClient::CreatePasswordResetRequestUser](docs/CreatePasswordResetRequestUser.md)
@@ -566,6 +568,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::GamePostSearchResult](docs/GamePostSearchResult.md)
  - [WinthropClient::GamePostSearchResultCollection](docs/GamePostSearchResultCollection.md)
  - [WinthropClient::GamePostSearchResultGamesInner](docs/GamePostSearchResultGamesInner.md)
+ - [WinthropClient::GamePostSearchResultPostsInner](docs/GamePostSearchResultPostsInner.md)
  - [WinthropClient::GamePostSearchResultScheduleIntentsInner](docs/GamePostSearchResultScheduleIntentsInner.md)
  - [WinthropClient::GameType](docs/GameType.md)
  - [WinthropClient::GeoRegion](docs/GeoRegion.md)
@@ -615,6 +618,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::NewsFeed](docs/NewsFeed.md)
  - [WinthropClient::NewsFeedCollection](docs/NewsFeedCollection.md)
  - [WinthropClient::Note](docs/Note.md)
+ - [WinthropClient::PageView](docs/PageView.md)
  - [WinthropClient::PerformanceChartCoach](docs/PerformanceChartCoach.md)
  - [WinthropClient::PerformanceChartData](docs/PerformanceChartData.md)
  - [WinthropClient::PerformanceChartRecord](docs/PerformanceChartRecord.md)

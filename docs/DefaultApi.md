@@ -26,6 +26,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**create_game_post_search**](DefaultApi.md#create_game_post_search) | **POST** /api/v1/game_post_searches |  |
 | [**create_job_post**](DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post |
 | [**create_note**](DefaultApi.md#create_note) | **POST** /api/v1/notes |  |
+| [**create_page_view**](DefaultApi.md#create_page_view) | **POST** /api/v1/page_views |  |
 | [**create_password_reset**](DefaultApi.md#create_password_reset) | **POST** /api/v1/password_reset |  |
 | [**create_position**](DefaultApi.md#create_position) | **POST** /api/v1/positions |  |
 | [**create_requested_item**](DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items |  |
@@ -1914,6 +1915,80 @@ end
 ### Return type
 
 [**Note**](Note.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_page_view
+
+> <PageView> create_page_view(create_page_view_request)
+
+
+
+Record a page view for the current user
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_page_view_request = WinthropClient::CreatePageViewRequest.new({route: 'route_example'}) # CreatePageViewRequest | 
+
+begin
+  
+  result = api_instance.create_page_view(create_page_view_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_page_view: #{e}"
+end
+```
+
+#### Using the create_page_view_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PageView>, Integer, Hash)> create_page_view_with_http_info(create_page_view_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_page_view_with_http_info(create_page_view_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PageView>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_page_view_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_page_view_request** | [**CreatePageViewRequest**](CreatePageViewRequest.md) |  |  |
+
+### Return type
+
+[**PageView**](PageView.md)
 
 ### Authorization
 
@@ -10482,7 +10557,8 @@ api_instance = WinthropClient::DefaultApi.new
 opts = {
   page: 56, # Integer | results page to retrieve.
   per_page: 56, # Integer | number of results per page.
-  q: { ... } # Object | Ransack query
+  q: { ... }, # Object | Ransack query
+  group_by_school: true # Boolean | When true, returns one row per school+sport (the school's newest post as the representative, newest school first) and pagination counts schools. When false/absent, returns the per-post listing.
 }
 
 begin
@@ -10519,6 +10595,7 @@ end
 | **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
 | **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query | [optional] |
+| **group_by_school** | **Boolean** | When true, returns one row per school+sport (the school&#39;s newest post as the representative, newest school first) and pagination counts schools. When false/absent, returns the per-post listing. | [optional] |
 
 ### Return type
 

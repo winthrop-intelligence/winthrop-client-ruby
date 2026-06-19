@@ -105,6 +105,9 @@ module WinthropClient
     # Whether the current user can manage this game post
     attr_accessor :can_manage
 
+    # The posting school's own active Games Wanted posts for this sport, one entry per day (the card's date chips). Present only when group_by_school=true, where the feed is grouped one row per school so this aggregates every post for the school.
+    attr_accessor :posts
+
     # Games already on the posting school's schedule for this sport, within the current scheduling-season window. Opponent fields are relative to the posting school.
     attr_accessor :games
 
@@ -173,6 +176,7 @@ module WinthropClient
         :'latitude' => :'latitude',
         :'longitude' => :'longitude',
         :'can_manage' => :'can_manage',
+        :'posts' => :'posts',
         :'games' => :'games',
         :'schedule_intents' => :'schedule_intents'
       }
@@ -228,6 +232,7 @@ module WinthropClient
         :'latitude' => :'Float',
         :'longitude' => :'Float',
         :'can_manage' => :'Boolean',
+        :'posts' => :'Array<GamePostSearchResultPostsInner>',
         :'games' => :'Array<GamePostSearchResultGamesInner>',
         :'schedule_intents' => :'Array<GamePostSearchResultScheduleIntentsInner>'
       }
@@ -433,6 +438,12 @@ module WinthropClient
         self.can_manage = attributes[:'can_manage']
       end
 
+      if attributes.key?(:'posts')
+        if (value = attributes[:'posts']).is_a?(Array)
+          self.posts = value
+        end
+      end
+
       if attributes.key?(:'games')
         if (value = attributes[:'games']).is_a?(Array)
           self.games = value
@@ -515,6 +526,7 @@ module WinthropClient
           latitude == o.latitude &&
           longitude == o.longitude &&
           can_manage == o.can_manage &&
+          posts == o.posts &&
           games == o.games &&
           schedule_intents == o.schedule_intents
     end
@@ -528,7 +540,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [game_post_id, id, school_id, school_name, sport_id, sport_name, start_date, end_date, end_date_display, description, status, expires_on, created_at, updated_at, city, state_name, conference_id, conference_name, division_id, division_name, last_rpi, last_net_rank, last_ap_rank, distance, avg_guarantee_paid, avg_guarantee_received, game_types_display, created_by_name, created_by_scheduling_phone, created_by_scheduling_phone_dial, avg_rpi, avg_net_rank, avg_ap_rank, school_logo_url, latitude, longitude, can_manage, games, schedule_intents].hash
+      [game_post_id, id, school_id, school_name, sport_id, sport_name, start_date, end_date, end_date_display, description, status, expires_on, created_at, updated_at, city, state_name, conference_id, conference_name, division_id, division_name, last_rpi, last_net_rank, last_ap_rank, distance, avg_guarantee_paid, avg_guarantee_received, game_types_display, created_by_name, created_by_scheduling_phone, created_by_scheduling_phone_dial, avg_rpi, avg_net_rank, avg_ap_rank, school_logo_url, latitude, longitude, can_manage, posts, games, schedule_intents].hash
     end
 
     # Builds the object from hash
