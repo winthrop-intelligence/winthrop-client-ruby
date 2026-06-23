@@ -25,6 +25,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**create_game_post**](DefaultApi.md#create_game_post) | **POST** /api/v1/game_posts |  |
 | [**create_game_post_search**](DefaultApi.md#create_game_post_search) | **POST** /api/v1/game_post_searches |  |
 | [**create_job_post**](DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post |
+| [**create_mcp_event**](DefaultApi.md#create_mcp_event) | **POST** /api/v1/mcp_events |  |
 | [**create_note**](DefaultApi.md#create_note) | **POST** /api/v1/notes |  |
 | [**create_page_view**](DefaultApi.md#create_page_view) | **POST** /api/v1/page_views |  |
 | [**create_password_reset**](DefaultApi.md#create_password_reset) | **POST** /api/v1/password_reset |  |
@@ -1841,6 +1842,80 @@ end
 ### Return type
 
 [**JobPost**](JobPost.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_mcp_event
+
+> <McpEvent> create_mcp_event(create_mcp_event_request)
+
+
+
+Ingest an MCP (Model Context Protocol) event for the current user. The request is idempotent per user on `event_uuid` - re-submitting the same `event_uuid` returns the previously stored event with a 200 status instead of creating a duplicate.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_mcp_event_request = WinthropClient::CreateMcpEventRequest.new({mcp_event: WinthropClient::CreateMcpEventRequestMcpEvent.new({event_uuid: 'event_uuid_example', event_name: 'event_name_example'})}) # CreateMcpEventRequest | 
+
+begin
+  
+  result = api_instance.create_mcp_event(create_mcp_event_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_mcp_event: #{e}"
+end
+```
+
+#### Using the create_mcp_event_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<McpEvent>, Integer, Hash)> create_mcp_event_with_http_info(create_mcp_event_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_mcp_event_with_http_info(create_mcp_event_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <McpEvent>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_mcp_event_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_mcp_event_request** | [**CreateMcpEventRequest**](CreateMcpEventRequest.md) |  |  |
+
+### Return type
+
+[**McpEvent**](McpEvent.md)
 
 ### Authorization
 
