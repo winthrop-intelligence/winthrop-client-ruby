@@ -198,6 +198,9 @@ docs/GameContractSeriesResponse.md
 docs/GameDetail.md
 docs/GameDetailAllOfGameContract.md
 docs/GamePost.md
+docs/GamePostAvailabilityCollection.md
+docs/GamePostAvailabilityCollectionGroupsInner.md
+docs/GamePostAvailabilityCollectionGroupsInnerPostsInner.md
 docs/GamePostCollection.md
 docs/GamePostContact.md
 docs/GamePostDetail.md
@@ -626,6 +629,9 @@ lib/winthrop-client-ruby/models/game_contract_series_response.rb
 lib/winthrop-client-ruby/models/game_detail.rb
 lib/winthrop-client-ruby/models/game_detail_all_of_game_contract.rb
 lib/winthrop-client-ruby/models/game_post.rb
+lib/winthrop-client-ruby/models/game_post_availability_collection.rb
+lib/winthrop-client-ruby/models/game_post_availability_collection_groups_inner.rb
+lib/winthrop-client-ruby/models/game_post_availability_collection_groups_inner_posts_inner.rb
 lib/winthrop-client-ruby/models/game_post_collection.rb
 lib/winthrop-client-ruby/models/game_post_contact.rb
 lib/winthrop-client-ruby/models/game_post_detail.rb
@@ -848,8 +854,8 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
-spec/models/create_mcp_event_request_mcp_event_spec.rb
-spec/models/create_mcp_event_request_spec.rb
-spec/models/mcp_event_spec.rb
+spec/models/game_post_availability_collection_groups_inner_posts_inner_spec.rb
+spec/models/game_post_availability_collection_groups_inner_spec.rb
+spec/models/game_post_availability_collection_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
