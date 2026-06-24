@@ -29,47 +29,21 @@ module WinthropClient
 
     attr_accessor :start_date
 
-    attr_accessor :end_date
-
     attr_accessor :end_date_display
 
     attr_accessor :description
 
-    attr_accessor :status
-
-    attr_accessor :expires_on
-
     attr_accessor :created_at
-
-    attr_accessor :updated_at
 
     attr_accessor :city
 
     attr_accessor :state_name
 
-    attr_accessor :conference_id
-
-    attr_accessor :conference_name
-
-    attr_accessor :division_id
-
-    attr_accessor :division_name
-
     # Most recent RPI ranking
     attr_accessor :last_rpi
 
-    # Most recent NET ranking
-    attr_accessor :last_net_rank
-
-    # Most recent AP ranking
-    attr_accessor :last_ap_rank
-
     # Distance in miles from user's school
     attr_accessor :distance
-
-    attr_accessor :avg_guarantee_paid
-
-    attr_accessor :avg_guarantee_received
 
     # Comma-separated list of game type names
     attr_accessor :game_types_display
@@ -83,24 +57,11 @@ module WinthropClient
     # Dial-ready form of the creator's scheduling phone for tel links
     attr_accessor :created_by_scheduling_phone_dial
 
-    # 5-year average RPI ranking
-    attr_accessor :avg_rpi
-
     # 5-year average NET ranking
     attr_accessor :avg_net_rank
 
-    # 5-year average AP ranking
-    attr_accessor :avg_ap_rank
-
     # URL to school logo image (small variant)
     attr_accessor :school_logo_url
-
-    attr_accessor :latitude
-
-    attr_accessor :longitude
-
-    # Whether the current user can manage this game post
-    attr_accessor :can_manage
 
     # The posting school's own active Games Wanted posts for this sport, one entry per post (each carrying its id). Present only when group_by_school=true, where the feed is grouped one row per school so this aggregates every post for the school. The card collapses same-day posts into chips; the school+sport show page lists each. With post_details=true each entry also carries the per-post detail fields below.
     attr_accessor :posts
@@ -114,28 +75,6 @@ module WinthropClient
     # School+sport scheduling contacts, shared across the school's posts. Present only with post_details=true (the school+sport show page).
     attr_accessor :contacts
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -145,36 +84,19 @@ module WinthropClient
         :'sport_id' => :'sport_id',
         :'sport_name' => :'sport_name',
         :'start_date' => :'start_date',
-        :'end_date' => :'end_date',
         :'end_date_display' => :'end_date_display',
         :'description' => :'description',
-        :'status' => :'status',
-        :'expires_on' => :'expires_on',
         :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at',
         :'city' => :'city',
         :'state_name' => :'state_name',
-        :'conference_id' => :'conference_id',
-        :'conference_name' => :'conference_name',
-        :'division_id' => :'division_id',
-        :'division_name' => :'division_name',
         :'last_rpi' => :'last_rpi',
-        :'last_net_rank' => :'last_net_rank',
-        :'last_ap_rank' => :'last_ap_rank',
         :'distance' => :'distance',
-        :'avg_guarantee_paid' => :'avg_guarantee_paid',
-        :'avg_guarantee_received' => :'avg_guarantee_received',
         :'game_types_display' => :'game_types_display',
         :'created_by_name' => :'created_by_name',
         :'created_by_scheduling_phone' => :'created_by_scheduling_phone',
         :'created_by_scheduling_phone_dial' => :'created_by_scheduling_phone_dial',
-        :'avg_rpi' => :'avg_rpi',
         :'avg_net_rank' => :'avg_net_rank',
-        :'avg_ap_rank' => :'avg_ap_rank',
         :'school_logo_url' => :'school_logo_url',
-        :'latitude' => :'latitude',
-        :'longitude' => :'longitude',
-        :'can_manage' => :'can_manage',
         :'posts' => :'posts',
         :'games' => :'games',
         :'schedule_intents' => :'schedule_intents',
@@ -201,36 +123,19 @@ module WinthropClient
         :'sport_id' => :'Integer',
         :'sport_name' => :'String',
         :'start_date' => :'Date',
-        :'end_date' => :'Date',
         :'end_date_display' => :'Date',
         :'description' => :'String',
-        :'status' => :'String',
-        :'expires_on' => :'Date',
         :'created_at' => :'Time',
-        :'updated_at' => :'Time',
         :'city' => :'String',
         :'state_name' => :'String',
-        :'conference_id' => :'Integer',
-        :'conference_name' => :'String',
-        :'division_id' => :'Integer',
-        :'division_name' => :'String',
         :'last_rpi' => :'Integer',
-        :'last_net_rank' => :'Integer',
-        :'last_ap_rank' => :'Integer',
         :'distance' => :'Float',
-        :'avg_guarantee_paid' => :'Float',
-        :'avg_guarantee_received' => :'Float',
         :'game_types_display' => :'String',
         :'created_by_name' => :'String',
         :'created_by_scheduling_phone' => :'String',
         :'created_by_scheduling_phone_dial' => :'String',
-        :'avg_rpi' => :'Integer',
         :'avg_net_rank' => :'Integer',
-        :'avg_ap_rank' => :'Integer',
         :'school_logo_url' => :'String',
-        :'latitude' => :'Float',
-        :'longitude' => :'Float',
-        :'can_manage' => :'Boolean',
         :'posts' => :'Array<GamePostSearchResultPostsInner>',
         :'games' => :'Array<GamePostSearchResultGamesInner>',
         :'schedule_intents' => :'Array<GamePostSearchResultScheduleIntentsInner>',
@@ -244,33 +149,18 @@ module WinthropClient
         :'school_name',
         :'sport_name',
         :'start_date',
-        :'end_date',
         :'end_date_display',
         :'description',
-        :'expires_on',
-        :'updated_at',
         :'city',
         :'state_name',
-        :'conference_id',
-        :'conference_name',
-        :'division_id',
-        :'division_name',
         :'last_rpi',
-        :'last_net_rank',
-        :'last_ap_rank',
         :'distance',
-        :'avg_guarantee_paid',
-        :'avg_guarantee_received',
         :'game_types_display',
         :'created_by_name',
         :'created_by_scheduling_phone',
         :'created_by_scheduling_phone_dial',
-        :'avg_rpi',
         :'avg_net_rank',
-        :'avg_ap_rank',
         :'school_logo_url',
-        :'latitude',
-        :'longitude',
       ])
     end
 
@@ -314,10 +204,6 @@ module WinthropClient
         self.start_date = attributes[:'start_date']
       end
 
-      if attributes.key?(:'end_date')
-        self.end_date = attributes[:'end_date']
-      end
-
       if attributes.key?(:'end_date_display')
         self.end_date_display = attributes[:'end_date_display']
       end
@@ -326,20 +212,8 @@ module WinthropClient
         self.description = attributes[:'description']
       end
 
-      if attributes.key?(:'status')
-        self.status = attributes[:'status']
-      end
-
-      if attributes.key?(:'expires_on')
-        self.expires_on = attributes[:'expires_on']
-      end
-
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
       end
 
       if attributes.key?(:'city')
@@ -350,44 +224,12 @@ module WinthropClient
         self.state_name = attributes[:'state_name']
       end
 
-      if attributes.key?(:'conference_id')
-        self.conference_id = attributes[:'conference_id']
-      end
-
-      if attributes.key?(:'conference_name')
-        self.conference_name = attributes[:'conference_name']
-      end
-
-      if attributes.key?(:'division_id')
-        self.division_id = attributes[:'division_id']
-      end
-
-      if attributes.key?(:'division_name')
-        self.division_name = attributes[:'division_name']
-      end
-
       if attributes.key?(:'last_rpi')
         self.last_rpi = attributes[:'last_rpi']
       end
 
-      if attributes.key?(:'last_net_rank')
-        self.last_net_rank = attributes[:'last_net_rank']
-      end
-
-      if attributes.key?(:'last_ap_rank')
-        self.last_ap_rank = attributes[:'last_ap_rank']
-      end
-
       if attributes.key?(:'distance')
         self.distance = attributes[:'distance']
-      end
-
-      if attributes.key?(:'avg_guarantee_paid')
-        self.avg_guarantee_paid = attributes[:'avg_guarantee_paid']
-      end
-
-      if attributes.key?(:'avg_guarantee_received')
-        self.avg_guarantee_received = attributes[:'avg_guarantee_received']
       end
 
       if attributes.key?(:'game_types_display')
@@ -406,32 +248,12 @@ module WinthropClient
         self.created_by_scheduling_phone_dial = attributes[:'created_by_scheduling_phone_dial']
       end
 
-      if attributes.key?(:'avg_rpi')
-        self.avg_rpi = attributes[:'avg_rpi']
-      end
-
       if attributes.key?(:'avg_net_rank')
         self.avg_net_rank = attributes[:'avg_net_rank']
       end
 
-      if attributes.key?(:'avg_ap_rank')
-        self.avg_ap_rank = attributes[:'avg_ap_rank']
-      end
-
       if attributes.key?(:'school_logo_url')
         self.school_logo_url = attributes[:'school_logo_url']
-      end
-
-      if attributes.key?(:'latitude')
-        self.latitude = attributes[:'latitude']
-      end
-
-      if attributes.key?(:'longitude')
-        self.longitude = attributes[:'longitude']
-      end
-
-      if attributes.key?(:'can_manage')
-        self.can_manage = attributes[:'can_manage']
       end
 
       if attributes.key?(:'posts')
@@ -471,19 +293,7 @@ module WinthropClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      status_validator = EnumAttributeValidator.new('String', ["Active", "Inactive"])
-      return false unless status_validator.valid?(@status)
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] status Object to be assigned
-    def status=(status)
-      validator = EnumAttributeValidator.new('String', ["Active", "Inactive"])
-      unless validator.valid?(status)
-        fail ArgumentError, "invalid value for \"status\", must be one of #{validator.allowable_values}."
-      end
-      @status = status
     end
 
     # Checks equality by comparing each attribute.
@@ -497,36 +307,19 @@ module WinthropClient
           sport_id == o.sport_id &&
           sport_name == o.sport_name &&
           start_date == o.start_date &&
-          end_date == o.end_date &&
           end_date_display == o.end_date_display &&
           description == o.description &&
-          status == o.status &&
-          expires_on == o.expires_on &&
           created_at == o.created_at &&
-          updated_at == o.updated_at &&
           city == o.city &&
           state_name == o.state_name &&
-          conference_id == o.conference_id &&
-          conference_name == o.conference_name &&
-          division_id == o.division_id &&
-          division_name == o.division_name &&
           last_rpi == o.last_rpi &&
-          last_net_rank == o.last_net_rank &&
-          last_ap_rank == o.last_ap_rank &&
           distance == o.distance &&
-          avg_guarantee_paid == o.avg_guarantee_paid &&
-          avg_guarantee_received == o.avg_guarantee_received &&
           game_types_display == o.game_types_display &&
           created_by_name == o.created_by_name &&
           created_by_scheduling_phone == o.created_by_scheduling_phone &&
           created_by_scheduling_phone_dial == o.created_by_scheduling_phone_dial &&
-          avg_rpi == o.avg_rpi &&
           avg_net_rank == o.avg_net_rank &&
-          avg_ap_rank == o.avg_ap_rank &&
           school_logo_url == o.school_logo_url &&
-          latitude == o.latitude &&
-          longitude == o.longitude &&
-          can_manage == o.can_manage &&
           posts == o.posts &&
           games == o.games &&
           schedule_intents == o.schedule_intents &&
@@ -542,7 +335,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, school_id, school_name, sport_id, sport_name, start_date, end_date, end_date_display, description, status, expires_on, created_at, updated_at, city, state_name, conference_id, conference_name, division_id, division_name, last_rpi, last_net_rank, last_ap_rank, distance, avg_guarantee_paid, avg_guarantee_received, game_types_display, created_by_name, created_by_scheduling_phone, created_by_scheduling_phone_dial, avg_rpi, avg_net_rank, avg_ap_rank, school_logo_url, latitude, longitude, can_manage, posts, games, schedule_intents, contacts].hash
+      [id, school_id, school_name, sport_id, sport_name, start_date, end_date_display, description, created_at, city, state_name, last_rpi, distance, game_types_display, created_by_name, created_by_scheduling_phone, created_by_scheduling_phone_dial, avg_net_rank, school_logo_url, posts, games, schedule_intents, contacts].hash
     end
 
     # Builds the object from hash

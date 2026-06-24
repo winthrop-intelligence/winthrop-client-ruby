@@ -8837,7 +8837,7 @@ module WinthropClient
     # @option opts [Integer] :per_page number of results per page. (default to 20)
     # @option opts [Object] :q Ransack query
     # @option opts [Boolean] :group_by_school When true, returns one row per school+sport (the school&#39;s newest post as the representative, newest school first) and pagination counts schools. When false/absent, returns the per-post listing.
-    # @option opts [Boolean] :post_details When true, each posts[] entry is enriched with the per-post detail fields (status, start_date, end_date, description, game_types_display, expires_on, can_manage, created_by) and the result carries the shared school+sport contacts[]. Used by the school+sport show page. When false/absent, posts[] stays lean (id, date, game_types only).
+    # @option opts [Boolean] :post_details When true, each posts[] entry is enriched with the per-post detail fields (status, start_date, end_date, description, game_types_display, expires_on, created_at, can_manage, created_by) and the result carries the shared school+sport contacts[]. Used by the school+sport show page. When false/absent, posts[] stays lean (id, date, game_types only).
     # @return [GamePostSearchResultCollection]
     def get_game_post_searches(opts = {})
       data, _status_code, _headers = get_game_post_searches_with_http_info(opts)
@@ -8850,7 +8850,7 @@ module WinthropClient
     # @option opts [Integer] :per_page number of results per page. (default to 20)
     # @option opts [Object] :q Ransack query
     # @option opts [Boolean] :group_by_school When true, returns one row per school+sport (the school&#39;s newest post as the representative, newest school first) and pagination counts schools. When false/absent, returns the per-post listing.
-    # @option opts [Boolean] :post_details When true, each posts[] entry is enriched with the per-post detail fields (status, start_date, end_date, description, game_types_display, expires_on, can_manage, created_by) and the result carries the shared school+sport contacts[]. Used by the school+sport show page. When false/absent, posts[] stays lean (id, date, game_types only).
+    # @option opts [Boolean] :post_details When true, each posts[] entry is enriched with the per-post detail fields (status, start_date, end_date, description, game_types_display, expires_on, created_at, can_manage, created_by) and the result carries the shared school+sport contacts[]. Used by the school+sport show page. When false/absent, posts[] stays lean (id, date, game_types only).
     # @return [Array<(GamePostSearchResultCollection, Integer, Hash)>] GamePostSearchResultCollection data, response status code and response headers
     def get_game_post_searches_with_http_info(opts = {})
       if @api_client.config.debugging

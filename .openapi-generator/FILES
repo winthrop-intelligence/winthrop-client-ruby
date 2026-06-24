@@ -866,14 +866,5 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
-spec/models/game_post_availability_collection_groups_inner_posts_inner_spec.rb
-spec/models/game_post_availability_collection_groups_inner_spec.rb
-spec/models/game_post_availability_collection_spec.rb
-spec/models/game_post_search_result_contacts_inner_spec.rb
-spec/models/game_post_search_result_posts_inner_created_by_spec.rb
-spec/models/requested_item_note_input_ri_note_spec.rb
-spec/models/requested_item_note_input_spec.rb
-spec/models/requested_item_note_response_spec.rb
-spec/models/requested_item_note_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
