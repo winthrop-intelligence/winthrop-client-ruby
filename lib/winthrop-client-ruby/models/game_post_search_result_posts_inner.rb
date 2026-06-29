@@ -15,16 +15,77 @@ require 'time'
 
 module WinthropClient
   class GamePostSearchResultPostsInner < ApiModelBase
+    # GamePost ID — the specific post this entry represents.
+    attr_accessor :id
+
     attr_accessor :date
 
-    # Raw game-type names for this posted day (drive deal-type chip colors).
+    # Raw game-type names for this post (drive deal-type chip colors).
     attr_accessor :game_types
+
+    # Present only with post_details=true.
+    attr_accessor :status
+
+    # Present only with post_details=true.
+    attr_accessor :start_date
+
+    # Present only with post_details=true.
+    attr_accessor :end_date
+
+    # Present only with post_details=true.
+    attr_accessor :description
+
+    # Comma-separated game type names. Present only with post_details=true.
+    attr_accessor :game_types_display
+
+    # Present only with post_details=true.
+    attr_accessor :expires_on
+
+    # Present only with post_details=true.
+    attr_accessor :created_at
+
+    # Whether the current user can manage this post. Present only with post_details=true.
+    attr_accessor :can_manage
+
+    attr_accessor :created_by
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'id' => :'id',
         :'date' => :'date',
-        :'game_types' => :'game_types'
+        :'game_types' => :'game_types',
+        :'status' => :'status',
+        :'start_date' => :'start_date',
+        :'end_date' => :'end_date',
+        :'description' => :'description',
+        :'game_types_display' => :'game_types_display',
+        :'expires_on' => :'expires_on',
+        :'created_at' => :'created_at',
+        :'can_manage' => :'can_manage',
+        :'created_by' => :'created_by'
       }
     end
 
@@ -41,8 +102,18 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'id' => :'Integer',
         :'date' => :'Date',
-        :'game_types' => :'Array<String>'
+        :'game_types' => :'Array<String>',
+        :'status' => :'String',
+        :'start_date' => :'Date',
+        :'end_date' => :'Date',
+        :'description' => :'String',
+        :'game_types_display' => :'String',
+        :'expires_on' => :'Date',
+        :'created_at' => :'Time',
+        :'can_manage' => :'Boolean',
+        :'created_by' => :'GamePostSearchResultPostsInnerCreatedBy'
       }
     end
 
@@ -50,6 +121,13 @@ module WinthropClient
     def self.openapi_nullable
       Set.new([
         :'date',
+        :'start_date',
+        :'end_date',
+        :'description',
+        :'game_types_display',
+        :'expires_on',
+        :'created_at',
+        :'created_by'
       ])
     end
 
@@ -69,6 +147,12 @@ module WinthropClient
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
+      else
+        self.id = nil
+      end
+
       if attributes.key?(:'date')
         self.date = attributes[:'date']
       else
@@ -82,6 +166,42 @@ module WinthropClient
       else
         self.game_types = nil
       end
+
+      if attributes.key?(:'status')
+        self.status = attributes[:'status']
+      end
+
+      if attributes.key?(:'start_date')
+        self.start_date = attributes[:'start_date']
+      end
+
+      if attributes.key?(:'end_date')
+        self.end_date = attributes[:'end_date']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
+      end
+
+      if attributes.key?(:'game_types_display')
+        self.game_types_display = attributes[:'game_types_display']
+      end
+
+      if attributes.key?(:'expires_on')
+        self.expires_on = attributes[:'expires_on']
+      end
+
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'can_manage')
+        self.can_manage = attributes[:'can_manage']
+      end
+
+      if attributes.key?(:'created_by')
+        self.created_by = attributes[:'created_by']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -89,6 +209,10 @@ module WinthropClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @id.nil?
+        invalid_properties.push('invalid value for "id", id cannot be nil.')
+      end
+
       if @game_types.nil?
         invalid_properties.push('invalid value for "game_types", game_types cannot be nil.')
       end
@@ -100,8 +224,21 @@ module WinthropClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @id.nil?
       return false if @game_types.nil?
+      status_validator = EnumAttributeValidator.new('String', ["Active", "Inactive"])
+      return false unless status_validator.valid?(@status)
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] id Value to be assigned
+    def id=(id)
+      if id.nil?
+        fail ArgumentError, 'id cannot be nil'
+      end
+
+      @id = id
     end
 
     # Custom attribute writer method with validation
@@ -114,13 +251,33 @@ module WinthropClient
       @game_types = game_types
     end
 
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] status Object to be assigned
+    def status=(status)
+      validator = EnumAttributeValidator.new('String', ["Active", "Inactive"])
+      unless validator.valid?(status)
+        fail ArgumentError, "invalid value for \"status\", must be one of #{validator.allowable_values}."
+      end
+      @status = status
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          id == o.id &&
           date == o.date &&
-          game_types == o.game_types
+          game_types == o.game_types &&
+          status == o.status &&
+          start_date == o.start_date &&
+          end_date == o.end_date &&
+          description == o.description &&
+          game_types_display == o.game_types_display &&
+          expires_on == o.expires_on &&
+          created_at == o.created_at &&
+          can_manage == o.can_manage &&
+          created_by == o.created_by
     end
 
     # @see the `==` method
@@ -132,7 +289,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [date, game_types].hash
+      [id, date, game_types, status, start_date, end_date, description, game_types_display, expires_on, created_at, can_manage, created_by].hash
     end
 
     # Builds the object from hash

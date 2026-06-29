@@ -122,6 +122,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_filter_options_all_schools**](DefaultApi.md#get_filter_options_all_schools) | **GET** /api/v1/filter_options/all_schools |  |
 | [**get_filter_options_conferences**](DefaultApi.md#get_filter_options_conferences) | **GET** /api/v1/filter_options/conferences |  |
 | [**get_filter_options_deal_types**](DefaultApi.md#get_filter_options_deal_types) | **GET** /api/v1/filter_options/deal_types |  |
+| [**get_filter_options_foia_requestable_deal_types**](DefaultApi.md#get_filter_options_foia_requestable_deal_types) | **GET** /api/v1/filter_options/foia_requestable_deal_types |  |
 | [**get_filter_options_game_types**](DefaultApi.md#get_filter_options_game_types) | **GET** /api/v1/filter_options/game_types |  |
 | [**get_filter_options_school_groups**](DefaultApi.md#get_filter_options_school_groups) | **GET** /api/v1/filter_options/school_groups |  |
 | [**get_filter_options_schools**](DefaultApi.md#get_filter_options_schools) | **GET** /api/v1/filter_options/schools |  |
@@ -9156,6 +9157,77 @@ This endpoint does not need any parameter.
 - **Accept**: application/json
 
 
+## get_filter_options_foia_requestable_deal_types
+
+> <Array<IdName>> get_filter_options_foia_requestable_deal_types
+
+
+
+Retrieve all FOIA-requestable deal types, including those hidden from public deal filtering (e.g. Athletics Software, Travel, Executive Search)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_filter_options_foia_requestable_deal_types
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_filter_options_foia_requestable_deal_types: #{e}"
+end
+```
+
+#### Using the get_filter_options_foia_requestable_deal_types_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<IdName>>, Integer, Hash)> get_filter_options_foia_requestable_deal_types_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_filter_options_foia_requestable_deal_types_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<IdName>>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_filter_options_foia_requestable_deal_types_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Array&lt;IdName&gt;**](IdName.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_filter_options_game_types
 
 > <Array<GameType>> get_filter_options_game_types
@@ -10788,7 +10860,8 @@ opts = {
   page: 56, # Integer | results page to retrieve.
   per_page: 56, # Integer | number of results per page.
   q: { ... }, # Object | Ransack query
-  group_by_school: true # Boolean | When true, returns one row per school+sport (the school's newest post as the representative, newest school first) and pagination counts schools. When false/absent, returns the per-post listing.
+  group_by_school: true, # Boolean | When true, returns one row per school+sport (the school's newest post as the representative, newest school first) and pagination counts schools. When false/absent, returns the per-post listing.
+  post_details: true # Boolean | When true, each posts[] entry is enriched with the per-post detail fields (status, start_date, end_date, description, game_types_display, expires_on, created_at, can_manage, created_by) and the result carries the shared school+sport contacts[]. Used by the school+sport show page. When false/absent, posts[] stays lean (id, date, game_types only).
 }
 
 begin
@@ -10826,6 +10899,7 @@ end
 | **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query | [optional] |
 | **group_by_school** | **Boolean** | When true, returns one row per school+sport (the school&#39;s newest post as the representative, newest school first) and pagination counts schools. When false/absent, returns the per-post listing. | [optional] |
+| **post_details** | **Boolean** | When true, each posts[] entry is enriched with the per-post detail fields (status, start_date, end_date, description, game_types_display, expires_on, created_at, can_manage, created_by) and the result carries the shared school+sport contacts[]. Used by the school+sport show page. When false/absent, posts[] stays lean (id, date, game_types only). | [optional] |
 
 ### Return type
 

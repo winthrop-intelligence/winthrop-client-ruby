@@ -209,6 +209,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_filter_options_all_schools**](docs/DefaultApi.md#get_filter_options_all_schools) | **GET** /api/v1/filter_options/all_schools | 
 *WinthropClient::DefaultApi* | [**get_filter_options_conferences**](docs/DefaultApi.md#get_filter_options_conferences) | **GET** /api/v1/filter_options/conferences | 
 *WinthropClient::DefaultApi* | [**get_filter_options_deal_types**](docs/DefaultApi.md#get_filter_options_deal_types) | **GET** /api/v1/filter_options/deal_types | 
+*WinthropClient::DefaultApi* | [**get_filter_options_foia_requestable_deal_types**](docs/DefaultApi.md#get_filter_options_foia_requestable_deal_types) | **GET** /api/v1/filter_options/foia_requestable_deal_types | 
 *WinthropClient::DefaultApi* | [**get_filter_options_game_types**](docs/DefaultApi.md#get_filter_options_game_types) | **GET** /api/v1/filter_options/game_types | 
 *WinthropClient::DefaultApi* | [**get_filter_options_school_groups**](docs/DefaultApi.md#get_filter_options_school_groups) | **GET** /api/v1/filter_options/school_groups | 
 *WinthropClient::DefaultApi* | [**get_filter_options_schools**](docs/DefaultApi.md#get_filter_options_schools) | **GET** /api/v1/filter_options/schools | 
@@ -577,8 +578,10 @@ Class | Method | HTTP request | Description
  - [WinthropClient::GamePostGapCountCollectionDataInner](docs/GamePostGapCountCollectionDataInner.md)
  - [WinthropClient::GamePostSearchResult](docs/GamePostSearchResult.md)
  - [WinthropClient::GamePostSearchResultCollection](docs/GamePostSearchResultCollection.md)
+ - [WinthropClient::GamePostSearchResultContactsInner](docs/GamePostSearchResultContactsInner.md)
  - [WinthropClient::GamePostSearchResultGamesInner](docs/GamePostSearchResultGamesInner.md)
  - [WinthropClient::GamePostSearchResultPostsInner](docs/GamePostSearchResultPostsInner.md)
+ - [WinthropClient::GamePostSearchResultPostsInnerCreatedBy](docs/GamePostSearchResultPostsInnerCreatedBy.md)
  - [WinthropClient::GamePostSearchResultScheduleIntentsInner](docs/GamePostSearchResultScheduleIntentsInner.md)
  - [WinthropClient::GameType](docs/GameType.md)
  - [WinthropClient::GeoRegion](docs/GeoRegion.md)
