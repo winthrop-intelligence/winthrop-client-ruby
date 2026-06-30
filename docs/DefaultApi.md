@@ -18040,7 +18040,7 @@ end
 
 ## update_favorite
 
-> <CreateFavorite201Response> update_favorite(id, update_favorite_request)
+> <UpdateFavorite200Response> update_favorite(id, update_favorite_request)
 
 
 
@@ -18079,7 +18079,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<CreateFavorite201Response>, Integer, Hash)> update_favorite_with_http_info(id, update_favorite_request)
+> <Array(<UpdateFavorite200Response>, Integer, Hash)> update_favorite_with_http_info(id, update_favorite_request)
 
 ```ruby
 begin
@@ -18087,7 +18087,7 @@ begin
   data, status_code, headers = api_instance.update_favorite_with_http_info(id, update_favorite_request)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <CreateFavorite201Response>
+  p data # => <UpdateFavorite200Response>
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->update_favorite_with_http_info: #{e}"
 end
@@ -18102,7 +18102,7 @@ end
 
 ### Return type
 
-[**CreateFavorite201Response**](CreateFavorite201Response.md)
+[**UpdateFavorite200Response**](UpdateFavorite200Response.md)
 
 ### Authorization
 
