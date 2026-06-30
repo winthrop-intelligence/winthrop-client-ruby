@@ -868,6 +868,5 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
-spec/models/update_favorite200_response_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

@@ -2369,7 +2369,7 @@ end
 
 ## create_schedule_intent
 
-> <ScheduleIntentDetail> create_schedule_intent(create_schedule_intent_request)
+> <ScheduleIntentDetail> create_schedule_intent(create_schedule_intent_request, opts)
 
 
 
@@ -2393,10 +2393,13 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 create_schedule_intent_request = WinthropClient::CreateScheduleIntentRequest.new({schedule_intent: WinthropClient::CreateScheduleIntentRequestScheduleIntent.new({sport_id: 37, date: Date.today})}) # CreateScheduleIntentRequest | 
+opts = {
+  skip_game_post_sync: true # Boolean | WINAD-10041: when true, persists the ScheduleIntent WITHOUT syncing the public Games Wanted GamePost(s) for that cell. Sent by the slim editor (/game_posts/new) so composing chips doesn't publish until the user clicks Publish; the schedules grid omits it and keeps the public post in lockstep with the cell live. 
+}
 
 begin
   
-  result = api_instance.create_schedule_intent(create_schedule_intent_request)
+  result = api_instance.create_schedule_intent(create_schedule_intent_request, opts)
   p result
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->create_schedule_intent: #{e}"
@@ -2407,12 +2410,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ScheduleIntentDetail>, Integer, Hash)> create_schedule_intent_with_http_info(create_schedule_intent_request)
+> <Array(<ScheduleIntentDetail>, Integer, Hash)> create_schedule_intent_with_http_info(create_schedule_intent_request, opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.create_schedule_intent_with_http_info(create_schedule_intent_request)
+  data, status_code, headers = api_instance.create_schedule_intent_with_http_info(create_schedule_intent_request, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ScheduleIntentDetail>
@@ -2426,6 +2429,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **create_schedule_intent_request** | [**CreateScheduleIntentRequest**](CreateScheduleIntentRequest.md) |  |  |
+| **skip_game_post_sync** | **Boolean** | WINAD-10041: when true, persists the ScheduleIntent WITHOUT syncing the public Games Wanted GamePost(s) for that cell. Sent by the slim editor (/game_posts/new) so composing chips doesn&#39;t publish until the user clicks Publish; the schedules grid omits it and keeps the public post in lockstep with the cell live.  | [optional] |
 
 ### Return type
 
@@ -4064,7 +4068,7 @@ nil (empty response body)
 
 ## delete_schedule_intent
 
-> delete_schedule_intent(schedule_intent_id)
+> delete_schedule_intent(schedule_intent_id, opts)
 
 
 
@@ -4088,10 +4092,13 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 schedule_intent_id = 56 # Integer | 
+opts = {
+  skip_game_post_sync: true # Boolean | WINAD-10041: when true, persists the ScheduleIntent WITHOUT syncing the public Games Wanted GamePost(s) for that cell. Sent by the slim editor (/game_posts/new) so composing chips doesn't publish until the user clicks Publish; the schedules grid omits it and keeps the public post in lockstep with the cell live. 
+}
 
 begin
   
-  api_instance.delete_schedule_intent(schedule_intent_id)
+  api_instance.delete_schedule_intent(schedule_intent_id, opts)
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->delete_schedule_intent: #{e}"
 end
@@ -4101,12 +4108,12 @@ end
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> delete_schedule_intent_with_http_info(schedule_intent_id)
+> <Array(nil, Integer, Hash)> delete_schedule_intent_with_http_info(schedule_intent_id, opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.delete_schedule_intent_with_http_info(schedule_intent_id)
+  data, status_code, headers = api_instance.delete_schedule_intent_with_http_info(schedule_intent_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
@@ -4120,6 +4127,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **schedule_intent_id** | **Integer** |  |  |
+| **skip_game_post_sync** | **Boolean** | WINAD-10041: when true, persists the ScheduleIntent WITHOUT syncing the public Games Wanted GamePost(s) for that cell. Sent by the slim editor (/game_posts/new) so composing chips doesn&#39;t publish until the user clicks Publish; the schedules grid omits it and keeps the public post in lockstep with the cell live.  | [optional] |
 
 ### Return type
 
@@ -18999,6 +19007,7 @@ end
 api_instance = WinthropClient::DefaultApi.new
 schedule_intent_id = 56 # Integer | 
 opts = {
+  skip_game_post_sync: true, # Boolean | WINAD-10041: when true, persists the ScheduleIntent WITHOUT syncing the public Games Wanted GamePost(s) for that cell. Sent by the slim editor (/game_posts/new) so composing chips doesn't publish until the user clicks Publish; the schedules grid omits it and keeps the public post in lockstep with the cell live. 
   update_schedule_intent_request: WinthropClient::UpdateScheduleIntentRequest.new # UpdateScheduleIntentRequest | 
 }
 
@@ -19034,6 +19043,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **schedule_intent_id** | **Integer** |  |  |
+| **skip_game_post_sync** | **Boolean** | WINAD-10041: when true, persists the ScheduleIntent WITHOUT syncing the public Games Wanted GamePost(s) for that cell. Sent by the slim editor (/game_posts/new) so composing chips doesn&#39;t publish until the user clicks Publish; the schedules grid omits it and keeps the public post in lockstep with the cell live.  | [optional] |
 | **update_schedule_intent_request** | [**UpdateScheduleIntentRequest**](UpdateScheduleIntentRequest.md) |  | [optional] |
 
 ### Return type
