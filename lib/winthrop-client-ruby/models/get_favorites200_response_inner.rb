@@ -21,7 +21,7 @@ module WinthropClient
     # The favorited record's ID
     attr_accessor :favoritable_id
 
-    # Category ID (only when detailed=1)
+    # ID of the list (category) this favorite belongs to.
     attr_accessor :favorites_category_id
 
     # Category name (only when detailed=1)

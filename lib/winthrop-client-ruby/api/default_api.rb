@@ -14939,7 +14939,7 @@ module WinthropClient
     # @param id [Integer] The favorite record ID
     # @param update_favorite_request [UpdateFavoriteRequest] 
     # @param [Hash] opts the optional parameters
-    # @return [CreateFavorite201Response]
+    # @return [UpdateFavorite200Response]
     def update_favorite(id, update_favorite_request, opts = {})
       data, _status_code, _headers = update_favorite_with_http_info(id, update_favorite_request, opts)
       data
@@ -14949,7 +14949,7 @@ module WinthropClient
     # @param id [Integer] The favorite record ID
     # @param update_favorite_request [UpdateFavoriteRequest] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(CreateFavorite201Response, Integer, Hash)>] CreateFavorite201Response data, response status code and response headers
+    # @return [Array<(UpdateFavorite200Response, Integer, Hash)>] UpdateFavorite200Response data, response status code and response headers
     def update_favorite_with_http_info(id, update_favorite_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.update_favorite ...'
@@ -14985,7 +14985,7 @@ module WinthropClient
       post_body = opts[:debug_body] || @api_client.object_to_http_body(update_favorite_request)
 
       # return_type
-      return_type = opts[:debug_return_type] || 'CreateFavorite201Response'
+      return_type = opts[:debug_return_type] || 'UpdateFavorite200Response'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']

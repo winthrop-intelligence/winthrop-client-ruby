@@ -19,11 +19,15 @@ module WinthropClient
 
     attr_accessor :favoritable_id
 
+    # The list (category) the favorite was saved to
+    attr_accessor :favorites_category_id
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'favoritable_id' => :'favoritable_id'
+        :'favoritable_id' => :'favoritable_id',
+        :'favorites_category_id' => :'favorites_category_id'
       }
     end
 
@@ -41,13 +45,15 @@ module WinthropClient
     def self.openapi_types
       {
         :'id' => :'Integer',
-        :'favoritable_id' => :'Integer'
+        :'favoritable_id' => :'Integer',
+        :'favorites_category_id' => :'Integer'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'favorites_category_id'
       ])
     end
 
@@ -77,6 +83,10 @@ module WinthropClient
         self.favoritable_id = attributes[:'favoritable_id']
       else
         self.favoritable_id = nil
+      end
+
+      if attributes.key?(:'favorites_category_id')
+        self.favorites_category_id = attributes[:'favorites_category_id']
       end
     end
 
@@ -131,7 +141,8 @@ module WinthropClient
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          favoritable_id == o.favoritable_id
+          favoritable_id == o.favoritable_id &&
+          favorites_category_id == o.favorites_category_id
     end
 
     # @see the `==` method
@@ -143,7 +154,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, favoritable_id].hash
+      [id, favoritable_id, favorites_category_id].hash
     end
 
     # Builds the object from hash

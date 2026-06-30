@@ -759,6 +759,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::UpdateAccountUserActivationRequestUser](docs/UpdateAccountUserActivationRequestUser.md)
  - [WinthropClient::UpdateAccountUserRequest](docs/UpdateAccountUserRequest.md)
  - [WinthropClient::UpdateAccountUserRequestUser](docs/UpdateAccountUserRequestUser.md)
+ - [WinthropClient::UpdateFavorite200Response](docs/UpdateFavorite200Response.md)
  - [WinthropClient::UpdateFavoriteRequest](docs/UpdateFavoriteRequest.md)
  - [WinthropClient::UpdateFavoritesCategoryRequest](docs/UpdateFavoritesCategoryRequest.md)
  - [WinthropClient::UpdateGamePostSearchRequest](docs/UpdateGamePostSearchRequest.md)
