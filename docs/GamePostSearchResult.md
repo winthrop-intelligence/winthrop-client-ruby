@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** | FilSportGamePost ID | [optional] |
+| **publish_group_id** | **String** | Identifies the publish (one \&quot;Post game wanted\&quot; action) this card represents. Shared by every post created in the same publish, so the grouped feed renders one card per publish. Null for legacy posts. | [optional] |
 | **school_id** | **Integer** |  | [optional] |
 | **school_name** | **String** |  | [optional] |
 | **sport_id** | **Integer** |  | [optional] |
@@ -35,6 +36,7 @@ require 'winthrop-client-ruby'
 
 instance = WinthropClient::GamePostSearchResult.new(
   id: null,
+  publish_group_id: null,
   school_id: null,
   school_name: null,
   sport_id: null,

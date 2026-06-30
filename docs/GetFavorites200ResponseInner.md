@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** | The favorite record ID |  |
 | **favoritable_id** | **Integer** | The favorited record&#39;s ID |  |
-| **favorites_category_id** | **Integer** | ID of the list (category) this favorite belongs to. | [optional] |
+| **favorites_category_id** | **Integer** | Category ID (only when detailed&#x3D;1) | [optional] |
 | **category_name** | **String** | Category name (only when detailed&#x3D;1) | [optional] |
 | **name** | **String** | Favoritable record name (only when detailed&#x3D;1) | [optional] |
 | **school_id** | **Integer** | School ID for FilTeam/Deal favorites (only when detailed&#x3D;1) | [optional] |
