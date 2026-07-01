@@ -16,6 +16,7 @@
 | **name_display** | **String** |  | [optional] |
 | **departing** | **Boolean** |  | [optional] |
 | **departing_set_at** | **Time** |  | [optional] |
+| **suppress_departing_set_at** | **Boolean** | Write-only control flag for trusted automation. When true and departing is set to true, WinAD does not stamp departing_set_at, so historical/catch-up departures are not published as current wire events. Ignored on responses. | [optional] |
 | **creation_reason** | **String** |  | [optional] |
 | **creation_reason_updated_at** | **Time** |  | [optional] |
 | **coach** | [**Coach**](Coach.md) |  | [optional] |
@@ -47,6 +48,7 @@ instance = WinthropClient::Position.new(
   name_display: This is a display name,
   departing: false,
   departing_set_at: 2019-01-01T00:00Z,
+  suppress_departing_set_at: false,
   creation_reason: null,
   creation_reason_updated_at: 2019-01-01T00:00Z,
   coach: null,
