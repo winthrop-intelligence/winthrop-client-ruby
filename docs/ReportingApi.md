@@ -8,6 +8,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_coach_history**](ReportingApi.md#get_coach_history) | **GET** /api/v1/reports/coach_history |  |
 | [**get_conferenceships**](ReportingApi.md#get_conferenceships) | **GET** /api/v1/reports/conferenceships |  |
 | [**get_foia_details**](ReportingApi.md#get_foia_details) | **GET** /api/v1/reports/foia_details |  |
+| [**get_foia_follow_up_report**](ReportingApi.md#get_foia_follow_up_report) | **GET** /api/v1/reports/foia_follow_up_report |  |
 | [**get_games**](ReportingApi.md#get_games) | **GET** /api/v1/reports/games |  |
 | [**get_invoices**](ReportingApi.md#get_invoices) | **GET** /api/v1/reports/invoices |  |
 | [**get_school_contract_requests**](ReportingApi.md#get_school_contract_requests) | **GET** /api/v1/reports/school_contract_requests |  |
@@ -316,6 +317,102 @@ end
 ### Return type
 
 **Object**
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_foia_follow_up_report
+
+> <FoiaFollowUpReportResponse> get_foia_follow_up_report(scope, opts)
+
+
+
+Retrieve read-only FOIA follow-up rows for Codex follow-up drafting and FOIA freshness dashboards
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::ReportingApi.new
+scope = 'due_followup_queue' # String | 
+opts = {
+  page: 56, # Integer | Results page to retrieve.
+  per_page: 56, # Integer | Number of rows per page. Values above 200 are capped at 200.
+  sort_by: 'follow_up_date_asc', # String | Sort field with optional _asc or _desc suffix.
+  foia_label_id: 56, # Integer | 
+  school_id: 56, # Integer | 
+  state: 'state_example', # String | School state id, abbreviation, or display name.
+  follow_up_date_lte: Date.parse('2013-10-20'), # Date | 
+  include_not_due: true, # Boolean | 
+  show_processed_today: 'false', # String | 
+  include_direct_contact: true # Boolean | 
+}
+
+begin
+  
+  result = api_instance.get_foia_follow_up_report(scope, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling ReportingApi->get_foia_follow_up_report: #{e}"
+end
+```
+
+#### Using the get_foia_follow_up_report_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FoiaFollowUpReportResponse>, Integer, Hash)> get_foia_follow_up_report_with_http_info(scope, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_foia_follow_up_report_with_http_info(scope, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FoiaFollowUpReportResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling ReportingApi->get_foia_follow_up_report_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **scope** | **String** |  |  |
+| **page** | **Integer** | Results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | Number of rows per page. Values above 200 are capped at 200. | [optional][default to 40] |
+| **sort_by** | **String** | Sort field with optional _asc or _desc suffix. | [optional][default to &#39;follow_up_date_asc&#39;] |
+| **foia_label_id** | **Integer** |  | [optional] |
+| **school_id** | **Integer** |  | [optional] |
+| **state** | **String** | School state id, abbreviation, or display name. | [optional] |
+| **follow_up_date_lte** | **Date** |  | [optional] |
+| **include_not_due** | **Boolean** |  | [optional][default to false] |
+| **show_processed_today** | **String** |  | [optional][default to &#39;false&#39;] |
+| **include_direct_contact** | **Boolean** |  | [optional][default to false] |
+
+### Return type
+
+[**FoiaFollowUpReportResponse**](FoiaFollowUpReportResponse.md)
 
 ### Authorization
 
