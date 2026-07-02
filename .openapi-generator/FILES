@@ -175,6 +175,7 @@ docs/FinancialSearchResult.md
 docs/FinancialSearchResultCollection.md
 docs/FoiaFollowUpContact.md
 docs/FoiaFollowUpGmailSearchHints.md
+docs/FoiaFollowUpNote.md
 docs/FoiaFollowUpRecentReceivedItem.md
 docs/FoiaFollowUpReportMeta.md
 docs/FoiaFollowUpReportResponse.md
@@ -213,8 +214,6 @@ docs/GamePostCollection.md
 docs/GamePostContact.md
 docs/GamePostDetail.md
 docs/GamePostDetailCreatedBy.md
-docs/GamePostGapCountCollection.md
-docs/GamePostGapCountCollectionDataInner.md
 docs/GamePostSearchResult.md
 docs/GamePostSearchResultCollection.md
 docs/GamePostSearchResultContactsInner.md
@@ -621,6 +620,7 @@ lib/winthrop-client-ruby/models/financial_search_result.rb
 lib/winthrop-client-ruby/models/financial_search_result_collection.rb
 lib/winthrop-client-ruby/models/foia_follow_up_contact.rb
 lib/winthrop-client-ruby/models/foia_follow_up_gmail_search_hints.rb
+lib/winthrop-client-ruby/models/foia_follow_up_note.rb
 lib/winthrop-client-ruby/models/foia_follow_up_recent_received_item.rb
 lib/winthrop-client-ruby/models/foia_follow_up_report_meta.rb
 lib/winthrop-client-ruby/models/foia_follow_up_report_response.rb
@@ -659,8 +659,6 @@ lib/winthrop-client-ruby/models/game_post_collection.rb
 lib/winthrop-client-ruby/models/game_post_contact.rb
 lib/winthrop-client-ruby/models/game_post_detail.rb
 lib/winthrop-client-ruby/models/game_post_detail_created_by.rb
-lib/winthrop-client-ruby/models/game_post_gap_count_collection.rb
-lib/winthrop-client-ruby/models/game_post_gap_count_collection_data_inner.rb
 lib/winthrop-client-ruby/models/game_post_search_result.rb
 lib/winthrop-client-ruby/models/game_post_search_result_collection.rb
 lib/winthrop-client-ruby/models/game_post_search_result_contacts_inner.rb
