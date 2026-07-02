@@ -143,7 +143,6 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_game_post**](DefaultApi.md#get_game_post) | **GET** /api/v1/game_posts/{gamePostId} |  |
 | [**get_game_post_search**](DefaultApi.md#get_game_post_search) | **GET** /api/v1/game_post_searches/{gamePostSearchId} |  |
 | [**get_game_post_search_availabilities**](DefaultApi.md#get_game_post_search_availabilities) | **GET** /api/v1/game_post_searches/availabilities |  |
-| [**get_game_post_search_gap_counts**](DefaultApi.md#get_game_post_search_gap_counts) | **GET** /api/v1/game_post_searches/gap_counts |  |
 | [**get_game_post_searches**](DefaultApi.md#get_game_post_searches) | **GET** /api/v1/game_post_searches |  |
 | [**get_game_posts**](DefaultApi.md#get_game_posts) | **GET** /api/v1/game_posts |  |
 | [**get_games**](DefaultApi.md#get_games) | **GET** /api/v1/games |  |
@@ -10742,84 +10741,6 @@ end
 ### Return type
 
 [**GamePostAvailabilityCollection**](GamePostAvailabilityCollection.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## get_game_post_search_gap_counts
-
-> <GamePostGapCountCollection> get_game_post_search_gap_counts(windows, opts)
-
-
-
-Counts-only companion to the game post search for the sidebar schedule-gaps module (WINAD-9904). Accepts the same q filters as the search plus 1-10 date windows, and returns the number of active feed posts overlapping each window — each count equals what applying that window as a date filter to the search would return.
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-windows = ['2026-09-01..2026-09-30'] # Array<String> | 1-10 inclusive date windows as YYYY-MM-DD..YYYY-MM-DD ranges
-opts = {
-  q: { ... } # Object | Ransack query
-}
-
-begin
-  
-  result = api_instance.get_game_post_search_gap_counts(windows, opts)
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_game_post_search_gap_counts: #{e}"
-end
-```
-
-#### Using the get_game_post_search_gap_counts_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<GamePostGapCountCollection>, Integer, Hash)> get_game_post_search_gap_counts_with_http_info(windows, opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.get_game_post_search_gap_counts_with_http_info(windows, opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <GamePostGapCountCollection>
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_game_post_search_gap_counts_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **windows** | [**Array&lt;String&gt;**](String.md) | 1-10 inclusive date windows as YYYY-MM-DD..YYYY-MM-DD ranges |  |
-| **q** | [**Object**](.md) | Ransack query | [optional] |
-
-### Return type
-
-[**GamePostGapCountCollection**](GamePostGapCountCollection.md)
 
 ### Authorization
 
