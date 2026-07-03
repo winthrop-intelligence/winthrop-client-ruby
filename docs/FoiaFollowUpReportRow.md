@@ -51,12 +51,20 @@
 | **all_foia_contacts** | [**Array&lt;FoiaFollowUpContact&gt;**](FoiaFollowUpContact.md) |  | [optional] |
 | **escalation_contacts** | [**Array&lt;FoiaFollowUpContact&gt;**](FoiaFollowUpContact.md) |  | [optional] |
 | **requested_items** | [**Array&lt;FoiaFollowUpRequestedItem&gt;**](FoiaFollowUpRequestedItem.md) |  | [optional] |
+| **pending_count** | **Integer** |  | [optional] |
+| **received_count** | **Integer** |  | [optional] |
+| **not_available_count** | **Integer** |  | [optional] |
+| **accounted_for_count** | **Integer** |  | [optional] |
+| **total_count** | **Integer** |  | [optional] |
+| **completion_percentage** | **Float** | accounted_for_count / total_count rounded to 4 decimal places; 0.0 when total_count is 0 | [optional] |
 | **last_requested_item_received_at** | **Time** |  | [optional] |
 | **received_items_last_7d_count** | **Integer** |  | [optional] |
 | **received_items_last_14d_count** | **Integer** |  | [optional] |
 | **received_items_last_30d_count** | **Integer** |  | [optional] |
 | **received_after_last_followup_count** | **Integer** |  | [optional] |
 | **recent_received_items** | [**Array&lt;FoiaFollowUpRecentReceivedItem&gt;**](FoiaFollowUpRecentReceivedItem.md) |  | [optional] |
+| **foia_notes** | [**Array&lt;FoiaFollowUpNote&gt;**](FoiaFollowUpNote.md) |  | [optional] |
+| **school_notes** | [**Array&lt;FoiaFollowUpNote&gt;**](FoiaFollowUpNote.md) |  | [optional] |
 
 ## Example
 
@@ -111,12 +119,20 @@ instance = WinthropClient::FoiaFollowUpReportRow.new(
   all_foia_contacts: null,
   escalation_contacts: null,
   requested_items: null,
+  pending_count: null,
+  received_count: null,
+  not_available_count: null,
+  accounted_for_count: null,
+  total_count: null,
+  completion_percentage: null,
   last_requested_item_received_at: null,
   received_items_last_7d_count: null,
   received_items_last_14d_count: null,
   received_items_last_30d_count: null,
   received_after_last_followup_count: null,
-  recent_received_items: null
+  recent_received_items: null,
+  foia_notes: null,
+  school_notes: null
 )
 ```
 
