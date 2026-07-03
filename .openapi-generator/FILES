@@ -175,6 +175,7 @@ docs/FinancialSearchResult.md
 docs/FinancialSearchResultCollection.md
 docs/FoiaFollowUpContact.md
 docs/FoiaFollowUpGmailSearchHints.md
+docs/FoiaFollowUpNote.md
 docs/FoiaFollowUpRecentReceivedItem.md
 docs/FoiaFollowUpReportMeta.md
 docs/FoiaFollowUpReportResponse.md
@@ -185,6 +186,9 @@ docs/FoiaLabel.md
 docs/FoiaLabelCollection.md
 docs/FoiaRequest.md
 docs/FoiaRequestCollection.md
+docs/FoiaRequestedItemStatusBreakdownMeta.md
+docs/FoiaRequestedItemStatusBreakdownResponse.md
+docs/FoiaRequestedItemStatusBreakdownRow.md
 docs/GadCohortError.md
 docs/GadCohortSummary.md
 docs/GadCohortSummaryBuyerFilters.md
@@ -213,8 +217,6 @@ docs/GamePostCollection.md
 docs/GamePostContact.md
 docs/GamePostDetail.md
 docs/GamePostDetailCreatedBy.md
-docs/GamePostGapCountCollection.md
-docs/GamePostGapCountCollectionDataInner.md
 docs/GamePostSearchResult.md
 docs/GamePostSearchResultCollection.md
 docs/GamePostSearchResultContactsInner.md
@@ -621,6 +623,7 @@ lib/winthrop-client-ruby/models/financial_search_result.rb
 lib/winthrop-client-ruby/models/financial_search_result_collection.rb
 lib/winthrop-client-ruby/models/foia_follow_up_contact.rb
 lib/winthrop-client-ruby/models/foia_follow_up_gmail_search_hints.rb
+lib/winthrop-client-ruby/models/foia_follow_up_note.rb
 lib/winthrop-client-ruby/models/foia_follow_up_recent_received_item.rb
 lib/winthrop-client-ruby/models/foia_follow_up_report_meta.rb
 lib/winthrop-client-ruby/models/foia_follow_up_report_response.rb
@@ -631,6 +634,9 @@ lib/winthrop-client-ruby/models/foia_label.rb
 lib/winthrop-client-ruby/models/foia_label_collection.rb
 lib/winthrop-client-ruby/models/foia_request.rb
 lib/winthrop-client-ruby/models/foia_request_collection.rb
+lib/winthrop-client-ruby/models/foia_requested_item_status_breakdown_meta.rb
+lib/winthrop-client-ruby/models/foia_requested_item_status_breakdown_response.rb
+lib/winthrop-client-ruby/models/foia_requested_item_status_breakdown_row.rb
 lib/winthrop-client-ruby/models/gad_cohort_error.rb
 lib/winthrop-client-ruby/models/gad_cohort_summary.rb
 lib/winthrop-client-ruby/models/gad_cohort_summary_buyer_filters.rb
@@ -659,8 +665,6 @@ lib/winthrop-client-ruby/models/game_post_collection.rb
 lib/winthrop-client-ruby/models/game_post_contact.rb
 lib/winthrop-client-ruby/models/game_post_detail.rb
 lib/winthrop-client-ruby/models/game_post_detail_created_by.rb
-lib/winthrop-client-ruby/models/game_post_gap_count_collection.rb
-lib/winthrop-client-ruby/models/game_post_gap_count_collection_data_inner.rb
 lib/winthrop-client-ruby/models/game_post_search_result.rb
 lib/winthrop-client-ruby/models/game_post_search_result_collection.rb
 lib/winthrop-client-ruby/models/game_post_search_result_contacts_inner.rb
@@ -884,5 +888,9 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
+spec/models/foia_follow_up_note_spec.rb
+spec/models/foia_requested_item_status_breakdown_meta_spec.rb
+spec/models/foia_requested_item_status_breakdown_response_spec.rb
+spec/models/foia_requested_item_status_breakdown_row_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

@@ -143,7 +143,6 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_game_post**](DefaultApi.md#get_game_post) | **GET** /api/v1/game_posts/{gamePostId} |  |
 | [**get_game_post_search**](DefaultApi.md#get_game_post_search) | **GET** /api/v1/game_post_searches/{gamePostSearchId} |  |
 | [**get_game_post_search_availabilities**](DefaultApi.md#get_game_post_search_availabilities) | **GET** /api/v1/game_post_searches/availabilities |  |
-| [**get_game_post_search_gap_counts**](DefaultApi.md#get_game_post_search_gap_counts) | **GET** /api/v1/game_post_searches/gap_counts |  |
 | [**get_game_post_searches**](DefaultApi.md#get_game_post_searches) | **GET** /api/v1/game_post_searches |  |
 | [**get_game_posts**](DefaultApi.md#get_game_posts) | **GET** /api/v1/game_posts |  |
 | [**get_games**](DefaultApi.md#get_games) | **GET** /api/v1/games |  |
@@ -2297,7 +2296,7 @@ end
 
 
 
-Create or append a note attached to a requested item
+Create or replace the note attached to a requested item. When `append` is true, the note text is appended to any existing note instead of replacing it.
 
 ### Examples
 
@@ -2316,7 +2315,7 @@ WinthropClient.configure do |config|
 end
 
 api_instance = WinthropClient::DefaultApi.new
-requested_item_id = 56 # Integer | ID of requested item whose note should be created or appended
+requested_item_id = 56 # Integer | ID of requested item whose note should be created, replaced, or appended
 requested_item_note_input = WinthropClient::RequestedItemNoteInput.new({ri_note: WinthropClient::RequestedItemNoteInputRiNote.new({note: 'Received employment contract.'})}) # RequestedItemNoteInput | Requested item note content
 
 begin
@@ -2350,7 +2349,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **requested_item_id** | **Integer** | ID of requested item whose note should be created or appended |  |
+| **requested_item_id** | **Integer** | ID of requested item whose note should be created, replaced, or appended |  |
 | **requested_item_note_input** | [**RequestedItemNoteInput**](RequestedItemNoteInput.md) | Requested item note content |  |
 
 ### Return type
@@ -10753,84 +10752,6 @@ end
 - **Accept**: application/json
 
 
-## get_game_post_search_gap_counts
-
-> <GamePostGapCountCollection> get_game_post_search_gap_counts(windows, opts)
-
-
-
-Counts-only companion to the game post search for the sidebar schedule-gaps module (WINAD-9904). Accepts the same q filters as the search plus 1-10 date windows, and returns the number of active feed posts overlapping each window — each count equals what applying that window as a date filter to the search would return.
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-windows = ['2026-09-01..2026-09-30'] # Array<String> | 1-10 inclusive date windows as YYYY-MM-DD..YYYY-MM-DD ranges
-opts = {
-  q: { ... } # Object | Ransack query
-}
-
-begin
-  
-  result = api_instance.get_game_post_search_gap_counts(windows, opts)
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_game_post_search_gap_counts: #{e}"
-end
-```
-
-#### Using the get_game_post_search_gap_counts_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<GamePostGapCountCollection>, Integer, Hash)> get_game_post_search_gap_counts_with_http_info(windows, opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.get_game_post_search_gap_counts_with_http_info(windows, opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <GamePostGapCountCollection>
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_game_post_search_gap_counts_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **windows** | [**Array&lt;String&gt;**](String.md) | 1-10 inclusive date windows as YYYY-MM-DD..YYYY-MM-DD ranges |  |
-| **q** | [**Object**](.md) | Ransack query | [optional] |
-
-### Return type
-
-[**GamePostGapCountCollection**](GamePostGapCountCollection.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
 ## get_game_post_searches
 
 > <GamePostSearchResultCollection> get_game_post_searches(opts)
@@ -12763,7 +12684,7 @@ end
 
 
 
-Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, NET ranking tier, and distance. Omit target_date for an \"Any date\" market browse (no window). Set match_tournaments=true to match schools advertising a ScheduleTournament (MTE) instead of a deal-type post.
+Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, NET ranking tier, T-Rank tier, and distance. Omit target_date for an \"Any date\" market browse (no window). Set match_tournaments=true to match schools advertising a ScheduleTournament (MTE) instead of a deal-type post.
 
 ### Examples
 
@@ -12791,6 +12712,7 @@ opts = {
   deal_types: ['inner_example'], # Array<String> | Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered)
   quality_tier: 'power_4,mid_major', # String | Restrict to one or more subdivision tiers (power_4, mid_major, smaller). Accepts a single tier or a comma-separated list for multi-select (e.g. `power_4,mid_major`); the listed tiers are OR'd together. Omit the param (or pass every tier) for \"Any\" — no constraint. Unrecognized tiers are ignored.
   net_ranking_tier: 'top_50', # String | Restrict to a NET ranking band (latest non-null NET rank for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without a NET rank are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered.
+  torvik_ranking_tier: 'top_50', # String | Restrict to a T-Rank (Bart Torvik) band, mirroring net_ranking_tier (latest non-null 3-year T-Rank average for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without a T-Rank are excluded from every tier. T-Rank is basketball-only, so this filter is ignored for non-basketball sports. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered.
   max_distance_miles: 56, # Integer | Maximum distance (miles) from the user's school. Requires user_school_id to resolve a coordinate origin.
   user_school_id: 56, # Integer | Requesting user's school. Used as the origin for distance filtering and is always excluded from results.
   exclude_school_ids: [37] # Array<Integer> | Additional school IDs to exclude from results (e.g. schools already on the grid)
@@ -12835,6 +12757,7 @@ end
 | **deal_types** | [**Array&lt;String&gt;**](String.md) | Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered) | [optional] |
 | **quality_tier** | **String** | Restrict to one or more subdivision tiers (power_4, mid_major, smaller). Accepts a single tier or a comma-separated list for multi-select (e.g. &#x60;power_4,mid_major&#x60;); the listed tiers are OR&#39;d together. Omit the param (or pass every tier) for \&quot;Any\&quot; — no constraint. Unrecognized tiers are ignored. | [optional] |
 | **net_ranking_tier** | **String** | Restrict to a NET ranking band (latest non-null NET rank for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as &#x60;custom_&lt;min&gt;_&lt;max&gt;&#x60;, where either bound may be blank for an open-ended range (e.g. &#x60;custom_50_&#x60; &#x3D;&gt; 50 and up, &#x60;custom__120&#x60; &#x3D;&gt; up to 120). Schools without a NET rank are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered. | [optional] |
+| **torvik_ranking_tier** | **String** | Restrict to a T-Rank (Bart Torvik) band, mirroring net_ranking_tier (latest non-null 3-year T-Rank average for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as &#x60;custom_&lt;min&gt;_&lt;max&gt;&#x60;, where either bound may be blank for an open-ended range (e.g. &#x60;custom_50_&#x60; &#x3D;&gt; 50 and up, &#x60;custom__120&#x60; &#x3D;&gt; up to 120). Schools without a T-Rank are excluded from every tier. T-Rank is basketball-only, so this filter is ignored for non-basketball sports. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered. | [optional] |
 | **max_distance_miles** | **Integer** | Maximum distance (miles) from the user&#39;s school. Requires user_school_id to resolve a coordinate origin. | [optional] |
 | **user_school_id** | **Integer** | Requesting user&#39;s school. Used as the origin for distance filtering and is always excluded from results. | [optional] |
 | **exclude_school_ids** | [**Array&lt;Integer&gt;**](Integer.md) | Additional school IDs to exclude from results (e.g. schools already on the grid) | [optional] |

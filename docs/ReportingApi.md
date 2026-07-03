@@ -9,6 +9,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_conferenceships**](ReportingApi.md#get_conferenceships) | **GET** /api/v1/reports/conferenceships |  |
 | [**get_foia_details**](ReportingApi.md#get_foia_details) | **GET** /api/v1/reports/foia_details |  |
 | [**get_foia_follow_up_report**](ReportingApi.md#get_foia_follow_up_report) | **GET** /api/v1/reports/foia_follow_up_report |  |
+| [**get_foia_requested_item_status_breakdown**](ReportingApi.md#get_foia_requested_item_status_breakdown) | **GET** /api/v1/reports/foia_requested_item_status_breakdown |  |
 | [**get_games**](ReportingApi.md#get_games) | **GET** /api/v1/reports/games |  |
 | [**get_invoices**](ReportingApi.md#get_invoices) | **GET** /api/v1/reports/invoices |  |
 | [**get_school_contract_requests**](ReportingApi.md#get_school_contract_requests) | **GET** /api/v1/reports/school_contract_requests |  |
@@ -413,6 +414,96 @@ end
 ### Return type
 
 [**FoiaFollowUpReportResponse**](FoiaFollowUpReportResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_foia_requested_item_status_breakdown
+
+> <FoiaRequestedItemStatusBreakdownResponse> get_foia_requested_item_status_breakdown(opts)
+
+
+
+Retrieve read-only grouped requested-item status counts for FOIA freshness reporting widgets
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::ReportingApi.new
+opts = {
+  group_by: 'group_by_example', # String | Comma-separated grouping dimensions. Defaults to both dimensions.
+  period: 'day', # String | Calendar bucket size for the updated_period dimension. Weeks are ISO weeks starting Monday.
+  updated_at_gte: Date.parse('2013-10-20'), # Date | Include items updated on or after this date.
+  updated_at_lte: Date.parse('2013-10-20'), # Date | Include items updated on or before this date.
+  foia_label_id: 56, # Integer | 
+  school_id: 56, # Integer | 
+  state: 'state_example', # String | School state id, abbreviation, or display name.
+  include_direct_contact: true # Boolean | 
+}
+
+begin
+  
+  result = api_instance.get_foia_requested_item_status_breakdown(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling ReportingApi->get_foia_requested_item_status_breakdown: #{e}"
+end
+```
+
+#### Using the get_foia_requested_item_status_breakdown_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FoiaRequestedItemStatusBreakdownResponse>, Integer, Hash)> get_foia_requested_item_status_breakdown_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_foia_requested_item_status_breakdown_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FoiaRequestedItemStatusBreakdownResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling ReportingApi->get_foia_requested_item_status_breakdown_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **group_by** | **String** | Comma-separated grouping dimensions. Defaults to both dimensions. | [optional][default to &#39;updated_period,requestable_type&#39;] |
+| **period** | **String** | Calendar bucket size for the updated_period dimension. Weeks are ISO weeks starting Monday. | [optional][default to &#39;day&#39;] |
+| **updated_at_gte** | **Date** | Include items updated on or after this date. | [optional] |
+| **updated_at_lte** | **Date** | Include items updated on or before this date. | [optional] |
+| **foia_label_id** | **Integer** |  | [optional] |
+| **school_id** | **Integer** |  | [optional] |
+| **state** | **String** | School state id, abbreviation, or display name. | [optional] |
+| **include_direct_contact** | **Boolean** |  | [optional][default to false] |
+
+### Return type
+
+[**FoiaRequestedItemStatusBreakdownResponse**](FoiaRequestedItemStatusBreakdownResponse.md)
 
 ### Authorization
 
