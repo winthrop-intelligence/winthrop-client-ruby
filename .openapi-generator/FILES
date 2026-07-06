@@ -36,6 +36,7 @@ docs/AvailableGameContract.md
 docs/Avatar.md
 docs/AverageCompensation.md
 docs/BulkCreateGamePostSearchesRequest.md
+docs/BulkCreateGamePostSearchesRequestIntentsInner.md
 docs/BulkCreateGamePostSearchesRequestPostsInner.md
 docs/BulkCreateGames201Response.md
 docs/BulkCreateGames422Response.md
@@ -43,6 +44,8 @@ docs/BulkCreateGames422ResponseErrorsValue.md
 docs/BulkCreateGamesRequest.md
 docs/BulkCreateGamesRequestGamesInner.md
 docs/BulkGamePostSearchResult.md
+docs/BulkUpdateGamePostSearchesRequest.md
+docs/BulkUpdateGamePostSearchesRequestPostsInner.md
 docs/COLIAdjusted.md
 docs/Cashflow.md
 docs/CashflowCollection.md
@@ -175,6 +178,7 @@ docs/FinancialSearchResult.md
 docs/FinancialSearchResultCollection.md
 docs/FoiaFollowUpContact.md
 docs/FoiaFollowUpGmailSearchHints.md
+docs/FoiaFollowUpNote.md
 docs/FoiaFollowUpRecentReceivedItem.md
 docs/FoiaFollowUpReportMeta.md
 docs/FoiaFollowUpReportResponse.md
@@ -185,6 +189,12 @@ docs/FoiaLabel.md
 docs/FoiaLabelCollection.md
 docs/FoiaRequest.md
 docs/FoiaRequestCollection.md
+docs/FoiaRequestedItemStatusBreakdownMeta.md
+docs/FoiaRequestedItemStatusBreakdownResponse.md
+docs/FoiaRequestedItemStatusBreakdownRow.md
+docs/FoiaRequestedItemStatusTransitionRow.md
+docs/FoiaRequestedItemStatusTransitionsMeta.md
+docs/FoiaRequestedItemStatusTransitionsResponse.md
 docs/GadCohortError.md
 docs/GadCohortSummary.md
 docs/GadCohortSummaryBuyerFilters.md
@@ -213,8 +223,6 @@ docs/GamePostCollection.md
 docs/GamePostContact.md
 docs/GamePostDetail.md
 docs/GamePostDetailCreatedBy.md
-docs/GamePostGapCountCollection.md
-docs/GamePostGapCountCollectionDataInner.md
 docs/GamePostSearchResult.md
 docs/GamePostSearchResultCollection.md
 docs/GamePostSearchResultContactsInner.md
@@ -240,6 +248,9 @@ docs/GuaranteeBenchmarkError.md
 docs/GuaranteeBenchmarkStats.md
 docs/GuaranteeBenchmarkTable.md
 docs/GuaranteeBenchmarkTier.md
+docs/GuaranteeEconomics.md
+docs/GuaranteeEconomicsError.md
+docs/GuaranteeEconomicsSide.md
 docs/HTTPValidationError.md
 docs/HealthCheckFailure.md
 docs/HealthCheckSuccess.md
@@ -484,6 +495,7 @@ lib/winthrop-client-ruby/models/available_game_contract.rb
 lib/winthrop-client-ruby/models/avatar.rb
 lib/winthrop-client-ruby/models/average_compensation.rb
 lib/winthrop-client-ruby/models/bulk_create_game_post_searches_request.rb
+lib/winthrop-client-ruby/models/bulk_create_game_post_searches_request_intents_inner.rb
 lib/winthrop-client-ruby/models/bulk_create_game_post_searches_request_posts_inner.rb
 lib/winthrop-client-ruby/models/bulk_create_games201_response.rb
 lib/winthrop-client-ruby/models/bulk_create_games422_response.rb
@@ -491,6 +503,8 @@ lib/winthrop-client-ruby/models/bulk_create_games422_response_errors_value.rb
 lib/winthrop-client-ruby/models/bulk_create_games_request.rb
 lib/winthrop-client-ruby/models/bulk_create_games_request_games_inner.rb
 lib/winthrop-client-ruby/models/bulk_game_post_search_result.rb
+lib/winthrop-client-ruby/models/bulk_update_game_post_searches_request.rb
+lib/winthrop-client-ruby/models/bulk_update_game_post_searches_request_posts_inner.rb
 lib/winthrop-client-ruby/models/cashflow.rb
 lib/winthrop-client-ruby/models/cashflow_collection.rb
 lib/winthrop-client-ruby/models/cashflow_entry.rb
@@ -621,6 +635,7 @@ lib/winthrop-client-ruby/models/financial_search_result.rb
 lib/winthrop-client-ruby/models/financial_search_result_collection.rb
 lib/winthrop-client-ruby/models/foia_follow_up_contact.rb
 lib/winthrop-client-ruby/models/foia_follow_up_gmail_search_hints.rb
+lib/winthrop-client-ruby/models/foia_follow_up_note.rb
 lib/winthrop-client-ruby/models/foia_follow_up_recent_received_item.rb
 lib/winthrop-client-ruby/models/foia_follow_up_report_meta.rb
 lib/winthrop-client-ruby/models/foia_follow_up_report_response.rb
@@ -631,6 +646,12 @@ lib/winthrop-client-ruby/models/foia_label.rb
 lib/winthrop-client-ruby/models/foia_label_collection.rb
 lib/winthrop-client-ruby/models/foia_request.rb
 lib/winthrop-client-ruby/models/foia_request_collection.rb
+lib/winthrop-client-ruby/models/foia_requested_item_status_breakdown_meta.rb
+lib/winthrop-client-ruby/models/foia_requested_item_status_breakdown_response.rb
+lib/winthrop-client-ruby/models/foia_requested_item_status_breakdown_row.rb
+lib/winthrop-client-ruby/models/foia_requested_item_status_transition_row.rb
+lib/winthrop-client-ruby/models/foia_requested_item_status_transitions_meta.rb
+lib/winthrop-client-ruby/models/foia_requested_item_status_transitions_response.rb
 lib/winthrop-client-ruby/models/gad_cohort_error.rb
 lib/winthrop-client-ruby/models/gad_cohort_summary.rb
 lib/winthrop-client-ruby/models/gad_cohort_summary_buyer_filters.rb
@@ -659,8 +680,6 @@ lib/winthrop-client-ruby/models/game_post_collection.rb
 lib/winthrop-client-ruby/models/game_post_contact.rb
 lib/winthrop-client-ruby/models/game_post_detail.rb
 lib/winthrop-client-ruby/models/game_post_detail_created_by.rb
-lib/winthrop-client-ruby/models/game_post_gap_count_collection.rb
-lib/winthrop-client-ruby/models/game_post_gap_count_collection_data_inner.rb
 lib/winthrop-client-ruby/models/game_post_search_result.rb
 lib/winthrop-client-ruby/models/game_post_search_result_collection.rb
 lib/winthrop-client-ruby/models/game_post_search_result_contacts_inner.rb
@@ -686,6 +705,9 @@ lib/winthrop-client-ruby/models/guarantee_benchmark_error.rb
 lib/winthrop-client-ruby/models/guarantee_benchmark_stats.rb
 lib/winthrop-client-ruby/models/guarantee_benchmark_table.rb
 lib/winthrop-client-ruby/models/guarantee_benchmark_tier.rb
+lib/winthrop-client-ruby/models/guarantee_economics.rb
+lib/winthrop-client-ruby/models/guarantee_economics_error.rb
+lib/winthrop-client-ruby/models/guarantee_economics_side.rb
 lib/winthrop-client-ruby/models/health_check_failure.rb
 lib/winthrop-client-ruby/models/health_check_success.rb
 lib/winthrop-client-ruby/models/http_validation_error.rb
@@ -884,5 +906,18 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
+spec/models/bulk_create_game_post_searches_request_intents_inner_spec.rb
+spec/models/bulk_update_game_post_searches_request_posts_inner_spec.rb
+spec/models/bulk_update_game_post_searches_request_spec.rb
+spec/models/foia_follow_up_note_spec.rb
+spec/models/foia_requested_item_status_breakdown_meta_spec.rb
+spec/models/foia_requested_item_status_breakdown_response_spec.rb
+spec/models/foia_requested_item_status_breakdown_row_spec.rb
+spec/models/foia_requested_item_status_transition_row_spec.rb
+spec/models/foia_requested_item_status_transitions_meta_spec.rb
+spec/models/foia_requested_item_status_transitions_response_spec.rb
+spec/models/guarantee_economics_error_spec.rb
+spec/models/guarantee_economics_side_spec.rb
+spec/models/guarantee_economics_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

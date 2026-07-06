@@ -6,6 +6,8 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** |  | [optional] |
 | **game_post_id** | **Integer** |  | [optional] |
+| **publish_group_id** | **String** | Identifies the publish (one \&quot;Post game wanted\&quot; action) this post belongs to. Shared by every post in the same publish so the Games Wanted tab can collapse them into one row; null for legacy posts that predate publish groups. | [optional] |
+| **date** | **Date** | The post&#39;s single open day (the &#x60;date&#x60; column, falling back to &#x60;start_date&#x60;). | [optional] |
 | **display_date** | **String** |  | [optional] |
 | **game_types** | **String** |  | [optional] |
 | **description** | **String** |  | [optional] |
@@ -30,6 +32,8 @@ require 'winthrop-client-ruby'
 instance = WinthropClient::TeamScheduleGamePostsGamePostsInner.new(
   id: null,
   game_post_id: null,
+  publish_group_id: null,
+  date: null,
   display_date: null,
   game_types: null,
   description: null,
