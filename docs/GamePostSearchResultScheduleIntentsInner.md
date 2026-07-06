@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** |  | [optional] |
 | **date** | **Date** |  | [optional] |
-| **game_types** | **Array&lt;String&gt;** | Game-type designations for this availability marker, as plain display-name strings (e.g. \&quot;Home &amp; Home\&quot;). Intentionally not the full GameType object — unlike GamePost.game_types, this field carries only the name_display values, so it is typed as an array of strings rather than $ref GameType. | [optional] |
+| **game_types** | **Array&lt;String&gt;** | Deal-type designations for this availability day, as the raw GameType *name* strings (e.g. \&quot;HomeAndHome\&quot;), matching posts[].game_types so the feed card resolves its deal-type chip colors. Never includes \&quot;Pending\&quot;. Typed as an array of strings rather than $ref GameType. | [optional] |
 
 ## Example
 
