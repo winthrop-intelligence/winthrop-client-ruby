@@ -10,6 +10,8 @@
 | **job_url** | **String** |  | [optional] |
 | **posted_at** | **Time** |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
+| **remote_id** | **Integer** |  | [optional] |
+| **expired** | **Boolean** | Raw posts.expired flag; matches what q[expired_eq] filters on and is not derived from expired_at. | [optional] |
 | **school** | [**JobSchool**](JobSchool.md) |  | [optional] |
 | **departments** | [**Array&lt;JobDepartment&gt;**](JobDepartment.md) |  | [optional] |
 | **sports** | [**Array&lt;JobSport&gt;**](JobSport.md) |  | [optional] |
@@ -27,6 +29,8 @@ instance = WinthropClient::Job.new(
   job_url: https://job-url.com,
   posted_at: 2019-01-01T00:00Z,
   created_at: 2019-01-01T00:00Z,
+  remote_id: 12345,
+  expired: false,
   school: null,
   departments: null,
   sports: null,
