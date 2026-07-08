@@ -19,6 +19,9 @@ module WinthropClient
     # Contact coach's full name.
     attr_accessor :name
 
+    # The contact coach's designation (e.g. \"Associate AD\"); null when none is on file.
+    attr_accessor :title
+
     attr_accessor :office
 
     attr_accessor :cell
@@ -35,6 +38,7 @@ module WinthropClient
     def self.attribute_map
       {
         :'name' => :'name',
+        :'title' => :'title',
         :'office' => :'office',
         :'cell' => :'cell',
         :'email' => :'email',
@@ -57,6 +61,7 @@ module WinthropClient
     def self.openapi_types
       {
         :'name' => :'String',
+        :'title' => :'String',
         :'office' => :'GamePostSearchResultContactOffice',
         :'cell' => :'GamePostSearchResultContactCell',
         :'email' => :'GamePostSearchResultContactEmail',
@@ -69,6 +74,7 @@ module WinthropClient
     def self.openapi_nullable
       Set.new([
         :'name',
+        :'title',
         :'scheduling_phone',
         :'scheduling_phone_dial'
       ])
@@ -94,6 +100,10 @@ module WinthropClient
         self.name = attributes[:'name']
       else
         self.name = nil
+      end
+
+      if attributes.key?(:'title')
+        self.title = attributes[:'title']
       end
 
       if attributes.key?(:'office')
@@ -189,6 +199,7 @@ module WinthropClient
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
+          title == o.title &&
           office == o.office &&
           cell == o.cell &&
           email == o.email &&
@@ -205,7 +216,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, office, cell, email, scheduling_phone, scheduling_phone_dial].hash
+      [name, title, office, cell, email, scheduling_phone, scheduling_phone_dial].hash
     end
 
     # Builds the object from hash
