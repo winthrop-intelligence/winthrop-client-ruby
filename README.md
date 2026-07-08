@@ -355,6 +355,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::IntercollegiateApi* | [**create_news_feeds**](docs/IntercollegiateApi.md#create_news_feeds) | **POST** /wi_jobs/news_feeds | 
 *WinthropClient::IntercollegiateApi* | [**get_job_post**](docs/IntercollegiateApi.md#get_job_post) | **GET** /wi_jobs/job_posts/{jobPostId} | 
 *WinthropClient::IntercollegiateApi* | [**get_job_post_interest_leads**](docs/IntercollegiateApi.md#get_job_post_interest_leads) | **GET** /wi_jobs/job_post_interest_leads | 
+*WinthropClient::IntercollegiateApi* | [**get_job_post_salary_benchmark**](docs/IntercollegiateApi.md#get_job_post_salary_benchmark) | **GET** /wi_jobs/job_posts/salary_benchmark | 
 *WinthropClient::IntercollegiateApi* | [**get_job_posts**](docs/IntercollegiateApi.md#get_job_posts) | **GET** /wi_jobs/job_posts | 
 *WinthropClient::IntercollegiateApi* | [**get_news_feeds**](docs/IntercollegiateApi.md#get_news_feeds) | **GET** /wi_jobs/news_feeds | 
 *WinthropClient::MlAthleticApi* | [**health_check**](docs/MlAthleticApi.md#health_check) | **GET** /ml-athletic/health_check | 
@@ -654,6 +655,14 @@ Class | Method | HTTP request | Description
  - [WinthropClient::JobPostInterestLeadCandidate](docs/JobPostInterestLeadCandidate.md)
  - [WinthropClient::JobPostInterestLeadCollection](docs/JobPostInterestLeadCollection.md)
  - [WinthropClient::JobPostInterestLeadJob](docs/JobPostInterestLeadJob.md)
+ - [WinthropClient::JobPostSalaryBenchmark](docs/JobPostSalaryBenchmark.md)
+ - [WinthropClient::JobPostSalaryBenchmarkPost](docs/JobPostSalaryBenchmarkPost.md)
+ - [WinthropClient::JobPostSalaryBenchmarkProvenance](docs/JobPostSalaryBenchmarkProvenance.md)
+ - [WinthropClient::JobPostSalaryBenchmarkSalaryBasisNotes](docs/JobPostSalaryBenchmarkSalaryBasisNotes.md)
+ - [WinthropClient::JobPostSalaryBenchmarkSample](docs/JobPostSalaryBenchmarkSample.md)
+ - [WinthropClient::JobPostSalaryBenchmarkScope](docs/JobPostSalaryBenchmarkScope.md)
+ - [WinthropClient::JobPostSalaryBenchmarkScopeDateWindow](docs/JobPostSalaryBenchmarkScopeDateWindow.md)
+ - [WinthropClient::JobPostSalarySummary](docs/JobPostSalarySummary.md)
  - [WinthropClient::JobSchool](docs/JobSchool.md)
  - [WinthropClient::JobSport](docs/JobSport.md)
  - [WinthropClient::Link](docs/Link.md)

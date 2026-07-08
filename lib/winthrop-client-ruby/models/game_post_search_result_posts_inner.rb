@@ -26,6 +26,9 @@ module WinthropClient
     # Present only with post_details=true.
     attr_accessor :status
 
+    # The publish (one \"Post game wanted\" action) this post belongs to; a group delete on the show page scopes to it. Present only with post_details=true.
+    attr_accessor :publish_group_id
+
     # Present only with post_details=true.
     attr_accessor :start_date
 
@@ -78,6 +81,7 @@ module WinthropClient
         :'date' => :'date',
         :'game_types' => :'game_types',
         :'status' => :'status',
+        :'publish_group_id' => :'publish_group_id',
         :'start_date' => :'start_date',
         :'end_date' => :'end_date',
         :'description' => :'description',
@@ -106,6 +110,7 @@ module WinthropClient
         :'date' => :'Date',
         :'game_types' => :'Array<String>',
         :'status' => :'String',
+        :'publish_group_id' => :'String',
         :'start_date' => :'Date',
         :'end_date' => :'Date',
         :'description' => :'String',
@@ -121,6 +126,7 @@ module WinthropClient
     def self.openapi_nullable
       Set.new([
         :'date',
+        :'publish_group_id',
         :'start_date',
         :'end_date',
         :'description',
@@ -169,6 +175,10 @@ module WinthropClient
 
       if attributes.key?(:'status')
         self.status = attributes[:'status']
+      end
+
+      if attributes.key?(:'publish_group_id')
+        self.publish_group_id = attributes[:'publish_group_id']
       end
 
       if attributes.key?(:'start_date')
@@ -270,6 +280,7 @@ module WinthropClient
           date == o.date &&
           game_types == o.game_types &&
           status == o.status &&
+          publish_group_id == o.publish_group_id &&
           start_date == o.start_date &&
           end_date == o.end_date &&
           description == o.description &&
@@ -289,7 +300,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, date, game_types, status, start_date, end_date, description, game_types_display, expires_on, created_at, can_manage, created_by].hash
+      [id, date, game_types, status, publish_group_id, start_date, end_date, description, game_types_display, expires_on, created_at, can_manage, created_by].hash
     end
 
     # Builds the object from hash
