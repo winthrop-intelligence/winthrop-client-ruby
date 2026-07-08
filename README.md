@@ -59,15 +59,14 @@ require 'winthrop-client-ruby'
 
 # Setup authorization
 WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-  # Configure a proc to get access tokens in lieu of the static access_token configuration
-  config.access_token_getter = -> { 'YOUR TOKEN GETTER PROC' } 
+  # Human users should authenticate with the Winthrop CLI first:
+  #   winthrop login
+  #
+  # The client library asks the CLI for access tokens and never handles refresh
+  # tokens directly.
+  config.access_token_getter = proc {
+    WinthropClient::DeviceToken.access_token
+  }
 end
 
 api_instance = WinthropClient::DefaultApi.new
@@ -821,6 +820,17 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Authorization
 
+Human users should install the Winthrop CLI and run `winthrop login` before using this client. Configure the Ruby client to fetch access tokens from the CLI:
+
+```ruby
+WinthropClient.configure do |config|
+  config.access_token_getter = proc {
+    WinthropClient::DeviceToken.access_token
+  }
+end
+```
+
+Service accounts should continue to use `WinthropClient::RefreshToken` / `client_credentials` flows. Client libraries should consume access tokens only; they should never handle refresh tokens directly.
 
 Authentication schemes defined for the API:
 ### ApiKey
@@ -837,4 +847,3 @@ Authentication schemes defined for the API:
 - **Flow**: application
 - **Authorization URL**: 
 - **Scopes**: N/A
-
