@@ -149,6 +149,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_games**](DefaultApi.md#get_games) | **GET** /api/v1/games |  |
 | [**get_games_available_contracts**](DefaultApi.md#get_games_available_contracts) | **GET** /api/v1/games/available_contracts |  |
 | [**get_guarantee_benchmarks**](DefaultApi.md#get_guarantee_benchmarks) | **GET** /api/v1/guarantee_benchmarks |  |
+| [**get_guarantee_economics**](DefaultApi.md#get_guarantee_economics) | **GET** /api/v1/guarantee_economics |  |
 | [**get_income_report**](DefaultApi.md#get_income_report) | **GET** /api/v1/income_reports/{incomeReportId} |  |
 | [**get_income_reports**](DefaultApi.md#get_income_reports) | **GET** /api/v1/income_reports |  |
 | [**get_job_post**](DefaultApi.md#get_job_post) | **GET** /central_jobs/job_posts/{jobPostId} | Get a job post |
@@ -11157,7 +11158,7 @@ end
 
 
 
-NCAA guarantee benchmarks for the scheduling sidebar (WINAD-9903). Returns, per Opponent Quality tier (power_4 / mid_major / smaller), the median/mean/min/max/count of game guarantees the tier pays out (home/buyer side) and receives (away/seller side) for one sport over the last three completed seasons. Permission filtered via the caller's ability.
+NCAA guarantee benchmarks for the scheduling sidebar (WINAD-9903, tiers reworked in WINAD-10023). Returns, per basketball conference tier (high_major / upper_mid_major / mid_major / low_major), the median/mean/min/max/count of guarantee-game dollars the tier pays out (home/buyer side) and receives (away/seller side) for one basketball sport over the last three completed seasons. Only guarantee games with a recorded amount are counted (excludes tournament/exhibition/neutral contracts, TBD, and $0/unrecorded amounts). Permission filtered via the caller's ability.
 
 ### Examples
 
@@ -11214,6 +11215,82 @@ end
 ### Return type
 
 [**GuaranteeBenchmarkTable**](GuaranteeBenchmarkTable.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_guarantee_economics
+
+> <GuaranteeEconomics> get_guarantee_economics(school_id, sport_id)
+
+
+
+Per-school guarantee economics for scheduling surfaces (WINAD-10005). For one school and basketball sport, returns the median guarantee the school paid as host and received when traveling over the last three completed seasons, each with its sample size and the gad_searches ransack filters that deep-link the Guarantees tab to the exact games behind the median. Permission-critical — callers without guarantee aggregate access receive host/travel as null, indistinguishable from a school with no qualifying games.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | The school to summarize. Missing or non-integer values return a structured error block.
+sport_id = 56 # Integer | The (basketball) sport. Missing, unknown, or non-basketball sports return a structured error block.
+
+begin
+  
+  result = api_instance.get_guarantee_economics(school_id, sport_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_guarantee_economics: #{e}"
+end
+```
+
+#### Using the get_guarantee_economics_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GuaranteeEconomics>, Integer, Hash)> get_guarantee_economics_with_http_info(school_id, sport_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_guarantee_economics_with_http_info(school_id, sport_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GuaranteeEconomics>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_guarantee_economics_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** | The school to summarize. Missing or non-integer values return a structured error block. |  |
+| **sport_id** | **Integer** | The (basketball) sport. Missing, unknown, or non-basketball sports return a structured error block. |  |
+
+### Return type
+
+[**GuaranteeEconomics**](GuaranteeEconomics.md)
 
 ### Authorization
 

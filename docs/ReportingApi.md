@@ -9,6 +9,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_conferenceships**](ReportingApi.md#get_conferenceships) | **GET** /api/v1/reports/conferenceships |  |
 | [**get_foia_details**](ReportingApi.md#get_foia_details) | **GET** /api/v1/reports/foia_details |  |
 | [**get_foia_follow_up_report**](ReportingApi.md#get_foia_follow_up_report) | **GET** /api/v1/reports/foia_follow_up_report |  |
+| [**get_foia_request_followup_history**](ReportingApi.md#get_foia_request_followup_history) | **GET** /api/v1/reports/foia_request_followup_history |  |
 | [**get_foia_requested_item_status_breakdown**](ReportingApi.md#get_foia_requested_item_status_breakdown) | **GET** /api/v1/reports/foia_requested_item_status_breakdown |  |
 | [**get_foia_requested_item_status_transitions**](ReportingApi.md#get_foia_requested_item_status_transitions) | **GET** /api/v1/reports/foia_requested_item_status_transitions |  |
 | [**get_games**](ReportingApi.md#get_games) | **GET** /api/v1/reports/games |  |
@@ -415,6 +416,94 @@ end
 ### Return type
 
 [**FoiaFollowUpReportResponse**](FoiaFollowUpReportResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_foia_request_followup_history
+
+> <FoiaRequestFollowUpHistoryResponse> get_foia_request_followup_history(opts)
+
+
+
+Retrieve read-only FOIA request follow-up history sourced from audit versions. Rows are historical change events for follow-up-related request fields, so one FOIA request can appear multiple times. Label and school fields reflect each request's current associations, and only active requests with unarchived labels are included. When no changed_at filters are supplied, the endpoint defaults to the most recent 366 days.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::ReportingApi.new
+opts = {
+  foia_request_id: 56, # Integer | 
+  school_id: 56, # Integer | 
+  foia_label_id: 56, # Integer | 
+  changed_at_gte: 'changed_at_gte_example', # String | Include changes on or after this ISO-8601 date or datetime. Date-only values start at the beginning of the day. Defaults to 366 days before changed_at_lte or now.
+  changed_at_lte: 'changed_at_lte_example', # String | Include changes on or before this ISO-8601 date or datetime. Date-only values run through the end of the day. Defaults to now; the effective window may span at most 366 days.
+  page: 56, # Integer | 
+  per_page: 56 # Integer | Values above the maximum are capped.
+}
+
+begin
+  
+  result = api_instance.get_foia_request_followup_history(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling ReportingApi->get_foia_request_followup_history: #{e}"
+end
+```
+
+#### Using the get_foia_request_followup_history_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FoiaRequestFollowUpHistoryResponse>, Integer, Hash)> get_foia_request_followup_history_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_foia_request_followup_history_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FoiaRequestFollowUpHistoryResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling ReportingApi->get_foia_request_followup_history_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **foia_request_id** | **Integer** |  | [optional] |
+| **school_id** | **Integer** |  | [optional] |
+| **foia_label_id** | **Integer** |  | [optional] |
+| **changed_at_gte** | **String** | Include changes on or after this ISO-8601 date or datetime. Date-only values start at the beginning of the day. Defaults to 366 days before changed_at_lte or now. | [optional] |
+| **changed_at_lte** | **String** | Include changes on or before this ISO-8601 date or datetime. Date-only values run through the end of the day. Defaults to now; the effective window may span at most 366 days. | [optional] |
+| **page** | **Integer** |  | [optional][default to 1] |
+| **per_page** | **Integer** | Values above the maximum are capped. | [optional][default to 40] |
+
+### Return type
+
+[**FoiaRequestFollowUpHistoryResponse**](FoiaRequestFollowUpHistoryResponse.md)
 
 ### Authorization
 
