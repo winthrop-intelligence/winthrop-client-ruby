@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **sport** | [**GadSchoolSummarySport**](GadSchoolSummarySport.md) |  | [optional] |
-| **your_tier** | **String** | The viewer&#39;s own tier, used to highlight a row. Null when the account has no school. | [optional] |
+| **your_tier** | **String** | The viewer&#39;s own basketball tier, used to highlight a row. Null when the account has no school, no conference membership for the sport, or is independent. | [optional] |
 | **season_window** | **String** |  | [optional] |
 | **seasons** | **Array&lt;Integer&gt;** |  | [optional] |
 | **tiers** | [**Array&lt;GuaranteeBenchmarkTier&gt;**](GuaranteeBenchmarkTier.md) |  | [optional] |
