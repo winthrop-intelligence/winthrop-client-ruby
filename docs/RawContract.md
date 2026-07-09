@@ -23,7 +23,7 @@
 | **migrated_successfully** | **Boolean** |  | [optional] |
 | **migration_failure_reason** | **String** |  | [optional] |
 | **unstract_pdf_text** | **String** |  | [optional] |
-| **unstract_responses_details** | **String** |  | [optional] |
+| **unstract_responses_details** | **Object** |  | [optional] |
 | **layout_preserved_pdf_text** | **String** |  | [optional] |
 | **can_see_admin_view** | **Boolean** | Whether the current user can see the admin view for this contract | [optional] |
 | **can_download** | **Boolean** | Whether the current user can download this contract&#39;s PDF | [optional] |
