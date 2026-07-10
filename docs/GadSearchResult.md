@@ -25,7 +25,7 @@
 | **cancelled** | **Boolean** |  | [optional] |
 | **season_year** | **Integer** |  | [optional] |
 | **game_date** | **Date** |  | [optional] |
-| **game_date_tbd** | **Boolean** |  | [optional] |
+| **game_date_tbd** | **String** |  | [optional] |
 | **raw_contract_id** | **Integer** |  | [optional] |
 | **belongs_to_series** | **Boolean** |  | [optional] |
 | **can_link_home_school** | **Boolean** |  | [optional] |
