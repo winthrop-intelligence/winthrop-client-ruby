@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **adjusted_salary_cents** | **Integer** |  |  |
+| **adjusted_salary_cents** | **Float** |  |  |
 | **city** | **String** |  |  |
 
 ## Example

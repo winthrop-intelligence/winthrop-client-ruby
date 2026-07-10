@@ -10,8 +10,8 @@
 | **school_id** | **Integer** |  |  |
 | **position_sport** | **String** |  |  |
 | **record** | **String** |  | [optional] |
-| **rpi** | **String** |  | [optional] |
-| **net_rank** | **String** |  | [optional] |
+| **rpi** | **Integer** |  | [optional] |
+| **net_rank** | **Integer** |  | [optional] |
 | **ap_rank** | **String** |  | [optional] |
 | **apr_asr** | **String** |  | [optional] |
 | **coach_apr** | **Float** |  | [optional] |

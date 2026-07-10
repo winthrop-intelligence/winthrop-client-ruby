@@ -13,7 +13,7 @@
 | **hometown_city** | **String** |  | [optional] |
 | **hometown_state** | **String** |  | [optional] |
 | **alma_mater_name** | **String** |  | [optional] |
-| **alma_mater_year** | **Integer** |  | [optional] |
+| **alma_mater_year** | **String** |  | [optional] |
 | **twitter_handle** | **String** |  | [optional] |
 | **twitter_verified** | **Boolean** |  |  |
 | **linkedin** | **String** |  | [optional] |
