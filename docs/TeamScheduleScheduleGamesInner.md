@@ -9,6 +9,7 @@
 | **game_date_display** | **String** |  | [optional] |
 | **opponent_id** | **Integer** |  | [optional] |
 | **opponent_name** | **String** |  | [optional] |
+| **opponent_schedule_profile_eligible** | **Boolean** | WINAD-10097 - whether the opponent has a supported D1/D2 schedule profile; when false the name renders as text. | [optional] |
 | **location** | **String** |  | [optional] |
 | **city** | **String** |  | [optional] |
 | **state_name** | **String** |  | [optional] |
@@ -38,6 +39,7 @@ instance = WinthropClient::TeamScheduleScheduleGamesInner.new(
   game_date_display: null,
   opponent_id: null,
   opponent_name: null,
+  opponent_schedule_profile_eligible: null,
   location: null,
   city: null,
   state_name: null,
