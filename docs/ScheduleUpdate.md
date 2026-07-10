@@ -14,6 +14,7 @@
 | **deal_type** | **String** | Representative deal type of the added availabilities; null when none applies | [optional] |
 | **deal_type_count** | **Integer** | Count of added dates of that deal type; only set for buy/sell | [optional] |
 | **updated_at** | **Time** | The school&#39;s most-recent schedule-update timestamp (sort key) |  |
+| **schedule_profile_eligible** | **Boolean** | WINAD-10097 - whether the school has a supported D1/D2 schedule profile. When false the frontend renders the school name as plain text instead of linking to /schedules/:sport/:school_id. |  |
 
 ## Example
 
@@ -30,7 +31,8 @@ instance = WinthropClient::ScheduleUpdate.new(
   dates_added: null,
   deal_type: null,
   deal_type_count: null,
-  updated_at: null
+  updated_at: null,
+  schedule_profile_eligible: null
 )
 ```
 
