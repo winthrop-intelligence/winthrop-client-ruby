@@ -5,11 +5,13 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**create_news_feeds**](IntercollegiateApi.md#create_news_feeds) | **POST** /wi_jobs/news_feeds |  |
+| [**delete_job_post**](IntercollegiateApi.md#delete_job_post) | **DELETE** /wi_jobs/job_posts/{jobPostId} |  |
 | [**get_job_post**](IntercollegiateApi.md#get_job_post) | **GET** /wi_jobs/job_posts/{jobPostId} |  |
 | [**get_job_post_interest_leads**](IntercollegiateApi.md#get_job_post_interest_leads) | **GET** /wi_jobs/job_post_interest_leads |  |
 | [**get_job_post_salary_benchmark**](IntercollegiateApi.md#get_job_post_salary_benchmark) | **GET** /wi_jobs/job_posts/salary_benchmark |  |
 | [**get_job_posts**](IntercollegiateApi.md#get_job_posts) | **GET** /wi_jobs/job_posts |  |
 | [**get_news_feeds**](IntercollegiateApi.md#get_news_feeds) | **GET** /wi_jobs/news_feeds |  |
+| [**sync_job_post**](IntercollegiateApi.md#sync_job_post) | **PUT** /wi_jobs/job_posts/{jobPostId}/sync |  |
 
 
 ## create_news_feeds
@@ -86,6 +88,81 @@ end
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
+
+## delete_job_post
+
+> delete_job_post(job_post_id, updated_at)
+
+
+
+Delete a synced remote job post
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::IntercollegiateApi.new
+job_post_id = 56 # Integer | Remote ID of job post to delete
+updated_at = Time.parse('2013-10-20T19:20:30+01:00') # Time | Timestamp of the remote operation being synced.
+
+begin
+  
+  api_instance.delete_job_post(job_post_id, updated_at)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling IntercollegiateApi->delete_job_post: #{e}"
+end
+```
+
+#### Using the delete_job_post_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_job_post_with_http_info(job_post_id, updated_at)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_job_post_with_http_info(job_post_id, updated_at)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling IntercollegiateApi->delete_job_post_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **job_post_id** | **Integer** | Remote ID of job post to delete |  |
+| **updated_at** | **Time** | Timestamp of the remote operation being synced. |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 
 ## get_job_post
@@ -490,5 +567,81 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## sync_job_post
+
+> <Job> sync_job_post(job_post_id, remote_job_post)
+
+
+
+Sync a remote Central Jobs job post snapshot, creating or updating as needed
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::IntercollegiateApi.new
+job_post_id = 56 # Integer | Central Jobs remote ID of job post to sync
+remote_job_post = WinthropClient::RemoteJobPost.new({id: 11222, title: 'Assistant Coach', link: 'https://example.com/jobs/assistant-coach', work_type: 'full time', description_md: 'Lead practices', salary_summary: '$40,000', school_id: 12345, expired: false, created_at: Time.parse('2019-01-01T00:00Z'), updated_at: Time.parse('2019-01-01T00:00Z'), annual_salary: 40000, min_salary: 35000, max_salary: 45000, pay_period: 'annual', required_years_of_experience: 2}) # RemoteJobPost | 
+
+begin
+  
+  result = api_instance.sync_job_post(job_post_id, remote_job_post)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling IntercollegiateApi->sync_job_post: #{e}"
+end
+```
+
+#### Using the sync_job_post_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Job>, Integer, Hash)> sync_job_post_with_http_info(job_post_id, remote_job_post)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.sync_job_post_with_http_info(job_post_id, remote_job_post)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Job>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling IntercollegiateApi->sync_job_post_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **job_post_id** | **Integer** | Central Jobs remote ID of job post to sync |  |
+| **remote_job_post** | [**RemoteJobPost**](RemoteJobPost.md) |  |  |
+
+### Return type
+
+[**Job**](Job.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 

@@ -14,6 +14,7 @@
 | **last_net_rank** | **Integer** |  | [optional] |
 | **avg_rpi** | **Integer** |  | [optional] |
 | **avg_net_rank** | **Integer** |  | [optional] |
+| **schedule_profile_eligible** | **Boolean** | WINAD-10097 - whether the school has a supported D1/D2 schedule profile. When false the row renders as plain text instead of a link. | [optional] |
 
 ## Example
 
@@ -30,7 +31,8 @@ instance = WinthropClient::GamePostAvailabilityCollectionGroupsInnerPostsInner.n
   last_rpi: null,
   last_net_rank: null,
   avg_rpi: null,
-  avg_net_rank: null
+  avg_net_rank: null,
+  schedule_profile_eligible: null
 )
 ```
 
