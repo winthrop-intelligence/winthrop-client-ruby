@@ -266,7 +266,6 @@ docs/InvoiceReportResult.md
 docs/InvoiceReportRow.md
 docs/Job.md
 docs/JobCandidate.md
-docs/JobCollection.md
 docs/JobDepartment.md
 docs/JobPost.md
 docs/JobPostCollection.md
@@ -322,6 +321,7 @@ docs/RecruitingChartData.md
 docs/RecruitingConferenceEntry.md
 docs/RecruitingPositionEntry.md
 docs/RegenerateRawContractPdf200Response.md
+docs/RemoteJobPost.md
 docs/ReportingApi.md
 docs/RequestedItem.md
 docs/RequestedItemCollection.md
@@ -733,7 +733,6 @@ lib/winthrop-client-ruby/models/invoice_report_result.rb
 lib/winthrop-client-ruby/models/invoice_report_row.rb
 lib/winthrop-client-ruby/models/job.rb
 lib/winthrop-client-ruby/models/job_candidate.rb
-lib/winthrop-client-ruby/models/job_collection.rb
 lib/winthrop-client-ruby/models/job_department.rb
 lib/winthrop-client-ruby/models/job_post.rb
 lib/winthrop-client-ruby/models/job_post_collection.rb
@@ -788,6 +787,7 @@ lib/winthrop-client-ruby/models/recruiting_chart_data.rb
 lib/winthrop-client-ruby/models/recruiting_conference_entry.rb
 lib/winthrop-client-ruby/models/recruiting_position_entry.rb
 lib/winthrop-client-ruby/models/regenerate_raw_contract_pdf200_response.rb
+lib/winthrop-client-ruby/models/remote_job_post.rb
 lib/winthrop-client-ruby/models/requested_item.rb
 lib/winthrop-client-ruby/models/requested_item_collection.rb
 lib/winthrop-client-ruby/models/requested_item_note.rb

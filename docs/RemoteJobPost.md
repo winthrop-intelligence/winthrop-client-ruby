@@ -8,18 +8,18 @@
 | **uid** | **String** |  | [optional] |
 | **title** | **String** |  |  |
 | **link** | **String** |  |  |
-| **work_type** | **String** |  | [optional] |
-| **description_md** | **String** |  | [optional] |
-| **salary_summary** | **String** |  | [optional] |
+| **work_type** | **String** |  |  |
+| **description_md** | **String** |  |  |
+| **salary_summary** | **String** |  |  |
 | **school_id** | **Integer** | Remote school WinAD ID |  |
-| **expired** | **Boolean** |  | [optional] |
-| **created_at** | **Time** |  | [optional] |
+| **expired** | **Boolean** |  |  |
+| **created_at** | **Time** |  |  |
 | **updated_at** | **Time** |  |  |
-| **annual_salary** | **Float** |  | [optional] |
-| **min_salary** | **Float** |  | [optional] |
-| **max_salary** | **Float** |  | [optional] |
-| **pay_period** | **String** |  | [optional] |
-| **required_years_of_experience** | **Integer** |  | [optional] |
+| **annual_salary** | **Float** |  |  |
+| **min_salary** | **Float** |  |  |
+| **max_salary** | **Float** |  |  |
+| **pay_period** | **String** |  |  |
+| **required_years_of_experience** | **Integer** |  |  |
 
 ## Example
 
