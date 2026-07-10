@@ -7,7 +7,7 @@
 | **id** | **Integer** |  | [optional] |
 | **title** | **String** |  | [optional] |
 | **description** | **String** |  | [optional] |
-| **job_url** | **String** |  | [optional] |
+| **url** | **String** |  | [optional] |
 | **posted_at** | **Time** |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **remote_id** | **Integer** |  | [optional] |
@@ -26,7 +26,7 @@ instance = WinthropClient::Job.new(
   id: 1,
   title: John,
   description: John,
-  job_url: https://job-url.com,
+  url: https://job-url.com,
   posted_at: 2019-01-01T00:00Z,
   created_at: 2019-01-01T00:00Z,
   remote_id: 12345,
