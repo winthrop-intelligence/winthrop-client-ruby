@@ -8,6 +8,7 @@
 | **publish_group_id** | **String** | Identifies the publish (one \&quot;Post game wanted\&quot; action) this card represents. Shared by every post created in the same publish, so the grouped feed renders one card per publish. Null for legacy posts. | [optional] |
 | **school_id** | **Integer** |  | [optional] |
 | **school_name** | **String** |  | [optional] |
+| **schedule_profile_eligible** | **Boolean** | WINAD-10097 - whether the posting school has a supported D1/D2 schedule profile. When false the card omits its \&quot;View school profile\&quot; / school-name links to /schedules/:sport/:school_id. | [optional] |
 | **sport_id** | **Integer** |  | [optional] |
 | **sport_name** | **String** |  | [optional] |
 | **start_date** | **Date** |  | [optional] |
@@ -39,6 +40,7 @@ instance = WinthropClient::GamePostSearchResult.new(
   publish_group_id: null,
   school_id: null,
   school_name: null,
+  schedule_profile_eligible: null,
   sport_id: null,
   sport_name: null,
   start_date: null,
