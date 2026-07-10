@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** |  |  |
 | **favoritable_id** | **Integer** |  |  |
+| **favorites_category_id** | **Integer** | The list (category) the favorite was saved to | [optional] |
 
 ## Example
 
@@ -14,7 +15,8 @@ require 'winthrop-client-ruby'
 
 instance = WinthropClient::CreateFavorite201Response.new(
   id: null,
-  favoritable_id: null
+  favoritable_id: null,
+  favorites_category_id: null
 )
 ```
 

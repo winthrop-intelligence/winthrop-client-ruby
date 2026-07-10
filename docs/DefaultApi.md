@@ -8,7 +8,9 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**average_division_comp**](DefaultApi.md#average_division_comp) | **GET** /api/v1/compensations/average_division_comp |  |
 | [**average_school_comp**](DefaultApi.md#average_school_comp) | **GET** /api/v1/compensations/average_school_comp |  |
 | [**average_subdivision_comp**](DefaultApi.md#average_subdivision_comp) | **GET** /api/v1/compensations/average_subdivision_comp |  |
+| [**bulk_create_game_post_searches**](DefaultApi.md#bulk_create_game_post_searches) | **POST** /api/v1/game_post_searches/bulk_create |  |
 | [**bulk_create_games**](DefaultApi.md#bulk_create_games) | **POST** /api/v1/games/bulk |  |
+| [**bulk_update_game_post_searches**](DefaultApi.md#bulk_update_game_post_searches) | **POST** /api/v1/game_post_searches/bulk_update |  |
 | [**compare_coli**](DefaultApi.md#compare_coli) | **GET** /api/v1/schools/compare_coli |  |
 | [**create_account_user**](DefaultApi.md#create_account_user) | **POST** /api/v1/account_users |  |
 | [**create_cashflow**](DefaultApi.md#create_cashflow) | **POST** /api/v1/cashflows |  |
@@ -24,10 +26,13 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**create_game_post**](DefaultApi.md#create_game_post) | **POST** /api/v1/game_posts |  |
 | [**create_game_post_search**](DefaultApi.md#create_game_post_search) | **POST** /api/v1/game_post_searches |  |
 | [**create_job_post**](DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post |
+| [**create_mcp_event**](DefaultApi.md#create_mcp_event) | **POST** /api/v1/mcp_events |  |
 | [**create_note**](DefaultApi.md#create_note) | **POST** /api/v1/notes |  |
+| [**create_page_view**](DefaultApi.md#create_page_view) | **POST** /api/v1/page_views |  |
 | [**create_password_reset**](DefaultApi.md#create_password_reset) | **POST** /api/v1/password_reset |  |
 | [**create_position**](DefaultApi.md#create_position) | **POST** /api/v1/positions |  |
 | [**create_requested_item**](DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items |  |
+| [**create_requested_item_ri_note**](DefaultApi.md#create_requested_item_ri_note) | **POST** /api/v1/requested_items/{requestedItemId}/ri_note |  |
 | [**create_schedule_intent**](DefaultApi.md#create_schedule_intent) | **POST** /api/v1/schedule_intents |  |
 | [**create_schedule_tournament**](DefaultApi.md#create_schedule_tournament) | **POST** /api/v1/schedule_tournaments |  |
 | [**create_school_group**](DefaultApi.md#create_school_group) | **POST** /api/v1/school_groups |  |
@@ -118,6 +123,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_filter_options_all_schools**](DefaultApi.md#get_filter_options_all_schools) | **GET** /api/v1/filter_options/all_schools |  |
 | [**get_filter_options_conferences**](DefaultApi.md#get_filter_options_conferences) | **GET** /api/v1/filter_options/conferences |  |
 | [**get_filter_options_deal_types**](DefaultApi.md#get_filter_options_deal_types) | **GET** /api/v1/filter_options/deal_types |  |
+| [**get_filter_options_foia_requestable_deal_types**](DefaultApi.md#get_filter_options_foia_requestable_deal_types) | **GET** /api/v1/filter_options/foia_requestable_deal_types |  |
 | [**get_filter_options_game_types**](DefaultApi.md#get_filter_options_game_types) | **GET** /api/v1/filter_options/game_types |  |
 | [**get_filter_options_school_groups**](DefaultApi.md#get_filter_options_school_groups) | **GET** /api/v1/filter_options/school_groups |  |
 | [**get_filter_options_schools**](DefaultApi.md#get_filter_options_schools) | **GET** /api/v1/filter_options/schools |  |
@@ -137,10 +143,13 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_game_contracts**](DefaultApi.md#get_game_contracts) | **GET** /api/v1/game_contracts |  |
 | [**get_game_post**](DefaultApi.md#get_game_post) | **GET** /api/v1/game_posts/{gamePostId} |  |
 | [**get_game_post_search**](DefaultApi.md#get_game_post_search) | **GET** /api/v1/game_post_searches/{gamePostSearchId} |  |
+| [**get_game_post_search_availabilities**](DefaultApi.md#get_game_post_search_availabilities) | **GET** /api/v1/game_post_searches/availabilities |  |
 | [**get_game_post_searches**](DefaultApi.md#get_game_post_searches) | **GET** /api/v1/game_post_searches |  |
 | [**get_game_posts**](DefaultApi.md#get_game_posts) | **GET** /api/v1/game_posts |  |
 | [**get_games**](DefaultApi.md#get_games) | **GET** /api/v1/games |  |
 | [**get_games_available_contracts**](DefaultApi.md#get_games_available_contracts) | **GET** /api/v1/games/available_contracts |  |
+| [**get_guarantee_benchmarks**](DefaultApi.md#get_guarantee_benchmarks) | **GET** /api/v1/guarantee_benchmarks |  |
+| [**get_guarantee_economics**](DefaultApi.md#get_guarantee_economics) | **GET** /api/v1/guarantee_economics |  |
 | [**get_income_report**](DefaultApi.md#get_income_report) | **GET** /api/v1/income_reports/{incomeReportId} |  |
 | [**get_income_reports**](DefaultApi.md#get_income_reports) | **GET** /api/v1/income_reports |  |
 | [**get_job_post**](DefaultApi.md#get_job_post) | **GET** /central_jobs/job_posts/{jobPostId} | Get a job post |
@@ -149,19 +158,20 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_ncaa_financial_report_status**](DefaultApi.md#get_ncaa_financial_report_status) | **GET** /api/v1/ncaa_financial_report_statuses/{ncaaFinancialReportStatusId} |  |
 | [**get_ncaa_financial_report_statuses**](DefaultApi.md#get_ncaa_financial_report_statuses) | **GET** /api/v1/ncaa_financial_report_statuses |  |
 | [**get_new_account_user**](DefaultApi.md#get_new_account_user) | **GET** /api/v1/account_users/new |  |
-| [**get_news_feed**](DefaultApi.md#get_news_feed) | **GET** /wi_jobs/news_feeds/{newsFeedId} | Get a news feed |
 | [**get_note**](DefaultApi.md#get_note) | **GET** /api/v1/notes |  |
 | [**get_position**](DefaultApi.md#get_position) | **GET** /api/v1/positions/{positionId} |  |
 | [**get_positions**](DefaultApi.md#get_positions) | **GET** /api/v1/positions |  |
 | [**get_raw_contract**](DefaultApi.md#get_raw_contract) | **GET** /api/v1/raw_contracts/{raw_contractId} |  |
 | [**get_raw_contracts**](DefaultApi.md#get_raw_contracts) | **GET** /api/v1/raw_contracts |  |
 | [**get_requested_item**](DefaultApi.md#get_requested_item) | **GET** /api/v1/requested_items/{requestedItemId} |  |
+| [**get_requested_item_ri_note**](DefaultApi.md#get_requested_item_ri_note) | **GET** /api/v1/requested_items/{requestedItemId}/ri_note |  |
 | [**get_requested_items**](DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items |  |
 | [**get_revenue_search**](DefaultApi.md#get_revenue_search) | **GET** /api/v1/revenue_searches/{revenueSearchId} |  |
 | [**get_revenue_searches**](DefaultApi.md#get_revenue_searches) | **GET** /api/v1/revenue_searches |  |
 | [**get_schedule_grid**](DefaultApi.md#get_schedule_grid) | **GET** /api/v1/schedule_grid/{sport_name} |  |
 | [**get_schedule_grid_available_schools**](DefaultApi.md#get_schedule_grid_available_schools) | **GET** /api/v1/schedule_grid/{sport_name}/available_schools |  |
 | [**get_schedule_grid_completed**](DefaultApi.md#get_schedule_grid_completed) | **GET** /api/v1/schedule_grid/{sport_name}/completed |  |
+| [**get_schedule_updates**](DefaultApi.md#get_schedule_updates) | **GET** /api/v1/schedule_updates |  |
 | [**get_school**](DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} |  |
 | [**get_school_alternate_names**](DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names |  |
 | [**get_school_game_contracts**](DefaultApi.md#get_school_game_contracts) | **GET** /api/v1/schools/{schoolId}/game_contracts |  |
@@ -575,6 +585,80 @@ end
 - **Accept**: application/json
 
 
+## bulk_create_game_post_searches
+
+> <BulkGamePostSearchResult> bulk_create_game_post_searches(bulk_create_game_post_searches_request)
+
+
+
+WINAD-9908: publish the slim-create flow as one GamePost per (open date × deal type) in a single request. Created in one transaction (a bad entry rolls the whole batch back) and a single consolidated alert fires for the batch instead of one email per post. Each post is a single day (end_date is forced nil server-side). WINAD-10067: the slim editor no longer writes grid markers live — it stages availability/pending edits and commits them here. In the same transaction the school's ScheduleIntents are reconciled to `intents` for the `season_start`..`season_end` window, and any Active post in that window whose day is no longer open is removed. WINAD-10093: the feed renders a card's dates from ScheduleIntents, so this also guarantees a non-Pending ScheduleIntent for every posted open day (even when `intents` is omitted) and protects those days from the intent reconciliation.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+bulk_create_game_post_searches_request = WinthropClient::BulkCreateGamePostSearchesRequest.new({posts: [WinthropClient::BulkCreateGamePostSearchesRequestPostsInner.new({sport_id: 37})]}) # BulkCreateGamePostSearchesRequest | 
+
+begin
+  
+  result = api_instance.bulk_create_game_post_searches(bulk_create_game_post_searches_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->bulk_create_game_post_searches: #{e}"
+end
+```
+
+#### Using the bulk_create_game_post_searches_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<BulkGamePostSearchResult>, Integer, Hash)> bulk_create_game_post_searches_with_http_info(bulk_create_game_post_searches_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.bulk_create_game_post_searches_with_http_info(bulk_create_game_post_searches_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <BulkGamePostSearchResult>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->bulk_create_game_post_searches_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **bulk_create_game_post_searches_request** | [**BulkCreateGamePostSearchesRequest**](BulkCreateGamePostSearchesRequest.md) |  |  |
+
+### Return type
+
+[**BulkGamePostSearchResult**](BulkGamePostSearchResult.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## bulk_create_games
 
 > <BulkCreateGames201Response> bulk_create_games(bulk_create_games_request)
@@ -638,6 +722,80 @@ end
 ### Return type
 
 [**BulkCreateGames201Response**](BulkCreateGames201Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## bulk_update_game_post_searches
+
+> <BulkGamePostSearchResult> bulk_update_game_post_searches(bulk_update_game_post_searches_request)
+
+
+
+WINAD-10067: save an edited Games Wanted card (publish group). Reconciles the card's Active posts to the submitted open days and shared message: a day already on this card is updated (id kept), a day on another card is left alone, a genuinely-new day is created under this publish_group_id, and a day the card no longer lists is deleted. Scoped to the caller's own school + group; fires no alert (an edit must not re-blast the instant Games Wanted email). WINAD-10067: the slim editor stages its grid edits and commits them here too — in the same transaction the school's ScheduleIntents are reconciled to `intents` for the `season_start`..`season_end` window, protecting days another card still owns so an edit never clears a sibling card's markers. WINAD-10093: this card's own posted days are protected too, and a non-Pending ScheduleIntent is guaranteed for each. Dropping a day from the card deletes only its post — the day's ScheduleIntent (availability) stays unless the grid itself cleared it.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+bulk_update_game_post_searches_request = WinthropClient::BulkUpdateGamePostSearchesRequest.new({publish_group_id: 'publish_group_id_example', posts: [WinthropClient::BulkUpdateGamePostSearchesRequestPostsInner.new({sport_id: 37, date: Date.today})]}) # BulkUpdateGamePostSearchesRequest | 
+
+begin
+  
+  result = api_instance.bulk_update_game_post_searches(bulk_update_game_post_searches_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->bulk_update_game_post_searches: #{e}"
+end
+```
+
+#### Using the bulk_update_game_post_searches_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<BulkGamePostSearchResult>, Integer, Hash)> bulk_update_game_post_searches_with_http_info(bulk_update_game_post_searches_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.bulk_update_game_post_searches_with_http_info(bulk_update_game_post_searches_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <BulkGamePostSearchResult>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->bulk_update_game_post_searches_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **bulk_update_game_post_searches_request** | [**BulkUpdateGamePostSearchesRequest**](BulkUpdateGamePostSearchesRequest.md) |  |  |
+
+### Return type
+
+[**BulkGamePostSearchResult**](BulkGamePostSearchResult.md)
 
 ### Authorization
 
@@ -1773,6 +1931,80 @@ end
 - **Accept**: application/json
 
 
+## create_mcp_event
+
+> <McpEvent> create_mcp_event(create_mcp_event_request)
+
+
+
+Ingest an MCP (Model Context Protocol) event for the current user. The request is idempotent per user on `event_uuid` - re-submitting the same `event_uuid` returns the previously stored event with a 200 status instead of creating a duplicate.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_mcp_event_request = WinthropClient::CreateMcpEventRequest.new({mcp_event: WinthropClient::CreateMcpEventRequestMcpEvent.new({event_uuid: 'event_uuid_example', event_name: 'event_name_example'})}) # CreateMcpEventRequest | 
+
+begin
+  
+  result = api_instance.create_mcp_event(create_mcp_event_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_mcp_event: #{e}"
+end
+```
+
+#### Using the create_mcp_event_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<McpEvent>, Integer, Hash)> create_mcp_event_with_http_info(create_mcp_event_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_mcp_event_with_http_info(create_mcp_event_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <McpEvent>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_mcp_event_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_mcp_event_request** | [**CreateMcpEventRequest**](CreateMcpEventRequest.md) |  |  |
+
+### Return type
+
+[**McpEvent**](McpEvent.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_note
 
 > <Note> create_note(create_note_request)
@@ -1836,6 +2068,80 @@ end
 ### Return type
 
 [**Note**](Note.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_page_view
+
+> <PageView> create_page_view(create_page_view_request)
+
+
+
+Record a page view for the current user
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_page_view_request = WinthropClient::CreatePageViewRequest.new({route: 'route_example'}) # CreatePageViewRequest | 
+
+begin
+  
+  result = api_instance.create_page_view(create_page_view_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_page_view: #{e}"
+end
+```
+
+#### Using the create_page_view_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PageView>, Integer, Hash)> create_page_view_with_http_info(create_page_view_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_page_view_with_http_info(create_page_view_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PageView>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_page_view_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_page_view_request** | [**CreatePageViewRequest**](CreatePageViewRequest.md) |  |  |
+
+### Return type
+
+[**PageView**](PageView.md)
 
 ### Authorization
 
@@ -2048,6 +2354,82 @@ end
 ### Return type
 
 [**RequestedItem**](RequestedItem.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_requested_item_ri_note
+
+> <RequestedItemNoteResponse> create_requested_item_ri_note(requested_item_id, requested_item_note_input)
+
+
+
+Create or replace the note attached to a requested item. When `append` is true, the note text is appended to any existing note instead of replacing it.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+requested_item_id = 56 # Integer | ID of requested item whose note should be created, replaced, or appended
+requested_item_note_input = WinthropClient::RequestedItemNoteInput.new({ri_note: WinthropClient::RequestedItemNoteInputRiNote.new({note: 'Received employment contract.'})}) # RequestedItemNoteInput | Requested item note content
+
+begin
+  
+  result = api_instance.create_requested_item_ri_note(requested_item_id, requested_item_note_input)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_requested_item_ri_note: #{e}"
+end
+```
+
+#### Using the create_requested_item_ri_note_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RequestedItemNoteResponse>, Integer, Hash)> create_requested_item_ri_note_with_http_info(requested_item_id, requested_item_note_input)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_requested_item_ri_note_with_http_info(requested_item_id, requested_item_note_input)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RequestedItemNoteResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_requested_item_ri_note_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **requested_item_id** | **Integer** | ID of requested item whose note should be created, replaced, or appended |  |
+| **requested_item_note_input** | [**RequestedItemNoteInput**](RequestedItemNoteInput.md) | Requested item note content |  |
+
+### Return type
+
+[**RequestedItemNoteResponse**](RequestedItemNoteResponse.md)
 
 ### Authorization
 
@@ -3393,7 +3775,7 @@ nil (empty response body)
 
 
 
-Delete a game post
+Delete a game post. WINAD-10093: removes only this post (the caller scopes a card delete to its publish group). The cell's ScheduleIntent is left intact — the feed and /schedules grid source displayed availability from ScheduleIntents, so a deleted card never shrinks a sibling card's dates.
 
 ### Examples
 
@@ -8849,6 +9231,77 @@ This endpoint does not need any parameter.
 - **Accept**: application/json
 
 
+## get_filter_options_foia_requestable_deal_types
+
+> <Array<IdName>> get_filter_options_foia_requestable_deal_types
+
+
+
+Retrieve all FOIA-requestable deal types, including those hidden from public deal filtering (e.g. Athletics Software, Travel, Executive Search)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_filter_options_foia_requestable_deal_types
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_filter_options_foia_requestable_deal_types: #{e}"
+end
+```
+
+#### Using the get_filter_options_foia_requestable_deal_types_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<IdName>>, Integer, Hash)> get_filter_options_foia_requestable_deal_types_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_filter_options_foia_requestable_deal_types_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<IdName>>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_filter_options_foia_requestable_deal_types_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Array&lt;IdName&gt;**](IdName.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_filter_options_game_types
 
 > <Array<GameType>> get_filter_options_game_types
@@ -10298,6 +10751,82 @@ end
 - **Accept**: application/json
 
 
+## get_game_post_search_availabilities
+
+> <GamePostAvailabilityCollection> get_game_post_search_availabilities(opts)
+
+
+
+Full-scan companion to the game post search for the sidebar \"Posted Availabilities\" module. Scans every active post for the sport (q[sport_name_eq] is required), buckets them by deal type, and returns each bucket's total post count plus its most-recent posts deduped by school (capped server-side). Each post carries the school's most recent posted date for that bucket (WINAD-9908 single `date`, falling back to start_date when empty).
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  q: { ... } # Object | Ransack query
+}
+
+begin
+  
+  result = api_instance.get_game_post_search_availabilities(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_game_post_search_availabilities: #{e}"
+end
+```
+
+#### Using the get_game_post_search_availabilities_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GamePostAvailabilityCollection>, Integer, Hash)> get_game_post_search_availabilities_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_game_post_search_availabilities_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GamePostAvailabilityCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_game_post_search_availabilities_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+
+### Return type
+
+[**GamePostAvailabilityCollection**](GamePostAvailabilityCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_game_post_searches
 
 > <GamePostSearchResultCollection> get_game_post_searches(opts)
@@ -10326,7 +10855,9 @@ api_instance = WinthropClient::DefaultApi.new
 opts = {
   page: 56, # Integer | results page to retrieve.
   per_page: 56, # Integer | number of results per page.
-  q: { ... } # Object | Ransack query
+  q: { ... }, # Object | Ransack query
+  group_by_school: true, # Boolean | When true, returns one row per school+sport (the school's newest post as the representative, newest school first) and pagination counts schools. When false/absent, returns the per-post listing.
+  post_details: true # Boolean | When true, each posts[] entry is enriched with the per-post detail fields (status, start_date, end_date, description, game_types_display, expires_on, created_at, can_manage, created_by) and the result carries the shared school+sport contacts[]. Used by the school+sport show page. When false/absent, posts[] stays lean (id, date, game_types only).
 }
 
 begin
@@ -10363,6 +10894,8 @@ end
 | **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
 | **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query | [optional] |
+| **group_by_school** | **Boolean** | When true, returns one row per school+sport (the school&#39;s newest post as the representative, newest school first) and pagination counts schools. When false/absent, returns the per-post listing. | [optional] |
+| **post_details** | **Boolean** | When true, each posts[] entry is enriched with the per-post detail fields (status, start_date, end_date, description, game_types_display, expires_on, created_at, can_manage, created_by) and the result carries the shared school+sport contacts[]. Used by the school+sport show page. When false/absent, posts[] stays lean (id, date, game_types only). | [optional] |
 
 ### Return type
 
@@ -10544,7 +11077,7 @@ end
 
 
 
-List GameContracts compatible with the given sport + school pair, for the Edit Game sheet's Contract picker. Matches either direction (home=A,away=B or home=B,away=A). Uses `GameContract.filtered_for_game`. Capped at 50 rows, ordered by game date descending. 
+List GameContracts compatible with the given sport + school pair, for the Edit Game sheet's Contract picker. Matches either direction (home=A,away=B or home=B,away=A). Uses `GameContract.filtered_for_game`. Capped at 50 rows, ordered by game date descending. Rows are permission-filtered to contracts the caller's ability can view. Requires sport_id plus at least one of home_school_id/away_school_id — broader queries return an empty list. 
 
 ### Examples
 
@@ -10607,6 +11140,156 @@ end
 ### Return type
 
 [**Array&lt;AvailableGameContract&gt;**](AvailableGameContract.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_guarantee_benchmarks
+
+> <GuaranteeBenchmarkTable> get_guarantee_benchmarks(sport_id)
+
+
+
+NCAA guarantee benchmarks for the scheduling sidebar (WINAD-9903, tiers reworked in WINAD-10023). Returns, per basketball conference tier (high_major / upper_mid_major / mid_major / low_major), the median/mean/min/max/count of guarantee-game dollars the tier pays out (home/buyer side) and receives (away/seller side) for one basketball sport over the last three completed seasons. Only guarantee games with a recorded amount are counted (excludes tournament/exhibition/neutral contracts, TBD, and $0/unrecorded amounts). Permission filtered via the caller's ability.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+sport_id = 56 # Integer | The sport to benchmark. Required; a missing or unknown sport returns a structured error block instead of tier data.
+
+begin
+  
+  result = api_instance.get_guarantee_benchmarks(sport_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_guarantee_benchmarks: #{e}"
+end
+```
+
+#### Using the get_guarantee_benchmarks_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GuaranteeBenchmarkTable>, Integer, Hash)> get_guarantee_benchmarks_with_http_info(sport_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_guarantee_benchmarks_with_http_info(sport_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GuaranteeBenchmarkTable>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_guarantee_benchmarks_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **sport_id** | **Integer** | The sport to benchmark. Required; a missing or unknown sport returns a structured error block instead of tier data. |  |
+
+### Return type
+
+[**GuaranteeBenchmarkTable**](GuaranteeBenchmarkTable.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_guarantee_economics
+
+> <GuaranteeEconomics> get_guarantee_economics(school_id, sport_id)
+
+
+
+Per-school guarantee economics for scheduling surfaces (WINAD-10005). For one school and basketball sport, returns the median guarantee the school paid as host and received when traveling over the last three completed seasons, each with its sample size and the gad_searches ransack filters that deep-link the Guarantees tab to the exact games behind the median. Permission-critical — callers without guarantee aggregate access receive host/travel as null, indistinguishable from a school with no qualifying games.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | The school to summarize. Missing or non-integer values return a structured error block.
+sport_id = 56 # Integer | The (basketball) sport. Missing, unknown, or non-basketball sports return a structured error block.
+
+begin
+  
+  result = api_instance.get_guarantee_economics(school_id, sport_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_guarantee_economics: #{e}"
+end
+```
+
+#### Using the get_guarantee_economics_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GuaranteeEconomics>, Integer, Hash)> get_guarantee_economics_with_http_info(school_id, sport_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_guarantee_economics_with_http_info(school_id, sport_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GuaranteeEconomics>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_guarantee_economics_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** | The school to summarize. Missing or non-integer values return a structured error block. |  |
+| **sport_id** | **Integer** | The (basketball) sport. Missing, unknown, or non-basketball sports return a structured error block. |  |
+
+### Return type
+
+[**GuaranteeEconomics**](GuaranteeEconomics.md)
 
 ### Authorization
 
@@ -11222,80 +11905,6 @@ This endpoint does not need any parameter.
 - **Accept**: application/json
 
 
-## get_news_feed
-
-> <NewsFeed> get_news_feed(news_feed_id)
-
-Get a news feed
-
-Get a news feed
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-news_feed_id = 56 # Integer | ID of news feed to return
-
-begin
-  # Get a news feed
-  result = api_instance.get_news_feed(news_feed_id)
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_news_feed: #{e}"
-end
-```
-
-#### Using the get_news_feed_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<NewsFeed>, Integer, Hash)> get_news_feed_with_http_info(news_feed_id)
-
-```ruby
-begin
-  # Get a news feed
-  data, status_code, headers = api_instance.get_news_feed_with_http_info(news_feed_id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <NewsFeed>
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_news_feed_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **news_feed_id** | **Integer** | ID of news feed to return |  |
-
-### Return type
-
-[**NewsFeed**](NewsFeed.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
 ## get_note
 
 > <Note> get_note(notable_type, notable_id)
@@ -11754,6 +12363,80 @@ end
 - **Accept**: application/json
 
 
+## get_requested_item_ri_note
+
+> <RequestedItemNoteResponse> get_requested_item_ri_note(requested_item_id)
+
+
+
+Retrieve the note attached to a requested item
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+requested_item_id = 56 # Integer | ID of requested item whose note should be retrieved
+
+begin
+  
+  result = api_instance.get_requested_item_ri_note(requested_item_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_requested_item_ri_note: #{e}"
+end
+```
+
+#### Using the get_requested_item_ri_note_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RequestedItemNoteResponse>, Integer, Hash)> get_requested_item_ri_note_with_http_info(requested_item_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_requested_item_ri_note_with_http_info(requested_item_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RequestedItemNoteResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_requested_item_ri_note_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **requested_item_id** | **Integer** | ID of requested item whose note should be retrieved |  |
+
+### Return type
+
+[**RequestedItemNoteResponse**](RequestedItemNoteResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_requested_items
 
 > <RequestedItemCollection> get_requested_items(opts)
@@ -12078,7 +12761,7 @@ end
 
 
 
-Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, NET ranking tier, and distance. Omit target_date for an \"Any date\" market browse (no window). Set match_tournaments=true to match schools advertising a ScheduleTournament (MTE) instead of a deal-type post.
+Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, NET ranking tier, T-Rank tier, and distance. Omit target_date for an \"Any date\" market browse (no window). Set match_tournaments=true to match schools advertising a ScheduleTournament (MTE) instead of a deal-type post.
 
 ### Examples
 
@@ -12106,6 +12789,7 @@ opts = {
   deal_types: ['inner_example'], # Array<String> | Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered)
   quality_tier: 'power_4,mid_major', # String | Restrict to one or more subdivision tiers (power_4, mid_major, smaller). Accepts a single tier or a comma-separated list for multi-select (e.g. `power_4,mid_major`); the listed tiers are OR'd together. Omit the param (or pass every tier) for \"Any\" — no constraint. Unrecognized tiers are ignored.
   net_ranking_tier: 'top_50', # String | Restrict to a NET ranking band (latest non-null NET rank for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without a NET rank are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered.
+  torvik_ranking_tier: 'top_50', # String | Restrict to a T-Rank (Bart Torvik) band, mirroring net_ranking_tier (latest non-null 3-year T-Rank average for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without a T-Rank are excluded from every tier. T-Rank is basketball-only, so this filter is ignored for non-basketball sports. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered.
   max_distance_miles: 56, # Integer | Maximum distance (miles) from the user's school. Requires user_school_id to resolve a coordinate origin.
   user_school_id: 56, # Integer | Requesting user's school. Used as the origin for distance filtering and is always excluded from results.
   exclude_school_ids: [37] # Array<Integer> | Additional school IDs to exclude from results (e.g. schools already on the grid)
@@ -12150,6 +12834,7 @@ end
 | **deal_types** | [**Array&lt;String&gt;**](String.md) | Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered) | [optional] |
 | **quality_tier** | **String** | Restrict to one or more subdivision tiers (power_4, mid_major, smaller). Accepts a single tier or a comma-separated list for multi-select (e.g. &#x60;power_4,mid_major&#x60;); the listed tiers are OR&#39;d together. Omit the param (or pass every tier) for \&quot;Any\&quot; — no constraint. Unrecognized tiers are ignored. | [optional] |
 | **net_ranking_tier** | **String** | Restrict to a NET ranking band (latest non-null NET rank for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as &#x60;custom_&lt;min&gt;_&lt;max&gt;&#x60;, where either bound may be blank for an open-ended range (e.g. &#x60;custom_50_&#x60; &#x3D;&gt; 50 and up, &#x60;custom__120&#x60; &#x3D;&gt; up to 120). Schools without a NET rank are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered. | [optional] |
+| **torvik_ranking_tier** | **String** | Restrict to a T-Rank (Bart Torvik) band, mirroring net_ranking_tier (latest non-null 3-year T-Rank average for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as &#x60;custom_&lt;min&gt;_&lt;max&gt;&#x60;, where either bound may be blank for an open-ended range (e.g. &#x60;custom_50_&#x60; &#x3D;&gt; 50 and up, &#x60;custom__120&#x60; &#x3D;&gt; up to 120). Schools without a T-Rank are excluded from every tier. T-Rank is basketball-only, so this filter is ignored for non-basketball sports. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered. | [optional] |
 | **max_distance_miles** | **Integer** | Maximum distance (miles) from the user&#39;s school. Requires user_school_id to resolve a coordinate origin. | [optional] |
 | **user_school_id** | **Integer** | Requesting user&#39;s school. Used as the origin for distance filtering and is always excluded from results. | [optional] |
 | **exclude_school_ids** | [**Array&lt;Integer&gt;**](Integer.md) | Additional school IDs to exclude from results (e.g. schools already on the grid) | [optional] |
@@ -12237,6 +12922,84 @@ end
 ### Return type
 
 [**ScheduleGridView**](ScheduleGridView.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_schedule_updates
+
+> <ScheduleUpdateCollection> get_schedule_updates(sport_name, opts)
+
+
+
+Recently Updated dashboard sidebar module (WINAD-9930). Returns the schools whose schedules changed most recently for a sport — games added, availabilities added / adjusted / removed (a filled date), and MTE slots — one row per school keyed by its latest update, newest first. Each row's change summary aggregates that school's edits in the 24h window ending at its latest update.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+sport_name = 'sport_name_example' # String | Sport name (e.g. FOOTBALL, BASKETBALL_M)
+opts = {
+  limit: 8 # Integer | Max rows to return (default 8, capped at 25).
+}
+
+begin
+  
+  result = api_instance.get_schedule_updates(sport_name, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_schedule_updates: #{e}"
+end
+```
+
+#### Using the get_schedule_updates_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ScheduleUpdateCollection>, Integer, Hash)> get_schedule_updates_with_http_info(sport_name, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_schedule_updates_with_http_info(sport_name, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ScheduleUpdateCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_schedule_updates_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **sport_name** | **String** | Sport name (e.g. FOOTBALL, BASKETBALL_M) |  |
+| **limit** | **Integer** | Max rows to return (default 8, capped at 25). | [optional][default to 8] |
+
+### Return type
+
+[**ScheduleUpdateCollection**](ScheduleUpdateCollection.md)
 
 ### Authorization
 
@@ -15309,7 +16072,7 @@ end
 
 
 
-Search team schedules with enriched data including contacts, RPI, returning percentages, and guarantee contract info.
+Search team schedules with enriched data including contacts, RPI, returning percentages, and guarantee contract info. Guarantee contract data (home_contracts/away_contracts) is permission-filtered to contracts the caller's ability can view; for users without guarantee access the home_contracts/away_contracts objects are omitted entirely, and the avg_guarantee_paid_cents/avg_guarantee_received_cents aggregate fields are null unless the caller can view aggregate guarantee amounts.
 
 ### Examples
 
@@ -17277,7 +18040,7 @@ end
 
 ## update_favorite
 
-> <CreateFavorite201Response> update_favorite(id, update_favorite_request)
+> <UpdateFavorite200Response> update_favorite(id, update_favorite_request)
 
 
 
@@ -17316,7 +18079,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<CreateFavorite201Response>, Integer, Hash)> update_favorite_with_http_info(id, update_favorite_request)
+> <Array(<UpdateFavorite200Response>, Integer, Hash)> update_favorite_with_http_info(id, update_favorite_request)
 
 ```ruby
 begin
@@ -17324,7 +18087,7 @@ begin
   data, status_code, headers = api_instance.update_favorite_with_http_info(id, update_favorite_request)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <CreateFavorite201Response>
+  p data # => <UpdateFavorite200Response>
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->update_favorite_with_http_info: #{e}"
 end
@@ -17339,7 +18102,7 @@ end
 
 ### Return type
 
-[**CreateFavorite201Response**](CreateFavorite201Response.md)
+[**UpdateFavorite200Response**](UpdateFavorite200Response.md)
 
 ### Authorization
 
