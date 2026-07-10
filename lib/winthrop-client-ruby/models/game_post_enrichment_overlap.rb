@@ -14,8 +14,8 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  # WINAD-10052/10053: availability overlap between the requesting viewer's own school and this posting school for the sport, computed by AvailabilityOverlapMatcher. Both sides are read from schedule_intents, so every lined-up date is a subset of the availability the card shows. When present and the viewer has no school (e.g. a super-admin or conference account) or no dates line up, total is 0 with an empty line_ups array (the no-overlap state, never an error). WINAD: OMITTED when q[defer_enrichment] is set (the dashboard feed) — deferred to POST /game_post_searches/enrichment so the feed cards paint first. Present on the inline path (the show page's post_details response).
-  class GamePostSearchResultOverlap < ApiModelBase
+  # Availability overlap between the requesting viewer's own school and this posting school for the sport (AvailabilityOverlapMatcher). Same shape as GamePostSearchResult.overlap: when the viewer has no school or no dates line up, total is 0 with an empty line_ups array (the no-overlap state).
+  class GamePostEnrichmentOverlap < ApiModelBase
     # Number of dates that line up on both sides.
     attr_accessor :total
 
@@ -54,7 +54,7 @@ module WinthropClient
         :'total' => :'Integer',
         :'strong_count' => :'Integer',
         :'rollup_text' => :'String',
-        :'line_ups' => :'Array<GamePostSearchResultOverlapLineUpsInner>'
+        :'line_ups' => :'Array<GamePostEnrichmentOverlapLineUpsInner>'
       }
     end
 
@@ -69,14 +69,14 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::GamePostSearchResultOverlap` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::GamePostEnrichmentOverlap` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::GamePostSearchResultOverlap`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::GamePostEnrichmentOverlap`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }

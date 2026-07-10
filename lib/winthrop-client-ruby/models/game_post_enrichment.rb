@@ -14,27 +14,27 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  # WINAD-10052/10053: availability overlap between the requesting viewer's own school and this posting school for the sport, computed by AvailabilityOverlapMatcher. Both sides are read from schedule_intents, so every lined-up date is a subset of the availability the card shows. When present and the viewer has no school (e.g. a super-admin or conference account) or no dates line up, total is 0 with an empty line_ups array (the no-overlap state, never an error). WINAD: OMITTED when q[defer_enrichment] is set (the dashboard feed) — deferred to POST /game_post_searches/enrichment so the feed cards paint first. Present on the inline path (the show page's post_details response).
-  class GamePostSearchResultOverlap < ApiModelBase
-    # Number of dates that line up on both sides.
-    attr_accessor :total
+  # WINAD: one row of the deferred per-card blocks returned by POST /game_post_searches/enrichment, keyed by [school_id, sport_id] so the client merges it onto every feed card sharing that pair. Shapes mirror GamePostSearchResult exactly (the feed omits overlap/guarantee/schedule_intents under q[defer_enrichment] and this endpoint fills them in a beat later).
+  class GamePostEnrichment < ApiModelBase
+    attr_accessor :school_id
 
-    # How many lined-up dates are strong (any actionable classification: guarantee, home_and_home, any_format, mte, or neutral_site).
-    attr_accessor :strong_count
+    attr_accessor :sport_id
 
-    # Ready-made pill summary, e.g. \"3 dates line up · 2 strong\". Null when there is no overlap (total 0).
-    attr_accessor :rollup_text
+    # The posting school+sport's schedule-intent (availability) markers within the current scheduling-season window (the card's \"open windows\"), only for sports the requesting schedule user is permitted to see. Same shape and source as GamePostSearchResult.schedule_intents; the private \"Pending\" marker is stripped (a Pending-only cell is omitted, a mixed cell drops the Pending type).
+    attr_accessor :schedule_intents
 
-    # One entry per lined-up date, strong (guarantee, home-and-home, any_format, mte, neutral_site) before possible, each tier ordered by ascending date.
-    attr_accessor :line_ups
+    attr_accessor :overlap
+
+    attr_accessor :guarantee
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'total' => :'total',
-        :'strong_count' => :'strong_count',
-        :'rollup_text' => :'rollup_text',
-        :'line_ups' => :'line_ups'
+        :'school_id' => :'school_id',
+        :'sport_id' => :'sport_id',
+        :'schedule_intents' => :'schedule_intents',
+        :'overlap' => :'overlap',
+        :'guarantee' => :'guarantee'
       }
     end
 
@@ -51,17 +51,18 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'total' => :'Integer',
-        :'strong_count' => :'Integer',
-        :'rollup_text' => :'String',
-        :'line_ups' => :'Array<GamePostSearchResultOverlapLineUpsInner>'
+        :'school_id' => :'Integer',
+        :'sport_id' => :'Integer',
+        :'schedule_intents' => :'Array<GamePostEnrichmentScheduleIntentsInner>',
+        :'overlap' => :'GamePostEnrichmentOverlap',
+        :'guarantee' => :'GamePostEnrichmentGuarantee'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'rollup_text',
+        :'guarantee'
       ])
     end
 
@@ -69,40 +70,46 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::GamePostSearchResultOverlap` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::GamePostEnrichment` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::GamePostSearchResultOverlap`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::GamePostEnrichment`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'total')
-        self.total = attributes[:'total']
+      if attributes.key?(:'school_id')
+        self.school_id = attributes[:'school_id']
       else
-        self.total = nil
+        self.school_id = nil
       end
 
-      if attributes.key?(:'strong_count')
-        self.strong_count = attributes[:'strong_count']
+      if attributes.key?(:'sport_id')
+        self.sport_id = attributes[:'sport_id']
       else
-        self.strong_count = nil
+        self.sport_id = nil
       end
 
-      if attributes.key?(:'rollup_text')
-        self.rollup_text = attributes[:'rollup_text']
-      end
-
-      if attributes.key?(:'line_ups')
-        if (value = attributes[:'line_ups']).is_a?(Array)
-          self.line_ups = value
+      if attributes.key?(:'schedule_intents')
+        if (value = attributes[:'schedule_intents']).is_a?(Array)
+          self.schedule_intents = value
         end
       else
-        self.line_ups = nil
+        self.schedule_intents = nil
+      end
+
+      if attributes.key?(:'overlap')
+        self.overlap = attributes[:'overlap']
+      else
+        self.overlap = nil
+      end
+
+      if attributes.key?(:'guarantee')
+        self.guarantee = attributes[:'guarantee']
       end
     end
 
@@ -111,16 +118,20 @@ module WinthropClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @total.nil?
-        invalid_properties.push('invalid value for "total", total cannot be nil.')
+      if @school_id.nil?
+        invalid_properties.push('invalid value for "school_id", school_id cannot be nil.')
       end
 
-      if @strong_count.nil?
-        invalid_properties.push('invalid value for "strong_count", strong_count cannot be nil.')
+      if @sport_id.nil?
+        invalid_properties.push('invalid value for "sport_id", sport_id cannot be nil.')
       end
 
-      if @line_ups.nil?
-        invalid_properties.push('invalid value for "line_ups", line_ups cannot be nil.')
+      if @schedule_intents.nil?
+        invalid_properties.push('invalid value for "schedule_intents", schedule_intents cannot be nil.')
+      end
+
+      if @overlap.nil?
+        invalid_properties.push('invalid value for "overlap", overlap cannot be nil.')
       end
 
       invalid_properties
@@ -130,40 +141,51 @@ module WinthropClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @total.nil?
-      return false if @strong_count.nil?
-      return false if @line_ups.nil?
+      return false if @school_id.nil?
+      return false if @sport_id.nil?
+      return false if @schedule_intents.nil?
+      return false if @overlap.nil?
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] total Value to be assigned
-    def total=(total)
-      if total.nil?
-        fail ArgumentError, 'total cannot be nil'
+    # @param [Object] school_id Value to be assigned
+    def school_id=(school_id)
+      if school_id.nil?
+        fail ArgumentError, 'school_id cannot be nil'
       end
 
-      @total = total
+      @school_id = school_id
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] strong_count Value to be assigned
-    def strong_count=(strong_count)
-      if strong_count.nil?
-        fail ArgumentError, 'strong_count cannot be nil'
+    # @param [Object] sport_id Value to be assigned
+    def sport_id=(sport_id)
+      if sport_id.nil?
+        fail ArgumentError, 'sport_id cannot be nil'
       end
 
-      @strong_count = strong_count
+      @sport_id = sport_id
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] line_ups Value to be assigned
-    def line_ups=(line_ups)
-      if line_ups.nil?
-        fail ArgumentError, 'line_ups cannot be nil'
+    # @param [Object] schedule_intents Value to be assigned
+    def schedule_intents=(schedule_intents)
+      if schedule_intents.nil?
+        fail ArgumentError, 'schedule_intents cannot be nil'
       end
 
-      @line_ups = line_ups
+      @schedule_intents = schedule_intents
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] overlap Value to be assigned
+    def overlap=(overlap)
+      if overlap.nil?
+        fail ArgumentError, 'overlap cannot be nil'
+      end
+
+      @overlap = overlap
     end
 
     # Checks equality by comparing each attribute.
@@ -171,10 +193,11 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          total == o.total &&
-          strong_count == o.strong_count &&
-          rollup_text == o.rollup_text &&
-          line_ups == o.line_ups
+          school_id == o.school_id &&
+          sport_id == o.sport_id &&
+          schedule_intents == o.schedule_intents &&
+          overlap == o.overlap &&
+          guarantee == o.guarantee
     end
 
     # @see the `==` method
@@ -186,7 +209,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [total, strong_count, rollup_text, line_ups].hash
+      [school_id, sport_id, schedule_intents, overlap, guarantee].hash
     end
 
     # Builds the object from hash

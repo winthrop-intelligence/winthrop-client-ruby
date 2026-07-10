@@ -14,27 +14,20 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  # WINAD-10054: the school's 3-yr median guarantee economics (from SchoolGuaranteeEconomicsBatchQuery) — what it typically receives when it travels and pays when it hosts, in cents. Medians/estimates, labelled \"3-yr median\" in the UI (rounded, e.g. $90K), never a hard quote. Each side is null when the school has no qualifying history; the whole block is null when it has neither, or when the viewer lacks the guarantee- aggregate grant — the UI hides the chip rather than showing $0. WINAD: OMITTED (key absent, not null) when q[defer_enrichment] is set (the dashboard feed) — deferred to POST /game_post_searches/enrichment. Present on the inline path (the show page's post_details response).
-  class GamePostSearchResultGuarantee < ApiModelBase
-    # 3-yr median guarantee paid as the home/host team; null when no history.
-    attr_accessor :host_median_cents
+  class GamePostEnrichmentScheduleIntentsInner < ApiModelBase
+    attr_accessor :id
 
-    # Number of host money-games behind the median.
-    attr_accessor :host_sample_size
+    attr_accessor :date
 
-    # 3-yr median guarantee received as the away/traveling team; null when no history.
-    attr_accessor :travel_median_cents
-
-    # Number of travel money-games behind the median.
-    attr_accessor :travel_sample_size
+    # Deal-type designations for this availability day, as raw GameType *name* strings (e.g. \"HomeAndHome\"). Never includes \"Pending\".
+    attr_accessor :game_types
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'host_median_cents' => :'host_median_cents',
-        :'host_sample_size' => :'host_sample_size',
-        :'travel_median_cents' => :'travel_median_cents',
-        :'travel_sample_size' => :'travel_sample_size'
+        :'id' => :'id',
+        :'date' => :'date',
+        :'game_types' => :'game_types'
       }
     end
 
@@ -51,20 +44,16 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'host_median_cents' => :'Integer',
-        :'host_sample_size' => :'Integer',
-        :'travel_median_cents' => :'Integer',
-        :'travel_sample_size' => :'Integer'
+        :'id' => :'Integer',
+        :'date' => :'Date',
+        :'game_types' => :'Array<String>'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'host_median_cents',
-        :'host_sample_size',
-        :'travel_median_cents',
-        :'travel_sample_size'
+        :'date',
       ])
     end
 
@@ -72,32 +61,30 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::GamePostSearchResultGuarantee` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::GamePostEnrichmentScheduleIntentsInner` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::GamePostSearchResultGuarantee`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::GamePostEnrichmentScheduleIntentsInner`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'host_median_cents')
-        self.host_median_cents = attributes[:'host_median_cents']
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'host_sample_size')
-        self.host_sample_size = attributes[:'host_sample_size']
+      if attributes.key?(:'date')
+        self.date = attributes[:'date']
       end
 
-      if attributes.key?(:'travel_median_cents')
-        self.travel_median_cents = attributes[:'travel_median_cents']
-      end
-
-      if attributes.key?(:'travel_sample_size')
-        self.travel_sample_size = attributes[:'travel_sample_size']
+      if attributes.key?(:'game_types')
+        if (value = attributes[:'game_types']).is_a?(Array)
+          self.game_types = value
+        end
       end
     end
 
@@ -121,10 +108,9 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          host_median_cents == o.host_median_cents &&
-          host_sample_size == o.host_sample_size &&
-          travel_median_cents == o.travel_median_cents &&
-          travel_sample_size == o.travel_sample_size
+          id == o.id &&
+          date == o.date &&
+          game_types == o.game_types
     end
 
     # @see the `==` method
@@ -136,7 +122,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [host_median_cents, host_sample_size, travel_median_cents, travel_sample_size].hash
+      [id, date, game_types].hash
     end
 
     # Builds the object from hash

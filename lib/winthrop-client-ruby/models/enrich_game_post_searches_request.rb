@@ -14,27 +14,14 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  # WINAD-10052/10053: availability overlap between the requesting viewer's own school and this posting school for the sport, computed by AvailabilityOverlapMatcher. Both sides are read from schedule_intents, so every lined-up date is a subset of the availability the card shows. When present and the viewer has no school (e.g. a super-admin or conference account) or no dates line up, total is 0 with an empty line_ups array (the no-overlap state, never an error). WINAD: OMITTED when q[defer_enrichment] is set (the dashboard feed) — deferred to POST /game_post_searches/enrichment so the feed cards paint first. Present on the inline path (the show page's post_details response).
-  class GamePostSearchResultOverlap < ApiModelBase
-    # Number of dates that line up on both sides.
-    attr_accessor :total
-
-    # How many lined-up dates are strong (any actionable classification: guarantee, home_and_home, any_format, mte, or neutral_site).
-    attr_accessor :strong_count
-
-    # Ready-made pill summary, e.g. \"3 dates line up · 2 strong\". Null when there is no overlap (total 0).
-    attr_accessor :rollup_text
-
-    # One entry per lined-up date, strong (guarantee, home-and-home, any_format, mte, neutral_site) before possible, each tier ordered by ascending date.
-    attr_accessor :line_ups
+  class EnrichGamePostSearchesRequest < ApiModelBase
+    # The loaded page's [school_id, sport_id] pairs. Malformed or non-positive pairs are ignored; duplicates are de-duped.
+    attr_accessor :pairs
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'total' => :'total',
-        :'strong_count' => :'strong_count',
-        :'rollup_text' => :'rollup_text',
-        :'line_ups' => :'line_ups'
+        :'pairs' => :'pairs'
       }
     end
 
@@ -51,17 +38,13 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'total' => :'Integer',
-        :'strong_count' => :'Integer',
-        :'rollup_text' => :'String',
-        :'line_ups' => :'Array<GamePostSearchResultOverlapLineUpsInner>'
+        :'pairs' => :'Array<Array<Integer>>'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'rollup_text',
       ])
     end
 
@@ -69,40 +52,24 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::GamePostSearchResultOverlap` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::EnrichGamePostSearchesRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::GamePostSearchResultOverlap`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::EnrichGamePostSearchesRequest`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'total')
-        self.total = attributes[:'total']
-      else
-        self.total = nil
-      end
-
-      if attributes.key?(:'strong_count')
-        self.strong_count = attributes[:'strong_count']
-      else
-        self.strong_count = nil
-      end
-
-      if attributes.key?(:'rollup_text')
-        self.rollup_text = attributes[:'rollup_text']
-      end
-
-      if attributes.key?(:'line_ups')
-        if (value = attributes[:'line_ups']).is_a?(Array)
-          self.line_ups = value
+      if attributes.key?(:'pairs')
+        if (value = attributes[:'pairs']).is_a?(Array)
+          self.pairs = value
         end
       else
-        self.line_ups = nil
+        self.pairs = nil
       end
     end
 
@@ -111,16 +78,8 @@ module WinthropClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @total.nil?
-        invalid_properties.push('invalid value for "total", total cannot be nil.')
-      end
-
-      if @strong_count.nil?
-        invalid_properties.push('invalid value for "strong_count", strong_count cannot be nil.')
-      end
-
-      if @line_ups.nil?
-        invalid_properties.push('invalid value for "line_ups", line_ups cannot be nil.')
+      if @pairs.nil?
+        invalid_properties.push('invalid value for "pairs", pairs cannot be nil.')
       end
 
       invalid_properties
@@ -130,40 +89,18 @@ module WinthropClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @total.nil?
-      return false if @strong_count.nil?
-      return false if @line_ups.nil?
+      return false if @pairs.nil?
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] total Value to be assigned
-    def total=(total)
-      if total.nil?
-        fail ArgumentError, 'total cannot be nil'
+    # @param [Object] pairs Value to be assigned
+    def pairs=(pairs)
+      if pairs.nil?
+        fail ArgumentError, 'pairs cannot be nil'
       end
 
-      @total = total
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] strong_count Value to be assigned
-    def strong_count=(strong_count)
-      if strong_count.nil?
-        fail ArgumentError, 'strong_count cannot be nil'
-      end
-
-      @strong_count = strong_count
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] line_ups Value to be assigned
-    def line_ups=(line_ups)
-      if line_ups.nil?
-        fail ArgumentError, 'line_ups cannot be nil'
-      end
-
-      @line_ups = line_ups
+      @pairs = pairs
     end
 
     # Checks equality by comparing each attribute.
@@ -171,10 +108,7 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          total == o.total &&
-          strong_count == o.strong_count &&
-          rollup_text == o.rollup_text &&
-          line_ups == o.line_ups
+          pairs == o.pairs
     end
 
     # @see the `==` method
@@ -186,7 +120,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [total, strong_count, rollup_text, line_ups].hash
+      [pairs].hash
     end
 
     # Builds the object from hash

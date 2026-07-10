@@ -151,6 +151,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**delete_team_schedule_note**](docs/DefaultApi.md#delete_team_schedule_note) | **DELETE** /api/v1/team_schedule_notes/{fil_team_id} | 
 *WinthropClient::DefaultApi* | [**delete_upload**](docs/DefaultApi.md#delete_upload) | **DELETE** /api/v1/uploads/{uploadId} | 
 *WinthropClient::DefaultApi* | [**download_raw_contract_file**](docs/DefaultApi.md#download_raw_contract_file) | **GET** /api/v1/raw_contracts/{raw_contractId}/download | 
+*WinthropClient::DefaultApi* | [**enrich_game_post_searches**](docs/DefaultApi.md#enrich_game_post_searches) | **POST** /api/v1/game_post_searches/enrichment | 
 *WinthropClient::DefaultApi* | [**export_revenue_searches**](docs/DefaultApi.md#export_revenue_searches) | **GET** /api/v1/revenue_searches/export | 
 *WinthropClient::DefaultApi* | [**get_account**](docs/DefaultApi.md#get_account) | **GET** /api/v1/accounts/{id} | 
 *WinthropClient::DefaultApi* | [**get_account_user_activation**](docs/DefaultApi.md#get_account_user_activation) | **GET** /api/v1/account_user_activation | 
@@ -546,6 +547,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::DossierReportResponse](docs/DossierReportResponse.md)
  - [WinthropClient::EditAccountUser](docs/EditAccountUser.md)
  - [WinthropClient::EditAccountUserResponse](docs/EditAccountUserResponse.md)
+ - [WinthropClient::EnrichGamePostSearchesRequest](docs/EnrichGamePostSearchesRequest.md)
  - [WinthropClient::FilterPositionType](docs/FilterPositionType.md)
  - [WinthropClient::Filters](docs/Filters.md)
  - [WinthropClient::FinancialQc](docs/FinancialQc.md)
@@ -601,6 +603,12 @@ Class | Method | HTTP request | Description
  - [WinthropClient::GamePostContact](docs/GamePostContact.md)
  - [WinthropClient::GamePostDetail](docs/GamePostDetail.md)
  - [WinthropClient::GamePostDetailCreatedBy](docs/GamePostDetailCreatedBy.md)
+ - [WinthropClient::GamePostEnrichment](docs/GamePostEnrichment.md)
+ - [WinthropClient::GamePostEnrichmentCollection](docs/GamePostEnrichmentCollection.md)
+ - [WinthropClient::GamePostEnrichmentGuarantee](docs/GamePostEnrichmentGuarantee.md)
+ - [WinthropClient::GamePostEnrichmentOverlap](docs/GamePostEnrichmentOverlap.md)
+ - [WinthropClient::GamePostEnrichmentOverlapLineUpsInner](docs/GamePostEnrichmentOverlapLineUpsInner.md)
+ - [WinthropClient::GamePostEnrichmentScheduleIntentsInner](docs/GamePostEnrichmentScheduleIntentsInner.md)
  - [WinthropClient::GamePostSearchResult](docs/GamePostSearchResult.md)
  - [WinthropClient::GamePostSearchResultCollection](docs/GamePostSearchResultCollection.md)
  - [WinthropClient::GamePostSearchResultContact](docs/GamePostSearchResultContact.md)
