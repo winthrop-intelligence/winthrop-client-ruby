@@ -345,6 +345,11 @@ docs/ScheduleIntentDetail.md
 docs/ScheduleTournamentDetail.md
 docs/ScheduleUpdate.md
 docs/ScheduleUpdateCollection.md
+docs/SchedulingContact.md
+docs/SchedulingContactConference.md
+docs/SchedulingContactPerson.md
+docs/SchedulingContactSchool.md
+docs/SchedulingContactsResponse.md
 docs/School.md
 docs/SchoolCollection.md
 docs/SchoolContractEntry.md
@@ -811,6 +816,11 @@ lib/winthrop-client-ruby/models/schedule_intent_detail.rb
 lib/winthrop-client-ruby/models/schedule_tournament_detail.rb
 lib/winthrop-client-ruby/models/schedule_update.rb
 lib/winthrop-client-ruby/models/schedule_update_collection.rb
+lib/winthrop-client-ruby/models/scheduling_contact.rb
+lib/winthrop-client-ruby/models/scheduling_contact_conference.rb
+lib/winthrop-client-ruby/models/scheduling_contact_person.rb
+lib/winthrop-client-ruby/models/scheduling_contact_school.rb
+lib/winthrop-client-ruby/models/scheduling_contacts_response.rb
 lib/winthrop-client-ruby/models/school.rb
 lib/winthrop-client-ruby/models/school_collection.rb
 lib/winthrop-client-ruby/models/school_contract_entry.rb
@@ -930,5 +940,10 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
+spec/models/scheduling_contact_conference_spec.rb
+spec/models/scheduling_contact_person_spec.rb
+spec/models/scheduling_contact_school_spec.rb
+spec/models/scheduling_contact_spec.rb
+spec/models/scheduling_contacts_response_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
