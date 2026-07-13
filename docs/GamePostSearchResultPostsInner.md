@@ -8,6 +8,7 @@
 | **date** | **Date** |  |  |
 | **game_types** | **Array&lt;String&gt;** | Raw game-type names for this post (drive deal-type chip colors). |  |
 | **status** | **String** | Present only with post_details&#x3D;true. | [optional] |
+| **publish_group_id** | **String** | The publish (one \&quot;Post game wanted\&quot; action) this post belongs to; a group delete on the show page scopes to it. Present only with post_details&#x3D;true. | [optional] |
 | **start_date** | **Date** | Present only with post_details&#x3D;true. | [optional] |
 | **end_date** | **Date** | Present only with post_details&#x3D;true. | [optional] |
 | **description** | **String** | Present only with post_details&#x3D;true. | [optional] |
@@ -27,6 +28,7 @@ instance = WinthropClient::GamePostSearchResultPostsInner.new(
   date: null,
   game_types: null,
   status: null,
+  publish_group_id: null,
   start_date: null,
   end_date: null,
   description: null,
