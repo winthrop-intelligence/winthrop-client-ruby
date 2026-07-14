@@ -64,6 +64,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_team_schedule_note**](DefaultApi.md#delete_team_schedule_note) | **DELETE** /api/v1/team_schedule_notes/{fil_team_id} |  |
 | [**delete_upload**](DefaultApi.md#delete_upload) | **DELETE** /api/v1/uploads/{uploadId} |  |
 | [**download_raw_contract_file**](DefaultApi.md#download_raw_contract_file) | **GET** /api/v1/raw_contracts/{raw_contractId}/download |  |
+| [**enrich_game_post_searches**](DefaultApi.md#enrich_game_post_searches) | **POST** /api/v1/game_post_searches/enrichment |  |
 | [**export_revenue_searches**](DefaultApi.md#export_revenue_searches) | **GET** /api/v1/revenue_searches/export |  |
 | [**get_account**](DefaultApi.md#get_account) | **GET** /api/v1/accounts/{id} |  |
 | [**get_account_user_activation**](DefaultApi.md#get_account_user_activation) | **GET** /api/v1/account_user_activation |  |
@@ -173,6 +174,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_schedule_grid_available_schools**](DefaultApi.md#get_schedule_grid_available_schools) | **GET** /api/v1/schedule_grid/{sport_name}/available_schools |  |
 | [**get_schedule_grid_completed**](DefaultApi.md#get_schedule_grid_completed) | **GET** /api/v1/schedule_grid/{sport_name}/completed |  |
 | [**get_schedule_updates**](DefaultApi.md#get_schedule_updates) | **GET** /api/v1/schedule_updates |  |
+| [**get_scheduling_contacts**](DefaultApi.md#get_scheduling_contacts) | **GET** /api/v1/scheduling_contacts |  |
 | [**get_school**](DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} |  |
 | [**get_school_alternate_names**](DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names |  |
 | [**get_school_game_contracts**](DefaultApi.md#get_school_game_contracts) | **GET** /api/v1/schools/{schoolId}/game_contracts |  |
@@ -4723,6 +4725,80 @@ end
 
 - **Content-Type**: Not defined
 - **Accept**: application/pdf
+
+
+## enrich_game_post_searches
+
+> <GamePostEnrichmentCollection> enrich_game_post_searches(enrich_game_post_searches_request)
+
+
+
+Async companion to GET /game_post_searches. The dashboard feed sends q[defer_enrichment]=true so its cards paint first without the slow per-card computes; this returns those deferred blocks — availability overlap, guarantee economics, and the schedule-intent \"open windows\" — for the loaded page's [school_id, sport_id] pairs, which the client merges onto each card. POST (not GET) because ~35 pairs are sent as a JSON body. Runs neither the search nor the grouping — just the two heavy per-card computes plus the poster intents.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+enrich_game_post_searches_request = WinthropClient::EnrichGamePostSearchesRequest.new({pairs: [[37]]}) # EnrichGamePostSearchesRequest | 
+
+begin
+  
+  result = api_instance.enrich_game_post_searches(enrich_game_post_searches_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->enrich_game_post_searches: #{e}"
+end
+```
+
+#### Using the enrich_game_post_searches_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GamePostEnrichmentCollection>, Integer, Hash)> enrich_game_post_searches_with_http_info(enrich_game_post_searches_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.enrich_game_post_searches_with_http_info(enrich_game_post_searches_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GamePostEnrichmentCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->enrich_game_post_searches_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **enrich_game_post_searches_request** | [**EnrichGamePostSearchesRequest**](EnrichGamePostSearchesRequest.md) |  |  |
+
+### Return type
+
+[**GamePostEnrichmentCollection**](GamePostEnrichmentCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ## export_revenue_searches
@@ -10834,7 +10910,7 @@ end
 
 
 
-Search game posts with enriched data including school info, location, RPI, etc.
+Search game posts with enriched data including school info, location, RPI, etc. WINAD: pass q[defer_enrichment]=true (the dashboard feed) to omit the slow per-card blocks — overlap, guarantee, and schedule_intents — from each row so the cards paint first; POST /game_post_searches/enrichment then returns those blocks for the loaded pairs. The inline path (e.g. post_details) leaves the flag off and keeps them on each row.
 
 ### Examples
 
@@ -13075,6 +13151,82 @@ end
 ### Return type
 
 [**ScheduleUpdateCollection**](ScheduleUpdateCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_scheduling_contacts
+
+> <SchedulingContactsResponse> get_scheduling_contacts(opts)
+
+
+
+WINAD-10119 — the Scheduling Contacts directory. One primary scheduling contact per school for the given sport, enriched with distance from the viewer's school and open Games Wanted post count. verified/verified_at reflect the admin-set verification on the contact (WINAD-10122).
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  sport: 'sport_example' # String | Scheduling sport name, e.g. BASKETBALL_M.
+}
+
+begin
+  
+  result = api_instance.get_scheduling_contacts(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_scheduling_contacts: #{e}"
+end
+```
+
+#### Using the get_scheduling_contacts_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SchedulingContactsResponse>, Integer, Hash)> get_scheduling_contacts_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_scheduling_contacts_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SchedulingContactsResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_scheduling_contacts_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **sport** | **String** | Scheduling sport name, e.g. BASKETBALL_M. | [optional] |
+
+### Return type
+
+[**SchedulingContactsResponse**](SchedulingContactsResponse.md)
 
 ### Authorization
 
