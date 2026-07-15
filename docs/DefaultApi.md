@@ -64,6 +64,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_team_schedule_note**](DefaultApi.md#delete_team_schedule_note) | **DELETE** /api/v1/team_schedule_notes/{fil_team_id} |  |
 | [**delete_upload**](DefaultApi.md#delete_upload) | **DELETE** /api/v1/uploads/{uploadId} |  |
 | [**download_raw_contract_file**](DefaultApi.md#download_raw_contract_file) | **GET** /api/v1/raw_contracts/{raw_contractId}/download |  |
+| [**enrich_game_post_searches**](DefaultApi.md#enrich_game_post_searches) | **POST** /api/v1/game_post_searches/enrichment |  |
 | [**export_revenue_searches**](DefaultApi.md#export_revenue_searches) | **GET** /api/v1/revenue_searches/export |  |
 | [**get_account**](DefaultApi.md#get_account) | **GET** /api/v1/accounts/{id} |  |
 | [**get_account_user_activation**](DefaultApi.md#get_account_user_activation) | **GET** /api/v1/account_user_activation |  |
@@ -165,6 +166,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_raw_contract**](DefaultApi.md#get_raw_contract) | **GET** /api/v1/raw_contracts/{raw_contractId} |  |
 | [**get_raw_contracts**](DefaultApi.md#get_raw_contracts) | **GET** /api/v1/raw_contracts |  |
 | [**get_requested_item**](DefaultApi.md#get_requested_item) | **GET** /api/v1/requested_items/{requestedItemId} |  |
+| [**get_requested_item_review_context**](DefaultApi.md#get_requested_item_review_context) | **GET** /api/v1/requested_items/{requestedItemId}/review_context |  |
 | [**get_requested_item_ri_note**](DefaultApi.md#get_requested_item_ri_note) | **GET** /api/v1/requested_items/{requestedItemId}/ri_note |  |
 | [**get_requested_items**](DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items |  |
 | [**get_revenue_search**](DefaultApi.md#get_revenue_search) | **GET** /api/v1/revenue_searches/{revenueSearchId} |  |
@@ -4723,6 +4725,80 @@ end
 
 - **Content-Type**: Not defined
 - **Accept**: application/pdf
+
+
+## enrich_game_post_searches
+
+> <GamePostEnrichmentCollection> enrich_game_post_searches(enrich_game_post_searches_request)
+
+
+
+Async companion to GET /game_post_searches. The dashboard feed sends q[defer_enrichment]=true so its cards paint first without the slow per-card computes; this returns those deferred blocks — availability overlap, guarantee economics, and the schedule-intent \"open windows\" — for the loaded page's [school_id, sport_id] pairs, which the client merges onto each card. POST (not GET) because ~35 pairs are sent as a JSON body. Runs neither the search nor the grouping — just the two heavy per-card computes plus the poster intents.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+enrich_game_post_searches_request = WinthropClient::EnrichGamePostSearchesRequest.new({pairs: [[37]]}) # EnrichGamePostSearchesRequest | 
+
+begin
+  
+  result = api_instance.enrich_game_post_searches(enrich_game_post_searches_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->enrich_game_post_searches: #{e}"
+end
+```
+
+#### Using the enrich_game_post_searches_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GamePostEnrichmentCollection>, Integer, Hash)> enrich_game_post_searches_with_http_info(enrich_game_post_searches_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.enrich_game_post_searches_with_http_info(enrich_game_post_searches_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GamePostEnrichmentCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->enrich_game_post_searches_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **enrich_game_post_searches_request** | [**EnrichGamePostSearchesRequest**](EnrichGamePostSearchesRequest.md) |  |  |
+
+### Return type
+
+[**GamePostEnrichmentCollection**](GamePostEnrichmentCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ## export_revenue_searches
@@ -10834,7 +10910,7 @@ end
 
 
 
-Search game posts with enriched data including school info, location, RPI, etc.
+Search game posts with enriched data including school info, location, RPI, etc. WINAD: pass q[defer_enrichment]=true (the dashboard feed) to omit the slow per-card blocks — overlap, guarantee, and schedule_intents — from each row so the cards paint first; POST /game_post_searches/enrichment then returns those blocks for the loaded pairs. The inline path (e.g. post_details) leaves the flag off and keeps them on each row.
 
 ### Examples
 
@@ -12427,6 +12503,84 @@ end
 ### Return type
 
 [**RequestedItem**](RequestedItem.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_requested_item_review_context
+
+> <RequestedItemReviewContext> get_requested_item_review_context(requested_item_id, opts)
+
+
+
+Retrieve the canonical review context for a requested item, including its display title and type, current note text, parent FOIA request with the legacy admin URL, and any single unambiguous existing document the caller is authorized to see.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+requested_item_id = 56 # Integer | ID of requested item whose review context should be retrieved
+opts = {
+  if_none_match: 'if_none_match_example' # String | ETag from a previous response; when it still matches, the server responds 304 Not Modified instead of re-sending the payload.
+}
+
+begin
+  
+  result = api_instance.get_requested_item_review_context(requested_item_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_requested_item_review_context: #{e}"
+end
+```
+
+#### Using the get_requested_item_review_context_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RequestedItemReviewContext>, Integer, Hash)> get_requested_item_review_context_with_http_info(requested_item_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_requested_item_review_context_with_http_info(requested_item_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RequestedItemReviewContext>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_requested_item_review_context_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **requested_item_id** | **Integer** | ID of requested item whose review context should be retrieved |  |
+| **if_none_match** | **String** | ETag from a previous response; when it still matches, the server responds 304 Not Modified instead of re-sending the payload. | [optional] |
+
+### Return type
+
+[**RequestedItemReviewContext**](RequestedItemReviewContext.md)
 
 ### Authorization
 
