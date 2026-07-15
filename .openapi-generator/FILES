@@ -344,6 +344,10 @@ docs/RequestedItemNote.md
 docs/RequestedItemNoteInput.md
 docs/RequestedItemNoteInputRiNote.md
 docs/RequestedItemNoteResponse.md
+docs/RequestedItemReviewContext.md
+docs/RequestedItemReviewContextDocument.md
+docs/RequestedItemReviewContextFoiaRequest.md
+docs/RequestedItemReviewContextRequestedItem.md
 docs/RoleOption.md
 docs/RunningJob.md
 docs/ScheduleGridAvailableSchoolPost.md
@@ -829,6 +833,10 @@ lib/winthrop-client-ruby/models/requested_item_note.rb
 lib/winthrop-client-ruby/models/requested_item_note_input.rb
 lib/winthrop-client-ruby/models/requested_item_note_input_ri_note.rb
 lib/winthrop-client-ruby/models/requested_item_note_response.rb
+lib/winthrop-client-ruby/models/requested_item_review_context.rb
+lib/winthrop-client-ruby/models/requested_item_review_context_document.rb
+lib/winthrop-client-ruby/models/requested_item_review_context_foia_request.rb
+lib/winthrop-client-ruby/models/requested_item_review_context_requested_item.rb
 lib/winthrop-client-ruby/models/role_option.rb
 lib/winthrop-client-ruby/models/running_job.rb
 lib/winthrop-client-ruby/models/schedule_grid_available_school_post.rb
@@ -968,5 +976,9 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
+spec/models/requested_item_review_context_document_spec.rb
+spec/models/requested_item_review_context_foia_request_spec.rb
+spec/models/requested_item_review_context_requested_item_spec.rb
+spec/models/requested_item_review_context_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

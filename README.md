@@ -253,6 +253,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_raw_contract**](docs/DefaultApi.md#get_raw_contract) | **GET** /api/v1/raw_contracts/{raw_contractId} | 
 *WinthropClient::DefaultApi* | [**get_raw_contracts**](docs/DefaultApi.md#get_raw_contracts) | **GET** /api/v1/raw_contracts | 
 *WinthropClient::DefaultApi* | [**get_requested_item**](docs/DefaultApi.md#get_requested_item) | **GET** /api/v1/requested_items/{requestedItemId} | 
+*WinthropClient::DefaultApi* | [**get_requested_item_review_context**](docs/DefaultApi.md#get_requested_item_review_context) | **GET** /api/v1/requested_items/{requestedItemId}/review_context | 
 *WinthropClient::DefaultApi* | [**get_requested_item_ri_note**](docs/DefaultApi.md#get_requested_item_ri_note) | **GET** /api/v1/requested_items/{requestedItemId}/ri_note | 
 *WinthropClient::DefaultApi* | [**get_requested_items**](docs/DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items | 
 *WinthropClient::DefaultApi* | [**get_revenue_search**](docs/DefaultApi.md#get_revenue_search) | **GET** /api/v1/revenue_searches/{revenueSearchId} | 
@@ -720,6 +721,10 @@ Class | Method | HTTP request | Description
  - [WinthropClient::RequestedItemNoteInput](docs/RequestedItemNoteInput.md)
  - [WinthropClient::RequestedItemNoteInputRiNote](docs/RequestedItemNoteInputRiNote.md)
  - [WinthropClient::RequestedItemNoteResponse](docs/RequestedItemNoteResponse.md)
+ - [WinthropClient::RequestedItemReviewContext](docs/RequestedItemReviewContext.md)
+ - [WinthropClient::RequestedItemReviewContextDocument](docs/RequestedItemReviewContextDocument.md)
+ - [WinthropClient::RequestedItemReviewContextFoiaRequest](docs/RequestedItemReviewContextFoiaRequest.md)
+ - [WinthropClient::RequestedItemReviewContextRequestedItem](docs/RequestedItemReviewContextRequestedItem.md)
  - [WinthropClient::RoleOption](docs/RoleOption.md)
  - [WinthropClient::RunningJob](docs/RunningJob.md)
  - [WinthropClient::ScheduleGridAvailableSchoolPost](docs/ScheduleGridAvailableSchoolPost.md)

@@ -10270,6 +10270,70 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Retrieve the canonical review context for a requested item, including its display title and type, current note text, parent FOIA request with the legacy admin URL, and any single unambiguous existing document the caller is authorized to see.
+    # @param requested_item_id [Integer] ID of requested item whose review context should be retrieved
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :if_none_match ETag from a previous response; when it still matches, the server responds 304 Not Modified instead of re-sending the payload.
+    # @return [RequestedItemReviewContext]
+    def get_requested_item_review_context(requested_item_id, opts = {})
+      data, _status_code, _headers = get_requested_item_review_context_with_http_info(requested_item_id, opts)
+      data
+    end
+
+    # Retrieve the canonical review context for a requested item, including its display title and type, current note text, parent FOIA request with the legacy admin URL, and any single unambiguous existing document the caller is authorized to see.
+    # @param requested_item_id [Integer] ID of requested item whose review context should be retrieved
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :if_none_match ETag from a previous response; when it still matches, the server responds 304 Not Modified instead of re-sending the payload.
+    # @return [Array<(RequestedItemReviewContext, Integer, Hash)>] RequestedItemReviewContext data, response status code and response headers
+    def get_requested_item_review_context_with_http_info(requested_item_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_requested_item_review_context ...'
+      end
+      # verify the required parameter 'requested_item_id' is set
+      if @api_client.config.client_side_validation && requested_item_id.nil?
+        fail ArgumentError, "Missing the required parameter 'requested_item_id' when calling DefaultApi.get_requested_item_review_context"
+      end
+      # resource path
+      local_var_path = '/api/v1/requested_items/{requestedItemId}/review_context'.sub('{' + 'requestedItemId' + '}', CGI.escape(requested_item_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      header_params[:'If-None-Match'] = opts[:'if_none_match'] if !opts[:'if_none_match'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'RequestedItemReviewContext'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_requested_item_review_context",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_requested_item_review_context\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve the note attached to a requested item
     # @param requested_item_id [Integer] ID of requested item whose note should be retrieved
     # @param [Hash] opts the optional parameters
