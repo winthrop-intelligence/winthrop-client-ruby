@@ -21,12 +21,16 @@ module WinthropClient
 
     attr_accessor :coach_id
 
+    # Cropped coach avatar path; null when the coach has no image.
+    attr_accessor :photo_url
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'name' => :'name',
         :'title' => :'title',
-        :'coach_id' => :'coach_id'
+        :'coach_id' => :'coach_id',
+        :'photo_url' => :'photo_url'
       }
     end
 
@@ -45,7 +49,8 @@ module WinthropClient
       {
         :'name' => :'String',
         :'title' => :'String',
-        :'coach_id' => :'Integer'
+        :'coach_id' => :'Integer',
+        :'photo_url' => :'String'
       }
     end
 
@@ -54,7 +59,8 @@ module WinthropClient
       Set.new([
         :'name',
         :'title',
-        :'coach_id'
+        :'coach_id',
+        :'photo_url'
       ])
     end
 
@@ -91,6 +97,12 @@ module WinthropClient
       else
         self.coach_id = nil
       end
+
+      if attributes.key?(:'photo_url')
+        self.photo_url = attributes[:'photo_url']
+      else
+        self.photo_url = nil
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -115,7 +127,8 @@ module WinthropClient
       self.class == o.class &&
           name == o.name &&
           title == o.title &&
-          coach_id == o.coach_id
+          coach_id == o.coach_id &&
+          photo_url == o.photo_url
     end
 
     # @see the `==` method
@@ -127,7 +140,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, title, coach_id].hash
+      [name, title, coach_id, photo_url].hash
     end
 
     # Builds the object from hash
