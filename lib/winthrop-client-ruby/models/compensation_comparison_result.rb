@@ -14,23 +14,25 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class SchedulingContactSchool < ApiModelBase
-    attr_accessor :id
+  class CompensationComparisonResult < ApiModelBase
+    attr_accessor :resolved_scope
 
-    attr_accessor :name
+    attr_accessor :rows
 
-    attr_accessor :schedule_profile_eligible
+    attr_accessor :cohort_stats
 
-    # Cropped school logo URL (small variant); null when the school has no logo — the card/dialog falls back to initials.
-    attr_accessor :logo_url
+    attr_accessor :comp_visibility
+
+    attr_accessor :warnings
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'name' => :'name',
-        :'schedule_profile_eligible' => :'schedule_profile_eligible',
-        :'logo_url' => :'logo_url'
+        :'resolved_scope' => :'resolved_scope',
+        :'rows' => :'rows',
+        :'cohort_stats' => :'cohort_stats',
+        :'comp_visibility' => :'comp_visibility',
+        :'warnings' => :'warnings'
       }
     end
 
@@ -47,17 +49,17 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'Integer',
-        :'name' => :'String',
-        :'schedule_profile_eligible' => :'Boolean',
-        :'logo_url' => :'String'
+        :'resolved_scope' => :'CompensationComparisonResolvedScope',
+        :'rows' => :'Array<CompensationComparisonRow>',
+        :'cohort_stats' => :'CompensationComparisonCohortStats',
+        :'comp_visibility' => :'CompensationComparisonCompVisibility',
+        :'warnings' => :'Array<String>'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'logo_url'
       ])
     end
 
@@ -65,40 +67,50 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::SchedulingContactSchool` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::CompensationComparisonResult` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::SchedulingContactSchool`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::CompensationComparisonResult`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'resolved_scope')
+        self.resolved_scope = attributes[:'resolved_scope']
       else
-        self.id = nil
+        self.resolved_scope = nil
       end
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'rows')
+        if (value = attributes[:'rows']).is_a?(Array)
+          self.rows = value
+        end
       else
-        self.name = nil
+        self.rows = nil
       end
 
-      if attributes.key?(:'schedule_profile_eligible')
-        self.schedule_profile_eligible = attributes[:'schedule_profile_eligible']
+      if attributes.key?(:'cohort_stats')
+        self.cohort_stats = attributes[:'cohort_stats']
       else
-        self.schedule_profile_eligible = nil
+        self.cohort_stats = nil
       end
 
-      if attributes.key?(:'logo_url')
-        self.logo_url = attributes[:'logo_url']
+      if attributes.key?(:'comp_visibility')
+        self.comp_visibility = attributes[:'comp_visibility']
       else
-        self.logo_url = nil
+        self.comp_visibility = nil
+      end
+
+      if attributes.key?(:'warnings')
+        if (value = attributes[:'warnings']).is_a?(Array)
+          self.warnings = value
+        end
+      else
+        self.warnings = nil
       end
     end
 
@@ -107,16 +119,24 @@ module WinthropClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @id.nil?
-        invalid_properties.push('invalid value for "id", id cannot be nil.')
+      if @resolved_scope.nil?
+        invalid_properties.push('invalid value for "resolved_scope", resolved_scope cannot be nil.')
       end
 
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      if @rows.nil?
+        invalid_properties.push('invalid value for "rows", rows cannot be nil.')
       end
 
-      if @schedule_profile_eligible.nil?
-        invalid_properties.push('invalid value for "schedule_profile_eligible", schedule_profile_eligible cannot be nil.')
+      if @cohort_stats.nil?
+        invalid_properties.push('invalid value for "cohort_stats", cohort_stats cannot be nil.')
+      end
+
+      if @comp_visibility.nil?
+        invalid_properties.push('invalid value for "comp_visibility", comp_visibility cannot be nil.')
+      end
+
+      if @warnings.nil?
+        invalid_properties.push('invalid value for "warnings", warnings cannot be nil.')
       end
 
       invalid_properties
@@ -126,40 +146,62 @@ module WinthropClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @id.nil?
-      return false if @name.nil?
-      return false if @schedule_profile_eligible.nil?
+      return false if @resolved_scope.nil?
+      return false if @rows.nil?
+      return false if @cohort_stats.nil?
+      return false if @comp_visibility.nil?
+      return false if @warnings.nil?
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] id Value to be assigned
-    def id=(id)
-      if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+    # @param [Object] resolved_scope Value to be assigned
+    def resolved_scope=(resolved_scope)
+      if resolved_scope.nil?
+        fail ArgumentError, 'resolved_scope cannot be nil'
       end
 
-      @id = id
+      @resolved_scope = resolved_scope
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] name Value to be assigned
-    def name=(name)
-      if name.nil?
-        fail ArgumentError, 'name cannot be nil'
+    # @param [Object] rows Value to be assigned
+    def rows=(rows)
+      if rows.nil?
+        fail ArgumentError, 'rows cannot be nil'
       end
 
-      @name = name
+      @rows = rows
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] schedule_profile_eligible Value to be assigned
-    def schedule_profile_eligible=(schedule_profile_eligible)
-      if schedule_profile_eligible.nil?
-        fail ArgumentError, 'schedule_profile_eligible cannot be nil'
+    # @param [Object] cohort_stats Value to be assigned
+    def cohort_stats=(cohort_stats)
+      if cohort_stats.nil?
+        fail ArgumentError, 'cohort_stats cannot be nil'
       end
 
-      @schedule_profile_eligible = schedule_profile_eligible
+      @cohort_stats = cohort_stats
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] comp_visibility Value to be assigned
+    def comp_visibility=(comp_visibility)
+      if comp_visibility.nil?
+        fail ArgumentError, 'comp_visibility cannot be nil'
+      end
+
+      @comp_visibility = comp_visibility
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] warnings Value to be assigned
+    def warnings=(warnings)
+      if warnings.nil?
+        fail ArgumentError, 'warnings cannot be nil'
+      end
+
+      @warnings = warnings
     end
 
     # Checks equality by comparing each attribute.
@@ -167,10 +209,11 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          name == o.name &&
-          schedule_profile_eligible == o.schedule_profile_eligible &&
-          logo_url == o.logo_url
+          resolved_scope == o.resolved_scope &&
+          rows == o.rows &&
+          cohort_stats == o.cohort_stats &&
+          comp_visibility == o.comp_visibility &&
+          warnings == o.warnings
     end
 
     # @see the `==` method
@@ -182,7 +225,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, schedule_profile_eligible, logo_url].hash
+      [resolved_scope, rows, cohort_stats, comp_visibility, warnings].hash
     end
 
     # Builds the object from hash

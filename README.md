@@ -179,6 +179,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_coach_searches**](docs/DefaultApi.md#get_coach_searches) | **GET** /api/v1/coach_searches | 
 *WinthropClient::DefaultApi* | [**get_coaches**](docs/DefaultApi.md#get_coaches) | **GET** /api/v1/coaches | 
 *WinthropClient::DefaultApi* | [**get_compensation**](docs/DefaultApi.md#get_compensation) | **GET** /api/v1/compensations/{compensationId} | 
+*WinthropClient::DefaultApi* | [**get_compensation_comparisons**](docs/DefaultApi.md#get_compensation_comparisons) | **GET** /api/v1/compensation_comparisons | 
 *WinthropClient::DefaultApi* | [**get_compensations**](docs/DefaultApi.md#get_compensations) | **GET** /api/v1/compensations | 
 *WinthropClient::DefaultApi* | [**get_conference**](docs/DefaultApi.md#get_conference) | **GET** /api/v1/conferences/{conferenceId} | 
 *WinthropClient::DefaultApi* | [**get_conference_admin_compensation**](docs/DefaultApi.md#get_conference_admin_compensation) | **GET** /api/v1/conferences/{conferenceId}/admin_compensation | 
@@ -476,6 +477,13 @@ Class | Method | HTTP request | Description
  - [WinthropClient::ComparisonSectionCoachesInner](docs/ComparisonSectionCoachesInner.md)
  - [WinthropClient::Compensation](docs/Compensation.md)
  - [WinthropClient::CompensationCollection](docs/CompensationCollection.md)
+ - [WinthropClient::CompensationComparisonCohortStats](docs/CompensationComparisonCohortStats.md)
+ - [WinthropClient::CompensationComparisonCompVisibility](docs/CompensationComparisonCompVisibility.md)
+ - [WinthropClient::CompensationComparisonResolvedScope](docs/CompensationComparisonResolvedScope.md)
+ - [WinthropClient::CompensationComparisonResolvedScopeConference](docs/CompensationComparisonResolvedScopeConference.md)
+ - [WinthropClient::CompensationComparisonResolvedScopeSchoolsInner](docs/CompensationComparisonResolvedScopeSchoolsInner.md)
+ - [WinthropClient::CompensationComparisonResult](docs/CompensationComparisonResult.md)
+ - [WinthropClient::CompensationComparisonRow](docs/CompensationComparisonRow.md)
  - [WinthropClient::CompensationRow](docs/CompensationRow.md)
  - [WinthropClient::Conference](docs/Conference.md)
  - [WinthropClient::ConferenceAdminCompensationResponse](docs/ConferenceAdminCompensationResponse.md)
@@ -630,6 +638,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::GameType](docs/GameType.md)
  - [WinthropClient::GeoRegion](docs/GeoRegion.md)
  - [WinthropClient::GetAccountUserActivation200Response](docs/GetAccountUserActivation200Response.md)
+ - [WinthropClient::GetCompensationComparisons400Response](docs/GetCompensationComparisons400Response.md)
  - [WinthropClient::GetFavorites200ResponseInner](docs/GetFavorites200ResponseInner.md)
  - [WinthropClient::GetFavoritesCategories200ResponseInner](docs/GetFavoritesCategories200ResponseInner.md)
  - [WinthropClient::GetFilterOptions200Response](docs/GetFilterOptions200Response.md)
@@ -755,7 +764,6 @@ Class | Method | HTTP request | Description
  - [WinthropClient::SchoolFinancialGroup](docs/SchoolFinancialGroup.md)
  - [WinthropClient::SchoolFinancialSummary](docs/SchoolFinancialSummary.md)
  - [WinthropClient::SchoolGameContractsResponse](docs/SchoolGameContractsResponse.md)
- - [WinthropClient::SchoolGameContractsResponseSchool](docs/SchoolGameContractsResponseSchool.md)
  - [WinthropClient::SchoolGroupShow](docs/SchoolGroupShow.md)
  - [WinthropClient::SchoolInfo](docs/SchoolInfo.md)
  - [WinthropClient::SchoolNoComp](docs/SchoolNoComp.md)

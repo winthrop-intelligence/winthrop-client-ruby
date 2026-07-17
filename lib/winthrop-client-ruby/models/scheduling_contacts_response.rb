@@ -21,6 +21,9 @@ module WinthropClient
     # The viewer's own school name, or null for non-school accounts.
     attr_accessor :viewer_school_name
 
+    # The viewer's own school logo URL (small variant) — the scheduling Message dialog sender badge; null when no school or no logo.
+    attr_accessor :viewer_school_logo_url
+
     # Whether the viewer's school has coordinates (Near me availability).
     attr_accessor :viewer_has_location
 
@@ -29,6 +32,7 @@ module WinthropClient
       {
         :'contacts' => :'contacts',
         :'viewer_school_name' => :'viewer_school_name',
+        :'viewer_school_logo_url' => :'viewer_school_logo_url',
         :'viewer_has_location' => :'viewer_has_location'
       }
     end
@@ -48,6 +52,7 @@ module WinthropClient
       {
         :'contacts' => :'Array<SchedulingContact>',
         :'viewer_school_name' => :'String',
+        :'viewer_school_logo_url' => :'String',
         :'viewer_has_location' => :'Boolean'
       }
     end
@@ -56,6 +61,7 @@ module WinthropClient
     def self.openapi_nullable
       Set.new([
         :'viewer_school_name',
+        :'viewer_school_logo_url',
       ])
     end
 
@@ -87,6 +93,12 @@ module WinthropClient
         self.viewer_school_name = attributes[:'viewer_school_name']
       else
         self.viewer_school_name = nil
+      end
+
+      if attributes.key?(:'viewer_school_logo_url')
+        self.viewer_school_logo_url = attributes[:'viewer_school_logo_url']
+      else
+        self.viewer_school_logo_url = nil
       end
 
       if attributes.key?(:'viewer_has_location')
@@ -148,6 +160,7 @@ module WinthropClient
       self.class == o.class &&
           contacts == o.contacts &&
           viewer_school_name == o.viewer_school_name &&
+          viewer_school_logo_url == o.viewer_school_logo_url &&
           viewer_has_location == o.viewer_has_location
     end
 
@@ -160,7 +173,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [contacts, viewer_school_name, viewer_has_location].hash
+      [contacts, viewer_school_name, viewer_school_logo_url, viewer_has_location].hash
     end
 
     # Builds the object from hash

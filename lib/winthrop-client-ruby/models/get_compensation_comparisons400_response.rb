@@ -14,23 +14,38 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class SchedulingContactSchool < ApiModelBase
-    attr_accessor :id
+  class GetCompensationComparisons400Response < ApiModelBase
+    attr_accessor :errors
 
-    attr_accessor :name
+    attr_accessor :error_type
 
-    attr_accessor :schedule_profile_eligible
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
 
-    # Cropped school logo URL (small variant); null when the school has no logo — the card/dialog falls back to initials.
-    attr_accessor :logo_url
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'name' => :'name',
-        :'schedule_profile_eligible' => :'schedule_profile_eligible',
-        :'logo_url' => :'logo_url'
+        :'errors' => :'errors',
+        :'error_type' => :'error_type'
       }
     end
 
@@ -47,17 +62,14 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'Integer',
-        :'name' => :'String',
-        :'schedule_profile_eligible' => :'Boolean',
-        :'logo_url' => :'String'
+        :'errors' => :'Array<String>',
+        :'error_type' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'logo_url'
       ])
     end
 
@@ -65,40 +77,26 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::SchedulingContactSchool` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::GetCompensationComparisons400Response` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::SchedulingContactSchool`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::GetCompensationComparisons400Response`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      else
-        self.id = nil
+      if attributes.key?(:'errors')
+        if (value = attributes[:'errors']).is_a?(Array)
+          self.errors = value
+        end
       end
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      else
-        self.name = nil
-      end
-
-      if attributes.key?(:'schedule_profile_eligible')
-        self.schedule_profile_eligible = attributes[:'schedule_profile_eligible']
-      else
-        self.schedule_profile_eligible = nil
-      end
-
-      if attributes.key?(:'logo_url')
-        self.logo_url = attributes[:'logo_url']
-      else
-        self.logo_url = nil
+      if attributes.key?(:'error_type')
+        self.error_type = attributes[:'error_type']
       end
     end
 
@@ -107,18 +105,6 @@ module WinthropClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @id.nil?
-        invalid_properties.push('invalid value for "id", id cannot be nil.')
-      end
-
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
-      end
-
-      if @schedule_profile_eligible.nil?
-        invalid_properties.push('invalid value for "schedule_profile_eligible", schedule_profile_eligible cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -126,40 +112,19 @@ module WinthropClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @id.nil?
-      return false if @name.nil?
-      return false if @schedule_profile_eligible.nil?
+      error_type_validator = EnumAttributeValidator.new('String', ["missing_scope", "missing_role", "invalid_param", "scope_too_large", "sport_not_permitted"])
+      return false unless error_type_validator.valid?(@error_type)
       true
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] id Value to be assigned
-    def id=(id)
-      if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] error_type Object to be assigned
+    def error_type=(error_type)
+      validator = EnumAttributeValidator.new('String', ["missing_scope", "missing_role", "invalid_param", "scope_too_large", "sport_not_permitted"])
+      unless validator.valid?(error_type)
+        fail ArgumentError, "invalid value for \"error_type\", must be one of #{validator.allowable_values}."
       end
-
-      @id = id
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] name Value to be assigned
-    def name=(name)
-      if name.nil?
-        fail ArgumentError, 'name cannot be nil'
-      end
-
-      @name = name
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] schedule_profile_eligible Value to be assigned
-    def schedule_profile_eligible=(schedule_profile_eligible)
-      if schedule_profile_eligible.nil?
-        fail ArgumentError, 'schedule_profile_eligible cannot be nil'
-      end
-
-      @schedule_profile_eligible = schedule_profile_eligible
+      @error_type = error_type
     end
 
     # Checks equality by comparing each attribute.
@@ -167,10 +132,8 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          name == o.name &&
-          schedule_profile_eligible == o.schedule_profile_eligible &&
-          logo_url == o.logo_url
+          errors == o.errors &&
+          error_type == o.error_type
     end
 
     # @see the `==` method
@@ -182,7 +145,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, schedule_profile_eligible, logo_url].hash
+      [errors, error_type].hash
     end
 
     # Builds the object from hash

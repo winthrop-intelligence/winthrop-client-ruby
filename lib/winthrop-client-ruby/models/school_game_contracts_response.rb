@@ -40,7 +40,7 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'school' => :'SchoolGameContractsResponseSchool',
+        :'school' => :'CompensationComparisonResolvedScopeSchoolsInner',
         :'sports' => :'Array<SchoolSportSection>'
       }
     end

@@ -5650,6 +5650,119 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Cross-school coach/administrator role compensation comparison (MCP-174). Expands the requested schools and/or conference, matches the queried role by position type and/or title terms, classifies each candidate's raw title (clean_match / assistant / chief_of_staff / hybrid_coach_gm / related_role), applies per-row compensation permission gating, and returns cohort stats with explicit denominator counts. One row per school/match candidate; schools with no match surface as no_role_match or school_not_accessible rows when include_missing is true. Known limitation: administrator records, and coach records when no sport_id is given, are matched against WinAD views that collapse to one record per person per year, so a person holding multiple same-year positions may surface under a different position than the queried role (a response warning flags the no-sport case). Sport-scoped coach matching is per-position and unaffected.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Array<Integer>] :school_ids Explicit school ids to compare, kept in request order. Provide school_ids[] and/or conference_id. More than 40 ids is rejected with error_type&#x3D;scope_too_large.
+    # @option opts [Integer] :conference_id Conference scope; expands to member schools (conferenceship members when sport_id is given, primary members otherwise). The combined resolved scope (explicit schools plus conference members) is capped at 40 schools; beyond that the request is rejected with error_type&#x3D;scope_too_large.
+    # @option opts [Integer] :sport_id Sport scope for coach candidates. Administrator records are not sport-scoped; their rows carry a caveat instead.
+    # @option opts [Integer] :position_type_id Position type for the queried role (expands to the group when the id is a group stub). Provide position_type_id and/or title_include[].
+    # @option opts [Array<String>] :title_include Title words/phrases that strengthen a match (ILIKE, OR-combined with the position-type arm). More than 10 terms or terms over 60 chars are rejected with error_type&#x3D;invalid_param.
+    # @option opts [Array<String>] :title_exclude Title words/phrases that exclude a candidate (ILIKE). More than 10 terms or terms over 60 chars are rejected with error_type&#x3D;invalid_param.
+    # @option opts [Integer] :year Compensation season year; defaults to the current season year.
+    # @option opts [Boolean] :include_missing Emit a synthesized no_role_match / school_not_accessible row per school with no candidates. (default to true)
+    # @option opts [Integer] :per_school_limit Max candidate rows per school (best matches kept; cohort stats still cover the full matching set). Out-of-range values are silently clamped to 1..10, not rejected. (default to 3)
+    # @option opts [Integer] :max_rows Overall row cap for token safety; sets resolved_scope.truncated when it bites. Out-of-range values are silently clamped to 1..200, not rejected. (default to 60)
+    # @return [CompensationComparisonResult]
+    def get_compensation_comparisons(opts = {})
+      data, _status_code, _headers = get_compensation_comparisons_with_http_info(opts)
+      data
+    end
+
+    # Cross-school coach/administrator role compensation comparison (MCP-174). Expands the requested schools and/or conference, matches the queried role by position type and/or title terms, classifies each candidate&#39;s raw title (clean_match / assistant / chief_of_staff / hybrid_coach_gm / related_role), applies per-row compensation permission gating, and returns cohort stats with explicit denominator counts. One row per school/match candidate; schools with no match surface as no_role_match or school_not_accessible rows when include_missing is true. Known limitation: administrator records, and coach records when no sport_id is given, are matched against WinAD views that collapse to one record per person per year, so a person holding multiple same-year positions may surface under a different position than the queried role (a response warning flags the no-sport case). Sport-scoped coach matching is per-position and unaffected.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Array<Integer>] :school_ids Explicit school ids to compare, kept in request order. Provide school_ids[] and/or conference_id. More than 40 ids is rejected with error_type&#x3D;scope_too_large.
+    # @option opts [Integer] :conference_id Conference scope; expands to member schools (conferenceship members when sport_id is given, primary members otherwise). The combined resolved scope (explicit schools plus conference members) is capped at 40 schools; beyond that the request is rejected with error_type&#x3D;scope_too_large.
+    # @option opts [Integer] :sport_id Sport scope for coach candidates. Administrator records are not sport-scoped; their rows carry a caveat instead.
+    # @option opts [Integer] :position_type_id Position type for the queried role (expands to the group when the id is a group stub). Provide position_type_id and/or title_include[].
+    # @option opts [Array<String>] :title_include Title words/phrases that strengthen a match (ILIKE, OR-combined with the position-type arm). More than 10 terms or terms over 60 chars are rejected with error_type&#x3D;invalid_param.
+    # @option opts [Array<String>] :title_exclude Title words/phrases that exclude a candidate (ILIKE). More than 10 terms or terms over 60 chars are rejected with error_type&#x3D;invalid_param.
+    # @option opts [Integer] :year Compensation season year; defaults to the current season year.
+    # @option opts [Boolean] :include_missing Emit a synthesized no_role_match / school_not_accessible row per school with no candidates. (default to true)
+    # @option opts [Integer] :per_school_limit Max candidate rows per school (best matches kept; cohort stats still cover the full matching set). Out-of-range values are silently clamped to 1..10, not rejected. (default to 3)
+    # @option opts [Integer] :max_rows Overall row cap for token safety; sets resolved_scope.truncated when it bites. Out-of-range values are silently clamped to 1..200, not rejected. (default to 60)
+    # @return [Array<(CompensationComparisonResult, Integer, Hash)>] CompensationComparisonResult data, response status code and response headers
+    def get_compensation_comparisons_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_compensation_comparisons ...'
+      end
+      if @api_client.config.client_side_validation && !opts[:'school_ids'].nil? && opts[:'school_ids'].length > 40
+        fail ArgumentError, 'invalid value for "opts[:"school_ids"]" when calling DefaultApi.get_compensation_comparisons, number of items must be less than or equal to 40.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'title_include'].nil? && opts[:'title_include'].length > 10
+        fail ArgumentError, 'invalid value for "opts[:"title_include"]" when calling DefaultApi.get_compensation_comparisons, number of items must be less than or equal to 10.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'title_exclude'].nil? && opts[:'title_exclude'].length > 10
+        fail ArgumentError, 'invalid value for "opts[:"title_exclude"]" when calling DefaultApi.get_compensation_comparisons, number of items must be less than or equal to 10.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_school_limit'].nil? && opts[:'per_school_limit'] > 10
+        fail ArgumentError, 'invalid value for "opts[:"per_school_limit"]" when calling DefaultApi.get_compensation_comparisons, must be smaller than or equal to 10.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_school_limit'].nil? && opts[:'per_school_limit'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_school_limit"]" when calling DefaultApi.get_compensation_comparisons, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'max_rows'].nil? && opts[:'max_rows'] > 200
+        fail ArgumentError, 'invalid value for "opts[:"max_rows"]" when calling DefaultApi.get_compensation_comparisons, must be smaller than or equal to 200.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'max_rows'].nil? && opts[:'max_rows'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"max_rows"]" when calling DefaultApi.get_compensation_comparisons, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/compensation_comparisons'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'school_ids[]'] = @api_client.build_collection_param(opts[:'school_ids'], :multi) if !opts[:'school_ids'].nil?
+      query_params[:'conference_id'] = opts[:'conference_id'] if !opts[:'conference_id'].nil?
+      query_params[:'sport_id'] = opts[:'sport_id'] if !opts[:'sport_id'].nil?
+      query_params[:'position_type_id'] = opts[:'position_type_id'] if !opts[:'position_type_id'].nil?
+      query_params[:'title_include[]'] = @api_client.build_collection_param(opts[:'title_include'], :multi) if !opts[:'title_include'].nil?
+      query_params[:'title_exclude[]'] = @api_client.build_collection_param(opts[:'title_exclude'], :multi) if !opts[:'title_exclude'].nil?
+      query_params[:'year'] = opts[:'year'] if !opts[:'year'].nil?
+      query_params[:'include_missing'] = opts[:'include_missing'] if !opts[:'include_missing'].nil?
+      query_params[:'per_school_limit'] = opts[:'per_school_limit'] if !opts[:'per_school_limit'].nil?
+      query_params[:'max_rows'] = opts[:'max_rows'] if !opts[:'max_rows'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CompensationComparisonResult'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_compensation_comparisons",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_compensation_comparisons\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve some or all compensations
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page results page to retrieve. (default to 1)
