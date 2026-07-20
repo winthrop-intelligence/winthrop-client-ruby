@@ -11,6 +11,7 @@
 | **progress** | [**JobProgress**](JobProgress.md) |  |  |
 | **created_at** | **String** |  | [optional] |
 | **completed_at** | **String** |  | [optional] |
+| **uploaded_file_id** | **String** |  | [optional] |
 | **error** | **String** |  | [optional] |
 
 ## Example
@@ -26,6 +27,7 @@ instance = WinthropClient::JobStatus.new(
   progress: null,
   created_at: null,
   completed_at: null,
+  uploaded_file_id: null,
   error: null
 )
 ```

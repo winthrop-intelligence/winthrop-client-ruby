@@ -278,7 +278,6 @@ docs/GuaranteeEconomics.md
 docs/GuaranteeEconomicsError.md
 docs/GuaranteeEconomicsSide.md
 docs/HTTPValidationError.md
-docs/HealthApi.md
 docs/HealthCheckFailure.md
 docs/HealthCheckSuccess.md
 docs/IdName.md
@@ -508,7 +507,6 @@ docs/WireChangeSchool.md
 lib/winthrop-client-ruby.rb
 lib/winthrop-client-ruby/api/default_api.rb
 lib/winthrop-client-ruby/api/dossier_api.rb
-lib/winthrop-client-ruby/api/health_api.rb
 lib/winthrop-client-ruby/api/intercollegiate_api.rb
 lib/winthrop-client-ruby/api/ml_athletic_api.rb
 lib/winthrop-client-ruby/api/ocr_api.rb
