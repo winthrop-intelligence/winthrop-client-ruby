@@ -92,6 +92,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_coach_searches**](DefaultApi.md#get_coach_searches) | **GET** /api/v1/coach_searches |  |
 | [**get_coaches**](DefaultApi.md#get_coaches) | **GET** /api/v1/coaches |  |
 | [**get_compensation**](DefaultApi.md#get_compensation) | **GET** /api/v1/compensations/{compensationId} |  |
+| [**get_compensation_comparisons**](DefaultApi.md#get_compensation_comparisons) | **GET** /api/v1/compensation_comparisons |  |
 | [**get_compensations**](DefaultApi.md#get_compensations) | **GET** /api/v1/compensations |  |
 | [**get_conference**](DefaultApi.md#get_conference) | **GET** /api/v1/conferences/{conferenceId} |  |
 | [**get_conference_admin_compensation**](DefaultApi.md#get_conference_admin_compensation) | **GET** /api/v1/conferences/{conferenceId}/admin_compensation |  |
@@ -175,6 +176,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_schedule_grid_available_schools**](DefaultApi.md#get_schedule_grid_available_schools) | **GET** /api/v1/schedule_grid/{sport_name}/available_schools |  |
 | [**get_schedule_grid_completed**](DefaultApi.md#get_schedule_grid_completed) | **GET** /api/v1/schedule_grid/{sport_name}/completed |  |
 | [**get_schedule_updates**](DefaultApi.md#get_schedule_updates) | **GET** /api/v1/schedule_updates |  |
+| [**get_scheduling_contacts**](DefaultApi.md#get_scheduling_contacts) | **GET** /api/v1/scheduling_contacts |  |
 | [**get_school**](DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} |  |
 | [**get_school_alternate_names**](DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names |  |
 | [**get_school_game_contracts**](DefaultApi.md#get_school_game_contracts) | **GET** /api/v1/schools/{schoolId}/game_contracts |  |
@@ -6852,6 +6854,100 @@ end
 - **Accept**: application/json
 
 
+## get_compensation_comparisons
+
+> <CompensationComparisonResult> get_compensation_comparisons(opts)
+
+
+
+Cross-school coach/administrator role compensation comparison (MCP-174). Expands the requested schools and/or conference, matches the queried role by position type and/or title terms, classifies each candidate's raw title (clean_match / assistant / chief_of_staff / hybrid_coach_gm / related_role), applies per-row compensation permission gating, and returns cohort stats with explicit denominator counts. One row per school/match candidate; schools with no match surface as no_role_match or school_not_accessible rows when include_missing is true. Known limitation: administrator records, and coach records when no sport_id is given, are matched against WinAD views that collapse to one record per person per year, so a person holding multiple same-year positions may surface under a different position than the queried role (a response warning flags the no-sport case). Sport-scoped coach matching is per-position and unaffected.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  school_ids: [37], # Array<Integer> | Explicit school ids to compare, kept in request order. Provide school_ids[] and/or conference_id. More than 40 ids is rejected with error_type=scope_too_large.
+  conference_id: 56, # Integer | Conference scope; expands to member schools (conferenceship members when sport_id is given, primary members otherwise). The combined resolved scope (explicit schools plus conference members) is capped at 40 schools; beyond that the request is rejected with error_type=scope_too_large.
+  sport_id: 56, # Integer | Sport scope for coach candidates. Administrator records are not sport-scoped; their rows carry a caveat instead.
+  position_type_id: 56, # Integer | Position type for the queried role (expands to the group when the id is a group stub). Provide position_type_id and/or title_include[].
+  title_include: ['inner_example'], # Array<String> | Title words/phrases that strengthen a match (ILIKE, OR-combined with the position-type arm). More than 10 terms or terms over 60 chars are rejected with error_type=invalid_param.
+  title_exclude: ['inner_example'], # Array<String> | Title words/phrases that exclude a candidate (ILIKE). More than 10 terms or terms over 60 chars are rejected with error_type=invalid_param.
+  year: 56, # Integer | Compensation season year; defaults to the current season year.
+  include_missing: true, # Boolean | Emit a synthesized no_role_match / school_not_accessible row per school with no candidates.
+  per_school_limit: 56, # Integer | Max candidate rows per school (best matches kept; cohort stats still cover the full matching set). Out-of-range values are silently clamped to 1..10, not rejected.
+  max_rows: 56 # Integer | Overall row cap for token safety; sets resolved_scope.truncated when it bites. Out-of-range values are silently clamped to 1..200, not rejected.
+}
+
+begin
+  
+  result = api_instance.get_compensation_comparisons(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_compensation_comparisons: #{e}"
+end
+```
+
+#### Using the get_compensation_comparisons_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CompensationComparisonResult>, Integer, Hash)> get_compensation_comparisons_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_compensation_comparisons_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CompensationComparisonResult>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_compensation_comparisons_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_ids** | [**Array&lt;Integer&gt;**](Integer.md) | Explicit school ids to compare, kept in request order. Provide school_ids[] and/or conference_id. More than 40 ids is rejected with error_type&#x3D;scope_too_large. | [optional] |
+| **conference_id** | **Integer** | Conference scope; expands to member schools (conferenceship members when sport_id is given, primary members otherwise). The combined resolved scope (explicit schools plus conference members) is capped at 40 schools; beyond that the request is rejected with error_type&#x3D;scope_too_large. | [optional] |
+| **sport_id** | **Integer** | Sport scope for coach candidates. Administrator records are not sport-scoped; their rows carry a caveat instead. | [optional] |
+| **position_type_id** | **Integer** | Position type for the queried role (expands to the group when the id is a group stub). Provide position_type_id and/or title_include[]. | [optional] |
+| **title_include** | [**Array&lt;String&gt;**](String.md) | Title words/phrases that strengthen a match (ILIKE, OR-combined with the position-type arm). More than 10 terms or terms over 60 chars are rejected with error_type&#x3D;invalid_param. | [optional] |
+| **title_exclude** | [**Array&lt;String&gt;**](String.md) | Title words/phrases that exclude a candidate (ILIKE). More than 10 terms or terms over 60 chars are rejected with error_type&#x3D;invalid_param. | [optional] |
+| **year** | **Integer** | Compensation season year; defaults to the current season year. | [optional] |
+| **include_missing** | **Boolean** | Emit a synthesized no_role_match / school_not_accessible row per school with no candidates. | [optional][default to true] |
+| **per_school_limit** | **Integer** | Max candidate rows per school (best matches kept; cohort stats still cover the full matching set). Out-of-range values are silently clamped to 1..10, not rejected. | [optional][default to 3] |
+| **max_rows** | **Integer** | Overall row cap for token safety; sets resolved_scope.truncated when it bites. Out-of-range values are silently clamped to 1..200, not rejected. | [optional][default to 60] |
+
+### Return type
+
+[**CompensationComparisonResult**](CompensationComparisonResult.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_compensations
 
 > <CompensationCollection> get_compensations(opts)
@@ -13229,6 +13325,82 @@ end
 ### Return type
 
 [**ScheduleUpdateCollection**](ScheduleUpdateCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_scheduling_contacts
+
+> <SchedulingContactsResponse> get_scheduling_contacts(opts)
+
+
+
+WINAD-10119 — the Scheduling Contacts directory. One primary scheduling contact per school for the given sport, enriched with distance from the viewer's school and open Games Wanted post count. verified/verified_at reflect the admin-set verification on the contact (WINAD-10122).
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  sport: 'sport_example' # String | Scheduling sport name, e.g. BASKETBALL_M.
+}
+
+begin
+  
+  result = api_instance.get_scheduling_contacts(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_scheduling_contacts: #{e}"
+end
+```
+
+#### Using the get_scheduling_contacts_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SchedulingContactsResponse>, Integer, Hash)> get_scheduling_contacts_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_scheduling_contacts_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SchedulingContactsResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_scheduling_contacts_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **sport** | **String** | Scheduling sport name, e.g. BASKETBALL_M. | [optional] |
+
+### Return type
+
+[**SchedulingContactsResponse**](SchedulingContactsResponse.md)
 
 ### Authorization
 

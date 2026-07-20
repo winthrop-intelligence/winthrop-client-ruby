@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **school** | [**SchoolGameContractsResponseSchool**](SchoolGameContractsResponseSchool.md) |  | [optional] |
+| **school** | [**CompensationComparisonResolvedScopeSchoolsInner**](CompensationComparisonResolvedScopeSchoolsInner.md) |  | [optional] |
 | **sports** | [**Array&lt;SchoolSportSection&gt;**](SchoolSportSection.md) |  | [optional] |
 
 ## Example
