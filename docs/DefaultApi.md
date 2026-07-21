@@ -8,6 +8,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**average_division_comp**](DefaultApi.md#average_division_comp) | **GET** /api/v1/compensations/average_division_comp |  |
 | [**average_school_comp**](DefaultApi.md#average_school_comp) | **GET** /api/v1/compensations/average_school_comp |  |
 | [**average_subdivision_comp**](DefaultApi.md#average_subdivision_comp) | **GET** /api/v1/compensations/average_subdivision_comp |  |
+| [**batch_guarantee_economics**](DefaultApi.md#batch_guarantee_economics) | **POST** /api/v1/guarantee_economics/batch |  |
 | [**bulk_create_game_post_searches**](DefaultApi.md#bulk_create_game_post_searches) | **POST** /api/v1/game_post_searches/bulk_create |  |
 | [**bulk_create_games**](DefaultApi.md#bulk_create_games) | **POST** /api/v1/games/bulk |  |
 | [**bulk_update_game_post_searches**](DefaultApi.md#bulk_update_game_post_searches) | **POST** /api/v1/game_post_searches/bulk_update |  |
@@ -587,6 +588,80 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## batch_guarantee_economics
+
+> <GuaranteeEconomicsBatch> batch_guarantee_economics(batch_guarantee_economics_request)
+
+
+
+Batch companion to GET /guarantee_economics (WINAD-10147). Returns the same per-school host/travel median guarantee economics — with the identical gad_filters deep-link target — for a page of [school_id, sport_id] pairs in one request, so list surfaces (Find Opponent sheet, schedule grid, Games Wanted feed) stop firing one singular request per row. POST (not GET) because a full sheet's ~364 pairs are sent as a JSON body. Permission- critical: callers without guarantee aggregate access get every pair's host/travel as null, indistinguishable from schools with no qualifying games.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+batch_guarantee_economics_request = WinthropClient::BatchGuaranteeEconomicsRequest.new({pairs: [[37]]}) # BatchGuaranteeEconomicsRequest | 
+
+begin
+  
+  result = api_instance.batch_guarantee_economics(batch_guarantee_economics_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->batch_guarantee_economics: #{e}"
+end
+```
+
+#### Using the batch_guarantee_economics_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GuaranteeEconomicsBatch>, Integer, Hash)> batch_guarantee_economics_with_http_info(batch_guarantee_economics_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.batch_guarantee_economics_with_http_info(batch_guarantee_economics_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GuaranteeEconomicsBatch>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->batch_guarantee_economics_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **batch_guarantee_economics_request** | [**BatchGuaranteeEconomicsRequest**](BatchGuaranteeEconomicsRequest.md) |  |  |
+
+### Return type
+
+[**GuaranteeEconomicsBatch**](GuaranteeEconomicsBatch.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
