@@ -28,6 +28,8 @@
 | **current_sport_name** | **String** |  | [optional] |
 | **current_position_title** | **String** |  | [optional] |
 | **current_position_types** | **Array&lt;String&gt;** |  |  |
+| **header_position_season_year_str** | **String** |  |  |
+| **header_position_historical** | **Boolean** |  |  |
 | **avatar_url** | **String** |  | [optional] |
 | **can_see_compensation** | **Boolean** |  |  |
 | **can_see_videos** | **Boolean** |  |  |
@@ -65,6 +67,8 @@ instance = WinthropClient::CoachProfile.new(
   current_sport_name: null,
   current_position_title: null,
   current_position_types: null,
+  header_position_season_year_str: null,
+  header_position_historical: null,
   avatar_url: null,
   can_see_compensation: null,
   can_see_videos: null,
