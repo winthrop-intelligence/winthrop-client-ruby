@@ -13,6 +13,7 @@
 | **conference_id** | **Integer** |  | [optional] |
 | **division_name** | **String** |  | [optional] |
 | **division_id** | **Integer** |  | [optional] |
+| **subdivision_name** | **String** |  | [optional] |
 | **usnwr_ranking** | **Integer** |  | [optional] |
 | **directors_cup_ranking** | **Integer** |  | [optional] |
 | **is_private** | **Boolean** |  | [optional] |
@@ -36,6 +37,7 @@ instance = WinthropClient::DepartmentSearchResult.new(
   conference_id: null,
   division_name: null,
   division_id: null,
+  subdivision_name: null,
   usnwr_ranking: null,
   directors_cup_ranking: null,
   is_private: null,

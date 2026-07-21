@@ -41,6 +41,8 @@
 | **coli_index** | **Float** | Cost of living index for the user&#39;s school | [optional] |
 | **subscription_type** | **String** |  | [optional] |
 | **schedule_sports** | [**Array&lt;UserScheduleSportsInner&gt;**](UserScheduleSportsInner.md) | Sports the user can access for game scheduling | [optional] |
+| **school_name** | **String** | Viewer&#39;s own school name (school accounts only) — the scheduling Message dialog sender identity | [optional] |
+| **school_logo_url** | **String** | Viewer&#39;s own school logo URL (small variant); null when no school or no logo — dialog falls back to initials | [optional] |
 | **school_city** | **String** |  | [optional] |
 | **school_state** | **String** |  | [optional] |
 | **otp_required** | **Boolean** | Whether the user must verify OTP to access the application | [optional] |
@@ -95,6 +97,8 @@ instance = WinthropClient::User.new(
   coli_index: null,
   subscription_type: null,
   schedule_sports: null,
+  school_name: null,
+  school_logo_url: null,
   school_city: null,
   school_state: null,
   otp_required: null,
