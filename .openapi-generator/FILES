@@ -137,6 +137,7 @@ docs/CreateGamePostSearchRequest.md
 docs/CreateGamePostSearchRequestGamePost.md
 docs/CreateGameRequest.md
 docs/CreateGameRequestGame.md
+docs/CreateJobJson.md
 docs/CreateMcpEventRequest.md
 docs/CreateMcpEventRequestMcpEvent.md
 docs/CreateNoteRequest.md
@@ -290,9 +291,11 @@ docs/InvoiceReportAccount.md
 docs/InvoiceReportResult.md
 docs/InvoiceReportRow.md
 docs/Job.md
+docs/JobAccepted.md
 docs/JobCandidate.md
 docs/JobCollection.md
 docs/JobDepartment.md
+docs/JobOptions.md
 docs/JobPost.md
 docs/JobPostCollection.md
 docs/JobPostInterestLead.md
@@ -307,8 +310,13 @@ docs/JobPostSalaryBenchmarkSample.md
 docs/JobPostSalaryBenchmarkScope.md
 docs/JobPostSalaryBenchmarkScopeDateWindow.md
 docs/JobPostSalarySummary.md
+docs/JobProgress.md
+docs/JobResult.md
 docs/JobSchool.md
+docs/JobSource.md
 docs/JobSport.md
+docs/JobStatus.md
+docs/JobStatusBatch.md
 docs/Link.md
 docs/LinkCollection.md
 docs/LinkCollection1.md
@@ -324,6 +332,8 @@ docs/NewAccountUserResponse.md
 docs/NewsFeed.md
 docs/NewsFeedCollection.md
 docs/Note.md
+docs/OcrApi.md
+docs/PageResult.md
 docs/PageView.md
 docs/PerformanceChartCoach.md
 docs/PerformanceChartData.md
@@ -502,6 +512,7 @@ lib/winthrop-client-ruby/api/default_api.rb
 lib/winthrop-client-ruby/api/dossier_api.rb
 lib/winthrop-client-ruby/api/intercollegiate_api.rb
 lib/winthrop-client-ruby/api/ml_athletic_api.rb
+lib/winthrop-client-ruby/api/ocr_api.rb
 lib/winthrop-client-ruby/api/reporting_api.rb
 lib/winthrop-client-ruby/api/scraper_api.rb
 lib/winthrop-client-ruby/api_client.rb
@@ -641,6 +652,7 @@ lib/winthrop-client-ruby/models/create_game_post_search_request.rb
 lib/winthrop-client-ruby/models/create_game_post_search_request_game_post.rb
 lib/winthrop-client-ruby/models/create_game_request.rb
 lib/winthrop-client-ruby/models/create_game_request_game.rb
+lib/winthrop-client-ruby/models/create_job_json.rb
 lib/winthrop-client-ruby/models/create_mcp_event_request.rb
 lib/winthrop-client-ruby/models/create_mcp_event_request_mcp_event.rb
 lib/winthrop-client-ruby/models/create_note_request.rb
@@ -791,9 +803,11 @@ lib/winthrop-client-ruby/models/invoice_report_account.rb
 lib/winthrop-client-ruby/models/invoice_report_result.rb
 lib/winthrop-client-ruby/models/invoice_report_row.rb
 lib/winthrop-client-ruby/models/job.rb
+lib/winthrop-client-ruby/models/job_accepted.rb
 lib/winthrop-client-ruby/models/job_candidate.rb
 lib/winthrop-client-ruby/models/job_collection.rb
 lib/winthrop-client-ruby/models/job_department.rb
+lib/winthrop-client-ruby/models/job_options.rb
 lib/winthrop-client-ruby/models/job_post.rb
 lib/winthrop-client-ruby/models/job_post_collection.rb
 lib/winthrop-client-ruby/models/job_post_interest_lead.rb
@@ -808,8 +822,13 @@ lib/winthrop-client-ruby/models/job_post_salary_benchmark_sample.rb
 lib/winthrop-client-ruby/models/job_post_salary_benchmark_scope.rb
 lib/winthrop-client-ruby/models/job_post_salary_benchmark_scope_date_window.rb
 lib/winthrop-client-ruby/models/job_post_salary_summary.rb
+lib/winthrop-client-ruby/models/job_progress.rb
+lib/winthrop-client-ruby/models/job_result.rb
 lib/winthrop-client-ruby/models/job_school.rb
+lib/winthrop-client-ruby/models/job_source.rb
 lib/winthrop-client-ruby/models/job_sport.rb
+lib/winthrop-client-ruby/models/job_status.rb
+lib/winthrop-client-ruby/models/job_status_batch.rb
 lib/winthrop-client-ruby/models/link.rb
 lib/winthrop-client-ruby/models/link_collection.rb
 lib/winthrop-client-ruby/models/link_collection1.rb
@@ -824,6 +843,7 @@ lib/winthrop-client-ruby/models/new_account_user_response.rb
 lib/winthrop-client-ruby/models/news_feed.rb
 lib/winthrop-client-ruby/models/news_feed_collection.rb
 lib/winthrop-client-ruby/models/note.rb
+lib/winthrop-client-ruby/models/page_result.rb
 lib/winthrop-client-ruby/models/page_view.rb
 lib/winthrop-client-ruby/models/performance_chart_coach.rb
 lib/winthrop-client-ruby/models/performance_chart_data.rb

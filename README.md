@@ -367,6 +367,10 @@ Class | Method | HTTP request | Description
 *WinthropClient::IntercollegiateApi* | [**sync_job_post**](docs/IntercollegiateApi.md#sync_job_post) | **PUT** /wi_jobs/job_posts/{jobPostId}/sync | 
 *WinthropClient::MlAthleticApi* | [**health_check**](docs/MlAthleticApi.md#health_check) | **GET** /ml-athletic/health_check | 
 *WinthropClient::MlAthleticApi* | [**predict**](docs/MlAthleticApi.md#predict) | **POST** /ml-athletic/predict | 
+*WinthropClient::OcrApi* | [**create_job_ocr_v1_jobs_post**](docs/OcrApi.md#create_job_ocr_v1_jobs_post) | **POST** /ocr/v1/jobs | Submit an OCR job for a Google Drive file
+*WinthropClient::OcrApi* | [**job_result_ocr_v1_jobs_job_id_result_get**](docs/OcrApi.md#job_result_ocr_v1_jobs_job_id_result_get) | **GET** /ocr/v1/jobs/{job_id}/result | Fetch the full result
+*WinthropClient::OcrApi* | [**job_status_batch_ocr_v1_jobs_get**](docs/OcrApi.md#job_status_batch_ocr_v1_jobs_get) | **GET** /ocr/v1/jobs | Poll many jobs in one request
+*WinthropClient::OcrApi* | [**job_status_ocr_v1_jobs_job_id_get**](docs/OcrApi.md#job_status_ocr_v1_jobs_job_id_get) | **GET** /ocr/v1/jobs/{job_id} | Poll one job
 *WinthropClient::ReportingApi* | [**get_coach_contract_requests**](docs/ReportingApi.md#get_coach_contract_requests) | **GET** /api/v1/reports/coach_contract_requests | 
 *WinthropClient::ReportingApi* | [**get_coach_history**](docs/ReportingApi.md#get_coach_history) | **GET** /api/v1/reports/coach_history | 
 *WinthropClient::ReportingApi* | [**get_conferenceships**](docs/ReportingApi.md#get_conferenceships) | **GET** /api/v1/reports/conferenceships | 
@@ -521,6 +525,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::CreateGamePostSearchRequestGamePost](docs/CreateGamePostSearchRequestGamePost.md)
  - [WinthropClient::CreateGameRequest](docs/CreateGameRequest.md)
  - [WinthropClient::CreateGameRequestGame](docs/CreateGameRequestGame.md)
+ - [WinthropClient::CreateJobJson](docs/CreateJobJson.md)
  - [WinthropClient::CreateMcpEventRequest](docs/CreateMcpEventRequest.md)
  - [WinthropClient::CreateMcpEventRequestMcpEvent](docs/CreateMcpEventRequestMcpEvent.md)
  - [WinthropClient::CreateNoteRequest](docs/CreateNoteRequest.md)
@@ -671,9 +676,11 @@ Class | Method | HTTP request | Description
  - [WinthropClient::InvoiceReportResult](docs/InvoiceReportResult.md)
  - [WinthropClient::InvoiceReportRow](docs/InvoiceReportRow.md)
  - [WinthropClient::Job](docs/Job.md)
+ - [WinthropClient::JobAccepted](docs/JobAccepted.md)
  - [WinthropClient::JobCandidate](docs/JobCandidate.md)
  - [WinthropClient::JobCollection](docs/JobCollection.md)
  - [WinthropClient::JobDepartment](docs/JobDepartment.md)
+ - [WinthropClient::JobOptions](docs/JobOptions.md)
  - [WinthropClient::JobPost](docs/JobPost.md)
  - [WinthropClient::JobPostCollection](docs/JobPostCollection.md)
  - [WinthropClient::JobPostInterestLead](docs/JobPostInterestLead.md)
@@ -688,8 +695,13 @@ Class | Method | HTTP request | Description
  - [WinthropClient::JobPostSalaryBenchmarkScope](docs/JobPostSalaryBenchmarkScope.md)
  - [WinthropClient::JobPostSalaryBenchmarkScopeDateWindow](docs/JobPostSalaryBenchmarkScopeDateWindow.md)
  - [WinthropClient::JobPostSalarySummary](docs/JobPostSalarySummary.md)
+ - [WinthropClient::JobProgress](docs/JobProgress.md)
+ - [WinthropClient::JobResult](docs/JobResult.md)
  - [WinthropClient::JobSchool](docs/JobSchool.md)
+ - [WinthropClient::JobSource](docs/JobSource.md)
  - [WinthropClient::JobSport](docs/JobSport.md)
+ - [WinthropClient::JobStatus](docs/JobStatus.md)
+ - [WinthropClient::JobStatusBatch](docs/JobStatusBatch.md)
  - [WinthropClient::Link](docs/Link.md)
  - [WinthropClient::LinkCollection](docs/LinkCollection.md)
  - [WinthropClient::LinkCollection1](docs/LinkCollection1.md)
@@ -704,6 +716,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::NewsFeed](docs/NewsFeed.md)
  - [WinthropClient::NewsFeedCollection](docs/NewsFeedCollection.md)
  - [WinthropClient::Note](docs/Note.md)
+ - [WinthropClient::PageResult](docs/PageResult.md)
  - [WinthropClient::PageView](docs/PageView.md)
  - [WinthropClient::PerformanceChartCoach](docs/PerformanceChartCoach.md)
  - [WinthropClient::PerformanceChartData](docs/PerformanceChartData.md)
