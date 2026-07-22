@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **data** | [**Array&lt;CoachSearchResult&gt;**](CoachSearchResult.md) |  | [optional] |
 | **meta** | [**Meta**](Meta.md) |  | [optional] |
-| **comp_stats** | [**CompStats**](CompStats.md) |  | [optional] |
+| **comp_stats** | [**CompStats**](CompStats.md) | Compensation statistics for the full filtered result set (before pagination). Only included when user has coach_compensation permission. | [optional] |
 
 ## Example
 
