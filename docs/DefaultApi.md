@@ -8755,7 +8755,6 @@ end
 api_instance = WinthropClient::DefaultApi.new
 opts = {
   page: 56, # Integer | results page to retrieve.
-  year: 56, # Integer | Financial report season year to use for department financials and season-scoped staff data
   q: { ... } # Object | Ransack query
 }
 
@@ -8791,7 +8790,6 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **year** | **Integer** | Financial report season year to use for department financials and season-scoped staff data | [optional] |
 | **q** | [**Object**](.md) | Ransack query | [optional] |
 
 ### Return type

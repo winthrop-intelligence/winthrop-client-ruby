@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **years** | **Array&lt;Integer&gt;** |  | [optional] |
+| **financial_years** | **Array&lt;Integer&gt;** |  | [optional] |
 | **current_year** | **Integer** |  | [optional] |
 | **current_financials_year** | **Integer** |  | [optional] |
 | **divisions** | [**Array&lt;IdName&gt;**](IdName.md) |  | [optional] |
@@ -22,6 +23,7 @@ require 'winthrop-client-ruby'
 
 instance = WinthropClient::GetFilterOptions200Response.new(
   years: null,
+  financial_years: null,
   current_year: null,
   current_financials_year: null,
   divisions: null,
