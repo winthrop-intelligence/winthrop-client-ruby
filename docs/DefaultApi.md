@@ -11807,7 +11807,9 @@ api_instance = WinthropClient::DefaultApi.new
 opts = {
   since: 'since_example', # String | Duration string (e.g. \"24h\", \"7d\") bounding the \"new\" section.
   school_id: 789, # Integer | Filter to one school's winad_id.
-  limit: 56 # Integer | Max number of disagreement rows returned.
+  limit: 56, # Integer | Max number of disagreement rows returned per section, per page.
+  new_page: 56, # Integer | Page number for the \"new\" section (1-indexed, Kaminari-paginated independently of still_pending_page).
+  still_pending_page: 56 # Integer | Page number for the \"still_pending\" section (1-indexed, Kaminari-paginated independently of new_page).
 }
 
 begin
@@ -11843,7 +11845,9 @@ end
 | ---- | ---- | ----------- | ----- |
 | **since** | **String** | Duration string (e.g. \&quot;24h\&quot;, \&quot;7d\&quot;) bounding the \&quot;new\&quot; section. | [optional] |
 | **school_id** | **Integer** | Filter to one school&#39;s winad_id. | [optional] |
-| **limit** | **Integer** | Max number of disagreement rows returned. | [optional][default to 200] |
+| **limit** | **Integer** | Max number of disagreement rows returned per section, per page. | [optional][default to 200] |
+| **new_page** | **Integer** | Page number for the \&quot;new\&quot; section (1-indexed, Kaminari-paginated independently of still_pending_page). | [optional][default to 1] |
+| **still_pending_page** | **Integer** | Page number for the \&quot;still_pending\&quot; section (1-indexed, Kaminari-paginated independently of new_page). | [optional][default to 1] |
 
 ### Return type
 
