@@ -283,6 +283,9 @@ docs/GuaranteeEconomicsSide.md
 docs/HTTPValidationError.md
 docs/HealthCheckFailure.md
 docs/HealthCheckSuccess.md
+docs/HumanOverrideRequest.md
+docs/HumanOverrideRequestJobPost.md
+docs/HumanOverrideResult.md
 docs/IdName.md
 docs/IncomeReport.md
 docs/IncomeReportCollection.md
@@ -298,6 +301,8 @@ docs/JobDepartment.md
 docs/JobOptions.md
 docs/JobPost.md
 docs/JobPostCollection.md
+docs/JobPostDisagreement.md
+docs/JobPostDisagreementCollection.md
 docs/JobPostInterestLead.md
 docs/JobPostInterestLeadCandidate.md
 docs/JobPostInterestLeadCollection.md
@@ -796,6 +801,9 @@ lib/winthrop-client-ruby/models/guarantee_economics_side.rb
 lib/winthrop-client-ruby/models/health_check_failure.rb
 lib/winthrop-client-ruby/models/health_check_success.rb
 lib/winthrop-client-ruby/models/http_validation_error.rb
+lib/winthrop-client-ruby/models/human_override_request.rb
+lib/winthrop-client-ruby/models/human_override_request_job_post.rb
+lib/winthrop-client-ruby/models/human_override_result.rb
 lib/winthrop-client-ruby/models/id_name.rb
 lib/winthrop-client-ruby/models/income_report.rb
 lib/winthrop-client-ruby/models/income_report_collection.rb
@@ -810,6 +818,8 @@ lib/winthrop-client-ruby/models/job_department.rb
 lib/winthrop-client-ruby/models/job_options.rb
 lib/winthrop-client-ruby/models/job_post.rb
 lib/winthrop-client-ruby/models/job_post_collection.rb
+lib/winthrop-client-ruby/models/job_post_disagreement.rb
+lib/winthrop-client-ruby/models/job_post_disagreement_collection.rb
 lib/winthrop-client-ruby/models/job_post_interest_lead.rb
 lib/winthrop-client-ruby/models/job_post_interest_lead_candidate.rb
 lib/winthrop-client-ruby/models/job_post_interest_lead_collection.rb

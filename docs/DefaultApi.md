@@ -156,6 +156,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_income_report**](DefaultApi.md#get_income_report) | **GET** /api/v1/income_reports/{incomeReportId} |  |
 | [**get_income_reports**](DefaultApi.md#get_income_reports) | **GET** /api/v1/income_reports |  |
 | [**get_job_post**](DefaultApi.md#get_job_post) | **GET** /central_jobs/job_posts/{jobPostId} | Get a job post |
+| [**get_job_post_disagreements**](DefaultApi.md#get_job_post_disagreements) | **GET** /central_jobs/job_posts/disagreements | List unresolved LLM/ML athletics classification disagreements |
 | [**get_job_posts**](DefaultApi.md#get_job_posts) | **GET** /central_jobs/job_posts | List all job posts |
 | [**get_lad_filter_options**](DefaultApi.md#get_lad_filter_options) | **GET** /api/v1/lad_filter_options |  |
 | [**get_ncaa_financial_report_status**](DefaultApi.md#get_ncaa_financial_report_status) | **GET** /api/v1/ncaa_financial_report_statuses/{ncaaFinancialReportStatusId} |  |
@@ -252,6 +253,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_game_contract**](DefaultApi.md#update_game_contract) | **PATCH** /api/v1/game_contracts/{game_contractId} |  |
 | [**update_game_post_search**](DefaultApi.md#update_game_post_search) | **PATCH** /api/v1/game_post_searches/{gamePostSearchId} |  |
 | [**update_job_post**](DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post |
+| [**update_job_post_human_override**](DefaultApi.md#update_job_post_human_override) | **PATCH** /central_jobs/job_posts/{jobPostId}/human_override | Set the human_override_is_athletics value for one job post |
 | [**update_note**](DefaultApi.md#update_note) | **PATCH** /api/v1/notes/{id} |  |
 | [**update_password_reset**](DefaultApi.md#update_password_reset) | **PUT** /api/v1/password_reset |  |
 | [**update_position**](DefaultApi.md#update_position) | **PATCH** /api/v1/positions/{positionId} |  |
@@ -11777,6 +11779,90 @@ end
 - **Accept**: application/json
 
 
+## get_job_post_disagreements
+
+> <JobPostDisagreementCollection> get_job_post_disagreements(opts)
+
+List unresolved LLM/ML athletics classification disagreements
+
+Unresolved, non-expired JobPost rows where llm_is_athletics and ml_is_athletics disagree, split into posts created within the since window (\"new\") and everything else still unresolved (\"still_pending\"). 
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  since: 'since_example', # String | Duration string (e.g. \"24h\", \"7d\") bounding the \"new\" section.
+  school_id: 789, # Integer | Filter to one school's winad_id.
+  limit: 56, # Integer | Max number of disagreement rows returned per section, per page.
+  new_page: 56, # Integer | Page number for the \"new\" section (1-indexed, Kaminari-paginated independently of still_pending_page).
+  still_pending_page: 56 # Integer | Page number for the \"still_pending\" section (1-indexed, Kaminari-paginated independently of new_page).
+}
+
+begin
+  # List unresolved LLM/ML athletics classification disagreements
+  result = api_instance.get_job_post_disagreements(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_job_post_disagreements: #{e}"
+end
+```
+
+#### Using the get_job_post_disagreements_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<JobPostDisagreementCollection>, Integer, Hash)> get_job_post_disagreements_with_http_info(opts)
+
+```ruby
+begin
+  # List unresolved LLM/ML athletics classification disagreements
+  data, status_code, headers = api_instance.get_job_post_disagreements_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <JobPostDisagreementCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_job_post_disagreements_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **since** | **String** | Duration string (e.g. \&quot;24h\&quot;, \&quot;7d\&quot;) bounding the \&quot;new\&quot; section. | [optional] |
+| **school_id** | **Integer** | Filter to one school&#39;s winad_id. | [optional] |
+| **limit** | **Integer** | Max number of disagreement rows returned per section, per page. | [optional][default to 200] |
+| **new_page** | **Integer** | Page number for the \&quot;new\&quot; section (1-indexed, Kaminari-paginated independently of still_pending_page). | [optional][default to 1] |
+| **still_pending_page** | **Integer** | Page number for the \&quot;still_pending\&quot; section (1-indexed, Kaminari-paginated independently of new_page). | [optional][default to 1] |
+
+### Return type
+
+[**JobPostDisagreementCollection**](JobPostDisagreementCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_job_posts
 
 > <JobPostCollection> get_job_posts(opts)
@@ -19145,6 +19231,84 @@ end
 ### Return type
 
 [**JobPost**](JobPost.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_job_post_human_override
+
+> <HumanOverrideResult> update_job_post_human_override(job_post_id, opts)
+
+Set the human_override_is_athletics value for one job post
+
+Sets human_override_is_athletics directly — the general job post update endpoint never permits this field. Skips, rather than overwrites, a post that was already resolved since the caller last fetched it. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+job_post_id = 789 # Integer | ID of job post to override
+opts = {
+  human_override_request: WinthropClient::HumanOverrideRequest.new({job_post: WinthropClient::HumanOverrideRequestJobPost.new({human_override_is_athletics: false})}) # HumanOverrideRequest | 
+}
+
+begin
+  # Set the human_override_is_athletics value for one job post
+  result = api_instance.update_job_post_human_override(job_post_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_job_post_human_override: #{e}"
+end
+```
+
+#### Using the update_job_post_human_override_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<HumanOverrideResult>, Integer, Hash)> update_job_post_human_override_with_http_info(job_post_id, opts)
+
+```ruby
+begin
+  # Set the human_override_is_athletics value for one job post
+  data, status_code, headers = api_instance.update_job_post_human_override_with_http_info(job_post_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <HumanOverrideResult>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_job_post_human_override_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **job_post_id** | **Integer** | ID of job post to override |  |
+| **human_override_request** | [**HumanOverrideRequest**](HumanOverrideRequest.md) |  | [optional] |
+
+### Return type
+
+[**HumanOverrideResult**](HumanOverrideResult.md)
 
 ### Authorization
 
