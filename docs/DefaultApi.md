@@ -23,6 +23,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**create_favorites_category**](DefaultApi.md#create_favorites_category) | **POST** /api/v1/favorites_categories |  |
 | [**create_foia_label**](DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels |  |
 | [**create_foia_request**](DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests |  |
+| [**create_frs_export**](DefaultApi.md#create_frs_export) | **POST** /api/v1/frs_exports |  |
 | [**create_game**](DefaultApi.md#create_game) | **POST** /api/v1/games |  |
 | [**create_game_post**](DefaultApi.md#create_game_post) | **POST** /api/v1/game_posts |  |
 | [**create_game_post_search**](DefaultApi.md#create_game_post_search) | **POST** /api/v1/game_post_searches |  |
@@ -138,6 +139,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_foia_labels**](DefaultApi.md#get_foia_labels) | **GET** /api/v1/foia_labels |  |
 | [**get_foia_request**](DefaultApi.md#get_foia_request) | **GET** /api/v1/foia_requests/{foiaRequestId} |  |
 | [**get_foia_requests**](DefaultApi.md#get_foia_requests) | **GET** /api/v1/foia_requests |  |
+| [**get_frs_export_school_search**](DefaultApi.md#get_frs_export_school_search) | **GET** /api/v1/frs_exports/school_search |  |
+| [**get_frs_exports**](DefaultApi.md#get_frs_exports) | **GET** /api/v1/frs_exports |  |
 | [**get_gad_search_detail**](DefaultApi.md#get_gad_search_detail) | **GET** /api/v1/gad_searches/{id}/detail |  |
 | [**get_gad_searches**](DefaultApi.md#get_gad_searches) | **GET** /api/v1/gad_searches |  |
 | [**get_game**](DefaultApi.md#get_game) | **GET** /api/v1/games/{gameId} |  |
@@ -234,6 +237,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_wire_changes**](DefaultApi.md#get_wire_changes) | **GET** /api/v1/wire_changes |  |
 | [**list_notes**](DefaultApi.md#list_notes) | **GET** /api/v1/notes/list |  |
 | [**regenerate_raw_contract_pdf**](DefaultApi.md#regenerate_raw_contract_pdf) | **POST** /api/v1/raw_contracts/{raw_contractId}/regenerate_pdf |  |
+| [**resolve_frs_export**](DefaultApi.md#resolve_frs_export) | **POST** /api/v1/frs_exports/resolve |  |
+| [**retry_frs_export**](DefaultApi.md#retry_frs_export) | **POST** /api/v1/frs_exports/{frsExportId}/retry |  |
 | [**search_coaches**](DefaultApi.md#search_coaches) | **POST** /api/v1/coaches/search |  |
 | [**send_otp_code**](DefaultApi.md#send_otp_code) | **POST** /api/v1/otp/send_code |  |
 | [**unstract_raw_contract_pdf_text**](DefaultApi.md#unstract_raw_contract_pdf_text) | **POST** /api/v1/raw_contracts/{raw_contractId}/unstract_pdf_text |  |
@@ -1702,6 +1707,80 @@ end
 ### Return type
 
 [**FoiaRequest**](FoiaRequest.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_frs_export
+
+> <FrsExport> create_frs_export(create_frs_export_request)
+
+
+
+Create an FRS Report Export and enqueue workbook generation
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_frs_export_request = WinthropClient::CreateFrsExportRequest.new({scope_mode: 'conference', financial_year: 37, filename: 'filename_example', sport_ids: [37]}) # CreateFrsExportRequest | 
+
+begin
+  
+  result = api_instance.create_frs_export(create_frs_export_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_frs_export: #{e}"
+end
+```
+
+#### Using the create_frs_export_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FrsExport>, Integer, Hash)> create_frs_export_with_http_info(create_frs_export_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_frs_export_with_http_info(create_frs_export_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FrsExport>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_frs_export_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_frs_export_request** | [**CreateFrsExportRequest**](CreateFrsExportRequest.md) |  |  |
+
+### Return type
+
+[**FrsExport**](FrsExport.md)
 
 ### Authorization
 
@@ -10383,6 +10462,153 @@ end
 - **Accept**: application/json
 
 
+## get_frs_export_school_search
+
+> <FrsSchoolSearchResponse> get_frs_export_school_search(query, year)
+
+
+
+Search schools for the FRS export Pick-schools picker, with FRS status for the selected year
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+query = 'query_example' # String | 
+year = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_frs_export_school_search(query, year)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_frs_export_school_search: #{e}"
+end
+```
+
+#### Using the get_frs_export_school_search_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FrsSchoolSearchResponse>, Integer, Hash)> get_frs_export_school_search_with_http_info(query, year)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_frs_export_school_search_with_http_info(query, year)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FrsSchoolSearchResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_frs_export_school_search_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **query** | **String** |  |  |
+| **year** | **Integer** |  |  |
+
+### Return type
+
+[**FrsSchoolSearchResponse**](FrsSchoolSearchResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_frs_exports
+
+> <FrsExportsResponse> get_frs_exports
+
+
+
+List the caller's FRS Report Export jobs (WINAD-10151..10155)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_frs_exports
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_frs_exports: #{e}"
+end
+```
+
+#### Using the get_frs_exports_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FrsExportsResponse>, Integer, Hash)> get_frs_exports_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_frs_exports_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FrsExportsResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_frs_exports_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**FrsExportsResponse**](FrsExportsResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_gad_search_detail
 
 > <GadContractDetail> get_gad_search_detail(id)
@@ -17758,6 +17984,154 @@ end
 ### Return type
 
 [**RegenerateRawContractPdf200Response**](RegenerateRawContractPdf200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## resolve_frs_export
+
+> <FrsResolvedPopulation> resolve_frs_export(frs_resolve_request)
+
+
+
+Resolve an FRS export scope into the selected/in-scope/included school population
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+frs_resolve_request = WinthropClient::FrsResolveRequest.new({scope_mode: 'conference', financial_year: 37}) # FrsResolveRequest | 
+
+begin
+  
+  result = api_instance.resolve_frs_export(frs_resolve_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->resolve_frs_export: #{e}"
+end
+```
+
+#### Using the resolve_frs_export_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FrsResolvedPopulation>, Integer, Hash)> resolve_frs_export_with_http_info(frs_resolve_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.resolve_frs_export_with_http_info(frs_resolve_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FrsResolvedPopulation>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->resolve_frs_export_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **frs_resolve_request** | [**FrsResolveRequest**](FrsResolveRequest.md) |  |  |
+
+### Return type
+
+[**FrsResolvedPopulation**](FrsResolvedPopulation.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## retry_frs_export
+
+> <FrsExport> retry_frs_export(frs_export_id)
+
+
+
+Re-enqueue a failed FRS export
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+frs_export_id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.retry_frs_export(frs_export_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->retry_frs_export: #{e}"
+end
+```
+
+#### Using the retry_frs_export_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FrsExport>, Integer, Hash)> retry_frs_export_with_http_info(frs_export_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.retry_frs_export_with_http_info(frs_export_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FrsExport>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->retry_frs_export_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **frs_export_id** | **Integer** |  |  |
+
+### Return type
+
+[**FrsExport**](FrsExport.md)
 
 ### Authorization
 
