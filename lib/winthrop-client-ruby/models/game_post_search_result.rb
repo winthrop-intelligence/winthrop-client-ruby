@@ -63,8 +63,11 @@ module WinthropClient
     # Dial-ready form of the creator's scheduling phone for tel links
     attr_accessor :created_by_scheduling_phone_dial
 
-    # 5-year average NET ranking
+    # 3-season average NET ranking (basketball's ranking window)
     attr_accessor :avg_net_rank
+
+    # 5-season average RPI ranking — the value non-basketball feed cards display and the ranking filter compares against, so the card matches the filter that surfaced it. `last_rpi` remains for surfaces that show the latest value.
+    attr_accessor :avg_rpi
 
     # URL to school logo image (small variant)
     attr_accessor :school_logo_url
@@ -110,6 +113,7 @@ module WinthropClient
         :'created_by_scheduling_phone' => :'created_by_scheduling_phone',
         :'created_by_scheduling_phone_dial' => :'created_by_scheduling_phone_dial',
         :'avg_net_rank' => :'avg_net_rank',
+        :'avg_rpi' => :'avg_rpi',
         :'school_logo_url' => :'school_logo_url',
         :'posts' => :'posts',
         :'games' => :'games',
@@ -154,6 +158,7 @@ module WinthropClient
         :'created_by_scheduling_phone' => :'String',
         :'created_by_scheduling_phone_dial' => :'String',
         :'avg_net_rank' => :'Integer',
+        :'avg_rpi' => :'Integer',
         :'school_logo_url' => :'String',
         :'posts' => :'Array<GamePostSearchResultPostsInner>',
         :'games' => :'Array<GamePostSearchResultGamesInner>',
@@ -183,6 +188,7 @@ module WinthropClient
         :'created_by_scheduling_phone',
         :'created_by_scheduling_phone_dial',
         :'avg_net_rank',
+        :'avg_rpi',
         :'school_logo_url',
         :'contact',
         :'guarantee',
@@ -285,6 +291,10 @@ module WinthropClient
         self.avg_net_rank = attributes[:'avg_net_rank']
       end
 
+      if attributes.key?(:'avg_rpi')
+        self.avg_rpi = attributes[:'avg_rpi']
+      end
+
       if attributes.key?(:'school_logo_url')
         self.school_logo_url = attributes[:'school_logo_url']
       end
@@ -366,6 +376,7 @@ module WinthropClient
           created_by_scheduling_phone == o.created_by_scheduling_phone &&
           created_by_scheduling_phone_dial == o.created_by_scheduling_phone_dial &&
           avg_net_rank == o.avg_net_rank &&
+          avg_rpi == o.avg_rpi &&
           school_logo_url == o.school_logo_url &&
           posts == o.posts &&
           games == o.games &&
@@ -385,7 +396,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, publish_group_id, school_id, school_name, schedule_profile_eligible, sport_id, sport_name, start_date, end_date_display, description, created_at, city, state_name, last_rpi, distance, game_types_display, created_by_name, created_by_scheduling_phone, created_by_scheduling_phone_dial, avg_net_rank, school_logo_url, posts, games, schedule_intents, overlap, contact, guarantee, contacts].hash
+      [id, publish_group_id, school_id, school_name, schedule_profile_eligible, sport_id, sport_name, start_date, end_date_display, description, created_at, city, state_name, last_rpi, distance, game_types_display, created_by_name, created_by_scheduling_phone, created_by_scheduling_phone_dial, avg_net_rank, avg_rpi, school_logo_url, posts, games, schedule_intents, overlap, contact, guarantee, contacts].hash
     end
 
     # Builds the object from hash
