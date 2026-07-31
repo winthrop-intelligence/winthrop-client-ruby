@@ -108,6 +108,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**create_favorites_category**](docs/DefaultApi.md#create_favorites_category) | **POST** /api/v1/favorites_categories | 
 *WinthropClient::DefaultApi* | [**create_foia_label**](docs/DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels | 
 *WinthropClient::DefaultApi* | [**create_foia_request**](docs/DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests | 
+*WinthropClient::DefaultApi* | [**create_frs_export**](docs/DefaultApi.md#create_frs_export) | **POST** /api/v1/frs_exports | 
 *WinthropClient::DefaultApi* | [**create_game**](docs/DefaultApi.md#create_game) | **POST** /api/v1/games | 
 *WinthropClient::DefaultApi* | [**create_game_post**](docs/DefaultApi.md#create_game_post) | **POST** /api/v1/game_posts | 
 *WinthropClient::DefaultApi* | [**create_game_post_search**](docs/DefaultApi.md#create_game_post_search) | **POST** /api/v1/game_post_searches | 
@@ -223,6 +224,8 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_foia_labels**](docs/DefaultApi.md#get_foia_labels) | **GET** /api/v1/foia_labels | 
 *WinthropClient::DefaultApi* | [**get_foia_request**](docs/DefaultApi.md#get_foia_request) | **GET** /api/v1/foia_requests/{foiaRequestId} | 
 *WinthropClient::DefaultApi* | [**get_foia_requests**](docs/DefaultApi.md#get_foia_requests) | **GET** /api/v1/foia_requests | 
+*WinthropClient::DefaultApi* | [**get_frs_export_school_search**](docs/DefaultApi.md#get_frs_export_school_search) | **GET** /api/v1/frs_exports/school_search | 
+*WinthropClient::DefaultApi* | [**get_frs_exports**](docs/DefaultApi.md#get_frs_exports) | **GET** /api/v1/frs_exports | 
 *WinthropClient::DefaultApi* | [**get_gad_search_detail**](docs/DefaultApi.md#get_gad_search_detail) | **GET** /api/v1/gad_searches/{id}/detail | 
 *WinthropClient::DefaultApi* | [**get_gad_searches**](docs/DefaultApi.md#get_gad_searches) | **GET** /api/v1/gad_searches | 
 *WinthropClient::DefaultApi* | [**get_game**](docs/DefaultApi.md#get_game) | **GET** /api/v1/games/{gameId} | 
@@ -241,6 +244,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_income_report**](docs/DefaultApi.md#get_income_report) | **GET** /api/v1/income_reports/{incomeReportId} | 
 *WinthropClient::DefaultApi* | [**get_income_reports**](docs/DefaultApi.md#get_income_reports) | **GET** /api/v1/income_reports | 
 *WinthropClient::DefaultApi* | [**get_job_post**](docs/DefaultApi.md#get_job_post) | **GET** /central_jobs/job_posts/{jobPostId} | Get a job post
+*WinthropClient::DefaultApi* | [**get_job_post_disagreements**](docs/DefaultApi.md#get_job_post_disagreements) | **GET** /central_jobs/job_posts/disagreements | List unresolved LLM/ML athletics classification disagreements
 *WinthropClient::DefaultApi* | [**get_job_posts**](docs/DefaultApi.md#get_job_posts) | **GET** /central_jobs/job_posts | List all job posts
 *WinthropClient::DefaultApi* | [**get_lad_filter_options**](docs/DefaultApi.md#get_lad_filter_options) | **GET** /api/v1/lad_filter_options | 
 *WinthropClient::DefaultApi* | [**get_ncaa_financial_report_status**](docs/DefaultApi.md#get_ncaa_financial_report_status) | **GET** /api/v1/ncaa_financial_report_statuses/{ncaaFinancialReportStatusId} | 
@@ -319,6 +323,8 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_wire_changes**](docs/DefaultApi.md#get_wire_changes) | **GET** /api/v1/wire_changes | 
 *WinthropClient::DefaultApi* | [**list_notes**](docs/DefaultApi.md#list_notes) | **GET** /api/v1/notes/list | 
 *WinthropClient::DefaultApi* | [**regenerate_raw_contract_pdf**](docs/DefaultApi.md#regenerate_raw_contract_pdf) | **POST** /api/v1/raw_contracts/{raw_contractId}/regenerate_pdf | 
+*WinthropClient::DefaultApi* | [**resolve_frs_export**](docs/DefaultApi.md#resolve_frs_export) | **POST** /api/v1/frs_exports/resolve | 
+*WinthropClient::DefaultApi* | [**retry_frs_export**](docs/DefaultApi.md#retry_frs_export) | **POST** /api/v1/frs_exports/{frsExportId}/retry | 
 *WinthropClient::DefaultApi* | [**search_coaches**](docs/DefaultApi.md#search_coaches) | **POST** /api/v1/coaches/search | 
 *WinthropClient::DefaultApi* | [**send_otp_code**](docs/DefaultApi.md#send_otp_code) | **POST** /api/v1/otp/send_code | 
 *WinthropClient::DefaultApi* | [**unstract_raw_contract_pdf_text**](docs/DefaultApi.md#unstract_raw_contract_pdf_text) | **POST** /api/v1/raw_contracts/{raw_contractId}/unstract_pdf_text | 
@@ -337,6 +343,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**update_game_contract**](docs/DefaultApi.md#update_game_contract) | **PATCH** /api/v1/game_contracts/{game_contractId} | 
 *WinthropClient::DefaultApi* | [**update_game_post_search**](docs/DefaultApi.md#update_game_post_search) | **PATCH** /api/v1/game_post_searches/{gamePostSearchId} | 
 *WinthropClient::DefaultApi* | [**update_job_post**](docs/DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post
+*WinthropClient::DefaultApi* | [**update_job_post_human_override**](docs/DefaultApi.md#update_job_post_human_override) | **PATCH** /central_jobs/job_posts/{jobPostId}/human_override | Set the human_override_is_athletics value for one job post
 *WinthropClient::DefaultApi* | [**update_note**](docs/DefaultApi.md#update_note) | **PATCH** /api/v1/notes/{id} | 
 *WinthropClient::DefaultApi* | [**update_password_reset**](docs/DefaultApi.md#update_password_reset) | **PUT** /api/v1/password_reset | 
 *WinthropClient::DefaultApi* | [**update_position**](docs/DefaultApi.md#update_position) | **PATCH** /api/v1/positions/{positionId} | 
@@ -521,6 +528,8 @@ Class | Method | HTTP request | Description
  - [WinthropClient::CreateFavorite201Response](docs/CreateFavorite201Response.md)
  - [WinthropClient::CreateFavoriteRequest](docs/CreateFavoriteRequest.md)
  - [WinthropClient::CreateFavoritesCategoryRequest](docs/CreateFavoritesCategoryRequest.md)
+ - [WinthropClient::CreateFrsExport422Response](docs/CreateFrsExport422Response.md)
+ - [WinthropClient::CreateFrsExportRequest](docs/CreateFrsExportRequest.md)
  - [WinthropClient::CreateGamePostSearchRequest](docs/CreateGamePostSearchRequest.md)
  - [WinthropClient::CreateGamePostSearchRequestGamePost](docs/CreateGamePostSearchRequestGamePost.md)
  - [WinthropClient::CreateGameRequest](docs/CreateGameRequest.md)
@@ -621,6 +630,13 @@ Class | Method | HTTP request | Description
  - [WinthropClient::FoiaRequestedItemStatusTransitionRow](docs/FoiaRequestedItemStatusTransitionRow.md)
  - [WinthropClient::FoiaRequestedItemStatusTransitionsMeta](docs/FoiaRequestedItemStatusTransitionsMeta.md)
  - [WinthropClient::FoiaRequestedItemStatusTransitionsResponse](docs/FoiaRequestedItemStatusTransitionsResponse.md)
+ - [WinthropClient::FrsExport](docs/FrsExport.md)
+ - [WinthropClient::FrsExportConfig](docs/FrsExportConfig.md)
+ - [WinthropClient::FrsExportsResponse](docs/FrsExportsResponse.md)
+ - [WinthropClient::FrsResolveRequest](docs/FrsResolveRequest.md)
+ - [WinthropClient::FrsResolvedPopulation](docs/FrsResolvedPopulation.md)
+ - [WinthropClient::FrsResolvedSchool](docs/FrsResolvedSchool.md)
+ - [WinthropClient::FrsSchoolSearchResponse](docs/FrsSchoolSearchResponse.md)
  - [WinthropClient::GadCohortError](docs/GadCohortError.md)
  - [WinthropClient::GadCohortSummary](docs/GadCohortSummary.md)
  - [WinthropClient::GadCohortSummaryBuyerFilters](docs/GadCohortSummaryBuyerFilters.md)
@@ -696,6 +712,9 @@ Class | Method | HTTP request | Description
  - [WinthropClient::HTTPValidationError](docs/HTTPValidationError.md)
  - [WinthropClient::HealthCheckFailure](docs/HealthCheckFailure.md)
  - [WinthropClient::HealthCheckSuccess](docs/HealthCheckSuccess.md)
+ - [WinthropClient::HumanOverrideRequest](docs/HumanOverrideRequest.md)
+ - [WinthropClient::HumanOverrideRequestJobPost](docs/HumanOverrideRequestJobPost.md)
+ - [WinthropClient::HumanOverrideResult](docs/HumanOverrideResult.md)
  - [WinthropClient::IdName](docs/IdName.md)
  - [WinthropClient::IncomeReport](docs/IncomeReport.md)
  - [WinthropClient::IncomeReportCollection](docs/IncomeReportCollection.md)
@@ -710,6 +729,8 @@ Class | Method | HTTP request | Description
  - [WinthropClient::JobOptions](docs/JobOptions.md)
  - [WinthropClient::JobPost](docs/JobPost.md)
  - [WinthropClient::JobPostCollection](docs/JobPostCollection.md)
+ - [WinthropClient::JobPostDisagreement](docs/JobPostDisagreement.md)
+ - [WinthropClient::JobPostDisagreementCollection](docs/JobPostDisagreementCollection.md)
  - [WinthropClient::JobPostInterestLead](docs/JobPostInterestLead.md)
  - [WinthropClient::JobPostInterestLeadCandidate](docs/JobPostInterestLeadCandidate.md)
  - [WinthropClient::JobPostInterestLeadCollection](docs/JobPostInterestLeadCollection.md)
@@ -778,6 +799,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::RequestedItemReviewContextDocument](docs/RequestedItemReviewContextDocument.md)
  - [WinthropClient::RequestedItemReviewContextFoiaRequest](docs/RequestedItemReviewContextFoiaRequest.md)
  - [WinthropClient::RequestedItemReviewContextRequestedItem](docs/RequestedItemReviewContextRequestedItem.md)
+ - [WinthropClient::RetryFrsExport422Response](docs/RetryFrsExport422Response.md)
  - [WinthropClient::RoleOption](docs/RoleOption.md)
  - [WinthropClient::RunningJob](docs/RunningJob.md)
  - [WinthropClient::ScheduleGridAvailableSchoolPost](docs/ScheduleGridAvailableSchoolPost.md)
@@ -819,7 +841,6 @@ Class | Method | HTTP request | Description
  - [WinthropClient::ScraperArgDef](docs/ScraperArgDef.md)
  - [WinthropClient::Season](docs/Season.md)
  - [WinthropClient::SeasonCollection](docs/SeasonCollection.md)
- - [WinthropClient::SendOtpCode422Response](docs/SendOtpCode422Response.md)
  - [WinthropClient::SnapshotIncomeReport](docs/SnapshotIncomeReport.md)
  - [WinthropClient::Sport](docs/Sport.md)
  - [WinthropClient::SportCollection](docs/SportCollection.md)

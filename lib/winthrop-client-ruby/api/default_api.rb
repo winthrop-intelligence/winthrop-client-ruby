@@ -1335,6 +1335,72 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Create an FRS Report Export and enqueue workbook generation
+    # @param create_frs_export_request [CreateFrsExportRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [FrsExport]
+    def create_frs_export(create_frs_export_request, opts = {})
+      data, _status_code, _headers = create_frs_export_with_http_info(create_frs_export_request, opts)
+      data
+    end
+
+    # Create an FRS Report Export and enqueue workbook generation
+    # @param create_frs_export_request [CreateFrsExportRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(FrsExport, Integer, Hash)>] FrsExport data, response status code and response headers
+    def create_frs_export_with_http_info(create_frs_export_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_frs_export ...'
+      end
+      # verify the required parameter 'create_frs_export_request' is set
+      if @api_client.config.client_side_validation && create_frs_export_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_frs_export_request' when calling DefaultApi.create_frs_export"
+      end
+      # resource path
+      local_var_path = '/api/v1/frs_exports'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_frs_export_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'FrsExport'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_frs_export",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_frs_export\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create a game
     # @param create_game_request [CreateGameRequest] 
     # @param [Hash] opts the optional parameters
@@ -8538,6 +8604,130 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Search schools for the FRS export Pick-schools picker, with FRS status for the selected year
+    # @param query [String] 
+    # @param year [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [FrsSchoolSearchResponse]
+    def get_frs_export_school_search(query, year, opts = {})
+      data, _status_code, _headers = get_frs_export_school_search_with_http_info(query, year, opts)
+      data
+    end
+
+    # Search schools for the FRS export Pick-schools picker, with FRS status for the selected year
+    # @param query [String] 
+    # @param year [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(FrsSchoolSearchResponse, Integer, Hash)>] FrsSchoolSearchResponse data, response status code and response headers
+    def get_frs_export_school_search_with_http_info(query, year, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_frs_export_school_search ...'
+      end
+      # verify the required parameter 'query' is set
+      if @api_client.config.client_side_validation && query.nil?
+        fail ArgumentError, "Missing the required parameter 'query' when calling DefaultApi.get_frs_export_school_search"
+      end
+      # verify the required parameter 'year' is set
+      if @api_client.config.client_side_validation && year.nil?
+        fail ArgumentError, "Missing the required parameter 'year' when calling DefaultApi.get_frs_export_school_search"
+      end
+      # resource path
+      local_var_path = '/api/v1/frs_exports/school_search'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'query'] = query
+      query_params[:'year'] = year
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'FrsSchoolSearchResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_frs_export_school_search",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_frs_export_school_search\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List the caller's FRS Report Export jobs (WINAD-10151..10155)
+    # @param [Hash] opts the optional parameters
+    # @return [FrsExportsResponse]
+    def get_frs_exports(opts = {})
+      data, _status_code, _headers = get_frs_exports_with_http_info(opts)
+      data
+    end
+
+    # List the caller&#39;s FRS Report Export jobs (WINAD-10151..10155)
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(FrsExportsResponse, Integer, Hash)>] FrsExportsResponse data, response status code and response headers
+    def get_frs_exports_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_frs_exports ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/frs_exports'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'FrsExportsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_frs_exports",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_frs_exports\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve detailed game contract data for the GAD detail page
     # @param id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -9705,6 +9895,78 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # List unresolved LLM/ML athletics classification disagreements
+    # Unresolved, non-expired JobPost rows where llm_is_athletics and ml_is_athletics disagree, split into posts created within the since window (\"new\") and everything else still unresolved (\"still_pending\"). 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :since Duration string (e.g. \&quot;24h\&quot;, \&quot;7d\&quot;) bounding the \&quot;new\&quot; section.
+    # @option opts [Integer] :school_id Filter to one school&#39;s winad_id.
+    # @option opts [Integer] :limit Max number of disagreement rows returned per section, per page. (default to 200)
+    # @option opts [Integer] :new_page Page number for the \&quot;new\&quot; section (1-indexed, Kaminari-paginated independently of still_pending_page). (default to 1)
+    # @option opts [Integer] :still_pending_page Page number for the \&quot;still_pending\&quot; section (1-indexed, Kaminari-paginated independently of new_page). (default to 1)
+    # @return [JobPostDisagreementCollection]
+    def get_job_post_disagreements(opts = {})
+      data, _status_code, _headers = get_job_post_disagreements_with_http_info(opts)
+      data
+    end
+
+    # List unresolved LLM/ML athletics classification disagreements
+    # Unresolved, non-expired JobPost rows where llm_is_athletics and ml_is_athletics disagree, split into posts created within the since window (\&quot;new\&quot;) and everything else still unresolved (\&quot;still_pending\&quot;). 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :since Duration string (e.g. \&quot;24h\&quot;, \&quot;7d\&quot;) bounding the \&quot;new\&quot; section.
+    # @option opts [Integer] :school_id Filter to one school&#39;s winad_id.
+    # @option opts [Integer] :limit Max number of disagreement rows returned per section, per page. (default to 200)
+    # @option opts [Integer] :new_page Page number for the \&quot;new\&quot; section (1-indexed, Kaminari-paginated independently of still_pending_page). (default to 1)
+    # @option opts [Integer] :still_pending_page Page number for the \&quot;still_pending\&quot; section (1-indexed, Kaminari-paginated independently of new_page). (default to 1)
+    # @return [Array<(JobPostDisagreementCollection, Integer, Hash)>] JobPostDisagreementCollection data, response status code and response headers
+    def get_job_post_disagreements_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_job_post_disagreements ...'
+      end
+      # resource path
+      local_var_path = '/central_jobs/job_posts/disagreements'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'since'] = opts[:'since'] if !opts[:'since'].nil?
+      query_params[:'school_id'] = opts[:'school_id'] if !opts[:'school_id'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+      query_params[:'new_page'] = opts[:'new_page'] if !opts[:'new_page'].nil?
+      query_params[:'still_pending_page'] = opts[:'still_pending_page'] if !opts[:'still_pending_page'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'JobPostDisagreementCollection'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_job_post_disagreements",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_job_post_disagreements\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # List all job posts
     # List all job posts
     # @param [Hash] opts the optional parameters
@@ -10841,7 +11103,7 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, NET ranking tier, T-Rank tier, and distance. Omit target_date for an \"Any date\" market browse (no window). Set match_tournaments=true to match schools advertising a ScheduleTournament (MTE) instead of a deal-type post.
+    # Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, primary-metric ranking tier (NET for basketball, RPI otherwise), T-Rank tier, and distance. Omit target_date for an \"Any date\" market browse (no window). Set match_tournaments=true to match schools advertising a ScheduleTournament (MTE) instead of a deal-type post.
     # @param sport_name [String] Sport name (e.g. FOOTBALL, BASKETBALL_M)
     # @param [Hash] opts the optional parameters
     # @option opts [Date] :target_date Target date in ISO format (YYYY-MM-DD). Omit (blank) for an \&quot;Any date\&quot; market browse that ignores the window and surfaces signals across all dates. A present-but-malformed value is rejected with 400.
@@ -10850,7 +11112,7 @@ module WinthropClient
     # @option opts [Boolean] :match_tournaments When true (the MTE intent), match only schools advertising a ScheduleTournament for the sport rather than a deal-type availability post; deal_types and assumed-eligible rows are ignored. (default to false)
     # @option opts [Array<String>] :deal_types Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered)
     # @option opts [String] :quality_tier Restrict to one or more subdivision tiers (power_4, mid_major, smaller). Accepts a single tier or a comma-separated list for multi-select (e.g. &#x60;power_4,mid_major&#x60;); the listed tiers are OR&#39;d together. Omit the param (or pass every tier) for \&quot;Any\&quot; — no constraint. Unrecognized tiers are ignored.
-    # @option opts [String] :ranking_tier Restrict to a band of the sport&#39;s primary ranking metric (WINAD-10196) — 3-year average NET rank for basketball, latest non-null RPI for every other sport. Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as &#x60;custom_&lt;min&gt;_&lt;max&gt;&#x60;, where either bound may be blank for an open-ended range (e.g. &#x60;custom_50_&#x60; &#x3D;&gt; 50 and up, &#x60;custom__120&#x60; &#x3D;&gt; up to 120). Schools without the metric are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered.
+    # @option opts [String] :ranking_tier Restrict to a band of the sport&#39;s primary ranking metric (WINAD-10196) — 3-year average NET rank for basketball, 3-year average RPI for every other sport. Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as &#x60;custom_&lt;min&gt;_&lt;max&gt;&#x60;, where either bound may be blank for an open-ended range (e.g. &#x60;custom_50_&#x60; &#x3D;&gt; 50 and up, &#x60;custom__120&#x60; &#x3D;&gt; up to 120). Schools without the metric are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered.
     # @option opts [String] :torvik_ranking_tier Restrict to a T-Rank (Bart Torvik) band, mirroring ranking_tier (latest non-null 3-year T-Rank average for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as &#x60;custom_&lt;min&gt;_&lt;max&gt;&#x60;, where either bound may be blank for an open-ended range (e.g. &#x60;custom_50_&#x60; &#x3D;&gt; 50 and up, &#x60;custom__120&#x60; &#x3D;&gt; up to 120). Schools without a T-Rank are excluded from every tier. T-Rank is basketball-only, so this filter is ignored for non-basketball sports. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered.
     # @option opts [Integer] :max_distance_miles Maximum distance (miles) from the user&#39;s school. Requires user_school_id to resolve a coordinate origin.
     # @option opts [Integer] :user_school_id Requesting user&#39;s school. Used as the origin for distance filtering and is always excluded from results.
@@ -10861,7 +11123,7 @@ module WinthropClient
       data
     end
 
-    # Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, NET ranking tier, T-Rank tier, and distance. Omit target_date for an \&quot;Any date\&quot; market browse (no window). Set match_tournaments&#x3D;true to match schools advertising a ScheduleTournament (MTE) instead of a deal-type post.
+    # Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, primary-metric ranking tier (NET for basketball, RPI otherwise), T-Rank tier, and distance. Omit target_date for an \&quot;Any date\&quot; market browse (no window). Set match_tournaments&#x3D;true to match schools advertising a ScheduleTournament (MTE) instead of a deal-type post.
     # @param sport_name [String] Sport name (e.g. FOOTBALL, BASKETBALL_M)
     # @param [Hash] opts the optional parameters
     # @option opts [Date] :target_date Target date in ISO format (YYYY-MM-DD). Omit (blank) for an \&quot;Any date\&quot; market browse that ignores the window and surfaces signals across all dates. A present-but-malformed value is rejected with 400.
@@ -10870,7 +11132,7 @@ module WinthropClient
     # @option opts [Boolean] :match_tournaments When true (the MTE intent), match only schools advertising a ScheduleTournament for the sport rather than a deal-type availability post; deal_types and assumed-eligible rows are ignored. (default to false)
     # @option opts [Array<String>] :deal_types Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered)
     # @option opts [String] :quality_tier Restrict to one or more subdivision tiers (power_4, mid_major, smaller). Accepts a single tier or a comma-separated list for multi-select (e.g. &#x60;power_4,mid_major&#x60;); the listed tiers are OR&#39;d together. Omit the param (or pass every tier) for \&quot;Any\&quot; — no constraint. Unrecognized tiers are ignored.
-    # @option opts [String] :ranking_tier Restrict to a band of the sport&#39;s primary ranking metric (WINAD-10196) — 3-year average NET rank for basketball, latest non-null RPI for every other sport. Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as &#x60;custom_&lt;min&gt;_&lt;max&gt;&#x60;, where either bound may be blank for an open-ended range (e.g. &#x60;custom_50_&#x60; &#x3D;&gt; 50 and up, &#x60;custom__120&#x60; &#x3D;&gt; up to 120). Schools without the metric are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered.
+    # @option opts [String] :ranking_tier Restrict to a band of the sport&#39;s primary ranking metric (WINAD-10196) — 3-year average NET rank for basketball, 3-year average RPI for every other sport. Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as &#x60;custom_&lt;min&gt;_&lt;max&gt;&#x60;, where either bound may be blank for an open-ended range (e.g. &#x60;custom_50_&#x60; &#x3D;&gt; 50 and up, &#x60;custom__120&#x60; &#x3D;&gt; up to 120). Schools without the metric are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered.
     # @option opts [String] :torvik_ranking_tier Restrict to a T-Rank (Bart Torvik) band, mirroring ranking_tier (latest non-null 3-year T-Rank average for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as &#x60;custom_&lt;min&gt;_&lt;max&gt;&#x60;, where either bound may be blank for an open-ended range (e.g. &#x60;custom_50_&#x60; &#x3D;&gt; 50 and up, &#x60;custom__120&#x60; &#x3D;&gt; up to 120). Schools without a T-Rank are excluded from every tier. T-Rank is basketball-only, so this filter is ignored for non-basketball sports. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered.
     # @option opts [Integer] :max_distance_miles Maximum distance (miles) from the user&#39;s school. Requires user_school_id to resolve a coordinate origin.
     # @option opts [Integer] :user_school_id Requesting user&#39;s school. Used as the origin for distance filtering and is always excluded from results.
@@ -14678,6 +14940,133 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Resolve an FRS export scope into the selected/in-scope/included school population
+    # @param frs_resolve_request [FrsResolveRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [FrsResolvedPopulation]
+    def resolve_frs_export(frs_resolve_request, opts = {})
+      data, _status_code, _headers = resolve_frs_export_with_http_info(frs_resolve_request, opts)
+      data
+    end
+
+    # Resolve an FRS export scope into the selected/in-scope/included school population
+    # @param frs_resolve_request [FrsResolveRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(FrsResolvedPopulation, Integer, Hash)>] FrsResolvedPopulation data, response status code and response headers
+    def resolve_frs_export_with_http_info(frs_resolve_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.resolve_frs_export ...'
+      end
+      # verify the required parameter 'frs_resolve_request' is set
+      if @api_client.config.client_side_validation && frs_resolve_request.nil?
+        fail ArgumentError, "Missing the required parameter 'frs_resolve_request' when calling DefaultApi.resolve_frs_export"
+      end
+      # resource path
+      local_var_path = '/api/v1/frs_exports/resolve'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(frs_resolve_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'FrsResolvedPopulation'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.resolve_frs_export",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#resolve_frs_export\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Re-enqueue a failed FRS export
+    # @param frs_export_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [FrsExport]
+    def retry_frs_export(frs_export_id, opts = {})
+      data, _status_code, _headers = retry_frs_export_with_http_info(frs_export_id, opts)
+      data
+    end
+
+    # Re-enqueue a failed FRS export
+    # @param frs_export_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(FrsExport, Integer, Hash)>] FrsExport data, response status code and response headers
+    def retry_frs_export_with_http_info(frs_export_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.retry_frs_export ...'
+      end
+      # verify the required parameter 'frs_export_id' is set
+      if @api_client.config.client_side_validation && frs_export_id.nil?
+        fail ArgumentError, "Missing the required parameter 'frs_export_id' when calling DefaultApi.retry_frs_export"
+      end
+      # resource path
+      local_var_path = '/api/v1/frs_exports/{frsExportId}/retry'.sub('{' + 'frsExportId' + '}', CGI.escape(frs_export_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'FrsExport'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.retry_frs_export",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#retry_frs_export\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Search coaches by priority_ids and Ransack filters
     # @param [Hash] opts the optional parameters
     # @option opts [Filters] :filters 
@@ -15966,6 +16355,76 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#update_job_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Set the human_override_is_athletics value for one job post
+    # Sets human_override_is_athletics directly — the general job post update endpoint never permits this field. Skips, rather than overwrites, a post that was already resolved since the caller last fetched it. 
+    # @param job_post_id [Integer] ID of job post to override
+    # @param [Hash] opts the optional parameters
+    # @option opts [HumanOverrideRequest] :human_override_request 
+    # @return [HumanOverrideResult]
+    def update_job_post_human_override(job_post_id, opts = {})
+      data, _status_code, _headers = update_job_post_human_override_with_http_info(job_post_id, opts)
+      data
+    end
+
+    # Set the human_override_is_athletics value for one job post
+    # Sets human_override_is_athletics directly — the general job post update endpoint never permits this field. Skips, rather than overwrites, a post that was already resolved since the caller last fetched it. 
+    # @param job_post_id [Integer] ID of job post to override
+    # @param [Hash] opts the optional parameters
+    # @option opts [HumanOverrideRequest] :human_override_request 
+    # @return [Array<(HumanOverrideResult, Integer, Hash)>] HumanOverrideResult data, response status code and response headers
+    def update_job_post_human_override_with_http_info(job_post_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_job_post_human_override ...'
+      end
+      # verify the required parameter 'job_post_id' is set
+      if @api_client.config.client_side_validation && job_post_id.nil?
+        fail ArgumentError, "Missing the required parameter 'job_post_id' when calling DefaultApi.update_job_post_human_override"
+      end
+      # resource path
+      local_var_path = '/central_jobs/job_posts/{jobPostId}/human_override'.sub('{' + 'jobPostId' + '}', CGI.escape(job_post_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'human_override_request'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'HumanOverrideResult'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_job_post_human_override",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_job_post_human_override\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

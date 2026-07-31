@@ -34,7 +34,7 @@ module WinthropClient
 
     attr_accessor :subdivision_name
 
-    # Latest known NET rank for the requested sport (omitted when blank)
+    # The sport's primary ranking metric (WINAD-10196) — 3-year average NET rank for basketball, 3-year average RPI for every other sport (omitted when blank)
     attr_accessor :rank
 
     # Recent average Torvik (T-Rank) for basketball schools, shown as a secondary quality signal alongside NET (omitted when blank or non-basketball)

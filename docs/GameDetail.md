@@ -25,12 +25,12 @@
 | **home_school_name** | **String** |  | [optional] |
 | **away_school_name** | **String** |  | [optional] |
 | **state_name** | **String** |  | [optional] |
-| **home_school_ranking** | **Integer** | Latest value of the sport&#39;s primary ranking metric for the home team (WINAD-10197) — NET for basketball, RPI otherwise. Null when the team has no ranked season for that metric. | [optional] |
-| **away_school_ranking** | **Integer** | Latest value of the sport&#39;s primary ranking metric for the away team (WINAD-10197) — NET for basketball, RPI otherwise. Null when the team has no ranked season for that metric. | [optional] |
-| **ranking_metric** | **String** | Label of the primary ranking metric the *_school_ranking values were read from, for display (WINAD-10197). Null on create/update responses, which do not run the ranking lookups. | [optional] |
+| **home_school_ranking** | **Integer** | Latest value of the sport&#39;s primary ranking metric for the home team (WINAD-10197) — NET for basketball, AP for football, RPI otherwise. Null when the team has no ranked season for that metric. | [optional] |
+| **away_school_ranking** | **Integer** | Latest value of the sport&#39;s primary ranking metric for the away team (WINAD-10197) — NET for basketball, AP for football, RPI otherwise. Null when the team has no ranked season for that metric. | [optional] |
+| **ranking_metric** | **String** | Label of the primary ranking metric the *_school_ranking values were read from, for display (WINAD-10197). AP covers football, whose seasons carry no NET/RPI. Null on create/update responses, which do not run the ranking lookups. | [optional] |
 | **home_school_sos_ranking** | **Integer** | Latest strength-of-schedule ranking for the home team, or null when not loaded yet | [optional] |
 | **away_school_sos_ranking** | **Integer** | Latest strength-of-schedule ranking for the away team, or null when not loaded yet | [optional] |
-| **rankings_season_year** | **Integer** | Season year the displayed NET/SOS rankings are from, or null when neither team has a ranked season | [optional] |
+| **rankings_season_year** | **Integer** | Season year the displayed primary-metric/SOS rankings are from, or null when neither team has a ranked season | [optional] |
 | **game_contract** | [**GameDetailAllOfGameContract**](GameDetailAllOfGameContract.md) |  | [optional] |
 
 ## Example

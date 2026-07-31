@@ -17,8 +17,8 @@
 | **last_rpi** | **Integer** | Most recent RPI ranking | [optional] |
 | **last_net_rank** | **Integer** | Most recent NET ranking | [optional] |
 | **last_ap_rank** | **Integer** | Most recent AP ranking | [optional] |
-| **avg_rpi** | **Integer** | 5-year average RPI ranking | [optional] |
-| **avg_net_rank** | **Integer** | 5-year average NET ranking | [optional] |
+| **avg_rpi** | **Integer** | 3-year average RPI ranking | [optional] |
+| **avg_net_rank** | **Integer** | 3-year average NET ranking | [optional] |
 | **avg_ap_rank** | **Integer** | 5-year average AP ranking | [optional] |
 | **distance** | **Float** | Distance in miles from user&#39;s school | [optional] |
 | **avg_guarantee_paid_cents** | **Integer** |  | [optional] |

@@ -45,10 +45,10 @@ module WinthropClient
     # Most recent AP ranking
     attr_accessor :last_ap_rank
 
-    # 5-year average RPI ranking
+    # 3-year average RPI ranking
     attr_accessor :avg_rpi
 
-    # 5-year average NET ranking
+    # 3-year average NET ranking
     attr_accessor :avg_net_rank
 
     # 5-year average AP ranking

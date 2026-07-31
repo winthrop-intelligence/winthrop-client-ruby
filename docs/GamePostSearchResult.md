@@ -23,8 +23,8 @@
 | **created_by_name** | **String** | Full name of the user who created the game post | [optional] |
 | **created_by_scheduling_phone** | **String** | Post creator&#39;s user-controlled scheduling phone (textable); null when unset | [optional] |
 | **created_by_scheduling_phone_dial** | **String** | Dial-ready form of the creator&#39;s scheduling phone for tel links | [optional] |
-| **avg_net_rank** | **Integer** | 3-season average NET ranking (basketball&#39;s ranking window) | [optional] |
-| **avg_rpi** | **Integer** | 5-season average RPI ranking — the value non-basketball feed cards display and the ranking filter compares against, so the card matches the filter that surfaced it. &#x60;last_rpi&#x60; remains for surfaces that show the latest value. | [optional] |
+| **avg_net_rank** | **Integer** | 3-year average NET ranking | [optional] |
+| **avg_rpi** | **Integer** | 3-year average RPI ranking (WINAD-10196 — the value non-basketball feed cards display, matching the basis the ranking filter compares against) | [optional] |
 | **school_logo_url** | **String** | URL to school logo image (small variant) | [optional] |
 | **posts** | [**Array&lt;GamePostSearchResultPostsInner&gt;**](GamePostSearchResultPostsInner.md) | The posting school&#39;s own active Games Wanted posts for this sport, one entry per post (each carrying its id). Present only when group_by_school&#x3D;true, where the feed is grouped one row per school so this aggregates every post for the school. The card collapses same-day posts into chips; the school+sport show page lists each. With post_details&#x3D;true each entry also carries the per-post detail fields below. | [optional] |
 | **games** | [**Array&lt;GamePostSearchResultGamesInner&gt;**](GamePostSearchResultGamesInner.md) | Games already on the posting school&#39;s schedule for this sport, within the current scheduling-season window. Opponent fields are relative to the posting school. | [optional] |

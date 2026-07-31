@@ -23,6 +23,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**create_favorites_category**](DefaultApi.md#create_favorites_category) | **POST** /api/v1/favorites_categories |  |
 | [**create_foia_label**](DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels |  |
 | [**create_foia_request**](DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests |  |
+| [**create_frs_export**](DefaultApi.md#create_frs_export) | **POST** /api/v1/frs_exports |  |
 | [**create_game**](DefaultApi.md#create_game) | **POST** /api/v1/games |  |
 | [**create_game_post**](DefaultApi.md#create_game_post) | **POST** /api/v1/game_posts |  |
 | [**create_game_post_search**](DefaultApi.md#create_game_post_search) | **POST** /api/v1/game_post_searches |  |
@@ -138,6 +139,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_foia_labels**](DefaultApi.md#get_foia_labels) | **GET** /api/v1/foia_labels |  |
 | [**get_foia_request**](DefaultApi.md#get_foia_request) | **GET** /api/v1/foia_requests/{foiaRequestId} |  |
 | [**get_foia_requests**](DefaultApi.md#get_foia_requests) | **GET** /api/v1/foia_requests |  |
+| [**get_frs_export_school_search**](DefaultApi.md#get_frs_export_school_search) | **GET** /api/v1/frs_exports/school_search |  |
+| [**get_frs_exports**](DefaultApi.md#get_frs_exports) | **GET** /api/v1/frs_exports |  |
 | [**get_gad_search_detail**](DefaultApi.md#get_gad_search_detail) | **GET** /api/v1/gad_searches/{id}/detail |  |
 | [**get_gad_searches**](DefaultApi.md#get_gad_searches) | **GET** /api/v1/gad_searches |  |
 | [**get_game**](DefaultApi.md#get_game) | **GET** /api/v1/games/{gameId} |  |
@@ -156,6 +159,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_income_report**](DefaultApi.md#get_income_report) | **GET** /api/v1/income_reports/{incomeReportId} |  |
 | [**get_income_reports**](DefaultApi.md#get_income_reports) | **GET** /api/v1/income_reports |  |
 | [**get_job_post**](DefaultApi.md#get_job_post) | **GET** /central_jobs/job_posts/{jobPostId} | Get a job post |
+| [**get_job_post_disagreements**](DefaultApi.md#get_job_post_disagreements) | **GET** /central_jobs/job_posts/disagreements | List unresolved LLM/ML athletics classification disagreements |
 | [**get_job_posts**](DefaultApi.md#get_job_posts) | **GET** /central_jobs/job_posts | List all job posts |
 | [**get_lad_filter_options**](DefaultApi.md#get_lad_filter_options) | **GET** /api/v1/lad_filter_options |  |
 | [**get_ncaa_financial_report_status**](DefaultApi.md#get_ncaa_financial_report_status) | **GET** /api/v1/ncaa_financial_report_statuses/{ncaaFinancialReportStatusId} |  |
@@ -234,6 +238,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_wire_changes**](DefaultApi.md#get_wire_changes) | **GET** /api/v1/wire_changes |  |
 | [**list_notes**](DefaultApi.md#list_notes) | **GET** /api/v1/notes/list |  |
 | [**regenerate_raw_contract_pdf**](DefaultApi.md#regenerate_raw_contract_pdf) | **POST** /api/v1/raw_contracts/{raw_contractId}/regenerate_pdf |  |
+| [**resolve_frs_export**](DefaultApi.md#resolve_frs_export) | **POST** /api/v1/frs_exports/resolve |  |
+| [**retry_frs_export**](DefaultApi.md#retry_frs_export) | **POST** /api/v1/frs_exports/{frsExportId}/retry |  |
 | [**search_coaches**](DefaultApi.md#search_coaches) | **POST** /api/v1/coaches/search |  |
 | [**send_otp_code**](DefaultApi.md#send_otp_code) | **POST** /api/v1/otp/send_code |  |
 | [**unstract_raw_contract_pdf_text**](DefaultApi.md#unstract_raw_contract_pdf_text) | **POST** /api/v1/raw_contracts/{raw_contractId}/unstract_pdf_text |  |
@@ -252,6 +258,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_game_contract**](DefaultApi.md#update_game_contract) | **PATCH** /api/v1/game_contracts/{game_contractId} |  |
 | [**update_game_post_search**](DefaultApi.md#update_game_post_search) | **PATCH** /api/v1/game_post_searches/{gamePostSearchId} |  |
 | [**update_job_post**](DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post |
+| [**update_job_post_human_override**](DefaultApi.md#update_job_post_human_override) | **PATCH** /central_jobs/job_posts/{jobPostId}/human_override | Set the human_override_is_athletics value for one job post |
 | [**update_note**](DefaultApi.md#update_note) | **PATCH** /api/v1/notes/{id} |  |
 | [**update_password_reset**](DefaultApi.md#update_password_reset) | **PUT** /api/v1/password_reset |  |
 | [**update_position**](DefaultApi.md#update_position) | **PATCH** /api/v1/positions/{positionId} |  |
@@ -1702,6 +1709,80 @@ end
 ### Return type
 
 [**FoiaRequest**](FoiaRequest.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_frs_export
+
+> <FrsExport> create_frs_export(create_frs_export_request)
+
+
+
+Create an FRS Report Export and enqueue workbook generation
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_frs_export_request = WinthropClient::CreateFrsExportRequest.new({scope_mode: 'conference', financial_year: 37, filename: 'filename_example', sport_ids: [37]}) # CreateFrsExportRequest | 
+
+begin
+  
+  result = api_instance.create_frs_export(create_frs_export_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_frs_export: #{e}"
+end
+```
+
+#### Using the create_frs_export_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FrsExport>, Integer, Hash)> create_frs_export_with_http_info(create_frs_export_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_frs_export_with_http_info(create_frs_export_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FrsExport>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_frs_export_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_frs_export_request** | [**CreateFrsExportRequest**](CreateFrsExportRequest.md) |  |  |
+
+### Return type
+
+[**FrsExport**](FrsExport.md)
 
 ### Authorization
 
@@ -10383,6 +10464,153 @@ end
 - **Accept**: application/json
 
 
+## get_frs_export_school_search
+
+> <FrsSchoolSearchResponse> get_frs_export_school_search(query, year)
+
+
+
+Search schools for the FRS export Pick-schools picker, with FRS status for the selected year
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+query = 'query_example' # String | 
+year = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_frs_export_school_search(query, year)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_frs_export_school_search: #{e}"
+end
+```
+
+#### Using the get_frs_export_school_search_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FrsSchoolSearchResponse>, Integer, Hash)> get_frs_export_school_search_with_http_info(query, year)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_frs_export_school_search_with_http_info(query, year)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FrsSchoolSearchResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_frs_export_school_search_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **query** | **String** |  |  |
+| **year** | **Integer** |  |  |
+
+### Return type
+
+[**FrsSchoolSearchResponse**](FrsSchoolSearchResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_frs_exports
+
+> <FrsExportsResponse> get_frs_exports
+
+
+
+List the caller's FRS Report Export jobs (WINAD-10151..10155)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_frs_exports
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_frs_exports: #{e}"
+end
+```
+
+#### Using the get_frs_exports_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FrsExportsResponse>, Integer, Hash)> get_frs_exports_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_frs_exports_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FrsExportsResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_frs_exports_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**FrsExportsResponse**](FrsExportsResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_gad_search_detail
 
 > <GadContractDetail> get_gad_search_detail(id)
@@ -11766,6 +11994,90 @@ end
 ### Return type
 
 [**JobPost**](JobPost.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_job_post_disagreements
+
+> <JobPostDisagreementCollection> get_job_post_disagreements(opts)
+
+List unresolved LLM/ML athletics classification disagreements
+
+Unresolved, non-expired JobPost rows where llm_is_athletics and ml_is_athletics disagree, split into posts created within the since window (\"new\") and everything else still unresolved (\"still_pending\"). 
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  since: 'since_example', # String | Duration string (e.g. \"24h\", \"7d\") bounding the \"new\" section.
+  school_id: 789, # Integer | Filter to one school's winad_id.
+  limit: 56, # Integer | Max number of disagreement rows returned per section, per page.
+  new_page: 56, # Integer | Page number for the \"new\" section (1-indexed, Kaminari-paginated independently of still_pending_page).
+  still_pending_page: 56 # Integer | Page number for the \"still_pending\" section (1-indexed, Kaminari-paginated independently of new_page).
+}
+
+begin
+  # List unresolved LLM/ML athletics classification disagreements
+  result = api_instance.get_job_post_disagreements(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_job_post_disagreements: #{e}"
+end
+```
+
+#### Using the get_job_post_disagreements_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<JobPostDisagreementCollection>, Integer, Hash)> get_job_post_disagreements_with_http_info(opts)
+
+```ruby
+begin
+  # List unresolved LLM/ML athletics classification disagreements
+  data, status_code, headers = api_instance.get_job_post_disagreements_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <JobPostDisagreementCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_job_post_disagreements_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **since** | **String** | Duration string (e.g. \&quot;24h\&quot;, \&quot;7d\&quot;) bounding the \&quot;new\&quot; section. | [optional] |
+| **school_id** | **Integer** | Filter to one school&#39;s winad_id. | [optional] |
+| **limit** | **Integer** | Max number of disagreement rows returned per section, per page. | [optional][default to 200] |
+| **new_page** | **Integer** | Page number for the \&quot;new\&quot; section (1-indexed, Kaminari-paginated independently of still_pending_page). | [optional][default to 1] |
+| **still_pending_page** | **Integer** | Page number for the \&quot;still_pending\&quot; section (1-indexed, Kaminari-paginated independently of new_page). | [optional][default to 1] |
+
+### Return type
+
+[**JobPostDisagreementCollection**](JobPostDisagreementCollection.md)
 
 ### Authorization
 
@@ -13161,7 +13473,7 @@ end
 
 
 
-Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, NET ranking tier, T-Rank tier, and distance. Omit target_date for an \"Any date\" market browse (no window). Set match_tournaments=true to match schools advertising a ScheduleTournament (MTE) instead of a deal-type post.
+Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, primary-metric ranking tier (NET for basketball, RPI otherwise), T-Rank tier, and distance. Omit target_date for an \"Any date\" market browse (no window). Set match_tournaments=true to match schools advertising a ScheduleTournament (MTE) instead of a deal-type post.
 
 ### Examples
 
@@ -13188,7 +13500,7 @@ opts = {
   match_tournaments: true, # Boolean | When true (the MTE intent), match only schools advertising a ScheduleTournament for the sport rather than a deal-type availability post; deal_types and assumed-eligible rows are ignored.
   deal_types: ['inner_example'], # Array<String> | Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered)
   quality_tier: 'power_4,mid_major', # String | Restrict to one or more subdivision tiers (power_4, mid_major, smaller). Accepts a single tier or a comma-separated list for multi-select (e.g. `power_4,mid_major`); the listed tiers are OR'd together. Omit the param (or pass every tier) for \"Any\" — no constraint. Unrecognized tiers are ignored.
-  ranking_tier: 'top_50', # String | Restrict to a band of the sport's primary ranking metric (WINAD-10196) — 3-year average NET rank for basketball, latest non-null RPI for every other sport. Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without the metric are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered.
+  ranking_tier: 'top_50', # String | Restrict to a band of the sport's primary ranking metric (WINAD-10196) — 3-year average NET rank for basketball, 3-year average RPI for every other sport. Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without the metric are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered.
   torvik_ranking_tier: 'top_50', # String | Restrict to a T-Rank (Bart Torvik) band, mirroring ranking_tier (latest non-null 3-year T-Rank average for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without a T-Rank are excluded from every tier. T-Rank is basketball-only, so this filter is ignored for non-basketball sports. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered.
   max_distance_miles: 56, # Integer | Maximum distance (miles) from the user's school. Requires user_school_id to resolve a coordinate origin.
   user_school_id: 56, # Integer | Requesting user's school. Used as the origin for distance filtering and is always excluded from results.
@@ -13233,7 +13545,7 @@ end
 | **match_tournaments** | **Boolean** | When true (the MTE intent), match only schools advertising a ScheduleTournament for the sport rather than a deal-type availability post; deal_types and assumed-eligible rows are ignored. | [optional][default to false] |
 | **deal_types** | [**Array&lt;String&gt;**](String.md) | Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered) | [optional] |
 | **quality_tier** | **String** | Restrict to one or more subdivision tiers (power_4, mid_major, smaller). Accepts a single tier or a comma-separated list for multi-select (e.g. &#x60;power_4,mid_major&#x60;); the listed tiers are OR&#39;d together. Omit the param (or pass every tier) for \&quot;Any\&quot; — no constraint. Unrecognized tiers are ignored. | [optional] |
-| **ranking_tier** | **String** | Restrict to a band of the sport&#39;s primary ranking metric (WINAD-10196) — 3-year average NET rank for basketball, latest non-null RPI for every other sport. Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as &#x60;custom_&lt;min&gt;_&lt;max&gt;&#x60;, where either bound may be blank for an open-ended range (e.g. &#x60;custom_50_&#x60; &#x3D;&gt; 50 and up, &#x60;custom__120&#x60; &#x3D;&gt; up to 120). Schools without the metric are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered. | [optional] |
+| **ranking_tier** | **String** | Restrict to a band of the sport&#39;s primary ranking metric (WINAD-10196) — 3-year average NET rank for basketball, 3-year average RPI for every other sport. Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as &#x60;custom_&lt;min&gt;_&lt;max&gt;&#x60;, where either bound may be blank for an open-ended range (e.g. &#x60;custom_50_&#x60; &#x3D;&gt; 50 and up, &#x60;custom__120&#x60; &#x3D;&gt; up to 120). Schools without the metric are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered. | [optional] |
 | **torvik_ranking_tier** | **String** | Restrict to a T-Rank (Bart Torvik) band, mirroring ranking_tier (latest non-null 3-year T-Rank average for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as &#x60;custom_&lt;min&gt;_&lt;max&gt;&#x60;, where either bound may be blank for an open-ended range (e.g. &#x60;custom_50_&#x60; &#x3D;&gt; 50 and up, &#x60;custom__120&#x60; &#x3D;&gt; up to 120). Schools without a T-Rank are excluded from every tier. T-Rank is basketball-only, so this filter is ignored for non-basketball sports. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered. | [optional] |
 | **max_distance_miles** | **Integer** | Maximum distance (miles) from the user&#39;s school. Requires user_school_id to resolve a coordinate origin. | [optional] |
 | **user_school_id** | **Integer** | Requesting user&#39;s school. Used as the origin for distance filtering and is always excluded from results. | [optional] |
@@ -17769,6 +18081,154 @@ end
 - **Accept**: application/json
 
 
+## resolve_frs_export
+
+> <FrsResolvedPopulation> resolve_frs_export(frs_resolve_request)
+
+
+
+Resolve an FRS export scope into the selected/in-scope/included school population
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+frs_resolve_request = WinthropClient::FrsResolveRequest.new({scope_mode: 'conference', financial_year: 37}) # FrsResolveRequest | 
+
+begin
+  
+  result = api_instance.resolve_frs_export(frs_resolve_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->resolve_frs_export: #{e}"
+end
+```
+
+#### Using the resolve_frs_export_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FrsResolvedPopulation>, Integer, Hash)> resolve_frs_export_with_http_info(frs_resolve_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.resolve_frs_export_with_http_info(frs_resolve_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FrsResolvedPopulation>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->resolve_frs_export_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **frs_resolve_request** | [**FrsResolveRequest**](FrsResolveRequest.md) |  |  |
+
+### Return type
+
+[**FrsResolvedPopulation**](FrsResolvedPopulation.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## retry_frs_export
+
+> <FrsExport> retry_frs_export(frs_export_id)
+
+
+
+Re-enqueue a failed FRS export
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+frs_export_id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.retry_frs_export(frs_export_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->retry_frs_export: #{e}"
+end
+```
+
+#### Using the retry_frs_export_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FrsExport>, Integer, Hash)> retry_frs_export_with_http_info(frs_export_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.retry_frs_export_with_http_info(frs_export_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FrsExport>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->retry_frs_export_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **frs_export_id** | **Integer** |  |  |
+
+### Return type
+
+[**FrsExport**](FrsExport.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## search_coaches
 
 > <CoachCollection> search_coaches(opts)
@@ -19145,6 +19605,84 @@ end
 ### Return type
 
 [**JobPost**](JobPost.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_job_post_human_override
+
+> <HumanOverrideResult> update_job_post_human_override(job_post_id, opts)
+
+Set the human_override_is_athletics value for one job post
+
+Sets human_override_is_athletics directly — the general job post update endpoint never permits this field. Skips, rather than overwrites, a post that was already resolved since the caller last fetched it. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+job_post_id = 789 # Integer | ID of job post to override
+opts = {
+  human_override_request: WinthropClient::HumanOverrideRequest.new({job_post: WinthropClient::HumanOverrideRequestJobPost.new({human_override_is_athletics: false})}) # HumanOverrideRequest | 
+}
+
+begin
+  # Set the human_override_is_athletics value for one job post
+  result = api_instance.update_job_post_human_override(job_post_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_job_post_human_override: #{e}"
+end
+```
+
+#### Using the update_job_post_human_override_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<HumanOverrideResult>, Integer, Hash)> update_job_post_human_override_with_http_info(job_post_id, opts)
+
+```ruby
+begin
+  # Set the human_override_is_athletics value for one job post
+  data, status_code, headers = api_instance.update_job_post_human_override_with_http_info(job_post_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <HumanOverrideResult>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_job_post_human_override_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **job_post_id** | **Integer** | ID of job post to override |  |
+| **human_override_request** | [**HumanOverrideRequest**](HumanOverrideRequest.md) |  | [optional] |
+
+### Return type
+
+[**HumanOverrideResult**](HumanOverrideResult.md)
 
 ### Authorization
 

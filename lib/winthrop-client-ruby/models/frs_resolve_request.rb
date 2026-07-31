@@ -14,49 +14,47 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class GamePostAvailabilityCollectionGroupsInnerPostsInner < ApiModelBase
-    attr_accessor :id
+  class FrsResolveRequest < ApiModelBase
+    attr_accessor :scope_mode
 
-    attr_accessor :game_post_id
+    attr_accessor :conference_id
 
-    attr_accessor :school_id
+    attr_accessor :school_group_id
 
-    attr_accessor :school_name
+    attr_accessor :financial_year
 
-    attr_accessor :sport_name
+    attr_accessor :school_ids
 
-    # The school's most recent posted date in this bucket; null for a fully flexible post.
-    attr_accessor :date
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
 
-    # Most recent RPI ranking
-    attr_accessor :last_rpi
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
 
-    # Most recent NET ranking
-    attr_accessor :last_net_rank
-
-    # 3-year average RPI ranking
-    attr_accessor :avg_rpi
-
-    # 3-year average NET ranking
-    attr_accessor :avg_net_rank
-
-    # WINAD-10097 - whether the school has a supported D1/D2 schedule profile. When false the row renders as plain text instead of a link.
-    attr_accessor :schedule_profile_eligible
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'game_post_id' => :'game_post_id',
-        :'school_id' => :'school_id',
-        :'school_name' => :'school_name',
-        :'sport_name' => :'sport_name',
-        :'date' => :'date',
-        :'last_rpi' => :'last_rpi',
-        :'last_net_rank' => :'last_net_rank',
-        :'avg_rpi' => :'avg_rpi',
-        :'avg_net_rank' => :'avg_net_rank',
-        :'schedule_profile_eligible' => :'schedule_profile_eligible'
+        :'scope_mode' => :'scope_mode',
+        :'conference_id' => :'conference_id',
+        :'school_group_id' => :'school_group_id',
+        :'financial_year' => :'financial_year',
+        :'school_ids' => :'school_ids'
       }
     end
 
@@ -73,29 +71,19 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'Integer',
-        :'game_post_id' => :'Integer',
-        :'school_id' => :'Integer',
-        :'school_name' => :'String',
-        :'sport_name' => :'String',
-        :'date' => :'Date',
-        :'last_rpi' => :'Integer',
-        :'last_net_rank' => :'Integer',
-        :'avg_rpi' => :'Integer',
-        :'avg_net_rank' => :'Integer',
-        :'schedule_profile_eligible' => :'Boolean'
+        :'scope_mode' => :'String',
+        :'conference_id' => :'Integer',
+        :'school_group_id' => :'Integer',
+        :'financial_year' => :'Integer',
+        :'school_ids' => :'Array<Integer>'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'school_id',
-        :'date',
-        :'last_rpi',
-        :'last_net_rank',
-        :'avg_rpi',
-        :'avg_net_rank',
+        :'conference_id',
+        :'school_group_id',
       ])
     end
 
@@ -103,60 +91,42 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::GamePostAvailabilityCollectionGroupsInnerPostsInner` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::FrsResolveRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::GamePostAvailabilityCollectionGroupsInnerPostsInner`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::FrsResolveRequest`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'scope_mode')
+        self.scope_mode = attributes[:'scope_mode']
+      else
+        self.scope_mode = nil
       end
 
-      if attributes.key?(:'game_post_id')
-        self.game_post_id = attributes[:'game_post_id']
+      if attributes.key?(:'conference_id')
+        self.conference_id = attributes[:'conference_id']
       end
 
-      if attributes.key?(:'school_id')
-        self.school_id = attributes[:'school_id']
+      if attributes.key?(:'school_group_id')
+        self.school_group_id = attributes[:'school_group_id']
       end
 
-      if attributes.key?(:'school_name')
-        self.school_name = attributes[:'school_name']
+      if attributes.key?(:'financial_year')
+        self.financial_year = attributes[:'financial_year']
+      else
+        self.financial_year = nil
       end
 
-      if attributes.key?(:'sport_name')
-        self.sport_name = attributes[:'sport_name']
-      end
-
-      if attributes.key?(:'date')
-        self.date = attributes[:'date']
-      end
-
-      if attributes.key?(:'last_rpi')
-        self.last_rpi = attributes[:'last_rpi']
-      end
-
-      if attributes.key?(:'last_net_rank')
-        self.last_net_rank = attributes[:'last_net_rank']
-      end
-
-      if attributes.key?(:'avg_rpi')
-        self.avg_rpi = attributes[:'avg_rpi']
-      end
-
-      if attributes.key?(:'avg_net_rank')
-        self.avg_net_rank = attributes[:'avg_net_rank']
-      end
-
-      if attributes.key?(:'schedule_profile_eligible')
-        self.schedule_profile_eligible = attributes[:'schedule_profile_eligible']
+      if attributes.key?(:'school_ids')
+        if (value = attributes[:'school_ids']).is_a?(Array)
+          self.school_ids = value
+        end
       end
     end
 
@@ -165,6 +135,14 @@ module WinthropClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @scope_mode.nil?
+        invalid_properties.push('invalid value for "scope_mode", scope_mode cannot be nil.')
+      end
+
+      if @financial_year.nil?
+        invalid_properties.push('invalid value for "financial_year", financial_year cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -172,7 +150,31 @@ module WinthropClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @scope_mode.nil?
+      scope_mode_validator = EnumAttributeValidator.new('String', ["conference", "peer-group", "schools"])
+      return false unless scope_mode_validator.valid?(@scope_mode)
+      return false if @financial_year.nil?
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] scope_mode Object to be assigned
+    def scope_mode=(scope_mode)
+      validator = EnumAttributeValidator.new('String', ["conference", "peer-group", "schools"])
+      unless validator.valid?(scope_mode)
+        fail ArgumentError, "invalid value for \"scope_mode\", must be one of #{validator.allowable_values}."
+      end
+      @scope_mode = scope_mode
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] financial_year Value to be assigned
+    def financial_year=(financial_year)
+      if financial_year.nil?
+        fail ArgumentError, 'financial_year cannot be nil'
+      end
+
+      @financial_year = financial_year
     end
 
     # Checks equality by comparing each attribute.
@@ -180,17 +182,11 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          game_post_id == o.game_post_id &&
-          school_id == o.school_id &&
-          school_name == o.school_name &&
-          sport_name == o.sport_name &&
-          date == o.date &&
-          last_rpi == o.last_rpi &&
-          last_net_rank == o.last_net_rank &&
-          avg_rpi == o.avg_rpi &&
-          avg_net_rank == o.avg_net_rank &&
-          schedule_profile_eligible == o.schedule_profile_eligible
+          scope_mode == o.scope_mode &&
+          conference_id == o.conference_id &&
+          school_group_id == o.school_group_id &&
+          financial_year == o.financial_year &&
+          school_ids == o.school_ids
     end
 
     # @see the `==` method
@@ -202,7 +198,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, game_post_id, school_id, school_name, sport_name, date, last_rpi, last_net_rank, avg_rpi, avg_net_rank, schedule_profile_eligible].hash
+      [scope_mode, conference_id, school_group_id, financial_year, school_ids].hash
     end
 
     # Builds the object from hash

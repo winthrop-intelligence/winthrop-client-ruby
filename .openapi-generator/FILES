@@ -133,6 +133,8 @@ docs/CreateContactSearchRequestContact.md
 docs/CreateFavorite201Response.md
 docs/CreateFavoriteRequest.md
 docs/CreateFavoritesCategoryRequest.md
+docs/CreateFrsExport422Response.md
+docs/CreateFrsExportRequest.md
 docs/CreateGamePostSearchRequest.md
 docs/CreateGamePostSearchRequestGamePost.md
 docs/CreateGameRequest.md
@@ -237,6 +239,13 @@ docs/FoiaRequestedItemStatusBreakdownRow.md
 docs/FoiaRequestedItemStatusTransitionRow.md
 docs/FoiaRequestedItemStatusTransitionsMeta.md
 docs/FoiaRequestedItemStatusTransitionsResponse.md
+docs/FrsExport.md
+docs/FrsExportConfig.md
+docs/FrsExportsResponse.md
+docs/FrsResolveRequest.md
+docs/FrsResolvedPopulation.md
+docs/FrsResolvedSchool.md
+docs/FrsSchoolSearchResponse.md
 docs/GadCohortError.md
 docs/GadCohortSummary.md
 docs/GadCohortSummaryBuyerFilters.md
@@ -312,6 +321,9 @@ docs/GuaranteeEconomicsSide.md
 docs/HTTPValidationError.md
 docs/HealthCheckFailure.md
 docs/HealthCheckSuccess.md
+docs/HumanOverrideRequest.md
+docs/HumanOverrideRequestJobPost.md
+docs/HumanOverrideResult.md
 docs/IdName.md
 docs/IncomeReport.md
 docs/IncomeReportCollection.md
@@ -327,6 +339,8 @@ docs/JobDepartment.md
 docs/JobOptions.md
 docs/JobPost.md
 docs/JobPostCollection.md
+docs/JobPostDisagreement.md
+docs/JobPostDisagreementCollection.md
 docs/JobPostInterestLead.md
 docs/JobPostInterestLeadCandidate.md
 docs/JobPostInterestLeadCollection.md
@@ -398,6 +412,7 @@ docs/RequestedItemReviewContext.md
 docs/RequestedItemReviewContextDocument.md
 docs/RequestedItemReviewContextFoiaRequest.md
 docs/RequestedItemReviewContextRequestedItem.md
+docs/RetryFrsExport422Response.md
 docs/RoleOption.md
 docs/RunningJob.md
 docs/ScheduleGridAvailableSchoolPost.md
@@ -440,7 +455,6 @@ docs/ScraperApi.md
 docs/ScraperArgDef.md
 docs/Season.md
 docs/SeasonCollection.md
-docs/SendOtpCode422Response.md
 docs/SnapshotIncomeReport.md
 docs/Sport.md
 docs/SportCollection.md
@@ -679,6 +693,8 @@ lib/winthrop-client-ruby/models/create_contact_search_request_contact.rb
 lib/winthrop-client-ruby/models/create_favorite201_response.rb
 lib/winthrop-client-ruby/models/create_favorite_request.rb
 lib/winthrop-client-ruby/models/create_favorites_category_request.rb
+lib/winthrop-client-ruby/models/create_frs_export422_response.rb
+lib/winthrop-client-ruby/models/create_frs_export_request.rb
 lib/winthrop-client-ruby/models/create_game_post_search_request.rb
 lib/winthrop-client-ruby/models/create_game_post_search_request_game_post.rb
 lib/winthrop-client-ruby/models/create_game_request.rb
@@ -779,6 +795,13 @@ lib/winthrop-client-ruby/models/foia_requested_item_status_breakdown_row.rb
 lib/winthrop-client-ruby/models/foia_requested_item_status_transition_row.rb
 lib/winthrop-client-ruby/models/foia_requested_item_status_transitions_meta.rb
 lib/winthrop-client-ruby/models/foia_requested_item_status_transitions_response.rb
+lib/winthrop-client-ruby/models/frs_export.rb
+lib/winthrop-client-ruby/models/frs_export_config.rb
+lib/winthrop-client-ruby/models/frs_exports_response.rb
+lib/winthrop-client-ruby/models/frs_resolve_request.rb
+lib/winthrop-client-ruby/models/frs_resolved_population.rb
+lib/winthrop-client-ruby/models/frs_resolved_school.rb
+lib/winthrop-client-ruby/models/frs_school_search_response.rb
 lib/winthrop-client-ruby/models/gad_cohort_error.rb
 lib/winthrop-client-ruby/models/gad_cohort_summary.rb
 lib/winthrop-client-ruby/models/gad_cohort_summary_buyer_filters.rb
@@ -854,6 +877,9 @@ lib/winthrop-client-ruby/models/guarantee_economics_side.rb
 lib/winthrop-client-ruby/models/health_check_failure.rb
 lib/winthrop-client-ruby/models/health_check_success.rb
 lib/winthrop-client-ruby/models/http_validation_error.rb
+lib/winthrop-client-ruby/models/human_override_request.rb
+lib/winthrop-client-ruby/models/human_override_request_job_post.rb
+lib/winthrop-client-ruby/models/human_override_result.rb
 lib/winthrop-client-ruby/models/id_name.rb
 lib/winthrop-client-ruby/models/income_report.rb
 lib/winthrop-client-ruby/models/income_report_collection.rb
@@ -868,6 +894,8 @@ lib/winthrop-client-ruby/models/job_department.rb
 lib/winthrop-client-ruby/models/job_options.rb
 lib/winthrop-client-ruby/models/job_post.rb
 lib/winthrop-client-ruby/models/job_post_collection.rb
+lib/winthrop-client-ruby/models/job_post_disagreement.rb
+lib/winthrop-client-ruby/models/job_post_disagreement_collection.rb
 lib/winthrop-client-ruby/models/job_post_interest_lead.rb
 lib/winthrop-client-ruby/models/job_post_interest_lead_candidate.rb
 lib/winthrop-client-ruby/models/job_post_interest_lead_collection.rb
@@ -936,6 +964,7 @@ lib/winthrop-client-ruby/models/requested_item_review_context.rb
 lib/winthrop-client-ruby/models/requested_item_review_context_document.rb
 lib/winthrop-client-ruby/models/requested_item_review_context_foia_request.rb
 lib/winthrop-client-ruby/models/requested_item_review_context_requested_item.rb
+lib/winthrop-client-ruby/models/retry_frs_export422_response.rb
 lib/winthrop-client-ruby/models/role_option.rb
 lib/winthrop-client-ruby/models/running_job.rb
 lib/winthrop-client-ruby/models/schedule_grid_available_school_post.rb
@@ -977,7 +1006,6 @@ lib/winthrop-client-ruby/models/scraper.rb
 lib/winthrop-client-ruby/models/scraper_arg_def.rb
 lib/winthrop-client-ruby/models/season.rb
 lib/winthrop-client-ruby/models/season_collection.rb
-lib/winthrop-client-ruby/models/send_otp_code422_response.rb
 lib/winthrop-client-ruby/models/snapshot_income_report.rb
 lib/winthrop-client-ruby/models/sport.rb
 lib/winthrop-client-ruby/models/sport_collection.rb
@@ -1074,5 +1102,20 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
+spec/models/create_frs_export422_response_spec.rb
+spec/models/create_frs_export_request_spec.rb
+spec/models/frs_export_config_spec.rb
+spec/models/frs_export_spec.rb
+spec/models/frs_exports_response_spec.rb
+spec/models/frs_resolve_request_spec.rb
+spec/models/frs_resolved_population_spec.rb
+spec/models/frs_resolved_school_spec.rb
+spec/models/frs_school_search_response_spec.rb
+spec/models/human_override_request_job_post_spec.rb
+spec/models/human_override_request_spec.rb
+spec/models/human_override_result_spec.rb
+spec/models/job_post_disagreement_collection_spec.rb
+spec/models/job_post_disagreement_spec.rb
+spec/models/retry_frs_export422_response_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

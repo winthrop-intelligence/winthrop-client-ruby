@@ -57,13 +57,13 @@ module WinthropClient
 
     attr_accessor :state_name
 
-    # Latest value of the sport's primary ranking metric for the home team (WINAD-10197) — NET for basketball, RPI otherwise. Null when the team has no ranked season for that metric.
+    # Latest value of the sport's primary ranking metric for the home team (WINAD-10197) — NET for basketball, AP for football, RPI otherwise. Null when the team has no ranked season for that metric.
     attr_accessor :home_school_ranking
 
-    # Latest value of the sport's primary ranking metric for the away team (WINAD-10197) — NET for basketball, RPI otherwise. Null when the team has no ranked season for that metric.
+    # Latest value of the sport's primary ranking metric for the away team (WINAD-10197) — NET for basketball, AP for football, RPI otherwise. Null when the team has no ranked season for that metric.
     attr_accessor :away_school_ranking
 
-    # Label of the primary ranking metric the *_school_ranking values were read from, for display (WINAD-10197). Null on create/update responses, which do not run the ranking lookups.
+    # Label of the primary ranking metric the *_school_ranking values were read from, for display (WINAD-10197). AP covers football, whose seasons carry no NET/RPI. Null on create/update responses, which do not run the ranking lookups.
     attr_accessor :ranking_metric
 
     # Latest strength-of-schedule ranking for the home team, or null when not loaded yet
@@ -72,7 +72,7 @@ module WinthropClient
     # Latest strength-of-schedule ranking for the away team, or null when not loaded yet
     attr_accessor :away_school_sos_ranking
 
-    # Season year the displayed NET/SOS rankings are from, or null when neither team has a ranked season
+    # Season year the displayed primary-metric/SOS rankings are from, or null when neither team has a ranked season
     attr_accessor :rankings_season_year
 
     attr_accessor :game_contract
@@ -348,7 +348,7 @@ module WinthropClient
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @sport_id.nil?
-      ranking_metric_validator = EnumAttributeValidator.new('String', ["NET", "RPI"])
+      ranking_metric_validator = EnumAttributeValidator.new('String', ["NET", "RPI", "AP"])
       return false unless ranking_metric_validator.valid?(@ranking_metric)
       true
     end
@@ -366,7 +366,7 @@ module WinthropClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] ranking_metric Object to be assigned
     def ranking_metric=(ranking_metric)
-      validator = EnumAttributeValidator.new('String', ["NET", "RPI"])
+      validator = EnumAttributeValidator.new('String', ["NET", "RPI", "AP"])
       unless validator.valid?(ranking_metric)
         fail ArgumentError, "invalid value for \"ranking_metric\", must be one of #{validator.allowable_values}."
       end

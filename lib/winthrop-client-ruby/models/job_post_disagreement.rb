@@ -14,49 +14,65 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class GamePostAvailabilityCollectionGroupsInnerPostsInner < ApiModelBase
-    attr_accessor :id
+  class JobPostDisagreement < ApiModelBase
+    attr_accessor :job_post_id
 
-    attr_accessor :game_post_id
+    attr_accessor :title
 
-    attr_accessor :school_id
+    attr_accessor :description
 
     attr_accessor :school_name
 
-    attr_accessor :sport_name
+    attr_accessor :link
 
-    # The school's most recent posted date in this bucket; null for a fully flexible post.
-    attr_accessor :date
+    attr_accessor :created_at
 
-    # Most recent RPI ranking
-    attr_accessor :last_rpi
+    attr_accessor :llm_is_athletics
 
-    # Most recent NET ranking
-    attr_accessor :last_net_rank
+    attr_accessor :ml_is_athletics
 
-    # 3-year average RPI ranking
-    attr_accessor :avg_rpi
+    attr_accessor :reasoning
 
-    # 3-year average NET ranking
-    attr_accessor :avg_net_rank
+    attr_accessor :admin_url
 
-    # WINAD-10097 - whether the school has a supported D1/D2 schedule profile. When false the row renders as plain text instead of a link.
-    attr_accessor :schedule_profile_eligible
+    attr_accessor :novelty
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'game_post_id' => :'game_post_id',
-        :'school_id' => :'school_id',
+        :'job_post_id' => :'job_post_id',
+        :'title' => :'title',
+        :'description' => :'description',
         :'school_name' => :'school_name',
-        :'sport_name' => :'sport_name',
-        :'date' => :'date',
-        :'last_rpi' => :'last_rpi',
-        :'last_net_rank' => :'last_net_rank',
-        :'avg_rpi' => :'avg_rpi',
-        :'avg_net_rank' => :'avg_net_rank',
-        :'schedule_profile_eligible' => :'schedule_profile_eligible'
+        :'link' => :'link',
+        :'created_at' => :'created_at',
+        :'llm_is_athletics' => :'llm_is_athletics',
+        :'ml_is_athletics' => :'ml_is_athletics',
+        :'reasoning' => :'reasoning',
+        :'admin_url' => :'admin_url',
+        :'novelty' => :'novelty'
       }
     end
 
@@ -73,29 +89,24 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'Integer',
-        :'game_post_id' => :'Integer',
-        :'school_id' => :'Integer',
+        :'job_post_id' => :'Integer',
+        :'title' => :'String',
+        :'description' => :'String',
         :'school_name' => :'String',
-        :'sport_name' => :'String',
-        :'date' => :'Date',
-        :'last_rpi' => :'Integer',
-        :'last_net_rank' => :'Integer',
-        :'avg_rpi' => :'Integer',
-        :'avg_net_rank' => :'Integer',
-        :'schedule_profile_eligible' => :'Boolean'
+        :'link' => :'String',
+        :'created_at' => :'Time',
+        :'llm_is_athletics' => :'Boolean',
+        :'ml_is_athletics' => :'Boolean',
+        :'reasoning' => :'String',
+        :'admin_url' => :'String',
+        :'novelty' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'school_id',
-        :'date',
-        :'last_rpi',
-        :'last_net_rank',
-        :'avg_rpi',
-        :'avg_net_rank',
+        :'reasoning',
       ])
     end
 
@@ -103,60 +114,60 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::GamePostAvailabilityCollectionGroupsInnerPostsInner` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::JobPostDisagreement` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::GamePostAvailabilityCollectionGroupsInnerPostsInner`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::JobPostDisagreement`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'job_post_id')
+        self.job_post_id = attributes[:'job_post_id']
       end
 
-      if attributes.key?(:'game_post_id')
-        self.game_post_id = attributes[:'game_post_id']
+      if attributes.key?(:'title')
+        self.title = attributes[:'title']
       end
 
-      if attributes.key?(:'school_id')
-        self.school_id = attributes[:'school_id']
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'school_name')
         self.school_name = attributes[:'school_name']
       end
 
-      if attributes.key?(:'sport_name')
-        self.sport_name = attributes[:'sport_name']
+      if attributes.key?(:'link')
+        self.link = attributes[:'link']
       end
 
-      if attributes.key?(:'date')
-        self.date = attributes[:'date']
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
       end
 
-      if attributes.key?(:'last_rpi')
-        self.last_rpi = attributes[:'last_rpi']
+      if attributes.key?(:'llm_is_athletics')
+        self.llm_is_athletics = attributes[:'llm_is_athletics']
       end
 
-      if attributes.key?(:'last_net_rank')
-        self.last_net_rank = attributes[:'last_net_rank']
+      if attributes.key?(:'ml_is_athletics')
+        self.ml_is_athletics = attributes[:'ml_is_athletics']
       end
 
-      if attributes.key?(:'avg_rpi')
-        self.avg_rpi = attributes[:'avg_rpi']
+      if attributes.key?(:'reasoning')
+        self.reasoning = attributes[:'reasoning']
       end
 
-      if attributes.key?(:'avg_net_rank')
-        self.avg_net_rank = attributes[:'avg_net_rank']
+      if attributes.key?(:'admin_url')
+        self.admin_url = attributes[:'admin_url']
       end
 
-      if attributes.key?(:'schedule_profile_eligible')
-        self.schedule_profile_eligible = attributes[:'schedule_profile_eligible']
+      if attributes.key?(:'novelty')
+        self.novelty = attributes[:'novelty']
       end
     end
 
@@ -172,7 +183,19 @@ module WinthropClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      novelty_validator = EnumAttributeValidator.new('String', ["new", "still-pending"])
+      return false unless novelty_validator.valid?(@novelty)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] novelty Object to be assigned
+    def novelty=(novelty)
+      validator = EnumAttributeValidator.new('String', ["new", "still-pending"])
+      unless validator.valid?(novelty)
+        fail ArgumentError, "invalid value for \"novelty\", must be one of #{validator.allowable_values}."
+      end
+      @novelty = novelty
     end
 
     # Checks equality by comparing each attribute.
@@ -180,17 +203,17 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          game_post_id == o.game_post_id &&
-          school_id == o.school_id &&
+          job_post_id == o.job_post_id &&
+          title == o.title &&
+          description == o.description &&
           school_name == o.school_name &&
-          sport_name == o.sport_name &&
-          date == o.date &&
-          last_rpi == o.last_rpi &&
-          last_net_rank == o.last_net_rank &&
-          avg_rpi == o.avg_rpi &&
-          avg_net_rank == o.avg_net_rank &&
-          schedule_profile_eligible == o.schedule_profile_eligible
+          link == o.link &&
+          created_at == o.created_at &&
+          llm_is_athletics == o.llm_is_athletics &&
+          ml_is_athletics == o.ml_is_athletics &&
+          reasoning == o.reasoning &&
+          admin_url == o.admin_url &&
+          novelty == o.novelty
     end
 
     # @see the `==` method
@@ -202,7 +225,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, game_post_id, school_id, school_name, sport_name, date, last_rpi, last_net_rank, avg_rpi, avg_net_rank, schedule_profile_eligible].hash
+      [job_post_id, title, description, school_name, link, created_at, llm_is_athletics, ml_is_athletics, reasoning, admin_url, novelty].hash
     end
 
     # Builds the object from hash
