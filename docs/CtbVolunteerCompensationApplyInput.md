@@ -13,6 +13,9 @@
 | **compensation_id** | **Integer** |  |  |
 | **role** | **String** | CTB compensation-availability interpretation selected in the reviewed decision. |  |
 | **actions** | **Array&lt;String&gt;** | Granular actions approved for the reviewed volunteer exception. |  |
+| **requested_item_note** | **String** | Exact reviewed entry to append when add_requested_item_note is selected. | [optional] |
+| **compensation_comment** | **String** | Exact reviewed sentence to append when add_compensation_note is selected. | [optional] |
+| **position_ids** | **Array&lt;Integer&gt;** | Reviewed compensation positions to update when add_position_type is selected. | [optional] |
 | **expected_request** | [**CtbCompensationExpectedRequest**](CtbCompensationExpectedRequest.md) |  |  |
 | **expected_requested_item** | [**FoiaInboxExpectedRequestedItem**](FoiaInboxExpectedRequestedItem.md) |  |  |
 | **expected_compensation** | [**FoiaInboxExpectedCompensation**](FoiaInboxExpectedCompensation.md) |  |  |
@@ -32,6 +35,9 @@ instance = WinthropClient::CtbVolunteerCompensationApplyInput.new(
   compensation_id: null,
   role: null,
   actions: null,
+  requested_item_note: null,
+  compensation_comment: null,
+  position_ids: null,
   expected_request: null,
   expected_requested_item: null,
   expected_compensation: null
