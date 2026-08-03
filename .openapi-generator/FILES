@@ -162,8 +162,10 @@ docs/CtbCompensationApplyInput.md
 docs/CtbCompensationApplyRequest.md
 docs/CtbCompensationApplyResponse.md
 docs/CtbCompensationExpectedRequest.md
+docs/CtbFoundationEmployeeCompensationApplyInput.md
 docs/CtbGraduateAssistantCompensationApplyInput.md
 docs/CtbNotEmployedCompensationApplyInput.md
+docs/CtbThirdPartyContractorCompensationApplyInput.md
 docs/CtbVolunteerCompensationApplyInput.md
 docs/Deal.md
 docs/DealCollection.md
@@ -721,8 +723,10 @@ lib/winthrop-client-ruby/models/ctb_compensation_apply_input.rb
 lib/winthrop-client-ruby/models/ctb_compensation_apply_request.rb
 lib/winthrop-client-ruby/models/ctb_compensation_apply_response.rb
 lib/winthrop-client-ruby/models/ctb_compensation_expected_request.rb
+lib/winthrop-client-ruby/models/ctb_foundation_employee_compensation_apply_input.rb
 lib/winthrop-client-ruby/models/ctb_graduate_assistant_compensation_apply_input.rb
 lib/winthrop-client-ruby/models/ctb_not_employed_compensation_apply_input.rb
+lib/winthrop-client-ruby/models/ctb_third_party_contractor_compensation_apply_input.rb
 lib/winthrop-client-ruby/models/ctb_volunteer_compensation_apply_input.rb
 lib/winthrop-client-ruby/models/deal.rb
 lib/winthrop-client-ruby/models/deal_collection.rb
@@ -1102,10 +1106,7 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
-spec/models/human_override_request_job_post_spec.rb
-spec/models/human_override_request_spec.rb
-spec/models/human_override_result_spec.rb
-spec/models/job_post_disagreement_collection_spec.rb
-spec/models/job_post_disagreement_spec.rb
+spec/models/ctb_foundation_employee_compensation_apply_input_spec.rb
+spec/models/ctb_third_party_contractor_compensation_apply_input_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

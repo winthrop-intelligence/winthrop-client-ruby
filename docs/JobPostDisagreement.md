@@ -12,7 +12,7 @@
 | **created_at** | **Time** |  | [optional] |
 | **llm_is_athletics** | **Boolean** |  | [optional] |
 | **ml_is_athletics** | **Boolean** |  | [optional] |
-| **reasoning** | **String** |  | [optional] |
+| **reasoning** | **String** | Work-type summary reasoning. This is not an athletics-classification justification. | [optional] |
 | **admin_url** | **String** |  | [optional] |
 | **novelty** | **String** |  | [optional] |
 

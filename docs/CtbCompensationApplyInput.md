@@ -14,8 +14,10 @@ require 'winthrop-client-ruby'
 WinthropClient::CtbCompensationApplyInput.openapi_one_of
 # =>
 # [
+#   :'CtbFoundationEmployeeCompensationApplyInput',
 #   :'CtbGraduateAssistantCompensationApplyInput',
 #   :'CtbNotEmployedCompensationApplyInput',
+#   :'CtbThirdPartyContractorCompensationApplyInput',
 #   :'CtbVolunteerCompensationApplyInput'
 # ]
 ```
@@ -45,8 +47,10 @@ require 'winthrop-client-ruby'
 WinthropClient::CtbCompensationApplyInput.openapi_discriminator_mapping
 # =>
 # {
+#   :'foundation_employee' => :'CtbFoundationEmployeeCompensationApplyInput',
 #   :'graduate_assistant' => :'CtbGraduateAssistantCompensationApplyInput',
 #   :'not_employed' => :'CtbNotEmployedCompensationApplyInput',
+#   :'third_party_contractor' => :'CtbThirdPartyContractorCompensationApplyInput',
 #   :'volunteer' => :'CtbVolunteerCompensationApplyInput'
 # }
 ```
@@ -61,7 +65,7 @@ Find the appropriate object from the `openapi_one_of` list and casts the data in
 require 'winthrop-client-ruby'
 
 WinthropClient::CtbCompensationApplyInput.build(data)
-# => #<CtbGraduateAssistantCompensationApplyInput:0x00007fdd4aab02a0>
+# => #<CtbFoundationEmployeeCompensationApplyInput:0x00007fdd4aab02a0>
 
 WinthropClient::CtbCompensationApplyInput.build(data_that_doesnt_match)
 # => nil
@@ -75,8 +79,10 @@ WinthropClient::CtbCompensationApplyInput.build(data_that_doesnt_match)
 
 #### Return type
 
+- `CtbFoundationEmployeeCompensationApplyInput`
 - `CtbGraduateAssistantCompensationApplyInput`
 - `CtbNotEmployedCompensationApplyInput`
+- `CtbThirdPartyContractorCompensationApplyInput`
 - `CtbVolunteerCompensationApplyInput`
 - `nil` (if no type matches)
 
