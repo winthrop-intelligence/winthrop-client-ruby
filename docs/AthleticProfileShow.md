@@ -14,6 +14,9 @@
 | **non_revenue_sports** | [**Array&lt;AthleticProfileShowTabSportsInner&gt;**](AthleticProfileShowTabSportsInner.md) |  | [optional] |
 | **permissions** | [**AthleticProfileShowPermissions**](AthleticProfileShowPermissions.md) |  | [optional] |
 | **sports_overview** | [**Array&lt;AthleticProfileShowSportsOverviewInner&gt;**](AthleticProfileShowSportsOverviewInner.md) |  | [optional] |
+| **sport_overview** | [**AthleticProfileShowSportOverview**](AthleticProfileShowSportOverview.md) |  | [optional] |
+| **sport_coach_staff** | [**AthleticProfileShowSportCoachStaff**](AthleticProfileShowSportCoachStaff.md) |  | [optional] |
+| **sport_financials** | [**AthleticProfileShowSportFinancials**](AthleticProfileShowSportFinancials.md) |  | [optional] |
 | **sponsored_count** | **Integer** |  | [optional] |
 | **personnel** | [**Array&lt;AthleticProfileShowPersonnelInner&gt;**](AthleticProfileShowPersonnelInner.md) |  | [optional] |
 | **personnel_total_count** | **Integer** |  | [optional] |
@@ -40,6 +43,9 @@ instance = WinthropClient::AthleticProfileShow.new(
   non_revenue_sports: null,
   permissions: null,
   sports_overview: null,
+  sport_overview: null,
+  sport_coach_staff: null,
+  sport_financials: null,
   sponsored_count: null,
   personnel: null,
   personnel_total_count: null,
