@@ -269,6 +269,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_scheduling_contacts**](docs/DefaultApi.md#get_scheduling_contacts) | **GET** /api/v1/scheduling_contacts | 
 *WinthropClient::DefaultApi* | [**get_school**](docs/DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
 *WinthropClient::DefaultApi* | [**get_school_alternate_names**](docs/DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names | 
+*WinthropClient::DefaultApi* | [**get_school_department_financials**](docs/DefaultApi.md#get_school_department_financials) | **GET** /api/v1/schools/{schoolId}/department_financials | 
 *WinthropClient::DefaultApi* | [**get_school_game_contracts**](docs/DefaultApi.md#get_school_game_contracts) | **GET** /api/v1/schools/{schoolId}/game_contracts | 
 *WinthropClient::DefaultApi* | [**get_school_group**](docs/DefaultApi.md#get_school_group) | **GET** /api/v1/school_groups/{schoolGroupId} | 
 *WinthropClient::DefaultApi* | [**get_school_group_admin_compensation**](docs/DefaultApi.md#get_school_group_admin_compensation) | **GET** /api/v1/school_groups/{schoolGroupId}/admin_compensation | 
@@ -599,6 +600,14 @@ Class | Method | HTTP request | Description
  - [WinthropClient::DeleteAccountUser200Response](docs/DeleteAccountUser200Response.md)
  - [WinthropClient::DeleteContactSearch200Response](docs/DeleteContactSearch200Response.md)
  - [WinthropClient::DeleteFavorite200Response](docs/DeleteFavorite200Response.md)
+ - [WinthropClient::DepartmentFinancialsLedger](docs/DepartmentFinancialsLedger.md)
+ - [WinthropClient::DepartmentFinancialsLedgerLine](docs/DepartmentFinancialsLedgerLine.md)
+ - [WinthropClient::DepartmentFinancialsNetResult](docs/DepartmentFinancialsNetResult.md)
+ - [WinthropClient::DepartmentFinancialsQuadrant](docs/DepartmentFinancialsQuadrant.md)
+ - [WinthropClient::DepartmentFinancialsQuadrantPoint](docs/DepartmentFinancialsQuadrantPoint.md)
+ - [WinthropClient::DepartmentFinancialsRankLine](docs/DepartmentFinancialsRankLine.md)
+ - [WinthropClient::DepartmentFinancialsTrendEntry](docs/DepartmentFinancialsTrendEntry.md)
+ - [WinthropClient::DepartmentFinancialsUnplottedSchool](docs/DepartmentFinancialsUnplottedSchool.md)
  - [WinthropClient::DepartmentSearchResult](docs/DepartmentSearchResult.md)
  - [WinthropClient::DepartmentSearchResultCollection](docs/DepartmentSearchResultCollection.md)
  - [WinthropClient::DepartmentSearchResultDepartment](docs/DepartmentSearchResultDepartment.md)
@@ -852,6 +861,9 @@ Class | Method | HTTP request | Description
  - [WinthropClient::School](docs/School.md)
  - [WinthropClient::SchoolCollection](docs/SchoolCollection.md)
  - [WinthropClient::SchoolContractEntry](docs/SchoolContractEntry.md)
+ - [WinthropClient::SchoolDepartmentFinancials](docs/SchoolDepartmentFinancials.md)
+ - [WinthropClient::SchoolDepartmentFinancialsConference](docs/SchoolDepartmentFinancialsConference.md)
+ - [WinthropClient::SchoolDepartmentFinancialsSchool](docs/SchoolDepartmentFinancialsSchool.md)
  - [WinthropClient::SchoolFinancialDetail](docs/SchoolFinancialDetail.md)
  - [WinthropClient::SchoolFinancialDetailGroup](docs/SchoolFinancialDetailGroup.md)
  - [WinthropClient::SchoolFinancialDetailSibling](docs/SchoolFinancialDetailSibling.md)

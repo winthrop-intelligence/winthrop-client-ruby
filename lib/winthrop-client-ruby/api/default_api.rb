@@ -11513,6 +11513,70 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Department-level FRS financials for a school — conference spend-vs-revenue quadrant, per-line conference ranks, revenue/expense ledgers, and the five-year trend
+    # @param school_id [Integer] ID of the School
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :year Fiscal year; defaults to the school&#39;s latest filed year
+    # @return [SchoolDepartmentFinancials]
+    def get_school_department_financials(school_id, opts = {})
+      data, _status_code, _headers = get_school_department_financials_with_http_info(school_id, opts)
+      data
+    end
+
+    # Department-level FRS financials for a school — conference spend-vs-revenue quadrant, per-line conference ranks, revenue/expense ledgers, and the five-year trend
+    # @param school_id [Integer] ID of the School
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :year Fiscal year; defaults to the school&#39;s latest filed year
+    # @return [Array<(SchoolDepartmentFinancials, Integer, Hash)>] SchoolDepartmentFinancials data, response status code and response headers
+    def get_school_department_financials_with_http_info(school_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_school_department_financials ...'
+      end
+      # verify the required parameter 'school_id' is set
+      if @api_client.config.client_side_validation && school_id.nil?
+        fail ArgumentError, "Missing the required parameter 'school_id' when calling DefaultApi.get_school_department_financials"
+      end
+      # resource path
+      local_var_path = '/api/v1/schools/{schoolId}/department_financials'.sub('{' + 'schoolId' + '}', CGI.escape(school_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'year'] = opts[:'year'] if !opts[:'year'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SchoolDepartmentFinancials'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_school_department_financials",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_school_department_financials\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve game contracts for a school grouped by sport
     # @param school_id [Integer] ID of the School
     # @param [Hash] opts the optional parameters
