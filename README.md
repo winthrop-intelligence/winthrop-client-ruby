@@ -271,6 +271,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_school**](docs/DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
 *WinthropClient::DefaultApi* | [**get_school_alternate_names**](docs/DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names | 
 *WinthropClient::DefaultApi* | [**get_school_department_financials**](docs/DefaultApi.md#get_school_department_financials) | **GET** /api/v1/schools/{schoolId}/department_financials | 
+*WinthropClient::DefaultApi* | [**get_school_department_guarantees**](docs/DefaultApi.md#get_school_department_guarantees) | **GET** /api/v1/schools/{schoolId}/department_guarantees | 
 *WinthropClient::DefaultApi* | [**get_school_department_overview**](docs/DefaultApi.md#get_school_department_overview) | **GET** /api/v1/schools/{schoolId}/department_overview | 
 *WinthropClient::DefaultApi* | [**get_school_game_contracts**](docs/DefaultApi.md#get_school_game_contracts) | **GET** /api/v1/schools/{schoolId}/game_contracts | 
 *WinthropClient::DefaultApi* | [**get_school_group**](docs/DefaultApi.md#get_school_group) | **GET** /api/v1/school_groups/{schoolGroupId} | 
@@ -619,6 +620,16 @@ Class | Method | HTTP request | Description
  - [WinthropClient::DepartmentFinancialsRankLine](docs/DepartmentFinancialsRankLine.md)
  - [WinthropClient::DepartmentFinancialsTrendEntry](docs/DepartmentFinancialsTrendEntry.md)
  - [WinthropClient::DepartmentFinancialsUnplottedSchool](docs/DepartmentFinancialsUnplottedSchool.md)
+ - [WinthropClient::DepartmentGuaranteesAgreement](docs/DepartmentGuaranteesAgreement.md)
+ - [WinthropClient::DepartmentGuaranteesAgreementOpponent](docs/DepartmentGuaranteesAgreementOpponent.md)
+ - [WinthropClient::DepartmentGuaranteesCommittedSide](docs/DepartmentGuaranteesCommittedSide.md)
+ - [WinthropClient::DepartmentGuaranteesFiledLine](docs/DepartmentGuaranteesFiledLine.md)
+ - [WinthropClient::DepartmentGuaranteesMarket](docs/DepartmentGuaranteesMarket.md)
+ - [WinthropClient::DepartmentGuaranteesMarketSide](docs/DepartmentGuaranteesMarketSide.md)
+ - [WinthropClient::DepartmentGuaranteesQuadrant](docs/DepartmentGuaranteesQuadrant.md)
+ - [WinthropClient::DepartmentGuaranteesQuadrantPoint](docs/DepartmentGuaranteesQuadrantPoint.md)
+ - [WinthropClient::DepartmentGuaranteesSportLedger](docs/DepartmentGuaranteesSportLedger.md)
+ - [WinthropClient::DepartmentGuaranteesTrendEntry](docs/DepartmentGuaranteesTrendEntry.md)
  - [WinthropClient::DepartmentOverviewDollarShares](docs/DepartmentOverviewDollarShares.md)
  - [WinthropClient::DepartmentOverviewFlowSummary](docs/DepartmentOverviewFlowSummary.md)
  - [WinthropClient::DepartmentOverviewHeadlineStat](docs/DepartmentOverviewHeadlineStat.md)
@@ -885,6 +896,8 @@ Class | Method | HTTP request | Description
  - [WinthropClient::SchoolCollection](docs/SchoolCollection.md)
  - [WinthropClient::SchoolContractEntry](docs/SchoolContractEntry.md)
  - [WinthropClient::SchoolDepartmentFinancials](docs/SchoolDepartmentFinancials.md)
+ - [WinthropClient::SchoolDepartmentGuarantees](docs/SchoolDepartmentGuarantees.md)
+ - [WinthropClient::SchoolDepartmentGuaranteesSchool](docs/SchoolDepartmentGuaranteesSchool.md)
  - [WinthropClient::SchoolDepartmentOverview](docs/SchoolDepartmentOverview.md)
  - [WinthropClient::SchoolDepartmentOverviewConference](docs/SchoolDepartmentOverviewConference.md)
  - [WinthropClient::SchoolDepartmentOverviewSchool](docs/SchoolDepartmentOverviewSchool.md)
