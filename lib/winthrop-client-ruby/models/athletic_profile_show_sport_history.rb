@@ -14,32 +14,53 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class AthleticProfileShowSportOverviewSeasonsInner < ApiModelBase
-    attr_accessor :year
+  # History tab payload for a sport scope (WINAD-10210); null for ADMIN scope. A decade of seasons with the head-coach seat per year and filed spend where present. Transitions never carry a dollar amount — WinAD stores termination agreements as documents only. Missing values are null, never zero.
+  class AthleticProfileShowSportHistory < ApiModelBase
+    attr_accessor :season_year
 
-    attr_accessor :record
+    attr_accessor :conference_name
 
-    attr_accessor :conference_record
+    # The results ranking filed for this window — NET where present, RPI as the fallback lens, null when neither is filed.
+    attr_accessor :results_lens
 
-    attr_accessor :net_rank
+    # Up to ten season-years ending at season_year, newest first; only recorded seasons appear.
+    attr_accessor :seasons
 
-    attr_accessor :postseason
+    attr_accessor :churn
 
-    attr_accessor :head_coach_name
+    attr_accessor :as_of
 
-    # True when the season's seat-holder is filed only as INTERIM_HEAD_COACH.
-    attr_accessor :head_coach_interim
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'year' => :'year',
-        :'record' => :'record',
-        :'conference_record' => :'conference_record',
-        :'net_rank' => :'net_rank',
-        :'postseason' => :'postseason',
-        :'head_coach_name' => :'head_coach_name',
-        :'head_coach_interim' => :'head_coach_interim'
+        :'season_year' => :'season_year',
+        :'conference_name' => :'conference_name',
+        :'results_lens' => :'results_lens',
+        :'seasons' => :'seasons',
+        :'churn' => :'churn',
+        :'as_of' => :'as_of'
       }
     end
 
@@ -56,21 +77,20 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'year' => :'Integer',
-        :'record' => :'String',
-        :'conference_record' => :'String',
-        :'net_rank' => :'Integer',
-        :'postseason' => :'String',
-        :'head_coach_name' => :'String',
-        :'head_coach_interim' => :'Boolean'
+        :'season_year' => :'Integer',
+        :'conference_name' => :'String',
+        :'results_lens' => :'String',
+        :'seasons' => :'Array<AthleticProfileShowSportHistorySeasonsInner>',
+        :'churn' => :'AthleticProfileShowSportHistoryChurn',
+        :'as_of' => :'Date'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'net_rank',
-        :'head_coach_name',
+        :'conference_name',
+        :'results_lens',
       ])
     end
 
@@ -78,44 +98,42 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::AthleticProfileShowSportOverviewSeasonsInner` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::AthleticProfileShowSportHistory` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::AthleticProfileShowSportOverviewSeasonsInner`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::AthleticProfileShowSportHistory`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'year')
-        self.year = attributes[:'year']
+      if attributes.key?(:'season_year')
+        self.season_year = attributes[:'season_year']
       end
 
-      if attributes.key?(:'record')
-        self.record = attributes[:'record']
+      if attributes.key?(:'conference_name')
+        self.conference_name = attributes[:'conference_name']
       end
 
-      if attributes.key?(:'conference_record')
-        self.conference_record = attributes[:'conference_record']
+      if attributes.key?(:'results_lens')
+        self.results_lens = attributes[:'results_lens']
       end
 
-      if attributes.key?(:'net_rank')
-        self.net_rank = attributes[:'net_rank']
+      if attributes.key?(:'seasons')
+        if (value = attributes[:'seasons']).is_a?(Array)
+          self.seasons = value
+        end
       end
 
-      if attributes.key?(:'postseason')
-        self.postseason = attributes[:'postseason']
+      if attributes.key?(:'churn')
+        self.churn = attributes[:'churn']
       end
 
-      if attributes.key?(:'head_coach_name')
-        self.head_coach_name = attributes[:'head_coach_name']
-      end
-
-      if attributes.key?(:'head_coach_interim')
-        self.head_coach_interim = attributes[:'head_coach_interim']
+      if attributes.key?(:'as_of')
+        self.as_of = attributes[:'as_of']
       end
     end
 
@@ -131,7 +149,19 @@ module WinthropClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      results_lens_validator = EnumAttributeValidator.new('String', ["NET", "RPI"])
+      return false unless results_lens_validator.valid?(@results_lens)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] results_lens Object to be assigned
+    def results_lens=(results_lens)
+      validator = EnumAttributeValidator.new('String', ["NET", "RPI"])
+      unless validator.valid?(results_lens)
+        fail ArgumentError, "invalid value for \"results_lens\", must be one of #{validator.allowable_values}."
+      end
+      @results_lens = results_lens
     end
 
     # Checks equality by comparing each attribute.
@@ -139,13 +169,12 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          year == o.year &&
-          record == o.record &&
-          conference_record == o.conference_record &&
-          net_rank == o.net_rank &&
-          postseason == o.postseason &&
-          head_coach_name == o.head_coach_name &&
-          head_coach_interim == o.head_coach_interim
+          season_year == o.season_year &&
+          conference_name == o.conference_name &&
+          results_lens == o.results_lens &&
+          seasons == o.seasons &&
+          churn == o.churn &&
+          as_of == o.as_of
     end
 
     # @see the `==` method
@@ -157,7 +186,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [year, record, conference_record, net_rank, postseason, head_coach_name, head_coach_interim].hash
+      [season_year, conference_name, results_lens, seasons, churn, as_of].hash
     end
 
     # Builds the object from hash

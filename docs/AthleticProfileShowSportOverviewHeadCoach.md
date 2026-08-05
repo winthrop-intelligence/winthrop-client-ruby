@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **coach_id** | **Integer** |  | [optional] |
 | **name** | **String** |  | [optional] |
+| **interim** | **Boolean** | True when the resolved seat-holder&#39;s position is interim-only. | [optional] |
 | **first_season_year** | **Integer** |  | [optional] |
 | **comp_cents** | **Integer** |  | [optional] |
 | **comp_rank** | **Integer** |  | [optional] |
@@ -26,6 +27,7 @@ require 'winthrop-client-ruby'
 instance = WinthropClient::AthleticProfileShowSportOverviewHeadCoach.new(
   coach_id: null,
   name: null,
+  interim: null,
   first_season_year: null,
   comp_cents: null,
   comp_rank: null,

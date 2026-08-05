@@ -1,30 +1,36 @@
-# WinthropClient::AthleticProfileShowSportOverviewSeasonsInner
+# WinthropClient::AthleticProfileShowSportHistorySeasonsInner
 
 ## Properties
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **year** | **Integer** |  | [optional] |
+| **coach_id** | **Integer** |  | [optional] |
+| **coach_name** | **String** |  | [optional] |
+| **interim** | **Boolean** |  | [optional] |
 | **record** | **String** |  | [optional] |
 | **conference_record** | **String** |  | [optional] |
 | **net_rank** | **Integer** |  | [optional] |
+| **rpi** | **Integer** |  | [optional] |
 | **postseason** | **String** |  | [optional] |
-| **head_coach_name** | **String** |  | [optional] |
-| **head_coach_interim** | **Boolean** | True when the season&#39;s seat-holder is filed only as INTERIM_HEAD_COACH. | [optional] |
+| **spend_cents** | **Integer** |  | [optional] |
 
 ## Example
 
 ```ruby
 require 'winthrop-client-ruby'
 
-instance = WinthropClient::AthleticProfileShowSportOverviewSeasonsInner.new(
+instance = WinthropClient::AthleticProfileShowSportHistorySeasonsInner.new(
   year: null,
+  coach_id: null,
+  coach_name: null,
+  interim: null,
   record: null,
   conference_record: null,
   net_rank: null,
+  rpi: null,
   postseason: null,
-  head_coach_name: null,
-  head_coach_interim: null
+  spend_cents: null
 )
 ```
 

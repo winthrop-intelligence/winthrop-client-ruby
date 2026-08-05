@@ -14,32 +14,34 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class AthleticProfileShowSportOverviewSeasonsInner < ApiModelBase
-    attr_accessor :year
+  class AthleticProfileShowSportGuaranteesQuadrantPointsInner < ApiModelBase
+    attr_accessor :school_id
 
-    attr_accessor :record
+    attr_accessor :name
 
-    attr_accessor :conference_record
+    attr_accessor :short_name
+
+    attr_accessor :colors
+
+    attr_accessor :is_subject
+
+    attr_accessor :bought_cents
+
+    attr_accessor :bought_count
 
     attr_accessor :net_rank
-
-    attr_accessor :postseason
-
-    attr_accessor :head_coach_name
-
-    # True when the season's seat-holder is filed only as INTERIM_HEAD_COACH.
-    attr_accessor :head_coach_interim
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'year' => :'year',
-        :'record' => :'record',
-        :'conference_record' => :'conference_record',
-        :'net_rank' => :'net_rank',
-        :'postseason' => :'postseason',
-        :'head_coach_name' => :'head_coach_name',
-        :'head_coach_interim' => :'head_coach_interim'
+        :'school_id' => :'school_id',
+        :'name' => :'name',
+        :'short_name' => :'short_name',
+        :'colors' => :'colors',
+        :'is_subject' => :'is_subject',
+        :'bought_cents' => :'bought_cents',
+        :'bought_count' => :'bought_count',
+        :'net_rank' => :'net_rank'
       }
     end
 
@@ -56,21 +58,23 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'year' => :'Integer',
-        :'record' => :'String',
-        :'conference_record' => :'String',
-        :'net_rank' => :'Integer',
-        :'postseason' => :'String',
-        :'head_coach_name' => :'String',
-        :'head_coach_interim' => :'Boolean'
+        :'school_id' => :'Integer',
+        :'name' => :'String',
+        :'short_name' => :'String',
+        :'colors' => :'String',
+        :'is_subject' => :'Boolean',
+        :'bought_cents' => :'Integer',
+        :'bought_count' => :'Integer',
+        :'net_rank' => :'Integer'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'net_rank',
-        :'head_coach_name',
+        :'colors',
+        :'bought_cents',
+        :'net_rank'
       ])
     end
 
@@ -78,44 +82,48 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::AthleticProfileShowSportOverviewSeasonsInner` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::AthleticProfileShowSportGuaranteesQuadrantPointsInner` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::AthleticProfileShowSportOverviewSeasonsInner`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::AthleticProfileShowSportGuaranteesQuadrantPointsInner`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'year')
-        self.year = attributes[:'year']
+      if attributes.key?(:'school_id')
+        self.school_id = attributes[:'school_id']
       end
 
-      if attributes.key?(:'record')
-        self.record = attributes[:'record']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'conference_record')
-        self.conference_record = attributes[:'conference_record']
+      if attributes.key?(:'short_name')
+        self.short_name = attributes[:'short_name']
+      end
+
+      if attributes.key?(:'colors')
+        self.colors = attributes[:'colors']
+      end
+
+      if attributes.key?(:'is_subject')
+        self.is_subject = attributes[:'is_subject']
+      end
+
+      if attributes.key?(:'bought_cents')
+        self.bought_cents = attributes[:'bought_cents']
+      end
+
+      if attributes.key?(:'bought_count')
+        self.bought_count = attributes[:'bought_count']
       end
 
       if attributes.key?(:'net_rank')
         self.net_rank = attributes[:'net_rank']
-      end
-
-      if attributes.key?(:'postseason')
-        self.postseason = attributes[:'postseason']
-      end
-
-      if attributes.key?(:'head_coach_name')
-        self.head_coach_name = attributes[:'head_coach_name']
-      end
-
-      if attributes.key?(:'head_coach_interim')
-        self.head_coach_interim = attributes[:'head_coach_interim']
       end
     end
 
@@ -139,13 +147,14 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          year == o.year &&
-          record == o.record &&
-          conference_record == o.conference_record &&
-          net_rank == o.net_rank &&
-          postseason == o.postseason &&
-          head_coach_name == o.head_coach_name &&
-          head_coach_interim == o.head_coach_interim
+          school_id == o.school_id &&
+          name == o.name &&
+          short_name == o.short_name &&
+          colors == o.colors &&
+          is_subject == o.is_subject &&
+          bought_cents == o.bought_cents &&
+          bought_count == o.bought_count &&
+          net_rank == o.net_rank
     end
 
     # @see the `==` method
@@ -157,7 +166,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [year, record, conference_record, net_rank, postseason, head_coach_name, head_coach_interim].hash
+      [school_id, name, short_name, colors, is_subject, bought_cents, bought_count, net_rank].hash
     end
 
     # Builds the object from hash

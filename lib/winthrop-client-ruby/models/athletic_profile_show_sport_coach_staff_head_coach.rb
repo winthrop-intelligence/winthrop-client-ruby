@@ -37,6 +37,9 @@ module WinthropClient
 
     attr_accessor :at_will
 
+    # True when the resolved seat-holder's position is interim-only.
+    attr_accessor :interim
+
     attr_accessor :first_season_year
 
     # Total recorded head-coach seasons across schools; career rows are capped at 12 selected seasons.
@@ -61,6 +64,7 @@ module WinthropClient
         :'contract_end_on' => :'contract_end_on',
         :'contract_on_file' => :'contract_on_file',
         :'at_will' => :'at_will',
+        :'interim' => :'interim',
         :'first_season_year' => :'first_season_year',
         :'career_season_count' => :'career_season_count',
         :'year_one' => :'year_one',
@@ -92,6 +96,7 @@ module WinthropClient
         :'contract_end_on' => :'Date',
         :'contract_on_file' => :'Boolean',
         :'at_will' => :'Boolean',
+        :'interim' => :'Boolean',
         :'first_season_year' => :'Integer',
         :'career_season_count' => :'Integer',
         :'year_one' => :'AthleticProfileShowSportCoachStaffHeadCoachYearOne',
@@ -175,6 +180,10 @@ module WinthropClient
         self.at_will = attributes[:'at_will']
       end
 
+      if attributes.key?(:'interim')
+        self.interim = attributes[:'interim']
+      end
+
       if attributes.key?(:'first_season_year')
         self.first_season_year = attributes[:'first_season_year']
       end
@@ -225,6 +234,7 @@ module WinthropClient
           contract_end_on == o.contract_end_on &&
           contract_on_file == o.contract_on_file &&
           at_will == o.at_will &&
+          interim == o.interim &&
           first_season_year == o.first_season_year &&
           career_season_count == o.career_season_count &&
           year_one == o.year_one &&
@@ -240,7 +250,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [coach_id, name, comp_cents, base_salary_cents, comp_rank, comp_cohort_size, comp_median_cents, contract_start_on, contract_end_on, contract_on_file, at_will, first_season_year, career_season_count, year_one, career].hash
+      [coach_id, name, comp_cents, base_salary_cents, comp_rank, comp_cohort_size, comp_median_cents, contract_start_on, contract_end_on, contract_on_file, at_will, interim, first_season_year, career_season_count, year_one, career].hash
     end
 
     # Builds the object from hash

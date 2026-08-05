@@ -15,6 +15,7 @@
 | **contract_end_on** | **Date** |  | [optional] |
 | **contract_on_file** | **Boolean** |  | [optional] |
 | **at_will** | **Boolean** |  | [optional] |
+| **interim** | **Boolean** | True when the resolved seat-holder&#39;s position is interim-only. | [optional] |
 | **first_season_year** | **Integer** |  | [optional] |
 | **career_season_count** | **Integer** | Total recorded head-coach seasons across schools; career rows are capped at 12 selected seasons. | [optional] |
 | **year_one** | [**AthleticProfileShowSportCoachStaffHeadCoachYearOne**](AthleticProfileShowSportCoachStaffHeadCoachYearOne.md) |  | [optional] |
@@ -37,6 +38,7 @@ instance = WinthropClient::AthleticProfileShowSportCoachStaffHeadCoach.new(
   contract_end_on: null,
   contract_on_file: null,
   at_will: null,
+  interim: null,
   first_season_year: null,
   career_season_count: null,
   year_one: null,

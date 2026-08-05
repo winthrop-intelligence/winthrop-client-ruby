@@ -14,32 +14,35 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class AthleticProfileShowSportOverviewSeasonsInner < ApiModelBase
-    attr_accessor :year
+  # Guarantees tab payload for a sport scope (WINAD-10209); null for ADMIN scope or without game-contract access. Every amount comes from a filed agreement — duplicate filings are included, never merged. Missing values are null, never zero.
+  class AthleticProfileShowSportGuarantees < ApiModelBase
+    attr_accessor :season_year
 
-    attr_accessor :record
+    attr_accessor :conference_name
 
-    attr_accessor :conference_record
+    attr_accessor :sport_id
 
-    attr_accessor :net_rank
+    attr_accessor :basketball
 
-    attr_accessor :postseason
+    attr_accessor :agreements
 
-    attr_accessor :head_coach_name
+    attr_accessor :summary
 
-    # True when the season's seat-holder is filed only as INTERIM_HEAD_COACH.
-    attr_accessor :head_coach_interim
+    attr_accessor :quadrant
+
+    attr_accessor :as_of
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'year' => :'year',
-        :'record' => :'record',
-        :'conference_record' => :'conference_record',
-        :'net_rank' => :'net_rank',
-        :'postseason' => :'postseason',
-        :'head_coach_name' => :'head_coach_name',
-        :'head_coach_interim' => :'head_coach_interim'
+        :'season_year' => :'season_year',
+        :'conference_name' => :'conference_name',
+        :'sport_id' => :'sport_id',
+        :'basketball' => :'basketball',
+        :'agreements' => :'agreements',
+        :'summary' => :'summary',
+        :'quadrant' => :'quadrant',
+        :'as_of' => :'as_of'
       }
     end
 
@@ -56,21 +59,21 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'year' => :'Integer',
-        :'record' => :'String',
-        :'conference_record' => :'String',
-        :'net_rank' => :'Integer',
-        :'postseason' => :'String',
-        :'head_coach_name' => :'String',
-        :'head_coach_interim' => :'Boolean'
+        :'season_year' => :'Integer',
+        :'conference_name' => :'String',
+        :'sport_id' => :'Integer',
+        :'basketball' => :'Boolean',
+        :'agreements' => :'Array<AthleticProfileShowSportGuaranteesAgreementsInner>',
+        :'summary' => :'AthleticProfileShowSportGuaranteesSummary',
+        :'quadrant' => :'AthleticProfileShowSportGuaranteesQuadrant',
+        :'as_of' => :'Date'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'net_rank',
-        :'head_coach_name',
+        :'conference_name',
       ])
     end
 
@@ -78,44 +81,50 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::AthleticProfileShowSportOverviewSeasonsInner` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::AthleticProfileShowSportGuarantees` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::AthleticProfileShowSportOverviewSeasonsInner`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::AthleticProfileShowSportGuarantees`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'year')
-        self.year = attributes[:'year']
+      if attributes.key?(:'season_year')
+        self.season_year = attributes[:'season_year']
       end
 
-      if attributes.key?(:'record')
-        self.record = attributes[:'record']
+      if attributes.key?(:'conference_name')
+        self.conference_name = attributes[:'conference_name']
       end
 
-      if attributes.key?(:'conference_record')
-        self.conference_record = attributes[:'conference_record']
+      if attributes.key?(:'sport_id')
+        self.sport_id = attributes[:'sport_id']
       end
 
-      if attributes.key?(:'net_rank')
-        self.net_rank = attributes[:'net_rank']
+      if attributes.key?(:'basketball')
+        self.basketball = attributes[:'basketball']
       end
 
-      if attributes.key?(:'postseason')
-        self.postseason = attributes[:'postseason']
+      if attributes.key?(:'agreements')
+        if (value = attributes[:'agreements']).is_a?(Array)
+          self.agreements = value
+        end
       end
 
-      if attributes.key?(:'head_coach_name')
-        self.head_coach_name = attributes[:'head_coach_name']
+      if attributes.key?(:'summary')
+        self.summary = attributes[:'summary']
       end
 
-      if attributes.key?(:'head_coach_interim')
-        self.head_coach_interim = attributes[:'head_coach_interim']
+      if attributes.key?(:'quadrant')
+        self.quadrant = attributes[:'quadrant']
+      end
+
+      if attributes.key?(:'as_of')
+        self.as_of = attributes[:'as_of']
       end
     end
 
@@ -139,13 +148,14 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          year == o.year &&
-          record == o.record &&
-          conference_record == o.conference_record &&
-          net_rank == o.net_rank &&
-          postseason == o.postseason &&
-          head_coach_name == o.head_coach_name &&
-          head_coach_interim == o.head_coach_interim
+          season_year == o.season_year &&
+          conference_name == o.conference_name &&
+          sport_id == o.sport_id &&
+          basketball == o.basketball &&
+          agreements == o.agreements &&
+          summary == o.summary &&
+          quadrant == o.quadrant &&
+          as_of == o.as_of
     end
 
     # @see the `==` method
@@ -157,7 +167,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [year, record, conference_record, net_rank, postseason, head_coach_name, head_coach_interim].hash
+      [season_year, conference_name, sport_id, basketball, agreements, summary, quadrant, as_of].hash
     end
 
     # Builds the object from hash

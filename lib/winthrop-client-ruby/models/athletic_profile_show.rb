@@ -41,6 +41,10 @@ module WinthropClient
 
     attr_accessor :sport_financials
 
+    attr_accessor :sport_guarantees
+
+    attr_accessor :sport_history
+
     attr_accessor :sponsored_count
 
     attr_accessor :personnel
@@ -75,6 +79,8 @@ module WinthropClient
         :'sport_overview' => :'sport_overview',
         :'sport_coach_staff' => :'sport_coach_staff',
         :'sport_financials' => :'sport_financials',
+        :'sport_guarantees' => :'sport_guarantees',
+        :'sport_history' => :'sport_history',
         :'sponsored_count' => :'sponsored_count',
         :'personnel' => :'personnel',
         :'personnel_total_count' => :'personnel_total_count',
@@ -113,6 +119,8 @@ module WinthropClient
         :'sport_overview' => :'AthleticProfileShowSportOverview',
         :'sport_coach_staff' => :'AthleticProfileShowSportCoachStaff',
         :'sport_financials' => :'AthleticProfileShowSportFinancials',
+        :'sport_guarantees' => :'AthleticProfileShowSportGuarantees',
+        :'sport_history' => :'AthleticProfileShowSportHistory',
         :'sponsored_count' => :'Integer',
         :'personnel' => :'Array<AthleticProfileShowPersonnelInner>',
         :'personnel_total_count' => :'Integer',
@@ -132,6 +140,8 @@ module WinthropClient
         :'sport_overview',
         :'sport_coach_staff',
         :'sport_financials',
+        :'sport_guarantees',
+        :'sport_history',
         :'financials',
       ])
     end
@@ -208,6 +218,14 @@ module WinthropClient
 
       if attributes.key?(:'sport_financials')
         self.sport_financials = attributes[:'sport_financials']
+      end
+
+      if attributes.key?(:'sport_guarantees')
+        self.sport_guarantees = attributes[:'sport_guarantees']
+      end
+
+      if attributes.key?(:'sport_history')
+        self.sport_history = attributes[:'sport_history']
       end
 
       if attributes.key?(:'sponsored_count')
@@ -290,6 +308,8 @@ module WinthropClient
           sport_overview == o.sport_overview &&
           sport_coach_staff == o.sport_coach_staff &&
           sport_financials == o.sport_financials &&
+          sport_guarantees == o.sport_guarantees &&
+          sport_history == o.sport_history &&
           sponsored_count == o.sponsored_count &&
           personnel == o.personnel &&
           personnel_total_count == o.personnel_total_count &&
@@ -310,7 +330,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [school, financial_info, sport_key, sport_name, year, current_season_year, tab_sports, non_revenue_sports, permissions, sports_overview, sport_overview, sport_coach_staff, sport_financials, sponsored_count, personnel, personnel_total_count, financials, deals, guarantees, guarantees_total_count, contacts, games].hash
+      [school, financial_info, sport_key, sport_name, year, current_season_year, tab_sports, non_revenue_sports, permissions, sports_overview, sport_overview, sport_coach_staff, sport_financials, sport_guarantees, sport_history, sponsored_count, personnel, personnel_total_count, financials, deals, guarantees, guarantees_total_count, contacts, games].hash
     end
 
     # Builds the object from hash

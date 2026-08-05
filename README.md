@@ -159,6 +159,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_administrator**](docs/DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} | 
 *WinthropClient::DefaultApi* | [**get_administrator_searches**](docs/DefaultApi.md#get_administrator_searches) | **GET** /api/v1/administrator_searches | 
 *WinthropClient::DefaultApi* | [**get_administrators**](docs/DefaultApi.md#get_administrators) | **GET** /api/v1/administrators | 
+*WinthropClient::DefaultApi* | [**get_athletic_profile_report**](docs/DefaultApi.md#get_athletic_profile_report) | **GET** /api/v1/athletic_profile_searches/{athleticProfileSearchId}/report | 
 *WinthropClient::DefaultApi* | [**get_athletic_profile_search**](docs/DefaultApi.md#get_athletic_profile_search) | **GET** /api/v1/athletic_profile_searches/{athleticProfileSearchId} | 
 *WinthropClient::DefaultApi* | [**get_audited_financial_report_status**](docs/DefaultApi.md#get_audited_financial_report_status) | **GET** /api/v1/audited_financial_report_statuses/{auditedFinancialReportStatusId} | 
 *WinthropClient::DefaultApi* | [**get_audited_financial_report_statuses**](docs/DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses | 
@@ -444,6 +445,15 @@ Class | Method | HTTP request | Description
  - [WinthropClient::AthleticProfileShowSportFinancialsFrsSplit](docs/AthleticProfileShowSportFinancialsFrsSplit.md)
  - [WinthropClient::AthleticProfileShowSportFinancialsQuadrant](docs/AthleticProfileShowSportFinancialsQuadrant.md)
  - [WinthropClient::AthleticProfileShowSportFinancialsQuadrantPointsInner](docs/AthleticProfileShowSportFinancialsQuadrantPointsInner.md)
+ - [WinthropClient::AthleticProfileShowSportGuarantees](docs/AthleticProfileShowSportGuarantees.md)
+ - [WinthropClient::AthleticProfileShowSportGuaranteesAgreementsInner](docs/AthleticProfileShowSportGuaranteesAgreementsInner.md)
+ - [WinthropClient::AthleticProfileShowSportGuaranteesQuadrant](docs/AthleticProfileShowSportGuaranteesQuadrant.md)
+ - [WinthropClient::AthleticProfileShowSportGuaranteesQuadrantPointsInner](docs/AthleticProfileShowSportGuaranteesQuadrantPointsInner.md)
+ - [WinthropClient::AthleticProfileShowSportGuaranteesSummary](docs/AthleticProfileShowSportGuaranteesSummary.md)
+ - [WinthropClient::AthleticProfileShowSportHistory](docs/AthleticProfileShowSportHistory.md)
+ - [WinthropClient::AthleticProfileShowSportHistoryChurn](docs/AthleticProfileShowSportHistoryChurn.md)
+ - [WinthropClient::AthleticProfileShowSportHistoryChurnTransitionsInner](docs/AthleticProfileShowSportHistoryChurnTransitionsInner.md)
+ - [WinthropClient::AthleticProfileShowSportHistorySeasonsInner](docs/AthleticProfileShowSportHistorySeasonsInner.md)
  - [WinthropClient::AthleticProfileShowSportOverview](docs/AthleticProfileShowSportOverview.md)
  - [WinthropClient::AthleticProfileShowSportOverviewGuarantees](docs/AthleticProfileShowSportOverviewGuarantees.md)
  - [WinthropClient::AthleticProfileShowSportOverviewGuaranteesUpcomingInner](docs/AthleticProfileShowSportOverviewGuaranteesUpcomingInner.md)
