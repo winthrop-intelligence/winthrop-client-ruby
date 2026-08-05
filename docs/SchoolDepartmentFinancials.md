@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **school** | [**SchoolDepartmentFinancialsSchool**](SchoolDepartmentFinancialsSchool.md) |  |  |
-| **conference** | [**SchoolDepartmentFinancialsConference**](SchoolDepartmentFinancialsConference.md) |  |  |
+| **school** | [**SchoolDepartmentOverviewSchool**](SchoolDepartmentOverviewSchool.md) |  |  |
+| **conference** | [**SchoolDepartmentOverviewConference**](SchoolDepartmentOverviewConference.md) |  |  |
 | **latest_filed_year** | **Integer** |  |  |
 | **selected_year** | **Integer** |  |  |
 | **available_years** | **Array&lt;Integer&gt;** |  |  |

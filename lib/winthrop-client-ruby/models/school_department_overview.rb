@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class SchoolDepartmentFinancials < ApiModelBase
+  class SchoolDepartmentOverview < ApiModelBase
     attr_accessor :school
 
     attr_accessor :conference
@@ -25,17 +25,21 @@ module WinthropClient
 
     attr_accessor :available_years
 
-    attr_accessor :quadrant
+    attr_accessor :results_quadrant
 
-    attr_accessor :net_result
+    attr_accessor :headline_stats
 
-    attr_accessor :ranks
+    attr_accessor :flow_summary
 
-    attr_accessor :revenue
+    attr_accessor :top_revenue_lines
 
-    attr_accessor :expenses
+    attr_accessor :top_expense_lines
 
-    attr_accessor :trend
+    attr_accessor :dollar_shares
+
+    attr_accessor :provenance
+
+    attr_accessor :results_gap
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -45,12 +49,14 @@ module WinthropClient
         :'latest_filed_year' => :'latest_filed_year',
         :'selected_year' => :'selected_year',
         :'available_years' => :'available_years',
-        :'quadrant' => :'quadrant',
-        :'net_result' => :'net_result',
-        :'ranks' => :'ranks',
-        :'revenue' => :'revenue',
-        :'expenses' => :'expenses',
-        :'trend' => :'trend'
+        :'results_quadrant' => :'results_quadrant',
+        :'headline_stats' => :'headline_stats',
+        :'flow_summary' => :'flow_summary',
+        :'top_revenue_lines' => :'top_revenue_lines',
+        :'top_expense_lines' => :'top_expense_lines',
+        :'dollar_shares' => :'dollar_shares',
+        :'provenance' => :'provenance',
+        :'results_gap' => :'results_gap'
       }
     end
 
@@ -72,12 +78,14 @@ module WinthropClient
         :'latest_filed_year' => :'Integer',
         :'selected_year' => :'Integer',
         :'available_years' => :'Array<Integer>',
-        :'quadrant' => :'DepartmentFinancialsQuadrant',
-        :'net_result' => :'DepartmentFinancialsNetResult',
-        :'ranks' => :'Array<DepartmentFinancialsRankLine>',
-        :'revenue' => :'DepartmentFinancialsLedger',
-        :'expenses' => :'DepartmentFinancialsLedger',
-        :'trend' => :'Array<DepartmentFinancialsTrendEntry>'
+        :'results_quadrant' => :'DepartmentOverviewResultsQuadrant',
+        :'headline_stats' => :'Array<DepartmentOverviewHeadlineStat>',
+        :'flow_summary' => :'DepartmentOverviewFlowSummary',
+        :'top_revenue_lines' => :'Array<DepartmentOverviewTopLine>',
+        :'top_expense_lines' => :'Array<DepartmentOverviewTopLine>',
+        :'dollar_shares' => :'DepartmentOverviewDollarShares',
+        :'provenance' => :'DepartmentOverviewProvenance',
+        :'results_gap' => :'DepartmentOverviewResultsGap'
       }
     end
 
@@ -87,11 +95,14 @@ module WinthropClient
         :'conference',
         :'latest_filed_year',
         :'selected_year',
-        :'quadrant',
-        :'net_result',
-        :'ranks',
-        :'revenue',
-        :'expenses',
+        :'results_quadrant',
+        :'headline_stats',
+        :'flow_summary',
+        :'top_revenue_lines',
+        :'top_expense_lines',
+        :'dollar_shares',
+        :'provenance',
+        :'results_gap'
       ])
     end
 
@@ -99,14 +110,14 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::SchoolDepartmentFinancials` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::SchoolDepartmentOverview` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::SchoolDepartmentFinancials`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::SchoolDepartmentOverview`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -143,44 +154,58 @@ module WinthropClient
         self.available_years = nil
       end
 
-      if attributes.key?(:'quadrant')
-        self.quadrant = attributes[:'quadrant']
+      if attributes.key?(:'results_quadrant')
+        self.results_quadrant = attributes[:'results_quadrant']
       else
-        self.quadrant = nil
+        self.results_quadrant = nil
       end
 
-      if attributes.key?(:'net_result')
-        self.net_result = attributes[:'net_result']
-      else
-        self.net_result = nil
-      end
-
-      if attributes.key?(:'ranks')
-        if (value = attributes[:'ranks']).is_a?(Array)
-          self.ranks = value
+      if attributes.key?(:'headline_stats')
+        if (value = attributes[:'headline_stats']).is_a?(Array)
+          self.headline_stats = value
         end
       else
-        self.ranks = nil
+        self.headline_stats = nil
       end
 
-      if attributes.key?(:'revenue')
-        self.revenue = attributes[:'revenue']
+      if attributes.key?(:'flow_summary')
+        self.flow_summary = attributes[:'flow_summary']
       else
-        self.revenue = nil
+        self.flow_summary = nil
       end
 
-      if attributes.key?(:'expenses')
-        self.expenses = attributes[:'expenses']
-      else
-        self.expenses = nil
-      end
-
-      if attributes.key?(:'trend')
-        if (value = attributes[:'trend']).is_a?(Array)
-          self.trend = value
+      if attributes.key?(:'top_revenue_lines')
+        if (value = attributes[:'top_revenue_lines']).is_a?(Array)
+          self.top_revenue_lines = value
         end
       else
-        self.trend = nil
+        self.top_revenue_lines = nil
+      end
+
+      if attributes.key?(:'top_expense_lines')
+        if (value = attributes[:'top_expense_lines']).is_a?(Array)
+          self.top_expense_lines = value
+        end
+      else
+        self.top_expense_lines = nil
+      end
+
+      if attributes.key?(:'dollar_shares')
+        self.dollar_shares = attributes[:'dollar_shares']
+      else
+        self.dollar_shares = nil
+      end
+
+      if attributes.key?(:'provenance')
+        self.provenance = attributes[:'provenance']
+      else
+        self.provenance = nil
+      end
+
+      if attributes.key?(:'results_gap')
+        self.results_gap = attributes[:'results_gap']
+      else
+        self.results_gap = nil
       end
     end
 
@@ -197,10 +222,6 @@ module WinthropClient
         invalid_properties.push('invalid value for "available_years", available_years cannot be nil.')
       end
 
-      if @trend.nil?
-        invalid_properties.push('invalid value for "trend", trend cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -210,7 +231,6 @@ module WinthropClient
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @school.nil?
       return false if @available_years.nil?
-      return false if @trend.nil?
       true
     end
 
@@ -234,16 +254,6 @@ module WinthropClient
       @available_years = available_years
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] trend Value to be assigned
-    def trend=(trend)
-      if trend.nil?
-        fail ArgumentError, 'trend cannot be nil'
-      end
-
-      @trend = trend
-    end
-
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -254,12 +264,14 @@ module WinthropClient
           latest_filed_year == o.latest_filed_year &&
           selected_year == o.selected_year &&
           available_years == o.available_years &&
-          quadrant == o.quadrant &&
-          net_result == o.net_result &&
-          ranks == o.ranks &&
-          revenue == o.revenue &&
-          expenses == o.expenses &&
-          trend == o.trend
+          results_quadrant == o.results_quadrant &&
+          headline_stats == o.headline_stats &&
+          flow_summary == o.flow_summary &&
+          top_revenue_lines == o.top_revenue_lines &&
+          top_expense_lines == o.top_expense_lines &&
+          dollar_shares == o.dollar_shares &&
+          provenance == o.provenance &&
+          results_gap == o.results_gap
     end
 
     # @see the `==` method
@@ -271,7 +283,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [school, conference, latest_filed_year, selected_year, available_years, quadrant, net_result, ranks, revenue, expenses, trend].hash
+      [school, conference, latest_filed_year, selected_year, available_years, results_quadrant, headline_stats, flow_summary, top_revenue_lines, top_expense_lines, dollar_shares, provenance, results_gap].hash
     end
 
     # Builds the object from hash

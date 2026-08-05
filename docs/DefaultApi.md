@@ -186,6 +186,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_school**](DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} |  |
 | [**get_school_alternate_names**](DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names |  |
 | [**get_school_department_financials**](DefaultApi.md#get_school_department_financials) | **GET** /api/v1/schools/{schoolId}/department_financials |  |
+| [**get_school_department_overview**](DefaultApi.md#get_school_department_overview) | **GET** /api/v1/schools/{schoolId}/department_overview |  |
 | [**get_school_game_contracts**](DefaultApi.md#get_school_game_contracts) | **GET** /api/v1/schools/{schoolId}/game_contracts |  |
 | [**get_school_group**](DefaultApi.md#get_school_group) | **GET** /api/v1/school_groups/{schoolGroupId} |  |
 | [**get_school_group_admin_compensation**](DefaultApi.md#get_school_group_admin_compensation) | **GET** /api/v1/school_groups/{schoolGroupId}/admin_compensation |  |
@@ -14102,6 +14103,84 @@ end
 ### Return type
 
 [**SchoolDepartmentFinancials**](SchoolDepartmentFinancials.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_school_department_overview
+
+> <SchoolDepartmentOverview> get_school_department_overview(school_id, opts)
+
+
+
+Department landing-page summary for a school — headline spend/revenue/coaching stats with conference ranks and the adjacent peer, the earns/spends/keeps flow, top revenue and expense lines, expense shares, filing provenance, and any missing results lens
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | ID of the School
+opts = {
+  year: 56 # Integer | Fiscal year; defaults to the school's latest filed year
+}
+
+begin
+  
+  result = api_instance.get_school_department_overview(school_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_school_department_overview: #{e}"
+end
+```
+
+#### Using the get_school_department_overview_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SchoolDepartmentOverview>, Integer, Hash)> get_school_department_overview_with_http_info(school_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_school_department_overview_with_http_info(school_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SchoolDepartmentOverview>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_school_department_overview_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** | ID of the School |  |
+| **year** | **Integer** | Fiscal year; defaults to the school&#39;s latest filed year | [optional] |
+
+### Return type
+
+[**SchoolDepartmentOverview**](SchoolDepartmentOverview.md)
 
 ### Authorization
 
