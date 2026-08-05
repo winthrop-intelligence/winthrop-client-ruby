@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **school** | [**SchoolDepartmentFinancialsSchool**](SchoolDepartmentFinancialsSchool.md) |  |  |
-| **conference** | [**SchoolDepartmentFinancialsConference**](SchoolDepartmentFinancialsConference.md) |  |  |
+| **school** | [**SchoolDepartmentOverviewSchool**](SchoolDepartmentOverviewSchool.md) |  |  |
+| **conference** | [**SchoolDepartmentOverviewConference**](SchoolDepartmentOverviewConference.md) |  |  |
 | **latest_filed_year** | **Integer** |  |  |
 | **selected_year** | **Integer** |  |  |
 | **available_years** | **Array&lt;Integer&gt;** |  |  |
@@ -15,7 +15,6 @@
 | **revenue** | [**DepartmentFinancialsLedger**](DepartmentFinancialsLedger.md) |  |  |
 | **expenses** | [**DepartmentFinancialsLedger**](DepartmentFinancialsLedger.md) |  |  |
 | **trend** | [**Array&lt;DepartmentFinancialsTrendEntry&gt;**](DepartmentFinancialsTrendEntry.md) |  |  |
-| **eada_coaching** | [**DepartmentFinancialsEadaCoaching**](DepartmentFinancialsEadaCoaching.md) |  |  |
 
 ## Example
 
@@ -33,8 +32,7 @@ instance = WinthropClient::SchoolDepartmentFinancials.new(
   ranks: null,
   revenue: null,
   expenses: null,
-  trend: null,
-  eada_coaching: null
+  trend: null
 )
 ```
 
