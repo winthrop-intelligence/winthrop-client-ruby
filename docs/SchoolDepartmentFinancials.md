@@ -15,6 +15,8 @@
 | **revenue** | [**DepartmentFinancialsLedger**](DepartmentFinancialsLedger.md) |  |  |
 | **expenses** | [**DepartmentFinancialsLedger**](DepartmentFinancialsLedger.md) |  |  |
 | **trend** | [**Array&lt;DepartmentFinancialsTrendEntry&gt;**](DepartmentFinancialsTrendEntry.md) |  |  |
+| **eada_ledger** | [**DepartmentFinancialsEadaLedger**](DepartmentFinancialsEadaLedger.md) |  |  |
+| **eada_coaching** | [**DepartmentFinancialsEadaCoaching**](DepartmentFinancialsEadaCoaching.md) |  |  |
 
 ## Example
 
@@ -32,7 +34,9 @@ instance = WinthropClient::SchoolDepartmentFinancials.new(
   ranks: null,
   revenue: null,
   expenses: null,
-  trend: null
+  trend: null,
+  eada_ledger: null,
+  eada_coaching: null
 )
 ```
 
