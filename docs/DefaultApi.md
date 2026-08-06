@@ -74,6 +74,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_administrator**](DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} |  |
 | [**get_administrator_searches**](DefaultApi.md#get_administrator_searches) | **GET** /api/v1/administrator_searches |  |
 | [**get_administrators**](DefaultApi.md#get_administrators) | **GET** /api/v1/administrators |  |
+| [**get_athletic_profile_report**](DefaultApi.md#get_athletic_profile_report) | **GET** /api/v1/athletic_profile_searches/{athleticProfileSearchId}/report |  |
 | [**get_athletic_profile_search**](DefaultApi.md#get_athletic_profile_search) | **GET** /api/v1/athletic_profile_searches/{athleticProfileSearchId} |  |
 | [**get_audited_financial_report_status**](DefaultApi.md#get_audited_financial_report_status) | **GET** /api/v1/audited_financial_report_statuses/{auditedFinancialReportStatusId} |  |
 | [**get_audited_financial_report_statuses**](DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses |  |
@@ -184,6 +185,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_scheduling_contacts**](DefaultApi.md#get_scheduling_contacts) | **GET** /api/v1/scheduling_contacts |  |
 | [**get_school**](DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} |  |
 | [**get_school_alternate_names**](DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names |  |
+| [**get_school_department_administrators**](DefaultApi.md#get_school_department_administrators) | **GET** /api/v1/schools/{schoolId}/department_administrators |  |
+| [**get_school_department_coaches**](DefaultApi.md#get_school_department_coaches) | **GET** /api/v1/schools/{schoolId}/department_coaches |  |
 | [**get_school_department_financials**](DefaultApi.md#get_school_department_financials) | **GET** /api/v1/schools/{schoolId}/department_financials |  |
 | [**get_school_department_guarantees**](DefaultApi.md#get_school_department_guarantees) | **GET** /api/v1/schools/{schoolId}/department_guarantees |  |
 | [**get_school_department_overview**](DefaultApi.md#get_school_department_overview) | **GET** /api/v1/schools/{schoolId}/department_overview |  |
@@ -5490,6 +5493,92 @@ end
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+
+## get_athletic_profile_report
+
+> File get_athletic_profile_report(athletic_profile_search_id, sport, opts)
+
+
+
+Download a sport profile view as a letter-format PDF report (WINAD-10211). Department scopes are rejected with 422 until their report pages exist.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+athletic_profile_search_id = 56 # Integer | School ID
+sport = 'sport_example' # String | Sport key (non-ADMIN)
+opts = {
+  year: 56, # Integer | Season year (defaults to the current season)
+  scope: 'full', # String | Report scope
+  tab: 'overview', # String | Tab key when scope=tab
+  appendix: '0' # String | Include the sources appendix ('1' default, '0' to omit)
+}
+
+begin
+  
+  result = api_instance.get_athletic_profile_report(athletic_profile_search_id, sport, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_athletic_profile_report: #{e}"
+end
+```
+
+#### Using the get_athletic_profile_report_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(File, Integer, Hash)> get_athletic_profile_report_with_http_info(athletic_profile_search_id, sport, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_athletic_profile_report_with_http_info(athletic_profile_search_id, sport, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => File
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_athletic_profile_report_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **athletic_profile_search_id** | **Integer** | School ID |  |
+| **sport** | **String** | Sport key (non-ADMIN) |  |
+| **year** | **Integer** | Season year (defaults to the current season) | [optional] |
+| **scope** | **String** | Report scope | [optional][default to &#39;full&#39;] |
+| **tab** | **String** | Tab key when scope&#x3D;tab | [optional][default to &#39;overview&#39;] |
+| **appendix** | **String** | Include the sources appendix (&#39;1&#39; default, &#39;0&#39; to omit) | [optional][default to &#39;1&#39;] |
+
+### Return type
+
+**File**
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/pdf
 
 
 ## get_athletic_profile_search
@@ -13939,6 +14028,162 @@ end
 ### Return type
 
 [**GetSchoolAlternateNames200Response**](GetSchoolAlternateNames200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_school_department_administrators
+
+> <SchoolDepartmentAdministrators> get_school_department_administrators(school_id, opts)
+
+
+
+Department Administrators tab — the leader roster deduped to people with comp and departments, comp stats, the AD's office with tenure, recent moves, and the support-staff-payroll-vs-Cup-place scorecard; private schools degrade to the 990 officer lines (mode private_990) and comp everywhere respects the administrator_compensation ability
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | ID of the School
+opts = {
+  year: 56 # Integer | Season year; defaults to the latest season with roster rows
+}
+
+begin
+  
+  result = api_instance.get_school_department_administrators(school_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_school_department_administrators: #{e}"
+end
+```
+
+#### Using the get_school_department_administrators_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SchoolDepartmentAdministrators>, Integer, Hash)> get_school_department_administrators_with_http_info(school_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_school_department_administrators_with_http_info(school_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SchoolDepartmentAdministrators>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_school_department_administrators_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** | ID of the School |  |
+| **year** | **Integer** | Season year; defaults to the latest season with roster rows | [optional] |
+
+### Return type
+
+[**SchoolDepartmentAdministrators**](SchoolDepartmentAdministrators.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_school_department_coaches
+
+> <SchoolDepartmentCoaches> get_school_department_coaches(school_id, opts)
+
+
+
+Department Coaches tab — every head-coach seat with comp and its conference pay rank, results by the sport's rank lens, pay-vs-impact quadrant points, verdict buckets, portfolio-shape counts, and contract clocks; private schools degrade to 990-basis comp with pay ranks withheld (mode private_990)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | ID of the School
+opts = {
+  year: 56 # Integer | Season year; defaults to the latest season with head-coach seats
+}
+
+begin
+  
+  result = api_instance.get_school_department_coaches(school_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_school_department_coaches: #{e}"
+end
+```
+
+#### Using the get_school_department_coaches_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SchoolDepartmentCoaches>, Integer, Hash)> get_school_department_coaches_with_http_info(school_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_school_department_coaches_with_http_info(school_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SchoolDepartmentCoaches>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_school_department_coaches_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** | ID of the School |  |
+| **year** | **Integer** | Season year; defaults to the latest season with head-coach seats | [optional] |
+
+### Return type
+
+[**SchoolDepartmentCoaches**](SchoolDepartmentCoaches.md)
 
 ### Authorization
 
