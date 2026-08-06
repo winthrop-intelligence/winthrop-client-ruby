@@ -11605,6 +11605,134 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Department Administrators tab — the leader roster deduped to people with comp and departments, comp stats, the AD's office with tenure, recent moves, and the support-staff-payroll-vs-Cup-place scorecard; private schools degrade to the 990 officer lines (mode private_990) and comp everywhere respects the administrator_compensation ability
+    # @param school_id [Integer] ID of the School
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :year Season year; defaults to the latest season with roster rows
+    # @return [SchoolDepartmentAdministrators]
+    def get_school_department_administrators(school_id, opts = {})
+      data, _status_code, _headers = get_school_department_administrators_with_http_info(school_id, opts)
+      data
+    end
+
+    # Department Administrators tab — the leader roster deduped to people with comp and departments, comp stats, the AD&#39;s office with tenure, recent moves, and the support-staff-payroll-vs-Cup-place scorecard; private schools degrade to the 990 officer lines (mode private_990) and comp everywhere respects the administrator_compensation ability
+    # @param school_id [Integer] ID of the School
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :year Season year; defaults to the latest season with roster rows
+    # @return [Array<(SchoolDepartmentAdministrators, Integer, Hash)>] SchoolDepartmentAdministrators data, response status code and response headers
+    def get_school_department_administrators_with_http_info(school_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_school_department_administrators ...'
+      end
+      # verify the required parameter 'school_id' is set
+      if @api_client.config.client_side_validation && school_id.nil?
+        fail ArgumentError, "Missing the required parameter 'school_id' when calling DefaultApi.get_school_department_administrators"
+      end
+      # resource path
+      local_var_path = '/api/v1/schools/{schoolId}/department_administrators'.sub('{' + 'schoolId' + '}', CGI.escape(school_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'year'] = opts[:'year'] if !opts[:'year'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SchoolDepartmentAdministrators'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_school_department_administrators",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_school_department_administrators\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Department Coaches tab — every head-coach seat with comp and its conference pay rank, results by the sport's rank lens, pay-vs-impact quadrant points, verdict buckets, portfolio-shape counts, and contract clocks; private schools degrade to 990-basis comp with pay ranks withheld (mode private_990)
+    # @param school_id [Integer] ID of the School
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :year Season year; defaults to the latest season with head-coach seats
+    # @return [SchoolDepartmentCoaches]
+    def get_school_department_coaches(school_id, opts = {})
+      data, _status_code, _headers = get_school_department_coaches_with_http_info(school_id, opts)
+      data
+    end
+
+    # Department Coaches tab — every head-coach seat with comp and its conference pay rank, results by the sport&#39;s rank lens, pay-vs-impact quadrant points, verdict buckets, portfolio-shape counts, and contract clocks; private schools degrade to 990-basis comp with pay ranks withheld (mode private_990)
+    # @param school_id [Integer] ID of the School
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :year Season year; defaults to the latest season with head-coach seats
+    # @return [Array<(SchoolDepartmentCoaches, Integer, Hash)>] SchoolDepartmentCoaches data, response status code and response headers
+    def get_school_department_coaches_with_http_info(school_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_school_department_coaches ...'
+      end
+      # verify the required parameter 'school_id' is set
+      if @api_client.config.client_side_validation && school_id.nil?
+        fail ArgumentError, "Missing the required parameter 'school_id' when calling DefaultApi.get_school_department_coaches"
+      end
+      # resource path
+      local_var_path = '/api/v1/schools/{schoolId}/department_coaches'.sub('{' + 'schoolId' + '}', CGI.escape(school_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'year'] = opts[:'year'] if !opts[:'year'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SchoolDepartmentCoaches'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_school_department_coaches",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_school_department_coaches\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Department-level FRS financials for a school — conference spend-vs-revenue quadrant, per-line conference ranks, revenue/expense ledgers, and the five-year trend
     # @param school_id [Integer] ID of the School
     # @param [Hash] opts the optional parameters

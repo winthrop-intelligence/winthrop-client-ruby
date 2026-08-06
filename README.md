@@ -270,6 +270,8 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_scheduling_contacts**](docs/DefaultApi.md#get_scheduling_contacts) | **GET** /api/v1/scheduling_contacts | 
 *WinthropClient::DefaultApi* | [**get_school**](docs/DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
 *WinthropClient::DefaultApi* | [**get_school_alternate_names**](docs/DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names | 
+*WinthropClient::DefaultApi* | [**get_school_department_administrators**](docs/DefaultApi.md#get_school_department_administrators) | **GET** /api/v1/schools/{schoolId}/department_administrators | 
+*WinthropClient::DefaultApi* | [**get_school_department_coaches**](docs/DefaultApi.md#get_school_department_coaches) | **GET** /api/v1/schools/{schoolId}/department_coaches | 
 *WinthropClient::DefaultApi* | [**get_school_department_financials**](docs/DefaultApi.md#get_school_department_financials) | **GET** /api/v1/schools/{schoolId}/department_financials | 
 *WinthropClient::DefaultApi* | [**get_school_department_guarantees**](docs/DefaultApi.md#get_school_department_guarantees) | **GET** /api/v1/schools/{schoolId}/department_guarantees | 
 *WinthropClient::DefaultApi* | [**get_school_department_overview**](docs/DefaultApi.md#get_school_department_overview) | **GET** /api/v1/schools/{schoolId}/department_overview | 
@@ -612,6 +614,31 @@ Class | Method | HTTP request | Description
  - [WinthropClient::DeleteAccountUser200Response](docs/DeleteAccountUser200Response.md)
  - [WinthropClient::DeleteContactSearch200Response](docs/DeleteContactSearch200Response.md)
  - [WinthropClient::DeleteFavorite200Response](docs/DeleteFavorite200Response.md)
+ - [WinthropClient::DepartmentAdministratorStaffRow](docs/DepartmentAdministratorStaffRow.md)
+ - [WinthropClient::DepartmentAdministrators990Officer](docs/DepartmentAdministrators990Officer.md)
+ - [WinthropClient::DepartmentAdministratorsAdOffice](docs/DepartmentAdministratorsAdOffice.md)
+ - [WinthropClient::DepartmentAdministratorsAdProfile](docs/DepartmentAdministratorsAdProfile.md)
+ - [WinthropClient::DepartmentAdministratorsAdSeat](docs/DepartmentAdministratorsAdSeat.md)
+ - [WinthropClient::DepartmentAdministratorsBasis](docs/DepartmentAdministratorsBasis.md)
+ - [WinthropClient::DepartmentAdministratorsRecentMove](docs/DepartmentAdministratorsRecentMove.md)
+ - [WinthropClient::DepartmentAdministratorsScorecard](docs/DepartmentAdministratorsScorecard.md)
+ - [WinthropClient::DepartmentAdministratorsScorecardGap](docs/DepartmentAdministratorsScorecardGap.md)
+ - [WinthropClient::DepartmentAdministratorsScorecardPoint](docs/DepartmentAdministratorsScorecardPoint.md)
+ - [WinthropClient::DepartmentAdministratorsStaffStats](docs/DepartmentAdministratorsStaffStats.md)
+ - [WinthropClient::DepartmentCoachPay](docs/DepartmentCoachPay.md)
+ - [WinthropClient::DepartmentCoachQuadrantPoint](docs/DepartmentCoachQuadrantPoint.md)
+ - [WinthropClient::DepartmentCoachResult](docs/DepartmentCoachResult.md)
+ - [WinthropClient::DepartmentCoachSeat](docs/DepartmentCoachSeat.md)
+ - [WinthropClient::DepartmentCoachSeatCoach](docs/DepartmentCoachSeatCoach.md)
+ - [WinthropClient::DepartmentCoachSeatSport](docs/DepartmentCoachSeatSport.md)
+ - [WinthropClient::DepartmentCoachVerdict](docs/DepartmentCoachVerdict.md)
+ - [WinthropClient::DepartmentCoachesBasis](docs/DepartmentCoachesBasis.md)
+ - [WinthropClient::DepartmentCoachesClockRow](docs/DepartmentCoachesClockRow.md)
+ - [WinthropClient::DepartmentCoachesContractClocks](docs/DepartmentCoachesContractClocks.md)
+ - [WinthropClient::DepartmentCoachesPortfolioShape](docs/DepartmentCoachesPortfolioShape.md)
+ - [WinthropClient::DepartmentCoachesQuadrant](docs/DepartmentCoachesQuadrant.md)
+ - [WinthropClient::DepartmentCoachesResultWindow](docs/DepartmentCoachesResultWindow.md)
+ - [WinthropClient::DepartmentCoachesShapeEntry](docs/DepartmentCoachesShapeEntry.md)
  - [WinthropClient::DepartmentFinancialsEadaCategory](docs/DepartmentFinancialsEadaCategory.md)
  - [WinthropClient::DepartmentFinancialsEadaCoaching](docs/DepartmentFinancialsEadaCoaching.md)
  - [WinthropClient::DepartmentFinancialsEadaLedger](docs/DepartmentFinancialsEadaLedger.md)
@@ -855,6 +882,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::PredictBody](docs/PredictBody.md)
  - [WinthropClient::PredictFailure](docs/PredictFailure.md)
  - [WinthropClient::PredictSuccess](docs/PredictSuccess.md)
+ - [WinthropClient::QuadrantUnplottedSchool](docs/QuadrantUnplottedSchool.md)
  - [WinthropClient::RawContract](docs/RawContract.md)
  - [WinthropClient::RawContractBackTo](docs/RawContractBackTo.md)
  - [WinthropClient::RawContractCollection](docs/RawContractCollection.md)
@@ -900,6 +928,8 @@ Class | Method | HTTP request | Description
  - [WinthropClient::School](docs/School.md)
  - [WinthropClient::SchoolCollection](docs/SchoolCollection.md)
  - [WinthropClient::SchoolContractEntry](docs/SchoolContractEntry.md)
+ - [WinthropClient::SchoolDepartmentAdministrators](docs/SchoolDepartmentAdministrators.md)
+ - [WinthropClient::SchoolDepartmentCoaches](docs/SchoolDepartmentCoaches.md)
  - [WinthropClient::SchoolDepartmentFinancials](docs/SchoolDepartmentFinancials.md)
  - [WinthropClient::SchoolDepartmentGuarantees](docs/SchoolDepartmentGuarantees.md)
  - [WinthropClient::SchoolDepartmentGuaranteesSchool](docs/SchoolDepartmentGuaranteesSchool.md)
