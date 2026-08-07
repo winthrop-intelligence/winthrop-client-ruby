@@ -8,6 +8,7 @@
 | **conference_name** | **String** |  | [optional] |
 | **sport_id** | **Integer** |  | [optional] |
 | **basketball** | **Boolean** |  | [optional] |
+| **results_lens** | **String** | The ranking this sport is read through — NET for basketball, RPI for every other sport. Rank fields ship for both metrics; the lens names the one a surface may claim. | [optional] |
 | **agreements** | [**Array&lt;AthleticProfileShowSportGuaranteesAgreementsInner&gt;**](AthleticProfileShowSportGuaranteesAgreementsInner.md) |  | [optional] |
 | **summary** | [**AthleticProfileShowSportGuaranteesSummary**](AthleticProfileShowSportGuaranteesSummary.md) |  | [optional] |
 | **quadrant** | [**AthleticProfileShowSportGuaranteesQuadrant**](AthleticProfileShowSportGuaranteesQuadrant.md) |  | [optional] |
@@ -23,6 +24,7 @@ instance = WinthropClient::AthleticProfileShowSportGuarantees.new(
   conference_name: null,
   sport_id: null,
   basketball: null,
+  results_lens: null,
   agreements: null,
   summary: null,
   quadrant: null,

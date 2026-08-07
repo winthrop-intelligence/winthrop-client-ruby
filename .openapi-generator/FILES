@@ -235,6 +235,7 @@ docs/DepartmentCoachSeatSport.md
 docs/DepartmentCoachVerdict.md
 docs/DepartmentCoachesBasis.md
 docs/DepartmentCoachesClockRow.md
+docs/DepartmentCoachesClockRowPeopleInner.md
 docs/DepartmentCoachesContractClocks.md
 docs/DepartmentCoachesPortfolioShape.md
 docs/DepartmentCoachesQuadrant.md
@@ -467,8 +468,13 @@ docs/Logo.md
 docs/McpEvent.md
 docs/Meta.md
 docs/MlAthleticApi.md
+docs/NcaaFinancialParticipationSummary.md
+docs/NcaaFinancialReportItemGroup.md
+docs/NcaaFinancialReportItemValue.md
 docs/NcaaFinancialReportStatus.md
 docs/NcaaFinancialReportStatusCollection.md
+docs/NcaaFinancialSourceAggregate.md
+docs/NcaaFinancialStat.md
 docs/NewAccountUserResponse.md
 docs/NewsFeed.md
 docs/NewsFeedCollection.md
@@ -900,6 +906,7 @@ lib/winthrop-client-ruby/models/department_coach_seat_sport.rb
 lib/winthrop-client-ruby/models/department_coach_verdict.rb
 lib/winthrop-client-ruby/models/department_coaches_basis.rb
 lib/winthrop-client-ruby/models/department_coaches_clock_row.rb
+lib/winthrop-client-ruby/models/department_coaches_clock_row_people_inner.rb
 lib/winthrop-client-ruby/models/department_coaches_contract_clocks.rb
 lib/winthrop-client-ruby/models/department_coaches_portfolio_shape.rb
 lib/winthrop-client-ruby/models/department_coaches_quadrant.rb
@@ -1128,8 +1135,13 @@ lib/winthrop-client-ruby/models/location_inner.rb
 lib/winthrop-client-ruby/models/logo.rb
 lib/winthrop-client-ruby/models/mcp_event.rb
 lib/winthrop-client-ruby/models/meta.rb
+lib/winthrop-client-ruby/models/ncaa_financial_participation_summary.rb
+lib/winthrop-client-ruby/models/ncaa_financial_report_item_group.rb
+lib/winthrop-client-ruby/models/ncaa_financial_report_item_value.rb
 lib/winthrop-client-ruby/models/ncaa_financial_report_status.rb
 lib/winthrop-client-ruby/models/ncaa_financial_report_status_collection.rb
+lib/winthrop-client-ruby/models/ncaa_financial_source_aggregate.rb
+lib/winthrop-client-ruby/models/ncaa_financial_stat.rb
 lib/winthrop-client-ruby/models/new_account_user_response.rb
 lib/winthrop-client-ruby/models/news_feed.rb
 lib/winthrop-client-ruby/models/news_feed_collection.rb
@@ -1316,5 +1328,11 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
+spec/models/department_coaches_clock_row_people_inner_spec.rb
+spec/models/ncaa_financial_participation_summary_spec.rb
+spec/models/ncaa_financial_report_item_group_spec.rb
+spec/models/ncaa_financial_report_item_value_spec.rb
+spec/models/ncaa_financial_source_aggregate_spec.rb
+spec/models/ncaa_financial_stat_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

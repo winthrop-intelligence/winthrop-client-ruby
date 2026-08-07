@@ -8,6 +8,7 @@
 | **school_short_name** | **String** |  | [optional] |
 | **record** | **String** |  | [optional] |
 | **net_rank** | **Integer** |  | [optional] |
+| **rpi** | **Integer** |  | [optional] |
 | **postseason** | **String** |  | [optional] |
 | **is_subject_school** | **Boolean** |  | [optional] |
 
@@ -21,6 +22,7 @@ instance = WinthropClient::AthleticProfileShowSportCoachStaffHeadCoachCareerInne
   school_short_name: null,
   record: null,
   net_rank: null,
+  rpi: null,
   postseason: null,
   is_subject_school: null
 )

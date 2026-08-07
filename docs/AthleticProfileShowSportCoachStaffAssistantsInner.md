@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **coach_id** | **Integer** |  | [optional] |
 | **name** | **String** |  | [optional] |
+| **last_name** | **String** | Structured last name — may be multi-word (\&quot;Hughley Jr\&quot;). | [optional] |
 | **title** | **String** |  | [optional] |
 | **comp_cents** | **Integer** |  | [optional] |
 | **contract_end_on** | **Date** |  | [optional] |
@@ -20,6 +21,7 @@ require 'winthrop-client-ruby'
 instance = WinthropClient::AthleticProfileShowSportCoachStaffAssistantsInner.new(
   coach_id: null,
   name: null,
+  last_name: null,
   title: null,
   comp_cents: null,
   contract_end_on: null,

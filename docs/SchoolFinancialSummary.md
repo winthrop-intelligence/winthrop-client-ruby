@@ -10,6 +10,10 @@
 | **years** | **Array&lt;Integer&gt;** |  | [optional] |
 | **school_info** | [**SchoolInfo**](SchoolInfo.md) |  | [optional] |
 | **student_fee_per_student** | **Float** |  | [optional] |
+| **other_reporting_items** | [**Array&lt;NcaaFinancialReportItemGroup&gt;**](NcaaFinancialReportItemGroup.md) |  | [optional] |
+| **financial_stats** | [**Array&lt;NcaaFinancialStat&gt;**](NcaaFinancialStat.md) |  | [optional] |
+| **financial_stat_source_aggregates** | [**Array&lt;NcaaFinancialSourceAggregate&gt;**](NcaaFinancialSourceAggregate.md) |  | [optional] |
+| **participation_summaries** | [**Array&lt;NcaaFinancialParticipationSummary&gt;**](NcaaFinancialParticipationSummary.md) |  | [optional] |
 | **ncaa_report_id** | **Integer** |  | [optional] |
 | **audited_report_id** | **Integer** |  | [optional] |
 | **revenues** | [**Array&lt;SchoolFinancialGroup&gt;**](SchoolFinancialGroup.md) |  | [optional] |
@@ -27,6 +31,10 @@ instance = WinthropClient::SchoolFinancialSummary.new(
   years: null,
   school_info: null,
   student_fee_per_student: null,
+  other_reporting_items: null,
+  financial_stats: null,
+  financial_stat_source_aggregates: null,
+  participation_summaries: null,
   ncaa_report_id: null,
   audited_report_id: null,
   revenues: null,
