@@ -14,31 +14,31 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class AthleticProfileShowPermissions < ApiModelBase
-    attr_accessor :can_see_personnel
+  class DepartmentOverviewPrivateAd < ApiModelBase
+    attr_accessor :coach_id
 
-    attr_accessor :can_see_compensation
+    attr_accessor :friendly_id
 
-    attr_accessor :can_see_financials
+    attr_accessor :name
 
-    attr_accessor :can_see_eada_financials
+    attr_accessor :title
 
-    attr_accessor :can_see_deals
+    attr_accessor :since_year
 
-    attr_accessor :can_see_guarantees
+    attr_accessor :years_at_school
 
-    attr_accessor :can_show_schedule
+    attr_accessor :comp
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'can_see_personnel' => :'can_see_personnel',
-        :'can_see_compensation' => :'can_see_compensation',
-        :'can_see_financials' => :'can_see_financials',
-        :'can_see_eada_financials' => :'can_see_eada_financials',
-        :'can_see_deals' => :'can_see_deals',
-        :'can_see_guarantees' => :'can_see_guarantees',
-        :'can_show_schedule' => :'can_show_schedule'
+        :'coach_id' => :'coach_id',
+        :'friendly_id' => :'friendly_id',
+        :'name' => :'name',
+        :'title' => :'title',
+        :'since_year' => :'since_year',
+        :'years_at_school' => :'years_at_school',
+        :'comp' => :'comp'
       }
     end
 
@@ -55,19 +55,25 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'can_see_personnel' => :'Boolean',
-        :'can_see_compensation' => :'Boolean',
-        :'can_see_financials' => :'Boolean',
-        :'can_see_eada_financials' => :'Boolean',
-        :'can_see_deals' => :'Boolean',
-        :'can_see_guarantees' => :'Boolean',
-        :'can_show_schedule' => :'Boolean'
+        :'coach_id' => :'Integer',
+        :'friendly_id' => :'String',
+        :'name' => :'String',
+        :'title' => :'String',
+        :'since_year' => :'Integer',
+        :'years_at_school' => :'Integer',
+        :'comp' => :'DepartmentOverviewPrivateAdComp'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'friendly_id',
+        :'name',
+        :'title',
+        :'since_year',
+        :'years_at_school',
+        :'comp'
       ])
     end
 
@@ -75,44 +81,58 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::AthleticProfileShowPermissions` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::DepartmentOverviewPrivateAd` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::AthleticProfileShowPermissions`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::DepartmentOverviewPrivateAd`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'can_see_personnel')
-        self.can_see_personnel = attributes[:'can_see_personnel']
+      if attributes.key?(:'coach_id')
+        self.coach_id = attributes[:'coach_id']
+      else
+        self.coach_id = nil
       end
 
-      if attributes.key?(:'can_see_compensation')
-        self.can_see_compensation = attributes[:'can_see_compensation']
+      if attributes.key?(:'friendly_id')
+        self.friendly_id = attributes[:'friendly_id']
+      else
+        self.friendly_id = nil
       end
 
-      if attributes.key?(:'can_see_financials')
-        self.can_see_financials = attributes[:'can_see_financials']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
+      else
+        self.name = nil
       end
 
-      if attributes.key?(:'can_see_eada_financials')
-        self.can_see_eada_financials = attributes[:'can_see_eada_financials']
+      if attributes.key?(:'title')
+        self.title = attributes[:'title']
+      else
+        self.title = nil
       end
 
-      if attributes.key?(:'can_see_deals')
-        self.can_see_deals = attributes[:'can_see_deals']
+      if attributes.key?(:'since_year')
+        self.since_year = attributes[:'since_year']
+      else
+        self.since_year = nil
       end
 
-      if attributes.key?(:'can_see_guarantees')
-        self.can_see_guarantees = attributes[:'can_see_guarantees']
+      if attributes.key?(:'years_at_school')
+        self.years_at_school = attributes[:'years_at_school']
+      else
+        self.years_at_school = nil
       end
 
-      if attributes.key?(:'can_show_schedule')
-        self.can_show_schedule = attributes[:'can_show_schedule']
+      if attributes.key?(:'comp')
+        self.comp = attributes[:'comp']
+      else
+        self.comp = nil
       end
     end
 
@@ -121,6 +141,10 @@ module WinthropClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @coach_id.nil?
+        invalid_properties.push('invalid value for "coach_id", coach_id cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -128,7 +152,18 @@ module WinthropClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @coach_id.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] coach_id Value to be assigned
+    def coach_id=(coach_id)
+      if coach_id.nil?
+        fail ArgumentError, 'coach_id cannot be nil'
+      end
+
+      @coach_id = coach_id
     end
 
     # Checks equality by comparing each attribute.
@@ -136,13 +171,13 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          can_see_personnel == o.can_see_personnel &&
-          can_see_compensation == o.can_see_compensation &&
-          can_see_financials == o.can_see_financials &&
-          can_see_eada_financials == o.can_see_eada_financials &&
-          can_see_deals == o.can_see_deals &&
-          can_see_guarantees == o.can_see_guarantees &&
-          can_show_schedule == o.can_show_schedule
+          coach_id == o.coach_id &&
+          friendly_id == o.friendly_id &&
+          name == o.name &&
+          title == o.title &&
+          since_year == o.since_year &&
+          years_at_school == o.years_at_school &&
+          comp == o.comp
     end
 
     # @see the `==` method
@@ -154,7 +189,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [can_see_personnel, can_see_compensation, can_see_financials, can_see_eada_financials, can_see_deals, can_see_guarantees, can_show_schedule].hash
+      [coach_id, friendly_id, name, title, since_year, years_at_school, comp].hash
     end
 
     # Builds the object from hash

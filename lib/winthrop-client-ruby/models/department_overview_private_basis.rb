@@ -14,31 +14,19 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class AthleticProfileShowPermissions < ApiModelBase
-    attr_accessor :can_see_personnel
+  class DepartmentOverviewPrivateBasis < ApiModelBase
+    attr_accessor :eada_year
 
-    attr_accessor :can_see_compensation
+    attr_accessor :comp_fiscal_year
 
-    attr_accessor :can_see_financials
-
-    attr_accessor :can_see_eada_financials
-
-    attr_accessor :can_see_deals
-
-    attr_accessor :can_see_guarantees
-
-    attr_accessor :can_show_schedule
+    attr_accessor :results_year
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'can_see_personnel' => :'can_see_personnel',
-        :'can_see_compensation' => :'can_see_compensation',
-        :'can_see_financials' => :'can_see_financials',
-        :'can_see_eada_financials' => :'can_see_eada_financials',
-        :'can_see_deals' => :'can_see_deals',
-        :'can_see_guarantees' => :'can_see_guarantees',
-        :'can_show_schedule' => :'can_show_schedule'
+        :'eada_year' => :'eada_year',
+        :'comp_fiscal_year' => :'comp_fiscal_year',
+        :'results_year' => :'results_year'
       }
     end
 
@@ -55,19 +43,18 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'can_see_personnel' => :'Boolean',
-        :'can_see_compensation' => :'Boolean',
-        :'can_see_financials' => :'Boolean',
-        :'can_see_eada_financials' => :'Boolean',
-        :'can_see_deals' => :'Boolean',
-        :'can_see_guarantees' => :'Boolean',
-        :'can_show_schedule' => :'Boolean'
+        :'eada_year' => :'Integer',
+        :'comp_fiscal_year' => :'Integer',
+        :'results_year' => :'Integer'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'eada_year',
+        :'comp_fiscal_year',
+        :'results_year'
       ])
     end
 
@@ -75,44 +62,34 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::AthleticProfileShowPermissions` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::DepartmentOverviewPrivateBasis` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::AthleticProfileShowPermissions`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::DepartmentOverviewPrivateBasis`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'can_see_personnel')
-        self.can_see_personnel = attributes[:'can_see_personnel']
+      if attributes.key?(:'eada_year')
+        self.eada_year = attributes[:'eada_year']
+      else
+        self.eada_year = nil
       end
 
-      if attributes.key?(:'can_see_compensation')
-        self.can_see_compensation = attributes[:'can_see_compensation']
+      if attributes.key?(:'comp_fiscal_year')
+        self.comp_fiscal_year = attributes[:'comp_fiscal_year']
+      else
+        self.comp_fiscal_year = nil
       end
 
-      if attributes.key?(:'can_see_financials')
-        self.can_see_financials = attributes[:'can_see_financials']
-      end
-
-      if attributes.key?(:'can_see_eada_financials')
-        self.can_see_eada_financials = attributes[:'can_see_eada_financials']
-      end
-
-      if attributes.key?(:'can_see_deals')
-        self.can_see_deals = attributes[:'can_see_deals']
-      end
-
-      if attributes.key?(:'can_see_guarantees')
-        self.can_see_guarantees = attributes[:'can_see_guarantees']
-      end
-
-      if attributes.key?(:'can_show_schedule')
-        self.can_show_schedule = attributes[:'can_show_schedule']
+      if attributes.key?(:'results_year')
+        self.results_year = attributes[:'results_year']
+      else
+        self.results_year = nil
       end
     end
 
@@ -136,13 +113,9 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          can_see_personnel == o.can_see_personnel &&
-          can_see_compensation == o.can_see_compensation &&
-          can_see_financials == o.can_see_financials &&
-          can_see_eada_financials == o.can_see_eada_financials &&
-          can_see_deals == o.can_see_deals &&
-          can_see_guarantees == o.can_see_guarantees &&
-          can_show_schedule == o.can_show_schedule
+          eada_year == o.eada_year &&
+          comp_fiscal_year == o.comp_fiscal_year &&
+          results_year == o.results_year
     end
 
     # @see the `==` method
@@ -154,7 +127,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [can_see_personnel, can_see_compensation, can_see_financials, can_see_eada_financials, can_see_deals, can_see_guarantees, can_show_schedule].hash
+      [eada_year, comp_fiscal_year, results_year].hash
     end
 
     # Builds the object from hash
