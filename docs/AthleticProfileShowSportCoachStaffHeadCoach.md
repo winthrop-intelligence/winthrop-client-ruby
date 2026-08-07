@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **coach_id** | **Integer** |  | [optional] |
 | **name** | **String** |  | [optional] |
+| **last_name** | **String** | Structured last name — may be multi-word (\&quot;Hughley Jr\&quot;). | [optional] |
 | **comp_cents** | **Integer** |  | [optional] |
 | **base_salary_cents** | **Integer** |  | [optional] |
 | **comp_rank** | **Integer** |  | [optional] |
@@ -19,7 +20,7 @@
 | **first_season_year** | **Integer** |  | [optional] |
 | **career_season_count** | **Integer** | Total recorded head-coach seasons across schools; career rows are capped at 12 selected seasons. | [optional] |
 | **year_one** | [**AthleticProfileShowSportCoachStaffHeadCoachYearOne**](AthleticProfileShowSportCoachStaffHeadCoachYearOne.md) |  | [optional] |
-| **career** | [**Array&lt;AthleticProfileShowSportCoachStaffHeadCoachCareerInner&gt;**](AthleticProfileShowSportCoachStaffHeadCoachCareerInner.md) | Head-coach seasons across schools, most recent first, empty placeholder seasons excluded, capped at 12. | [optional] |
+| **career** | [**Array&lt;AthleticProfileShowSportCoachStaffHeadCoachCareerInner&gt;**](AthleticProfileShowSportCoachStaffHeadCoachCareerInner.md) | Head-coach seasons across schools, most recent first, seasons with nothing filed under the active lens excluded, capped at 12. | [optional] |
 
 ## Example
 
@@ -29,6 +30,7 @@ require 'winthrop-client-ruby'
 instance = WinthropClient::AthleticProfileShowSportCoachStaffHeadCoach.new(
   coach_id: null,
   name: null,
+  last_name: null,
   comp_cents: null,
   base_salary_cents: null,
   comp_rank: null,

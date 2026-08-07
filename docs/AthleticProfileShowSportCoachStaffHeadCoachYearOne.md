@@ -8,6 +8,7 @@
 | **record** | **String** |  | [optional] |
 | **conference_record** | **String** |  | [optional] |
 | **net_rank** | **Integer** |  | [optional] |
+| **rpi** | **Integer** |  | [optional] |
 
 ## Example
 
@@ -18,7 +19,8 @@ instance = WinthropClient::AthleticProfileShowSportCoachStaffHeadCoachYearOne.ne
   year: null,
   record: null,
   conference_record: null,
-  net_rank: null
+  net_rank: null,
+  rpi: null
 )
 ```
 

@@ -10,9 +10,10 @@
 | **colors** | **String** |  | [optional] |
 | **is_subject** | **Boolean** |  | [optional] |
 | **coach_name** | **String** |  | [optional] |
+| **coach_last_name** | **String** | Structured last name — may be multi-word (\&quot;Hughley Jr\&quot;). | [optional] |
 | **comp_cents** | **Integer** |  | [optional] |
 | **net_rank** | **Integer** |  | [optional] |
-| **net_year** | **Integer** |  | [optional] |
+| **rpi** | **Integer** |  | [optional] |
 | **record** | **String** |  | [optional] |
 
 ## Example
@@ -27,9 +28,10 @@ instance = WinthropClient::AthleticProfileShowSportCoachStaffQuadrantPointsInner
   colors: null,
   is_subject: null,
   coach_name: null,
+  coach_last_name: null,
   comp_cents: null,
   net_rank: null,
-  net_year: null,
+  rpi: null,
   record: null
 )
 ```

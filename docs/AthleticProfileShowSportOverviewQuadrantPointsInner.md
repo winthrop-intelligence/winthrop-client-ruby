@@ -12,7 +12,7 @@
 | **spend_cents** | **Integer** |  | [optional] |
 | **spend_year** | **Integer** |  | [optional] |
 | **net_rank** | **Integer** |  | [optional] |
-| **net_year** | **Integer** |  | [optional] |
+| **rpi** | **Integer** |  | [optional] |
 | **record** | **String** |  | [optional] |
 
 ## Example
@@ -29,7 +29,7 @@ instance = WinthropClient::AthleticProfileShowSportOverviewQuadrantPointsInner.n
   spend_cents: null,
   spend_year: null,
   net_rank: null,
-  net_year: null,
+  rpi: null,
   record: null
 )
 ```
