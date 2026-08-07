@@ -1328,11 +1328,5 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
-spec/models/department_coaches_clock_row_people_inner_spec.rb
-spec/models/ncaa_financial_participation_summary_spec.rb
-spec/models/ncaa_financial_report_item_group_spec.rb
-spec/models/ncaa_financial_report_item_value_spec.rb
-spec/models/ncaa_financial_source_aggregate_spec.rb
-spec/models/ncaa_financial_stat_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
