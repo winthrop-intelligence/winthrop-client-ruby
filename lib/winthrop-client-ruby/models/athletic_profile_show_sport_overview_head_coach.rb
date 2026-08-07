@@ -47,6 +47,9 @@ module WinthropClient
 
     attr_accessor :staff_pool_all_on_file
 
+    # Assistants on the season's staff whose compensation has a filed contract, so the card can give a partly-filed pool its provenance (\"$825,000 · 4 of 5 on file\"). Null when compensation is not permitted or the season has no staff on file. 
+    attr_accessor :staff_pool_on_file_count
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -64,7 +67,8 @@ module WinthropClient
         :'contract_on_file' => :'contract_on_file',
         :'assistant_count' => :'assistant_count',
         :'staff_pool_cents' => :'staff_pool_cents',
-        :'staff_pool_all_on_file' => :'staff_pool_all_on_file'
+        :'staff_pool_all_on_file' => :'staff_pool_all_on_file',
+        :'staff_pool_on_file_count' => :'staff_pool_on_file_count'
       }
     end
 
@@ -95,7 +99,8 @@ module WinthropClient
         :'contract_on_file' => :'Boolean',
         :'assistant_count' => :'Integer',
         :'staff_pool_cents' => :'Integer',
-        :'staff_pool_all_on_file' => :'Boolean'
+        :'staff_pool_all_on_file' => :'Boolean',
+        :'staff_pool_on_file_count' => :'Integer'
       }
     end
 
@@ -111,7 +116,8 @@ module WinthropClient
         :'contract_end_on',
         :'assistant_count',
         :'staff_pool_cents',
-        :'staff_pool_all_on_file'
+        :'staff_pool_all_on_file',
+        :'staff_pool_on_file_count'
       ])
     end
 
@@ -190,6 +196,10 @@ module WinthropClient
       if attributes.key?(:'staff_pool_all_on_file')
         self.staff_pool_all_on_file = attributes[:'staff_pool_all_on_file']
       end
+
+      if attributes.key?(:'staff_pool_on_file_count')
+        self.staff_pool_on_file_count = attributes[:'staff_pool_on_file_count']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -226,7 +236,8 @@ module WinthropClient
           contract_on_file == o.contract_on_file &&
           assistant_count == o.assistant_count &&
           staff_pool_cents == o.staff_pool_cents &&
-          staff_pool_all_on_file == o.staff_pool_all_on_file
+          staff_pool_all_on_file == o.staff_pool_all_on_file &&
+          staff_pool_on_file_count == o.staff_pool_on_file_count
     end
 
     # @see the `==` method
@@ -238,7 +249,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [coach_id, name, last_name, interim, first_season_year, comp_cents, comp_rank, comp_cohort_size, comp_median_cents, contract_start_on, contract_end_on, contract_on_file, assistant_count, staff_pool_cents, staff_pool_all_on_file].hash
+      [coach_id, name, last_name, interim, first_season_year, comp_cents, comp_rank, comp_cohort_size, comp_median_cents, contract_start_on, contract_end_on, contract_on_file, assistant_count, staff_pool_cents, staff_pool_all_on_file, staff_pool_on_file_count].hash
     end
 
     # Builds the object from hash

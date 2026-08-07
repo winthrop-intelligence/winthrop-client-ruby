@@ -19,6 +19,7 @@
 | **assistant_count** | **Integer** |  | [optional] |
 | **staff_pool_cents** | **Integer** |  | [optional] |
 | **staff_pool_all_on_file** | **Boolean** |  | [optional] |
+| **staff_pool_on_file_count** | **Integer** | Assistants on the season&#39;s staff whose compensation has a filed contract, so the card can give a partly-filed pool its provenance (\&quot;$825,000 · 4 of 5 on file\&quot;). Null when compensation is not permitted or the season has no staff on file.  | [optional] |
 
 ## Example
 
@@ -40,7 +41,8 @@ instance = WinthropClient::AthleticProfileShowSportOverviewHeadCoach.new(
   contract_on_file: null,
   assistant_count: null,
   staff_pool_cents: null,
-  staff_pool_all_on_file: null
+  staff_pool_all_on_file: null,
+  staff_pool_on_file_count: null
 )
 ```
 

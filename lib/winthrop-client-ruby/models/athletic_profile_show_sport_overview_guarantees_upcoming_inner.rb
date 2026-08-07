@@ -17,6 +17,7 @@ module WinthropClient
   class AthleticProfileShowSportOverviewGuaranteesUpcomingInner < ApiModelBase
     attr_accessor :opponent_short_name
 
+    # Null when the agreement is filed comp_tbd — an amount-pending game is never a priced one.
     attr_accessor :comp_cents
 
     attr_accessor :game_date
@@ -53,6 +54,7 @@ module WinthropClient
     def self.openapi_nullable
       Set.new([
         :'opponent_short_name',
+        :'comp_cents',
       ])
     end
 
