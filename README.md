@@ -634,6 +634,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::DepartmentCoachVerdict](docs/DepartmentCoachVerdict.md)
  - [WinthropClient::DepartmentCoachesBasis](docs/DepartmentCoachesBasis.md)
  - [WinthropClient::DepartmentCoachesClockRow](docs/DepartmentCoachesClockRow.md)
+ - [WinthropClient::DepartmentCoachesClockRowPeopleInner](docs/DepartmentCoachesClockRowPeopleInner.md)
  - [WinthropClient::DepartmentCoachesContractClocks](docs/DepartmentCoachesContractClocks.md)
  - [WinthropClient::DepartmentCoachesPortfolioShape](docs/DepartmentCoachesPortfolioShape.md)
  - [WinthropClient::DepartmentCoachesQuadrant](docs/DepartmentCoachesQuadrant.md)

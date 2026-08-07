@@ -235,6 +235,7 @@ docs/DepartmentCoachSeatSport.md
 docs/DepartmentCoachVerdict.md
 docs/DepartmentCoachesBasis.md
 docs/DepartmentCoachesClockRow.md
+docs/DepartmentCoachesClockRowPeopleInner.md
 docs/DepartmentCoachesContractClocks.md
 docs/DepartmentCoachesPortfolioShape.md
 docs/DepartmentCoachesQuadrant.md
@@ -900,6 +901,7 @@ lib/winthrop-client-ruby/models/department_coach_seat_sport.rb
 lib/winthrop-client-ruby/models/department_coach_verdict.rb
 lib/winthrop-client-ruby/models/department_coaches_basis.rb
 lib/winthrop-client-ruby/models/department_coaches_clock_row.rb
+lib/winthrop-client-ruby/models/department_coaches_clock_row_people_inner.rb
 lib/winthrop-client-ruby/models/department_coaches_contract_clocks.rb
 lib/winthrop-client-ruby/models/department_coaches_portfolio_shape.rb
 lib/winthrop-client-ruby/models/department_coaches_quadrant.rb
@@ -1316,5 +1318,6 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
+spec/models/department_coaches_clock_row_people_inner_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
