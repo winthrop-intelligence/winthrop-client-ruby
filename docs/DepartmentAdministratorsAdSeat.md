@@ -16,6 +16,7 @@
 | **comp_estimated** | **Boolean** |  |  |
 | **tenure_years** | **Integer** | Seasons since first holding the AD position type at this school, inclusive |  |
 | **comp_year** | **Integer** | The compensation record&#39;s own year — the vintage label for 990 amounts |  |
+| **photo_url** | **String** |  |  |
 
 ## Example
 
@@ -34,7 +35,8 @@ instance = WinthropClient::DepartmentAdministratorsAdSeat.new(
   comp_basis: null,
   comp_estimated: null,
   tenure_years: null,
-  comp_year: null
+  comp_year: null,
+  photo_url: null
 )
 ```
 

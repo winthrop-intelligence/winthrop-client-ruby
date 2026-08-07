@@ -12,6 +12,7 @@
 | **bought_cents** | **Integer** |  | [optional] |
 | **bought_count** | **Integer** |  | [optional] |
 | **net_rank** | **Integer** |  | [optional] |
+| **rpi** | **Integer** |  | [optional] |
 
 ## Example
 
@@ -26,7 +27,8 @@ instance = WinthropClient::AthleticProfileShowSportGuaranteesQuadrantPointsInner
   is_subject: null,
   bought_cents: null,
   bought_count: null,
-  net_rank: null
+  net_rank: null,
+  rpi: null
 )
 ```
 
