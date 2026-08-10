@@ -360,9 +360,15 @@ docs/GadSummaryError.md
 docs/Game.md
 docs/GameCollection.md
 docs/GameContract.md
+docs/GameContractApplyResponse.md
+docs/GameContractApplyResponseActionsValue.md
+docs/GameContractApplyResponseActor.md
+docs/GameContractApplyResponsePdfProcessing.md
+docs/GameContractApplyResponseSourceDocument.md
 docs/GameContractCollection.md
 docs/GameContractSeriesEntry.md
 docs/GameContractSeriesResponse.md
+docs/GameContractsApi.md
 docs/GameDetail.md
 docs/GameDetailAllOfGameContract.md
 docs/GamePost.md
@@ -668,6 +674,7 @@ lib/winthrop-client-ruby/api/ctb_api.rb
 lib/winthrop-client-ruby/api/default_api.rb
 lib/winthrop-client-ruby/api/dossier_api.rb
 lib/winthrop-client-ruby/api/foia_inbox_api.rb
+lib/winthrop-client-ruby/api/game_contracts_api.rb
 lib/winthrop-client-ruby/api/intercollegiate_api.rb
 lib/winthrop-client-ruby/api/ml_athletic_api.rb
 lib/winthrop-client-ruby/api/ocr_api.rb
@@ -1029,6 +1036,11 @@ lib/winthrop-client-ruby/models/gad_summary_error.rb
 lib/winthrop-client-ruby/models/game.rb
 lib/winthrop-client-ruby/models/game_collection.rb
 lib/winthrop-client-ruby/models/game_contract.rb
+lib/winthrop-client-ruby/models/game_contract_apply_response.rb
+lib/winthrop-client-ruby/models/game_contract_apply_response_actions_value.rb
+lib/winthrop-client-ruby/models/game_contract_apply_response_actor.rb
+lib/winthrop-client-ruby/models/game_contract_apply_response_pdf_processing.rb
+lib/winthrop-client-ruby/models/game_contract_apply_response_source_document.rb
 lib/winthrop-client-ruby/models/game_contract_collection.rb
 lib/winthrop-client-ruby/models/game_contract_series_entry.rb
 lib/winthrop-client-ruby/models/game_contract_series_response.rb
@@ -1328,5 +1340,11 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
+spec/api/game_contracts_api_spec.rb
+spec/models/game_contract_apply_response_actions_value_spec.rb
+spec/models/game_contract_apply_response_actor_spec.rb
+spec/models/game_contract_apply_response_pdf_processing_spec.rb
+spec/models/game_contract_apply_response_source_document_spec.rb
+spec/models/game_contract_apply_response_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
