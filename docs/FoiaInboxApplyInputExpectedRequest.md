@@ -5,10 +5,10 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **status** | **String** |  |  |
-| **updated_at** | **Time** |  |  |
+| **foia_label_id** | **Integer** |  |  |
 | **updated_by_school** | **Date** |  |  |
 | **updated_by_wi** | **Date** |  |  |
-| **foia_notes_sha256** | **String** |  |  |
+| **follow_up_date** | **Date** | Required when the request effects set status or updated_by_wi, which can recalculate the follow-up date. | [optional] |
 
 ## Example
 
@@ -17,10 +17,10 @@ require 'winthrop-client-ruby'
 
 instance = WinthropClient::FoiaInboxApplyInputExpectedRequest.new(
   status: null,
-  updated_at: null,
+  foia_label_id: null,
   updated_by_school: null,
   updated_by_wi: null,
-  foia_notes_sha256: null
+  follow_up_date: null
 )
 ```
 

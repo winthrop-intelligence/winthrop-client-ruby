@@ -5,10 +5,9 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **status** | **String** |  |  |
-| **updated_at** | **Time** |  |  |
+| **foia_label_id** | **Integer** |  |  |
 | **updated_by_school** | **Date** |  |  |
 | **updated_by_wi** | **Date** |  |  |
-| **foia_notes_sha256** | **String** |  |  |
 
 ## Example
 
@@ -17,10 +16,9 @@ require 'winthrop-client-ruby'
 
 instance = WinthropClient::CtbCompensationExpectedRequest.new(
   status: null,
-  updated_at: null,
+  foia_label_id: null,
   updated_by_school: null,
-  updated_by_wi: null,
-  foia_notes_sha256: null
+  updated_by_wi: null
 )
 ```
 
