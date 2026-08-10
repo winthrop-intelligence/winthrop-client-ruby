@@ -33,7 +33,7 @@ WinthropClient.configure do |config|
 end
 
 api_instance = WinthropClient::FoiaInboxApi.new
-foia_inbox_apply_request = WinthropClient::FoiaInboxApplyRequest.new({foia_inbox_apply: WinthropClient::FoiaInboxApplyInput.new({mailbox: 'openrecords@winthropintelligence.com', gmail_message_id: 'gmail_message_id_example', gmail_thread_id: 'gmail_thread_id_example', run_id: 'run_id_example', foia_request_id: 37, school_id: 37, decision_sha256: 'decision_sha256_example', expected_request: WinthropClient::FoiaInboxApplyInputExpectedRequest.new({status: 'status_example', updated_at: Time.now, updated_by_school: Date.today, updated_by_wi: Date.today, foia_notes_sha256: 'foia_notes_sha256_example'}), effects: WinthropClient::FoiaInboxEffects.new})}) # FoiaInboxApplyRequest | 
+foia_inbox_apply_request = WinthropClient::FoiaInboxApplyRequest.new({foia_inbox_apply: WinthropClient::FoiaInboxApplyInput.new({mailbox: 'openrecords@winthropintelligence.com', gmail_message_id: 'gmail_message_id_example', gmail_thread_id: 'gmail_thread_id_example', run_id: 'run_id_example', foia_request_id: 37, school_id: 37, decision_sha256: 'decision_sha256_example', expected_request: WinthropClient::FoiaInboxApplyInputExpectedRequest.new({status: 'status_example', foia_label_id: 37, updated_by_school: Date.today, updated_by_wi: Date.today}), effects: WinthropClient::FoiaInboxEffects.new})}) # FoiaInboxApplyRequest | 
 
 begin
   

@@ -13,7 +13,6 @@
 | **coach_id** | **Integer** |  | [optional] |
 | **coach_name** | **String** |  | [optional] |
 | **note** | **String** |  | [optional] |
-| **ri_note_sha256** | **String** |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
 | **requestable_data** | [**FoiaInboxRequestableData**](FoiaInboxRequestableData.md) |  | [optional] |
@@ -33,7 +32,6 @@ instance = WinthropClient::FoiaInboxRequestedItem.new(
   coach_id: null,
   coach_name: null,
   note: null,
-  ri_note_sha256: null,
   created_at: null,
   updated_at: null,
   requestable_data: null
