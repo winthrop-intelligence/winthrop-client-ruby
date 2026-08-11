@@ -11,6 +11,7 @@
 | **name** | **String** | Favoritable record name (only when detailed&#x3D;1) | [optional] |
 | **school_id** | **Integer** | School ID for FilTeam/Deal favorites (only when detailed&#x3D;1) | [optional] |
 | **sport_name** | **String** | Sport name for FilTeam favorites (only when detailed&#x3D;1) | [optional] |
+| **avatar_url** | **String** | App-relative path to the coach&#39;s cropped avatar thumbnail for Coach favorites (only when detailed&#x3D;1). Null when the coach has no usable image, in which case the client falls back to initials. | [optional] |
 
 ## Example
 
@@ -24,7 +25,8 @@ instance = WinthropClient::GetFavorites200ResponseInner.new(
   category_name: null,
   name: null,
   school_id: null,
-  sport_name: null
+  sport_name: null,
+  avatar_url: null
 )
 ```
 
