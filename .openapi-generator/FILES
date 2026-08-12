@@ -406,6 +406,7 @@ docs/GetCompensationComparisons400Response.md
 docs/GetFavorites200ResponseInner.md
 docs/GetFavoritesCategories200ResponseInner.md
 docs/GetFilterOptions200Response.md
+docs/GetGadSearchSeasonFacets200Response.md
 docs/GetLadFilterOptions200Response.md
 docs/GetLadFilterOptions200ResponsePositionTypesInner.md
 docs/GetSchoolAlternateNames200Response.md
@@ -1081,6 +1082,7 @@ lib/winthrop-client-ruby/models/get_compensation_comparisons400_response.rb
 lib/winthrop-client-ruby/models/get_favorites200_response_inner.rb
 lib/winthrop-client-ruby/models/get_favorites_categories200_response_inner.rb
 lib/winthrop-client-ruby/models/get_filter_options200_response.rb
+lib/winthrop-client-ruby/models/get_gad_search_season_facets200_response.rb
 lib/winthrop-client-ruby/models/get_lad_filter_options200_response.rb
 lib/winthrop-client-ruby/models/get_lad_filter_options200_response_position_types_inner.rb
 lib/winthrop-client-ruby/models/get_school_alternate_names200_response.rb
@@ -1340,5 +1342,6 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
+spec/models/get_gad_search_season_facets200_response_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

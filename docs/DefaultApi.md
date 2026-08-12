@@ -143,6 +143,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_frs_export_school_search**](DefaultApi.md#get_frs_export_school_search) | **GET** /api/v1/frs_exports/school_search |  |
 | [**get_frs_exports**](DefaultApi.md#get_frs_exports) | **GET** /api/v1/frs_exports |  |
 | [**get_gad_search_detail**](DefaultApi.md#get_gad_search_detail) | **GET** /api/v1/gad_searches/{id}/detail |  |
+| [**get_gad_search_season_facets**](DefaultApi.md#get_gad_search_season_facets) | **GET** /api/v1/gad_searches/season_facets |  |
 | [**get_gad_searches**](DefaultApi.md#get_gad_searches) | **GET** /api/v1/gad_searches |  |
 | [**get_game**](DefaultApi.md#get_game) | **GET** /api/v1/games/{gameId} |  |
 | [**get_game_contract**](DefaultApi.md#get_game_contract) | **GET** /api/v1/game_contracts/{game_contractId} |  |
@@ -10766,6 +10767,84 @@ end
 ### Return type
 
 [**GadContractDetail**](GadContractDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_gad_search_season_facets
+
+> <GetGadSearchSeasonFacets200Response> get_gad_search_season_facets(opts)
+
+
+
+Season years that would still return rows under the given filters, newest first. Season itself is excluded from the calculation, so choosing a season does not collapse the list. Answered without running the search, so the client can reconcile an unsatisfiable season before it renders results rather than after.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  q: { ... }, # Object | Ransack query
+  distance_school_type: 'home' # String | Top-level distance side (paired with q[distance_lt]). Only honored when the caller's account is tied to a school.
+}
+
+begin
+  
+  result = api_instance.get_gad_search_season_facets(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_gad_search_season_facets: #{e}"
+end
+```
+
+#### Using the get_gad_search_season_facets_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetGadSearchSeasonFacets200Response>, Integer, Hash)> get_gad_search_season_facets_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_gad_search_season_facets_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetGadSearchSeasonFacets200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_gad_search_season_facets_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **q** | [**Object**](.md) | Ransack query | [optional] |
+| **distance_school_type** | **String** | Top-level distance side (paired with q[distance_lt]). Only honored when the caller&#39;s account is tied to a school. | [optional] |
+
+### Return type
+
+[**GetGadSearchSeasonFacets200Response**](GetGadSearchSeasonFacets200Response.md)
 
 ### Authorization
 
