@@ -14,6 +14,7 @@
 | **comp_cents** | **Integer** |  | [optional] |
 | **net_rank** | **Integer** |  | [optional] |
 | **rpi** | **Integer** |  | [optional] |
+| **conference_wins** | **Integer** |  | [optional] |
 | **record** | **String** |  | [optional] |
 
 ## Example
@@ -32,6 +33,7 @@ instance = WinthropClient::AthleticProfileShowSportCoachStaffQuadrantPointsInner
   comp_cents: null,
   net_rank: null,
   rpi: null,
+  conference_wins: null,
   record: null
 )
 ```
