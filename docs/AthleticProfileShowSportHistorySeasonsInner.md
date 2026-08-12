@@ -13,6 +13,7 @@
 | **conference_record** | **String** |  | [optional] |
 | **net_rank** | **Integer** |  | [optional] |
 | **rpi** | **Integer** |  | [optional] |
+| **conference_wins** | **Integer** |  | [optional] |
 | **postseason** | **String** |  | [optional] |
 | **spend_cents** | **Integer** |  | [optional] |
 
@@ -31,6 +32,7 @@ instance = WinthropClient::AthleticProfileShowSportHistorySeasonsInner.new(
   conference_record: null,
   net_rank: null,
   rpi: null,
+  conference_wins: null,
   postseason: null,
   spend_cents: null
 )
