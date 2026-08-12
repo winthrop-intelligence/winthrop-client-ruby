@@ -17,9 +17,6 @@ module WinthropClient
   class GetFilterOptions200Response < ApiModelBase
     attr_accessor :years
 
-    # Season years that have guarantee contracts, keyed by sport id. Always a subset of `years`. Sports with no accessible contracts are omitted. Populated only when `context=gad`; an empty object otherwise.
-    attr_accessor :season_years_by_sport
-
     attr_accessor :financial_years
 
     attr_accessor :current_year
@@ -44,7 +41,6 @@ module WinthropClient
     def self.attribute_map
       {
         :'years' => :'years',
-        :'season_years_by_sport' => :'season_years_by_sport',
         :'financial_years' => :'financial_years',
         :'current_year' => :'current_year',
         :'current_financials_year' => :'current_financials_year',
@@ -72,7 +68,6 @@ module WinthropClient
     def self.openapi_types
       {
         :'years' => :'Array<Integer>',
-        :'season_years_by_sport' => :'Hash<String, Array<Integer>>',
         :'financial_years' => :'Array<Integer>',
         :'current_year' => :'Integer',
         :'current_financials_year' => :'Integer',
@@ -111,12 +106,6 @@ module WinthropClient
       if attributes.key?(:'years')
         if (value = attributes[:'years']).is_a?(Array)
           self.years = value
-        end
-      end
-
-      if attributes.key?(:'season_years_by_sport')
-        if (value = attributes[:'season_years_by_sport']).is_a?(Hash)
-          self.season_years_by_sport = value
         end
       end
 
@@ -198,7 +187,6 @@ module WinthropClient
       return true if self.equal?(o)
       self.class == o.class &&
           years == o.years &&
-          season_years_by_sport == o.season_years_by_sport &&
           financial_years == o.financial_years &&
           current_year == o.current_year &&
           current_financials_year == o.current_financials_year &&
@@ -220,7 +208,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [years, season_years_by_sport, financial_years, current_year, current_financials_year, divisions, sports, position_types, geo_regions, gender_options, diversity_options, compensation_types].hash
+      [years, financial_years, current_year, current_financials_year, divisions, sports, position_types, geo_regions, gender_options, diversity_options, compensation_types].hash
     end
 
     # Builds the object from hash
