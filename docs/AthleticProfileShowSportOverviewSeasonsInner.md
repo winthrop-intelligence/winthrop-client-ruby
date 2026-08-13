@@ -9,6 +9,7 @@
 | **conference_record** | **String** |  | [optional] |
 | **net_rank** | **Integer** |  | [optional] |
 | **rpi** | **Integer** |  | [optional] |
+| **conference_wins** | **Integer** |  | [optional] |
 | **postseason** | **String** |  | [optional] |
 | **head_coach_name** | **String** |  | [optional] |
 | **head_coach_last_name** | **String** | Structured last name of the seat-holder — may be multi-word (\&quot;Hughley Jr\&quot;), never derived by splitting the full name. | [optional] |
@@ -25,6 +26,7 @@ instance = WinthropClient::AthleticProfileShowSportOverviewSeasonsInner.new(
   conference_record: null,
   net_rank: null,
   rpi: null,
+  conference_wins: null,
   postseason: null,
   head_coach_name: null,
   head_coach_last_name: null,
