@@ -1366,17 +1366,5 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
-spec/api/salary_sites_api_spec.rb
-spec/models/department_overview_private_ad_comp_spec.rb
-spec/models/department_overview_private_ad_spec.rb
-spec/models/department_overview_private_basis_spec.rb
-spec/models/department_overview_private_coverage_spec.rb
-spec/models/department_overview_private_disclosure_line_spec.rb
-spec/models/department_overview_private_disclosure_spec.rb
-spec/models/department_overview_private_results_spec.rb
-spec/models/department_overview_private_spend_spec.rb
-spec/models/salary_site_association_spec.rb
-spec/models/salary_site_associations_meta_spec.rb
-spec/models/salary_site_associations_response_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
