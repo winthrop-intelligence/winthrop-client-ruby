@@ -14,7 +14,8 @@
 | **net_rank** | **Integer** |  | [optional] |
 | **rpi** | **Integer** |  | [optional] |
 | **conference_wins** | **Integer** |  | [optional] |
-| **record** | **String** |  | [optional] |
+| **record** | **String** | Overall record for the season the point plots (results_year), null when that season filed none. | [optional] |
+| **conference_record** | **String** | Conference record for the season the point plots — the pair a conference-wins value is read against (WINAD-10268). Null when that season filed none. | [optional] |
 
 ## Example
 
@@ -32,7 +33,8 @@ instance = WinthropClient::AthleticProfileShowSportOverviewQuadrantPointsInner.n
   net_rank: null,
   rpi: null,
   conference_wins: null,
-  record: null
+  record: null,
+  conference_record: null
 )
 ```
 

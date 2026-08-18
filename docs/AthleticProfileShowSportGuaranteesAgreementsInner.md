@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** |  | [optional] |
+| **season_year** | **Integer** | The season this agreement belongs to. Equal to season_year at the top level for every sport but football, whose ledger spans agreement_window. | [optional] |
 | **opponent_id** | **Integer** |  | [optional] |
 | **opponent_name** | **String** |  | [optional] |
 | **opponent_short_name** | **String** |  | [optional] |
@@ -24,6 +25,7 @@ require 'winthrop-client-ruby'
 
 instance = WinthropClient::AthleticProfileShowSportGuaranteesAgreementsInner.new(
   id: null,
+  season_year: null,
   opponent_id: null,
   opponent_name: null,
   opponent_short_name: null,
