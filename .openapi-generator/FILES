@@ -49,6 +49,7 @@ docs/AthleticProfileShowSportFinancialsFrsSplit.md
 docs/AthleticProfileShowSportFinancialsQuadrant.md
 docs/AthleticProfileShowSportFinancialsQuadrantPointsInner.md
 docs/AthleticProfileShowSportGuarantees.md
+docs/AthleticProfileShowSportGuaranteesAgreementWindow.md
 docs/AthleticProfileShowSportGuaranteesAgreementsInner.md
 docs/AthleticProfileShowSportGuaranteesQuadrant.md
 docs/AthleticProfileShowSportGuaranteesQuadrantPointsInner.md
@@ -221,7 +222,6 @@ docs/DepartmentAdministratorsAdOffice.md
 docs/DepartmentAdministratorsAdProfile.md
 docs/DepartmentAdministratorsAdSeat.md
 docs/DepartmentAdministratorsBasis.md
-docs/DepartmentAdministratorsRecentMove.md
 docs/DepartmentAdministratorsScorecard.md
 docs/DepartmentAdministratorsScorecardGap.md
 docs/DepartmentAdministratorsScorecardPoint.md
@@ -743,6 +743,7 @@ lib/winthrop-client-ruby/models/athletic_profile_show_sport_financials_frs_split
 lib/winthrop-client-ruby/models/athletic_profile_show_sport_financials_quadrant.rb
 lib/winthrop-client-ruby/models/athletic_profile_show_sport_financials_quadrant_points_inner.rb
 lib/winthrop-client-ruby/models/athletic_profile_show_sport_guarantees.rb
+lib/winthrop-client-ruby/models/athletic_profile_show_sport_guarantees_agreement_window.rb
 lib/winthrop-client-ruby/models/athletic_profile_show_sport_guarantees_agreements_inner.rb
 lib/winthrop-client-ruby/models/athletic_profile_show_sport_guarantees_quadrant.rb
 lib/winthrop-client-ruby/models/athletic_profile_show_sport_guarantees_quadrant_points_inner.rb
@@ -913,7 +914,6 @@ lib/winthrop-client-ruby/models/department_administrators_ad_office.rb
 lib/winthrop-client-ruby/models/department_administrators_ad_profile.rb
 lib/winthrop-client-ruby/models/department_administrators_ad_seat.rb
 lib/winthrop-client-ruby/models/department_administrators_basis.rb
-lib/winthrop-client-ruby/models/department_administrators_recent_move.rb
 lib/winthrop-client-ruby/models/department_administrators_scorecard.rb
 lib/winthrop-client-ruby/models/department_administrators_scorecard_gap.rb
 lib/winthrop-client-ruby/models/department_administrators_scorecard_point.rb
