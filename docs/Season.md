@@ -45,7 +45,7 @@
 | **prev_net_rank** | **Integer** |  | [optional] |
 | **ap_rank** | **Integer** |  | [optional] |
 | **prev_ap_rank** | **Integer** |  | [optional] |
-| **cfp_rank** | **Integer** |  | [optional] |
+| **cfp_rank** | **Integer** |  | [optional][readonly] |
 | **torvik_rank** | **Integer** |  | [optional][readonly] |
 | **non_conference_sos_ranking** | **Integer** |  | [optional] |
 | **conference_sos_ranking** | **Integer** |  | [optional] |
