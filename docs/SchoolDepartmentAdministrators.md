@@ -14,7 +14,6 @@
 | **staff** | [**Array&lt;DepartmentAdministratorStaffRow&gt;**](DepartmentAdministratorStaffRow.md) |  |  |
 | **staff_stats** | [**DepartmentAdministratorsStaffStats**](DepartmentAdministratorsStaffStats.md) |  |  |
 | **ad_office** | [**DepartmentAdministratorsAdOffice**](DepartmentAdministratorsAdOffice.md) |  |  |
-| **recent_moves** | [**Array&lt;DepartmentAdministratorsRecentMove&gt;**](DepartmentAdministratorsRecentMove.md) |  |  |
 | **scorecard** | [**DepartmentAdministratorsScorecard**](DepartmentAdministratorsScorecard.md) |  |  |
 | **scorecard_gap** | [**DepartmentAdministratorsScorecardGap**](DepartmentAdministratorsScorecardGap.md) |  |  |
 | **officers_990** | [**Array&lt;DepartmentAdministrators990Officer&gt;**](DepartmentAdministrators990Officer.md) |  |  |
@@ -37,7 +36,6 @@ instance = WinthropClient::SchoolDepartmentAdministrators.new(
   staff: null,
   staff_stats: null,
   ad_office: null,
-  recent_moves: null,
   scorecard: null,
   scorecard_gap: null,
   officers_990: null,
