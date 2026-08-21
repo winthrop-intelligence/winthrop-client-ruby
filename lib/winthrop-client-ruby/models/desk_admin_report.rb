@@ -457,7 +457,7 @@ module WinthropClient
       return false if @headline_stats.nil?
       return false if @cover.nil?
       return false if @rerun_cadence.nil?
-      rerun_cadence_validator = EnumAttributeValidator.new('String', ["false", "quarterly", "on_new_filing", "on_new_deal"])
+      rerun_cadence_validator = EnumAttributeValidator.new('String', ["off", "quarterly", "on_new_filing", "on_new_deal"])
       return false unless rerun_cadence_validator.valid?(@rerun_cadence)
       return false if @has_html.nil?
       return false if @artifact_kinds.nil?
@@ -569,7 +569,7 @@ module WinthropClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] rerun_cadence Object to be assigned
     def rerun_cadence=(rerun_cadence)
-      validator = EnumAttributeValidator.new('String', ["false", "quarterly", "on_new_filing", "on_new_deal"])
+      validator = EnumAttributeValidator.new('String', ["off", "quarterly", "on_new_filing", "on_new_deal"])
       unless validator.valid?(rerun_cadence)
         fail ArgumentError, "invalid value for \"rerun_cadence\", must be one of #{validator.allowable_values}."
       end

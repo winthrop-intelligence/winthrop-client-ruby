@@ -138,6 +138,8 @@ module WinthropClient
       return false if @body.nil?
       category_validator = EnumAttributeValidator.new('String', ["coaches-staff", "vendors-deals", "money-budgets", "my-peers", "other"])
       return false unless category_validator.valid?(@category)
+      cta_key_validator = EnumAttributeValidator.new('String', ["another-sport", "different-peers", "push-on-this", "ask-anything", "make-report", "candidate-list", "extension-raise-scenario", "buyout-schedule", "recruit-position", "retention-raise-case", "staff-benchmark-all-sports", "run-bid-process", "draft-counter", "bid-one-pager", "budget-proposal", "case-for-support", "rerun-on-filing", "board-deck", "defend-line", "track-actuals", "model-termination", "compare-exposure", "peer-buyout-alert", "walk-us-through", "board-version"])
+      return false unless cta_key_validator.valid?(@cta_key)
       true
     end
 
@@ -159,6 +161,16 @@ module WinthropClient
         fail ArgumentError, "invalid value for \"category\", must be one of #{validator.allowable_values}."
       end
       @category = category
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] cta_key Object to be assigned
+    def cta_key=(cta_key)
+      validator = EnumAttributeValidator.new('String', ["another-sport", "different-peers", "push-on-this", "ask-anything", "make-report", "candidate-list", "extension-raise-scenario", "buyout-schedule", "recruit-position", "retention-raise-case", "staff-benchmark-all-sports", "run-bid-process", "draft-counter", "bid-one-pager", "budget-proposal", "case-for-support", "rerun-on-filing", "board-deck", "defend-line", "track-actuals", "model-termination", "compare-exposure", "peer-buyout-alert", "walk-us-through", "board-version"])
+      unless validator.valid?(cta_key)
+        fail ArgumentError, "invalid value for \"cta_key\", must be one of #{validator.allowable_values}."
+      end
+      @cta_key = cta_key
     end
 
     # Checks equality by comparing each attribute.

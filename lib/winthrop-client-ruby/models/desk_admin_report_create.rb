@@ -257,7 +257,7 @@ module WinthropClient
       return false unless report_type_validator.valid?(@report_type)
       cover_treatment_validator = EnumAttributeValidator.new('String', ["ink", "oxblood", "bone"])
       return false unless cover_treatment_validator.valid?(@cover_treatment)
-      rerun_cadence_validator = EnumAttributeValidator.new('String', ["false", "quarterly", "on_new_filing", "on_new_deal"])
+      rerun_cadence_validator = EnumAttributeValidator.new('String', ["off", "quarterly", "on_new_filing", "on_new_deal"])
       return false unless rerun_cadence_validator.valid?(@rerun_cadence)
       return false if @account_id.nil?
       true
@@ -306,7 +306,7 @@ module WinthropClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] rerun_cadence Object to be assigned
     def rerun_cadence=(rerun_cadence)
-      validator = EnumAttributeValidator.new('String', ["false", "quarterly", "on_new_filing", "on_new_deal"])
+      validator = EnumAttributeValidator.new('String', ["off", "quarterly", "on_new_filing", "on_new_deal"])
       unless validator.valid?(rerun_cadence)
         fail ArgumentError, "invalid value for \"rerun_cadence\", must be one of #{validator.allowable_values}."
       end
