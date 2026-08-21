@@ -10,6 +10,7 @@
 | **email** | **String** |  | [optional] |
 | **phone** | **String** |  | [optional] |
 | **leader** | **Boolean** |  |  |
+| **visible** | **Boolean** | Whether the coach appears on customer-facing surfaces | [optional] |
 | **hometown_city** | **String** |  | [optional] |
 | **hometown_state** | **String** |  | [optional] |
 | **alma_mater_name** | **String** |  | [optional] |
@@ -49,6 +50,7 @@ instance = WinthropClient::CoachProfile.new(
   email: null,
   phone: null,
   leader: null,
+  visible: true,
   hometown_city: null,
   hometown_state: null,
   alma_mater_name: null,

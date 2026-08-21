@@ -16,6 +16,7 @@
 | **division_id** | **Integer** |  | [optional] |
 | **year** | **Integer** |  | [optional] |
 | **coach_friendly_id** | **String** |  | [optional] |
+| **visible** | **Boolean** | Whether the coach appears on customer-facing surfaces | [optional] |
 | **position_types** | **Array&lt;String&gt;** |  | [optional] |
 | **sport_name** | **String** |  | [optional] |
 | **sport_full_name** | **String** |  | [optional] |
@@ -65,6 +66,7 @@ instance = WinthropClient::CoachSearchResult.new(
   division_id: null,
   year: null,
   coach_friendly_id: null,
+  visible: true,
   position_types: null,
   sport_name: null,
   sport_full_name: null,
