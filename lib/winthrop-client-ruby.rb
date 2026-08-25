@@ -13,6 +13,7 @@ Generator version: 7.19.0
 # Common files
 require 'winthrop-client-ruby/api_client'
 require 'winthrop-client-ruby/api_error'
+require 'winthrop-client-ruby/device_token'
 require 'winthrop-client-ruby/api_model_base'
 require 'winthrop-client-ruby/version'
 require 'winthrop-client-ruby/configuration'

@@ -52,6 +52,14 @@ module WinthropClient
       tempfile = nil
       (download_file(request) { tempfile = _1 }) if opts[:return_type] == 'File'
       response = request.run
+      if response.code == 401 && retry_authentication_with_device_token?(opts)
+        clear_device_token_cache
+        request = build_request(http_method, path, opts)
+        tempfile = nil
+        (download_file(request) { tempfile = _1 }) if opts[:return_type] == 'File'
+        response = request.run
+        fail authentication_error(response) if response.code == 401
+      end
 
       if @config.debugging
         @config.logger.debug "HTTP response body ~BEGIN~\n#{response.body}\n~END~\n"
@@ -301,6 +309,21 @@ module WinthropClient
       # Add leading and trailing slashes to path
       path = "/#{path}".gsub(/\/+/, '/')
       @config.base_url(opts[:operation]) + path
+    end
+
+    def clear_device_token_cache
+      WinthropClient::DeviceToken.clear_cache if WinthropClient.const_defined?(:DeviceToken)
+    end
+
+    def retry_authentication_with_device_token?(opts)
+      Array(opts[:auth_names]).include?('Oauth2') && !@config.access_token_getter.nil?
+    end
+
+    def authentication_error(response)
+      ApiError.new(:code => response.code,
+                   :message => 'Authentication failed',
+                   :response_headers => response.headers,
+                   :response_body => response.body)
     end
 
     # Update header and query params based on authentication settings.
