@@ -447,7 +447,7 @@ api_instance = WinthropClient::IntercollegiateApi.new
 opts = {
   page: 56, # Integer | results page to retrieve.
   per_page: 56, # Integer | number of results per page.
-  q: { ... } # Object | Ransack query
+  q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
 begin
@@ -483,7 +483,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
 | **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
-| **q** | [**Object**](.md) | Ransack query | [optional] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
 

@@ -11,6 +11,7 @@
 | **gender_code** | **String** |  | [optional] |
 | **emerging** | **Boolean** |  | [optional] |
 | **meet_sport** | **Boolean** |  | [optional] |
+| **visible** | **Boolean** | Operator-controlled customer-publication flag. When false, the Sport is hidden from ordinary customer credentials and only returned to superadmin/trusted service credentials. | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
 | **ncaa_id** | **String** |  | [optional] |
@@ -28,6 +29,7 @@ instance = WinthropClient::Sport.new(
   gender_code: null,
   emerging: false,
   meet_sport: false,
+  visible: true,
   created_at: 2019-01-01T00:00Z,
   updated_at: 2019-01-01T00:00Z,
   ncaa_id: MBA
