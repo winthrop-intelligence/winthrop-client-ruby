@@ -39,11 +39,8 @@ module WinthropClient
 
     attr_accessor :cta_key
 
-    # The needs-more-info note shown on the customer's pending card. Was `admin_note`, which read as internal-only while being rendered to the customer — a naming trap on a live field. The old key still ships alongside this one until the generated client is regenerated from this spec; drop it then. 
+    # The needs-more-info note shown on the customer's pending card. Was `admin_note`, which read as internal-only while being rendered to the customer — a naming trap on a live field. 
     attr_accessor :client_note
-
-    # Deprecated alias for client_note. Remove once clients are regenerated.
-    attr_accessor :admin_note
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -81,8 +78,7 @@ module WinthropClient
         :'delivers_label' => :'delivers_label',
         :'source_report_uuid' => :'source_report_uuid',
         :'cta_key' => :'cta_key',
-        :'client_note' => :'client_note',
-        :'admin_note' => :'admin_note'
+        :'client_note' => :'client_note'
       }
     end
 
@@ -110,8 +106,7 @@ module WinthropClient
         :'delivers_label' => :'String',
         :'source_report_uuid' => :'String',
         :'cta_key' => :'String',
-        :'client_note' => :'String',
-        :'admin_note' => :'String'
+        :'client_note' => :'String'
       }
     end
 
@@ -123,8 +118,7 @@ module WinthropClient
         :'delivers_label',
         :'source_report_uuid',
         :'cta_key',
-        :'client_note',
-        :'admin_note'
+        :'client_note'
       ])
     end
 
@@ -214,10 +208,6 @@ module WinthropClient
         self.client_note = attributes[:'client_note']
       else
         self.client_note = nil
-      end
-
-      if attributes.key?(:'admin_note')
-        self.admin_note = attributes[:'admin_note']
       end
     end
 
@@ -368,8 +358,7 @@ module WinthropClient
           delivers_label == o.delivers_label &&
           source_report_uuid == o.source_report_uuid &&
           cta_key == o.cta_key &&
-          client_note == o.client_note &&
-          admin_note == o.admin_note
+          client_note == o.client_note
     end
 
     # @see the `==` method
@@ -381,7 +370,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [uuid, body, title, category, status, requester_name, requested_by_viewer, requested_at, delivers_label, source_report_uuid, cta_key, client_note, admin_note].hash
+      [uuid, body, title, category, status, requester_name, requested_by_viewer, requested_at, delivers_label, source_report_uuid, cta_key, client_note].hash
     end
 
     # Builds the object from hash
