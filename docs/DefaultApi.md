@@ -121,6 +121,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_department_searches**](DefaultApi.md#get_department_searches) | **GET** /api/v1/department_searches |  |
 | [**get_division**](DefaultApi.md#get_division) | **GET** /api/v1/divisions/{divisionId} |  |
 | [**get_divisions**](DefaultApi.md#get_divisions) | **GET** /api/v1/divisions |  |
+| [**get_eada_financial_searches**](DefaultApi.md#get_eada_financial_searches) | **GET** /api/v1/eada_financial_searches |  |
+| [**get_eada_metrics**](DefaultApi.md#get_eada_metrics) | **GET** /api/v1/eada_metrics |  |
 | [**get_edit_account_user**](DefaultApi.md#get_edit_account_user) | **GET** /api/v1/account_users/{accountUserId}/edit |  |
 | [**get_favorites**](DefaultApi.md#get_favorites) | **GET** /api/v1/favorites |  |
 | [**get_favorites_categories**](DefaultApi.md#get_favorites_categories) | **GET** /api/v1/favorites_categories |  |
@@ -135,6 +137,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_filter_options_states**](DefaultApi.md#get_filter_options_states) | **GET** /api/v1/filter_options/states |  |
 | [**get_filter_options_subdivisions**](DefaultApi.md#get_filter_options_subdivisions) | **GET** /api/v1/filter_options/subdivisions |  |
 | [**get_filter_options_vendors**](DefaultApi.md#get_filter_options_vendors) | **GET** /api/v1/filter_options/vendors |  |
+| [**get_financial_comparisons**](DefaultApi.md#get_financial_comparisons) | **GET** /api/v1/financial_comparisons |  |
 | [**get_financial_searches**](DefaultApi.md#get_financial_searches) | **GET** /api/v1/financial_searches |  |
 | [**get_foia_label**](DefaultApi.md#get_foia_label) | **GET** /api/v1/foia_labels/{foiaLabelId} |  |
 | [**get_foia_labels**](DefaultApi.md#get_foia_labels) | **GET** /api/v1/foia_labels |  |
@@ -191,6 +194,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_school_department_financials**](DefaultApi.md#get_school_department_financials) | **GET** /api/v1/schools/{schoolId}/department_financials |  |
 | [**get_school_department_guarantees**](DefaultApi.md#get_school_department_guarantees) | **GET** /api/v1/schools/{schoolId}/department_guarantees |  |
 | [**get_school_department_overview**](DefaultApi.md#get_school_department_overview) | **GET** /api/v1/schools/{schoolId}/department_overview |  |
+| [**get_school_eada_financials**](DefaultApi.md#get_school_eada_financials) | **GET** /api/v1/schools/{schoolId}/eada_financials |  |
+| [**get_school_financial_selection**](DefaultApi.md#get_school_financial_selection) | **GET** /api/v1/schools/{schoolId}/financial_selection |  |
 | [**get_school_game_contracts**](DefaultApi.md#get_school_game_contracts) | **GET** /api/v1/schools/{schoolId}/game_contracts |  |
 | [**get_school_group**](DefaultApi.md#get_school_group) | **GET** /api/v1/school_groups/{schoolGroupId} |  |
 | [**get_school_group_admin_compensation**](DefaultApi.md#get_school_group_admin_compensation) | **GET** /api/v1/school_groups/{schoolGroupId}/admin_compensation |  |
@@ -9134,6 +9139,186 @@ end
 - **Accept**: application/json
 
 
+## get_eada_financial_searches
+
+> <EadaFinancialSearchResponse> get_eada_financial_searches(year, opts)
+
+
+
+WINAD-10370 — paginated cross-school EADA cohort search for one exact reporting year and grain (institution or sport). Scoped to schools the viewer holds see_eada_financials on, including private schools with an EADA-only grant.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+year = 56 # Integer | Exact reporting year. Required.
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... }, # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+  grain: 'institution', # String | 
+  sport_code: 'sport_code_example', # String | 
+  family: 'family_example', # String | 
+  gender: 'gender_example', # String | 
+  metric: 'metric_example', # String | 
+  include: 'include_example' # String | Comma-separated inclusions. `source_payload` requires a data admin/super admin viewer (403 otherwise).
+}
+
+begin
+  
+  result = api_instance.get_eada_financial_searches(year, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_eada_financial_searches: #{e}"
+end
+```
+
+#### Using the get_eada_financial_searches_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EadaFinancialSearchResponse>, Integer, Hash)> get_eada_financial_searches_with_http_info(year, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_eada_financial_searches_with_http_info(year, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EadaFinancialSearchResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_eada_financial_searches_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **year** | **Integer** | Exact reporting year. Required. |  |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
+| **grain** | **String** |  | [optional][default to &#39;institution&#39;] |
+| **sport_code** | **String** |  | [optional] |
+| **family** | **String** |  | [optional] |
+| **gender** | **String** |  | [optional] |
+| **metric** | **String** |  | [optional] |
+| **include** | **String** | Comma-separated inclusions. &#x60;source_payload&#x60; requires a data admin/super admin viewer (403 otherwise). | [optional] |
+
+### Return type
+
+[**EadaFinancialSearchResponse**](EadaFinancialSearchResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_eada_metrics
+
+> <EadaMetricCatalogResponse> get_eada_metrics(opts)
+
+
+
+WINAD-10370 — serves the WINAD-10371 metric/source-field catalog so API consumers can retrieve field definitions (label, description, unit, grain, comparability metadata) without hardcoding them. Reference data; returns the full filtered set (no see_eada_financials gate).
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  report_type: 'institution', # String | 
+  canonical_only: true, # Boolean | When true, only entries that already carry a canonical_metric_id.
+  comparability_state: 'mergeable', # String | 
+  search: 'search_example' # String | Case-insensitive substring match against source_key, label, or canonical_metric_id.
+}
+
+begin
+  
+  result = api_instance.get_eada_metrics(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_eada_metrics: #{e}"
+end
+```
+
+#### Using the get_eada_metrics_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EadaMetricCatalogResponse>, Integer, Hash)> get_eada_metrics_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_eada_metrics_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EadaMetricCatalogResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_eada_metrics_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **report_type** | **String** |  | [optional] |
+| **canonical_only** | **Boolean** | When true, only entries that already carry a canonical_metric_id. | [optional] |
+| **comparability_state** | **String** |  | [optional] |
+| **search** | **String** | Case-insensitive substring match against source_key, label, or canonical_metric_id. | [optional] |
+
+### Return type
+
+[**EadaMetricCatalogResponse**](EadaMetricCatalogResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_edit_account_user
 
 > <EditAccountUserResponse> get_edit_account_user(account_user_id)
@@ -10158,6 +10343,92 @@ end
 ### Return type
 
 [**Array&lt;IdName&gt;**](IdName.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_financial_comparisons
+
+> <FinancialComparisonResponse> get_financial_comparisons(school_ids, opts)
+
+
+
+WINAD-10369 — cohort-level source-aware financial comparison (e.g. one conference plus a couple of out-of-conference peers). Runs Financials::SourceSelection independently per school (never merges line items across schools' reports) and, when metric is given, adds Financials::Comparison's mixed-source ranking on top — a catalog-approved (comparability_state mergeable) canonical metric gets one blended ranking across sources; every other metric gets per-source rankings only, kept visibly separate. A school id the viewer holds neither see_financials nor see_eada_financials on for is silently dropped from the cohort rather than 403ing the whole request.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_ids = [37] # Array<Integer> | One or more School ids to compare. Required.
+opts = {
+  source: 'eada', # String | 
+  grain: 'institution', # String | 
+  sport_name: 'sport_name_example', # String | Required when grain is sport.
+  year: 56, # Integer | Exact reporting year. Omit for each source's own latest, resolved independently per school and per source.
+  metric: 'metric_example' # String | Canonical (or source-native) metric id to compare. Required to receive a comparison ranking — omitted, the response still returns each school's full per-source results with comparison null.
+}
+
+begin
+  
+  result = api_instance.get_financial_comparisons(school_ids, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_financial_comparisons: #{e}"
+end
+```
+
+#### Using the get_financial_comparisons_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FinancialComparisonResponse>, Integer, Hash)> get_financial_comparisons_with_http_info(school_ids, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_financial_comparisons_with_http_info(school_ids, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FinancialComparisonResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_financial_comparisons_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_ids** | [**Array&lt;Integer&gt;**](Integer.md) | One or more School ids to compare. Required. |  |
+| **source** | **String** |  | [optional][default to &#39;best_available&#39;] |
+| **grain** | **String** |  | [optional][default to &#39;institution&#39;] |
+| **sport_name** | **String** | Required when grain is sport. | [optional] |
+| **year** | **Integer** | Exact reporting year. Omit for each source&#39;s own latest, resolved independently per school and per source. | [optional] |
+| **metric** | **String** | Canonical (or source-native) metric id to compare. Required to receive a comparison ranking — omitted, the response still returns each school&#39;s full per-source results with comparison null. | [optional] |
+
+### Return type
+
+[**FinancialComparisonResponse**](FinancialComparisonResponse.md)
 
 ### Authorization
 
@@ -14497,6 +14768,182 @@ end
 ### Return type
 
 [**SchoolDepartmentOverview**](SchoolDepartmentOverview.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_school_eada_financials
+
+> <SchoolEadaFinancials> get_school_eada_financials(school_id, year, opts)
+
+
+
+WINAD-10370 — normalized EADA institution and sport financials for a school at an exact reporting year. Never substitutes a different year when the requested one is missing — institution.found/sports.found are explicit instead. Requires the see_eada_financials capability (exposed via GET /users/me as can_see_eada_financials).
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | ID of the School
+year = 56 # Integer | Exact reporting year to look up. Required — there is no \"latest year\" default, and a missing year is never substituted with another one.
+opts = {
+  grain: 'institution', # String | Restrict the response to one grain. Omit for both institution and sports.
+  sport_code: 'sport_code_example', # String | Restrict sport-grain results to one EADA source sport code.
+  family: 'family_example', # String | Restrict metrics to one family (e.g. coaching, student_aid, recruiting_expense, operating_expense, revenue_expense, participation).
+  gender: 'gender_example', # String | Restrict metrics to one gender dimension (men, women, coed, all_genders).
+  metric: 'metric_example', # String | Restrict to one metric, matched case-insensitively against its canonical metric id, column name, or raw source field.
+  include: 'include_example' # String | Comma-separated list of optional inclusions. `source_payload` returns each report's full raw imported row; requires a data admin or super admin viewer, and is explicitly forbidden (403) rather than silently dropped when requested by anyone else.
+}
+
+begin
+  
+  result = api_instance.get_school_eada_financials(school_id, year, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_school_eada_financials: #{e}"
+end
+```
+
+#### Using the get_school_eada_financials_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SchoolEadaFinancials>, Integer, Hash)> get_school_eada_financials_with_http_info(school_id, year, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_school_eada_financials_with_http_info(school_id, year, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SchoolEadaFinancials>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_school_eada_financials_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** | ID of the School |  |
+| **year** | **Integer** | Exact reporting year to look up. Required — there is no \&quot;latest year\&quot; default, and a missing year is never substituted with another one. |  |
+| **grain** | **String** | Restrict the response to one grain. Omit for both institution and sports. | [optional] |
+| **sport_code** | **String** | Restrict sport-grain results to one EADA source sport code. | [optional] |
+| **family** | **String** | Restrict metrics to one family (e.g. coaching, student_aid, recruiting_expense, operating_expense, revenue_expense, participation). | [optional] |
+| **gender** | **String** | Restrict metrics to one gender dimension (men, women, coed, all_genders). | [optional] |
+| **metric** | **String** | Restrict to one metric, matched case-insensitively against its canonical metric id, column name, or raw source field. | [optional] |
+| **include** | **String** | Comma-separated list of optional inclusions. &#x60;source_payload&#x60; returns each report&#39;s full raw imported row; requires a data admin or super admin viewer, and is explicitly forbidden (403) rather than silently dropped when requested by anyone else. | [optional] |
+
+### Return type
+
+[**SchoolEadaFinancials**](SchoolEadaFinancials.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_school_financial_selection
+
+> <FinancialSelection> get_school_financial_selection(school_id, opts)
+
+
+
+WINAD-10369 — one school's source-aware financial selection (eada | ncaa_frs | best_available | both) at institution or sport grain, layered on WINAD-10370's EADA API and the existing NCAA/FRS CashflowSum/Cashflow data via Financials::SourceSelection. best_available never 403s for a partial grant — it silently narrows to whichever source(s) the viewer can see for this school; requesting a single source (eada or ncaa_frs) the viewer cannot see for this school is a 403.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | ID of the School
+opts = {
+  source: 'eada', # String | 
+  grain: 'institution', # String | 
+  sport_name: 'sport_name_example', # String | Required when grain is sport.
+  year: 56, # Integer | Exact reporting year. Omit for each source's own latest report, resolved independently per source.
+  metric: 'metric_example' # String | Restrict to one canonical (or source-native) metric id.
+}
+
+begin
+  
+  result = api_instance.get_school_financial_selection(school_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_school_financial_selection: #{e}"
+end
+```
+
+#### Using the get_school_financial_selection_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FinancialSelection>, Integer, Hash)> get_school_financial_selection_with_http_info(school_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_school_financial_selection_with_http_info(school_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FinancialSelection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_school_financial_selection_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** | ID of the School |  |
+| **source** | **String** |  | [optional][default to &#39;best_available&#39;] |
+| **grain** | **String** |  | [optional][default to &#39;institution&#39;] |
+| **sport_name** | **String** | Required when grain is sport. | [optional] |
+| **year** | **Integer** | Exact reporting year. Omit for each source&#39;s own latest report, resolved independently per source. | [optional] |
+| **metric** | **String** | Restrict to one canonical (or source-native) metric id. | [optional] |
+
+### Return type
+
+[**FinancialSelection**](FinancialSelection.md)
 
 ### Authorization
 
