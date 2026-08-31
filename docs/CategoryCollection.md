@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **data** | [**Array&lt;Category&gt;**](Category.md) |  | [optional] |
-| **meta** | [**Meta**](Meta.md) |  | [optional] |
+| **meta** | [**Meta1**](Meta1.md) |  | [optional] |
 
 ## Example
 

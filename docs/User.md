@@ -24,6 +24,7 @@
 | **can_show_game_contract** | **Boolean** | Whether the user can view game contract/guarantee data | [optional] |
 | **can_see_coaches** | **Boolean** | Whether the user can access the Coaches section | [optional] |
 | **can_see_administrators** | **Boolean** | Whether the user can access the Administrators section | [optional] |
+| **can_see_eada_financials** | **Boolean** | Whether the user can access the normalized EADA institution/sport financials API (WINAD-10370). A class-level check; per-school visibility (e.g. division-scoped subscriptions, private-school access) is still enforced per-request. | [optional] |
 | **can_show_financials** | **Boolean** | Whether the user can access the Financials section | [optional] |
 | **can_show_deals** | **Boolean** | Whether the user can access the Vendors section | [optional] |
 | **can_show_benchmark** | **Boolean** | Whether the user can access the Benchmark section | [optional] |
@@ -80,6 +81,7 @@ instance = WinthropClient::User.new(
   can_show_game_contract: null,
   can_see_coaches: null,
   can_see_administrators: null,
+  can_see_eada_financials: null,
   can_show_financials: null,
   can_show_deals: null,
   can_show_benchmark: null,
