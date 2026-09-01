@@ -125,7 +125,7 @@ module WinthropClient
         :'source_field' => :'String',
         :'label' => :'String',
         :'definition' => :'String',
-        :'value' => :'Object',
+        :'value' => :'Float',
         :'unit' => :'String',
         :'gender' => :'String',
         :'comparability_state' => :'String',

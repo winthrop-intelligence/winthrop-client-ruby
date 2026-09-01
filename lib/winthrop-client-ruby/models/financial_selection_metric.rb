@@ -109,7 +109,7 @@ module WinthropClient
         :'canonical_metric_id' => :'String',
         :'native_metric_id' => :'String',
         :'label' => :'String',
-        :'value' => :'Object',
+        :'value' => :'Float',
         :'unit' => :'String',
         :'comparability_state' => :'String',
         :'counterpart_note' => :'String',

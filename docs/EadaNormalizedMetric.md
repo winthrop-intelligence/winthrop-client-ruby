@@ -14,7 +14,7 @@
 | **source_field** | **String** | Raw EADA source_payload/CSV header this metric was read from |  |
 | **label** | **String** |  | [optional] |
 | **definition** | **String** |  | [optional] |
-| **value** | **Object** | Raw typed-column value (whole dollars for usd fields — not cents) |  |
+| **value** | **Float** | Raw typed-column value (whole dollars for usd fields — not cents) |  |
 | **unit** | **String** |  |  |
 | **gender** | **String** |  | [optional] |
 | **comparability_state** | **String** |  | [optional] |

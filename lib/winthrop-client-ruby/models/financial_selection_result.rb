@@ -25,7 +25,7 @@ module WinthropClient
     # False when no report exists for this source/year/grain, the report exists but has nothing actually reported (NCAA/FRS only), no sport-code crosswalk exists for this sport (EADA sport grain only), a requested metric filter matched nothing this source's vocabulary emits at all, or (single-source mode only) the viewer lacks the ability for this source on this school.
     attr_accessor :available
 
-    # sport_not_mapped_to_eada marks a WinAD sport with no EADA crosswalk row at all (a mapping gap, not a missing filing); source_not_permitted_for_viewer also covers best_available/both requests where the viewer holds neither source ability for this school.
+    # sport_not_mapped_to_eada marks a WinAD sport with no EADA crosswalk row at all (a mapping gap, not a missing filing); source_not_permitted_for_viewer also covers best_available/both requests where the viewer holds neither source ability for this school. ncaa_frs_suppressed_private_school marks the NCAA FRS result for a private school — suppressed by policy for every viewer, whatever legacy data exists; the three *_used_eada reasons distinguish WHY best_available is showing EADA (no filing / viewer permission / private-school policy) so the UI never claims a filing gap when the truth is suppression.
     attr_accessor :fallback_reason
 
     # Most-conservative comparability_state across this result's metrics (not_comparable outranks comparison_only outranks mergeable; source_only is the fallback default).
@@ -195,7 +195,7 @@ module WinthropClient
       grain_validator = EnumAttributeValidator.new('String', ["institution", "sport"])
       return false unless grain_validator.valid?(@grain)
       return false if @available.nil?
-      fallback_reason_validator = EnumAttributeValidator.new('String', ["ncaa_frs_unavailable_used_eada", "no_report_available_for_any_source", "source_not_permitted_for_viewer", "sport_not_mapped_to_eada"])
+      fallback_reason_validator = EnumAttributeValidator.new('String', ["ncaa_frs_unavailable_used_eada", "ncaa_frs_not_permitted_used_eada", "ncaa_frs_private_school_used_eada", "ncaa_frs_suppressed_private_school", "no_report_available_for_any_source", "source_not_permitted_for_viewer", "sport_not_mapped_to_eada"])
       return false unless fallback_reason_validator.valid?(@fallback_reason)
       return false if @comparability_summary.nil?
       comparability_summary_validator = EnumAttributeValidator.new('String', ["not_comparable", "comparison_only", "mergeable", "source_only"])
@@ -237,7 +237,7 @@ module WinthropClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] fallback_reason Object to be assigned
     def fallback_reason=(fallback_reason)
-      validator = EnumAttributeValidator.new('String', ["ncaa_frs_unavailable_used_eada", "no_report_available_for_any_source", "source_not_permitted_for_viewer", "sport_not_mapped_to_eada"])
+      validator = EnumAttributeValidator.new('String', ["ncaa_frs_unavailable_used_eada", "ncaa_frs_not_permitted_used_eada", "ncaa_frs_private_school_used_eada", "ncaa_frs_suppressed_private_school", "no_report_available_for_any_source", "source_not_permitted_for_viewer", "sport_not_mapped_to_eada"])
       unless validator.valid?(fallback_reason)
         fail ArgumentError, "invalid value for \"fallback_reason\", must be one of #{validator.allowable_values}."
       end

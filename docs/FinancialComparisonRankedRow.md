@@ -10,7 +10,7 @@
 | **source** | **String** |  |  |
 | **year** | **Integer** |  | [optional] |
 | **fallback_reason** | **String** |  | [optional] |
-| **value** | **Object** | The metric&#39;s raw typed value for this school/source |  |
+| **value** | **Float** | The metric&#39;s raw typed value for this school/source |  |
 | **comparability_state** | **String** |  | [optional] |
 
 ## Example

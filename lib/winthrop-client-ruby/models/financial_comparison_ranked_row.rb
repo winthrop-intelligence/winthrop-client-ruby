@@ -87,7 +87,7 @@ module WinthropClient
         :'source' => :'String',
         :'year' => :'Integer',
         :'fallback_reason' => :'String',
-        :'value' => :'Object',
+        :'value' => :'Float',
         :'comparability_state' => :'String'
       }
     end
@@ -97,7 +97,6 @@ module WinthropClient
       Set.new([
         :'year',
         :'fallback_reason',
-        :'value',
         :'comparability_state'
       ])
     end
@@ -182,6 +181,10 @@ module WinthropClient
         invalid_properties.push('invalid value for "source", source cannot be nil.')
       end
 
+      if @value.nil?
+        invalid_properties.push('invalid value for "value", value cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -195,6 +198,7 @@ module WinthropClient
       return false if @source.nil?
       source_validator = EnumAttributeValidator.new('String', ["eada", "ncaa_frs"])
       return false unless source_validator.valid?(@source)
+      return false if @value.nil?
       comparability_state_validator = EnumAttributeValidator.new('String', ["mergeable", "comparison_only", "not_comparable", "source_only"])
       return false unless comparability_state_validator.valid?(@comparability_state)
       true
@@ -238,6 +242,16 @@ module WinthropClient
         fail ArgumentError, "invalid value for \"source\", must be one of #{validator.allowable_values}."
       end
       @source = source
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] value Value to be assigned
+    def value=(value)
+      if value.nil?
+        fail ArgumentError, 'value cannot be nil'
+      end
+
+      @value = value
     end
 
     # Custom attribute writer method checking allowed values (enum).

@@ -10,7 +10,7 @@
 | **canonical_metric_id** | **String** | The shared cross-source id when one exists (currently total_revenue, total_expenses). Never an invitation to sum or average two sources&#39; values for the same id — see comparability_state. | [optional] |
 | **native_metric_id** | **String** | The source&#39;s own metric id — identical to canonical_metric_id for NCAA/FRS lines, the EADA-native field name (e.g. exp_men) for EADA metrics translated onto the shared vocabulary at sport grain. |  |
 | **label** | **String** |  | [optional] |
-| **value** | **Object** | Raw typed value (whole dollars for usd fields — not cents) | [optional] |
+| **value** | **Float** | Raw typed value (whole dollars for usd fields — not cents) | [optional] |
 | **unit** | **String** |  | [optional] |
 | **comparability_state** | **String** |  | [optional] |
 | **counterpart_note** | **String** |  | [optional] |
