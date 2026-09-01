@@ -170,6 +170,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_news_feed**](DefaultApi.md#get_news_feed) | **GET** /wi_jobs/news_feeds/{newsFeedId} | Get a news feed |
 | [**get_note**](DefaultApi.md#get_note) | **GET** /api/v1/notes |  |
 | [**get_position**](DefaultApi.md#get_position) | **GET** /api/v1/positions/{positionId} |  |
+| [**get_position_types**](DefaultApi.md#get_position_types) | **GET** /api/v1/position_types |  |
 | [**get_positions**](DefaultApi.md#get_positions) | **GET** /api/v1/positions |  |
 | [**get_raw_contract**](DefaultApi.md#get_raw_contract) | **GET** /api/v1/raw_contracts/{raw_contractId} |  |
 | [**get_raw_contracts**](DefaultApi.md#get_raw_contracts) | **GET** /api/v1/raw_contracts |  |
@@ -12849,6 +12850,86 @@ end
 ### Return type
 
 [**Position**](Position.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_position_types
+
+> <PositionTypeCollection> get_position_types(opts)
+
+
+
+Retrieve some or all position types
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+}
+
+begin
+  
+  result = api_instance.get_position_types(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_position_types: #{e}"
+end
+```
+
+#### Using the get_position_types_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PositionTypeCollection>, Integer, Hash)> get_position_types_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_position_types_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PositionTypeCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_position_types_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
+
+### Return type
+
+[**PositionTypeCollection**](PositionTypeCollection.md)
 
 ### Authorization
 
