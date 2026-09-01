@@ -495,6 +495,7 @@ docs/PositionCollection.md
 docs/PositionEntry.md
 docs/PositionSportStat.md
 docs/PositionType.md
+docs/PositionTypeCollection.md
 docs/PositionTypeGroup.md
 docs/PredictBody.md
 docs/PredictFailure.md
@@ -1171,6 +1172,7 @@ lib/winthrop-client-ruby/models/position_collection.rb
 lib/winthrop-client-ruby/models/position_entry.rb
 lib/winthrop-client-ruby/models/position_sport_stat.rb
 lib/winthrop-client-ruby/models/position_type.rb
+lib/winthrop-client-ruby/models/position_type_collection.rb
 lib/winthrop-client-ruby/models/position_type_group.rb
 lib/winthrop-client-ruby/models/predict_body.rb
 lib/winthrop-client-ruby/models/predict_failure.rb
@@ -1346,5 +1348,6 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
+spec/models/position_type_collection_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
