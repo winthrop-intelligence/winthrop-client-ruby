@@ -13,6 +13,7 @@
 | **position_type_group** | [**PositionTypeGroup**](PositionTypeGroup.md) |  | [optional] |
 | **force_display_title** | **Boolean** |  | [optional] |
 | **intercollegiate_only** | **Boolean** |  | [optional] |
+| **visible** | **Boolean** | Operator-controlled customer-publication flag. When false, the PositionType is hidden from ordinary customer credentials and only returned to superadmin/trusted service credentials. | [optional] |
 
 ## Example
 
@@ -28,7 +29,8 @@ instance = WinthropClient::PositionType.new(
   updated_at: 2019-01-01T00:00Z,
   position_type_group: null,
   force_display_title: false,
-  intercollegiate_only: false
+  intercollegiate_only: false,
+  visible: true
 )
 ```
 
