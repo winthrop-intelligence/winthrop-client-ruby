@@ -32,6 +32,7 @@
 | **can_show_game_post** | **Boolean** | Whether the user can access the Games Wanted section | [optional] |
 | **can_see_school_groups** | **Boolean** | Whether the user can access Custom School Groups | [optional] |
 | **can_read_account** | **Boolean** | Whether the user can view account management | [optional] |
+| **can_show_desk** | **Boolean** | Whether The Desk exists for this user (WINAD-10415 / D-29): super admin, or at least one LIVE report published to their account or to every school. One flag gates the whole feature — nav entry, /desk/* routes, gallery, reader, downloads, archive and every ask affordance. Computed per request, so a publish or a hide shows on the next fetch.  | [optional] |
 | **can_launch_intercollegiate** | **Boolean** | Whether the user can launch Intercollegiate direct access | [optional] |
 | **intercollegiate_url** | **String** | Final Intercollegiate launch or marketing URL for the user | [optional] |
 | **is_sport_specific** | **Boolean** |  | [optional] |
@@ -88,6 +89,7 @@ instance = WinthropClient::User.new(
   can_show_game_post: null,
   can_see_school_groups: null,
   can_read_account: null,
+  can_show_desk: null,
   can_launch_intercollegiate: null,
   intercollegiate_url: null,
   is_sport_specific: null,
