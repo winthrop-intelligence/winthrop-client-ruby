@@ -8,6 +8,7 @@
 | **exp_total_cents** | **Integer** |  |  |
 | **rev_total_cents** | **Integer** |  |  |
 | **provisional** | **Boolean** |  |  |
+| **basis** | **String** | Which report this year&#39;s figures were read from — the quadrant points&#39; vocabulary — so the chart labels every year by its own filing (WINAD-10400). Null on a year the school did not file. |  |
 
 ## Example
 
@@ -18,7 +19,8 @@ instance = WinthropClient::DepartmentFinancialsTrendEntry.new(
   year: null,
   exp_total_cents: null,
   rev_total_cents: null,
-  provisional: null
+  provisional: null,
+  basis: null
 )
 ```
 
