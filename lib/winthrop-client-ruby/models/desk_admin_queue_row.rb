@@ -25,6 +25,7 @@ module WinthropClient
 
     attr_accessor :title
 
+    # The row's audience; null = every school (WINAD-10415 / D-29)
     attr_accessor :account
 
     attr_accessor :requested_by
@@ -154,6 +155,7 @@ module WinthropClient
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'account',
         :'requested_by',
         :'ask_body',
         :'ask_category',
@@ -334,10 +336,6 @@ module WinthropClient
         invalid_properties.push('invalid value for "title", title cannot be nil.')
       end
 
-      if @account.nil?
-        invalid_properties.push('invalid value for "account", account cannot be nil.')
-      end
-
       if @clock_paused.nil?
         invalid_properties.push('invalid value for "clock_paused", clock_paused cannot be nil.')
       end
@@ -373,7 +371,6 @@ module WinthropClient
       status_validator = EnumAttributeValidator.new('String', ["new-ask", "draft", "published", "hidden", "awaiting-client", "closed"])
       return false unless status_validator.valid?(@status)
       return false if @title.nil?
-      return false if @account.nil?
       ask_category_validator = EnumAttributeValidator.new('String', ["coaches-staff", "vendors-deals", "money-budgets", "my-peers", "other"])
       return false unless ask_category_validator.valid?(@ask_category)
       cta_key_validator = EnumAttributeValidator.new('String', ["another-sport", "different-peers", "push-on-this", "ask-anything", "make-report", "candidate-list", "extension-raise-scenario", "buyout-schedule", "recruit-position", "retention-raise-case", "staff-benchmark-all-sports", "run-bid-process", "draft-counter", "bid-one-pager", "budget-proposal", "case-for-support", "rerun-on-filing", "board-deck", "defend-line", "track-actuals", "model-termination", "compare-exposure", "peer-buyout-alert", "walk-us-through", "board-version"])
@@ -424,16 +421,6 @@ module WinthropClient
       end
 
       @title = title
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] account Value to be assigned
-    def account=(account)
-      if account.nil?
-        fail ArgumentError, 'account cannot be nil'
-      end
-
-      @account = account
     end
 
     # Custom attribute writer method checking allowed values (enum).
