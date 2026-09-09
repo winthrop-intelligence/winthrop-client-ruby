@@ -23,6 +23,9 @@ module WinthropClient
     # The results metric this surface is read through, resolved per season from the sport's rank chain (NET for basketball, CONF_WINS for football, RPI otherwise) with CONF_WINS as the fallback when no rank is filed (WINAD-10259, WINAD-10268). Metric fields ship for every column; the lens names the one a surface may claim.
     attr_accessor :results_lens
 
+    # Which filing this tab's comp column reads. A private school files no coach contracts, so its seats' pay comes from the school's IRS 990 — the same rule DepartmentCoaches applies in its private_990 mode, so the two tabs cannot name different money for one coach (WINAD-10406). Null when the viewer may not see compensation at all.
+    attr_accessor :comp_basis
+
     # One entry per cohort school — head-coach pay vs the sport's results rank.
     attr_accessor :quadrant_points
 
@@ -65,6 +68,7 @@ module WinthropClient
         :'season_year' => :'season_year',
         :'conference_name' => :'conference_name',
         :'results_lens' => :'results_lens',
+        :'comp_basis' => :'comp_basis',
         :'quadrant_points' => :'quadrant_points',
         :'head_coach' => :'head_coach',
         :'assistants' => :'assistants',
@@ -90,6 +94,7 @@ module WinthropClient
         :'season_year' => :'Integer',
         :'conference_name' => :'String',
         :'results_lens' => :'String',
+        :'comp_basis' => :'String',
         :'quadrant_points' => :'Array<AthleticProfileShowSportCoachStaffQuadrantPointsInner>',
         :'head_coach' => :'AthleticProfileShowSportCoachStaffHeadCoach',
         :'assistants' => :'Array<AthleticProfileShowSportCoachStaffAssistantsInner>',
@@ -103,6 +108,7 @@ module WinthropClient
     def self.openapi_nullable
       Set.new([
         :'conference_name',
+        :'comp_basis',
         :'head_coach',
         :'staff_pool',
       ])
@@ -134,6 +140,10 @@ module WinthropClient
 
       if attributes.key?(:'results_lens')
         self.results_lens = attributes[:'results_lens']
+      end
+
+      if attributes.key?(:'comp_basis')
+        self.comp_basis = attributes[:'comp_basis']
       end
 
       if attributes.key?(:'quadrant_points')
@@ -181,6 +191,8 @@ module WinthropClient
       warn '[DEPRECATED] the `valid?` method is obsolete'
       results_lens_validator = EnumAttributeValidator.new('String', ["NET", "RPI", "CONF_WINS"])
       return false unless results_lens_validator.valid?(@results_lens)
+      comp_basis_validator = EnumAttributeValidator.new('String', ["contract", "990"])
+      return false unless comp_basis_validator.valid?(@comp_basis)
       true
     end
 
@@ -194,6 +206,16 @@ module WinthropClient
       @results_lens = results_lens
     end
 
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] comp_basis Object to be assigned
+    def comp_basis=(comp_basis)
+      validator = EnumAttributeValidator.new('String', ["contract", "990"])
+      unless validator.valid?(comp_basis)
+        fail ArgumentError, "invalid value for \"comp_basis\", must be one of #{validator.allowable_values}."
+      end
+      @comp_basis = comp_basis
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -202,6 +224,7 @@ module WinthropClient
           season_year == o.season_year &&
           conference_name == o.conference_name &&
           results_lens == o.results_lens &&
+          comp_basis == o.comp_basis &&
           quadrant_points == o.quadrant_points &&
           head_coach == o.head_coach &&
           assistants == o.assistants &&
@@ -219,7 +242,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [season_year, conference_name, results_lens, quadrant_points, head_coach, assistants, staff_pool, support_staff, as_of].hash
+      [season_year, conference_name, results_lens, comp_basis, quadrant_points, head_coach, assistants, staff_pool, support_staff, as_of].hash
     end
 
     # Builds the object from hash

@@ -21,11 +21,36 @@ module WinthropClient
 
     attr_accessor :per_win_cents
 
+    # The compensation filing basis; cohort median and cheapest are withheld and cohort_size is 0 on the 990 basis.
+    attr_accessor :comp_basis
+
     attr_accessor :cohort_median_per_win_cents
 
     attr_accessor :cohort_size
 
     attr_accessor :cheapest
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -33,6 +58,7 @@ module WinthropClient
         :'bench_cents' => :'bench_cents',
         :'wins' => :'wins',
         :'per_win_cents' => :'per_win_cents',
+        :'comp_basis' => :'comp_basis',
         :'cohort_median_per_win_cents' => :'cohort_median_per_win_cents',
         :'cohort_size' => :'cohort_size',
         :'cheapest' => :'cheapest'
@@ -55,6 +81,7 @@ module WinthropClient
         :'bench_cents' => :'Integer',
         :'wins' => :'Integer',
         :'per_win_cents' => :'Integer',
+        :'comp_basis' => :'String',
         :'cohort_median_per_win_cents' => :'Integer',
         :'cohort_size' => :'Integer',
         :'cheapest' => :'AthleticProfileShowSportFinancialsCostPerWinCheapest'
@@ -97,6 +124,10 @@ module WinthropClient
         self.per_win_cents = attributes[:'per_win_cents']
       end
 
+      if attributes.key?(:'comp_basis')
+        self.comp_basis = attributes[:'comp_basis']
+      end
+
       if attributes.key?(:'cohort_median_per_win_cents')
         self.cohort_median_per_win_cents = attributes[:'cohort_median_per_win_cents']
       end
@@ -122,7 +153,19 @@ module WinthropClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      comp_basis_validator = EnumAttributeValidator.new('String', ["contract", "990"])
+      return false unless comp_basis_validator.valid?(@comp_basis)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] comp_basis Object to be assigned
+    def comp_basis=(comp_basis)
+      validator = EnumAttributeValidator.new('String', ["contract", "990"])
+      unless validator.valid?(comp_basis)
+        fail ArgumentError, "invalid value for \"comp_basis\", must be one of #{validator.allowable_values}."
+      end
+      @comp_basis = comp_basis
     end
 
     # Checks equality by comparing each attribute.
@@ -133,6 +176,7 @@ module WinthropClient
           bench_cents == o.bench_cents &&
           wins == o.wins &&
           per_win_cents == o.per_win_cents &&
+          comp_basis == o.comp_basis &&
           cohort_median_per_win_cents == o.cohort_median_per_win_cents &&
           cohort_size == o.cohort_size &&
           cheapest == o.cheapest
@@ -147,7 +191,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [bench_cents, wins, per_win_cents, cohort_median_per_win_cents, cohort_size, cheapest].hash
+      [bench_cents, wins, per_win_cents, comp_basis, cohort_median_per_win_cents, cohort_size, cheapest].hash
     end
 
     # Builds the object from hash

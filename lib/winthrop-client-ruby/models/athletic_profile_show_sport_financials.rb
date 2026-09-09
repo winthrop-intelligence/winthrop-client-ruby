@@ -27,9 +27,13 @@ module WinthropClient
 
     attr_accessor :frs_split
 
+    attr_accessor :eada_sport_line
+
     attr_accessor :cost_build
 
     attr_accessor :cost_per_win
+
+    attr_accessor :program_cost_per_win
 
     attr_accessor :dept_line
 
@@ -43,8 +47,10 @@ module WinthropClient
         :'available_fiscal_years' => :'available_fiscal_years',
         :'quadrant' => :'quadrant',
         :'frs_split' => :'frs_split',
+        :'eada_sport_line' => :'eada_sport_line',
         :'cost_build' => :'cost_build',
         :'cost_per_win' => :'cost_per_win',
+        :'program_cost_per_win' => :'program_cost_per_win',
         :'dept_line' => :'dept_line',
         :'as_of' => :'as_of'
       }
@@ -68,8 +74,10 @@ module WinthropClient
         :'available_fiscal_years' => :'Array<Integer>',
         :'quadrant' => :'AthleticProfileShowSportFinancialsQuadrant',
         :'frs_split' => :'AthleticProfileShowSportFinancialsFrsSplit',
+        :'eada_sport_line' => :'AthleticProfileShowSportFinancialsEadaSportLine',
         :'cost_build' => :'AthleticProfileShowSportFinancialsCostBuild',
         :'cost_per_win' => :'AthleticProfileShowSportFinancialsCostPerWin',
+        :'program_cost_per_win' => :'AthleticProfileShowSportFinancialsProgramCostPerWin',
         :'dept_line' => :'AthleticProfileShowSportFinancialsDeptLine',
         :'as_of' => :'Date'
       }
@@ -79,7 +87,9 @@ module WinthropClient
     def self.openapi_nullable
       Set.new([
         :'conference_name',
+        :'eada_sport_line',
         :'cost_per_win',
+        :'program_cost_per_win',
         :'dept_line',
       ])
     end
@@ -122,12 +132,20 @@ module WinthropClient
         self.frs_split = attributes[:'frs_split']
       end
 
+      if attributes.key?(:'eada_sport_line')
+        self.eada_sport_line = attributes[:'eada_sport_line']
+      end
+
       if attributes.key?(:'cost_build')
         self.cost_build = attributes[:'cost_build']
       end
 
       if attributes.key?(:'cost_per_win')
         self.cost_per_win = attributes[:'cost_per_win']
+      end
+
+      if attributes.key?(:'program_cost_per_win')
+        self.program_cost_per_win = attributes[:'program_cost_per_win']
       end
 
       if attributes.key?(:'dept_line')
@@ -164,8 +182,10 @@ module WinthropClient
           available_fiscal_years == o.available_fiscal_years &&
           quadrant == o.quadrant &&
           frs_split == o.frs_split &&
+          eada_sport_line == o.eada_sport_line &&
           cost_build == o.cost_build &&
           cost_per_win == o.cost_per_win &&
+          program_cost_per_win == o.program_cost_per_win &&
           dept_line == o.dept_line &&
           as_of == o.as_of
     end
@@ -179,7 +199,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [season_year, conference_name, available_fiscal_years, quadrant, frs_split, cost_build, cost_per_win, dept_line, as_of].hash
+      [season_year, conference_name, available_fiscal_years, quadrant, frs_split, eada_sport_line, cost_build, cost_per_win, program_cost_per_win, dept_line, as_of].hash
     end
 
     # Builds the object from hash

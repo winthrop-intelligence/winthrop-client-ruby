@@ -14,6 +14,7 @@ require 'date'
 require 'time'
 
 module WinthropClient
+  # Dead since WINAD-10390, which replaced the disclosure lists with the coaching-pay and department-snapshot cards. Always null; the key survives only because the pinned client still requires it.
   class DepartmentOverviewPrivateDisclosure < ApiModelBase
     attr_accessor :first_class
 

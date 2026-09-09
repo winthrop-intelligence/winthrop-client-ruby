@@ -23,11 +23,24 @@ module WinthropClient
 
     attr_accessor :ad_salary_cents
 
+    # Whether this row's own source reported figures: NCAA FRS for a public school, EADA for a private one (WINAD-10383). Not \"does any source hold figures\" — a public school with no FRS filing is false even where an EADA filing exists, because public rows do not fall back.
     attr_accessor :financials_reported
+
+    # Which report revenue_cents/expense_cents were read from. Public schools report NCAA FRS and never fall back; private schools report EADA, and their FRS figures are suppressed for every viewer. Null when the row's source reported nothing, and also when the viewer's subscription does not carry EADA for that school.
+    attr_accessor :financials_basis
+
+    # The filing year those figures come from: the list's financials_year when the school filed it, otherwise that school's newest filing. An EADA row can therefore report a year the rest of the page is not on.
+    attr_accessor :financials_basis_year
 
     attr_accessor :revenue_cents
 
     attr_accessor :expense_cents
+
+    # EADA sport-split revenue; null on an FRS row.
+    attr_accessor :football_revenue_cents
+
+    # EADA sport-split revenue; null on an FRS row.
+    attr_accessor :mens_basketball_revenue_cents
 
     attr_accessor :budget_rank
 
@@ -67,8 +80,12 @@ module WinthropClient
         :'ad_coach_id' => :'ad_coach_id',
         :'ad_salary_cents' => :'ad_salary_cents',
         :'financials_reported' => :'financials_reported',
+        :'financials_basis' => :'financials_basis',
+        :'financials_basis_year' => :'financials_basis_year',
         :'revenue_cents' => :'revenue_cents',
         :'expense_cents' => :'expense_cents',
+        :'football_revenue_cents' => :'football_revenue_cents',
+        :'mens_basketball_revenue_cents' => :'mens_basketball_revenue_cents',
         :'budget_rank' => :'budget_rank',
         :'budget_rank_of' => :'budget_rank_of',
         :'budget_rank_conference_name' => :'budget_rank_conference_name',
@@ -94,8 +111,12 @@ module WinthropClient
         :'ad_coach_id' => :'Integer',
         :'ad_salary_cents' => :'Integer',
         :'financials_reported' => :'Boolean',
+        :'financials_basis' => :'String',
+        :'financials_basis_year' => :'Integer',
         :'revenue_cents' => :'Integer',
         :'expense_cents' => :'Integer',
+        :'football_revenue_cents' => :'Integer',
+        :'mens_basketball_revenue_cents' => :'Integer',
         :'budget_rank' => :'Integer',
         :'budget_rank_of' => :'Integer',
         :'budget_rank_conference_name' => :'String',
@@ -109,8 +130,12 @@ module WinthropClient
         :'ad_name',
         :'ad_coach_id',
         :'ad_salary_cents',
+        :'financials_basis',
+        :'financials_basis_year',
         :'revenue_cents',
         :'expense_cents',
+        :'football_revenue_cents',
+        :'mens_basketball_revenue_cents',
         :'budget_rank',
         :'budget_rank_of',
         :'budget_rank_conference_name',
@@ -153,12 +178,28 @@ module WinthropClient
         self.financials_reported = attributes[:'financials_reported']
       end
 
+      if attributes.key?(:'financials_basis')
+        self.financials_basis = attributes[:'financials_basis']
+      end
+
+      if attributes.key?(:'financials_basis_year')
+        self.financials_basis_year = attributes[:'financials_basis_year']
+      end
+
       if attributes.key?(:'revenue_cents')
         self.revenue_cents = attributes[:'revenue_cents']
       end
 
       if attributes.key?(:'expense_cents')
         self.expense_cents = attributes[:'expense_cents']
+      end
+
+      if attributes.key?(:'football_revenue_cents')
+        self.football_revenue_cents = attributes[:'football_revenue_cents']
+      end
+
+      if attributes.key?(:'mens_basketball_revenue_cents')
+        self.mens_basketball_revenue_cents = attributes[:'mens_basketball_revenue_cents']
       end
 
       if attributes.key?(:'budget_rank')
@@ -194,6 +235,8 @@ module WinthropClient
       warn '[DEPRECATED] the `valid?` method is obsolete'
       ad_status_validator = EnumAttributeValidator.new('String', ["filled", "interim", "vacant"])
       return false unless ad_status_validator.valid?(@ad_status)
+      financials_basis_validator = EnumAttributeValidator.new('String', ["frs", "eada"])
+      return false unless financials_basis_validator.valid?(@financials_basis)
       true
     end
 
@@ -207,6 +250,16 @@ module WinthropClient
       @ad_status = ad_status
     end
 
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] financials_basis Object to be assigned
+    def financials_basis=(financials_basis)
+      validator = EnumAttributeValidator.new('String', ["frs", "eada"])
+      unless validator.valid?(financials_basis)
+        fail ArgumentError, "invalid value for \"financials_basis\", must be one of #{validator.allowable_values}."
+      end
+      @financials_basis = financials_basis
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -217,8 +270,12 @@ module WinthropClient
           ad_coach_id == o.ad_coach_id &&
           ad_salary_cents == o.ad_salary_cents &&
           financials_reported == o.financials_reported &&
+          financials_basis == o.financials_basis &&
+          financials_basis_year == o.financials_basis_year &&
           revenue_cents == o.revenue_cents &&
           expense_cents == o.expense_cents &&
+          football_revenue_cents == o.football_revenue_cents &&
+          mens_basketball_revenue_cents == o.mens_basketball_revenue_cents &&
           budget_rank == o.budget_rank &&
           budget_rank_of == o.budget_rank_of &&
           budget_rank_conference_name == o.budget_rank_conference_name &&
@@ -234,7 +291,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [ad_status, ad_name, ad_coach_id, ad_salary_cents, financials_reported, revenue_cents, expense_cents, budget_rank, budget_rank_of, budget_rank_conference_name, deals].hash
+      [ad_status, ad_name, ad_coach_id, ad_salary_cents, financials_reported, financials_basis, financials_basis_year, revenue_cents, expense_cents, football_revenue_cents, mens_basketball_revenue_cents, budget_rank, budget_rank_of, budget_rank_conference_name, deals].hash
     end
 
     # Builds the object from hash
