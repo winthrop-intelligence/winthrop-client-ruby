@@ -24,6 +24,7 @@
 | **can_show_game_contract** | **Boolean** | Whether the user can view game contract/guarantee data | [optional] |
 | **can_see_coaches** | **Boolean** | Whether the user can access the Coaches section | [optional] |
 | **can_see_administrators** | **Boolean** | Whether the user can access the Administrators section | [optional] |
+| **can_see_eada_financials** | **Boolean** | Whether the user can access the normalized EADA institution/sport financials API (WINAD-10370). A class-level check; per-school visibility (e.g. division-scoped subscriptions, private-school access) is still enforced per-request. | [optional] |
 | **can_show_financials** | **Boolean** | Whether the user can access the Financials section | [optional] |
 | **can_show_deals** | **Boolean** | Whether the user can access the Vendors section | [optional] |
 | **can_show_benchmark** | **Boolean** | Whether the user can access the Benchmark section | [optional] |
@@ -32,6 +33,7 @@
 | **can_show_game_post** | **Boolean** | Whether the user can access the Games Wanted section | [optional] |
 | **can_see_school_groups** | **Boolean** | Whether the user can access Custom School Groups | [optional] |
 | **can_read_account** | **Boolean** | Whether the user can view account management | [optional] |
+| **can_show_desk** | **Boolean** | Whether The Desk exists for this user (WINAD-10415 / D-29): super admin, or at least one LIVE report published to their account or to every school. One flag gates the whole feature — nav entry, /desk/* routes, gallery, reader, downloads, archive and every ask affordance. Computed per request, so a publish or a hide shows on the next fetch.  | [optional] |
 | **can_launch_intercollegiate** | **Boolean** | Whether the user can launch Intercollegiate direct access | [optional] |
 | **intercollegiate_url** | **String** | Final Intercollegiate launch or marketing URL for the user | [optional] |
 | **is_sport_specific** | **Boolean** |  | [optional] |
@@ -80,6 +82,7 @@ instance = WinthropClient::User.new(
   can_show_game_contract: null,
   can_see_coaches: null,
   can_see_administrators: null,
+  can_see_eada_financials: null,
   can_show_financials: null,
   can_show_deals: null,
   can_show_benchmark: null,
@@ -88,6 +91,7 @@ instance = WinthropClient::User.new(
   can_show_game_post: null,
   can_see_school_groups: null,
   can_read_account: null,
+  can_show_desk: null,
   can_launch_intercollegiate: null,
   intercollegiate_url: null,
   is_sport_specific: null,

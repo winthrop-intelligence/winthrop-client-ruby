@@ -10,10 +10,11 @@
 | **interim** | **Boolean** | True when the resolved seat-holder&#39;s position is interim-only. | [optional] |
 | **first_season_year** | **Integer** |  | [optional] |
 | **comp_cents** | **Integer** |  | [optional] |
-| **comp_rank** | **Integer** |  | [optional] |
+| **comp_fiscal_year** | **Integer** | The IRS 990&#39;s own filing year, when this seat&#39;s pay was read from one — a private school, which files no coach contract (WINAD-10406). Null on contract basis. | [optional] |
+| **comp_rank** | **Integer** | Withheld (null) for a private seat, whose pay is a 990 total rather than a contract&#39;s guaranteed comp — see the Coach &amp; Staff payload&#39;s comp_rank. | [optional] |
 | **comp_cohort_size** | **Integer** |  | [optional] |
 | **comp_median_cents** | **Integer** |  | [optional] |
-| **contract_start_on** | **Date** |  | [optional] |
+| **contract_start_on** | **Date** | Null for a private school: WinAD holds no private coach contract, so the stored historic rows are not forwarded — the Overview clock reads tenure instead of claiming a term that ended (WINAD-10407). | [optional] |
 | **contract_end_on** | **Date** |  | [optional] |
 | **contract_on_file** | **Boolean** |  | [optional] |
 | **assistant_count** | **Integer** |  | [optional] |
@@ -33,6 +34,7 @@ instance = WinthropClient::AthleticProfileShowSportOverviewHeadCoach.new(
   interim: null,
   first_season_year: null,
   comp_cents: null,
+  comp_fiscal_year: null,
   comp_rank: null,
   comp_cohort_size: null,
   comp_median_cents: null,
