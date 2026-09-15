@@ -14,17 +14,30 @@ require 'date'
 require 'time'
 
 module WinthropClient
+  # First publication sends body_html and optional note/change_note/renotify fields. Publishing a new version requires update, a JSON-encoded DeskAdminReportPublishUpdate; top-level publication fields are ignored when update is present. File uploads require multipart/form-data and travel in downloads[pdf], downloads[xlsx] and downloads[pptx]. An update without new files may also send the JSON-encoded update field as application/json. 
   class PublishAdminDeskReportRequest < ApiModelBase
     attr_accessor :body_html
 
     # The version's 06.5 history line (internal)
     attr_accessor :note
 
-    # What changed for the reader (D-23). Required when the report already has a live version — an update without one is refused (422, nothing stored). 
+    # Reader-facing explanation; new versions send this inside update instead.
     attr_accessor :change_note
 
-    # Request notification for a new version; effective only when publish notifications are enabled.
+    # Request notification; effective only when publish notifications are enabled.
     attr_accessor :renotify
+
+    # JSON-encoded DeskAdminReportPublishUpdate. Required for a new version, omitted for first publication. Only edited fields need to be sent. 
+    attr_accessor :update
+
+    # PDF replacement or addition; multipart updates only.
+    attr_accessor :downloads_pdf
+
+    # XLSX replacement or addition; multipart updates only.
+    attr_accessor :downloads_xlsx
+
+    # PPTX replacement or addition; multipart updates only.
+    attr_accessor :downloads_pptx
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -32,7 +45,11 @@ module WinthropClient
         :'body_html' => :'body_html',
         :'note' => :'note',
         :'change_note' => :'change_note',
-        :'renotify' => :'renotify'
+        :'renotify' => :'renotify',
+        :'update' => :'update',
+        :'downloads_pdf' => :'downloads[pdf]',
+        :'downloads_xlsx' => :'downloads[xlsx]',
+        :'downloads_pptx' => :'downloads[pptx]'
       }
     end
 
@@ -52,7 +69,11 @@ module WinthropClient
         :'body_html' => :'String',
         :'note' => :'String',
         :'change_note' => :'String',
-        :'renotify' => :'Boolean'
+        :'renotify' => :'Boolean',
+        :'update' => :'String',
+        :'downloads_pdf' => :'File',
+        :'downloads_xlsx' => :'File',
+        :'downloads_pptx' => :'File'
       }
     end
 
@@ -96,6 +117,22 @@ module WinthropClient
       if attributes.key?(:'renotify')
         self.renotify = attributes[:'renotify']
       end
+
+      if attributes.key?(:'update')
+        self.update = attributes[:'update']
+      end
+
+      if attributes.key?(:'downloads_pdf')
+        self.downloads_pdf = attributes[:'downloads_pdf']
+      end
+
+      if attributes.key?(:'downloads_xlsx')
+        self.downloads_xlsx = attributes[:'downloads_xlsx']
+      end
+
+      if attributes.key?(:'downloads_pptx')
+        self.downloads_pptx = attributes[:'downloads_pptx']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -136,7 +173,11 @@ module WinthropClient
           body_html == o.body_html &&
           note == o.note &&
           change_note == o.change_note &&
-          renotify == o.renotify
+          renotify == o.renotify &&
+          update == o.update &&
+          downloads_pdf == o.downloads_pdf &&
+          downloads_xlsx == o.downloads_xlsx &&
+          downloads_pptx == o.downloads_pptx
     end
 
     # @see the `==` method
@@ -148,7 +189,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [body_html, note, change_note, renotify].hash
+      [body_html, note, change_note, renotify, update, downloads_pdf, downloads_xlsx, downloads_pptx].hash
     end
 
     # Builds the object from hash

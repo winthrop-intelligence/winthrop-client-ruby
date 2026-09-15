@@ -6,8 +6,12 @@
 | ---- | ---- | ----------- | ----- |
 | **body_html** | **String** |  | [optional] |
 | **note** | **String** | The version&#39;s 06.5 history line (internal) | [optional] |
-| **change_note** | **String** | What changed for the reader (D-23). Required when the report already has a live version — an update without one is refused (422, nothing stored).  | [optional] |
-| **renotify** | **Boolean** | Request notification for a new version; effective only when publish notifications are enabled. | [optional] |
+| **change_note** | **String** | Reader-facing explanation; new versions send this inside update instead. | [optional] |
+| **renotify** | **Boolean** | Request notification; effective only when publish notifications are enabled. | [optional] |
+| **update** | **String** | JSON-encoded DeskAdminReportPublishUpdate. Required for a new version, omitted for first publication. Only edited fields need to be sent.  | [optional] |
+| **downloads_pdf** | **File** | PDF replacement or addition; multipart updates only. | [optional] |
+| **downloads_xlsx** | **File** | XLSX replacement or addition; multipart updates only. | [optional] |
+| **downloads_pptx** | **File** | PPTX replacement or addition; multipart updates only. | [optional] |
 
 ## Example
 
@@ -18,7 +22,11 @@ instance = WinthropClient::PublishAdminDeskReportRequest.new(
   body_html: null,
   note: null,
   change_note: null,
-  renotify: null
+  renotify: null,
+  update: null,
+  downloads_pdf: null,
+  downloads_xlsx: null,
+  downloads_pptx: null
 )
 ```
 
