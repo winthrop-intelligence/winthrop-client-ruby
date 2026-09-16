@@ -29,10 +29,10 @@
 | **rpi** | **Float** |  | [optional] |
 | **net_rank** | **Float** |  | [optional] |
 | **ap_rank** | **Float** |  | [optional] |
-| **compensation_cents** | **Integer** | Total compensation in cents (included based on authorization) | [optional] |
-| **base_salary_cents** | **Integer** | Base salary in cents (included based on authorization) | [optional] |
+| **compensation_cents** | **Integer** | Total compensation in cents (included based on authorization). On a search of the current season this is the latest known salary for the row&#39;s assignment (WINAD-10478): the season&#39;s own record when it carries a usable total, otherwise the most recent usable record from the same coach, school, sport and position types up to two seasons back. Any other season reports that season&#39;s own record. The comp filters, the compensation sort and comp_stats read the same value. | [optional] |
+| **base_salary_cents** | **Integer** | Base salary in cents (included based on authorization), read from the same record as compensation_cents. | [optional] |
 | **coli** | **Float** | School&#39;s cost-of-living index (included based on authorization) | [optional] |
-| **compensation_type** | **String** | Compensation type (included based on authorization) | [optional] |
+| **compensation_type** | **String** | Compensation type (included based on authorization), read from the same record as compensation_cents; so are the compensation_* component fields below. | [optional] |
 | **compensation_contingent_bonus** | **Boolean** |  | [optional] |
 | **compensation_deferred_comp_cents** | **Integer** |  | [optional] |
 | **compensation_one_time_bonus_cents** | **Integer** |  | [optional] |
@@ -42,6 +42,10 @@
 | **compensation_talent_fee** | **Integer** |  | [optional] |
 | **compensation_county_club_membership_paid** | **Boolean** |  | [optional] |
 | **compensation_media_link** | **String** |  | [optional] |
+| **compensation_source_year** | **Integer** | Season end year of the compensation record the figures come from (included based on authorization; null when no record is on file). Equals year unless compensation_is_fallback is true. | [optional] |
+| **compensation_is_fallback** | **Boolean** | True when the figures were carried forward from an earlier season of the same assignment because the current season has no usable record (included based on authorization). Always false outside the current season. | [optional] |
+| **compensation_source_compensation_id** | **Integer** | The compensation record the figures come from (included based on authorization). | [optional] |
+| **compensation_source_raw_contract_id** | **Integer** | The document behind that record, when one is on file and the viewer may open it. Distinct from raw_contract_id, which stays the current position&#39;s contract document. | [optional] |
 | **contract_starts_on** | **Date** |  | [optional] |
 | **contract_expires_on** | **Date** |  | [optional] |
 | **contract_at_will** | **Boolean** |  | [optional] |
@@ -92,6 +96,10 @@ instance = WinthropClient::CoachSearchResult.new(
   compensation_talent_fee: null,
   compensation_county_club_membership_paid: null,
   compensation_media_link: null,
+  compensation_source_year: null,
+  compensation_is_fallback: null,
+  compensation_source_compensation_id: null,
+  compensation_source_raw_contract_id: null,
   contract_starts_on: null,
   contract_expires_on: null,
   contract_at_will: null,
