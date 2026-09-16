@@ -5,17 +5,21 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **season_year_str** | **String** |  |  |
-| **base_comp_cents** | **Integer** |  | [optional] |
-| **total_comp_cents** | **Integer** |  | [optional] |
-| **compensation_type** | **String** |  |  |
-| **buyout_terms** | **String** |  | [optional] |
+| **base_comp_cents** | **Integer** | Base from the resolved compensation record, in cents; null when unavailable. |  |
+| **total_comp_cents** | **Integer** | Guaranteed total from the same resolved record, in cents; null when unavailable. |  |
+| **compensation_type** | **String** | Resolved record&#39;s type, or null when compensation is unavailable. |  |
+| **compensation_source_year** | **Integer** | Salary source season end year; null when unavailable, never inferred from contract dates. |  |
+| **compensation_is_fallback** | **Boolean** | True only when salary comes from an earlier eligible season; false when unavailable. |  |
+| **compensation_source_compensation_id** | **Integer** | Resolved compensation id; null when unavailable. Gated with amounts by compensation access. |  |
+| **compensation_source_raw_contract_id** | **Integer** | Salary source document id; omitted unless both its contract and document are authorized. | [optional] |
+| **buyout_terms** | **String** |  |  |
 | **record** | **String** |  | [optional] |
 | **contract_start** | **String** |  | [optional] |
 | **contract_end** | **String** |  | [optional] |
 | **contract_at_will** | **Boolean** |  | [optional] |
-| **raw_contract_id** | **Integer** |  | [optional] |
+| **raw_contract_id** | **Integer** | Selected position&#39;s current contract document, never replaced by the salary source document. | [optional] |
 | **income_reports** | [**Array&lt;SnapshotIncomeReport&gt;**](SnapshotIncomeReport.md) |  | [optional] |
-| **asst_coach_pool_cents** | **Integer** |  | [optional] |
+| **asst_coach_pool_cents** | **Integer** |  |  |
 
 ## Example
 
@@ -27,6 +31,10 @@ instance = WinthropClient::CoachSnapshot.new(
   base_comp_cents: null,
   total_comp_cents: null,
   compensation_type: null,
+  compensation_source_year: null,
+  compensation_is_fallback: null,
+  compensation_source_compensation_id: null,
+  compensation_source_raw_contract_id: null,
   buyout_terms: null,
   record: null,
   contract_start: null,
