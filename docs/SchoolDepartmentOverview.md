@@ -20,10 +20,12 @@
 | **mode** | **String** | Which basis the tab renders. A private school has no FRS filing, so every FRS-derived module is null and the private_* modules carry the page. | [optional] |
 | **private_spend** | [**DepartmentOverviewPrivateSpend**](DepartmentOverviewPrivateSpend.md) |  | [optional] |
 | **private_results** | [**DepartmentOverviewPrivateResults**](DepartmentOverviewPrivateResults.md) |  | [optional] |
-| **private_coverage** | [**DepartmentOverviewPrivateCoverage**](DepartmentOverviewPrivateCoverage.md) |  | [optional] |
 | **private_disclosure** | [**DepartmentOverviewPrivateDisclosure**](DepartmentOverviewPrivateDisclosure.md) |  | [optional] |
+| **private_coaching_pay** | [**DepartmentOverviewPrivateCoachingPay**](DepartmentOverviewPrivateCoachingPay.md) |  | [optional] |
+| **private_snapshot** | [**DepartmentOverviewPrivateSnapshot**](DepartmentOverviewPrivateSnapshot.md) |  | [optional] |
 | **private_ad** | [**DepartmentOverviewPrivateAd**](DepartmentOverviewPrivateAd.md) |  | [optional] |
 | **private_basis** | [**DepartmentOverviewPrivateBasis**](DepartmentOverviewPrivateBasis.md) |  | [optional] |
+| **private_flagship** | [**DepartmentOverviewPrivateFlagship**](DepartmentOverviewPrivateFlagship.md) |  | [optional] |
 
 ## Example
 
@@ -47,10 +49,12 @@ instance = WinthropClient::SchoolDepartmentOverview.new(
   mode: null,
   private_spend: null,
   private_results: null,
-  private_coverage: null,
   private_disclosure: null,
+  private_coaching_pay: null,
+  private_snapshot: null,
   private_ad: null,
-  private_basis: null
+  private_basis: null,
+  private_flagship: null
 )
 ```
 
