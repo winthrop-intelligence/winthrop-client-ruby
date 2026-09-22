@@ -42,6 +42,13 @@
 | **compensation_talent_fee** | **Integer** |  | [optional] |
 | **compensation_county_club_membership_paid** | **Boolean** |  | [optional] |
 | **compensation_media_link** | **String** |  | [optional] |
+| **latest_known_fallback** | **Boolean** | True when the searched season has no usable annual total for this assignment but an earlier season of the same unbroken job (same coach, school, sport and position types in every season between) does, so the latest_known_* fields carry that older record as display-only context (included based on authorization). It never changes compensation_cents, the comp filters, the compensation sort or comp_stats. | [optional] |
+| **latest_known_compensation_cents** | **Integer** | Total of that older record in cents; null unless latest_known_fallback. | [optional] |
+| **latest_known_base_salary_cents** | **Integer** | Base salary of that older record in cents; null unless latest_known_fallback. | [optional] |
+| **latest_known_compensation_type** | **String** | Compensation type of that older record; null unless latest_known_fallback. | [optional] |
+| **latest_known_source_year** | **Integer** | Season end year the older record was filed for (2024 means 2023–24); null unless latest_known_fallback. Always earlier than year. | [optional] |
+| **latest_known_source_compensation_id** | **Integer** | The older compensation record&#39;s id; null unless latest_known_fallback. | [optional] |
+| **latest_known_source_raw_contract_id** | **Integer** | The document behind the older record, present only when one is on file and the viewer may open it. Distinct from raw_contract_id, which stays the current position&#39;s contract document. | [optional] |
 | **contract_starts_on** | **Date** |  | [optional] |
 | **contract_expires_on** | **Date** |  | [optional] |
 | **contract_at_will** | **Boolean** |  | [optional] |
@@ -92,6 +99,13 @@ instance = WinthropClient::CoachSearchResult.new(
   compensation_talent_fee: null,
   compensation_county_club_membership_paid: null,
   compensation_media_link: null,
+  latest_known_fallback: null,
+  latest_known_compensation_cents: null,
+  latest_known_base_salary_cents: null,
+  latest_known_compensation_type: null,
+  latest_known_source_year: null,
+  latest_known_source_compensation_id: null,
+  latest_known_source_raw_contract_id: null,
   contract_starts_on: null,
   contract_expires_on: null,
   contract_at_will: null,
