@@ -16,7 +16,8 @@
 | **school_id** | **Integer** |  | [optional] |
 | **school_revenue_year** | **Integer** |  | [optional] |
 | **audited_financial_year** | **Integer** |  | [optional] |
-| **text** | **String** |  | [optional] |
+| **text** | **String** | Current Mistral OCR text. Null for legacy rows that have not been OCR&#39;d by Mistral (see &#x60;gs_text&#x60;). | [optional] |
+| **gs_text** | **String** | Legacy Ghostscript OCR text. Historical only; &#x60;text&#x60; holds the current Mistral OCR and takes precedence over this field. Null for rows created after the Mistral migration. | [optional] |
 | **use_flexpaper** | **Boolean** |  | [optional] |
 | **game_contracts_count** | **Integer** |  | [optional] |
 | **drive_id** | **String** |  | [optional] |
@@ -54,6 +55,7 @@ instance = WinthropClient::RawContract.new(
   school_revenue_year: null,
   audited_financial_year: null,
   text: null,
+  gs_text: null,
   use_flexpaper: null,
   game_contracts_count: null,
   drive_id: null,
