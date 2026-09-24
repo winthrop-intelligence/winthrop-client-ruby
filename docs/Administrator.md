@@ -19,6 +19,7 @@
 | **compensation_id** | **Integer** | Only included in /administrator_searches responses when the user has administrator_compensation permission. | [optional] |
 | **contract_id** | **Integer** | Only included in /administrator_searches responses when the user can view this administrator&#39;s contract. | [optional] |
 | **year** | **Integer** |  | [optional] |
+| **newer_season** | [**NewerSeasonContext**](NewerSeasonContext.md) | Display-only latest authorized administrator assignment newer than this row, restricted to the application current season or current season plus one. Return null when neither season has an eligible assignment; never fall back to older seasons. Select the latest eligible assignment first. A school-ID change always triggers context. At the same school, both the position-type ID set and resolved job wording must differ; otherwise return null. Free-text titles override type labels. When both titles use type labels, their ordering alone is ignored. Salary, title wording, sport and type order alone do not trigger context. Pure or mixed Staff Member appointments (type name INTERCOLLEGIATE_ONLY) are eligible context; other intercollegiate-only types remain excluded. Ordinary search-result exclusions are unchanged. Ties prefer this row&#39;s sport, then the lowest position ID. Administrator salary permissions apply; no salary carry-forward or document links. Does not change selected-season fields, search membership, filters, sorting, pagination or statistics. | [optional] |
 | **position_title** | **String** |  | [optional] |
 | **school_name** | **String** |  | [optional] |
 | **school_short_name** | **String** |  | [optional] |
@@ -72,6 +73,7 @@ instance = WinthropClient::Administrator.new(
   compensation_id: 1,
   contract_id: 1,
   year: 2019,
+  newer_season: null,
   position_title: This is a position title,
   school_name: This is a school name,
   school_short_name: This is a school short name,
