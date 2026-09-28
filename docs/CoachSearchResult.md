@@ -15,7 +15,8 @@
 | **division_name** | **String** |  | [optional] |
 | **division_id** | **Integer** |  | [optional] |
 | **year** | **Integer** |  | [optional] |
-| **newer_season** | [**NewerSeasonContext**](NewerSeasonContext.md) | Display-only latest authorized coach position newer than this row, restricted to the application current season or current season plus one. Choose the latest eligible assignment first; return null when neither season has an eligible assignment; never fall back to older seasons. A school-ID change always triggers context. At the same school, both the position-type ID set and resolved job wording must differ. Free-text titles override type labels. When both titles use type labels, their ordering alone is ignored. Salary, free-text title, sport, and type ordering alone do not trigger context. Pure or mixed Staff Member appointments (type name INTERCOLLEGIATE_ONLY) are eligible context; other intercollegiate-only types remain excluded. Ordinary search-result exclusions are unchanged. Do not fall back to an earlier differing assignment. Does not affect selected-season fields, search membership, filters, sorting, pagination, statistics or COLI. Ties prefer this row&#39;s sport, then the lowest position ID. No salary carry-forward or document links. | [optional] |
+| **newer_season** | [**NewerSeasonContext**](NewerSeasonContext.md) | Display-only authorized coach positions newer than this row, restricted to the application current season or current season plus one; never fall back to older seasons. Sport-scoped searches (a selected sport or conference, or a sport-specific subscription) only use this row&#39;s sport; other searches use every sport. Resolve each sport separately: use the current season when next season repeats the same school, sport and jobs (salary, title wording, type order and record IDs ignored), otherwise next season, or whichever season has jobs. Keep every job of the chosen season that is newer than this row. Return context when any of those jobs has no unchanged counterpart among this row season&#39;s jobs: a school-ID change, or at the same school both a different position-type ID set and different resolved job wording. Free-text titles override type labels; label ordering alone is ignored. Salary, free-text title, sport, and type ordering alone do not trigger context. Pure or mixed Staff Member appointments (type name INTERCOLLEGIATE_ONLY) are eligible context; other intercollegiate-only types remain excluded. Ordinary search-result exclusions are unchanged. The top-level facts describe the first ranked assignment. Does not affect selected-season fields, search membership, filters, sorting, pagination, statistics or COLI. No salary carry-forward or document links. | [optional] |
+| **assignments** | [**Array&lt;PersonAssignment&gt;**](PersonAssignment.md) | Display-only authorized positions this coach holds in this row&#39;s season, ranked primary first; only this row&#39;s sport when the search is sport-scoped (see newer_season). Intercollegiate-only appointments are excluded like search membership. Empty when none are resolvable. | [optional] |
 | **coach_friendly_id** | **String** |  | [optional] |
 | **visible** | **Boolean** | Whether the coach appears on customer-facing surfaces | [optional] |
 | **position_types** | **Array&lt;String&gt;** |  | [optional] |
@@ -67,6 +68,7 @@ instance = WinthropClient::CoachSearchResult.new(
   division_id: null,
   year: null,
   newer_season: null,
+  assignments: null,
   coach_friendly_id: null,
   visible: true,
   position_types: null,

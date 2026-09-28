@@ -187,9 +187,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_position_types**](DefaultApi.md#get_position_types) | **GET** /api/v1/position_types |  |
 | [**get_positions**](DefaultApi.md#get_positions) | **GET** /api/v1/positions |  |
 | [**get_raw_contract**](DefaultApi.md#get_raw_contract) | **GET** /api/v1/raw_contracts/{raw_contractId} |  |
-| [**get_raw_contract_ocr_text**](DefaultApi.md#get_raw_contract_ocr_text) | **GET** /api/v1/raw_contracts/{raw_contractId}/ocr_text |  |
 | [**get_raw_contracts**](DefaultApi.md#get_raw_contracts) | **GET** /api/v1/raw_contracts |  |
-| [**get_reconciliation_positions**](DefaultApi.md#get_reconciliation_positions) | **GET** /api/v1/reconciliation_positions |  |
 | [**get_requested_item**](DefaultApi.md#get_requested_item) | **GET** /api/v1/requested_items/{requestedItemId} |  |
 | [**get_requested_item_review_context**](DefaultApi.md#get_requested_item_review_context) | **GET** /api/v1/requested_items/{requestedItemId}/review_context |  |
 | [**get_requested_item_ri_note**](DefaultApi.md#get_requested_item_ri_note) | **GET** /api/v1/requested_items/{requestedItemId}/ri_note |  |
@@ -14168,80 +14166,6 @@ end
 - **Accept**: application/json
 
 
-## get_raw_contract_ocr_text
-
-> <GetRawContractOcrText200Response> get_raw_contract_ocr_text(raw_contract_id)
-
-
-
-Return the contract's Mistral OCR text; if not yet stored, OCR the PDF on demand and return it
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-raw_contract_id = 56 # Integer | ID of the RawContract
-
-begin
-  
-  result = api_instance.get_raw_contract_ocr_text(raw_contract_id)
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_raw_contract_ocr_text: #{e}"
-end
-```
-
-#### Using the get_raw_contract_ocr_text_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<GetRawContractOcrText200Response>, Integer, Hash)> get_raw_contract_ocr_text_with_http_info(raw_contract_id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.get_raw_contract_ocr_text_with_http_info(raw_contract_id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <GetRawContractOcrText200Response>
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_raw_contract_ocr_text_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **raw_contract_id** | **Integer** | ID of the RawContract |  |
-
-### Return type
-
-[**GetRawContractOcrText200Response**](GetRawContractOcrText200Response.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
 ## get_raw_contracts
 
 > <RawContractCollection> get_raw_contracts(opts)
@@ -14311,86 +14235,6 @@ end
 ### Return type
 
 [**RawContractCollection**](RawContractCollection.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## get_reconciliation_positions
-
-> <ReconciliationPositionCollection> get_reconciliation_positions(opts)
-
-
-
-Compact read-only position data for reconciliation. Supports the same Ransack filters as positions, including school_id_eq + season_year_eq for rosters, coach_id_in + season_year_gteq for recent history, and coach_id_in without a year bound for full history. Accepts nested or JSON-encoded q. Sorts (or s) may be an array or comma-separated string using id, coach_id, season_id, season_year, school_id, season_sport_id, title or departing, with optional asc/desc directions. Other sort fields or malformed sort input return 400; collection sorting is excluded to prevent duplicate positions. id asc is the default and is appended as a tie-breaker unless an explicit id sort is supplied. As with positions, non-managers cannot read hidden-coach positions or identities; coach-less positions remain readable. Shared entities occur once per page in included and are referenced by ID from data. Biography URLs are retained; biography text, athletic directors, images and compensation are omitted. Use the existing coach detail endpoint only when biography text is needed. Pagination is live, not a frozen snapshot.
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | Positive page size; requests above 100 are clamped to 100.
-  q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
-}
-
-begin
-  
-  result = api_instance.get_reconciliation_positions(opts)
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_reconciliation_positions: #{e}"
-end
-```
-
-#### Using the get_reconciliation_positions_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<ReconciliationPositionCollection>, Integer, Hash)> get_reconciliation_positions_with_http_info(opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.get_reconciliation_positions_with_http_info(opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <ReconciliationPositionCollection>
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_reconciliation_positions_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | Positive page size; requests above 100 are clamped to 100. | [optional][default to 100] |
-| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
-
-### Return type
-
-[**ReconciliationPositionCollection**](ReconciliationPositionCollection.md)
 
 ### Authorization
 
