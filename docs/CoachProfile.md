@@ -31,6 +31,7 @@
 | **current_position_types** | **Array&lt;String&gt;** |  |  |
 | **header_position_season_year_str** | **String** |  |  |
 | **header_position_historical** | **Boolean** |  |  |
+| **header_assignments** | [**Array&lt;PersonAssignment&gt;**](PersonAssignment.md) | Every position in the coach&#39;s latest season year, ranked primary first (WINAD-10522). Sport-specific subscriptions only list their sports. Empty when none are visible. | [optional] |
 | **avatar_url** | **String** |  | [optional] |
 | **can_see_compensation** | **Boolean** |  |  |
 | **can_see_videos** | **Boolean** |  |  |
@@ -71,6 +72,7 @@ instance = WinthropClient::CoachProfile.new(
   current_position_types: null,
   header_position_season_year_str: null,
   header_position_historical: null,
+  header_assignments: null,
   avatar_url: null,
   can_see_compensation: null,
   can_see_videos: null,
