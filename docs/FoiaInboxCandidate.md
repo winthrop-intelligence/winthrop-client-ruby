@@ -14,6 +14,7 @@
 | **updated_by_school** | **Date** |  | [optional] |
 | **updated_by_wi** | **Date** |  | [optional] |
 | **follow_up_date** | **Date** |  | [optional] |
+| **follow_up_date_explicit** | **Boolean** |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
 | **foia_notes** | [**Array&lt;FoiaInboxNote&gt;**](FoiaInboxNote.md) |  | [optional] |
@@ -35,6 +36,7 @@ instance = WinthropClient::FoiaInboxCandidate.new(
   updated_by_school: null,
   updated_by_wi: null,
   follow_up_date: null,
+  follow_up_date_explicit: null,
   created_at: null,
   updated_at: null,
   foia_notes: null,

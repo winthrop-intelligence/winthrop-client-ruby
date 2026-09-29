@@ -13,7 +13,7 @@
 | **decision_sha256** | **String** |  |  |
 | **request_sha256** | **String** |  |  |
 | **status** | **String** |  |  |
-| **result** | **Hash&lt;String, Object&gt;** |  |  |
+| **result** | [**FoiaInboxApplyResponseResult**](FoiaInboxApplyResponseResult.md) |  |  |
 
 ## Example
 
