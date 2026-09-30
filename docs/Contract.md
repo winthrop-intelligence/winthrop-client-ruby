@@ -11,6 +11,7 @@
 | **end_on** | **Date** |  | [optional] |
 | **at_will** | **Boolean** |  | [optional] |
 | **verified** | **Boolean** |  | [optional] |
+| **pending** | **Boolean** | Pending contracts are undated PDFs awaiting entry. They skip the date validations, cannot be linked to a compensation, and are hidden from customers. Filter with q[pending_eq]&#x3D;true. | [optional] |
 | **contractable_type** | **String** |  | [optional] |
 | **contractable_id** | **Integer** |  | [optional] |
 | **raw_contract_id** | **Integer** |  | [optional] |
@@ -30,6 +31,7 @@ instance = WinthropClient::Contract.new(
   end_on: Tue Jan 01 00:00:00 UTC 2019,
   at_will: false,
   verified: false,
+  pending: false,
   contractable_type: Coach,
   contractable_id: 1,
   raw_contract_id: 1,

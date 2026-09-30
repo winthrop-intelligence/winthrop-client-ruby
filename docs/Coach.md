@@ -33,8 +33,6 @@
 | **linkedin_scraping_disabled** | **Boolean** |  | [optional] |
 | **twitter_scraping_disabled** | **Boolean** |  | [optional] |
 | **email_scraping_disabled** | **Boolean** |  | [optional] |
-| **mobility_index** | **Integer** |  | [optional] |
-| **has_new_job** | **Boolean** |  | [optional] |
 | **visible** | **Boolean** | Whether the coach appears on customer-facing surfaces. Also clears the Coach-level FOIA gate; FOIA eligibility additionally requires a current position with a requestable PositionType outside the Hidden Coaches group. | [optional] |
 
 ## Example
@@ -72,8 +70,6 @@ instance = WinthropClient::Coach.new(
   linkedin_scraping_disabled: false,
   twitter_scraping_disabled: false,
   email_scraping_disabled: false,
-  mobility_index: 5,
-  has_new_job: false,
   visible: true
 )
 ```

@@ -160,6 +160,8 @@ docs/ContactSearchEntry.md
 docs/Contract.md
 docs/ContractCollection.md
 docs/ContractTermOption.md
+docs/ContractVerification.md
+docs/ContractVerificationInput.md
 docs/CoworkerEntry.md
 docs/CoworkerTenure.md
 docs/CreateAccountUser422Response.md
@@ -168,6 +170,7 @@ docs/CreateAccountUserRequestUser.md
 docs/CreateAdminDeskReportArtifact201Response.md
 docs/CreateContactSearchRequest.md
 docs/CreateContactSearchRequestContact.md
+docs/CreateContractVerificationRequest.md
 docs/CreateDeskRequest201Response.md
 docs/CreateDeskRequestRequest.md
 docs/CreateFavorite201Response.md
@@ -456,6 +459,7 @@ docs/GameType.md
 docs/GeoRegion.md
 docs/GetAccountUserActivation200Response.md
 docs/GetCompensationComparisons400Response.md
+docs/GetContractVerifications200Response.md
 docs/GetFavorites200ResponseInner.md
 docs/GetFavoritesCategories200ResponseInner.md
 docs/GetFilterOptions200Response.md
@@ -911,6 +915,8 @@ lib/winthrop-client-ruby/models/contact_search_entry.rb
 lib/winthrop-client-ruby/models/contract.rb
 lib/winthrop-client-ruby/models/contract_collection.rb
 lib/winthrop-client-ruby/models/contract_term_option.rb
+lib/winthrop-client-ruby/models/contract_verification.rb
+lib/winthrop-client-ruby/models/contract_verification_input.rb
 lib/winthrop-client-ruby/models/coworker_entry.rb
 lib/winthrop-client-ruby/models/coworker_tenure.rb
 lib/winthrop-client-ruby/models/create_account_user422_response.rb
@@ -919,6 +925,7 @@ lib/winthrop-client-ruby/models/create_account_user_request_user.rb
 lib/winthrop-client-ruby/models/create_admin_desk_report_artifact201_response.rb
 lib/winthrop-client-ruby/models/create_contact_search_request.rb
 lib/winthrop-client-ruby/models/create_contact_search_request_contact.rb
+lib/winthrop-client-ruby/models/create_contract_verification_request.rb
 lib/winthrop-client-ruby/models/create_desk_request201_response.rb
 lib/winthrop-client-ruby/models/create_desk_request_request.rb
 lib/winthrop-client-ruby/models/create_favorite201_response.rb
@@ -1202,6 +1209,7 @@ lib/winthrop-client-ruby/models/game_type.rb
 lib/winthrop-client-ruby/models/geo_region.rb
 lib/winthrop-client-ruby/models/get_account_user_activation200_response.rb
 lib/winthrop-client-ruby/models/get_compensation_comparisons400_response.rb
+lib/winthrop-client-ruby/models/get_contract_verifications200_response.rb
 lib/winthrop-client-ruby/models/get_favorites200_response_inner.rb
 lib/winthrop-client-ruby/models/get_favorites_categories200_response_inner.rb
 lib/winthrop-client-ruby/models/get_filter_options200_response.rb
@@ -1482,7 +1490,9 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
-spec/models/foia_inbox_apply_response_result_foia_request_spec.rb
-spec/models/foia_inbox_apply_response_result_spec.rb
+spec/models/contract_verification_input_spec.rb
+spec/models/contract_verification_spec.rb
+spec/models/create_contract_verification_request_spec.rb
+spec/models/get_contract_verifications200_response_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
