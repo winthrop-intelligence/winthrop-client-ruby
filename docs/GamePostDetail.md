@@ -4,6 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **season_year** | **Integer** | Ending year of the post&#39;s July-to-June season, derived from date (legacy start_date). | [optional] |
+| **outside_target_season** | **Boolean** | Whether the post belongs to a season other than the server scheduling target. | [optional] |
 | **id** | **Integer** |  | [optional] |
 | **school_id** | **Integer** |  | [optional] |
 | **school_name** | **String** |  | [optional] |
@@ -31,6 +33,8 @@
 require 'winthrop-client-ruby'
 
 instance = WinthropClient::GamePostDetail.new(
+  season_year: null,
+  outside_target_season: null,
   id: null,
   school_id: null,
   school_name: null,
