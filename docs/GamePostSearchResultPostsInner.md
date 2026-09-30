@@ -4,6 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **season_year** | **Integer** | Ending year of the post&#39;s July-to-June season, derived from date (legacy start_date). | [optional] |
+| **outside_target_season** | **Boolean** | Whether the post belongs to a season other than the server scheduling target. | [optional] |
 | **id** | **Integer** | GamePost ID — the specific post this entry represents. |  |
 | **date** | **Date** |  |  |
 | **game_types** | **Array&lt;String&gt;** | Raw game-type names for this post (drive deal-type chip colors). |  |
@@ -24,6 +26,8 @@
 require 'winthrop-client-ruby'
 
 instance = WinthropClient::GamePostSearchResultPostsInner.new(
+  season_year: null,
+  outside_target_season: null,
   id: null,
   date: null,
   game_types: null,
