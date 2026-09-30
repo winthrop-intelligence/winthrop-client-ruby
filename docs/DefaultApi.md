@@ -21,6 +21,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**create_conference**](DefaultApi.md#create_conference) | **POST** /api/v1/conferences |  |
 | [**create_conferenceship**](DefaultApi.md#create_conferenceship) | **POST** /api/v1/conferenceships |  |
 | [**create_contact_search**](DefaultApi.md#create_contact_search) | **POST** /api/v1/contact_searches |  |
+| [**create_contract_verification**](DefaultApi.md#create_contract_verification) | **POST** /api/v1/raw_contracts/{raw_contractId}/verifications | Append a contract verification event |
 | [**create_desk_report_archive**](DefaultApi.md#create_desk_report_archive) | **POST** /api/v1/desk_reports/{uuid}/archive |  |
 | [**create_desk_report_opened**](DefaultApi.md#create_desk_report_opened) | **POST** /api/v1/desk_reports/{uuid}/opened |  |
 | [**create_desk_request**](DefaultApi.md#create_desk_request) | **POST** /api/v1/desk_requests |  |
@@ -122,6 +123,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_contact_searches**](DefaultApi.md#get_contact_searches) | **GET** /api/v1/contact_searches |  |
 | [**get_contacts**](DefaultApi.md#get_contacts) | **GET** /api/v1/contacts |  |
 | [**get_contract**](DefaultApi.md#get_contract) | **GET** /api/v1/contracts/{contractId} |  |
+| [**get_contract_verifications**](DefaultApi.md#get_contract_verifications) | **GET** /api/v1/raw_contracts/{raw_contractId}/verifications | List the contract&#39;s verification history |
 | [**get_contracts**](DefaultApi.md#get_contracts) | **GET** /api/v1/contracts |  |
 | [**get_deal**](DefaultApi.md#get_deal) | **GET** /api/v1/deals/{dealId} |  |
 | [**get_deal_searches**](DefaultApi.md#get_deal_searches) | **GET** /api/v1/deal_searches |  |
@@ -1596,6 +1598,82 @@ end
 ### Return type
 
 [**ContactSearchEntry**](ContactSearchEntry.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_contract_verification
+
+> <ContractVerification> create_contract_verification(raw_contract_id, create_contract_verification_request)
+
+Append a contract verification event
+
+Requires winad_verify, an application explicitly allowing winad_verify, a persisted token resource owner, and read access to the parent RawContract. winad_write is not required and does not grant this action. The document must belong to a Contract. Identity fields are server-derived. Agent retries use a unique (contract_id, agent_run_id) key: equivalent normalized payloads return the original event; changed payloads, documents, or verifiers conflict. An omitted verified_at on retry retains the original check time. Manual checks are never deduplicated. This API provides no endpoints to edit or delete events.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+raw_contract_id = 56 # Integer | 
+create_contract_verification_request = WinthropClient::CreateContractVerificationRequest.new({contract_verification: WinthropClient::ContractVerificationInput.new({seasons: [37], result: 'passed', method: 'agent'})}) # CreateContractVerificationRequest | 
+
+begin
+  # Append a contract verification event
+  result = api_instance.create_contract_verification(raw_contract_id, create_contract_verification_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_contract_verification: #{e}"
+end
+```
+
+#### Using the create_contract_verification_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ContractVerification>, Integer, Hash)> create_contract_verification_with_http_info(raw_contract_id, create_contract_verification_request)
+
+```ruby
+begin
+  # Append a contract verification event
+  data, status_code, headers = api_instance.create_contract_verification_with_http_info(raw_contract_id, create_contract_verification_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ContractVerification>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_contract_verification_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **raw_contract_id** | **Integer** |  |  |
+| **create_contract_verification_request** | [**CreateContractVerificationRequest**](CreateContractVerificationRequest.md) |  |  |
+
+### Return type
+
+[**ContractVerification**](ContractVerification.md)
 
 ### Authorization
 
@@ -9202,6 +9280,88 @@ end
 ### Return type
 
 [**Contract**](Contract.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_contract_verifications
+
+> <GetContractVerifications200Response> get_contract_verifications(raw_contract_id, opts)
+
+List the contract's verification history
+
+Requires read access to the parent RawContract. Returns events for its Contract, including checks of replaced PDFs, ordered by verified_at DESC and id DESC. Documents without a Contract return an empty collection. Events are deleted with their owning Contract; deleted verifiers and coaches are returned as null references.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+raw_contract_id = 56 # Integer | 
+opts = {
+  page: 56, # Integer | 
+  per_page: 56, # Integer | Page size, capped at 100; defaults to 35.
+  q: { ... } # Object | Ransack filters on scalar verification fields only; association traversal and scalar predicates on the seasons array are disabled. Ordering is always by check time and id descending.
+}
+
+begin
+  # List the contract's verification history
+  result = api_instance.get_contract_verifications(raw_contract_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_contract_verifications: #{e}"
+end
+```
+
+#### Using the get_contract_verifications_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetContractVerifications200Response>, Integer, Hash)> get_contract_verifications_with_http_info(raw_contract_id, opts)
+
+```ruby
+begin
+  # List the contract's verification history
+  data, status_code, headers = api_instance.get_contract_verifications_with_http_info(raw_contract_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetContractVerifications200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_contract_verifications_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **raw_contract_id** | **Integer** |  |  |
+| **page** | **Integer** |  | [optional] |
+| **per_page** | **Integer** | Page size, capped at 100; defaults to 35. | [optional] |
+| **q** | [**Object**](.md) | Ransack filters on scalar verification fields only; association traversal and scalar predicates on the seasons array are disabled. Ordering is always by check time and id descending. | [optional] |
+
+### Return type
+
+[**GetContractVerifications200Response**](GetContractVerifications200Response.md)
 
 ### Authorization
 
