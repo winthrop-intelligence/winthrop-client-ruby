@@ -171,6 +171,7 @@ docs/CoworkerTenure.md
 docs/CreateAccountUser422Response.md
 docs/CreateAccountUserRequest.md
 docs/CreateAccountUserRequestUser.md
+docs/CreateAdminDeskReport503Response.md
 docs/CreateAdminDeskReportArtifact201Response.md
 docs/CreateCompensationRequest.md
 docs/CreateContactSearchRequest.md
@@ -342,6 +343,7 @@ docs/DeskReportsResponseMeta.md
 docs/DeskRequest.md
 docs/DeskRequestContext.md
 docs/DeskRequestsResponse.md
+docs/DeskSettings.md
 docs/DirectorsCupSchool.md
 docs/Division.md
 docs/DivisionCollection.md
@@ -716,6 +718,7 @@ docs/UpdateAccountUserRequestUser.md
 docs/UpdateAdminDeskRequest200Response.md
 docs/UpdateAdminDeskRequest200ResponseData.md
 docs/UpdateAdminDeskRequestRequest.md
+docs/UpdateAdminDeskSettings422Response.md
 docs/UpdateFavorite200Response.md
 docs/UpdateFavoriteRequest.md
 docs/UpdateFavoritesCategoryRequest.md
@@ -939,6 +942,7 @@ lib/winthrop-client-ruby/models/coworker_tenure.rb
 lib/winthrop-client-ruby/models/create_account_user422_response.rb
 lib/winthrop-client-ruby/models/create_account_user_request.rb
 lib/winthrop-client-ruby/models/create_account_user_request_user.rb
+lib/winthrop-client-ruby/models/create_admin_desk_report503_response.rb
 lib/winthrop-client-ruby/models/create_admin_desk_report_artifact201_response.rb
 lib/winthrop-client-ruby/models/create_compensation_request.rb
 lib/winthrop-client-ruby/models/create_contact_search_request.rb
@@ -1108,6 +1112,7 @@ lib/winthrop-client-ruby/models/desk_reports_response_meta.rb
 lib/winthrop-client-ruby/models/desk_request.rb
 lib/winthrop-client-ruby/models/desk_request_context.rb
 lib/winthrop-client-ruby/models/desk_requests_response.rb
+lib/winthrop-client-ruby/models/desk_settings.rb
 lib/winthrop-client-ruby/models/directors_cup_school.rb
 lib/winthrop-client-ruby/models/division.rb
 lib/winthrop-client-ruby/models/division_collection.rb
@@ -1474,6 +1479,7 @@ lib/winthrop-client-ruby/models/update_account_user_request_user.rb
 lib/winthrop-client-ruby/models/update_admin_desk_request200_response.rb
 lib/winthrop-client-ruby/models/update_admin_desk_request200_response_data.rb
 lib/winthrop-client-ruby/models/update_admin_desk_request_request.rb
+lib/winthrop-client-ruby/models/update_admin_desk_settings422_response.rb
 lib/winthrop-client-ruby/models/update_favorite200_response.rb
 lib/winthrop-client-ruby/models/update_favorite_request.rb
 lib/winthrop-client-ruby/models/update_favorites_category_request.rb
@@ -1516,8 +1522,8 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
-spec/models/compensation_create_request_spec.rb
-spec/models/compensation_created_spec.rb
-spec/models/create_compensation_request_spec.rb
+spec/models/create_admin_desk_report503_response_spec.rb
+spec/models/desk_settings_spec.rb
+spec/models/update_admin_desk_settings422_response_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
