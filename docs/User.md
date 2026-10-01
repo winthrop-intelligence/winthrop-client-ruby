@@ -4,6 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **target_season_year** | **Integer** | Server scheduling target ending year; basketball flips January 1. | [optional] |
+| **selectable_season_years** | **Array&lt;Integer&gt;** | Current July-to-June season ending year plus the next two, ascending. | [optional] |
 | **id** | **Integer** |  | [optional] |
 | **email** | **String** |  | [optional] |
 | **first_name** | **String** |  | [optional] |
@@ -61,6 +63,8 @@
 require 'winthrop-client-ruby'
 
 instance = WinthropClient::User.new(
+  target_season_year: null,
+  selectable_season_years: null,
   id: 1,
   email: joe@example.com,
   first_name: Joe,

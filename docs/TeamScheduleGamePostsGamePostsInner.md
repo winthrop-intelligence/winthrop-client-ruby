@@ -4,6 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **season_year** | **Integer** | Ending year of the post&#39;s July-to-June season, derived from date (legacy start_date). | [optional] |
+| **outside_target_season** | **Boolean** | Whether the post belongs to a season other than the server scheduling target. | [optional] |
 | **id** | **Integer** |  | [optional] |
 | **game_post_id** | **Integer** |  | [optional] |
 | **publish_group_id** | **String** | Identifies the publish (one \&quot;Post game wanted\&quot; action) this post belongs to. Shared by every post in the same publish so the Games Wanted tab can collapse them into one row; null for legacy posts that predate publish groups. | [optional] |
@@ -30,6 +32,8 @@
 require 'winthrop-client-ruby'
 
 instance = WinthropClient::TeamScheduleGamePostsGamePostsInner.new(
+  season_year: null,
+  outside_target_season: null,
   id: null,
   game_post_id: null,
   publish_group_id: null,

@@ -159,9 +159,11 @@ docs/ContactSearchCollection.md
 docs/ContactSearchEntry.md
 docs/Contract.md
 docs/ContractCollection.md
+docs/ContractErrorsResponse.md
 docs/ContractTermOption.md
 docs/ContractVerification.md
 docs/ContractVerificationInput.md
+docs/ContractsApi.md
 docs/CoworkerEntry.md
 docs/CoworkerTenure.md
 docs/CreateAccountUser422Response.md
@@ -440,6 +442,7 @@ docs/GamePostEnrichmentCollection.md
 docs/GamePostEnrichmentGuarantee.md
 docs/GamePostEnrichmentOverlap.md
 docs/GamePostEnrichmentOverlapLineUpsInner.md
+docs/GamePostEnrichmentPostsInner.md
 docs/GamePostEnrichmentScheduleIntentsInner.md
 docs/GamePostSearchResult.md
 docs/GamePostSearchResultCollection.md
@@ -544,6 +547,7 @@ docs/NewsFeed.md
 docs/NewsFeedCollection.md
 docs/Note.md
 docs/PageView.md
+docs/PendingContractCreated.md
 docs/PerformanceChartCoach.md
 docs/PerformanceChartData.md
 docs/PerformanceChartRecord.md
@@ -558,6 +562,12 @@ docs/PredictBody.md
 docs/PredictFailure.md
 docs/PredictSuccess.md
 docs/PublishAdminDeskReportRequest.md
+docs/PublishPendingContractCompensation.md
+docs/PublishPendingContractCompensationBaseSalary.md
+docs/PublishPendingContractCompensationOneTimeBonus.md
+docs/PublishPendingContractRequest.md
+docs/PublishedContract.md
+docs/PublishedContractAllOfCompensations.md
 docs/QuadrantUnplottedSchool.md
 docs/RawContract.md
 docs/RawContractBackTo.md
@@ -745,6 +755,7 @@ docs/WireChange.md
 docs/WireChangeCoach.md
 docs/WireChangeSchool.md
 lib/winthrop-client-ruby.rb
+lib/winthrop-client-ruby/api/contracts_api.rb
 lib/winthrop-client-ruby/api/ctb_api.rb
 lib/winthrop-client-ruby/api/default_api.rb
 lib/winthrop-client-ruby/api/dossier_api.rb
@@ -914,6 +925,7 @@ lib/winthrop-client-ruby/models/contact_search_collection.rb
 lib/winthrop-client-ruby/models/contact_search_entry.rb
 lib/winthrop-client-ruby/models/contract.rb
 lib/winthrop-client-ruby/models/contract_collection.rb
+lib/winthrop-client-ruby/models/contract_errors_response.rb
 lib/winthrop-client-ruby/models/contract_term_option.rb
 lib/winthrop-client-ruby/models/contract_verification.rb
 lib/winthrop-client-ruby/models/contract_verification_input.rb
@@ -1190,6 +1202,7 @@ lib/winthrop-client-ruby/models/game_post_enrichment_collection.rb
 lib/winthrop-client-ruby/models/game_post_enrichment_guarantee.rb
 lib/winthrop-client-ruby/models/game_post_enrichment_overlap.rb
 lib/winthrop-client-ruby/models/game_post_enrichment_overlap_line_ups_inner.rb
+lib/winthrop-client-ruby/models/game_post_enrichment_posts_inner.rb
 lib/winthrop-client-ruby/models/game_post_enrichment_schedule_intents_inner.rb
 lib/winthrop-client-ruby/models/game_post_search_result.rb
 lib/winthrop-client-ruby/models/game_post_search_result_collection.rb
@@ -1292,6 +1305,7 @@ lib/winthrop-client-ruby/models/news_feed.rb
 lib/winthrop-client-ruby/models/news_feed_collection.rb
 lib/winthrop-client-ruby/models/note.rb
 lib/winthrop-client-ruby/models/page_view.rb
+lib/winthrop-client-ruby/models/pending_contract_created.rb
 lib/winthrop-client-ruby/models/performance_chart_coach.rb
 lib/winthrop-client-ruby/models/performance_chart_data.rb
 lib/winthrop-client-ruby/models/performance_chart_record.rb
@@ -1306,6 +1320,12 @@ lib/winthrop-client-ruby/models/predict_body.rb
 lib/winthrop-client-ruby/models/predict_failure.rb
 lib/winthrop-client-ruby/models/predict_success.rb
 lib/winthrop-client-ruby/models/publish_admin_desk_report_request.rb
+lib/winthrop-client-ruby/models/publish_pending_contract_compensation.rb
+lib/winthrop-client-ruby/models/publish_pending_contract_compensation_base_salary.rb
+lib/winthrop-client-ruby/models/publish_pending_contract_compensation_one_time_bonus.rb
+lib/winthrop-client-ruby/models/publish_pending_contract_request.rb
+lib/winthrop-client-ruby/models/published_contract.rb
+lib/winthrop-client-ruby/models/published_contract_all_of_compensations.rb
 lib/winthrop-client-ruby/models/quadrant_unplotted_school.rb
 lib/winthrop-client-ruby/models/raw_contract.rb
 lib/winthrop-client-ruby/models/raw_contract_back_to.rb
@@ -1490,9 +1510,15 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
-spec/models/contract_verification_input_spec.rb
-spec/models/contract_verification_spec.rb
-spec/models/create_contract_verification_request_spec.rb
-spec/models/get_contract_verifications200_response_spec.rb
+spec/api/contracts_api_spec.rb
+spec/models/contract_errors_response_spec.rb
+spec/models/game_post_enrichment_posts_inner_spec.rb
+spec/models/pending_contract_created_spec.rb
+spec/models/publish_pending_contract_compensation_base_salary_spec.rb
+spec/models/publish_pending_contract_compensation_one_time_bonus_spec.rb
+spec/models/publish_pending_contract_compensation_spec.rb
+spec/models/publish_pending_contract_request_spec.rb
+spec/models/published_contract_all_of_compensations_spec.rb
+spec/models/published_contract_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

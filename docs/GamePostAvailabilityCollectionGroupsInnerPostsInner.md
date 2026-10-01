@@ -9,6 +9,7 @@
 | **school_id** | **Integer** |  | [optional] |
 | **school_name** | **String** |  | [optional] |
 | **sport_name** | **String** |  | [optional] |
+| **season_year** | **Integer** | Ending year of the posted date’s July-to-June season. | [optional] |
 | **date** | **Date** | The school&#39;s most recent posted date in this bucket; null for a fully flexible post. | [optional] |
 | **last_rpi** | **Integer** |  | [optional] |
 | **last_net_rank** | **Integer** |  | [optional] |
@@ -27,6 +28,7 @@ instance = WinthropClient::GamePostAvailabilityCollectionGroupsInnerPostsInner.n
   school_id: null,
   school_name: null,
   sport_name: null,
+  season_year: null,
   date: null,
   last_rpi: null,
   last_net_rank: null,

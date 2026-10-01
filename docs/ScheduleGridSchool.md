@@ -9,6 +9,7 @@
 | **short_name** | **String** |  | [optional] |
 | **logo_url** | **String** |  | [optional] |
 | **primary_contact_name** | **String** |  | [optional] |
+| **primary_contact_title** | **String** | Actual role at this school, shared with the Games Wanted feed; null when absent | [optional] |
 | **primary_contact_email** | **String** |  | [optional] |
 | **primary_contact_phone** | **String** |  | [optional] |
 | **primary_contact_mobile_phone** | **String** |  | [optional] |
@@ -28,6 +29,7 @@ instance = WinthropClient::ScheduleGridSchool.new(
   short_name: null,
   logo_url: null,
   primary_contact_name: null,
+  primary_contact_title: null,
   primary_contact_email: null,
   primary_contact_phone: null,
   primary_contact_mobile_phone: null,
