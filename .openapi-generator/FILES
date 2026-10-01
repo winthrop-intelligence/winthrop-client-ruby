@@ -139,6 +139,8 @@ docs/CompensationComparisonResolvedScopeConference.md
 docs/CompensationComparisonResolvedScopeSchoolsInner.md
 docs/CompensationComparisonResult.md
 docs/CompensationComparisonRow.md
+docs/CompensationCreateRequest.md
+docs/CompensationCreated.md
 docs/CompensationRow.md
 docs/Conference.md
 docs/ConferenceAdminCompensationResponse.md
@@ -170,6 +172,7 @@ docs/CreateAccountUser422Response.md
 docs/CreateAccountUserRequest.md
 docs/CreateAccountUserRequestUser.md
 docs/CreateAdminDeskReportArtifact201Response.md
+docs/CreateCompensationRequest.md
 docs/CreateContactSearchRequest.md
 docs/CreateContactSearchRequestContact.md
 docs/CreateContractVerificationRequest.md
@@ -905,6 +908,8 @@ lib/winthrop-client-ruby/models/compensation_comparison_resolved_scope_conferenc
 lib/winthrop-client-ruby/models/compensation_comparison_resolved_scope_schools_inner.rb
 lib/winthrop-client-ruby/models/compensation_comparison_result.rb
 lib/winthrop-client-ruby/models/compensation_comparison_row.rb
+lib/winthrop-client-ruby/models/compensation_create_request.rb
+lib/winthrop-client-ruby/models/compensation_created.rb
 lib/winthrop-client-ruby/models/compensation_row.rb
 lib/winthrop-client-ruby/models/conference.rb
 lib/winthrop-client-ruby/models/conference_admin_compensation_response.rb
@@ -935,6 +940,7 @@ lib/winthrop-client-ruby/models/create_account_user422_response.rb
 lib/winthrop-client-ruby/models/create_account_user_request.rb
 lib/winthrop-client-ruby/models/create_account_user_request_user.rb
 lib/winthrop-client-ruby/models/create_admin_desk_report_artifact201_response.rb
+lib/winthrop-client-ruby/models/create_compensation_request.rb
 lib/winthrop-client-ruby/models/create_contact_search_request.rb
 lib/winthrop-client-ruby/models/create_contact_search_request_contact.rb
 lib/winthrop-client-ruby/models/create_contract_verification_request.rb
@@ -1510,15 +1516,8 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
-spec/api/contracts_api_spec.rb
-spec/models/contract_errors_response_spec.rb
-spec/models/game_post_enrichment_posts_inner_spec.rb
-spec/models/pending_contract_created_spec.rb
-spec/models/publish_pending_contract_compensation_base_salary_spec.rb
-spec/models/publish_pending_contract_compensation_one_time_bonus_spec.rb
-spec/models/publish_pending_contract_compensation_spec.rb
-spec/models/publish_pending_contract_request_spec.rb
-spec/models/published_contract_all_of_compensations_spec.rb
-spec/models/published_contract_spec.rb
+spec/models/compensation_create_request_spec.rb
+spec/models/compensation_created_spec.rb
+spec/models/create_compensation_request_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

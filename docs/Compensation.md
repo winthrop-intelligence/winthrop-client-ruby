@@ -8,9 +8,10 @@
 | **bonus_comp_cents** | **Integer** |  | [optional] |
 | **deferred_comp_cents** | **Integer** |  | [optional] |
 | **talent_fee** | **Integer** |  | [optional] |
-| **is_car_provided** | **Boolean** |  | [optional] |
+| **is_car_provided** | **Boolean** | Accepted when creating a compensation (POST) only. PATCH ignores this field. | [optional] |
 | **country_club_dues_cents** | **Integer** |  | [optional] |
 | **coach_id** | **Integer** | Required on creation. Existing coach-less records may return null. Updates may omit this field or send its unchanged value. To change an existing compensation&#39;s identity, move the linked position. | [optional] |
+| **contract_id** | **Integer** | Request field, optional. The contract to link. On creation it must be a non-pending contract of coach_id. Responses describe the linked contract in the nested contract object. | [optional] |
 | **buyout_terms** | **String** |  | [optional] |
 | **executed_on** | **Time** |  | [optional] |
 | **expires_on** | **Time** |  | [optional] |
@@ -22,7 +23,7 @@
 | **outside_income_cents** | **Integer** |  | [optional] |
 | **one_time_bonus_cents** | **Integer** |  | [optional] |
 | **comment** | **String** |  | [optional] |
-| **country_club_membership_paid** | **Boolean** |  | [optional] |
+| **county_club_membership_paid** | **Boolean** |  | [optional] |
 | **base_salary_cents** | **Integer** |  | [optional] |
 | **bonus_has_contingents** | **Boolean** |  | [optional] |
 | **calculated_guaranteed_comp_cents** | **Integer** |  | [optional] |
@@ -48,6 +49,7 @@ instance = WinthropClient::Compensation.new(
   is_car_provided: false,
   country_club_dues_cents: 10000,
   coach_id: 1,
+  contract_id: 275125,
   buyout_terms: This is a buyout term,
   executed_on: 2019-01-01T00:00Z,
   expires_on: 2019-01-01T00:00Z,
@@ -59,7 +61,7 @@ instance = WinthropClient::Compensation.new(
   outside_income_cents: 10000,
   one_time_bonus_cents: 10000,
   comment: This is a comment,
-  country_club_membership_paid: false,
+  county_club_membership_paid: false,
   base_salary_cents: 10000,
   bonus_has_contingents: false,
   calculated_guaranteed_comp_cents: 10000,

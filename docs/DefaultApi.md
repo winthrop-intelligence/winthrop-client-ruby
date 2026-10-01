@@ -18,6 +18,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**create_admin_desk_report_artifact**](DefaultApi.md#create_admin_desk_report_artifact) | **POST** /api/v1/admin/desk_reports/{desk_report_uuid}/artifacts |  |
 | [**create_cashflow**](DefaultApi.md#create_cashflow) | **POST** /api/v1/cashflows |  |
 | [**create_coach**](DefaultApi.md#create_coach) | **POST** /api/v1/coaches |  |
+| [**create_compensation**](DefaultApi.md#create_compensation) | **POST** /api/v1/compensations |  |
 | [**create_conference**](DefaultApi.md#create_conference) | **POST** /api/v1/conferences |  |
 | [**create_conferenceship**](DefaultApi.md#create_conferenceship) | **POST** /api/v1/conferenceships |  |
 | [**create_contact_search**](DefaultApi.md#create_contact_search) | **POST** /api/v1/contact_searches |  |
@@ -1370,6 +1371,80 @@ end
 ### Return type
 
 [**Coach**](Coach.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_compensation
+
+> <CompensationCreated> create_compensation(create_compensation_request)
+
+
+
+Create the compensation for one coach, school, and year, typically a missing future, contract-covered season. Compensation coach, school, and year are derived from the coach's positions, so the positions are resolved first, modeled on the coach contract CSV uploader. If the coach already has positions at school_id in that year they are used and nothing is copied. Otherwise the positions the coach holds at that school in the latest earlier year are copied into the requested year (the same title and position types, creating the season if needed), and the new compensation is linked to them. If the coach has no earlier position at that school there is nothing to copy and the request is refused; create the position first. Positions that already exist in the requested year are used as they are; sports the earlier year has but the requested year lacks are not added. One target year per request, at most 15 years ahead. Fields other than the documented compensation fields are refused rather than ignored (is_car_provided is accepted on creation only; PATCH does not update it). When contract_id is supplied it must be a non-pending contract of the same coach, and unless contract_status_id is sent the compensation is marked complete, as the CSV uploader does; an explicitly sent contract_status_id is kept. Every value is checked as sent. Ids, the year and the cents amounts must be whole numbers (an integer or a string of digits, with no commas, decimals or text, within the 32-bit integer range), booleans must be true or false, dates must be YYYY-MM-DD, and an array or object is refused for a scalar field, each with a field-specific 422; nothing is silently dropped or coerced. The whole request is one transaction, so on any error nothing is saved. If a background job cannot be queued after the row was saved, the compensation is still returned with 201 and the problem is reported to Sentry. Requires a super admin and the winad_write OAuth scope. To change an existing compensation use PATCH /compensations/{compensationId}. API clients in winthrop-clients must be regenerated to expose this operation.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_compensation_request = WinthropClient::CreateCompensationRequest.new({compensation: WinthropClient::CompensationCreateRequest.new({coach_id: 37, school_id: 37, year: 37})}) # CreateCompensationRequest | Compensation to create. coach_id, school_id, and year are required; contract_id and contract_status_id are optional.
+
+begin
+  
+  result = api_instance.create_compensation(create_compensation_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_compensation: #{e}"
+end
+```
+
+#### Using the create_compensation_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CompensationCreated>, Integer, Hash)> create_compensation_with_http_info(create_compensation_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_compensation_with_http_info(create_compensation_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CompensationCreated>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_compensation_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_compensation_request** | [**CreateCompensationRequest**](CreateCompensationRequest.md) | Compensation to create. coach_id, school_id, and year are required; contract_id and contract_status_id are optional. |  |
+
+### Return type
+
+[**CompensationCreated**](CompensationCreated.md)
 
 ### Authorization
 
