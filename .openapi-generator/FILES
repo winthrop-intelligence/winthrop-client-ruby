@@ -466,6 +466,7 @@ docs/GamePostSearchResultScheduleIntentsInner.md
 docs/GameType.md
 docs/GeoRegion.md
 docs/GetAccountUserActivation200Response.md
+docs/GetAdminDeskRequest200Response.md
 docs/GetCompensationComparisons400Response.md
 docs/GetContractVerifications200Response.md
 docs/GetFavorites200ResponseInner.md
@@ -1232,6 +1233,7 @@ lib/winthrop-client-ruby/models/game_post_search_result_schedule_intents_inner.r
 lib/winthrop-client-ruby/models/game_type.rb
 lib/winthrop-client-ruby/models/geo_region.rb
 lib/winthrop-client-ruby/models/get_account_user_activation200_response.rb
+lib/winthrop-client-ruby/models/get_admin_desk_request200_response.rb
 lib/winthrop-client-ruby/models/get_compensation_comparisons400_response.rb
 lib/winthrop-client-ruby/models/get_contract_verifications200_response.rb
 lib/winthrop-client-ruby/models/get_favorites200_response_inner.rb
@@ -1522,8 +1524,6 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
-spec/models/create_admin_desk_report503_response_spec.rb
-spec/models/desk_settings_spec.rb
-spec/models/update_admin_desk_settings422_response_spec.rb
+spec/models/get_admin_desk_request200_response_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

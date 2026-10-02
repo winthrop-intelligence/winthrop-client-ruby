@@ -5059,6 +5059,67 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Read an ask directly, including asks linked to saved reports. Super-admin only.
+    # @param uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [GetAdminDeskRequest200Response]
+    def get_admin_desk_request(uuid, opts = {})
+      data, _status_code, _headers = get_admin_desk_request_with_http_info(uuid, opts)
+      data
+    end
+
+    # Read an ask directly, including asks linked to saved reports. Super-admin only.
+    # @param uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GetAdminDeskRequest200Response, Integer, Hash)>] GetAdminDeskRequest200Response data, response status code and response headers
+    def get_admin_desk_request_with_http_info(uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_admin_desk_request ...'
+      end
+      # verify the required parameter 'uuid' is set
+      if @api_client.config.client_side_validation && uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'uuid' when calling DefaultApi.get_admin_desk_request"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/desk_requests/{uuid}'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GetAdminDeskRequest200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_admin_desk_request",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_admin_desk_request\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Tyler's queue (06.1): every report on every account plus every open ask no report has been started for, one list, newest activity first (the API owns the order). Rows carry structured facts; the sub-line copy derives client-side. meta.counts are per admin status over the unfiltered queue; meta.accounts is the account index for the compose client select. 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :status 
@@ -16790,7 +16851,7 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # 07.3 — send the ask back to the client for more information. Stops the turnaround clock (it starts again on the manual flip back to `building`) and stores the subject and body Tyler edited on screen, verbatim: the email renders exactly them, and the same body becomes the note on the customer's pending card unless an explicit client_note is given.  Sendable from `new`, `building` AND `awaiting_client`: a follow-up can resolve to nobody (a churned account) or simply go unread, and refusing the second send left publishing a report as the only way out of the ask. A re-send never restarts the pause.  `sent_to` reports who the follow-up was QUEUED for — the response used to say \"sent\" for a mail that was never addressed, and enqueueing can itself fail after the pause has committed. Empty means nothing was sent, whatever the pause says. 
+    # 07.3 — send the ask back to the client for more information. Stops the turnaround clock (it starts again on the manual flip back to `building`) and stores the subject and body Tyler edited on screen, verbatim: the email renders exactly them, and the same body becomes the note on the customer's pending card unless an explicit client_note is given.  Requires Desk settings `needs_info_emails_enabled`. When disabled, returns 403 without changing the ask or pausing its clock. The mailer rechecks the setting at execution; suppressed jobs complete and are not replayed when re-enabled.  Sendable from `new`, `building` AND `awaiting_client`: a follow-up can resolve to nobody (a churned account) or simply go unread, and refusing the second send left publishing a report as the only way out of the ask. A re-send never restarts the pause.  `sent_to` reports who the follow-up was QUEUED for — the response used to say \"sent\" for a mail that was never addressed, and enqueueing can itself fail after the pause has committed. Empty means nothing was sent, whatever the pause says. 
     # @param uuid [String] 
     # @param needs_info_admin_desk_request_request [NeedsInfoAdminDeskRequestRequest] 
     # @param [Hash] opts the optional parameters
@@ -16800,7 +16861,7 @@ module WinthropClient
       data
     end
 
-    # 07.3 — send the ask back to the client for more information. Stops the turnaround clock (it starts again on the manual flip back to &#x60;building&#x60;) and stores the subject and body Tyler edited on screen, verbatim: the email renders exactly them, and the same body becomes the note on the customer&#39;s pending card unless an explicit client_note is given.  Sendable from &#x60;new&#x60;, &#x60;building&#x60; AND &#x60;awaiting_client&#x60;: a follow-up can resolve to nobody (a churned account) or simply go unread, and refusing the second send left publishing a report as the only way out of the ask. A re-send never restarts the pause.  &#x60;sent_to&#x60; reports who the follow-up was QUEUED for — the response used to say \&quot;sent\&quot; for a mail that was never addressed, and enqueueing can itself fail after the pause has committed. Empty means nothing was sent, whatever the pause says. 
+    # 07.3 — send the ask back to the client for more information. Stops the turnaround clock (it starts again on the manual flip back to &#x60;building&#x60;) and stores the subject and body Tyler edited on screen, verbatim: the email renders exactly them, and the same body becomes the note on the customer&#39;s pending card unless an explicit client_note is given.  Requires Desk settings &#x60;needs_info_emails_enabled&#x60;. When disabled, returns 403 without changing the ask or pausing its clock. The mailer rechecks the setting at execution; suppressed jobs complete and are not replayed when re-enabled.  Sendable from &#x60;new&#x60;, &#x60;building&#x60; AND &#x60;awaiting_client&#x60;: a follow-up can resolve to nobody (a churned account) or simply go unread, and refusing the second send left publishing a report as the only way out of the ask. A re-send never restarts the pause.  &#x60;sent_to&#x60; reports who the follow-up was QUEUED for — the response used to say \&quot;sent\&quot; for a mail that was never addressed, and enqueueing can itself fail after the pause has committed. Empty means nothing was sent, whatever the pause says. 
     # @param uuid [String] 
     # @param needs_info_admin_desk_request_request [NeedsInfoAdminDeskRequestRequest] 
     # @param [Hash] opts the optional parameters

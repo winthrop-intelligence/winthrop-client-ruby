@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **work_start_retryable** | **Boolean** | An unsent work-start notification can be retried without changing progress. Reuse the mark-in-progress operation; settings and eligibility are rechecked. | [optional] |
 | **uuid** | **String** | The report&#39;s uuid (kind&#x3D;report) or the request&#39;s (kind&#x3D;ask) |  |
 | **kind** | **String** |  |  |
 | **status** | **String** |  |  |
@@ -32,6 +33,7 @@
 require 'winthrop-client-ruby'
 
 instance = WinthropClient::DeskAdminQueueRow.new(
+  work_start_retryable: null,
   uuid: null,
   kind: null,
   status: null,

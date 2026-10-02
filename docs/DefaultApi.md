@@ -82,6 +82,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_account_users**](DefaultApi.md#get_account_users) | **GET** /api/v1/account_users |  |
 | [**get_admin_desk_report**](DefaultApi.md#get_admin_desk_report) | **GET** /api/v1/admin/desk_reports/{uuid} |  |
 | [**get_admin_desk_reports**](DefaultApi.md#get_admin_desk_reports) | **GET** /api/v1/admin/desk_reports |  |
+| [**get_admin_desk_request**](DefaultApi.md#get_admin_desk_request) | **GET** /api/v1/admin/desk_requests/{uuid} |  |
 | [**get_admin_desk_requests**](DefaultApi.md#get_admin_desk_requests) | **GET** /api/v1/admin/desk_requests |  |
 | [**get_admin_desk_settings**](DefaultApi.md#get_admin_desk_settings) | **GET** /api/v1/admin/desk_settings |  |
 | [**get_administrator**](DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} |  |
@@ -6103,6 +6104,80 @@ end
 ### Return type
 
 [**DeskAdminReportsResponse**](DeskAdminReportsResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_desk_request
+
+> <GetAdminDeskRequest200Response> get_admin_desk_request(uuid)
+
+
+
+Read an ask directly, including asks linked to saved reports. Super-admin only.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+uuid = 'uuid_example' # String | 
+
+begin
+  
+  result = api_instance.get_admin_desk_request(uuid)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_desk_request: #{e}"
+end
+```
+
+#### Using the get_admin_desk_request_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetAdminDeskRequest200Response>, Integer, Hash)> get_admin_desk_request_with_http_info(uuid)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_desk_request_with_http_info(uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetAdminDeskRequest200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_desk_request_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **uuid** | **String** |  |  |
+
+### Return type
+
+[**GetAdminDeskRequest200Response**](GetAdminDeskRequest200Response.md)
 
 ### Authorization
 
@@ -20266,7 +20341,7 @@ This endpoint does not need any parameter.
 
 
 
-07.3 — send the ask back to the client for more information. Stops the turnaround clock (it starts again on the manual flip back to `building`) and stores the subject and body Tyler edited on screen, verbatim: the email renders exactly them, and the same body becomes the note on the customer's pending card unless an explicit client_note is given.  Sendable from `new`, `building` AND `awaiting_client`: a follow-up can resolve to nobody (a churned account) or simply go unread, and refusing the second send left publishing a report as the only way out of the ask. A re-send never restarts the pause.  `sent_to` reports who the follow-up was QUEUED for — the response used to say \"sent\" for a mail that was never addressed, and enqueueing can itself fail after the pause has committed. Empty means nothing was sent, whatever the pause says. 
+07.3 — send the ask back to the client for more information. Stops the turnaround clock (it starts again on the manual flip back to `building`) and stores the subject and body Tyler edited on screen, verbatim: the email renders exactly them, and the same body becomes the note on the customer's pending card unless an explicit client_note is given.  Requires Desk settings `needs_info_emails_enabled`. When disabled, returns 403 without changing the ask or pausing its clock. The mailer rechecks the setting at execution; suppressed jobs complete and are not replayed when re-enabled.  Sendable from `new`, `building` AND `awaiting_client`: a follow-up can resolve to nobody (a churned account) or simply go unread, and refusing the second send left publishing a report as the only way out of the ask. A re-send never restarts the pause.  `sent_to` reports who the follow-up was QUEUED for — the response used to say \"sent\" for a mail that was never addressed, and enqueueing can itself fail after the pause has committed. Empty means nothing was sent, whatever the pause says. 
 
 ### Examples
 
@@ -21250,7 +21325,7 @@ WinthropClient.configure do |config|
 end
 
 api_instance = WinthropClient::DefaultApi.new
-desk_settings = WinthropClient::DeskSettings.new({lock_version: 37, notifications_enabled: false, copy_email: 'copy_email_example'}) # DeskSettings | 
+desk_settings = WinthropClient::DeskSettings.new({lock_version: 37, notifications_enabled: false, needs_info_emails_enabled: false, copy_email: 'copy_email_example'}) # DeskSettings | 
 
 begin
   

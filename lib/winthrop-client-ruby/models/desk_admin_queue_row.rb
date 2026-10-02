@@ -16,6 +16,9 @@ require 'time'
 module WinthropClient
   # One 06.1 queue row (frontend DeskAdminQueueRow, structured facts only). A report row's `account` is null only for a legacy admin-only report awaiting school assignment; an ask row always names one. 
   class DeskAdminQueueRow < ApiModelBase
+    # An unsent work-start notification can be retried without changing progress. Reuse the mark-in-progress operation; settings and eligibility are rechecked.
+    attr_accessor :work_start_retryable
+
     # The report's uuid (kind=report) or the request's (kind=ask)
     attr_accessor :uuid
 
@@ -91,6 +94,7 @@ module WinthropClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'work_start_retryable' => :'work_start_retryable',
         :'uuid' => :'uuid',
         :'kind' => :'kind',
         :'status' => :'status',
@@ -128,6 +132,7 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'work_start_retryable' => :'Boolean',
         :'uuid' => :'String',
         :'kind' => :'String',
         :'status' => :'String',
@@ -185,6 +190,10 @@ module WinthropClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'work_start_retryable')
+        self.work_start_retryable = attributes[:'work_start_retryable']
+      end
 
       if attributes.key?(:'uuid')
         self.uuid = attributes[:'uuid']
@@ -488,6 +497,7 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          work_start_retryable == o.work_start_retryable &&
           uuid == o.uuid &&
           kind == o.kind &&
           status == o.status &&
@@ -520,7 +530,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [uuid, kind, status, title, account, requested_by, ask_body, ask_category, cta_key, source_report_title, ask_received_at, due_at, clock_paused, has_html, artifact_kinds, published_at, updated_at, hidden_at, hidden_reason, open_count, activity_at].hash
+      [work_start_retryable, uuid, kind, status, title, account, requested_by, ask_body, ask_category, cta_key, source_report_title, ask_received_at, due_at, clock_paused, has_html, artifact_kinds, published_at, updated_at, hidden_at, hidden_reason, open_count, activity_at].hash
     end
 
     # Builds the object from hash

@@ -474,6 +474,7 @@ require 'winthrop-client-ruby/models/game_post_search_result_schedule_intents_in
 require 'winthrop-client-ruby/models/game_type'
 require 'winthrop-client-ruby/models/geo_region'
 require 'winthrop-client-ruby/models/get_account_user_activation200_response'
+require 'winthrop-client-ruby/models/get_admin_desk_request200_response'
 require 'winthrop-client-ruby/models/get_compensation_comparisons400_response'
 require 'winthrop-client-ruby/models/get_contract_verifications200_response'
 require 'winthrop-client-ruby/models/get_favorites200_response_inner'

@@ -16,6 +16,9 @@ require 'time'
 module WinthropClient
   # ReportAdmin (tmp/desk/TICKETS.md D-15) — the update screen and compose reopen payload
   class DeskAdminReport < ApiModelBase
+    # An unsent work-start notification can be retried without changing progress. Reuse the mark-in-progress operation; settings and eligibility are rechecked.
+    attr_accessor :work_start_retryable
+
     attr_accessor :composition
 
     attr_accessor :uuid
@@ -105,6 +108,7 @@ module WinthropClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'work_start_retryable' => :'work_start_retryable',
         :'composition' => :'composition',
         :'uuid' => :'uuid',
         :'account' => :'account',
@@ -149,6 +153,7 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'work_start_retryable' => :'Boolean',
         :'composition' => :'DeskComposition',
         :'uuid' => :'String',
         :'account' => :'DeskAdminAccount',
@@ -214,6 +219,10 @@ module WinthropClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'work_start_retryable')
+        self.work_start_retryable = attributes[:'work_start_retryable']
+      end
 
       if attributes.key?(:'composition')
         self.composition = attributes[:'composition']
@@ -594,6 +603,7 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          work_start_retryable == o.work_start_retryable &&
           composition == o.composition &&
           uuid == o.uuid &&
           account == o.account &&
@@ -633,7 +643,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [composition, uuid, account, audience_user_count, status, admin_status, hidden_reason, hidden_at, title, category, report_type, summary, headline_stats, cover, page_count, push_example, rerun_cadence, published_at, updated_at, body_html, draft_body_html, has_html, version_number, artifact_kinds, artifacts, versions, request, turnaround_label].hash
+      [work_start_retryable, composition, uuid, account, audience_user_count, status, admin_status, hidden_reason, hidden_at, title, category, report_type, summary, headline_stats, cover, page_count, push_example, rerun_cadence, published_at, updated_at, body_html, draft_body_html, has_html, version_number, artifact_kinds, artifacts, versions, request, turnaround_label].hash
     end
 
     # Builds the object from hash

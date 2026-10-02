@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **work_start_retryable** | **Boolean** | An unsent work-start notification can be retried without changing progress. Reuse the mark-in-progress operation; settings and eligibility are rechecked. | [optional] |
 | **composition** | [**DeskComposition**](DeskComposition.md) |  | [optional] |
 | **uuid** | **String** |  |  |
 | **account** | [**DeskAdminAccount**](DeskAdminAccount.md) | The report&#39;s school; null marks a legacy admin-only report awaiting assignment. |  |
@@ -39,6 +40,7 @@
 require 'winthrop-client-ruby'
 
 instance = WinthropClient::DeskAdminReport.new(
+  work_start_retryable: null,
   composition: null,
   uuid: null,
   account: null,

@@ -175,6 +175,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_account_users**](docs/DefaultApi.md#get_account_users) | **GET** /api/v1/account_users | 
 *WinthropClient::DefaultApi* | [**get_admin_desk_report**](docs/DefaultApi.md#get_admin_desk_report) | **GET** /api/v1/admin/desk_reports/{uuid} | 
 *WinthropClient::DefaultApi* | [**get_admin_desk_reports**](docs/DefaultApi.md#get_admin_desk_reports) | **GET** /api/v1/admin/desk_reports | 
+*WinthropClient::DefaultApi* | [**get_admin_desk_request**](docs/DefaultApi.md#get_admin_desk_request) | **GET** /api/v1/admin/desk_requests/{uuid} | 
 *WinthropClient::DefaultApi* | [**get_admin_desk_requests**](docs/DefaultApi.md#get_admin_desk_requests) | **GET** /api/v1/admin/desk_requests | 
 *WinthropClient::DefaultApi* | [**get_admin_desk_settings**](docs/DefaultApi.md#get_admin_desk_settings) | **GET** /api/v1/admin/desk_settings | 
 *WinthropClient::DefaultApi* | [**get_administrator**](docs/DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} | 
@@ -897,6 +898,7 @@ Class | Method | HTTP request | Description
  - [WinthropClient::GameType](docs/GameType.md)
  - [WinthropClient::GeoRegion](docs/GeoRegion.md)
  - [WinthropClient::GetAccountUserActivation200Response](docs/GetAccountUserActivation200Response.md)
+ - [WinthropClient::GetAdminDeskRequest200Response](docs/GetAdminDeskRequest200Response.md)
  - [WinthropClient::GetCompensationComparisons400Response](docs/GetCompensationComparisons400Response.md)
  - [WinthropClient::GetContractVerifications200Response](docs/GetContractVerifications200Response.md)
  - [WinthropClient::GetFavorites200ResponseInner](docs/GetFavorites200ResponseInner.md)

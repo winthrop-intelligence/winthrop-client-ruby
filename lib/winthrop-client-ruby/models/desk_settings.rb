@@ -20,6 +20,9 @@ module WinthropClient
 
     attr_accessor :notifications_enabled
 
+    # Independently allows Needs info emails. Checked before pausing an ask and at mail execution.
+    attr_accessor :needs_info_emails_enabled
+
     # Separate summary recipient. Required and valid when notifications are enabled.
     attr_accessor :copy_email
 
@@ -28,6 +31,7 @@ module WinthropClient
       {
         :'lock_version' => :'lock_version',
         :'notifications_enabled' => :'notifications_enabled',
+        :'needs_info_emails_enabled' => :'needs_info_emails_enabled',
         :'copy_email' => :'copy_email'
       }
     end
@@ -47,6 +51,7 @@ module WinthropClient
       {
         :'lock_version' => :'Integer',
         :'notifications_enabled' => :'Boolean',
+        :'needs_info_emails_enabled' => :'Boolean',
         :'copy_email' => :'String'
       }
     end
@@ -86,6 +91,12 @@ module WinthropClient
         self.notifications_enabled = false
       end
 
+      if attributes.key?(:'needs_info_emails_enabled')
+        self.needs_info_emails_enabled = attributes[:'needs_info_emails_enabled']
+      else
+        self.needs_info_emails_enabled = false
+      end
+
       if attributes.key?(:'copy_email')
         self.copy_email = attributes[:'copy_email']
       else
@@ -110,6 +121,10 @@ module WinthropClient
         invalid_properties.push('invalid value for "notifications_enabled", notifications_enabled cannot be nil.')
       end
 
+      if @needs_info_emails_enabled.nil?
+        invalid_properties.push('invalid value for "needs_info_emails_enabled", needs_info_emails_enabled cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -120,6 +135,7 @@ module WinthropClient
       return false if @lock_version.nil?
       return false if @lock_version < 0
       return false if @notifications_enabled.nil?
+      return false if @needs_info_emails_enabled.nil?
       true
     end
 
@@ -147,6 +163,16 @@ module WinthropClient
       @notifications_enabled = notifications_enabled
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] needs_info_emails_enabled Value to be assigned
+    def needs_info_emails_enabled=(needs_info_emails_enabled)
+      if needs_info_emails_enabled.nil?
+        fail ArgumentError, 'needs_info_emails_enabled cannot be nil'
+      end
+
+      @needs_info_emails_enabled = needs_info_emails_enabled
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -154,6 +180,7 @@ module WinthropClient
       self.class == o.class &&
           lock_version == o.lock_version &&
           notifications_enabled == o.notifications_enabled &&
+          needs_info_emails_enabled == o.needs_info_emails_enabled &&
           copy_email == o.copy_email
     end
 
@@ -166,7 +193,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [lock_version, notifications_enabled, copy_email].hash
+      [lock_version, notifications_enabled, needs_info_emails_enabled, copy_email].hash
     end
 
     # Builds the object from hash
