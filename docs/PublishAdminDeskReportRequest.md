@@ -7,7 +7,7 @@
 | **body_html** | **String** |  | [optional] |
 | **note** | **String** | The version&#39;s 06.5 history line (internal) | [optional] |
 | **change_note** | **String** | Reader-facing explanation; new versions send this inside update instead. | [optional] |
-| **renotify** | **Boolean** | Request notification; effective only when publish notifications are enabled. | [optional] |
+| **renotify** | **Boolean** | Legacy compatibility field; ignored. Only eligible recipients never notified for this report are emailed. | [optional] |
 | **update** | **String** | JSON-encoded DeskAdminReportPublishUpdate. Required for a new version, omitted for first publication. Only edited fields need to be sent.  | [optional] |
 | **downloads_pdf** | **File** | PDF replacement or addition; multipart updates only. | [optional] |
 | **downloads_xlsx** | **File** | XLSX replacement or addition; multipart updates only. | [optional] |
