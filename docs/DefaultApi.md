@@ -82,7 +82,9 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_account_users**](DefaultApi.md#get_account_users) | **GET** /api/v1/account_users |  |
 | [**get_admin_desk_report**](DefaultApi.md#get_admin_desk_report) | **GET** /api/v1/admin/desk_reports/{uuid} |  |
 | [**get_admin_desk_reports**](DefaultApi.md#get_admin_desk_reports) | **GET** /api/v1/admin/desk_reports |  |
+| [**get_admin_desk_request**](DefaultApi.md#get_admin_desk_request) | **GET** /api/v1/admin/desk_requests/{uuid} |  |
 | [**get_admin_desk_requests**](DefaultApi.md#get_admin_desk_requests) | **GET** /api/v1/admin/desk_requests |  |
+| [**get_admin_desk_settings**](DefaultApi.md#get_admin_desk_settings) | **GET** /api/v1/admin/desk_settings |  |
 | [**get_administrator**](DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} |  |
 | [**get_administrator_searches**](DefaultApi.md#get_administrator_searches) | **GET** /api/v1/administrator_searches |  |
 | [**get_administrators**](DefaultApi.md#get_administrators) | **GET** /api/v1/administrators |  |
@@ -278,11 +280,13 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_account_user_activation**](DefaultApi.md#update_account_user_activation) | **PATCH** /api/v1/account_user_activation |  |
 | [**update_admin_desk_report**](DefaultApi.md#update_admin_desk_report) | **PATCH** /api/v1/admin/desk_reports/{uuid} |  |
 | [**update_admin_desk_request**](DefaultApi.md#update_admin_desk_request) | **PATCH** /api/v1/admin/desk_requests/{uuid} |  |
+| [**update_admin_desk_settings**](DefaultApi.md#update_admin_desk_settings) | **PATCH** /api/v1/admin/desk_settings |  |
 | [**update_cashflow**](DefaultApi.md#update_cashflow) | **PUT** /api/v1/cashflows/{cashflowId} |  |
 | [**update_coach**](DefaultApi.md#update_coach) | **PATCH** /api/v1/coaches/{coachId} |  |
 | [**update_compensation**](DefaultApi.md#update_compensation) | **PATCH** /api/v1/compensations/{compensationId} |  |
 | [**update_conference**](DefaultApi.md#update_conference) | **PUT** /api/v1/conferences/{conferenceId} |  |
 | [**update_conferenceship**](DefaultApi.md#update_conferenceship) | **PUT** /api/v1/conferenceships/{conferenceshipId} |  |
+| [**update_deal**](DefaultApi.md#update_deal) | **PATCH** /api/v1/deals/{dealId} |  |
 | [**update_favorite**](DefaultApi.md#update_favorite) | **PATCH** /api/v1/favorites/{id} |  |
 | [**update_favorites_category**](DefaultApi.md#update_favorites_category) | **PATCH** /api/v1/favorites_categories/{id} |  |
 | [**update_foia_label**](DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} |  |
@@ -1086,7 +1090,7 @@ end
 
 
 
-Create a draft: the destination account, the cover fields, optionally the staged draft body and the queue ask it answers (desk_request_uuid, same account — the ask moves to building). Mints the public uuid; POST /{uuid}/publish attaches the body. 
+Create a draft: the destination account, the cover fields, optionally the staged draft body and the queue ask it answers (desk_request_uuid, same account — the ask moves to building with winad_write; draft-only tokens leave ask status unchanged). Accepts desk_draft_write or winad_write and requires a persisted super-admin user. Mints the public uuid; publishing requires a separate winad_write token. 
 
 ### Examples
 
@@ -1160,7 +1164,7 @@ end
 
 
 
-Upload a download (PDF / XLSX / PPTX) to a report in any status. One row per kind — uploading an existing kind replaces its file (06.5 Replace); a kind the report lacks is added (06.5 Add, D-20). On a live report the file is served to the client at once — no version is minted here; the update screen's Publish update is what mints one. 
+Upload a download (PDF / XLSX / PPTX) to a report in any status. One row per kind — uploading an existing kind replaces its file (06.5 Replace); a kind the report lacks is added (06.5 Add, D-20). On a live report the file is served to the client at once — no version is minted here; the update screen's Publish update is what mints one. With desk_draft_write (without winad_write), only drafts accept uploads; live and hidden reports return 403. Artifact deletion still requires winad_write. 
 
 ### Examples
 
@@ -6112,6 +6116,80 @@ end
 - **Accept**: application/json
 
 
+## get_admin_desk_request
+
+> <GetAdminDeskRequest200Response> get_admin_desk_request(uuid)
+
+
+
+Read an ask directly, including asks linked to saved reports. Super-admin only.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+uuid = 'uuid_example' # String | 
+
+begin
+  
+  result = api_instance.get_admin_desk_request(uuid)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_desk_request: #{e}"
+end
+```
+
+#### Using the get_admin_desk_request_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetAdminDeskRequest200Response>, Integer, Hash)> get_admin_desk_request_with_http_info(uuid)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_desk_request_with_http_info(uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetAdminDeskRequest200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_desk_request_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **uuid** | **String** |  |  |
+
+### Return type
+
+[**GetAdminDeskRequest200Response**](GetAdminDeskRequest200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_admin_desk_requests
 
 > <DeskAdminQueueResponse> get_admin_desk_requests(opts)
@@ -6179,6 +6257,77 @@ end
 ### Return type
 
 [**DeskAdminQueueResponse**](DeskAdminQueueResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_desk_settings
+
+> <DeskSettings> get_admin_desk_settings
+
+
+
+Read database-backed Desk notification settings. Requires a persisted super admin.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_admin_desk_settings
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_desk_settings: #{e}"
+end
+```
+
+#### Using the get_admin_desk_settings_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DeskSettings>, Integer, Hash)> get_admin_desk_settings_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_desk_settings_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DeskSettings>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_desk_settings_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**DeskSettings**](DeskSettings.md)
 
 ### Authorization
 
@@ -20193,7 +20342,7 @@ This endpoint does not need any parameter.
 
 
 
-07.3 — send the ask back to the client for more information. Stops the turnaround clock (it starts again on the manual flip back to `building`) and stores the subject and body Tyler edited on screen, verbatim: the email renders exactly them, and the same body becomes the note on the customer's pending card unless an explicit client_note is given.  Sendable from `new`, `building` AND `awaiting_client`: a follow-up can resolve to nobody (a churned account) or simply go unread, and refusing the second send left publishing a report as the only way out of the ask. A re-send never restarts the pause.  `sent_to` reports who the follow-up was QUEUED for — the response used to say \"sent\" for a mail that was never addressed, and enqueueing can itself fail after the pause has committed. Empty means nothing was sent, whatever the pause says. 
+07.3 — send the ask back to the client for more information. Stops the turnaround clock (it starts again on the manual flip back to `building`) and stores the subject and body Tyler edited on screen, verbatim: the email renders exactly them, and the same body becomes the note on the customer's pending card unless an explicit client_note is given.  Requires Desk settings `needs_info_emails_enabled`. When disabled, returns 403 without changing the ask or pausing its clock. Accepted follow-ups remain queued and still send if the setting is disabled before the mailer runs.  Sendable from `new`, `building` AND `awaiting_client`: a follow-up can resolve to nobody (a churned account) or simply go unread, and refusing the second send left publishing a report as the only way out of the ask. A re-send never restarts the pause.  `sent_to` reports who the follow-up was QUEUED for — the response used to say \"sent\" for a mail that was never addressed, and enqueueing can itself fail after the pause has committed. Empty means nothing was sent, whatever the pause says. 
 
 ### Examples
 
@@ -20269,7 +20418,7 @@ end
 
 
 
-Publish a first edition with the existing JSON body, or submit an atomic Update report patch as multipart update JSON plus downloads[pdf], downloads[xlsx] and downloads[pptx]. An update commits details, audience, cover, body, download additions/replacements/removals, and exactly one version together. Failed validation or upload leaves the live report intact. Omitted update fields are preserved, including legacy cover/body text; explicit body_html must pass the report format check. A reader change_note, expected_version_number and a meaningful change are required. The expected version is the version_number the editor loaded; a mismatch returns 409 before any changes or uploads are applied. Hidden reports must be restored first. Ask-linked reports cannot change account. Reports without a school cannot be published. Publish email is off unless DESK_NOTIFICATIONS_ENABLED is exactly true. When enabled, first editions notify the active audience; updates notify only with renotify true. Notification fields report enqueue results, not completed delivery. 
+Publish a first edition with the existing JSON body, or submit an atomic Update report patch as multipart update JSON plus downloads[pdf], downloads[xlsx] and downloads[pptx]. An update commits details, audience, cover, body, download additions/replacements/removals, and exactly one version together. Failed validation or upload leaves the live report intact. Omitted update fields are preserved, including legacy cover/body text; explicit body_html must pass the report format check. A reader change_note, expected_version_number and a meaningful change are required. The expected version is the version_number the editor loaded; a mismatch returns 409 before any changes or uploads are applied. Hidden reports must be restored first. Ask-linked reports cannot change account. Reports without a school cannot be published. Publish email is controlled by the database-backed notification switch in Admin Desk Settings in every environment. When enabled, it goes to the eligible selected audience, each once. Everyone means all active eligible readers on the account; named selections narrow that audience. A first edition emails the resolved recipients; an update emails only eligible recipients never notified for this report. Legacy renotify is ignored. Notification fields report enqueue results, not completed delivery. 
 
 ### Examples
 
@@ -21006,7 +21155,7 @@ No authorization required
 
 
 
-Update the cover fields and/or the staged draft body (blank clears it). Drafts only: a live or hidden report answers 422 — it changes through Publish update (after a restore, for a hidden one), so readers never see a change with no version behind it. 
+Update the cover fields and/or the staged draft body (blank clears it). Drafts only: a live or hidden report answers 422 — it changes through Publish update (after a restore, for a hidden one), so readers never see a change with no version behind it.  `mark_in_progress: true` is \"Mark in progress\" on the draft (WINAD-10567), after any edits in the same request are saved. A draft built from an ask marks the ask. A draft Tyler started himself needs an eligible audience in \"Who can see it\" (Everyone or named recipients; 422 if empty); the first time only, and when Desk email is on, they are emailed \"We've begun work on <title>\" and the desk gets one copy. If the email cannot be queued the start is undone and the answer is 503.  `status: building` is an alias for mark_in_progress. `status: delivered` records work delivery without publishing: status remains draft and admin_status becomes delivered. A linked report delivers its ask instead. Repeating delivery is a no-op; delivered work cannot restart. Both transitions accept desk_draft_write for a persisted super-admin. Other status values are denied (403 for draft-only tokens, otherwise 422). Do not combine delivered with mark_in_progress. Publication remains a separate action. 
 
 ### Examples
 
@@ -21082,7 +21231,7 @@ end
 
 
 
-Manual ask flip — building, delivered, or closed. needs_info (awaiting_client) is D-16's endpoint. `closed` is the junk/duplicate exit: the ask leaves the customer's rack and Tyler's open tabs without a report and without mail. 
+Manual ask flip — building, delivered, or closed. needs_info (awaiting_client) is D-16's endpoint. `closed` is the junk/duplicate exit: the ask leaves the customer's rack and Tyler's open tabs without a report and without mail. `building` is \"Mark in progress\" (WINAD-10567, shown as In progress): the first time an ask goes in progress, the asker is emailed \"We've begun work on <name>\" and the desk gets one copy, when Desk email is on. Later flips send nothing. If that email cannot be queued, the ask is put back and the answer is 503. A persisted super-admin may use desk_draft_write for building or delivered only. All other statuses require winad_write; the draft scope never grants publishing or needs_info access. 
 
 ### Examples
 
@@ -21141,6 +21290,80 @@ end
 ### Return type
 
 [**UpdateAdminDeskRequest200Response**](UpdateAdminDeskRequest200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_admin_desk_settings
+
+> <DeskSettings> update_admin_desk_settings(desk_settings)
+
+
+
+Save settings atomically using the lock_version returned by GET. Reject stale saves with 409. Audit the actor and old/new values. No ENV fallback.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+desk_settings = WinthropClient::DeskSettings.new({lock_version: 37, notifications_enabled: false, needs_info_emails_enabled: false, copy_email: 'copy_email_example'}) # DeskSettings | 
+
+begin
+  
+  result = api_instance.update_admin_desk_settings(desk_settings)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_desk_settings: #{e}"
+end
+```
+
+#### Using the update_admin_desk_settings_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DeskSettings>, Integer, Hash)> update_admin_desk_settings_with_http_info(desk_settings)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_desk_settings_with_http_info(desk_settings)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DeskSettings>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_desk_settings_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **desk_settings** | [**DeskSettings**](DeskSettings.md) |  |  |
+
+### Return type
+
+[**DeskSettings**](DeskSettings.md)
 
 ### Authorization
 
@@ -21310,7 +21533,7 @@ end
 
 
 
-Update a compensation
+Update a compensation. Requires the winad_write OAuth scope. compensation_type may be changed to \"yearly\", \"hourly\", or \"990\" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \"990\". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user.
 
 ### Examples
 
@@ -21521,6 +21744,82 @@ end
 ### Return type
 
 [**Conferenceship**](Conferenceship.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_deal
+
+> <DealUpdateResult> update_deal(deal_id, update_deal_request)
+
+
+
+Atomically update deal fields and Apparel or Multimedia detail values. At least one field is required. Unknown fields and fields belonging to another deal type return 422 without changes. Changes are audited with the authenticated user. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+deal_id = 56 # Integer | ID of the Deal
+update_deal_request = WinthropClient::UpdateDealRequest.new # UpdateDealRequest | 
+
+begin
+  
+  result = api_instance.update_deal(deal_id, update_deal_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_deal: #{e}"
+end
+```
+
+#### Using the update_deal_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DealUpdateResult>, Integer, Hash)> update_deal_with_http_info(deal_id, update_deal_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_deal_with_http_info(deal_id, update_deal_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DealUpdateResult>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_deal_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **deal_id** | **Integer** | ID of the Deal |  |
+| **update_deal_request** | [**UpdateDealRequest**](UpdateDealRequest.md) |  |  |
+
+### Return type
+
+[**DealUpdateResult**](DealUpdateResult.md)
 
 ### Authorization
 

@@ -29,7 +29,7 @@
 | **calculated_guaranteed_comp_cents** | **Integer** |  | [optional] |
 | **contingent_bonus** | **Boolean** |  | [optional] |
 | **noncontingent_bonus_comp_cents** | **Integer** |  | [optional] |
-| **compensation_type** | **String** |  | [optional] |
+| **compensation_type** | **String** | Pay type, writable on PATCH. Hourly rows require blank/zero amounts and a non-blank comment holding the hourly rate (or &#39;Hourly rate not provided&#39;). Private-school compensations must be \&quot;990\&quot;. | [optional] |
 | **media_link** | **String** |  | [optional] |
 | **contract_status_id** | **Integer** |  | [optional] |
 | **year** | **Integer** | Required on creation. Updates may omit this field or send its unchanged value. To change an existing compensation&#39;s identity, move the linked position. | [optional] |
@@ -69,7 +69,7 @@ instance = WinthropClient::CompensationCreated.new(
   calculated_guaranteed_comp_cents: 10000,
   contingent_bonus: true,
   noncontingent_bonus_comp_cents: 10000,
-  compensation_type: This is a compensation type,
+  compensation_type: yearly,
   media_link: This is a media link,
   contract_status_id: 1,
   year: 2019,

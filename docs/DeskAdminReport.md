@@ -4,12 +4,13 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **work_start_retryable** | **Boolean** | An unsent work-start notification can be retried without changing progress. Reuse the mark-in-progress operation; settings and eligibility are rechecked. | [optional] |
 | **composition** | [**DeskComposition**](DeskComposition.md) |  | [optional] |
 | **uuid** | **String** |  |  |
 | **account** | [**DeskAdminAccount**](DeskAdminAccount.md) | The report&#39;s school; null marks a legacy admin-only report awaiting assignment. |  |
 | **audience_user_count** | **Integer** | How many active users the report is visible to right now (Desk::Audience) — the admin detail&#39;s live head-count. A report without a school reaches zero. Detail responses only.  | [optional] |
 | **status** | **String** |  |  |
-| **admin_status** | **String** | The queue vocabulary; building folds into draft |  |
+| **admin_status** | **String** | The queue vocabulary. delivered is completed work that remains an unpublished draft. in-progress is a draft Tyler marked in progress, or one answering an ask that is building (WINAD-10567).  |  |
 | **hidden_reason** | **String** |  |  |
 | **hidden_at** | **Time** |  |  |
 | **title** | **String** |  |  |
@@ -39,6 +40,7 @@
 require 'winthrop-client-ruby'
 
 instance = WinthropClient::DeskAdminReport.new(
+  work_start_retryable: null,
   composition: null,
   uuid: null,
   account: null,
