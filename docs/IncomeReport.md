@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** |  | [optional] |
 | **coach_id** | **Integer** |  |  |
-| **raw_contract_id** | **Integer** |  | [optional] |
+| **raw_contract_id** | **Integer** | The attached document. Send null to detach it. | [optional] |
 | **year** | **Integer** |  |  |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |

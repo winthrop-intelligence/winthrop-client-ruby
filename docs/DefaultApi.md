@@ -34,6 +34,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**create_game**](DefaultApi.md#create_game) | **POST** /api/v1/games |  |
 | [**create_game_post**](DefaultApi.md#create_game_post) | **POST** /api/v1/game_posts |  |
 | [**create_game_post_search**](DefaultApi.md#create_game_post_search) | **POST** /api/v1/game_post_searches |  |
+| [**create_income_report**](DefaultApi.md#create_income_report) | **POST** /api/v1/income_reports |  |
 | [**create_job_post**](DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post |
 | [**create_mcp_event**](DefaultApi.md#create_mcp_event) | **POST** /api/v1/mcp_events |  |
 | [**create_note**](DefaultApi.md#create_note) | **POST** /api/v1/notes |  |
@@ -63,6 +64,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_game_contract_raw_contract**](DefaultApi.md#delete_game_contract_raw_contract) | **DELETE** /api/v1/game_contracts/{game_contractId}/delete_raw_contract |  |
 | [**delete_game_post**](DefaultApi.md#delete_game_post) | **DELETE** /api/v1/game_posts/{gamePostId} |  |
 | [**delete_game_post_search**](DefaultApi.md#delete_game_post_search) | **DELETE** /api/v1/game_post_searches/{gamePostSearchId} |  |
+| [**delete_income_report**](DefaultApi.md#delete_income_report) | **DELETE** /api/v1/income_reports/{incomeReportId} |  |
 | [**delete_job_post**](DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post |
 | [**delete_note**](DefaultApi.md#delete_note) | **DELETE** /api/v1/notes/{id} |  |
 | [**delete_position**](DefaultApi.md#delete_position) | **DELETE** /api/v1/positions/{positionId} |  |
@@ -294,6 +296,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_game**](DefaultApi.md#update_game) | **PATCH** /api/v1/games/{gameId} |  |
 | [**update_game_contract**](DefaultApi.md#update_game_contract) | **PATCH** /api/v1/game_contracts/{game_contractId} |  |
 | [**update_game_post_search**](DefaultApi.md#update_game_post_search) | **PATCH** /api/v1/game_post_searches/{gamePostSearchId} |  |
+| [**update_income_report**](DefaultApi.md#update_income_report) | **PATCH** /api/v1/income_reports/{incomeReportId} |  |
 | [**update_job_post**](DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post |
 | [**update_job_post_human_override**](DefaultApi.md#update_job_post_human_override) | **PATCH** /central_jobs/job_posts/{jobPostId}/human_override | Set the human_override_is_athletics value for one job post |
 | [**update_note**](DefaultApi.md#update_note) | **PATCH** /api/v1/notes/{id} |  |
@@ -2578,6 +2581,80 @@ end
 - **Accept**: application/json
 
 
+## create_income_report
+
+> <IncomeReport> create_income_report(income_report_create)
+
+
+
+Create an income report (outside-income report) for a coach. Requires the winad_write OAuth scope and an admin user (super admin or a user-less service token); other users get 403. The new report is recorded in its audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. Attaching a document (raw_contract_id) marks the report's contract status complete.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+income_report_create = WinthropClient::IncomeReportCreate.new({coach_id: 2, year: 2011}) # IncomeReportCreate | Income report to create, with an optional top-level change_note beside it
+
+begin
+  
+  result = api_instance.create_income_report(income_report_create)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_income_report: #{e}"
+end
+```
+
+#### Using the create_income_report_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<IncomeReport>, Integer, Hash)> create_income_report_with_http_info(income_report_create)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_income_report_with_http_info(income_report_create)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <IncomeReport>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_income_report_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **income_report_create** | [**IncomeReportCreate**](IncomeReportCreate.md) | Income report to create, with an optional top-level change_note beside it |  |
+
+### Return type
+
+[**IncomeReport**](IncomeReport.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_job_post
 
 > <JobPost> create_job_post(opts)
@@ -4704,6 +4781,83 @@ end
 ### Return type
 
 [**DeleteContactSearch200Response**](DeleteContactSearch200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_income_report
+
+> delete_income_report(income_report_id, opts)
+
+
+
+Delete an income report. Requires the winad_write OAuth scope and an admin user; other users get 403. The attached document is kept, but the FOIA requested items that track this report (and their notes) are deleted with it; to keep them, detach the document with PATCH raw_contract_id null instead. The deletion is recorded in the report's audit history (PaperTrail), attributed to the token's user, with the optional change_note query parameter as the reason.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+income_report_id = 56 # Integer | ID of income report to delete
+opts = {
+  change_note: 'change_note_example' # String | Why the report is being deleted, stored in its audit history and never returned.
+}
+
+begin
+  
+  api_instance.delete_income_report(income_report_id, opts)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_income_report: #{e}"
+end
+```
+
+#### Using the delete_income_report_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_income_report_with_http_info(income_report_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_income_report_with_http_info(income_report_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_income_report_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **income_report_id** | **Integer** | ID of income report to delete |  |
+| **change_note** | **String** | Why the report is being deleted, stored in its audit history and never returned. | [optional] |
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 
@@ -21533,7 +21687,7 @@ end
 
 
 
-Update a compensation. Requires the winad_write OAuth scope. compensation_type may be changed to \"yearly\", \"hourly\", or \"990\" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \"990\". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user.
+Update a compensation. Requires the winad_write OAuth scope. compensation_type may be changed to \"yearly\", \"hourly\", or \"990\" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \"990\". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A non-string change_note is refused with 422 (errors.change_note).
 
 ### Examples
 
@@ -22384,6 +22538,82 @@ end
 ### Return type
 
 [**GamePostDetail**](GamePostDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_income_report
+
+> <IncomeReport> update_income_report(income_report_id, income_report_input)
+
+
+
+Update an income report, for example to move it to the season it covers (year) or detach a document that is not an outside-income report (raw_contract_id null). Requires the winad_write OAuth scope and an admin user; other users get 403. Changes are recorded in the report's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. Attaching a document marks the contract status complete; detaching one does not change it, so send contract_status_id in the same request if it should change too.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+income_report_id = 56 # Integer | ID of income report to update
+income_report_input = WinthropClient::IncomeReportInput.new # IncomeReportInput | Income report fields to change, with an optional top-level change_note beside them
+
+begin
+  
+  result = api_instance.update_income_report(income_report_id, income_report_input)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_income_report: #{e}"
+end
+```
+
+#### Using the update_income_report_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<IncomeReport>, Integer, Hash)> update_income_report_with_http_info(income_report_id, income_report_input)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_income_report_with_http_info(income_report_id, income_report_input)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <IncomeReport>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_income_report_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **income_report_id** | **Integer** | ID of income report to update |  |
+| **income_report_input** | [**IncomeReportInput**](IncomeReportInput.md) | Income report fields to change, with an optional top-level change_note beside them |  |
+
+### Return type
+
+[**IncomeReport**](IncomeReport.md)
 
 ### Authorization
 

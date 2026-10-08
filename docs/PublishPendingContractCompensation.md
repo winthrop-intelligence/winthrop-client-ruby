@@ -17,6 +17,7 @@
 | **car_provided** | **Boolean** |  | [optional] |
 | **comment** | **String** | Required for hourly | [optional] |
 | **buyout_amount** | **String** | Buyout terms, as text | [optional] |
+| **change_note** | **String** | Optional. Why this row&#39;s values are what they are, for the internal audit history (WINAD-10632). Stored on the audit versions of this row&#39;s compensation write; never returned by the API. Blank is the same as omitted. | [optional] |
 
 ## Example
 
@@ -36,7 +37,8 @@ instance = WinthropClient::PublishPendingContractCompensation.new(
   country_club_membership: null,
   car_provided: null,
   comment: null,
-  buyout_amount: null
+  buyout_amount: null,
+  change_note: null
 )
 ```
 
