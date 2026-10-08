@@ -12,6 +12,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_foia_request_followup_history**](ReportingApi.md#get_foia_request_followup_history) | **GET** /api/v1/reports/foia_request_followup_history |  |
 | [**get_foia_requested_item_status_breakdown**](ReportingApi.md#get_foia_requested_item_status_breakdown) | **GET** /api/v1/reports/foia_requested_item_status_breakdown |  |
 | [**get_foia_requested_item_status_transitions**](ReportingApi.md#get_foia_requested_item_status_transitions) | **GET** /api/v1/reports/foia_requested_item_status_transitions |  |
+| [**get_foia_status_summary**](ReportingApi.md#get_foia_status_summary) | **GET** /api/v1/reports/foia_status_summary |  |
 | [**get_games**](ReportingApi.md#get_games) | **GET** /api/v1/reports/games |  |
 | [**get_invoices**](ReportingApi.md#get_invoices) | **GET** /api/v1/reports/invoices |  |
 | [**get_school_contract_requests**](ReportingApi.md#get_school_contract_requests) | **GET** /api/v1/reports/school_contract_requests |  |
@@ -682,6 +683,86 @@ end
 ### Return type
 
 [**FoiaRequestedItemStatusTransitionsResponse**](FoiaRequestedItemStatusTransitionsResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_foia_status_summary
+
+> <FoiaStatusSummaryResponse> get_foia_status_summary(opts)
+
+
+
+Retrieve a read-only, traceable FOIA status snapshot grouped by unarchived label. Rows are ordered by foia_label_id then id. Totals and label summaries describe the entire filtered population of active and closed requests in unarchived labels regardless of page. The three attention lists overlap and must not be summed as distinct requests. Summaries and request ID lists are repeated on every page. A page beyond the last returns 200 with empty data. An archived label filter returns 400 and an unknown label returns 404, each with body {errors: [message]}. Under the latest-note-overall hold rule, a request is held only when its single most recent note is exactly 'FOIA hold: <reason>' from the closed vocabulary; any later note ends the hold.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::ReportingApi.new
+opts = {
+  page: 56, # Integer | Detailed request-row page to retrieve. Summary counts always cover the full filtered population.
+  per_page: 56, # Integer | Maximum 200. Larger values are accepted and capped to 200; meta.per_page reports the effective size.
+  foia_label_id: 56 # Integer | Limit the snapshot to one active FOIA label.
+}
+
+begin
+  
+  result = api_instance.get_foia_status_summary(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling ReportingApi->get_foia_status_summary: #{e}"
+end
+```
+
+#### Using the get_foia_status_summary_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FoiaStatusSummaryResponse>, Integer, Hash)> get_foia_status_summary_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_foia_status_summary_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FoiaStatusSummaryResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling ReportingApi->get_foia_status_summary_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | Detailed request-row page to retrieve. Summary counts always cover the full filtered population. | [optional][default to 1] |
+| **per_page** | **Integer** | Maximum 200. Larger values are accepted and capped to 200; meta.per_page reports the effective size. | [optional][default to 100] |
+| **foia_label_id** | **Integer** | Limit the snapshot to one active FOIA label. | [optional] |
+
+### Return type
+
+[**FoiaStatusSummaryResponse**](FoiaStatusSummaryResponse.md)
 
 ### Authorization
 
