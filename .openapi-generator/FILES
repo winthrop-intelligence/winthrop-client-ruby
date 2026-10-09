@@ -1578,16 +1578,5 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
-spec/api/raw_contracts_api_spec.rb
-spec/models/contract_terms_source_spec.rb
-spec/models/contract_terms_spec.rb
-spec/models/contract_verification_revocation_input_spec.rb
-spec/models/get_contract_verifications200_response_meta_spec.rb
-spec/models/position_departure_request_spec.rb
-spec/models/position_departure_result_spec.rb
-spec/models/publish_pending_contract_request_contract_terms_spec.rb
-spec/models/raw_contract_terms_spec.rb
-spec/models/update_contract_request_spec.rb
-spec/models/update_raw_contract_contract_terms422_response_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec
