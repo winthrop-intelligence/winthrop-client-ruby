@@ -19,6 +19,37 @@ WinthropClient::GetAdminDeskReportActivity200Response.openapi_one_of
 # ]
 ```
 
+### `openapi_discriminator_name`
+
+Returns the discriminator's property name.
+
+#### Example
+
+```ruby
+require 'winthrop-client-ruby'
+
+WinthropClient::GetAdminDeskReportActivity200Response.openapi_discriminator_name
+# => :'kind'
+```
+
+### `openapi_discriminator_name`
+
+Returns the discriminator's mapping.
+
+#### Example
+
+```ruby
+require 'winthrop-client-ruby'
+
+WinthropClient::GetAdminDeskReportActivity200Response.openapi_discriminator_mapping
+# =>
+# {
+#   :'download_all' => :'DeskReportDownloadActivity',
+#   :'downloads' => :'DeskReportDownloadActivity',
+#   :'views' => :'DeskReportActivity'
+# }
+```
+
 ### build
 
 Find the appropriate object from the `openapi_one_of` list and casts the data into it.

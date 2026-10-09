@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **kind** | **String** |  |  |
 | **meta** | [**DeskReportDownloadActivityMeta**](DeskReportDownloadActivityMeta.md) |  |  |
 | **data** | [**Array&lt;DeskActivityDownload&gt;**](DeskActivityDownload.md) |  |  |
 | **summary** | [**DeskActivityDownloadSummary**](DeskActivityDownloadSummary.md) |  |  |
@@ -16,6 +17,7 @@
 require 'winthrop-client-ruby'
 
 instance = WinthropClient::DeskReportDownloadActivity.new(
+  kind: null,
   meta: null,
   data: null,
   summary: null,

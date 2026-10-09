@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **kind** | **String** |  |  |
 | **meta** | [**DeskReportActivityMeta**](DeskReportActivityMeta.md) |  |  |
 | **data** | [**Array&lt;DeskActivityViewer&gt;**](DeskActivityViewer.md) |  |  |
 | **summary** | [**DeskActivitySummary**](DeskActivitySummary.md) |  |  |
@@ -16,6 +17,7 @@
 require 'winthrop-client-ruby'
 
 instance = WinthropClient::DeskReportActivity.new(
+  kind: null,
   meta: null,
   data: null,
   summary: null,
