@@ -182,7 +182,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_income_report**](DefaultApi.md#get_income_report) | **GET** /api/v1/income_reports/{incomeReportId} |  |
 | [**get_income_reports**](DefaultApi.md#get_income_reports) | **GET** /api/v1/income_reports |  |
 | [**get_job_post**](DefaultApi.md#get_job_post) | **GET** /central_jobs/job_posts/{jobPostId} | Get a job post |
-| [**get_job_post_disagreements**](DefaultApi.md#get_job_post_disagreements) | **GET** /central_jobs/job_posts/disagreements | List unresolved LLM/ML athletics classification disagreements |
+| [**get_job_post_disagreements**](DefaultApi.md#get_job_post_disagreements) | **GET** /central_jobs/job_posts/disagreements | List unresolved Jev/ML athletics classification disagreements |
 | [**get_job_posts**](DefaultApi.md#get_job_posts) | **GET** /central_jobs/job_posts | List all job posts |
 | [**get_lad_filter_options**](DefaultApi.md#get_lad_filter_options) | **GET** /api/v1/lad_filter_options |  |
 | [**get_ncaa_financial_report_status**](DefaultApi.md#get_ncaa_financial_report_status) | **GET** /api/v1/ncaa_financial_report_statuses/{ncaaFinancialReportStatusId} |  |
@@ -275,6 +275,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**resolve_frs_export**](DefaultApi.md#resolve_frs_export) | **POST** /api/v1/frs_exports/resolve |  |
 | [**restore_admin_desk_report**](DefaultApi.md#restore_admin_desk_report) | **POST** /api/v1/admin/desk_reports/{uuid}/restore |  |
 | [**retry_frs_export**](DefaultApi.md#retry_frs_export) | **POST** /api/v1/frs_exports/{frsExportId}/retry |  |
+| [**revoke_contract_verification**](DefaultApi.md#revoke_contract_verification) | **POST** /api/v1/raw_contracts/{raw_contractId}/verifications/revoke | Revoke verified seasons (append a revocation event) |
 | [**search_coaches**](DefaultApi.md#search_coaches) | **POST** /api/v1/coaches/search |  |
 | [**send_otp_code**](DefaultApi.md#send_otp_code) | **POST** /api/v1/otp/send_code |  |
 | [**unstract_raw_contract_pdf_text**](DefaultApi.md#unstract_raw_contract_pdf_text) | **POST** /api/v1/raw_contracts/{raw_contractId}/unstract_pdf_text |  |
@@ -302,6 +303,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_note**](DefaultApi.md#update_note) | **PATCH** /api/v1/notes/{id} |  |
 | [**update_password_reset**](DefaultApi.md#update_password_reset) | **PUT** /api/v1/password_reset |  |
 | [**update_position**](DefaultApi.md#update_position) | **PATCH** /api/v1/positions/{positionId} |  |
+| [**update_position_departure**](DefaultApi.md#update_position_departure) | **PATCH** /api/v1/positions/{positionId}/departure |  |
 | [**update_requested_item**](DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} |  |
 | [**update_schedule_intent**](DefaultApi.md#update_schedule_intent) | **PATCH** /api/v1/schedule_intents/{scheduleIntentId} |  |
 | [**update_school_group**](DefaultApi.md#update_school_group) | **PATCH** /api/v1/school_groups/{schoolGroupId} |  |
@@ -1697,7 +1699,7 @@ end
 
 Append a contract verification event
 
-Requires winad_verify, an application explicitly allowing winad_verify, a persisted token resource owner, and read access to the parent RawContract. winad_write is not required and does not grant this action. The document must belong to a Contract. Identity fields are server-derived. Agent retries use a unique (contract_id, agent_run_id) key: equivalent normalized payloads return the original event; changed payloads, documents, or verifiers conflict. An omitted verified_at on retry retains the original check time. Manual checks are never deduplicated. This API provides no endpoints to edit or delete events.
+Requires winad_verify, an application explicitly allowing winad_verify, a persisted token resource owner, and read access to the parent RawContract. winad_write is not required and does not grant this action. The document must belong to a Contract. Identity fields are server-derived. Agent retries use a unique (contract_id, agent_run_id) key: equivalent normalized payloads return the original event; changed payloads, documents, or verifiers conflict. An omitted verified_at on retry retains the original check time. The result 'revoked' is rejected here; use the revoke endpoint. Manual checks are never deduplicated. This API provides no endpoints to edit or delete events.
 
 ### Examples
 
@@ -13792,7 +13794,7 @@ end
 
 > <JobPostDisagreementCollection> get_job_post_disagreements(opts)
 
-List unresolved LLM/ML athletics classification disagreements
+List unresolved Jev/ML athletics classification disagreements
 
 Unresolved, non-expired JobPost rows where llm_is_athletics and ml_is_athletics disagree, split into posts created within the since window (\"new\") and everything else still unresolved (\"still_pending\"). 
 
@@ -13822,7 +13824,7 @@ opts = {
 }
 
 begin
-  # List unresolved LLM/ML athletics classification disagreements
+  # List unresolved Jev/ML athletics classification disagreements
   result = api_instance.get_job_post_disagreements(opts)
   p result
 rescue WinthropClient::ApiError => e
@@ -13838,7 +13840,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # List unresolved LLM/ML athletics classification disagreements
+  # List unresolved Jev/ML athletics classification disagreements
   data, status_code, headers = api_instance.get_job_post_disagreements_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
@@ -20938,6 +20940,82 @@ end
 - **Accept**: application/json
 
 
+## revoke_contract_verification
+
+> <ContractVerification> revoke_contract_verification(raw_contract_id, contract_verification_revocation_input)
+
+Revoke verified seasons (append a revocation event)
+
+Same gates as create: winad_verify token scope, an application explicitly allowing winad_verify, a persisted token resource owner, and read access to the parent RawContract. winad_write is not required. Appends a result 'revoked' event; nothing is deleted. The latest event per contract+season (verified_at DESC, id DESC) is authoritative. Only currently verified seasons can be revoked. No verified_at or identity fields are accepted. The body is a flat JSON object. The write also creates a PaperTrail version recording the token user and the optional top-level change_note.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+raw_contract_id = 56 # Integer | 
+contract_verification_revocation_input = WinthropClient::ContractVerificationRevocationInput.new({seasons: [37], reason: 'reason_example', approval_quote: 'approval_quote_example'}) # ContractVerificationRevocationInput | 
+
+begin
+  # Revoke verified seasons (append a revocation event)
+  result = api_instance.revoke_contract_verification(raw_contract_id, contract_verification_revocation_input)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->revoke_contract_verification: #{e}"
+end
+```
+
+#### Using the revoke_contract_verification_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ContractVerification>, Integer, Hash)> revoke_contract_verification_with_http_info(raw_contract_id, contract_verification_revocation_input)
+
+```ruby
+begin
+  # Revoke verified seasons (append a revocation event)
+  data, status_code, headers = api_instance.revoke_contract_verification_with_http_info(raw_contract_id, contract_verification_revocation_input)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ContractVerification>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->revoke_contract_verification_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **raw_contract_id** | **Integer** |  |  |
+| **contract_verification_revocation_input** | [**ContractVerificationRevocationInput**](ContractVerificationRevocationInput.md) |  |  |
+
+### Return type
+
+[**ContractVerification**](ContractVerification.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## search_coaches
 
 > <CoachCollection> search_coaches(opts)
@@ -22986,6 +23064,82 @@ end
 ### Return type
 
 [**Position**](Position.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_position_departure
+
+> <PositionDepartureResult> update_position_departure(position_id, position_departure_request)
+
+
+
+Fully replace a position's departure details. Setting departing to true requires a date, reason, and public source URL. Setting false clears the date; omitted details become null. Records the user and the optional top-level change_note on the PaperTrail version, and writes the position change log. Identical requests are no-ops: no version is created, so no note is stored.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+position_id = 56 # Integer | ID of the position to update
+position_departure_request = WinthropClient::PositionDepartureRequest.new({departing: false}) # PositionDepartureRequest | 
+
+begin
+  
+  result = api_instance.update_position_departure(position_id, position_departure_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_position_departure: #{e}"
+end
+```
+
+#### Using the update_position_departure_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PositionDepartureResult>, Integer, Hash)> update_position_departure_with_http_info(position_id, position_departure_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_position_departure_with_http_info(position_id, position_departure_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PositionDepartureResult>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_position_departure_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **position_id** | **Integer** | ID of the position to update |  |
+| **position_departure_request** | [**PositionDepartureRequest**](PositionDepartureRequest.md) |  |  |
+
+### Return type
+
+[**PositionDepartureResult**](PositionDepartureResult.md)
 
 ### Authorization
 

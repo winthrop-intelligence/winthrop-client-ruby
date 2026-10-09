@@ -35,6 +35,8 @@
 | **back_to** | [**RawContractBackTo**](RawContractBackTo.md) |  | [optional] |
 | **contract_label** | **String** |  | [optional] |
 | **deal_info** | [**RawContractDealInfo**](RawContractDealInfo.md) |  | [optional] |
+| **contract_terms** | [**ContractTerms**](ContractTerms.md) | Structured terms read from this contract&#39;s OCR text (WINAD-10633); null when none have been stored. | [optional] |
+| **contract_terms_stale** | **Boolean** | True when contract_terms is present and source.rendition_sha256 no longer matches the SHA-256 of the current OCR text. | [optional] |
 
 ## Example
 
@@ -72,7 +74,9 @@ instance = WinthropClient::RawContract.new(
   has_file: null,
   back_to: null,
   contract_label: null,
-  deal_info: null
+  deal_info: null,
+  contract_terms: null,
+  contract_terms_stale: null
 )
 ```
 

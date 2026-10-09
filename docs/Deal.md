@@ -17,6 +17,7 @@
 | **deal_type_id** | **Integer** |  | [optional] |
 | **archived** | **Boolean** |  | [optional] |
 | **verified** | **Boolean** |  | [optional] |
+| **raw_contract** | [**RawContractTerms**](RawContractTerms.md) | The linked RawContract&#39;s structured terms (deal show only); null when the deal has no RawContract or the user cannot read it. | [optional] |
 
 ## Example
 
@@ -36,7 +37,8 @@ instance = WinthropClient::Deal.new(
   autorenew: null,
   deal_type_id: null,
   archived: null,
-  verified: null
+  verified: null,
+  raw_contract: null
 )
 ```
 

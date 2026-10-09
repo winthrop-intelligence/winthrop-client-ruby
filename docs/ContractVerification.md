@@ -10,6 +10,8 @@
 | **method** | **String** |  |  |
 | **agent_run_id** | **String** | Required for agent events. A new check must use a new run id. | [optional] |
 | **evidence_url** | **String** | HTTP(S) evidence link; required for passed and mismatch results. | [optional] |
+| **reason** | **String** | Only set on revoked events. | [optional] |
+| **approval_quote** | **String** | Only set on revoked events. | [optional] |
 | **id** | **Integer** |  |  |
 | **contract_id** | **Integer** |  |  |
 | **raw_contract_id** | **Integer** | Checked PDF; becomes null when that RawContract is deleted. |  |
@@ -29,6 +31,8 @@ instance = WinthropClient::ContractVerification.new(
   method: null,
   agent_run_id: null,
   evidence_url: null,
+  reason: null,
+  approval_quote: null,
   id: null,
   contract_id: null,
   raw_contract_id: null,
