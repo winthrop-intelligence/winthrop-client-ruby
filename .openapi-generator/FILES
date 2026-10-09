@@ -165,8 +165,11 @@ docs/Contract.md
 docs/ContractCollection.md
 docs/ContractErrorsResponse.md
 docs/ContractTermOption.md
+docs/ContractTerms.md
+docs/ContractTermsSource.md
 docs/ContractVerification.md
 docs/ContractVerificationInput.md
+docs/ContractVerificationRevocationInput.md
 docs/ContractsApi.md
 docs/CoworkerEntry.md
 docs/CoworkerTenure.md
@@ -480,6 +483,7 @@ docs/GetAccountUserActivation200Response.md
 docs/GetAdminDeskRequest200Response.md
 docs/GetCompensationComparisons400Response.md
 docs/GetContractVerifications200Response.md
+docs/GetContractVerifications200ResponseMeta.md
 docs/GetFavorites200ResponseInner.md
 docs/GetFavoritesCategories200ResponseInner.md
 docs/GetFilterOptions200Response.md
@@ -572,6 +576,8 @@ docs/PerformanceChartData.md
 docs/PerformanceChartRecord.md
 docs/Position.md
 docs/PositionCollection.md
+docs/PositionDepartureRequest.md
+docs/PositionDepartureResult.md
 docs/PositionEntry.md
 docs/PositionSportStat.md
 docs/PositionType.md
@@ -585,6 +591,7 @@ docs/PublishPendingContractCompensation.md
 docs/PublishPendingContractCompensationBaseSalary.md
 docs/PublishPendingContractCompensationOneTimeBonus.md
 docs/PublishPendingContractRequest.md
+docs/PublishPendingContractRequestContractTerms.md
 docs/PublishedContract.md
 docs/PublishedContractAllOfCompensations.md
 docs/QuadrantUnplottedSchool.md
@@ -592,6 +599,8 @@ docs/RawContract.md
 docs/RawContractBackTo.md
 docs/RawContractCollection.md
 docs/RawContractDealInfo.md
+docs/RawContractTerms.md
+docs/RawContractsApi.md
 docs/ReconciliationCoach.md
 docs/ReconciliationIncluded.md
 docs/ReconciliationPagination.md
@@ -732,6 +741,7 @@ docs/UpdateAdminDeskRequest200Response.md
 docs/UpdateAdminDeskRequest200ResponseData.md
 docs/UpdateAdminDeskRequestRequest.md
 docs/UpdateAdminDeskSettings422Response.md
+docs/UpdateContractRequest.md
 docs/UpdateDeal403Response.md
 docs/UpdateDeal422Response.md
 docs/UpdateDealRequest.md
@@ -746,6 +756,7 @@ docs/UpdateNoteRequest.md
 docs/UpdatePasswordReset200Response.md
 docs/UpdatePasswordResetRequest.md
 docs/UpdatePasswordResetRequestUser.md
+docs/UpdateRawContractContractTerms422Response.md
 docs/UpdateScheduleIntentRequest.md
 docs/UpdateScheduleIntentRequestScheduleIntent.md
 docs/UpdateSchoolGroupRequest.md
@@ -785,6 +796,7 @@ lib/winthrop-client-ruby/api/foia_inbox_api.rb
 lib/winthrop-client-ruby/api/game_contracts_api.rb
 lib/winthrop-client-ruby/api/intercollegiate_api.rb
 lib/winthrop-client-ruby/api/ml_athletic_api.rb
+lib/winthrop-client-ruby/api/raw_contracts_api.rb
 lib/winthrop-client-ruby/api/reporting_api.rb
 lib/winthrop-client-ruby/api/salary_sites_api.rb
 lib/winthrop-client-ruby/api/scraper_api.rb
@@ -953,8 +965,11 @@ lib/winthrop-client-ruby/models/contract.rb
 lib/winthrop-client-ruby/models/contract_collection.rb
 lib/winthrop-client-ruby/models/contract_errors_response.rb
 lib/winthrop-client-ruby/models/contract_term_option.rb
+lib/winthrop-client-ruby/models/contract_terms.rb
+lib/winthrop-client-ruby/models/contract_terms_source.rb
 lib/winthrop-client-ruby/models/contract_verification.rb
 lib/winthrop-client-ruby/models/contract_verification_input.rb
+lib/winthrop-client-ruby/models/contract_verification_revocation_input.rb
 lib/winthrop-client-ruby/models/coworker_entry.rb
 lib/winthrop-client-ruby/models/coworker_tenure.rb
 lib/winthrop-client-ruby/models/create_account_user422_response.rb
@@ -1263,6 +1278,7 @@ lib/winthrop-client-ruby/models/get_account_user_activation200_response.rb
 lib/winthrop-client-ruby/models/get_admin_desk_request200_response.rb
 lib/winthrop-client-ruby/models/get_compensation_comparisons400_response.rb
 lib/winthrop-client-ruby/models/get_contract_verifications200_response.rb
+lib/winthrop-client-ruby/models/get_contract_verifications200_response_meta.rb
 lib/winthrop-client-ruby/models/get_favorites200_response_inner.rb
 lib/winthrop-client-ruby/models/get_favorites_categories200_response_inner.rb
 lib/winthrop-client-ruby/models/get_filter_options200_response.rb
@@ -1353,6 +1369,8 @@ lib/winthrop-client-ruby/models/performance_chart_data.rb
 lib/winthrop-client-ruby/models/performance_chart_record.rb
 lib/winthrop-client-ruby/models/position.rb
 lib/winthrop-client-ruby/models/position_collection.rb
+lib/winthrop-client-ruby/models/position_departure_request.rb
+lib/winthrop-client-ruby/models/position_departure_result.rb
 lib/winthrop-client-ruby/models/position_entry.rb
 lib/winthrop-client-ruby/models/position_sport_stat.rb
 lib/winthrop-client-ruby/models/position_type.rb
@@ -1366,6 +1384,7 @@ lib/winthrop-client-ruby/models/publish_pending_contract_compensation.rb
 lib/winthrop-client-ruby/models/publish_pending_contract_compensation_base_salary.rb
 lib/winthrop-client-ruby/models/publish_pending_contract_compensation_one_time_bonus.rb
 lib/winthrop-client-ruby/models/publish_pending_contract_request.rb
+lib/winthrop-client-ruby/models/publish_pending_contract_request_contract_terms.rb
 lib/winthrop-client-ruby/models/published_contract.rb
 lib/winthrop-client-ruby/models/published_contract_all_of_compensations.rb
 lib/winthrop-client-ruby/models/quadrant_unplotted_school.rb
@@ -1373,6 +1392,7 @@ lib/winthrop-client-ruby/models/raw_contract.rb
 lib/winthrop-client-ruby/models/raw_contract_back_to.rb
 lib/winthrop-client-ruby/models/raw_contract_collection.rb
 lib/winthrop-client-ruby/models/raw_contract_deal_info.rb
+lib/winthrop-client-ruby/models/raw_contract_terms.rb
 lib/winthrop-client-ruby/models/reconciliation_coach.rb
 lib/winthrop-client-ruby/models/reconciliation_included.rb
 lib/winthrop-client-ruby/models/reconciliation_pagination.rb
@@ -1510,6 +1530,7 @@ lib/winthrop-client-ruby/models/update_admin_desk_request200_response.rb
 lib/winthrop-client-ruby/models/update_admin_desk_request200_response_data.rb
 lib/winthrop-client-ruby/models/update_admin_desk_request_request.rb
 lib/winthrop-client-ruby/models/update_admin_desk_settings422_response.rb
+lib/winthrop-client-ruby/models/update_contract_request.rb
 lib/winthrop-client-ruby/models/update_deal403_response.rb
 lib/winthrop-client-ruby/models/update_deal422_response.rb
 lib/winthrop-client-ruby/models/update_deal_request.rb
@@ -1524,6 +1545,7 @@ lib/winthrop-client-ruby/models/update_note_request.rb
 lib/winthrop-client-ruby/models/update_password_reset200_response.rb
 lib/winthrop-client-ruby/models/update_password_reset_request.rb
 lib/winthrop-client-ruby/models/update_password_reset_request_user.rb
+lib/winthrop-client-ruby/models/update_raw_contract_contract_terms422_response.rb
 lib/winthrop-client-ruby/models/update_schedule_intent_request.rb
 lib/winthrop-client-ruby/models/update_schedule_intent_request_schedule_intent.rb
 lib/winthrop-client-ruby/models/update_school_group_request.rb
@@ -1556,15 +1578,16 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
-spec/models/foia_status_summary_filters_spec.rb
-spec/models/foia_status_summary_flags_spec.rb
-spec/models/foia_status_summary_label_spec.rb
-spec/models/foia_status_summary_meta_spec.rb
-spec/models/foia_status_summary_request_spec.rb
-spec/models/foia_status_summary_requested_item_spec.rb
-spec/models/foia_status_summary_response_spec.rb
-spec/models/foia_status_summary_totals_spec.rb
-spec/models/income_report_create_spec.rb
-spec/models/income_report_input_spec.rb
+spec/api/raw_contracts_api_spec.rb
+spec/models/contract_terms_source_spec.rb
+spec/models/contract_terms_spec.rb
+spec/models/contract_verification_revocation_input_spec.rb
+spec/models/get_contract_verifications200_response_meta_spec.rb
+spec/models/position_departure_request_spec.rb
+spec/models/position_departure_result_spec.rb
+spec/models/publish_pending_contract_request_contract_terms_spec.rb
+spec/models/raw_contract_terms_spec.rb
+spec/models/update_contract_request_spec.rb
+spec/models/update_raw_contract_contract_terms422_response_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

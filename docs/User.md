@@ -22,6 +22,8 @@
 | **roles** | **Array&lt;String&gt;** |  | [optional] |
 | **is_admin** | **Boolean** | Whether the user is a data admin or super admin | [optional] |
 | **can_see_compensation** | **Boolean** | Whether the user can view coach compensation data | [optional] |
+| **can_see_coach_compensation** | **Boolean** | Whether the user sees pay on the Coaches search (Coaches + Coach compensation permissions) | [optional] |
+| **can_see_administrator_compensation** | **Boolean** | Whether the user sees pay on the Administrators search (Administrators + Administrator compensation permissions) | [optional] |
 | **can_show_scouting** | **Boolean** | Whether the user can view scouting/team schedule links | [optional] |
 | **can_show_game_contract** | **Boolean** | Whether the user can view game contract/guarantee data | [optional] |
 | **can_see_coaches** | **Boolean** | Whether the user can access the Coaches section | [optional] |
@@ -81,6 +83,8 @@ instance = WinthropClient::User.new(
   roles: null,
   is_admin: null,
   can_see_compensation: null,
+  can_see_coach_compensation: null,
+  can_see_administrator_compensation: null,
   can_show_scouting: null,
   can_show_game_contract: null,
   can_see_coaches: null,

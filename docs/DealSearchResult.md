@@ -25,6 +25,7 @@
 | **vendors** | [**Array&lt;DealDetailVendor&gt;**](DealDetailVendor.md) |  | [optional] |
 | **deal_detail** | [**DealDetail**](DealDetail.md) |  | [optional] |
 | **raw_contract_id** | **Integer** |  | [optional] |
+| **raw_contract** | [**RawContractTerms**](RawContractTerms.md) | The linked RawContract&#39;s structured terms; null when raw_contract_id is null, or when the user cannot read that document (for example a pending contract&#39;s PDF). | [optional] |
 
 ## Example
 
@@ -52,7 +53,8 @@ instance = WinthropClient::DealSearchResult.new(
   archived: null,
   vendors: null,
   deal_detail: null,
-  raw_contract_id: null
+  raw_contract_id: null,
+  raw_contract: null
 )
 ```
 
