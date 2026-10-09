@@ -15,7 +15,6 @@
 | **delivers_label** | **String** |  |  |
 | **source_report_uuid** | **String** |  |  |
 | **cta_key** | **String** |  |  |
-| **client_note** | **String** | The needs-more-info note shown on the customer&#39;s pending card. Was &#x60;admin_note&#x60;, which read as internal-only while being rendered to the customer — a naming trap on a live field.  |  |
 
 ## Example
 
@@ -33,8 +32,7 @@ instance = WinthropClient::DeskRequest.new(
   requested_at: null,
   delivers_label: null,
   source_report_uuid: null,
-  cta_key: null,
-  client_note: null
+  cta_key: null
 )
 ```
 
