@@ -52,10 +52,12 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_account_user**](DefaultApi.md#delete_account_user) | **DELETE** /api/v1/account_users/{accountUserId} |  |
 | [**delete_admin_desk_report_artifact**](DefaultApi.md#delete_admin_desk_report_artifact) | **DELETE** /api/v1/admin/desk_reports/{desk_report_uuid}/artifacts/{id} |  |
 | [**delete_cashflow**](DefaultApi.md#delete_cashflow) | **DELETE** /api/v1/cashflows/{cashflowId} |  |
+| [**delete_compensation**](DefaultApi.md#delete_compensation) | **DELETE** /api/v1/compensations/{compensationId} |  |
 | [**delete_conference**](DefaultApi.md#delete_conference) | **DELETE** /api/v1/conferences/{conferenceId} |  |
 | [**delete_conferenceship**](DefaultApi.md#delete_conferenceship) | **DELETE** /api/v1/conferenceships/{conferenceshipId} |  |
 | [**delete_contact_search**](DefaultApi.md#delete_contact_search) | **DELETE** /api/v1/contact_searches/{id} |  |
 | [**delete_desk_report_archive**](DefaultApi.md#delete_desk_report_archive) | **DELETE** /api/v1/desk_reports/{uuid}/archive |  |
+| [**delete_earned_incentive**](DefaultApi.md#delete_earned_incentive) | **DELETE** /api/v1/earned_incentives/{earnedIncentiveId} |  |
 | [**delete_favorite**](DefaultApi.md#delete_favorite) | **DELETE** /api/v1/favorites/{id} |  |
 | [**delete_favorites_category**](DefaultApi.md#delete_favorites_category) | **DELETE** /api/v1/favorites_categories/{id} |  |
 | [**delete_foia_label**](DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} |  |
@@ -75,6 +77,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_season**](DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} |  |
 | [**delete_team_schedule_favorite**](DefaultApi.md#delete_team_schedule_favorite) | **DELETE** /api/v1/team_schedule_favorites/{id} |  |
 | [**delete_team_schedule_note**](DefaultApi.md#delete_team_schedule_note) | **DELETE** /api/v1/team_schedule_notes/{fil_team_id} |  |
+| [**delete_team_season_result**](DefaultApi.md#delete_team_season_result) | **DELETE** /api/v1/team_season_results/{teamSeasonResultId} |  |
 | [**delete_upload**](DefaultApi.md#delete_upload) | **DELETE** /api/v1/uploads/{uploadId} |  |
 | [**download_raw_contract_file**](DefaultApi.md#download_raw_contract_file) | **GET** /api/v1/raw_contracts/{raw_contractId}/download |  |
 | [**enrich_game_post_searches**](DefaultApi.md#enrich_game_post_searches) | **POST** /api/v1/game_post_searches/enrichment |  |
@@ -83,10 +86,10 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_account_user_activation**](DefaultApi.md#get_account_user_activation) | **GET** /api/v1/account_user_activation |  |
 | [**get_account_users**](DefaultApi.md#get_account_users) | **GET** /api/v1/account_users |  |
 | [**get_admin_desk_report**](DefaultApi.md#get_admin_desk_report) | **GET** /api/v1/admin/desk_reports/{uuid} |  |
+| [**get_admin_desk_report_activity**](DefaultApi.md#get_admin_desk_report_activity) | **GET** /api/v1/admin/desk_reports/{uuid}/activity |  |
+| [**get_admin_desk_report_activity_summaries**](DefaultApi.md#get_admin_desk_report_activity_summaries) | **GET** /api/v1/admin/desk_reports/activity_summaries |  |
 | [**get_admin_desk_reports**](DefaultApi.md#get_admin_desk_reports) | **GET** /api/v1/admin/desk_reports |  |
-| [**get_admin_desk_request**](DefaultApi.md#get_admin_desk_request) | **GET** /api/v1/admin/desk_requests/{uuid} |  |
 | [**get_admin_desk_requests**](DefaultApi.md#get_admin_desk_requests) | **GET** /api/v1/admin/desk_requests |  |
-| [**get_admin_desk_settings**](DefaultApi.md#get_admin_desk_settings) | **GET** /api/v1/admin/desk_settings |  |
 | [**get_administrator**](DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} |  |
 | [**get_administrator_searches**](DefaultApi.md#get_administrator_searches) | **GET** /api/v1/administrator_searches |  |
 | [**get_administrators**](DefaultApi.md#get_administrators) | **GET** /api/v1/administrators |  |
@@ -142,6 +145,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_desk_requests**](DefaultApi.md#get_desk_requests) | **GET** /api/v1/desk_requests |  |
 | [**get_division**](DefaultApi.md#get_division) | **GET** /api/v1/divisions/{divisionId} |  |
 | [**get_divisions**](DefaultApi.md#get_divisions) | **GET** /api/v1/divisions |  |
+| [**get_earned_incentives**](DefaultApi.md#get_earned_incentives) | **GET** /api/v1/earned_incentives |  |
 | [**get_edit_account_user**](DefaultApi.md#get_edit_account_user) | **GET** /api/v1/account_users/{accountUserId}/edit |  |
 | [**get_favorites**](DefaultApi.md#get_favorites) | **GET** /api/v1/favorites |  |
 | [**get_favorites_categories**](DefaultApi.md#get_favorites_categories) | **GET** /api/v1/favorites_categories |  |
@@ -254,6 +258,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_team_schedule_favorites**](DefaultApi.md#get_team_schedule_favorites) | **GET** /api/v1/team_schedule_favorites |  |
 | [**get_team_schedule_note**](DefaultApi.md#get_team_schedule_note) | **GET** /api/v1/team_schedule_notes/{fil_team_id} |  |
 | [**get_team_schedule_searches**](DefaultApi.md#get_team_schedule_searches) | **GET** /api/v1/team_schedule_searches |  |
+| [**get_team_season_results**](DefaultApi.md#get_team_season_results) | **GET** /api/v1/team_season_results |  |
 | [**get_time_zones**](DefaultApi.md#get_time_zones) | **GET** /api/v1/time_zones |  |
 | [**get_upload**](DefaultApi.md#get_upload) | **GET** /api/v1/uploads/{uploadId} |  |
 | [**get_upload_file**](DefaultApi.md#get_upload_file) | **GET** /api/v1/uploads/{uploadId}/file |  |
@@ -269,7 +274,6 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_wire_changes**](DefaultApi.md#get_wire_changes) | **GET** /api/v1/wire_changes |  |
 | [**hide_admin_desk_report**](DefaultApi.md#hide_admin_desk_report) | **POST** /api/v1/admin/desk_reports/{uuid}/hide |  |
 | [**list_notes**](DefaultApi.md#list_notes) | **GET** /api/v1/notes/list |  |
-| [**needs_info_admin_desk_request**](DefaultApi.md#needs_info_admin_desk_request) | **PATCH** /api/v1/admin/desk_requests/{uuid}/needs_info |  |
 | [**publish_admin_desk_report**](DefaultApi.md#publish_admin_desk_report) | **POST** /api/v1/admin/desk_reports/{uuid}/publish |  |
 | [**regenerate_raw_contract_pdf**](DefaultApi.md#regenerate_raw_contract_pdf) | **POST** /api/v1/raw_contracts/{raw_contractId}/regenerate_pdf |  |
 | [**resolve_frs_export**](DefaultApi.md#resolve_frs_export) | **POST** /api/v1/frs_exports/resolve |  |
@@ -283,7 +287,6 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_account_user_activation**](DefaultApi.md#update_account_user_activation) | **PATCH** /api/v1/account_user_activation |  |
 | [**update_admin_desk_report**](DefaultApi.md#update_admin_desk_report) | **PATCH** /api/v1/admin/desk_reports/{uuid} |  |
 | [**update_admin_desk_request**](DefaultApi.md#update_admin_desk_request) | **PATCH** /api/v1/admin/desk_requests/{uuid} |  |
-| [**update_admin_desk_settings**](DefaultApi.md#update_admin_desk_settings) | **PATCH** /api/v1/admin/desk_settings |  |
 | [**update_cashflow**](DefaultApi.md#update_cashflow) | **PUT** /api/v1/cashflows/{cashflowId} |  |
 | [**update_coach**](DefaultApi.md#update_coach) | **PATCH** /api/v1/coaches/{coachId} |  |
 | [**update_compensation**](DefaultApi.md#update_compensation) | **PATCH** /api/v1/compensations/{compensationId} |  |
@@ -311,7 +314,9 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_subscription_acceptance**](DefaultApi.md#update_subscription_acceptance) | **PATCH** /api/v1/subscription_acceptances/{subscriptionAcceptanceId} |  |
 | [**update_team_schedule_favorite**](DefaultApi.md#update_team_schedule_favorite) | **PATCH** /api/v1/team_schedule_favorites/{id} |  |
 | [**update_user**](DefaultApi.md#update_user) | **PATCH** /api/v1/users/{userId} |  |
+| [**upsert_earned_incentive**](DefaultApi.md#upsert_earned_incentive) | **PUT** /api/v1/earned_incentives |  |
 | [**upsert_team_schedule_note**](DefaultApi.md#upsert_team_schedule_note) | **PUT** /api/v1/team_schedule_notes/{fil_team_id} |  |
+| [**upsert_team_season_result**](DefaultApi.md#upsert_team_season_result) | **PUT** /api/v1/team_season_results |  |
 | [**user_me**](DefaultApi.md#user_me) | **GET** /api/v1/users/me |  |
 | [**validate_admin_desk_report**](DefaultApi.md#validate_admin_desk_report) | **POST** /api/v1/admin/desk_reports/{uuid}/validate |  |
 | [**verify_otp_code**](DefaultApi.md#verify_otp_code) | **POST** /api/v1/otp/verify |  |
@@ -3913,6 +3918,83 @@ nil (empty response body)
 - **Accept**: Not defined
 
 
+## delete_compensation
+
+> delete_compensation(compensation_id, opts)
+
+
+
+Delete a compensation. Requires the winad_write OAuth scope and permission to destroy the compensation. Hidden-coach compensations are 404 for customers, who may not delete anyway (403). The positions that pointed at the compensation are kept and unlinked (compensation_id becomes null; no position version is written), the linked contract is kept, and the compensation's FOIA requested items (and their notes) are deleted with it. The coach's latest salary is refreshed. Like PATCH, the delete is recorded in the audit history (PaperTrail) attributed to the token's user, or for a client-credentials token to the configured system user. The optional change_note query parameter is the reason, stored (stripped, blank is absent) on every version the delete creates and never returned. The destroy version keeps the deleted row, so a client can read it back there. Returns 204 with no body. API clients in winthrop-clients must be regenerated to expose this change.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+compensation_id = 56 # Integer | ID of compensation to delete
+opts = {
+  change_note: 'change_note_example' # String | Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned.
+}
+
+begin
+  
+  api_instance.delete_compensation(compensation_id, opts)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_compensation: #{e}"
+end
+```
+
+#### Using the delete_compensation_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_compensation_with_http_info(compensation_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_compensation_with_http_info(compensation_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_compensation_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **compensation_id** | **Integer** | ID of compensation to delete |  |
+| **change_note** | **String** | Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned. | [optional] |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## delete_conference
 
 > delete_conference(conference_id)
@@ -4196,6 +4278,84 @@ end
 ### Return type
 
 [**DeskReportArchiveResponse**](DeskReportArchiveResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_earned_incentive
+
+> <EarnedIncentive> delete_earned_incentive(earned_incentive_id, opts)
+
+
+
+Delete one earned incentive and return it as it was. Requires the winad_write OAuth scope and a super admin user; other users get 403. The deletion is recorded in the row's audit history (PaperTrail) with the optional change_note query parameter as the reason.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+earned_incentive_id = 56 # Integer | ID of the earned incentive to delete
+opts = {
+  change_note: 'change_note_example' # String | Why the row is being deleted, stored in its audit history and never returned.
+}
+
+begin
+  
+  result = api_instance.delete_earned_incentive(earned_incentive_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_earned_incentive: #{e}"
+end
+```
+
+#### Using the delete_earned_incentive_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EarnedIncentive>, Integer, Hash)> delete_earned_incentive_with_http_info(earned_incentive_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_earned_incentive_with_http_info(earned_incentive_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EarnedIncentive>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_earned_incentive_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **earned_incentive_id** | **Integer** | ID of the earned incentive to delete |  |
+| **change_note** | **String** | Why the row is being deleted, stored in its audit history and never returned. | [optional] |
+
+### Return type
+
+[**EarnedIncentive**](EarnedIncentive.md)
 
 ### Authorization
 
@@ -4821,7 +4981,7 @@ end
 api_instance = WinthropClient::DefaultApi.new
 income_report_id = 56 # Integer | ID of income report to delete
 opts = {
-  change_note: 'change_note_example' # String | Why the report is being deleted, stored in its audit history and never returned.
+  change_note: 'change_note_example' # String | Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned.
 }
 
 begin
@@ -4855,7 +5015,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **income_report_id** | **Integer** | ID of income report to delete |  |
-| **change_note** | **String** | Why the report is being deleted, stored in its audit history and never returned. | [optional] |
+| **change_note** | **String** | Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned. | [optional] |
 
 ### Return type
 
@@ -5020,7 +5180,7 @@ end
 
 ## delete_position
 
-> delete_position(position_id)
+> delete_position(position_id, opts)
 
 
 
@@ -5044,10 +5204,13 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 position_id = 56 # Integer | ID of position to delete
+opts = {
+  change_note: 'change_note_example' # String | Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned.
+}
 
 begin
   
-  api_instance.delete_position(position_id)
+  api_instance.delete_position(position_id, opts)
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->delete_position: #{e}"
 end
@@ -5057,12 +5220,12 @@ end
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> delete_position_with_http_info(position_id)
+> <Array(nil, Integer, Hash)> delete_position_with_http_info(position_id, opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.delete_position_with_http_info(position_id)
+  data, status_code, headers = api_instance.delete_position_with_http_info(position_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
@@ -5076,6 +5239,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **position_id** | **Integer** | ID of position to delete |  |
+| **change_note** | **String** | Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned. | [optional] |
 
 ### Return type
 
@@ -5088,7 +5252,7 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## delete_requested_item
@@ -5602,6 +5766,84 @@ nil (empty response body)
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+
+## delete_team_season_result
+
+> <TeamSeasonResult> delete_team_season_result(team_season_result_id, opts)
+
+
+
+Delete a team season result. Requires the winad_write OAuth scope and an admin user; other users get 403. The deletion is recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional change_note query parameter as the reason. Returns the deleted result.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+team_season_result_id = 56 # Integer | ID of the team season result to delete
+opts = {
+  change_note: 'change_note_example' # String | Why the result is being deleted, stored in its audit history and never returned.
+}
+
+begin
+  
+  result = api_instance.delete_team_season_result(team_season_result_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_team_season_result: #{e}"
+end
+```
+
+#### Using the delete_team_season_result_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TeamSeasonResult>, Integer, Hash)> delete_team_season_result_with_http_info(team_season_result_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_team_season_result_with_http_info(team_season_result_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TeamSeasonResult>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_team_season_result_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **team_season_result_id** | **Integer** | ID of the team season result to delete |  |
+| **change_note** | **String** | Why the result is being deleted, stored in its audit history and never returned. | [optional] |
+
+### Return type
+
+[**TeamSeasonResult**](TeamSeasonResult.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## delete_upload
@@ -6192,6 +6434,176 @@ end
 - **Accept**: application/json
 
 
+## get_admin_desk_report_activity
+
+> <GetAdminDeskReportActivity200Response> get_admin_desk_report_activity(uuid, opts)
+
+
+
+Super Admin with a user-owned winad_read token only. Read-only PostHog activity. kind defaults to views, grouped by stable user ID across report versions. downloads groups by user, artifact/version identity when available, displayed report version and file type. Older filename-only groups are explicitly labelled. download_all groups ZIP handoffs by user across versions; each handoff counts once. Never reads or writes ReportRead counts. Customer context, report UUID, event-time account and configured environment host are enforced on the server; callers cannot select a project.  Views summary contains unique_viewers/total_opens; download summaries contain unique_downloaders/total_downloads/file_groups (Download All groups are users). The required top-level kind selects the response schema and always matches meta.kind, including unpublished and unavailable responses. Summary contains the period's matching counts after optional user_id filtering; period_totals contains all customer counts for the selected kind before that filter. Pagination does not change either total. Rows are ordered by last activity descending, then stable user ID and, for individual downloads, the full file group key. All dates and the declared display timezone are UTC, with [from,to) boundaries. Rolling ranges use a 30-second boundary to share the short server cache.  Since-publication starts at publication and is capped by declared schema coverage, source retention and the 365-day query bound; gaps are explicit. An unpublished report returns not_published and zero. Tracking failure or absent current schema returns unavailable with null summaries, never zero. Recent ranges are provisional because ingestion can be delayed. Verified views in the requested interval establish schema presence even when the separate recent health window has no events, including on an empty later page or when an optional viewer filter matches nobody. Removed people stay separate anonymous groups; current identity/status/access are resolved in WinAD, never resurrected from PostHog. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+uuid = 'uuid_example' # String | Public uuid of the Desk report
+opts = {
+  kind: 'views', # String | 
+  period: 'last_30_days', # String | 
+  from: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Required with custom; ISO 8601 including Z or an explicit offset.
+  to: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Exclusive custom end; cannot be in the future. Custom maximum is 365 days.
+  page: 56, # Integer | 
+  per_page: 56, # Integer | 
+  user_id: 56, # Integer | Optional stable WinAD user ID; summary follows this filter, period_totals does not.
+  user_search: 'user_search_example' # String | Case-insensitive literal substring of a current WinAD name or email, or an exact positive user ID. Deleted personal details are never searched. At most 100 characters and 1000 matching current identities; a broader search returns 422 and must be narrowed. Applies before pagination to summary and row totals; period_totals remains unfiltered. Only matching stable IDs are sent to PostHog. Can be combined with user_id. 
+}
+
+begin
+  
+  result = api_instance.get_admin_desk_report_activity(uuid, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_desk_report_activity: #{e}"
+end
+```
+
+#### Using the get_admin_desk_report_activity_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetAdminDeskReportActivity200Response>, Integer, Hash)> get_admin_desk_report_activity_with_http_info(uuid, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_desk_report_activity_with_http_info(uuid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetAdminDeskReportActivity200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_desk_report_activity_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **uuid** | **String** | Public uuid of the Desk report |  |
+| **kind** | **String** |  | [optional][default to &#39;views&#39;] |
+| **period** | **String** |  | [optional][default to &#39;last_30_days&#39;] |
+| **from** | **Time** | Required with custom; ISO 8601 including Z or an explicit offset. | [optional] |
+| **to** | **Time** | Exclusive custom end; cannot be in the future. Custom maximum is 365 days. | [optional] |
+| **page** | **Integer** |  | [optional][default to 1] |
+| **per_page** | **Integer** |  | [optional][default to 25] |
+| **user_id** | **Integer** | Optional stable WinAD user ID; summary follows this filter, period_totals does not. | [optional] |
+| **user_search** | **String** | Case-insensitive literal substring of a current WinAD name or email, or an exact positive user ID. Deleted personal details are never searched. At most 100 characters and 1000 matching current identities; a broader search returns 422 and must be narrowed. Applies before pagination to summary and row totals; period_totals remains unfiltered. Only matching stable IDs are sent to PostHog. Can be combined with user_id.  | [optional] |
+
+### Return type
+
+[**GetAdminDeskReportActivity200Response**](GetAdminDeskReportActivity200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_desk_report_activity_summaries
+
+> <DeskQueueEngagementBatch> get_admin_desk_report_activity_summaries(report_uuids, opts)
+
+
+
+Super-admin, read-only batch customer Views for the queue (WINAD-10643). Fixed last_30_days, UTC [from,to), all report versions. Accepts 1–50 UUIDs before deduplication. Unknown parameters and malformed inputs return 422. Every requested UUID has an explicit result, independent of response order. Counts are null for unpublished, missing, accountless and unavailable reports; zero means verified coverage or a known empty interval before publication. Report/account pairs, first publication, environment hostname, source coverage, retention and canonical customer predicates constrain one grouped cold-batch query. Names/emails and per-user tables are not queried. Successful source data is cached for 30 seconds per admin, configuration, report identity and interval. Responses always use JSON and private/no-store browser caching. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+report_uuids = ['inner_example'] # Array<String> | 
+opts = {
+  period: 'last_30_days' # String | 
+}
+
+begin
+  
+  result = api_instance.get_admin_desk_report_activity_summaries(report_uuids, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_desk_report_activity_summaries: #{e}"
+end
+```
+
+#### Using the get_admin_desk_report_activity_summaries_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DeskQueueEngagementBatch>, Integer, Hash)> get_admin_desk_report_activity_summaries_with_http_info(report_uuids, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_desk_report_activity_summaries_with_http_info(report_uuids, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DeskQueueEngagementBatch>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_desk_report_activity_summaries_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **report_uuids** | [**Array&lt;String&gt;**](String.md) |  |  |
+| **period** | **String** |  | [optional][default to &#39;last_30_days&#39;] |
+
+### Return type
+
+[**DeskQueueEngagementBatch**](DeskQueueEngagementBatch.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_admin_desk_reports
 
 > <DeskAdminReportsResponse> get_admin_desk_reports(opts)
@@ -6272,87 +6684,13 @@ end
 - **Accept**: application/json
 
 
-## get_admin_desk_request
-
-> <GetAdminDeskRequest200Response> get_admin_desk_request(uuid)
-
-
-
-Read an ask directly, including asks linked to saved reports. Super-admin only.
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-uuid = 'uuid_example' # String | 
-
-begin
-  
-  result = api_instance.get_admin_desk_request(uuid)
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_admin_desk_request: #{e}"
-end
-```
-
-#### Using the get_admin_desk_request_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<GetAdminDeskRequest200Response>, Integer, Hash)> get_admin_desk_request_with_http_info(uuid)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.get_admin_desk_request_with_http_info(uuid)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <GetAdminDeskRequest200Response>
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_admin_desk_request_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **uuid** | **String** |  |  |
-
-### Return type
-
-[**GetAdminDeskRequest200Response**](GetAdminDeskRequest200Response.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
 ## get_admin_desk_requests
 
 > <DeskAdminQueueResponse> get_admin_desk_requests(opts)
 
 
 
-Tyler's queue (06.1): every report on every account plus every open ask no report has been started for, one list, newest activity first (the API owns the order). Rows carry structured facts; the sub-line copy derives client-side. meta.counts are per admin status over the unfiltered queue; meta.accounts is the account index for the compose client select. 
+Tyler's queue (06.1): every report on every account plus every ask with no report started for it, one list, newest activity first (the API owns the order). Rows carry structured facts; the sub-line copy derives client-side. meta.counts are per admin status over the unfiltered queue; meta.accounts is the account index for the compose client select. meta.notifications_enabled says whether Desk notifications are on: it is the `DESK_NOTIFICATIONS_ENABLED` runtime ENV value (WINAD-10635), which no endpoint can change. 
 
 ### Examples
 
@@ -6413,77 +6751,6 @@ end
 ### Return type
 
 [**DeskAdminQueueResponse**](DeskAdminQueueResponse.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## get_admin_desk_settings
-
-> <DeskSettings> get_admin_desk_settings
-
-
-
-Read database-backed Desk notification settings. Requires a persisted super admin.
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-
-begin
-  
-  result = api_instance.get_admin_desk_settings
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_admin_desk_settings: #{e}"
-end
-```
-
-#### Using the get_admin_desk_settings_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<DeskSettings>, Integer, Hash)> get_admin_desk_settings_with_http_info
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.get_admin_desk_settings_with_http_info
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <DeskSettings>
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_admin_desk_settings_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**DeskSettings**](DeskSettings.md)
 
 ### Authorization
 
@@ -10737,6 +11004,96 @@ end
 ### Return type
 
 [**DivisionCollection**](DivisionCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_earned_incentives
+
+> <EarnedIncentiveCollection> get_earned_incentives(opts)
+
+
+
+List earned incentives (WINAD-10637) — per contract incentive item and season, whether the coach earned it under the contract and how much. Values are earned under the contract, not proof of payment. Filters combine; with none, every row is listed. Requires the winad_read OAuth scope and a super admin user; other users get 403.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  coach_id: 56, # Integer | 
+  raw_contract_id: 56, # Integer | The contract the items come from
+  school_id: 56, # Integer | Every item whose season belongs to one of this school's teams
+  season_year: 56, # Integer | The season's END year (2026 is the 2025-26 season). `season` is accepted as the same filter.
+  season: 56, # Integer | Same as season_year
+  season_id: 56, # Integer | One team's season row
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56 # Integer | number of results per page.
+}
+
+begin
+  
+  result = api_instance.get_earned_incentives(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_earned_incentives: #{e}"
+end
+```
+
+#### Using the get_earned_incentives_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EarnedIncentiveCollection>, Integer, Hash)> get_earned_incentives_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_earned_incentives_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EarnedIncentiveCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_earned_incentives_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **coach_id** | **Integer** |  | [optional] |
+| **raw_contract_id** | **Integer** | The contract the items come from | [optional] |
+| **school_id** | **Integer** | Every item whose season belongs to one of this school&#39;s teams | [optional] |
+| **season_year** | **Integer** | The season&#39;s END year (2026 is the 2025-26 season). &#x60;season&#x60; is accepted as the same filter. | [optional] |
+| **season** | **Integer** | Same as season_year | [optional] |
+| **season_id** | **Integer** | One team&#39;s season row | [optional] |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+
+### Return type
+
+[**EarnedIncentiveCollection**](EarnedIncentiveCollection.md)
 
 ### Authorization
 
@@ -19349,6 +19706,96 @@ end
 - **Accept**: application/json
 
 
+## get_team_season_results
+
+> <TeamSeasonResultCollection> get_team_season_results(opts)
+
+
+
+Retrieve team season results, i.e. how a team performed in a season (NCAA stage reached, conference finish, final poll rank, APR, coach awards, ...). A result belongs to a season row (one school's sport in one season year), shared by every coach of that team. Filter by season_id, or by school_id (all of a school's teams), sport_id and season_year. Requires the winad_read OAuth scope and an admin user (super admin or a user-less service token); other users get 403. Ordered by season year (newest first), then result_name.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  season_id: 56, # Integer | Only results of this season (one team's season).
+  school_id: 56, # Integer | Only results of this school's teams.
+  sport_id: 56, # Integer | Only results of this sport.
+  season_year: 56, # Integer | Only results of seasons ending in this year (2023 = the 2022-23 season). APR and GSR rows sit on the season of the academic year the rate measures.
+  result_name: 'result_name_example', # String | Only results with this name, for example ncaa_stage_reached.
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56, # Integer | number of results per page.
+  q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+}
+
+begin
+  
+  result = api_instance.get_team_season_results(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_team_season_results: #{e}"
+end
+```
+
+#### Using the get_team_season_results_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TeamSeasonResultCollection>, Integer, Hash)> get_team_season_results_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_team_season_results_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TeamSeasonResultCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_team_season_results_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **season_id** | **Integer** | Only results of this season (one team&#39;s season). | [optional] |
+| **school_id** | **Integer** | Only results of this school&#39;s teams. | [optional] |
+| **sport_id** | **Integer** | Only results of this sport. | [optional] |
+| **season_year** | **Integer** | Only results of seasons ending in this year (2023 &#x3D; the 2022-23 season). APR and GSR rows sit on the season of the academic year the rate measures. | [optional] |
+| **result_name** | **String** | Only results with this name, for example ncaa_stage_reached. | [optional] |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
+
+### Return type
+
+[**TeamSeasonResultCollection**](TeamSeasonResultCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_time_zones
 
 > <GetTimeZones200Response> get_time_zones
@@ -20492,89 +20939,13 @@ This endpoint does not need any parameter.
 - **Accept**: application/json
 
 
-## needs_info_admin_desk_request
-
-> <NeedsInfoAdminDeskRequest200Response> needs_info_admin_desk_request(uuid, needs_info_admin_desk_request_request)
-
-
-
-07.3 — send the ask back to the client for more information. Stops the turnaround clock (it starts again on the manual flip back to `building`) and stores the subject and body Tyler edited on screen, verbatim: the email renders exactly them, and the same body becomes the note on the customer's pending card unless an explicit client_note is given.  Requires Desk settings `needs_info_emails_enabled`. When disabled, returns 403 without changing the ask or pausing its clock. Accepted follow-ups remain queued and still send if the setting is disabled before the mailer runs.  Sendable from `new`, `building` AND `awaiting_client`: a follow-up can resolve to nobody (a churned account) or simply go unread, and refusing the second send left publishing a report as the only way out of the ask. A re-send never restarts the pause.  `sent_to` reports who the follow-up was QUEUED for — the response used to say \"sent\" for a mail that was never addressed, and enqueueing can itself fail after the pause has committed. Empty means nothing was sent, whatever the pause says. 
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-uuid = 'uuid_example' # String | 
-needs_info_admin_desk_request_request = WinthropClient::NeedsInfoAdminDeskRequestRequest.new({follow_up_subject: 'follow_up_subject_example', follow_up_body: 'follow_up_body_example'}) # NeedsInfoAdminDeskRequestRequest | 
-
-begin
-  
-  result = api_instance.needs_info_admin_desk_request(uuid, needs_info_admin_desk_request_request)
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->needs_info_admin_desk_request: #{e}"
-end
-```
-
-#### Using the needs_info_admin_desk_request_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<NeedsInfoAdminDeskRequest200Response>, Integer, Hash)> needs_info_admin_desk_request_with_http_info(uuid, needs_info_admin_desk_request_request)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.needs_info_admin_desk_request_with_http_info(uuid, needs_info_admin_desk_request_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <NeedsInfoAdminDeskRequest200Response>
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->needs_info_admin_desk_request_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **uuid** | **String** |  |  |
-| **needs_info_admin_desk_request_request** | [**NeedsInfoAdminDeskRequestRequest**](NeedsInfoAdminDeskRequestRequest.md) |  |  |
-
-### Return type
-
-[**NeedsInfoAdminDeskRequest200Response**](NeedsInfoAdminDeskRequest200Response.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
 ## publish_admin_desk_report
 
 > <DeskAdminPublishResponse> publish_admin_desk_report(uuid, publish_admin_desk_report_request)
 
 
 
-Publish a first edition with the existing JSON body, or submit an atomic Update report patch as multipart update JSON plus downloads[pdf], downloads[xlsx] and downloads[pptx]. An update commits details, audience, cover, body, download additions/replacements/removals, and exactly one version together. Failed validation or upload leaves the live report intact. Omitted update fields are preserved, including legacy cover/body text; explicit body_html must pass the report format check. A reader change_note, expected_version_number and a meaningful change are required. The expected version is the version_number the editor loaded; a mismatch returns 409 before any changes or uploads are applied. Hidden reports must be restored first. Ask-linked reports cannot change account. Reports without a school cannot be published. Publish email is controlled by the database-backed notification switch in Admin Desk Settings in every environment. When enabled, it goes to the eligible selected audience, each once. Everyone means all active eligible readers on the account; named selections narrow that audience. A first edition emails the resolved recipients; an update emails only eligible recipients never notified for this report. Legacy renotify is ignored. Notification fields report enqueue results, not completed delivery. 
+Publish a first edition with the existing JSON body, or submit an atomic Update report patch as multipart update JSON plus downloads[pdf], downloads[xlsx] and downloads[pptx]. An update commits details, audience, cover, body, download additions/replacements/removals, and exactly one version together. Failed validation or upload leaves the live report intact. Omitted update fields are preserved, including legacy cover/body text; explicit body_html must pass the report format check. A reader change_note, expected_version_number and a meaningful change are required. The expected version is the version_number the editor loaded; a mismatch returns 409 before any changes or uploads are applied. Hidden reports must be restored first. Ask-linked reports cannot change account. Reports without a school cannot be published. Publish email is controlled by the `DESK_NOTIFICATIONS_ENABLED` runtime ENV value in every environment (WINAD-10635); nothing is saved. When enabled, it goes to the eligible selected audience, each once. Everyone means all active eligible readers on the account; named selections narrow that audience. A first edition emails the resolved recipients; an update emails only eligible recipients never notified for this report. Legacy renotify is ignored. Notification fields report enqueue results, not completed delivery. 
 
 ### Examples
 
@@ -21463,7 +21834,7 @@ end
 
 
 
-Manual ask flip — building, delivered, or closed. needs_info (awaiting_client) is D-16's endpoint. `closed` is the junk/duplicate exit: the ask leaves the customer's rack and Tyler's open tabs without a report and without mail. `building` is \"Mark in progress\" (WINAD-10567, shown as In progress): the first time an ask goes in progress, the asker is emailed \"We've begun work on <name>\" and the desk gets one copy, when Desk email is on. Later flips send nothing. If that email cannot be queued, the ask is put back and the answer is 503. A persisted super-admin may use desk_draft_write for building or delivered only. All other statuses require winad_write; the draft scope never grants publishing or needs_info access. 
+Manual ask flip — building, delivered, or closed. `closed` is the junk/duplicate exit: the ask leaves the customer's rack and Tyler's open tabs without a report and without mail. `building` is \"Mark in progress\" (WINAD-10567, shown as In progress): the first time an ask is recorded as started, the asker is emailed \"We've begun work on <name>\" and the desk gets one copy, when Desk email is on. Later flips send nothing. If that email cannot be queued, the ask is put back and the answer is 503. A persisted super-admin may use desk_draft_write for building or delivered only. All other statuses require winad_write; the draft scope never grants publishing or ask-closing access. 
 
 ### Examples
 
@@ -21522,80 +21893,6 @@ end
 ### Return type
 
 [**UpdateAdminDeskRequest200Response**](UpdateAdminDeskRequest200Response.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## update_admin_desk_settings
-
-> <DeskSettings> update_admin_desk_settings(desk_settings)
-
-
-
-Save settings atomically using the lock_version returned by GET. Reject stale saves with 409. Audit the actor and old/new values. No ENV fallback.
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-desk_settings = WinthropClient::DeskSettings.new({lock_version: 37, notifications_enabled: false, needs_info_emails_enabled: false, copy_email: 'copy_email_example'}) # DeskSettings | 
-
-begin
-  
-  result = api_instance.update_admin_desk_settings(desk_settings)
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->update_admin_desk_settings: #{e}"
-end
-```
-
-#### Using the update_admin_desk_settings_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<DeskSettings>, Integer, Hash)> update_admin_desk_settings_with_http_info(desk_settings)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.update_admin_desk_settings_with_http_info(desk_settings)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <DeskSettings>
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->update_admin_desk_settings_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **desk_settings** | [**DeskSettings**](DeskSettings.md) |  |  |
-
-### Return type
-
-[**DeskSettings**](DeskSettings.md)
 
 ### Authorization
 
@@ -21765,7 +22062,7 @@ end
 
 
 
-Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to \"yearly\", \"hourly\", or \"990\" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \"990\". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A non-string change_note is refused with 422 (errors.change_note). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row's current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
+Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to \"yearly\", \"hourly\", or \"990\" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \"990\". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A change_note that is not a string, or contains a NUL character, is refused with 422 (errors.change_note). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row's current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
 
 ### Examples
 
@@ -23677,6 +23974,80 @@ end
 - **Accept**: application/json
 
 
+## upsert_earned_incentive
+
+> <EarnedIncentive> upsert_earned_incentive(earned_incentive_input)
+
+
+
+Create or replace the earned incentive with the same (coach_id, raw_contract_id, season_id, item_id). The stored row is exactly the payload a person approved (approved_by_id, approved_at); a field left out is cleared. Fields must be sent with their JSON types — ids and cents as integers, dates as \"YYYY-MM-DD\" strings — and are refused rather than converted. Dates and approved_at must fall in the years 1900-2100. WinAD does no calculation. Requires the winad_write OAuth scope and a super admin user; other users get 403. The write is recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+earned_incentive_input = WinthropClient::EarnedIncentiveInput.new({coach_id: 2101507064, raw_contract_id: 3, season_id: 4, item_id: 'mvc-tournament-champion', kind: 'bonus', provision_quote: 'MVC Tournament Champion ... $25,000', status: 'earned', rationale: 'won MVC tournament (seed 2)', result_ids: [11,  12], input_id: 'sha256:9f2c...', verification_method: 'two_runs_agree', approved_by_id: 37, approved_at: Time.parse('2026-10-09T19:00Z')}) # EarnedIncentiveInput | The item's fields at the top level of the JSON body, with an optional change_note beside them
+
+begin
+  
+  result = api_instance.upsert_earned_incentive(earned_incentive_input)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->upsert_earned_incentive: #{e}"
+end
+```
+
+#### Using the upsert_earned_incentive_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EarnedIncentive>, Integer, Hash)> upsert_earned_incentive_with_http_info(earned_incentive_input)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.upsert_earned_incentive_with_http_info(earned_incentive_input)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EarnedIncentive>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->upsert_earned_incentive_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **earned_incentive_input** | [**EarnedIncentiveInput**](EarnedIncentiveInput.md) | The item&#39;s fields at the top level of the JSON body, with an optional change_note beside them |  |
+
+### Return type
+
+[**EarnedIncentive**](EarnedIncentive.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## upsert_team_schedule_note
 
 > <TeamScheduleNote> upsert_team_schedule_note(fil_team_id, upsert_team_schedule_note_request)
@@ -23742,6 +24113,80 @@ end
 ### Return type
 
 [**TeamScheduleNote**](TeamScheduleNote.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## upsert_team_season_result
+
+> <TeamSeasonResult> upsert_team_season_result(team_season_result_input)
+
+
+
+Create or replace one team season result, keyed on the season and result_name. Identify the season with season_id, or with school_id, sport_id and season_year (the season row is created when the school has none for that sport and year). Concurrent writes to one team-season are applied one at a time. The payload is the full row as approved; a field left out is stored as null. Writes come only from a payload a person has approved; WinAD stores them and applies no logic. Requires the winad_write OAuth scope and an admin user (super admin or a user-less service token); other users get 403. The write is recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+team_season_result_input = WinthropClient::TeamSeasonResultInput.new({result_name: 'ncaa_stage_reached', verification_method: 'two_lanes_agree'}) # TeamSeasonResultInput | The full result, with the season locator and an optional change_note at the top level
+
+begin
+  
+  result = api_instance.upsert_team_season_result(team_season_result_input)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->upsert_team_season_result: #{e}"
+end
+```
+
+#### Using the upsert_team_season_result_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TeamSeasonResult>, Integer, Hash)> upsert_team_season_result_with_http_info(team_season_result_input)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.upsert_team_season_result_with_http_info(team_season_result_input)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TeamSeasonResult>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->upsert_team_season_result_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **team_season_result_input** | [**TeamSeasonResultInput**](TeamSeasonResultInput.md) | The full result, with the season locator and an optional change_note at the top level |  |
+
+### Return type
+
+[**TeamSeasonResult**](TeamSeasonResult.md)
 
 ### Authorization
 

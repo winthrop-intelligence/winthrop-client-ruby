@@ -84,11 +84,11 @@ end
 
 ## update_raw_contract_contract_terms
 
-> <RawContractTerms> update_raw_contract_contract_terms(raw_contract_id, contract_terms)
+> <RawContractTerms> update_raw_contract_contract_terms(raw_contract_id, contract_terms, opts)
 
 
 
-Replace the whole contract_terms document on a RawContract (WINAD-10633). The body is the document itself: a JSON object with a `schema` string (for example \"ticketing-terms-v1\" or \"coach-terms-v1\") and a `source` object (`rendition_sha256`, `run_id`, `extracted_at`, `method`). Every other key is a term and is stored as sent; terms are not validated beyond the envelope. `source.rendition_sha256` is the SHA-256 (hex) of the OCR text the terms were read from (the `text` returned by GET /raw_contracts/{id}/ocr_text); when that text later changes, `contract_terms_stale` is true.  Every change is recorded in the audit trail (who, old and new value, when), so this requires the winad_write scope and a user-backed token (client-credentials tokens are refused) with permission to update the RawContract. 
+Replace the whole contract_terms document on a RawContract (WINAD-10633). The body is the document itself: a JSON object with a `schema` string (for example \"ticketing-terms-v1\" or \"coach-terms-v1\") and a `source` object (`rendition_sha256`, `run_id`, `extracted_at`, `method`). Every other key is a term and is stored as sent; terms are not validated beyond the envelope. `source.rendition_sha256` is the SHA-256 (hex) of the OCR text the terms were read from (the `text` returned by GET /raw_contracts/{id}/ocr_text); when that text later changes, `contract_terms_stale` is true.  Every change is recorded in the audit trail (who, old and new value, when, and the optional change_note query parameter as the reason), so this requires the winad_write scope and a user-backed token (client-credentials tokens are refused) with permission to update the RawContract. 
 
 ### Examples
 
@@ -109,10 +109,13 @@ end
 api_instance = WinthropClient::RawContractsApi.new
 raw_contract_id = 56 # Integer | ID of the RawContract
 contract_terms = WinthropClient::ContractTerms.new({schema: 'schema_example', source: WinthropClient::ContractTermsSource.new({rendition_sha256: 'rendition_sha256_example', run_id: 'run_id_example', extracted_at: Time.now, method: 'method_example'})}) # ContractTerms | 
+opts = {
+  change_note: 'change_note_example' # String | Optional. Why the terms are being written, for the internal audit history; stored on the audit version this write creates (GET /contract_history does not list RawContract versions, so it is not shown there). It is a query parameter because the request body is the terms document: a `change_note` key in the body is stored as a term and never used as the note. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (change_note[]=a, change_note[k]=v, or containing a NUL character) or is longer is refused with 422 (errors.change_note) before anything is written. Never returned.
+}
 
 begin
   
-  result = api_instance.update_raw_contract_contract_terms(raw_contract_id, contract_terms)
+  result = api_instance.update_raw_contract_contract_terms(raw_contract_id, contract_terms, opts)
   p result
 rescue WinthropClient::ApiError => e
   puts "Error when calling RawContractsApi->update_raw_contract_contract_terms: #{e}"
@@ -123,12 +126,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<RawContractTerms>, Integer, Hash)> update_raw_contract_contract_terms_with_http_info(raw_contract_id, contract_terms)
+> <Array(<RawContractTerms>, Integer, Hash)> update_raw_contract_contract_terms_with_http_info(raw_contract_id, contract_terms, opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.update_raw_contract_contract_terms_with_http_info(raw_contract_id, contract_terms)
+  data, status_code, headers = api_instance.update_raw_contract_contract_terms_with_http_info(raw_contract_id, contract_terms, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <RawContractTerms>
@@ -143,6 +146,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **raw_contract_id** | **Integer** | ID of the RawContract |  |
 | **contract_terms** | [**ContractTerms**](ContractTerms.md) |  |  |
+| **change_note** | **String** | Optional. Why the terms are being written, for the internal audit history; stored on the audit version this write creates (GET /contract_history does not list RawContract versions, so it is not shown there). It is a query parameter because the request body is the terms document: a &#x60;change_note&#x60; key in the body is stored as a term and never used as the note. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (change_note[]&#x3D;a, change_note[k]&#x3D;v, or containing a NUL character) or is longer is refused with 422 (errors.change_note) before anything is written. Never returned. | [optional] |
 
 ### Return type
 
