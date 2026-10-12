@@ -12,7 +12,6 @@
 | **cta_key** | **String** | The reader CTA the ask started from; null for a guided ask |  |
 | **source_report_title** | **String** | The title of the report that CTA was read on; null with cta_key |  |
 | **received_at** | **Time** |  |  |
-| **clock_paused** | **Boolean** |  |  |
 
 ## Example
 
@@ -27,8 +26,7 @@ instance = WinthropClient::DeskAdminReportRequest.new(
   category: null,
   cta_key: null,
   source_report_title: null,
-  received_at: null,
-  clock_paused: null
+  received_at: null
 )
 ```
 
