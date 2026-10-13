@@ -9,7 +9,7 @@
 | **departure_reason** | **String** | Trimmed reason, required and nonblank when departing is true. Blank becomes null. | [optional] |
 | **departure_source_url** | **String** | Public http(s) URL required when departing is true. Trimmed; blank URLs are invalid. | [optional] |
 | **approval_quote** | **String** | Optional trimmed approval quote; omitted, null, or blank becomes null. | [optional] |
-| **change_note** | **String** | Why this change is being made, for the internal audit history (WINAD-10632). It is stored on the audit version this write creates and is never returned. Blank is the same as omitted; a non-string value is refused with 422 (errors.change_note). It is separate from approval_quote, which is departure data stored on the position. | [optional] |
+| **change_note** | **String** | Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates, the records it saves as side effects included, and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write. | [optional] |
 
 ## Example
 
