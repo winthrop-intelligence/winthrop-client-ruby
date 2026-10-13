@@ -13,6 +13,9 @@
 | **end_year** | **Integer** |  |  |
 | **current_position_title** | **String** |  | [optional] |
 | **current_school_name** | **String** |  | [optional] |
+| **current_school_id** | **Integer** | School ID of the authorized current position supplying the salary, not the ranked display primary. | [optional] |
+| **current_school_full_name** | **String** | Full name of that school, used to disambiguate shared short names. | [optional] |
+| **current_assignments** | [**Array&lt;PersonAssignment&gt;**](PersonAssignment.md) | Positions in the year the current subtitle describes (current or next season), ranked primary first (WINAD-10522). Sport-specific subscriptions only list their sports. | [optional] |
 | **salary_cents** | **Integer** |  | [optional] |
 | **coach_friendly_id** | **String** |  |  |
 
@@ -31,6 +34,9 @@ instance = WinthropClient::CoworkerEntry.new(
   end_year: null,
   current_position_title: null,
   current_school_name: null,
+  current_school_id: null,
+  current_school_full_name: null,
+  current_assignments: null,
   salary_cents: null,
   coach_friendly_id: null
 )
