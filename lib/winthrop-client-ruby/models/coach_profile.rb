@@ -52,6 +52,8 @@ module WinthropClient
 
     attr_accessor :bio
 
+    attr_accessor :bio_text
+
     attr_accessor :coach_friendly_id
 
     # Whether the header's position is departing — the first header_assignments entry when present
@@ -107,6 +109,7 @@ module WinthropClient
         :'instagram_handle' => :'instagram_handle',
         :'instagram_verified' => :'instagram_verified',
         :'bio' => :'bio',
+        :'bio_text' => :'bio_text',
         :'coach_friendly_id' => :'coach_friendly_id',
         :'departing' => :'departing',
         :'current_school_name' => :'current_school_name',
@@ -157,6 +160,7 @@ module WinthropClient
         :'instagram_handle' => :'String',
         :'instagram_verified' => :'Boolean',
         :'bio' => :'String',
+        :'bio_text' => :'String',
         :'coach_friendly_id' => :'String',
         :'departing' => :'Boolean',
         :'current_school_name' => :'String',
@@ -189,6 +193,7 @@ module WinthropClient
         :'linkedin',
         :'instagram_handle',
         :'bio',
+        :'bio_text',
         :'coach_friendly_id',
         :'departing',
         :'current_school_name',
@@ -300,6 +305,10 @@ module WinthropClient
 
       if attributes.key?(:'bio')
         self.bio = attributes[:'bio']
+      end
+
+      if attributes.key?(:'bio_text')
+        self.bio_text = attributes[:'bio_text']
       end
 
       if attributes.key?(:'coach_friendly_id')
@@ -635,6 +644,7 @@ module WinthropClient
           instagram_handle == o.instagram_handle &&
           instagram_verified == o.instagram_verified &&
           bio == o.bio &&
+          bio_text == o.bio_text &&
           coach_friendly_id == o.coach_friendly_id &&
           departing == o.departing &&
           current_school_name == o.current_school_name &&
@@ -662,7 +672,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, first_name, last_name, email, phone, leader, visible, hometown_city, hometown_state, alma_mater_name, alma_mater_year, twitter_handle, twitter_verified, linkedin, linkedin_verified, instagram_handle, instagram_verified, bio, coach_friendly_id, departing, current_school_name, current_school_id, current_sport_name, current_position_title, current_position_types, header_position_season_year_str, header_position_historical, header_assignments, avatar_url, can_see_compensation, can_see_videos, can_see_coworker_history, can_see_recruiting, is_sport_specific].hash
+      [id, first_name, last_name, email, phone, leader, visible, hometown_city, hometown_state, alma_mater_name, alma_mater_year, twitter_handle, twitter_verified, linkedin, linkedin_verified, instagram_handle, instagram_verified, bio, bio_text, coach_friendly_id, departing, current_school_name, current_school_id, current_sport_name, current_position_title, current_position_types, header_position_season_year_str, header_position_historical, header_assignments, avatar_url, can_see_compensation, can_see_videos, can_see_coworker_history, can_see_recruiting, is_sport_specific].hash
     end
 
     # Builds the object from hash

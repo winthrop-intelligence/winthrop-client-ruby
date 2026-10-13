@@ -39,6 +39,12 @@ module WinthropClient
 
     attr_accessor :departing
 
+    # True when the position includes the Head Coach position type (interim head coach is not included).
+    attr_accessor :head_coach
+
+    # True when the position includes a coaching type in the Assistant Coaches group, excluding Offensive, Defensive and Special Teams Analysts. A season can be neither head coach nor assistant, e.g. an interim head coach, analyst or operations role.
+    attr_accessor :assistant_coach
+
     attr_accessor :us_news
 
     attr_accessor :directors_cup
@@ -58,6 +64,8 @@ module WinthropClient
         :'apr_asr' => :'apr_asr',
         :'coach_apr' => :'coach_apr',
         :'departing' => :'departing',
+        :'head_coach' => :'head_coach',
+        :'assistant_coach' => :'assistant_coach',
         :'us_news' => :'us_news',
         :'directors_cup' => :'directors_cup'
       }
@@ -88,6 +96,8 @@ module WinthropClient
         :'apr_asr' => :'String',
         :'coach_apr' => :'Float',
         :'departing' => :'Boolean',
+        :'head_coach' => :'Boolean',
+        :'assistant_coach' => :'Boolean',
         :'us_news' => :'String',
         :'directors_cup' => :'String'
       }
@@ -180,6 +190,14 @@ module WinthropClient
 
       if attributes.key?(:'departing')
         self.departing = attributes[:'departing']
+      end
+
+      if attributes.key?(:'head_coach')
+        self.head_coach = attributes[:'head_coach']
+      end
+
+      if attributes.key?(:'assistant_coach')
+        self.assistant_coach = attributes[:'assistant_coach']
       end
 
       if attributes.key?(:'us_news')
@@ -298,6 +316,8 @@ module WinthropClient
           apr_asr == o.apr_asr &&
           coach_apr == o.coach_apr &&
           departing == o.departing &&
+          head_coach == o.head_coach &&
+          assistant_coach == o.assistant_coach &&
           us_news == o.us_news &&
           directors_cup == o.directors_cup
     end
@@ -311,7 +331,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [sport, year_str, school_name, school_id, position_sport, record, rpi, net_rank, ap_rank, apr_asr, coach_apr, departing, us_news, directors_cup].hash
+      [sport, year_str, school_name, school_id, position_sport, record, rpi, net_rank, ap_rank, apr_asr, coach_apr, departing, head_coach, assistant_coach, us_news, directors_cup].hash
     end
 
     # Builds the object from hash

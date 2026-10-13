@@ -14,22 +14,28 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class PerformanceChartCoach < ApiModelBase
-    attr_accessor :name
+  class ContractFileReplaced < ApiModelBase
+    # The contract's id
+    attr_accessor :id
 
-    attr_accessor :position
+    # The id of the RawContract that now holds the new PDF
+    attr_accessor :raw_contract_id
 
-    attr_accessor :avatar_url
+    # The uploaded PDF's filename
+    attr_accessor :filename
 
-    attr_accessor :coach_friendly_id
+    attr_accessor :coach_id
+
+    attr_accessor :pending
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'position' => :'position',
-        :'avatar_url' => :'avatar_url',
-        :'coach_friendly_id' => :'coach_friendly_id'
+        :'id' => :'id',
+        :'raw_contract_id' => :'raw_contract_id',
+        :'filename' => :'filename',
+        :'coach_id' => :'coach_id',
+        :'pending' => :'pending'
       }
     end
 
@@ -46,18 +52,17 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'name' => :'String',
-        :'position' => :'String',
-        :'avatar_url' => :'String',
-        :'coach_friendly_id' => :'String'
+        :'id' => :'Integer',
+        :'raw_contract_id' => :'Integer',
+        :'filename' => :'String',
+        :'coach_id' => :'Integer',
+        :'pending' => :'Boolean'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'position',
-        :'avatar_url',
       ])
     end
 
@@ -65,36 +70,46 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::PerformanceChartCoach` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::ContractFileReplaced` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::PerformanceChartCoach`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::ContractFileReplaced`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
       else
-        self.name = nil
+        self.id = nil
       end
 
-      if attributes.key?(:'position')
-        self.position = attributes[:'position']
-      end
-
-      if attributes.key?(:'avatar_url')
-        self.avatar_url = attributes[:'avatar_url']
-      end
-
-      if attributes.key?(:'coach_friendly_id')
-        self.coach_friendly_id = attributes[:'coach_friendly_id']
+      if attributes.key?(:'raw_contract_id')
+        self.raw_contract_id = attributes[:'raw_contract_id']
       else
-        self.coach_friendly_id = nil
+        self.raw_contract_id = nil
+      end
+
+      if attributes.key?(:'filename')
+        self.filename = attributes[:'filename']
+      else
+        self.filename = nil
+      end
+
+      if attributes.key?(:'coach_id')
+        self.coach_id = attributes[:'coach_id']
+      else
+        self.coach_id = nil
+      end
+
+      if attributes.key?(:'pending')
+        self.pending = attributes[:'pending']
+      else
+        self.pending = nil
       end
     end
 
@@ -103,12 +118,24 @@ module WinthropClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      if @id.nil?
+        invalid_properties.push('invalid value for "id", id cannot be nil.')
       end
 
-      if @coach_friendly_id.nil?
-        invalid_properties.push('invalid value for "coach_friendly_id", coach_friendly_id cannot be nil.')
+      if @raw_contract_id.nil?
+        invalid_properties.push('invalid value for "raw_contract_id", raw_contract_id cannot be nil.')
+      end
+
+      if @filename.nil?
+        invalid_properties.push('invalid value for "filename", filename cannot be nil.')
+      end
+
+      if @coach_id.nil?
+        invalid_properties.push('invalid value for "coach_id", coach_id cannot be nil.')
+      end
+
+      if @pending.nil?
+        invalid_properties.push('invalid value for "pending", pending cannot be nil.')
       end
 
       invalid_properties
@@ -118,29 +145,62 @@ module WinthropClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @name.nil?
-      return false if @coach_friendly_id.nil?
+      return false if @id.nil?
+      return false if @raw_contract_id.nil?
+      return false if @filename.nil?
+      return false if @coach_id.nil?
+      return false if @pending.nil?
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] name Value to be assigned
-    def name=(name)
-      if name.nil?
-        fail ArgumentError, 'name cannot be nil'
+    # @param [Object] id Value to be assigned
+    def id=(id)
+      if id.nil?
+        fail ArgumentError, 'id cannot be nil'
       end
 
-      @name = name
+      @id = id
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] coach_friendly_id Value to be assigned
-    def coach_friendly_id=(coach_friendly_id)
-      if coach_friendly_id.nil?
-        fail ArgumentError, 'coach_friendly_id cannot be nil'
+    # @param [Object] raw_contract_id Value to be assigned
+    def raw_contract_id=(raw_contract_id)
+      if raw_contract_id.nil?
+        fail ArgumentError, 'raw_contract_id cannot be nil'
       end
 
-      @coach_friendly_id = coach_friendly_id
+      @raw_contract_id = raw_contract_id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] filename Value to be assigned
+    def filename=(filename)
+      if filename.nil?
+        fail ArgumentError, 'filename cannot be nil'
+      end
+
+      @filename = filename
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] coach_id Value to be assigned
+    def coach_id=(coach_id)
+      if coach_id.nil?
+        fail ArgumentError, 'coach_id cannot be nil'
+      end
+
+      @coach_id = coach_id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] pending Value to be assigned
+    def pending=(pending)
+      if pending.nil?
+        fail ArgumentError, 'pending cannot be nil'
+      end
+
+      @pending = pending
     end
 
     # Checks equality by comparing each attribute.
@@ -148,10 +208,11 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          position == o.position &&
-          avatar_url == o.avatar_url &&
-          coach_friendly_id == o.coach_friendly_id
+          id == o.id &&
+          raw_contract_id == o.raw_contract_id &&
+          filename == o.filename &&
+          coach_id == o.coach_id &&
+          pending == o.pending
     end
 
     # @see the `==` method
@@ -163,7 +224,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, position, avatar_url, coach_friendly_id].hash
+      [id, raw_contract_id, filename, coach_id, pending].hash
     end
 
     # Builds the object from hash

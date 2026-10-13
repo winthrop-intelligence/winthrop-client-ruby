@@ -16,6 +16,27 @@ require 'time'
 module WinthropClient
   # Administrator search result. In /administrator_searches responses, compensation fields are only included when the user has administrator_compensation permission, and contract fields are only included when the user can view the related contract or raw contract.
   class Administrator < ApiModelBase
+    # True when the row's position has no usable annual total but an earlier season of the same unbroken job (same coach, school, sport and position types in every season between) does, and no season since that record carries an hourly record or conflicting positions, so the latest_known_* fields carry that older record as display-only context. It never changes compensation_cents, the comp filters, the compensation sort or comp_stats, and the latest_compensation_* columns behind it are not accepted as filter or sort inputs. The whole latest_known_* group is absent without compensation access.
+    attr_accessor :latest_known_fallback
+
+    # Total of that older record in cents; null unless latest_known_fallback.
+    attr_accessor :latest_known_compensation_cents
+
+    # Base salary of that older record in cents; null unless latest_known_fallback.
+    attr_accessor :latest_known_base_salary_cents
+
+    # Compensation type as stored on that older record; null unless latest_known_fallback, and null when the record stores no type (the same raw reading as compensation_type).
+    attr_accessor :latest_known_compensation_type
+
+    # End year of the season the older record's position belongs to (2024 means 2023–24); null unless latest_known_fallback. Always earlier than the target assignment's season.
+    attr_accessor :latest_known_source_year
+
+    # The older compensation record's id; null unless latest_known_fallback.
+    attr_accessor :latest_known_source_compensation_id
+
+    # The document behind the older record, present only when one is on file and the viewer may open it. Distinct from raw_contract_id, which stays the current position's contract document.
+    attr_accessor :latest_known_source_raw_contract_id
+
     attr_accessor :id
 
     attr_accessor :coach_id
@@ -160,6 +181,13 @@ module WinthropClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'latest_known_fallback' => :'latest_known_fallback',
+        :'latest_known_compensation_cents' => :'latest_known_compensation_cents',
+        :'latest_known_base_salary_cents' => :'latest_known_base_salary_cents',
+        :'latest_known_compensation_type' => :'latest_known_compensation_type',
+        :'latest_known_source_year' => :'latest_known_source_year',
+        :'latest_known_source_compensation_id' => :'latest_known_source_compensation_id',
+        :'latest_known_source_raw_contract_id' => :'latest_known_source_raw_contract_id',
         :'id' => :'id',
         :'coach_id' => :'coach_id',
         :'coach_first_name' => :'coach_first_name',
@@ -224,6 +252,13 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'latest_known_fallback' => :'Boolean',
+        :'latest_known_compensation_cents' => :'Integer',
+        :'latest_known_base_salary_cents' => :'Integer',
+        :'latest_known_compensation_type' => :'String',
+        :'latest_known_source_year' => :'Integer',
+        :'latest_known_source_compensation_id' => :'Integer',
+        :'latest_known_source_raw_contract_id' => :'Integer',
         :'id' => :'Integer',
         :'coach_id' => :'Integer',
         :'coach_first_name' => :'String',
@@ -278,6 +313,12 @@ module WinthropClient
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'latest_known_compensation_cents',
+        :'latest_known_base_salary_cents',
+        :'latest_known_compensation_type',
+        :'latest_known_source_year',
+        :'latest_known_source_compensation_id',
+        :'latest_known_source_raw_contract_id',
         :'newer_season',
       ])
     end
@@ -297,6 +338,34 @@ module WinthropClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'latest_known_fallback')
+        self.latest_known_fallback = attributes[:'latest_known_fallback']
+      end
+
+      if attributes.key?(:'latest_known_compensation_cents')
+        self.latest_known_compensation_cents = attributes[:'latest_known_compensation_cents']
+      end
+
+      if attributes.key?(:'latest_known_base_salary_cents')
+        self.latest_known_base_salary_cents = attributes[:'latest_known_base_salary_cents']
+      end
+
+      if attributes.key?(:'latest_known_compensation_type')
+        self.latest_known_compensation_type = attributes[:'latest_known_compensation_type']
+      end
+
+      if attributes.key?(:'latest_known_source_year')
+        self.latest_known_source_year = attributes[:'latest_known_source_year']
+      end
+
+      if attributes.key?(:'latest_known_source_compensation_id')
+        self.latest_known_source_compensation_id = attributes[:'latest_known_source_compensation_id']
+      end
+
+      if attributes.key?(:'latest_known_source_raw_contract_id')
+        self.latest_known_source_raw_contract_id = attributes[:'latest_known_source_raw_contract_id']
+      end
 
       if attributes.key?(:'id')
         self.id = attributes[:'id']
@@ -539,6 +608,13 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          latest_known_fallback == o.latest_known_fallback &&
+          latest_known_compensation_cents == o.latest_known_compensation_cents &&
+          latest_known_base_salary_cents == o.latest_known_base_salary_cents &&
+          latest_known_compensation_type == o.latest_known_compensation_type &&
+          latest_known_source_year == o.latest_known_source_year &&
+          latest_known_source_compensation_id == o.latest_known_source_compensation_id &&
+          latest_known_source_raw_contract_id == o.latest_known_source_raw_contract_id &&
           id == o.id &&
           coach_id == o.coach_id &&
           coach_first_name == o.coach_first_name &&
@@ -598,7 +674,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, coach_id, coach_first_name, coach_last_name, coach_name, name, season_id, position_id, school_id, conference_id, division_id, geo_division_id, compensation_id, contract_id, year, newer_season, assignments, position_title, school_name, school_short_name, state, usnwr_ranking, directors_cup_ranking, compensation_cents, compensation_base_salary_cents, compensation_type, compensation_outside_income_cents, compensation_deferred_comp_cents, compensation_one_time_bonus_cents, compensation_contingent_bonus, compensation_buyout_terms, compensation_is_car_provided, compensation_country_club_dues_cents, compensation_country_club_membership_paid, compensation_talent_fee, compensation_media_link, raw_contract_id, contract_starts_on, contract_expires_on, contract_at_will, diversity, gender, alma_mater_id, private, sport_id, coli, coach, departments].hash
+      [latest_known_fallback, latest_known_compensation_cents, latest_known_base_salary_cents, latest_known_compensation_type, latest_known_source_year, latest_known_source_compensation_id, latest_known_source_raw_contract_id, id, coach_id, coach_first_name, coach_last_name, coach_name, name, season_id, position_id, school_id, conference_id, division_id, geo_division_id, compensation_id, contract_id, year, newer_season, assignments, position_title, school_name, school_short_name, state, usnwr_ranking, directors_cup_ranking, compensation_cents, compensation_base_salary_cents, compensation_type, compensation_outside_income_cents, compensation_deferred_comp_cents, compensation_one_time_bonus_cents, compensation_contingent_bonus, compensation_buyout_terms, compensation_is_car_provided, compensation_country_club_dues_cents, compensation_country_club_membership_paid, compensation_talent_fee, compensation_media_link, raw_contract_id, contract_starts_on, contract_expires_on, contract_at_will, diversity, gender, alma_mater_id, private, sport_id, coli, coach, departments].hash
     end
 
     # Builds the object from hash

@@ -15,7 +15,7 @@ require 'time'
 
 module WinthropClient
   class Compensation < ApiModelBase
-    # Write-only, PATCH only. Why this change is being made, for the internal audit history (WINAD-10632). Send it beside the compensation fields; it is stored on the audit version this update creates and is never returned. Blank is the same as omitted; a non-string value is refused with 422 (errors.change_note).
+    # Write-only (PATCH; POST takes it beside `compensation`). Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates, the records it saves as side effects included, and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write.
     attr_accessor :change_note
 
     attr_accessor :id
@@ -353,6 +353,10 @@ module WinthropClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if !@change_note.nil? && @change_note.to_s.length > 500
+        invalid_properties.push('invalid value for "change_note", the character length must be smaller than or equal to 500.')
+      end
+
       invalid_properties
     end
 
@@ -360,9 +364,20 @@ module WinthropClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if !@change_note.nil? && @change_note.to_s.length > 500
       compensation_type_validator = EnumAttributeValidator.new('String', ["yearly", "hourly", "990"])
       return false unless compensation_type_validator.valid?(@compensation_type)
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] change_note Value to be assigned
+    def change_note=(change_note)
+      if !change_note.nil? && change_note.to_s.length > 500
+        fail ArgumentError, 'invalid value for "change_note", the character length must be smaller than or equal to 500.'
+      end
+
+      @change_note = change_note
     end
 
     # Custom attribute writer method checking allowed values (enum).

@@ -3250,6 +3250,74 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Delete a compensation. Requires the winad_write OAuth scope and permission to destroy the compensation. Hidden-coach compensations are 404 for customers, who may not delete anyway (403). The positions that pointed at the compensation are kept and unlinked (compensation_id becomes null; no position version is written), the linked contract is kept, and the compensation's FOIA requested items (and their notes) are deleted with it. The coach's latest salary is refreshed. Like PATCH, the delete is recorded in the audit history (PaperTrail) attributed to the token's user, or for a client-credentials token to the configured system user. The optional change_note query parameter is the reason, stored (stripped, blank is absent) on every version the delete creates and never returned. The destroy version keeps the deleted row, so a client can read it back there. Returns 204 with no body. API clients in winthrop-clients must be regenerated to expose this change.
+    # @param compensation_id [Integer] ID of compensation to delete
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :change_note Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned.
+    # @return [nil]
+    def delete_compensation(compensation_id, opts = {})
+      delete_compensation_with_http_info(compensation_id, opts)
+      nil
+    end
+
+    # Delete a compensation. Requires the winad_write OAuth scope and permission to destroy the compensation. Hidden-coach compensations are 404 for customers, who may not delete anyway (403). The positions that pointed at the compensation are kept and unlinked (compensation_id becomes null; no position version is written), the linked contract is kept, and the compensation&#39;s FOIA requested items (and their notes) are deleted with it. The coach&#39;s latest salary is refreshed. Like PATCH, the delete is recorded in the audit history (PaperTrail) attributed to the token&#39;s user, or for a client-credentials token to the configured system user. The optional change_note query parameter is the reason, stored (stripped, blank is absent) on every version the delete creates and never returned. The destroy version keeps the deleted row, so a client can read it back there. Returns 204 with no body. API clients in winthrop-clients must be regenerated to expose this change.
+    # @param compensation_id [Integer] ID of compensation to delete
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :change_note Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned.
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def delete_compensation_with_http_info(compensation_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.delete_compensation ...'
+      end
+      # verify the required parameter 'compensation_id' is set
+      if @api_client.config.client_side_validation && compensation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'compensation_id' when calling DefaultApi.delete_compensation"
+      end
+      if @api_client.config.client_side_validation && !opts[:'change_note'].nil? && opts[:'change_note'].to_s.length > 500
+        fail ArgumentError, 'invalid value for "opts[:"change_note"]" when calling DefaultApi.delete_compensation, the character length must be smaller than or equal to 500.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/compensations/{compensationId}'.sub('{' + 'compensationId' + '}', CGI.escape(compensation_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'change_note'] = opts[:'change_note'] if !opts[:'change_note'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.delete_compensation",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#delete_compensation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete a single Conference
     # @param conference_id [Integer] ID of the Conference
     # @param [Hash] opts the optional parameters
@@ -3486,6 +3554,70 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#delete_desk_report_archive\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete one earned incentive and return it as it was. Requires the winad_write OAuth scope and a super admin user; other users get 403. The deletion is recorded in the row's audit history (PaperTrail) with the optional change_note query parameter as the reason.
+    # @param earned_incentive_id [Integer] ID of the earned incentive to delete
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :change_note Why the row is being deleted, stored in its audit history and never returned.
+    # @return [EarnedIncentive]
+    def delete_earned_incentive(earned_incentive_id, opts = {})
+      data, _status_code, _headers = delete_earned_incentive_with_http_info(earned_incentive_id, opts)
+      data
+    end
+
+    # Delete one earned incentive and return it as it was. Requires the winad_write OAuth scope and a super admin user; other users get 403. The deletion is recorded in the row&#39;s audit history (PaperTrail) with the optional change_note query parameter as the reason.
+    # @param earned_incentive_id [Integer] ID of the earned incentive to delete
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :change_note Why the row is being deleted, stored in its audit history and never returned.
+    # @return [Array<(EarnedIncentive, Integer, Hash)>] EarnedIncentive data, response status code and response headers
+    def delete_earned_incentive_with_http_info(earned_incentive_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.delete_earned_incentive ...'
+      end
+      # verify the required parameter 'earned_incentive_id' is set
+      if @api_client.config.client_side_validation && earned_incentive_id.nil?
+        fail ArgumentError, "Missing the required parameter 'earned_incentive_id' when calling DefaultApi.delete_earned_incentive"
+      end
+      # resource path
+      local_var_path = '/api/v1/earned_incentives/{earnedIncentiveId}'.sub('{' + 'earnedIncentiveId' + '}', CGI.escape(earned_incentive_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'change_note'] = opts[:'change_note'] if !opts[:'change_note'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'EarnedIncentive'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.delete_earned_incentive",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#delete_earned_incentive\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -3971,7 +4103,7 @@ module WinthropClient
     # Delete an income report. Requires the winad_write OAuth scope and an admin user; other users get 403. The attached document is kept, but the FOIA requested items that track this report (and their notes) are deleted with it; to keep them, detach the document with PATCH raw_contract_id null instead. The deletion is recorded in the report's audit history (PaperTrail), attributed to the token's user, with the optional change_note query parameter as the reason.
     # @param income_report_id [Integer] ID of income report to delete
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :change_note Why the report is being deleted, stored in its audit history and never returned.
+    # @option opts [String] :change_note Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned.
     # @return [nil]
     def delete_income_report(income_report_id, opts = {})
       delete_income_report_with_http_info(income_report_id, opts)
@@ -3981,7 +4113,7 @@ module WinthropClient
     # Delete an income report. Requires the winad_write OAuth scope and an admin user; other users get 403. The attached document is kept, but the FOIA requested items that track this report (and their notes) are deleted with it; to keep them, detach the document with PATCH raw_contract_id null instead. The deletion is recorded in the report&#39;s audit history (PaperTrail), attributed to the token&#39;s user, with the optional change_note query parameter as the reason.
     # @param income_report_id [Integer] ID of income report to delete
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :change_note Why the report is being deleted, stored in its audit history and never returned.
+    # @option opts [String] :change_note Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_income_report_with_http_info(income_report_id, opts = {})
       if @api_client.config.debugging
@@ -3991,6 +4123,10 @@ module WinthropClient
       if @api_client.config.client_side_validation && income_report_id.nil?
         fail ArgumentError, "Missing the required parameter 'income_report_id' when calling DefaultApi.delete_income_report"
       end
+      if @api_client.config.client_side_validation && !opts[:'change_note'].nil? && opts[:'change_note'].to_s.length > 500
+        fail ArgumentError, 'invalid value for "opts[:"change_note"]" when calling DefaultApi.delete_income_report, the character length must be smaller than or equal to 500.'
+      end
+
       # resource path
       local_var_path = '/api/v1/income_reports/{incomeReportId}'.sub('{' + 'incomeReportId' + '}', CGI.escape(income_report_id.to_s))
 
@@ -4157,6 +4293,7 @@ module WinthropClient
     # Delete a single position
     # @param position_id [Integer] ID of position to delete
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :change_note Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned.
     # @return [nil]
     def delete_position(position_id, opts = {})
       delete_position_with_http_info(position_id, opts)
@@ -4166,6 +4303,7 @@ module WinthropClient
     # Delete a single position
     # @param position_id [Integer] ID of position to delete
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :change_note Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_position_with_http_info(position_id, opts = {})
       if @api_client.config.debugging
@@ -4175,14 +4313,21 @@ module WinthropClient
       if @api_client.config.client_side_validation && position_id.nil?
         fail ArgumentError, "Missing the required parameter 'position_id' when calling DefaultApi.delete_position"
       end
+      if @api_client.config.client_side_validation && !opts[:'change_note'].nil? && opts[:'change_note'].to_s.length > 500
+        fail ArgumentError, 'invalid value for "opts[:"change_note"]" when calling DefaultApi.delete_position, the character length must be smaller than or equal to 500.'
+      end
+
       # resource path
       local_var_path = '/api/v1/positions/{positionId}'.sub('{' + 'positionId' + '}', CGI.escape(position_id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'change_note'] = opts[:'change_note'] if !opts[:'change_note'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -9066,6 +9211,85 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_divisions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List earned incentives (WINAD-10637) — per contract incentive item and season, whether the coach earned it under the contract and how much. Values are earned under the contract, not proof of payment. Filters combine; with none, every row is listed. Requires the winad_read OAuth scope and a super admin user; other users get 403.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :coach_id 
+    # @option opts [Integer] :raw_contract_id The contract the items come from
+    # @option opts [Integer] :school_id Every item whose season belongs to one of this school&#39;s teams
+    # @option opts [Integer] :season_year The season&#39;s END year (2026 is the 2025-26 season). &#x60;season&#x60; is accepted as the same filter.
+    # @option opts [Integer] :season Same as season_year
+    # @option opts [Integer] :season_id One team&#39;s season row
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @return [EarnedIncentiveCollection]
+    def get_earned_incentives(opts = {})
+      data, _status_code, _headers = get_earned_incentives_with_http_info(opts)
+      data
+    end
+
+    # List earned incentives (WINAD-10637) — per contract incentive item and season, whether the coach earned it under the contract and how much. Values are earned under the contract, not proof of payment. Filters combine; with none, every row is listed. Requires the winad_read OAuth scope and a super admin user; other users get 403.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :coach_id 
+    # @option opts [Integer] :raw_contract_id The contract the items come from
+    # @option opts [Integer] :school_id Every item whose season belongs to one of this school&#39;s teams
+    # @option opts [Integer] :season_year The season&#39;s END year (2026 is the 2025-26 season). &#x60;season&#x60; is accepted as the same filter.
+    # @option opts [Integer] :season Same as season_year
+    # @option opts [Integer] :season_id One team&#39;s season row
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @return [Array<(EarnedIncentiveCollection, Integer, Hash)>] EarnedIncentiveCollection data, response status code and response headers
+    def get_earned_incentives_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_earned_incentives ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/earned_incentives'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'coach_id'] = opts[:'coach_id'] if !opts[:'coach_id'].nil?
+      query_params[:'raw_contract_id'] = opts[:'raw_contract_id'] if !opts[:'raw_contract_id'].nil?
+      query_params[:'school_id'] = opts[:'school_id'] if !opts[:'school_id'].nil?
+      query_params[:'season_year'] = opts[:'season_year'] if !opts[:'season_year'].nil?
+      query_params[:'season'] = opts[:'season'] if !opts[:'season'].nil?
+      query_params[:'season_id'] = opts[:'season_id'] if !opts[:'season_id'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'EarnedIncentiveCollection'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_earned_incentives",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_earned_incentives\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -18212,7 +18436,7 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to \"yearly\", \"hourly\", or \"990\" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \"990\". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A non-string change_note is refused with 422 (errors.change_note). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row's current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
+    # Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to \"yearly\", \"hourly\", or \"990\" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \"990\". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A change_note that is not a string, or contains a NUL character, is refused with 422 (errors.change_note). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row's current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
     # @param compensation_id [Integer] ID of compensation to update
     # @param compensation [Compensation] Compensation to update
     # @param [Hash] opts the optional parameters
@@ -18222,7 +18446,7 @@ module WinthropClient
       data
     end
 
-    # Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to \&quot;yearly\&quot;, \&quot;hourly\&quot;, or \&quot;990\&quot; and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or &#39;Hourly rate not provided&#39;) and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \&quot;990\&quot;. Changes are recorded in the row&#39;s audit history (PaperTrail), attributed to the token&#39;s user, with the optional top-level change_note as the reason. A non-string change_note is refused with 422 (errors.change_note). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row&#39;s current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
+    # Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to \&quot;yearly\&quot;, \&quot;hourly\&quot;, or \&quot;990\&quot; and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or &#39;Hourly rate not provided&#39;) and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \&quot;990\&quot;. Changes are recorded in the row&#39;s audit history (PaperTrail), attributed to the token&#39;s user, with the optional top-level change_note as the reason. A change_note that is not a string, or contains a NUL character, is refused with 422 (errors.change_note). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row&#39;s current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
     # @param compensation_id [Integer] ID of compensation to update
     # @param compensation [Compensation] Compensation to update
     # @param [Hash] opts the optional parameters
@@ -20036,6 +20260,72 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#update_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create or replace the earned incentive with the same (coach_id, raw_contract_id, season_id, item_id). The stored row is exactly the payload a person approved (approved_by_id, approved_at); a field left out is cleared. Fields must be sent with their JSON types — ids and cents as integers, dates as \"YYYY-MM-DD\" strings — and are refused rather than converted. Dates and approved_at must fall in the years 1900-2100. WinAD does no calculation. Requires the winad_write OAuth scope and a super admin user; other users get 403. The write is recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason.
+    # @param earned_incentive_input [EarnedIncentiveInput] The item&#39;s fields at the top level of the JSON body, with an optional change_note beside them
+    # @param [Hash] opts the optional parameters
+    # @return [EarnedIncentive]
+    def upsert_earned_incentive(earned_incentive_input, opts = {})
+      data, _status_code, _headers = upsert_earned_incentive_with_http_info(earned_incentive_input, opts)
+      data
+    end
+
+    # Create or replace the earned incentive with the same (coach_id, raw_contract_id, season_id, item_id). The stored row is exactly the payload a person approved (approved_by_id, approved_at); a field left out is cleared. Fields must be sent with their JSON types — ids and cents as integers, dates as \&quot;YYYY-MM-DD\&quot; strings — and are refused rather than converted. Dates and approved_at must fall in the years 1900-2100. WinAD does no calculation. Requires the winad_write OAuth scope and a super admin user; other users get 403. The write is recorded in the row&#39;s audit history (PaperTrail), attributed to the token&#39;s user, with the optional top-level change_note as the reason.
+    # @param earned_incentive_input [EarnedIncentiveInput] The item&#39;s fields at the top level of the JSON body, with an optional change_note beside them
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EarnedIncentive, Integer, Hash)>] EarnedIncentive data, response status code and response headers
+    def upsert_earned_incentive_with_http_info(earned_incentive_input, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.upsert_earned_incentive ...'
+      end
+      # verify the required parameter 'earned_incentive_input' is set
+      if @api_client.config.client_side_validation && earned_incentive_input.nil?
+        fail ArgumentError, "Missing the required parameter 'earned_incentive_input' when calling DefaultApi.upsert_earned_incentive"
+      end
+      # resource path
+      local_var_path = '/api/v1/earned_incentives'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(earned_incentive_input)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'EarnedIncentive'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.upsert_earned_incentive",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#upsert_earned_incentive\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

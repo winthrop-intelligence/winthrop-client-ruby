@@ -22,6 +22,7 @@
 | **instagram_handle** | **String** |  | [optional] |
 | **instagram_verified** | **Boolean** |  |  |
 | **bio** | **String** |  | [optional] |
+| **bio_text** | **String** |  | [optional] |
 | **coach_friendly_id** | **String** |  | [optional] |
 | **departing** | **Boolean** | Whether the header&#39;s position is departing — the first header_assignments entry when present | [optional] |
 | **current_school_name** | **String** |  | [optional] |
@@ -63,6 +64,7 @@ instance = WinthropClient::CoachProfile.new(
   instagram_handle: null,
   instagram_verified: null,
   bio: null,
+  bio_text: null,
   coach_friendly_id: null,
   departing: null,
   current_school_name: null,

@@ -103,6 +103,27 @@ module WinthropClient
 
     attr_accessor :compensation_media_link
 
+    # True when the row's position has no usable annual total but an earlier season of the same unbroken job (same coach, school, sport and position types in every season between) does, and no season since that record carries an hourly record or conflicting positions, so the latest_known_* fields carry that older record as display-only context. It never changes compensation_cents, the comp filters, the compensation sort or comp_stats, and the latest_compensation_* columns behind it are not accepted as filter or sort inputs. The whole latest_known_* group is absent without compensation access.
+    attr_accessor :latest_known_fallback
+
+    # Total of that older record in cents; null unless latest_known_fallback.
+    attr_accessor :latest_known_compensation_cents
+
+    # Base salary of that older record in cents; null unless latest_known_fallback.
+    attr_accessor :latest_known_base_salary_cents
+
+    # Compensation type as stored on that older record; null unless latest_known_fallback, and null when the record stores no type (the same raw reading as compensation_type).
+    attr_accessor :latest_known_compensation_type
+
+    # End year of the season the older record's position belongs to (2024 means 2023–24); null unless latest_known_fallback. Always earlier than the target assignment's season.
+    attr_accessor :latest_known_source_year
+
+    # The older compensation record's id; null unless latest_known_fallback.
+    attr_accessor :latest_known_source_compensation_id
+
+    # The document behind the older record, present only when one is on file and the viewer may open it. Distinct from raw_contract_id, which stays the current position's contract document.
+    attr_accessor :latest_known_source_raw_contract_id
+
     attr_accessor :contract_starts_on
 
     attr_accessor :contract_expires_on
@@ -156,6 +177,13 @@ module WinthropClient
         :'compensation_talent_fee' => :'compensation_talent_fee',
         :'compensation_county_club_membership_paid' => :'compensation_county_club_membership_paid',
         :'compensation_media_link' => :'compensation_media_link',
+        :'latest_known_fallback' => :'latest_known_fallback',
+        :'latest_known_compensation_cents' => :'latest_known_compensation_cents',
+        :'latest_known_base_salary_cents' => :'latest_known_base_salary_cents',
+        :'latest_known_compensation_type' => :'latest_known_compensation_type',
+        :'latest_known_source_year' => :'latest_known_source_year',
+        :'latest_known_source_compensation_id' => :'latest_known_source_compensation_id',
+        :'latest_known_source_raw_contract_id' => :'latest_known_source_raw_contract_id',
         :'contract_starts_on' => :'contract_starts_on',
         :'contract_expires_on' => :'contract_expires_on',
         :'contract_at_will' => :'contract_at_will',
@@ -217,6 +245,13 @@ module WinthropClient
         :'compensation_talent_fee' => :'Integer',
         :'compensation_county_club_membership_paid' => :'Boolean',
         :'compensation_media_link' => :'String',
+        :'latest_known_fallback' => :'Boolean',
+        :'latest_known_compensation_cents' => :'Integer',
+        :'latest_known_base_salary_cents' => :'Integer',
+        :'latest_known_compensation_type' => :'String',
+        :'latest_known_source_year' => :'Integer',
+        :'latest_known_source_compensation_id' => :'Integer',
+        :'latest_known_source_raw_contract_id' => :'Integer',
         :'contract_starts_on' => :'Date',
         :'contract_expires_on' => :'Date',
         :'contract_at_will' => :'Boolean',
@@ -261,6 +296,12 @@ module WinthropClient
         :'compensation_talent_fee',
         :'compensation_county_club_membership_paid',
         :'compensation_media_link',
+        :'latest_known_compensation_cents',
+        :'latest_known_base_salary_cents',
+        :'latest_known_compensation_type',
+        :'latest_known_source_year',
+        :'latest_known_source_compensation_id',
+        :'latest_known_source_raw_contract_id',
         :'contract_starts_on',
         :'contract_expires_on',
         :'contract_at_will',
@@ -449,6 +490,34 @@ module WinthropClient
         self.compensation_media_link = attributes[:'compensation_media_link']
       end
 
+      if attributes.key?(:'latest_known_fallback')
+        self.latest_known_fallback = attributes[:'latest_known_fallback']
+      end
+
+      if attributes.key?(:'latest_known_compensation_cents')
+        self.latest_known_compensation_cents = attributes[:'latest_known_compensation_cents']
+      end
+
+      if attributes.key?(:'latest_known_base_salary_cents')
+        self.latest_known_base_salary_cents = attributes[:'latest_known_base_salary_cents']
+      end
+
+      if attributes.key?(:'latest_known_compensation_type')
+        self.latest_known_compensation_type = attributes[:'latest_known_compensation_type']
+      end
+
+      if attributes.key?(:'latest_known_source_year')
+        self.latest_known_source_year = attributes[:'latest_known_source_year']
+      end
+
+      if attributes.key?(:'latest_known_source_compensation_id')
+        self.latest_known_source_compensation_id = attributes[:'latest_known_source_compensation_id']
+      end
+
+      if attributes.key?(:'latest_known_source_raw_contract_id')
+        self.latest_known_source_raw_contract_id = attributes[:'latest_known_source_raw_contract_id']
+      end
+
       if attributes.key?(:'contract_starts_on')
         self.contract_starts_on = attributes[:'contract_starts_on']
       end
@@ -530,6 +599,13 @@ module WinthropClient
           compensation_talent_fee == o.compensation_talent_fee &&
           compensation_county_club_membership_paid == o.compensation_county_club_membership_paid &&
           compensation_media_link == o.compensation_media_link &&
+          latest_known_fallback == o.latest_known_fallback &&
+          latest_known_compensation_cents == o.latest_known_compensation_cents &&
+          latest_known_base_salary_cents == o.latest_known_base_salary_cents &&
+          latest_known_compensation_type == o.latest_known_compensation_type &&
+          latest_known_source_year == o.latest_known_source_year &&
+          latest_known_source_compensation_id == o.latest_known_source_compensation_id &&
+          latest_known_source_raw_contract_id == o.latest_known_source_raw_contract_id &&
           contract_starts_on == o.contract_starts_on &&
           contract_expires_on == o.contract_expires_on &&
           contract_at_will == o.contract_at_will &&
@@ -546,7 +622,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, first_name, last_name, school_name, school_short_name, school_id, conference_name, conference_id, division_name, division_id, year, newer_season, assignments, coach_friendly_id, visible, position_types, sport_name, sport_full_name, position_title, season_wins, season_losses, season_ties, season_conference_position, season_conference_num_positions, rpi, net_rank, ap_rank, compensation_cents, base_salary_cents, coli, compensation_type, compensation_contingent_bonus, compensation_deferred_comp_cents, compensation_one_time_bonus_cents, compensation_buyout_terms, compensation_is_car_provided, compensation_outside_income_cents, compensation_talent_fee, compensation_county_club_membership_paid, compensation_media_link, contract_starts_on, contract_expires_on, contract_at_will, raw_contract_id, avatar_url].hash
+      [id, first_name, last_name, school_name, school_short_name, school_id, conference_name, conference_id, division_name, division_id, year, newer_season, assignments, coach_friendly_id, visible, position_types, sport_name, sport_full_name, position_title, season_wins, season_losses, season_ties, season_conference_position, season_conference_num_positions, rpi, net_rank, ap_rank, compensation_cents, base_salary_cents, coli, compensation_type, compensation_contingent_bonus, compensation_deferred_comp_cents, compensation_one_time_bonus_cents, compensation_buyout_terms, compensation_is_car_provided, compensation_outside_income_cents, compensation_talent_fee, compensation_county_club_membership_paid, compensation_media_link, latest_known_fallback, latest_known_compensation_cents, latest_known_base_salary_cents, latest_known_compensation_type, latest_known_source_year, latest_known_source_compensation_id, latest_known_source_raw_contract_id, contract_starts_on, contract_expires_on, contract_at_will, raw_contract_id, avatar_url].hash
     end
 
     # Builds the object from hash

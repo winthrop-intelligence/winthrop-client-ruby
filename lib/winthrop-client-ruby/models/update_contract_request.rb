@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  # Partial update of a published contract. At least one of start_on, end_on or at_will is required; change_note alone is insufficient. Pending contracts are published, not edited. Setting at_will true requires end_on null. Changes are audited with the authenticated user and the optional change_note. 
+  # Partial update of a published contract. At least one of the contract fields is required; change_note alone is insufficient. Pending contracts are published, not edited. Setting at_will true requires end_on null. Changes are audited with the authenticated user and the optional change_note. 
   class UpdateContractRequest < ApiModelBase
     # Contract start date (strict YYYY-MM-DD); cannot be null.
     attr_accessor :start_on
@@ -25,7 +25,19 @@ module WinthropClient
     # Whether employment is at will; only JSON true or false is accepted.
     attr_accessor :at_will
 
-    # Why this change is being made, for the internal audit history (WINAD-10632). It is stored on the audit version this write creates and is never returned. Blank is the same as omitted; a non-string value is refused with 422 (errors.change_note). It is not an updatable field: a request with only a change_note is refused.
+    # Date the contract was executed (strict YYYY-MM-DD); null clears it.
+    attr_accessor :executed_on
+
+    # Date the contract expires (strict YYYY-MM-DD); null clears it.
+    attr_accessor :expires_on
+
+    # Whether the terms are contingent on a change; only JSON true or false is accepted.
+    attr_accessor :contingent_change
+
+    # Moves the contract to this coach. Refused (422 errors.coach_id plus linked_compensation_ids, linked_position_ids and linked_verification_ids) while any of those rows still link to the contract; the agent never relinks them itself.
+    attr_accessor :coach_id
+
+    # Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates, the records it saves as side effects included, and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write.
     attr_accessor :change_note
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -34,6 +46,10 @@ module WinthropClient
         :'start_on' => :'start_on',
         :'end_on' => :'end_on',
         :'at_will' => :'at_will',
+        :'executed_on' => :'executed_on',
+        :'expires_on' => :'expires_on',
+        :'contingent_change' => :'contingent_change',
+        :'coach_id' => :'coach_id',
         :'change_note' => :'change_note'
       }
     end
@@ -54,6 +70,10 @@ module WinthropClient
         :'start_on' => :'Date',
         :'end_on' => :'Date',
         :'at_will' => :'Boolean',
+        :'executed_on' => :'Date',
+        :'expires_on' => :'Date',
+        :'contingent_change' => :'Boolean',
+        :'coach_id' => :'Integer',
         :'change_note' => :'String'
       }
     end
@@ -62,6 +82,8 @@ module WinthropClient
     def self.openapi_nullable
       Set.new([
         :'end_on',
+        :'executed_on',
+        :'expires_on',
         :'change_note'
       ])
     end
@@ -94,6 +116,22 @@ module WinthropClient
         self.at_will = attributes[:'at_will']
       end
 
+      if attributes.key?(:'executed_on')
+        self.executed_on = attributes[:'executed_on']
+      end
+
+      if attributes.key?(:'expires_on')
+        self.expires_on = attributes[:'expires_on']
+      end
+
+      if attributes.key?(:'contingent_change')
+        self.contingent_change = attributes[:'contingent_change']
+      end
+
+      if attributes.key?(:'coach_id')
+        self.coach_id = attributes[:'coach_id']
+      end
+
       if attributes.key?(:'change_note')
         self.change_note = attributes[:'change_note']
       end
@@ -104,6 +142,10 @@ module WinthropClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if !@change_note.nil? && @change_note.to_s.length > 500
+        invalid_properties.push('invalid value for "change_note", the character length must be smaller than or equal to 500.')
+      end
+
       invalid_properties
     end
 
@@ -111,7 +153,18 @@ module WinthropClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if !@change_note.nil? && @change_note.to_s.length > 500
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] change_note Value to be assigned
+    def change_note=(change_note)
+      if !change_note.nil? && change_note.to_s.length > 500
+        fail ArgumentError, 'invalid value for "change_note", the character length must be smaller than or equal to 500.'
+      end
+
+      @change_note = change_note
     end
 
     # Checks equality by comparing each attribute.
@@ -122,6 +175,10 @@ module WinthropClient
           start_on == o.start_on &&
           end_on == o.end_on &&
           at_will == o.at_will &&
+          executed_on == o.executed_on &&
+          expires_on == o.expires_on &&
+          contingent_change == o.contingent_change &&
+          coach_id == o.coach_id &&
           change_note == o.change_note
     end
 
@@ -134,7 +191,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [start_on, end_on, at_will, change_note].hash
+      [start_on, end_on, at_will, executed_on, expires_on, contingent_change, coach_id, change_note].hash
     end
 
     # Builds the object from hash

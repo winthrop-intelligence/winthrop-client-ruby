@@ -15,12 +15,24 @@ require 'time'
 
 module WinthropClient
   class ContractErrorsResponse < ApiModelBase
+    # Only on a refused coach move (PATCH /contracts/{contractId}). The compensations that still link to the contract.
+    attr_accessor :linked_compensation_ids
+
+    # Only on a refused coach move. The positions of those compensations.
+    attr_accessor :linked_position_ids
+
+    # Only on a refused coach move. The verification events recorded for the contract.
+    attr_accessor :linked_verification_ids
+
     # Error messages keyed by attribute (base for whole-request errors)
     attr_accessor :errors
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'linked_compensation_ids' => :'linked_compensation_ids',
+        :'linked_position_ids' => :'linked_position_ids',
+        :'linked_verification_ids' => :'linked_verification_ids',
         :'errors' => :'errors'
       }
     end
@@ -38,6 +50,9 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'linked_compensation_ids' => :'Array<Integer>',
+        :'linked_position_ids' => :'Array<Integer>',
+        :'linked_verification_ids' => :'Array<Integer>',
         :'errors' => :'Hash<String, Array<String>>'
       }
     end
@@ -63,6 +78,24 @@ module WinthropClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'linked_compensation_ids')
+        if (value = attributes[:'linked_compensation_ids']).is_a?(Array)
+          self.linked_compensation_ids = value
+        end
+      end
+
+      if attributes.key?(:'linked_position_ids')
+        if (value = attributes[:'linked_position_ids']).is_a?(Array)
+          self.linked_position_ids = value
+        end
+      end
+
+      if attributes.key?(:'linked_verification_ids')
+        if (value = attributes[:'linked_verification_ids']).is_a?(Array)
+          self.linked_verification_ids = value
+        end
+      end
 
       if attributes.key?(:'errors')
         if (value = attributes[:'errors']).is_a?(Hash)
@@ -108,6 +141,9 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          linked_compensation_ids == o.linked_compensation_ids &&
+          linked_position_ids == o.linked_position_ids &&
+          linked_verification_ids == o.linked_verification_ids &&
           errors == o.errors
     end
 
@@ -120,7 +156,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [errors].hash
+      [linked_compensation_ids, linked_position_ids, linked_verification_ids, errors].hash
     end
 
     # Builds the object from hash

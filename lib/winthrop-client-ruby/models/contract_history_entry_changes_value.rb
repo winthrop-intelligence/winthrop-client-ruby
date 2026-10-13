@@ -14,19 +14,18 @@ require 'date'
 require 'time'
 
 module WinthropClient
-  class PerformanceChartRecord < ApiModelBase
-    attr_accessor :wins
+  class ContractHistoryEntryChangesValue < ApiModelBase
+    # Value before the change (a JSON scalar, array or object)
+    attr_accessor :old
 
-    attr_accessor :losses
-
-    attr_accessor :ties
+    # Value after the change (a JSON scalar, array or object)
+    attr_accessor :new
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'wins' => :'wins',
-        :'losses' => :'losses',
-        :'ties' => :'ties'
+        :'old' => :'old',
+        :'new' => :'new'
       }
     end
 
@@ -43,18 +42,16 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'wins' => :'Integer',
-        :'losses' => :'Integer',
-        :'ties' => :'Integer'
+        :'old' => :'Object',
+        :'new' => :'Object'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'wins',
-        :'losses',
-        :'ties'
+        :'old',
+        :'new'
       ])
     end
 
@@ -62,28 +59,28 @@ module WinthropClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::PerformanceChartRecord` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WinthropClient::ContractHistoryEntryChangesValue` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::PerformanceChartRecord`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WinthropClient::ContractHistoryEntryChangesValue`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'wins')
-        self.wins = attributes[:'wins']
+      if attributes.key?(:'old')
+        self.old = attributes[:'old']
+      else
+        self.old = nil
       end
 
-      if attributes.key?(:'losses')
-        self.losses = attributes[:'losses']
-      end
-
-      if attributes.key?(:'ties')
-        self.ties = attributes[:'ties']
+      if attributes.key?(:'new')
+        self.new = attributes[:'new']
+      else
+        self.new = nil
       end
     end
 
@@ -107,9 +104,8 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          wins == o.wins &&
-          losses == o.losses &&
-          ties == o.ties
+          old == o.old &&
+          new == o.new
     end
 
     # @see the `==` method
@@ -121,7 +117,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [wins, losses, ties].hash
+      [old, new].hash
     end
 
     # Builds the object from hash

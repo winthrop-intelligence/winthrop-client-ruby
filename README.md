@@ -76,7 +76,8 @@ file = File.new('/path/to/some/file') # File | The contract PDF
 opts = {
   drive_id: 'drive_id_example', # String | Optional Google Drive id; must be unique for the coach
   text: 'text_example', # String | Optional Mistral markdown already produced for this PDF, pages separated by a form feed line (\\\"\\\\n\\\\f\\\\n\\\"). When present it is stored as the contract text and no automatic OCR is queued; when absent one automatic OCR job is queued.
-  contract_terms: 'contract_terms_example' # String | Optional structured terms read from the contract, as a JSON-encoded ContractTerms object (see PATCH /raw_contracts/{id}/contract_terms). Stored on the RawContract in the same transaction; an invalid document refuses the upload with errors keyed contract_terms, contract_terms.schema, contract_terms.source.run_id, and so on. Accepted from service (client-credentials) tokens like the rest of the upload; the audit version then records no person.
+  contract_terms: 'contract_terms_example', # String | Optional structured terms read from the contract, as a JSON-encoded ContractTerms object (see PATCH /raw_contracts/{id}/contract_terms). Stored on the RawContract in the same transaction; an invalid document refuses the upload with errors keyed contract_terms, contract_terms.schema, contract_terms.source.run_id, and so on. Accepted from service (client-credentials) tokens like the rest of the upload; the audit version then records no person.
+  change_note: 'change_note_example' # String | Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates, the records it saves as side effects included, and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write.
 }
 
 begin
@@ -96,7 +97,9 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *WinthropClient::ContractsApi* | [**create_pending_contract**](docs/ContractsApi.md#create_pending_contract) | **POST** /api/v1/contracts | 
 *WinthropClient::ContractsApi* | [**delete_pending_contract**](docs/ContractsApi.md#delete_pending_contract) | **DELETE** /api/v1/contracts/{contractId} | 
+*WinthropClient::ContractsApi* | [**get_contract_history**](docs/ContractsApi.md#get_contract_history) | **GET** /api/v1/contract_history | 
 *WinthropClient::ContractsApi* | [**publish_pending_contract**](docs/ContractsApi.md#publish_pending_contract) | **POST** /api/v1/contracts/{contractId}/publish | 
+*WinthropClient::ContractsApi* | [**replace_contract_file**](docs/ContractsApi.md#replace_contract_file) | **PUT** /api/v1/contracts/{contractId}/file | 
 *WinthropClient::ContractsApi* | [**update_contract**](docs/ContractsApi.md#update_contract) | **PATCH** /api/v1/contracts/{contractId} | 
 *WinthropClient::CtbApi* | [**apply_ctb_compensation**](docs/CtbApi.md#apply_ctb_compensation) | **POST** /api/v1/ctb_compensation_apply | 
 *WinthropClient::DefaultApi* | [**average_conference_comp**](docs/DefaultApi.md#average_conference_comp) | **GET** /api/v1/compensations/average_conference_comp | 
@@ -147,10 +150,12 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**delete_account_user**](docs/DefaultApi.md#delete_account_user) | **DELETE** /api/v1/account_users/{accountUserId} | 
 *WinthropClient::DefaultApi* | [**delete_admin_desk_report_artifact**](docs/DefaultApi.md#delete_admin_desk_report_artifact) | **DELETE** /api/v1/admin/desk_reports/{desk_report_uuid}/artifacts/{id} | 
 *WinthropClient::DefaultApi* | [**delete_cashflow**](docs/DefaultApi.md#delete_cashflow) | **DELETE** /api/v1/cashflows/{cashflowId} | 
+*WinthropClient::DefaultApi* | [**delete_compensation**](docs/DefaultApi.md#delete_compensation) | **DELETE** /api/v1/compensations/{compensationId} | 
 *WinthropClient::DefaultApi* | [**delete_conference**](docs/DefaultApi.md#delete_conference) | **DELETE** /api/v1/conferences/{conferenceId} | 
 *WinthropClient::DefaultApi* | [**delete_conferenceship**](docs/DefaultApi.md#delete_conferenceship) | **DELETE** /api/v1/conferenceships/{conferenceshipId} | 
 *WinthropClient::DefaultApi* | [**delete_contact_search**](docs/DefaultApi.md#delete_contact_search) | **DELETE** /api/v1/contact_searches/{id} | 
 *WinthropClient::DefaultApi* | [**delete_desk_report_archive**](docs/DefaultApi.md#delete_desk_report_archive) | **DELETE** /api/v1/desk_reports/{uuid}/archive | 
+*WinthropClient::DefaultApi* | [**delete_earned_incentive**](docs/DefaultApi.md#delete_earned_incentive) | **DELETE** /api/v1/earned_incentives/{earnedIncentiveId} | 
 *WinthropClient::DefaultApi* | [**delete_favorite**](docs/DefaultApi.md#delete_favorite) | **DELETE** /api/v1/favorites/{id} | 
 *WinthropClient::DefaultApi* | [**delete_favorites_category**](docs/DefaultApi.md#delete_favorites_category) | **DELETE** /api/v1/favorites_categories/{id} | 
 *WinthropClient::DefaultApi* | [**delete_foia_label**](docs/DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} | 
@@ -238,6 +243,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**get_desk_requests**](docs/DefaultApi.md#get_desk_requests) | **GET** /api/v1/desk_requests | 
 *WinthropClient::DefaultApi* | [**get_division**](docs/DefaultApi.md#get_division) | **GET** /api/v1/divisions/{divisionId} | 
 *WinthropClient::DefaultApi* | [**get_divisions**](docs/DefaultApi.md#get_divisions) | **GET** /api/v1/divisions | 
+*WinthropClient::DefaultApi* | [**get_earned_incentives**](docs/DefaultApi.md#get_earned_incentives) | **GET** /api/v1/earned_incentives | 
 *WinthropClient::DefaultApi* | [**get_edit_account_user**](docs/DefaultApi.md#get_edit_account_user) | **GET** /api/v1/account_users/{accountUserId}/edit | 
 *WinthropClient::DefaultApi* | [**get_favorites**](docs/DefaultApi.md#get_favorites) | **GET** /api/v1/favorites | 
 *WinthropClient::DefaultApi* | [**get_favorites_categories**](docs/DefaultApi.md#get_favorites_categories) | **GET** /api/v1/favorites_categories | 
@@ -406,6 +412,7 @@ Class | Method | HTTP request | Description
 *WinthropClient::DefaultApi* | [**update_subscription_acceptance**](docs/DefaultApi.md#update_subscription_acceptance) | **PATCH** /api/v1/subscription_acceptances/{subscriptionAcceptanceId} | 
 *WinthropClient::DefaultApi* | [**update_team_schedule_favorite**](docs/DefaultApi.md#update_team_schedule_favorite) | **PATCH** /api/v1/team_schedule_favorites/{id} | 
 *WinthropClient::DefaultApi* | [**update_user**](docs/DefaultApi.md#update_user) | **PATCH** /api/v1/users/{userId} | 
+*WinthropClient::DefaultApi* | [**upsert_earned_incentive**](docs/DefaultApi.md#upsert_earned_incentive) | **PUT** /api/v1/earned_incentives | 
 *WinthropClient::DefaultApi* | [**upsert_team_schedule_note**](docs/DefaultApi.md#upsert_team_schedule_note) | **PUT** /api/v1/team_schedule_notes/{fil_team_id} | 
 *WinthropClient::DefaultApi* | [**upsert_team_season_result**](docs/DefaultApi.md#upsert_team_season_result) | **PUT** /api/v1/team_season_results | 
 *WinthropClient::DefaultApi* | [**user_me**](docs/DefaultApi.md#user_me) | **GET** /api/v1/users/me | 
@@ -614,6 +621,12 @@ Class | Method | HTTP request | Description
  - [WinthropClient::Contract](docs/Contract.md)
  - [WinthropClient::ContractCollection](docs/ContractCollection.md)
  - [WinthropClient::ContractErrorsResponse](docs/ContractErrorsResponse.md)
+ - [WinthropClient::ContractFileReplaced](docs/ContractFileReplaced.md)
+ - [WinthropClient::ContractHistoryCollection](docs/ContractHistoryCollection.md)
+ - [WinthropClient::ContractHistoryEntry](docs/ContractHistoryEntry.md)
+ - [WinthropClient::ContractHistoryEntryChangesValue](docs/ContractHistoryEntryChangesValue.md)
+ - [WinthropClient::ContractHistoryEntryOauthApplication](docs/ContractHistoryEntryOauthApplication.md)
+ - [WinthropClient::ContractHistoryEntryUser](docs/ContractHistoryEntryUser.md)
  - [WinthropClient::ContractTermOption](docs/ContractTermOption.md)
  - [WinthropClient::ContractTerms](docs/ContractTerms.md)
  - [WinthropClient::ContractTermsSource](docs/ContractTermsSource.md)
@@ -820,6 +833,11 @@ Class | Method | HTTP request | Description
  - [WinthropClient::DirectorsCupSchool](docs/DirectorsCupSchool.md)
  - [WinthropClient::Division](docs/Division.md)
  - [WinthropClient::DivisionCollection](docs/DivisionCollection.md)
+ - [WinthropClient::EarnedIncentive](docs/EarnedIncentive.md)
+ - [WinthropClient::EarnedIncentiveCollection](docs/EarnedIncentiveCollection.md)
+ - [WinthropClient::EarnedIncentiveFields](docs/EarnedIncentiveFields.md)
+ - [WinthropClient::EarnedIncentiveFieldsTermChange](docs/EarnedIncentiveFieldsTermChange.md)
+ - [WinthropClient::EarnedIncentiveInput](docs/EarnedIncentiveInput.md)
  - [WinthropClient::EditAccountUser](docs/EditAccountUser.md)
  - [WinthropClient::EditAccountUserResponse](docs/EditAccountUserResponse.md)
  - [WinthropClient::EnrichGamePostSearchesRequest](docs/EnrichGamePostSearchesRequest.md)
@@ -1029,9 +1047,6 @@ Class | Method | HTTP request | Description
  - [WinthropClient::Note](docs/Note.md)
  - [WinthropClient::PageView](docs/PageView.md)
  - [WinthropClient::PendingContractCreated](docs/PendingContractCreated.md)
- - [WinthropClient::PerformanceChartCoach](docs/PerformanceChartCoach.md)
- - [WinthropClient::PerformanceChartData](docs/PerformanceChartData.md)
- - [WinthropClient::PerformanceChartRecord](docs/PerformanceChartRecord.md)
  - [WinthropClient::PersonAssignment](docs/PersonAssignment.md)
  - [WinthropClient::Position](docs/Position.md)
  - [WinthropClient::PositionCollection](docs/PositionCollection.md)

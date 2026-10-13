@@ -26,6 +26,7 @@ module WinthropClient
     # @option opts [String] :drive_id Optional Google Drive id; must be unique for the coach
     # @option opts [String] :text Optional Mistral markdown already produced for this PDF, pages separated by a form feed line (\\\&quot;\\\\n\\\\f\\\\n\\\&quot;). When present it is stored as the contract text and no automatic OCR is queued; when absent one automatic OCR job is queued.
     # @option opts [String] :contract_terms Optional structured terms read from the contract, as a JSON-encoded ContractTerms object (see PATCH /raw_contracts/{id}/contract_terms). Stored on the RawContract in the same transaction; an invalid document refuses the upload with errors keyed contract_terms, contract_terms.schema, contract_terms.source.run_id, and so on. Accepted from service (client-credentials) tokens like the rest of the upload; the audit version then records no person.
+    # @option opts [String] :change_note Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates, the records it saves as side effects included, and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write.
     # @return [PendingContractCreated]
     def create_pending_contract(coach_id, file, opts = {})
       data, _status_code, _headers = create_pending_contract_with_http_info(coach_id, file, opts)
@@ -39,6 +40,7 @@ module WinthropClient
     # @option opts [String] :drive_id Optional Google Drive id; must be unique for the coach
     # @option opts [String] :text Optional Mistral markdown already produced for this PDF, pages separated by a form feed line (\\\&quot;\\\\n\\\\f\\\\n\\\&quot;). When present it is stored as the contract text and no automatic OCR is queued; when absent one automatic OCR job is queued.
     # @option opts [String] :contract_terms Optional structured terms read from the contract, as a JSON-encoded ContractTerms object (see PATCH /raw_contracts/{id}/contract_terms). Stored on the RawContract in the same transaction; an invalid document refuses the upload with errors keyed contract_terms, contract_terms.schema, contract_terms.source.run_id, and so on. Accepted from service (client-credentials) tokens like the rest of the upload; the audit version then records no person.
+    # @option opts [String] :change_note Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates, the records it saves as side effects included, and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write.
     # @return [Array<(PendingContractCreated, Integer, Hash)>] PendingContractCreated data, response status code and response headers
     def create_pending_contract_with_http_info(coach_id, file, opts = {})
       if @api_client.config.debugging
@@ -52,6 +54,10 @@ module WinthropClient
       if @api_client.config.client_side_validation && file.nil?
         fail ArgumentError, "Missing the required parameter 'file' when calling ContractsApi.create_pending_contract"
       end
+      if @api_client.config.client_side_validation && !opts[:'change_note'].nil? && opts[:'change_note'].to_s.length > 500
+        fail ArgumentError, 'invalid value for "opts[:"change_note"]" when calling ContractsApi.create_pending_contract, the character length must be smaller than or equal to 500.'
+      end
+
       # resource path
       local_var_path = '/api/v1/contracts'
 
@@ -75,6 +81,7 @@ module WinthropClient
       form_params['drive_id'] = opts[:'drive_id'] if !opts[:'drive_id'].nil?
       form_params['text'] = opts[:'text'] if !opts[:'text'].nil?
       form_params['contract_terms'] = opts[:'contract_terms'] if !opts[:'contract_terms'].nil?
+      form_params['change_note'] = opts[:'change_note'] if !opts[:'change_note'].nil?
 
       # http body (model)
       post_body = opts[:debug_body]
@@ -105,6 +112,7 @@ module WinthropClient
     # Delete a contract, only while it is pending. Also deletes its RawContract and the stored PDF, so no file is left behind. A published contract, or a PDF that another record still uses, is refused. Requires the winad_write scope and a manage-level user.
     # @param contract_id [Integer] ID of the pending contract to delete
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :change_note Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned.
     # @return [nil]
     def delete_pending_contract(contract_id, opts = {})
       delete_pending_contract_with_http_info(contract_id, opts)
@@ -114,6 +122,7 @@ module WinthropClient
     # Delete a contract, only while it is pending. Also deletes its RawContract and the stored PDF, so no file is left behind. A published contract, or a PDF that another record still uses, is refused. Requires the winad_write scope and a manage-level user.
     # @param contract_id [Integer] ID of the pending contract to delete
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :change_note Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_pending_contract_with_http_info(contract_id, opts = {})
       if @api_client.config.debugging
@@ -123,11 +132,16 @@ module WinthropClient
       if @api_client.config.client_side_validation && contract_id.nil?
         fail ArgumentError, "Missing the required parameter 'contract_id' when calling ContractsApi.delete_pending_contract"
       end
+      if @api_client.config.client_side_validation && !opts[:'change_note'].nil? && opts[:'change_note'].to_s.length > 500
+        fail ArgumentError, 'invalid value for "opts[:"change_note"]" when calling ContractsApi.delete_pending_contract, the character length must be smaller than or equal to 500.'
+      end
+
       # resource path
       local_var_path = '/api/v1/contracts/{contractId}'.sub('{' + 'contractId' + '}', CGI.escape(contract_id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'change_note'] = opts[:'change_note'] if !opts[:'change_note'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -163,7 +177,85 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Publish a pending contract (WINAD-10559). In one transaction, under the coach lock, this sets the contract's dates, writes one compensation per year (creating the later-year positions the coach needs) and sets pending to false. If anything fails nothing is written and the contract stays pending, so the request can be corrected and retried.  The rules are the CSV compensation uploader's: the coach must have a position at each school in the first year listed for it, later years get positions created from it, a school can appear once per coach and year, a yearly or 990 compensation needs a base_salary and an hourly one needs a comment, and a private school's compensation must be 990. A compensation that already exists for the coach, school and year is updated and linked to this contract.  Money is in dollars (a number, or a string such as \"$1,234.50\" with either no thousands separators or correctly placed ones; \"500,00\" is refused), converted to cents like the CSV. Flags are JSON booleans. Unknown fields, at the top level or in a row, are refused with 422 rather than ignored. Errors are keyed by attribute for the contract fields (start_on, end_on, at_will, executed_on, compensations) and as compensations[n] (n = the row's position in the request, from 0) for a row; row messages name fields by their CSV column, for example \"Base Salary\". Requires the winad_write scope and a manage-level user. 
+    # The change history of a contract and everything under it (WINAD-10638): the contract, its compensations, the positions linked to them, its verification events and the replacements of its PDF (WINAD-10639, item_type RawContract, one `file` change with the old and new file), newest first (created_at, then id, descending). Read it before changing a record: it includes edits staff made in the admin UI since your last run, which have no change_note and no oauth_application.  Give exactly one of contract_id or raw_contract_id (otherwise 400); coach_id optionally keeps only the versions recorded for that coach. Each entry names the record (item_type and item_id), the event (create, update or destroy), every changed field with its old and new value (a create has no old values; a destroy's old values are the row as it was deleted, so a deleted compensation can be read back), who made the change, the OAuth app for an API write, when, and the change_note the API write gave.  It exposes editors and internal notes, so it needs the winad_read scope and permission to update the contract (staff); other users get 403. A contract the caller may not see (a hidden coach's, or a pending one for a non-manager) is 404.  The history outlives the contract. After a contract is deleted (a pending contract through DELETE /contracts/{id}, say) contract_id still returns its kept versions, the destroy and its change_note included. Who may read a deleted contract's history is decided from the row as it was deleted (its destroy version): a caller who cannot manage coaches gets 404 when the contract was pending, when its coach was hidden or no longer exists, or when that destroy version was not kept and so the owner is unknown. raw_contract_id does not find deleted contracts or documents; look those up by contract_id.  A raw_contract_id returns the combined history of every contract that uses the document (a PDF can be shared by several), merged and ordered newest first. Contracts the caller may not see are left out without a word, and it is 404 when none is left. coach_id applies across all of them before paging. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :contract_id The contract, which may have been deleted since if its versions were kept. Exactly one of contract_id and raw_contract_id is required.
+    # @option opts [Integer] :raw_contract_id The document. Returns the combined history of every contract that uses it (live contracts only). Exactly one of contract_id and raw_contract_id is required.
+    # @option opts [Integer] :coach_id Keep only the versions recorded for this coach. A version carries the coach its record has after the change, so moving a contract to another coach (WINAD-10639) shows the move under the new coach, while the old coach keeps what was recorded before it.
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :per_page Page size, capped at 100; defaults to 35. (default to 35)
+    # @return [ContractHistoryCollection]
+    def get_contract_history(opts = {})
+      data, _status_code, _headers = get_contract_history_with_http_info(opts)
+      data
+    end
+
+    # The change history of a contract and everything under it (WINAD-10638): the contract, its compensations, the positions linked to them, its verification events and the replacements of its PDF (WINAD-10639, item_type RawContract, one &#x60;file&#x60; change with the old and new file), newest first (created_at, then id, descending). Read it before changing a record: it includes edits staff made in the admin UI since your last run, which have no change_note and no oauth_application.  Give exactly one of contract_id or raw_contract_id (otherwise 400); coach_id optionally keeps only the versions recorded for that coach. Each entry names the record (item_type and item_id), the event (create, update or destroy), every changed field with its old and new value (a create has no old values; a destroy&#39;s old values are the row as it was deleted, so a deleted compensation can be read back), who made the change, the OAuth app for an API write, when, and the change_note the API write gave.  It exposes editors and internal notes, so it needs the winad_read scope and permission to update the contract (staff); other users get 403. A contract the caller may not see (a hidden coach&#39;s, or a pending one for a non-manager) is 404.  The history outlives the contract. After a contract is deleted (a pending contract through DELETE /contracts/{id}, say) contract_id still returns its kept versions, the destroy and its change_note included. Who may read a deleted contract&#39;s history is decided from the row as it was deleted (its destroy version): a caller who cannot manage coaches gets 404 when the contract was pending, when its coach was hidden or no longer exists, or when that destroy version was not kept and so the owner is unknown. raw_contract_id does not find deleted contracts or documents; look those up by contract_id.  A raw_contract_id returns the combined history of every contract that uses the document (a PDF can be shared by several), merged and ordered newest first. Contracts the caller may not see are left out without a word, and it is 404 when none is left. coach_id applies across all of them before paging. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :contract_id The contract, which may have been deleted since if its versions were kept. Exactly one of contract_id and raw_contract_id is required.
+    # @option opts [Integer] :raw_contract_id The document. Returns the combined history of every contract that uses it (live contracts only). Exactly one of contract_id and raw_contract_id is required.
+    # @option opts [Integer] :coach_id Keep only the versions recorded for this coach. A version carries the coach its record has after the change, so moving a contract to another coach (WINAD-10639) shows the move under the new coach, while the old coach keeps what was recorded before it.
+    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :per_page Page size, capped at 100; defaults to 35. (default to 35)
+    # @return [Array<(ContractHistoryCollection, Integer, Hash)>] ContractHistoryCollection data, response status code and response headers
+    def get_contract_history_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ContractsApi.get_contract_history ...'
+      end
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 100
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling ContractsApi.get_contract_history, must be smaller than or equal to 100.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling ContractsApi.get_contract_history, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/contract_history'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'contract_id'] = opts[:'contract_id'] if !opts[:'contract_id'].nil?
+      query_params[:'raw_contract_id'] = opts[:'raw_contract_id'] if !opts[:'raw_contract_id'].nil?
+      query_params[:'coach_id'] = opts[:'coach_id'] if !opts[:'coach_id'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ContractHistoryCollection'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"ContractsApi.get_contract_history",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ContractsApi#get_contract_history\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Publish a pending contract (WINAD-10559). In one transaction, under the coach lock, this sets the contract's dates, writes one compensation per year (creating the later-year positions the coach needs) and sets pending to false. If anything fails nothing is written and the contract stays pending, so the request can be corrected and retried.  The rules are the CSV compensation uploader's: the coach must have a position at each school in the first year listed for it, later years get positions created from it, a school can appear once per coach and year, a yearly or 990 compensation needs a base_salary and an hourly one needs a comment, and a private school's compensation must be 990. A compensation that already exists for the coach, school and year is updated and linked to this contract.  Money is in dollars (a number, or a string such as \"$1,234.50\" with either no thousands separators or correctly placed ones; \"500,00\" is refused), converted to cents like the CSV. Flags are JSON booleans. Unknown fields, at the top level or in a row, are refused with 422 rather than ignored. Errors are keyed by attribute for the contract fields (start_on, end_on, at_will, executed_on, expires_on, contingent_change, compensations) and as compensations[n] (n = the row's position in the request, from 0) for a row; row messages name fields by their CSV column, for example \"Base Salary\". Requires the winad_write scope and a manage-level user. 
     # @param contract_id [Integer] ID of the pending contract to publish
     # @param publish_pending_contract_request [PublishPendingContractRequest] 
     # @param [Hash] opts the optional parameters
@@ -173,7 +265,7 @@ module WinthropClient
       data
     end
 
-    # Publish a pending contract (WINAD-10559). In one transaction, under the coach lock, this sets the contract&#39;s dates, writes one compensation per year (creating the later-year positions the coach needs) and sets pending to false. If anything fails nothing is written and the contract stays pending, so the request can be corrected and retried.  The rules are the CSV compensation uploader&#39;s: the coach must have a position at each school in the first year listed for it, later years get positions created from it, a school can appear once per coach and year, a yearly or 990 compensation needs a base_salary and an hourly one needs a comment, and a private school&#39;s compensation must be 990. A compensation that already exists for the coach, school and year is updated and linked to this contract.  Money is in dollars (a number, or a string such as \&quot;$1,234.50\&quot; with either no thousands separators or correctly placed ones; \&quot;500,00\&quot; is refused), converted to cents like the CSV. Flags are JSON booleans. Unknown fields, at the top level or in a row, are refused with 422 rather than ignored. Errors are keyed by attribute for the contract fields (start_on, end_on, at_will, executed_on, compensations) and as compensations[n] (n &#x3D; the row&#39;s position in the request, from 0) for a row; row messages name fields by their CSV column, for example \&quot;Base Salary\&quot;. Requires the winad_write scope and a manage-level user. 
+    # Publish a pending contract (WINAD-10559). In one transaction, under the coach lock, this sets the contract&#39;s dates, writes one compensation per year (creating the later-year positions the coach needs) and sets pending to false. If anything fails nothing is written and the contract stays pending, so the request can be corrected and retried.  The rules are the CSV compensation uploader&#39;s: the coach must have a position at each school in the first year listed for it, later years get positions created from it, a school can appear once per coach and year, a yearly or 990 compensation needs a base_salary and an hourly one needs a comment, and a private school&#39;s compensation must be 990. A compensation that already exists for the coach, school and year is updated and linked to this contract.  Money is in dollars (a number, or a string such as \&quot;$1,234.50\&quot; with either no thousands separators or correctly placed ones; \&quot;500,00\&quot; is refused), converted to cents like the CSV. Flags are JSON booleans. Unknown fields, at the top level or in a row, are refused with 422 rather than ignored. Errors are keyed by attribute for the contract fields (start_on, end_on, at_will, executed_on, expires_on, contingent_change, compensations) and as compensations[n] (n &#x3D; the row&#39;s position in the request, from 0) for a row; row messages name fields by their CSV column, for example \&quot;Base Salary\&quot;. Requires the winad_write scope and a manage-level user. 
     # @param contract_id [Integer] ID of the pending contract to publish
     # @param publish_pending_contract_request [PublishPendingContractRequest] 
     # @param [Hash] opts the optional parameters
@@ -235,7 +327,87 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Edit a published contract's start_on, end_on and at_will (WINAD-10631). Only supplied fields change; linked compensations are unchanged. Pending contracts are published, not edited (use POST /contracts/{contractId}/publish). Dates must be YYYY-MM-DD. Setting at_will true requires end_on null; send both fields to clear a stored end date. The at-will/end-date rule is checked only when either field is supplied, allowing start-only corrections on legacy rows. Each change creates a PaperTrail version with the authenticated user (whodunnit) and the optional top-level change_note. Identical values are a no-op and create no version, so no note is stored. Requires winad_write and a manage-level user with a user-backed OAuth token. 
+    # Replace the PDF of an existing contract, pending or published (WINAD-10639). Send multipart/form-data with the new PDF as `file` and an optional `change_note`. The old file (and its OCR copy) is replaced, not kept as an attachment, the stored text is cleared and OCR runs again, as for an upload in the admin UI. The contract's structured terms are not touched (they read as stale against the new text).  The file must really be a PDF (its bytes are checked, not its name). The replacement is recorded in the change history (GET /contract_history) as a RawContract entry with a `file` change, the acting user, the API client and the change_note. A PDF that another record also uses is refused. The swap takes the locks of a coach move (the contract's coach, then the contract, then its RawContract), so it never deadlocks with a move or a verification, and the change history entry names the coach the contract has when the file is swapped. Requires winad_write, a manage-level user with a user-backed OAuth token. 
+    # @param contract_id [Integer] ID of the contract whose PDF is replaced
+    # @param file [File] The new contract PDF
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :change_note Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write.
+    # @return [ContractFileReplaced]
+    def replace_contract_file(contract_id, file, opts = {})
+      data, _status_code, _headers = replace_contract_file_with_http_info(contract_id, file, opts)
+      data
+    end
+
+    # Replace the PDF of an existing contract, pending or published (WINAD-10639). Send multipart/form-data with the new PDF as &#x60;file&#x60; and an optional &#x60;change_note&#x60;. The old file (and its OCR copy) is replaced, not kept as an attachment, the stored text is cleared and OCR runs again, as for an upload in the admin UI. The contract&#39;s structured terms are not touched (they read as stale against the new text).  The file must really be a PDF (its bytes are checked, not its name). The replacement is recorded in the change history (GET /contract_history) as a RawContract entry with a &#x60;file&#x60; change, the acting user, the API client and the change_note. A PDF that another record also uses is refused. The swap takes the locks of a coach move (the contract&#39;s coach, then the contract, then its RawContract), so it never deadlocks with a move or a verification, and the change history entry names the coach the contract has when the file is swapped. Requires winad_write, a manage-level user with a user-backed OAuth token. 
+    # @param contract_id [Integer] ID of the contract whose PDF is replaced
+    # @param file [File] The new contract PDF
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :change_note Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write.
+    # @return [Array<(ContractFileReplaced, Integer, Hash)>] ContractFileReplaced data, response status code and response headers
+    def replace_contract_file_with_http_info(contract_id, file, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ContractsApi.replace_contract_file ...'
+      end
+      # verify the required parameter 'contract_id' is set
+      if @api_client.config.client_side_validation && contract_id.nil?
+        fail ArgumentError, "Missing the required parameter 'contract_id' when calling ContractsApi.replace_contract_file"
+      end
+      # verify the required parameter 'file' is set
+      if @api_client.config.client_side_validation && file.nil?
+        fail ArgumentError, "Missing the required parameter 'file' when calling ContractsApi.replace_contract_file"
+      end
+      if @api_client.config.client_side_validation && !opts[:'change_note'].nil? && opts[:'change_note'].to_s.length > 500
+        fail ArgumentError, 'invalid value for "opts[:"change_note"]" when calling ContractsApi.replace_contract_file, the character length must be smaller than or equal to 500.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/contracts/{contractId}/file'.sub('{' + 'contractId' + '}', CGI.escape(contract_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['multipart/form-data'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+      form_params['file'] = file
+      form_params['change_note'] = opts[:'change_note'] if !opts[:'change_note'].nil?
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ContractFileReplaced'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"ContractsApi.replace_contract_file",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ContractsApi#replace_contract_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Edit a published contract's start_on, end_on, executed_on, expires_on, at_will, contingent_change and coach_id (WINAD-10631, WINAD-10639). Only supplied fields change; linked compensations are unchanged. Pending contracts are published, not edited (use POST /contracts/{contractId}/publish). Dates must be YYYY-MM-DD and flags JSON true or false (the same rules as publish). Setting at_will true requires end_on null; send both fields to clear a stored end date. The at-will/end-date rule is checked only when either field is supplied, allowing start-only corrections on legacy rows. end_on, executed_on and expires_on can be cleared with null. coach_id moves the contract to another coach, in the same transaction as the other fields. A move is refused with 422 (errors.coach_id) when the coach does not exist or is not visible to the caller, or while any compensation, any position of those compensations or any verification event still links to the contract: the body then also lists linked_compensation_ids, linked_position_ids and linked_verification_ids, and nothing is written. Never move those rows from the API; a person unlinks or moves them first. Sending the coach it already has is a no-op. Each change creates a PaperTrail version with the authenticated user (whodunnit) and the optional top-level change_note (at most 500 characters). Identical values are a no-op and create no version, so no note is stored. Requires winad_write and a manage-level user with a user-backed OAuth token. Every edit takes the locks of a coach move (the contract's coach, the coach it moves to, then the contract), so it never overlaps a move or a verification being recorded for the contract. A request that waits for them sees the contract as the other write left it. Only a contract that keeps moving while the locks are taken is refused with 409. 
     # @param contract_id [Integer] ID of the published contract to update
     # @param update_contract_request [UpdateContractRequest] 
     # @param [Hash] opts the optional parameters
@@ -245,7 +417,7 @@ module WinthropClient
       data
     end
 
-    # Edit a published contract&#39;s start_on, end_on and at_will (WINAD-10631). Only supplied fields change; linked compensations are unchanged. Pending contracts are published, not edited (use POST /contracts/{contractId}/publish). Dates must be YYYY-MM-DD. Setting at_will true requires end_on null; send both fields to clear a stored end date. The at-will/end-date rule is checked only when either field is supplied, allowing start-only corrections on legacy rows. Each change creates a PaperTrail version with the authenticated user (whodunnit) and the optional top-level change_note. Identical values are a no-op and create no version, so no note is stored. Requires winad_write and a manage-level user with a user-backed OAuth token. 
+    # Edit a published contract&#39;s start_on, end_on, executed_on, expires_on, at_will, contingent_change and coach_id (WINAD-10631, WINAD-10639). Only supplied fields change; linked compensations are unchanged. Pending contracts are published, not edited (use POST /contracts/{contractId}/publish). Dates must be YYYY-MM-DD and flags JSON true or false (the same rules as publish). Setting at_will true requires end_on null; send both fields to clear a stored end date. The at-will/end-date rule is checked only when either field is supplied, allowing start-only corrections on legacy rows. end_on, executed_on and expires_on can be cleared with null. coach_id moves the contract to another coach, in the same transaction as the other fields. A move is refused with 422 (errors.coach_id) when the coach does not exist or is not visible to the caller, or while any compensation, any position of those compensations or any verification event still links to the contract: the body then also lists linked_compensation_ids, linked_position_ids and linked_verification_ids, and nothing is written. Never move those rows from the API; a person unlinks or moves them first. Sending the coach it already has is a no-op. Each change creates a PaperTrail version with the authenticated user (whodunnit) and the optional top-level change_note (at most 500 characters). Identical values are a no-op and create no version, so no note is stored. Requires winad_write and a manage-level user with a user-backed OAuth token. Every edit takes the locks of a coach move (the contract&#39;s coach, the coach it moves to, then the contract), so it never overlaps a move or a verification being recorded for the contract. A request that waits for them sees the contract as the other write left it. Only a contract that keeps moving while the locks are taken is refused with 409. 
     # @param contract_id [Integer] ID of the published contract to update
     # @param update_contract_request [UpdateContractRequest] 
     # @param [Hash] opts the optional parameters

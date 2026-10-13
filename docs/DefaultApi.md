@@ -52,10 +52,12 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_account_user**](DefaultApi.md#delete_account_user) | **DELETE** /api/v1/account_users/{accountUserId} |  |
 | [**delete_admin_desk_report_artifact**](DefaultApi.md#delete_admin_desk_report_artifact) | **DELETE** /api/v1/admin/desk_reports/{desk_report_uuid}/artifacts/{id} |  |
 | [**delete_cashflow**](DefaultApi.md#delete_cashflow) | **DELETE** /api/v1/cashflows/{cashflowId} |  |
+| [**delete_compensation**](DefaultApi.md#delete_compensation) | **DELETE** /api/v1/compensations/{compensationId} |  |
 | [**delete_conference**](DefaultApi.md#delete_conference) | **DELETE** /api/v1/conferences/{conferenceId} |  |
 | [**delete_conferenceship**](DefaultApi.md#delete_conferenceship) | **DELETE** /api/v1/conferenceships/{conferenceshipId} |  |
 | [**delete_contact_search**](DefaultApi.md#delete_contact_search) | **DELETE** /api/v1/contact_searches/{id} |  |
 | [**delete_desk_report_archive**](DefaultApi.md#delete_desk_report_archive) | **DELETE** /api/v1/desk_reports/{uuid}/archive |  |
+| [**delete_earned_incentive**](DefaultApi.md#delete_earned_incentive) | **DELETE** /api/v1/earned_incentives/{earnedIncentiveId} |  |
 | [**delete_favorite**](DefaultApi.md#delete_favorite) | **DELETE** /api/v1/favorites/{id} |  |
 | [**delete_favorites_category**](DefaultApi.md#delete_favorites_category) | **DELETE** /api/v1/favorites_categories/{id} |  |
 | [**delete_foia_label**](DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} |  |
@@ -143,6 +145,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_desk_requests**](DefaultApi.md#get_desk_requests) | **GET** /api/v1/desk_requests |  |
 | [**get_division**](DefaultApi.md#get_division) | **GET** /api/v1/divisions/{divisionId} |  |
 | [**get_divisions**](DefaultApi.md#get_divisions) | **GET** /api/v1/divisions |  |
+| [**get_earned_incentives**](DefaultApi.md#get_earned_incentives) | **GET** /api/v1/earned_incentives |  |
 | [**get_edit_account_user**](DefaultApi.md#get_edit_account_user) | **GET** /api/v1/account_users/{accountUserId}/edit |  |
 | [**get_favorites**](DefaultApi.md#get_favorites) | **GET** /api/v1/favorites |  |
 | [**get_favorites_categories**](DefaultApi.md#get_favorites_categories) | **GET** /api/v1/favorites_categories |  |
@@ -311,6 +314,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_subscription_acceptance**](DefaultApi.md#update_subscription_acceptance) | **PATCH** /api/v1/subscription_acceptances/{subscriptionAcceptanceId} |  |
 | [**update_team_schedule_favorite**](DefaultApi.md#update_team_schedule_favorite) | **PATCH** /api/v1/team_schedule_favorites/{id} |  |
 | [**update_user**](DefaultApi.md#update_user) | **PATCH** /api/v1/users/{userId} |  |
+| [**upsert_earned_incentive**](DefaultApi.md#upsert_earned_incentive) | **PUT** /api/v1/earned_incentives |  |
 | [**upsert_team_schedule_note**](DefaultApi.md#upsert_team_schedule_note) | **PUT** /api/v1/team_schedule_notes/{fil_team_id} |  |
 | [**upsert_team_season_result**](DefaultApi.md#upsert_team_season_result) | **PUT** /api/v1/team_season_results |  |
 | [**user_me**](DefaultApi.md#user_me) | **GET** /api/v1/users/me |  |
@@ -3914,6 +3918,83 @@ nil (empty response body)
 - **Accept**: Not defined
 
 
+## delete_compensation
+
+> delete_compensation(compensation_id, opts)
+
+
+
+Delete a compensation. Requires the winad_write OAuth scope and permission to destroy the compensation. Hidden-coach compensations are 404 for customers, who may not delete anyway (403). The positions that pointed at the compensation are kept and unlinked (compensation_id becomes null; no position version is written), the linked contract is kept, and the compensation's FOIA requested items (and their notes) are deleted with it. The coach's latest salary is refreshed. Like PATCH, the delete is recorded in the audit history (PaperTrail) attributed to the token's user, or for a client-credentials token to the configured system user. The optional change_note query parameter is the reason, stored (stripped, blank is absent) on every version the delete creates and never returned. The destroy version keeps the deleted row, so a client can read it back there. Returns 204 with no body. API clients in winthrop-clients must be regenerated to expose this change.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+compensation_id = 56 # Integer | ID of compensation to delete
+opts = {
+  change_note: 'change_note_example' # String | Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned.
+}
+
+begin
+  
+  api_instance.delete_compensation(compensation_id, opts)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_compensation: #{e}"
+end
+```
+
+#### Using the delete_compensation_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_compensation_with_http_info(compensation_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_compensation_with_http_info(compensation_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_compensation_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **compensation_id** | **Integer** | ID of compensation to delete |  |
+| **change_note** | **String** | Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned. | [optional] |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## delete_conference
 
 > delete_conference(conference_id)
@@ -4197,6 +4278,84 @@ end
 ### Return type
 
 [**DeskReportArchiveResponse**](DeskReportArchiveResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_earned_incentive
+
+> <EarnedIncentive> delete_earned_incentive(earned_incentive_id, opts)
+
+
+
+Delete one earned incentive and return it as it was. Requires the winad_write OAuth scope and a super admin user; other users get 403. The deletion is recorded in the row's audit history (PaperTrail) with the optional change_note query parameter as the reason.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+earned_incentive_id = 56 # Integer | ID of the earned incentive to delete
+opts = {
+  change_note: 'change_note_example' # String | Why the row is being deleted, stored in its audit history and never returned.
+}
+
+begin
+  
+  result = api_instance.delete_earned_incentive(earned_incentive_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_earned_incentive: #{e}"
+end
+```
+
+#### Using the delete_earned_incentive_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EarnedIncentive>, Integer, Hash)> delete_earned_incentive_with_http_info(earned_incentive_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_earned_incentive_with_http_info(earned_incentive_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EarnedIncentive>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_earned_incentive_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **earned_incentive_id** | **Integer** | ID of the earned incentive to delete |  |
+| **change_note** | **String** | Why the row is being deleted, stored in its audit history and never returned. | [optional] |
+
+### Return type
+
+[**EarnedIncentive**](EarnedIncentive.md)
 
 ### Authorization
 
@@ -4822,7 +4981,7 @@ end
 api_instance = WinthropClient::DefaultApi.new
 income_report_id = 56 # Integer | ID of income report to delete
 opts = {
-  change_note: 'change_note_example' # String | Why the report is being deleted, stored in its audit history and never returned.
+  change_note: 'change_note_example' # String | Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned.
 }
 
 begin
@@ -4856,7 +5015,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **income_report_id** | **Integer** | ID of income report to delete |  |
-| **change_note** | **String** | Why the report is being deleted, stored in its audit history and never returned. | [optional] |
+| **change_note** | **String** | Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned. | [optional] |
 
 ### Return type
 
@@ -5021,7 +5180,7 @@ end
 
 ## delete_position
 
-> delete_position(position_id)
+> delete_position(position_id, opts)
 
 
 
@@ -5045,10 +5204,13 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 position_id = 56 # Integer | ID of position to delete
+opts = {
+  change_note: 'change_note_example' # String | Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned.
+}
 
 begin
   
-  api_instance.delete_position(position_id)
+  api_instance.delete_position(position_id, opts)
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->delete_position: #{e}"
 end
@@ -5058,12 +5220,12 @@ end
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> delete_position_with_http_info(position_id)
+> <Array(nil, Integer, Hash)> delete_position_with_http_info(position_id, opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.delete_position_with_http_info(position_id)
+  data, status_code, headers = api_instance.delete_position_with_http_info(position_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
@@ -5077,6 +5239,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **position_id** | **Integer** | ID of position to delete |  |
+| **change_note** | **String** | Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned. | [optional] |
 
 ### Return type
 
@@ -5089,7 +5252,7 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## delete_requested_item
@@ -10841,6 +11004,96 @@ end
 ### Return type
 
 [**DivisionCollection**](DivisionCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_earned_incentives
+
+> <EarnedIncentiveCollection> get_earned_incentives(opts)
+
+
+
+List earned incentives (WINAD-10637) — per contract incentive item and season, whether the coach earned it under the contract and how much. Values are earned under the contract, not proof of payment. Filters combine; with none, every row is listed. Requires the winad_read OAuth scope and a super admin user; other users get 403.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  coach_id: 56, # Integer | 
+  raw_contract_id: 56, # Integer | The contract the items come from
+  school_id: 56, # Integer | Every item whose season belongs to one of this school's teams
+  season_year: 56, # Integer | The season's END year (2026 is the 2025-26 season). `season` is accepted as the same filter.
+  season: 56, # Integer | Same as season_year
+  season_id: 56, # Integer | One team's season row
+  page: 56, # Integer | results page to retrieve.
+  per_page: 56 # Integer | number of results per page.
+}
+
+begin
+  
+  result = api_instance.get_earned_incentives(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_earned_incentives: #{e}"
+end
+```
+
+#### Using the get_earned_incentives_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EarnedIncentiveCollection>, Integer, Hash)> get_earned_incentives_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_earned_incentives_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EarnedIncentiveCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_earned_incentives_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **coach_id** | **Integer** |  | [optional] |
+| **raw_contract_id** | **Integer** | The contract the items come from | [optional] |
+| **school_id** | **Integer** | Every item whose season belongs to one of this school&#39;s teams | [optional] |
+| **season_year** | **Integer** | The season&#39;s END year (2026 is the 2025-26 season). &#x60;season&#x60; is accepted as the same filter. | [optional] |
+| **season** | **Integer** | Same as season_year | [optional] |
+| **season_id** | **Integer** | One team&#39;s season row | [optional] |
+| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+
+### Return type
+
+[**EarnedIncentiveCollection**](EarnedIncentiveCollection.md)
 
 ### Authorization
 
@@ -21809,7 +22062,7 @@ end
 
 
 
-Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to \"yearly\", \"hourly\", or \"990\" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \"990\". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A non-string change_note is refused with 422 (errors.change_note). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row's current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
+Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to \"yearly\", \"hourly\", or \"990\" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \"990\". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A change_note that is not a string, or contains a NUL character, is refused with 422 (errors.change_note). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row's current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
 
 ### Examples
 
@@ -23710,6 +23963,80 @@ end
 ### Return type
 
 [**User**](User.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## upsert_earned_incentive
+
+> <EarnedIncentive> upsert_earned_incentive(earned_incentive_input)
+
+
+
+Create or replace the earned incentive with the same (coach_id, raw_contract_id, season_id, item_id). The stored row is exactly the payload a person approved (approved_by_id, approved_at); a field left out is cleared. Fields must be sent with their JSON types — ids and cents as integers, dates as \"YYYY-MM-DD\" strings — and are refused rather than converted. Dates and approved_at must fall in the years 1900-2100. WinAD does no calculation. Requires the winad_write OAuth scope and a super admin user; other users get 403. The write is recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+earned_incentive_input = WinthropClient::EarnedIncentiveInput.new({coach_id: 2101507064, raw_contract_id: 3, season_id: 4, item_id: 'mvc-tournament-champion', kind: 'bonus', provision_quote: 'MVC Tournament Champion ... $25,000', status: 'earned', rationale: 'won MVC tournament (seed 2)', result_ids: [11,  12], input_id: 'sha256:9f2c...', verification_method: 'two_runs_agree', approved_by_id: 37, approved_at: Time.parse('2026-10-09T19:00Z')}) # EarnedIncentiveInput | The item's fields at the top level of the JSON body, with an optional change_note beside them
+
+begin
+  
+  result = api_instance.upsert_earned_incentive(earned_incentive_input)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->upsert_earned_incentive: #{e}"
+end
+```
+
+#### Using the upsert_earned_incentive_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EarnedIncentive>, Integer, Hash)> upsert_earned_incentive_with_http_info(earned_incentive_input)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.upsert_earned_incentive_with_http_info(earned_incentive_input)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EarnedIncentive>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->upsert_earned_incentive_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **earned_incentive_input** | [**EarnedIncentiveInput**](EarnedIncentiveInput.md) | The item&#39;s fields at the top level of the JSON body, with an optional change_note beside them |  |
+
+### Return type
+
+[**EarnedIncentive**](EarnedIncentive.md)
 
 ### Authorization
 
