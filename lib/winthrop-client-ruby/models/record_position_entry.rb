@@ -21,6 +21,9 @@ module WinthropClient
 
     attr_accessor :school_name
 
+    # Full school name for performance charts and accessible summaries.
+    attr_accessor :school_full_name
+
     attr_accessor :school_id
 
     attr_accessor :position_sport
@@ -55,6 +58,7 @@ module WinthropClient
         :'sport' => :'sport',
         :'year_str' => :'year_str',
         :'school_name' => :'school_name',
+        :'school_full_name' => :'school_full_name',
         :'school_id' => :'school_id',
         :'position_sport' => :'position_sport',
         :'record' => :'record',
@@ -87,6 +91,7 @@ module WinthropClient
         :'sport' => :'String',
         :'year_str' => :'String',
         :'school_name' => :'String',
+        :'school_full_name' => :'String',
         :'school_id' => :'Integer',
         :'position_sport' => :'String',
         :'record' => :'String',
@@ -150,6 +155,12 @@ module WinthropClient
         self.school_name = attributes[:'school_name']
       else
         self.school_name = nil
+      end
+
+      if attributes.key?(:'school_full_name')
+        self.school_full_name = attributes[:'school_full_name']
+      else
+        self.school_full_name = nil
       end
 
       if attributes.key?(:'school_id')
@@ -226,6 +237,10 @@ module WinthropClient
         invalid_properties.push('invalid value for "school_name", school_name cannot be nil.')
       end
 
+      if @school_full_name.nil?
+        invalid_properties.push('invalid value for "school_full_name", school_full_name cannot be nil.')
+      end
+
       if @school_id.nil?
         invalid_properties.push('invalid value for "school_id", school_id cannot be nil.')
       end
@@ -244,6 +259,7 @@ module WinthropClient
       return false if @sport.nil?
       return false if @year_str.nil?
       return false if @school_name.nil?
+      return false if @school_full_name.nil?
       return false if @school_id.nil?
       return false if @position_sport.nil?
       true
@@ -280,6 +296,16 @@ module WinthropClient
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] school_full_name Value to be assigned
+    def school_full_name=(school_full_name)
+      if school_full_name.nil?
+        fail ArgumentError, 'school_full_name cannot be nil'
+      end
+
+      @school_full_name = school_full_name
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] school_id Value to be assigned
     def school_id=(school_id)
       if school_id.nil?
@@ -307,6 +333,7 @@ module WinthropClient
           sport == o.sport &&
           year_str == o.year_str &&
           school_name == o.school_name &&
+          school_full_name == o.school_full_name &&
           school_id == o.school_id &&
           position_sport == o.position_sport &&
           record == o.record &&
@@ -331,7 +358,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [sport, year_str, school_name, school_id, position_sport, record, rpi, net_rank, ap_rank, apr_asr, coach_apr, departing, head_coach, assistant_coach, us_news, directors_cup].hash
+      [sport, year_str, school_name, school_full_name, school_id, position_sport, record, rpi, net_rank, ap_rank, apr_asr, coach_apr, departing, head_coach, assistant_coach, us_news, directors_cup].hash
     end
 
     # Builds the object from hash

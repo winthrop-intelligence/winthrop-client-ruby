@@ -7,6 +7,7 @@
 | **sport** | **String** |  |  |
 | **year_str** | **String** |  |  |
 | **school_name** | **String** |  |  |
+| **school_full_name** | **String** | Full school name for performance charts and accessible summaries. |  |
 | **school_id** | **Integer** |  |  |
 | **position_sport** | **String** |  |  |
 | **record** | **String** |  | [optional] |
@@ -30,6 +31,7 @@ instance = WinthropClient::RecordPositionEntry.new(
   sport: null,
   year_str: null,
   school_name: null,
+  school_full_name: null,
   school_id: null,
   position_sport: null,
   record: null,
