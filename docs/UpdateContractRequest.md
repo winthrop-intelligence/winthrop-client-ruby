@@ -10,7 +10,7 @@
 | **executed_on** | **Date** | Date the contract was executed (strict YYYY-MM-DD); null clears it. | [optional] |
 | **expires_on** | **Date** | Date the contract expires (strict YYYY-MM-DD); null clears it. | [optional] |
 | **contingent_change** | **Boolean** | Whether the terms are contingent on a change; only JSON true or false is accepted. | [optional] |
-| **coach_id** | **Integer** | Moves the contract to this coach. Refused (422 errors.coach_id plus linked_compensation_ids, linked_position_ids and linked_verification_ids) while any of those rows still link to the contract; the agent never relinks them itself. | [optional] |
+| **coach_id** | **Integer** | Moves the contract to this coach. Refused (422 errors.coach_id plus linked_compensation_ids, linked_position_ids, linked_verification_ids and linked_earned_incentive_ids) while any of those rows still link to the contract; the agent never relinks them itself. | [optional] |
 | **change_note** | **String** | Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates, the records it saves as side effects included, and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write. | [optional] |
 
 ## Example

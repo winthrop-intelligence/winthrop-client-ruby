@@ -34,7 +34,7 @@ end
 api_instance = WinthropClient::SalarySitesApi.new
 school_ids = [37] # Array<Integer> | 1 to 100 unique positive school IDs
 opts = {
-  page: 56, # Integer | results page to retrieve.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
   per_page: 56 # Integer | 
 }
 
@@ -70,7 +70,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **school_ids** | [**Array&lt;Integer&gt;**](Integer.md) | 1 to 100 unique positive school IDs |  |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
 | **per_page** | **Integer** |  | [optional][default to 100] |
 
 ### Return type

@@ -10,7 +10,7 @@
 | **last_name** | **String** |  | [optional] |
 | **email** | **String** |  | [optional] |
 | **phone** | **String** |  | [optional] |
-| **leader** | **Boolean** |  | [optional] |
+| **leader** | **Boolean** | True when the person reads as an administrator: every position they hold in their header season (the latest season up to the current one) is in the ADMIN sport. Derived from positions; it cannot be set. | [optional][readonly] |
 | **bio** | **String** |  | [optional] |
 | **bio_text** | **String** |  | [optional] |
 | **dob** | **Date** |  | [optional] |
@@ -27,8 +27,8 @@
 | **external_years_experience** | **Integer** |  | [optional] |
 | **athletic_years_of_experience** | **Integer** |  | [optional] |
 | **avatar_scraping_disabled** | **Boolean** |  | [optional] |
-| **latest_salary** | **Integer** | Only included when the user has coach_compensation permission for this coach. For leader/administrator coaches, this requires administrator_compensation access. | [optional] |
-| **latest_salary_year** | **Integer** | Only included when the user has coach_compensation permission for this coach. For leader/administrator coaches, this requires administrator_compensation access. | [optional] |
+| **latest_salary** | **Integer** | Only included when the user may see this person&#39;s pay. Pay follows each side the person is on: someone with only ADMIN-sport positions needs administrator_compensation access, someone with coaching positions (or none) needs coach_compensation access, and someone with both is reachable through either. Each pay side also needs its matching profile access. | [optional] |
+| **latest_salary_year** | **Integer** | Only included when the user may see this person&#39;s pay. Pay follows each side the person is on: someone with only ADMIN-sport positions needs administrator_compensation access, someone with coaching positions (or none) needs coach_compensation access, and someone with both is reachable through either. Each pay side also needs its matching profile access. | [optional] |
 | **last_bio_text_updated_at** | **Time** |  | [optional] |
 | **instagram_scraping_disabled** | **Boolean** |  | [optional] |
 | **linkedin_scraping_disabled** | **Boolean** |  | [optional] |
