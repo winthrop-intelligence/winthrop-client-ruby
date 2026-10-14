@@ -268,8 +268,8 @@ opts = {
   date: Date.parse('Mon Jun 22 00:00:00 UTC 2026'), # Date | Restrict to interests submitted on this calendar day (application time zone). Format YYYY-MM-DD. May be combined with the submitted_after/submitted_before bounds.
   submitted_after: Time.parse('2026-06-22T00:00Z'), # Time | Only include interests submitted at or after this timestamp (ISO 8601).
   submitted_before: Time.parse('2026-06-22T23:59:59.999Z'), # Time | Only include interests submitted at or before this timestamp (ISO 8601).
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56 # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56 # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
 }
 
 begin
@@ -306,8 +306,8 @@ end
 | **date** | **Date** | Restrict to interests submitted on this calendar day (application time zone). Format YYYY-MM-DD. May be combined with the submitted_after/submitted_before bounds. | [optional] |
 | **submitted_after** | **Time** | Only include interests submitted at or after this timestamp (ISO 8601). | [optional] |
 | **submitted_before** | **Time** | Only include interests submitted at or before this timestamp (ISO 8601). | [optional] |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 
 ### Return type
 
@@ -445,8 +445,8 @@ end
 
 api_instance = WinthropClient::IntercollegiateApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -481,8 +481,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
