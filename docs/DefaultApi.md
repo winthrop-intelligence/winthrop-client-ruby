@@ -14,6 +14,15 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**bulk_update_game_post_searches**](DefaultApi.md#bulk_update_game_post_searches) | **POST** /api/v1/game_post_searches/bulk_update |  |
 | [**compare_coli**](DefaultApi.md#compare_coli) | **GET** /api/v1/schools/compare_coli |  |
 | [**create_account_user**](DefaultApi.md#create_account_user) | **POST** /api/v1/account_users |  |
+| [**create_admin_coach**](DefaultApi.md#create_admin_coach) | **POST** /api/v1/admin/coaches |  |
+| [**create_admin_coach_apr_upload**](DefaultApi.md#create_admin_coach_apr_upload) | **POST** /api/v1/admin/coaches/coach_apr_upload |  |
+| [**create_admin_coach_contract**](DefaultApi.md#create_admin_coach_contract) | **POST** /api/v1/admin/coach_contracts |  |
+| [**create_admin_coach_contracts_outside_income**](DefaultApi.md#create_admin_coach_contracts_outside_income) | **POST** /api/v1/admin/coach_contracts/outside_income_upload |  |
+| [**create_admin_coach_mass_update**](DefaultApi.md#create_admin_coach_mass_update) | **POST** /api/v1/admin/coaches/mass_update |  |
+| [**create_admin_coach_merge_log**](DefaultApi.md#create_admin_coach_merge_log) | **POST** /api/v1/admin/coach_merge_logs |  |
+| [**create_admin_coach_profile_match**](DefaultApi.md#create_admin_coach_profile_match) | **POST** /api/v1/admin/coaches/profile_match |  |
+| [**create_admin_coach_upload**](DefaultApi.md#create_admin_coach_upload) | **POST** /api/v1/admin/coaches/upload |  |
+| [**create_admin_contract**](DefaultApi.md#create_admin_contract) | **POST** /api/v1/admin/contracts |  |
 | [**create_admin_desk_report**](DefaultApi.md#create_admin_desk_report) | **POST** /api/v1/admin/desk_reports |  |
 | [**create_admin_desk_report_artifact**](DefaultApi.md#create_admin_desk_report_artifact) | **POST** /api/v1/admin/desk_reports/{desk_report_uuid}/artifacts |  |
 | [**create_cashflow**](DefaultApi.md#create_cashflow) | **POST** /api/v1/cashflows |  |
@@ -79,12 +88,20 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_team_schedule_note**](DefaultApi.md#delete_team_schedule_note) | **DELETE** /api/v1/team_schedule_notes/{fil_team_id} |  |
 | [**delete_team_season_result**](DefaultApi.md#delete_team_season_result) | **DELETE** /api/v1/team_season_results/{teamSeasonResultId} |  |
 | [**delete_upload**](DefaultApi.md#delete_upload) | **DELETE** /api/v1/uploads/{uploadId} |  |
+| [**destroy_admin_coach**](DefaultApi.md#destroy_admin_coach) | **DELETE** /api/v1/admin/coaches/{id} |  |
+| [**destroy_admin_compensation**](DefaultApi.md#destroy_admin_compensation) | **DELETE** /api/v1/admin/compensations/{id} |  |
+| [**destroy_admin_contract**](DefaultApi.md#destroy_admin_contract) | **DELETE** /api/v1/admin/contracts/{id} |  |
+| [**download_admin_coach_contracts_csv_template**](DefaultApi.md#download_admin_coach_contracts_csv_template) | **GET** /api/v1/admin/coach_contracts/download_csv_template |  |
+| [**download_admin_coach_contracts_outside_income_csv_template**](DefaultApi.md#download_admin_coach_contracts_outside_income_csv_template) | **GET** /api/v1/admin/coach_contracts/outside_income_csv_template |  |
 | [**download_raw_contract_file**](DefaultApi.md#download_raw_contract_file) | **GET** /api/v1/raw_contracts/{raw_contractId}/download |  |
 | [**enrich_game_post_searches**](DefaultApi.md#enrich_game_post_searches) | **POST** /api/v1/game_post_searches/enrichment |  |
 | [**export_revenue_searches**](DefaultApi.md#export_revenue_searches) | **GET** /api/v1/revenue_searches/export |  |
 | [**get_account**](DefaultApi.md#get_account) | **GET** /api/v1/accounts/{id} |  |
 | [**get_account_user_activation**](DefaultApi.md#get_account_user_activation) | **GET** /api/v1/account_user_activation |  |
 | [**get_account_users**](DefaultApi.md#get_account_users) | **GET** /api/v1/account_users |  |
+| [**get_admin_coach**](DefaultApi.md#get_admin_coach) | **GET** /api/v1/admin/coaches/{id} |  |
+| [**get_admin_coach_merge_log**](DefaultApi.md#get_admin_coach_merge_log) | **GET** /api/v1/admin/coach_merge_logs/{id} |  |
+| [**get_admin_contract**](DefaultApi.md#get_admin_contract) | **GET** /api/v1/admin/contracts/{id} |  |
 | [**get_admin_desk_report**](DefaultApi.md#get_admin_desk_report) | **GET** /api/v1/admin/desk_reports/{uuid} |  |
 | [**get_admin_desk_report_activity**](DefaultApi.md#get_admin_desk_report_activity) | **GET** /api/v1/admin/desk_reports/{uuid}/activity |  |
 | [**get_admin_desk_report_activity_summaries**](DefaultApi.md#get_admin_desk_report_activity_summaries) | **GET** /api/v1/admin/desk_reports/activity_summaries |  |
@@ -273,7 +290,20 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_vendors**](DefaultApi.md#get_vendors) | **GET** /api/v1/vendors |  |
 | [**get_wire_changes**](DefaultApi.md#get_wire_changes) | **GET** /api/v1/wire_changes |  |
 | [**hide_admin_desk_report**](DefaultApi.md#hide_admin_desk_report) | **POST** /api/v1/admin/desk_reports/{uuid}/hide |  |
+| [**list_admin_coach_apr_upload_jobs**](DefaultApi.md#list_admin_coach_apr_upload_jobs) | **GET** /api/v1/admin/coaches/coach_apr_upload |  |
+| [**list_admin_coach_contracts**](DefaultApi.md#list_admin_coach_contracts) | **GET** /api/v1/admin/coach_contracts |  |
+| [**list_admin_coach_contracts_outside_income**](DefaultApi.md#list_admin_coach_contracts_outside_income) | **GET** /api/v1/admin/coach_contracts/outside_income |  |
+| [**list_admin_coach_contracts_qc**](DefaultApi.md#list_admin_coach_contracts_qc) | **GET** /api/v1/admin/coach_contracts/qc |  |
+| [**list_admin_coach_mass_update_jobs**](DefaultApi.md#list_admin_coach_mass_update_jobs) | **GET** /api/v1/admin/coaches/mass_update |  |
+| [**list_admin_coach_merge_logs**](DefaultApi.md#list_admin_coach_merge_logs) | **GET** /api/v1/admin/coach_merge_logs |  |
+| [**list_admin_coach_upload_jobs**](DefaultApi.md#list_admin_coach_upload_jobs) | **GET** /api/v1/admin/coaches/upload |  |
+| [**list_admin_coaches**](DefaultApi.md#list_admin_coaches) | **GET** /api/v1/admin/coaches |  |
+| [**list_admin_compensations**](DefaultApi.md#list_admin_compensations) | **GET** /api/v1/admin/compensations |  |
+| [**list_admin_contracts**](DefaultApi.md#list_admin_contracts) | **GET** /api/v1/admin/contracts |  |
 | [**list_notes**](DefaultApi.md#list_notes) | **GET** /api/v1/notes/list |  |
+| [**mass_update_admin_compensations**](DefaultApi.md#mass_update_admin_compensations) | **POST** /api/v1/admin/compensations/mass_update |  |
+| [**preview_admin_coach_contracts**](DefaultApi.md#preview_admin_coach_contracts) | **POST** /api/v1/admin/coach_contracts/preview |  |
+| [**preview_admin_coach_merge_log**](DefaultApi.md#preview_admin_coach_merge_log) | **GET** /api/v1/admin/coach_merge_logs/preview |  |
 | [**publish_admin_desk_report**](DefaultApi.md#publish_admin_desk_report) | **POST** /api/v1/admin/desk_reports/{uuid}/publish |  |
 | [**regenerate_raw_contract_pdf**](DefaultApi.md#regenerate_raw_contract_pdf) | **POST** /api/v1/raw_contracts/{raw_contractId}/regenerate_pdf |  |
 | [**resolve_frs_export**](DefaultApi.md#resolve_frs_export) | **POST** /api/v1/frs_exports/resolve |  |
@@ -285,6 +315,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**unstract_raw_contract_pdf_text**](DefaultApi.md#unstract_raw_contract_pdf_text) | **POST** /api/v1/raw_contracts/{raw_contractId}/unstract_pdf_text |  |
 | [**update_account_user**](DefaultApi.md#update_account_user) | **PATCH** /api/v1/account_users/{accountUserId} |  |
 | [**update_account_user_activation**](DefaultApi.md#update_account_user_activation) | **PATCH** /api/v1/account_user_activation |  |
+| [**update_admin_coach**](DefaultApi.md#update_admin_coach) | **PATCH** /api/v1/admin/coaches/{id} |  |
+| [**update_admin_contract**](DefaultApi.md#update_admin_contract) | **PATCH** /api/v1/admin/contracts/{id} |  |
 | [**update_admin_desk_report**](DefaultApi.md#update_admin_desk_report) | **PATCH** /api/v1/admin/desk_reports/{uuid} |  |
 | [**update_admin_desk_request**](DefaultApi.md#update_admin_desk_request) | **PATCH** /api/v1/admin/desk_requests/{uuid} |  |
 | [**update_cashflow**](DefaultApi.md#update_cashflow) | **PUT** /api/v1/cashflows/{cashflowId} |  |
@@ -1091,6 +1123,685 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_admin_coach
+
+> <AdminCoach> create_admin_coach(create_admin_coach_request)
+
+
+
+Create a new coach (admin-only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_admin_coach_request = WinthropClient::CreateAdminCoachRequest.new({coach: WinthropClient::CreateAdminCoachRequestCoach.new({first_name: 'first_name_example', last_name: 'last_name_example'})}) # CreateAdminCoachRequest | 
+
+begin
+  
+  result = api_instance.create_admin_coach(create_admin_coach_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_coach: #{e}"
+end
+```
+
+#### Using the create_admin_coach_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminCoach>, Integer, Hash)> create_admin_coach_with_http_info(create_admin_coach_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_coach_with_http_info(create_admin_coach_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminCoach>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_coach_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_admin_coach_request** | [**CreateAdminCoachRequest**](CreateAdminCoachRequest.md) |  |  |
+
+### Return type
+
+[**AdminCoach**](AdminCoach.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_admin_coach_apr_upload
+
+> create_admin_coach_apr_upload(opts)
+
+
+
+Queue a CSV of coach APR data (CoachAprImporter); rejects non-CSV files
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  import_file: File.new('/path/to/some/file') # File | 
+}
+
+begin
+  
+  api_instance.create_admin_coach_apr_upload(opts)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_coach_apr_upload: #{e}"
+end
+```
+
+#### Using the create_admin_coach_apr_upload_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> create_admin_coach_apr_upload_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_coach_apr_upload_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_coach_apr_upload_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **import_file** | **File** |  | [optional] |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: Not defined
+
+
+## create_admin_coach_contract
+
+> <RegenerateRawContractPdf200Response> create_admin_coach_contract(import)
+
+
+
+Queue an uploaded CSV file for processing via CoachContractImporter (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+import = WinthropClient::CreateAdminCoachContractRequestImport.new({file: File.new('/path/to/some/file')}) # CreateAdminCoachContractRequestImport | 
+
+begin
+  
+  result = api_instance.create_admin_coach_contract(import)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_coach_contract: #{e}"
+end
+```
+
+#### Using the create_admin_coach_contract_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RegenerateRawContractPdf200Response>, Integer, Hash)> create_admin_coach_contract_with_http_info(import)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_coach_contract_with_http_info(import)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RegenerateRawContractPdf200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_coach_contract_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **import** | [**CreateAdminCoachContractRequestImport**](CreateAdminCoachContractRequestImport.md) |  |  |
+
+### Return type
+
+[**RegenerateRawContractPdf200Response**](RegenerateRawContractPdf200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+
+## create_admin_coach_contracts_outside_income
+
+> <RegenerateRawContractPdf200Response> create_admin_coach_contracts_outside_income(import)
+
+
+
+Queue an uploaded CSV file for processing via CoachOutsideIncomeImporter (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+import = WinthropClient::CreateAdminCoachContractRequestImport.new({file: File.new('/path/to/some/file')}) # CreateAdminCoachContractRequestImport | 
+
+begin
+  
+  result = api_instance.create_admin_coach_contracts_outside_income(import)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_coach_contracts_outside_income: #{e}"
+end
+```
+
+#### Using the create_admin_coach_contracts_outside_income_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RegenerateRawContractPdf200Response>, Integer, Hash)> create_admin_coach_contracts_outside_income_with_http_info(import)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_coach_contracts_outside_income_with_http_info(import)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RegenerateRawContractPdf200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_coach_contracts_outside_income_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **import** | [**CreateAdminCoachContractRequestImport**](CreateAdminCoachContractRequestImport.md) |  |  |
+
+### Return type
+
+[**RegenerateRawContractPdf200Response**](RegenerateRawContractPdf200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+
+## create_admin_coach_mass_update
+
+> create_admin_coach_mass_update(opts)
+
+
+
+Queue a CSV of coach updates (CoachUpdater), optionally scoped to one sport
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  import_file: File.new('/path/to/some/file'), # File | 
+  sport_id: 56 # Integer | 
+}
+
+begin
+  
+  api_instance.create_admin_coach_mass_update(opts)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_coach_mass_update: #{e}"
+end
+```
+
+#### Using the create_admin_coach_mass_update_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> create_admin_coach_mass_update_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_coach_mass_update_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_coach_mass_update_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **import_file** | **File** |  | [optional] |
+| **sport_id** | **Integer** |  | [optional] |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: Not defined
+
+
+## create_admin_coach_merge_log
+
+> <AdminCoachMergeLog> create_admin_coach_merge_log(create_admin_coach_merge_log_request)
+
+
+
+Merge one coach's records into another and log the result (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_admin_coach_merge_log_request = WinthropClient::CreateAdminCoachMergeLogRequest.new # CreateAdminCoachMergeLogRequest | 
+
+begin
+  
+  result = api_instance.create_admin_coach_merge_log(create_admin_coach_merge_log_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_coach_merge_log: #{e}"
+end
+```
+
+#### Using the create_admin_coach_merge_log_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminCoachMergeLog>, Integer, Hash)> create_admin_coach_merge_log_with_http_info(create_admin_coach_merge_log_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_coach_merge_log_with_http_info(create_admin_coach_merge_log_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminCoachMergeLog>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_coach_merge_log_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_admin_coach_merge_log_request** | [**CreateAdminCoachMergeLogRequest**](CreateAdminCoachMergeLogRequest.md) |  |  |
+
+### Return type
+
+[**AdminCoachMergeLog**](AdminCoachMergeLog.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_admin_coach_profile_match
+
+> <CreateAdminCoachProfileMatch200Response> create_admin_coach_profile_match(create_admin_coach_request)
+
+
+
+Validate a not-yet-created coach's submitted fields and return any existing coaches sharing the same first/last name, so the UI can offer editing a match instead of creating a duplicate (mirrors the old admin new-coach form's real submit target)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_admin_coach_request = WinthropClient::CreateAdminCoachRequest.new({coach: WinthropClient::CreateAdminCoachRequestCoach.new({first_name: 'first_name_example', last_name: 'last_name_example'})}) # CreateAdminCoachRequest | 
+
+begin
+  
+  result = api_instance.create_admin_coach_profile_match(create_admin_coach_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_coach_profile_match: #{e}"
+end
+```
+
+#### Using the create_admin_coach_profile_match_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateAdminCoachProfileMatch200Response>, Integer, Hash)> create_admin_coach_profile_match_with_http_info(create_admin_coach_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_coach_profile_match_with_http_info(create_admin_coach_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateAdminCoachProfileMatch200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_coach_profile_match_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_admin_coach_request** | [**CreateAdminCoachRequest**](CreateAdminCoachRequest.md) |  |  |
+
+### Return type
+
+[**CreateAdminCoachProfileMatch200Response**](CreateAdminCoachProfileMatch200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_admin_coach_upload
+
+> create_admin_coach_upload(opts)
+
+
+
+Queue a CSV of new/updated coaches (CoachImporter), optionally scoped to a season year
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  import_file: File.new('/path/to/some/file'), # File | 
+  year: 56 # Integer | 
+}
+
+begin
+  
+  api_instance.create_admin_coach_upload(opts)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_coach_upload: #{e}"
+end
+```
+
+#### Using the create_admin_coach_upload_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> create_admin_coach_upload_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_coach_upload_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_coach_upload_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **import_file** | **File** |  | [optional] |
+| **year** | **Integer** |  | [optional] |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: Not defined
+
+
+## create_admin_contract
+
+> <AdminContract> create_admin_contract(coach_id, opts)
+
+
+
+Create an employment contract for a coach, optionally attaching a raw contract PDF (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+coach_id = 56 # Integer | 
+opts = {
+  contract: WinthropClient::CreateAdminContractRequestContract.new, # CreateAdminContractRequestContract | 
+  raw_contract: WinthropClient::CreateAdminContractRequestRawContract.new # CreateAdminContractRequestRawContract | 
+}
+
+begin
+  
+  result = api_instance.create_admin_contract(coach_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_contract: #{e}"
+end
+```
+
+#### Using the create_admin_contract_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminContract>, Integer, Hash)> create_admin_contract_with_http_info(coach_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_contract_with_http_info(coach_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminContract>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_contract_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **coach_id** | **Integer** |  |  |
+| **contract** | [**CreateAdminContractRequestContract**](CreateAdminContractRequestContract.md) |  | [optional] |
+| **raw_contract** | [**CreateAdminContractRequestRawContract**](CreateAdminContractRequestRawContract.md) |  | [optional] |
+
+### Return type
+
+[**AdminContract**](AdminContract.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 
 
@@ -5920,6 +6631,381 @@ end
 - **Accept**: application/json
 
 
+## destroy_admin_coach
+
+> destroy_admin_coach(id)
+
+
+
+Delete a coach (admin-only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 'id_example' # String | 
+
+begin
+  
+  api_instance.destroy_admin_coach(id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_coach: #{e}"
+end
+```
+
+#### Using the destroy_admin_coach_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> destroy_admin_coach_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_admin_coach_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_coach_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## destroy_admin_compensation
+
+> destroy_admin_compensation(id)
+
+
+
+Delete a compensation (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  api_instance.destroy_admin_compensation(id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_compensation: #{e}"
+end
+```
+
+#### Using the destroy_admin_compensation_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> destroy_admin_compensation_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_admin_compensation_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_compensation_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## destroy_admin_contract
+
+> destroy_admin_contract(id)
+
+
+
+Delete an employment contract (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  api_instance.destroy_admin_contract(id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_contract: #{e}"
+end
+```
+
+#### Using the destroy_admin_contract_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> destroy_admin_contract_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_admin_contract_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_contract_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## download_admin_coach_contracts_csv_template
+
+> File download_admin_coach_contracts_csv_template(school_id, year, opts)
+
+
+
+Download the per-school/year Coach Compensation CSV template (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | 
+year = 56 # Integer | 
+opts = {
+  include_only_no_compensation: true # Boolean | 
+}
+
+begin
+  
+  result = api_instance.download_admin_coach_contracts_csv_template(school_id, year, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->download_admin_coach_contracts_csv_template: #{e}"
+end
+```
+
+#### Using the download_admin_coach_contracts_csv_template_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(File, Integer, Hash)> download_admin_coach_contracts_csv_template_with_http_info(school_id, year, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.download_admin_coach_contracts_csv_template_with_http_info(school_id, year, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => File
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->download_admin_coach_contracts_csv_template_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** |  |  |
+| **year** | **Integer** |  |  |
+| **include_only_no_compensation** | **Boolean** |  | [optional] |
+
+### Return type
+
+**File**
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/csv
+
+
+## download_admin_coach_contracts_outside_income_csv_template
+
+> File download_admin_coach_contracts_outside_income_csv_template(school_id, year)
+
+
+
+Download the per-school/year Outside Income CSV template (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | 
+year = 56 # Integer | 
+
+begin
+  
+  result = api_instance.download_admin_coach_contracts_outside_income_csv_template(school_id, year)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->download_admin_coach_contracts_outside_income_csv_template: #{e}"
+end
+```
+
+#### Using the download_admin_coach_contracts_outside_income_csv_template_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(File, Integer, Hash)> download_admin_coach_contracts_outside_income_csv_template_with_http_info(school_id, year)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.download_admin_coach_contracts_outside_income_csv_template_with_http_info(school_id, year)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => File
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->download_admin_coach_contracts_outside_income_csv_template_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** |  |  |
+| **year** | **Integer** |  |  |
+
+### Return type
+
+**File**
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/csv
+
+
 ## download_raw_contract_file
 
 > File download_raw_contract_file(raw_contract_id)
@@ -6349,6 +7435,228 @@ end
 ### Return type
 
 [**AccountUsersResponse**](AccountUsersResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_coach
+
+> <AdminCoach> get_admin_coach(id)
+
+
+
+Retrieve a single coach (admin-only), resolving by id or FriendlyId slug
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 'id_example' # String | 
+
+begin
+  
+  result = api_instance.get_admin_coach(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_coach: #{e}"
+end
+```
+
+#### Using the get_admin_coach_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminCoach>, Integer, Hash)> get_admin_coach_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_coach_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminCoach>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_coach_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** |  |  |
+
+### Return type
+
+[**AdminCoach**](AdminCoach.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_coach_merge_log
+
+> <AdminCoachMergeLogDetail> get_admin_coach_merge_log(id)
+
+
+
+Retrieve a single coach merge log's full detail (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_admin_coach_merge_log(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_coach_merge_log: #{e}"
+end
+```
+
+#### Using the get_admin_coach_merge_log_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminCoachMergeLogDetail>, Integer, Hash)> get_admin_coach_merge_log_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_coach_merge_log_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminCoachMergeLogDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_coach_merge_log_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminCoachMergeLogDetail**](AdminCoachMergeLogDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_contract
+
+> <AdminContract> get_admin_contract(id)
+
+
+
+Retrieve an employment contract (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_admin_contract(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_contract: #{e}"
+end
+```
+
+#### Using the get_admin_contract_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminContract>, Integer, Hash)> get_admin_contract_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_contract_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminContract>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_contract_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminContract**](AdminContract.md)
 
 ### Authorization
 
@@ -20870,6 +22178,757 @@ end
 - **Accept**: application/json
 
 
+## list_admin_coach_apr_upload_jobs
+
+> list_admin_coach_apr_upload_jobs
+
+
+
+Current CoachAprImporter sidekiq job status and required/optional CSV headers (coach APR CSV upload page)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  api_instance.list_admin_coach_apr_upload_jobs
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_coach_apr_upload_jobs: #{e}"
+end
+```
+
+#### Using the list_admin_coach_apr_upload_jobs_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> list_admin_coach_apr_upload_jobs_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_coach_apr_upload_jobs_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_coach_apr_upload_jobs_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## list_admin_coach_contracts
+
+> <AdminCoachContractsUploadIndex> list_admin_coach_contracts
+
+
+
+Upload Coach Compensation page — required/optional CSV headers plus current Sidekiq job status for the coach_contract_importer (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.list_admin_coach_contracts
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_coach_contracts: #{e}"
+end
+```
+
+#### Using the list_admin_coach_contracts_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminCoachContractsUploadIndex>, Integer, Hash)> list_admin_coach_contracts_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_coach_contracts_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminCoachContractsUploadIndex>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_coach_contracts_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**AdminCoachContractsUploadIndex**](AdminCoachContractsUploadIndex.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_coach_contracts_outside_income
+
+> <AdminCoachOutsideIncomeUploadIndex> list_admin_coach_contracts_outside_income
+
+
+
+Upload Outside Income page — current Sidekiq job status for the coach_outside_income_importer (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.list_admin_coach_contracts_outside_income
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_coach_contracts_outside_income: #{e}"
+end
+```
+
+#### Using the list_admin_coach_contracts_outside_income_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminCoachOutsideIncomeUploadIndex>, Integer, Hash)> list_admin_coach_contracts_outside_income_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_coach_contracts_outside_income_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminCoachOutsideIncomeUploadIndex>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_coach_contracts_outside_income_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**AdminCoachOutsideIncomeUploadIndex**](AdminCoachOutsideIncomeUploadIndex.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_coach_contracts_qc
+
+> <AdminCoachContractsQcList> list_admin_coach_contracts_qc(opts)
+
+
+
+Coach Contracts QC report — every Contract with contractable_type Coach, ransack-filterable (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  dirty_year_field: true, # Boolean | 
+  q: { key: { key: 3.56}} # Hash<String, Object> | Ransack school, sport, division, subdivision, conference, verification, date and compensation-year filters.
+}
+
+begin
+  
+  result = api_instance.list_admin_coach_contracts_qc(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_coach_contracts_qc: #{e}"
+end
+```
+
+#### Using the list_admin_coach_contracts_qc_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminCoachContractsQcList>, Integer, Hash)> list_admin_coach_contracts_qc_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_coach_contracts_qc_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminCoachContractsQcList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_coach_contracts_qc_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **dirty_year_field** | **Boolean** |  | [optional] |
+| **q** | [**Hash&lt;String, Object&gt;**](Object.md) | Ransack school, sport, division, subdivision, conference, verification, date and compensation-year filters. | [optional] |
+
+### Return type
+
+[**AdminCoachContractsQcList**](AdminCoachContractsQcList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_coach_mass_update_jobs
+
+> list_admin_coach_mass_update_jobs
+
+
+
+Current CoachUpdater sidekiq job status (coach mass-update CSV upload page)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  api_instance.list_admin_coach_mass_update_jobs
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_coach_mass_update_jobs: #{e}"
+end
+```
+
+#### Using the list_admin_coach_mass_update_jobs_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> list_admin_coach_mass_update_jobs_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_coach_mass_update_jobs_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_coach_mass_update_jobs_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## list_admin_coach_merge_logs
+
+> <AdminCoachMergeLogList> list_admin_coach_merge_logs(opts)
+
+
+
+List coach merge log runs (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+}
+
+begin
+  
+  result = api_instance.list_admin_coach_merge_logs(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_coach_merge_logs: #{e}"
+end
+```
+
+#### Using the list_admin_coach_merge_logs_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminCoachMergeLogList>, Integer, Hash)> list_admin_coach_merge_logs_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_coach_merge_logs_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminCoachMergeLogList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_coach_merge_logs_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
+
+### Return type
+
+[**AdminCoachMergeLogList**](AdminCoachMergeLogList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_coach_upload_jobs
+
+> list_admin_coach_upload_jobs(opts)
+
+
+
+Current CoachImporter sidekiq job status, required/optional CSV headers, and the default upload year (coach CSV upload page)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  year: 56 # Integer | 
+}
+
+begin
+  
+  api_instance.list_admin_coach_upload_jobs(opts)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_coach_upload_jobs: #{e}"
+end
+```
+
+#### Using the list_admin_coach_upload_jobs_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> list_admin_coach_upload_jobs_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_coach_upload_jobs_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_coach_upload_jobs_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **year** | **Integer** |  | [optional] |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## list_admin_coaches
+
+> <AdminCoachesList> list_admin_coaches(opts)
+
+
+
+Retrieve a paginated, ransack-filterable list of coaches (admin-only), sorted by last then first name
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+  q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+}
+
+begin
+  
+  result = api_instance.list_admin_coaches(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_coaches: #{e}"
+end
+```
+
+#### Using the list_admin_coaches_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminCoachesList>, Integer, Hash)> list_admin_coaches_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_coaches_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminCoachesList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_coaches_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
+
+### Return type
+
+[**AdminCoachesList**](AdminCoachesList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_compensations
+
+> <AdminCompensationList> list_admin_compensations(opts)
+
+
+
+List a coach's compensation rows, including synthetic in-memory rows for positions without one yet (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  coach_id: 56 # Integer | 
+}
+
+begin
+  
+  result = api_instance.list_admin_compensations(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_compensations: #{e}"
+end
+```
+
+#### Using the list_admin_compensations_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminCompensationList>, Integer, Hash)> list_admin_compensations_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_compensations_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminCompensationList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_compensations_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **coach_id** | **Integer** |  | [optional] |
+
+### Return type
+
+[**AdminCompensationList**](AdminCompensationList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_contracts
+
+> <AdminContractList> list_admin_contracts(coach_id, opts)
+
+
+
+List a coach's employment contracts (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+coach_id = 56 # Integer | 
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56 # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+}
+
+begin
+  
+  result = api_instance.list_admin_contracts(coach_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_contracts: #{e}"
+end
+```
+
+#### Using the list_admin_contracts_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminContractList>, Integer, Hash)> list_admin_contracts_with_http_info(coach_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_contracts_with_http_info(coach_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminContractList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_contracts_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **coach_id** | **Integer** |  |  |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+
+### Return type
+
+[**AdminContractList**](AdminContractList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## list_notes
 
 > <Array<ListNotes200ResponseInner>> list_notes
@@ -20930,6 +22989,232 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**Array&lt;ListNotes200ResponseInner&gt;**](ListNotes200ResponseInner.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## mass_update_admin_compensations
+
+> <MassUpdateAdminCompensations200Response> mass_update_admin_compensations(mass_update_admin_compensations_request)
+
+
+
+Atomically save submitted changed rows for one coach (super-admin only). Existing IDs must belong to that coach; school and year cannot change. New rows require existing positions for the school and year, and never create positions. Omit untouched rows so unrelated historical validation errors do not block a save.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+mass_update_admin_compensations_request = WinthropClient::MassUpdateAdminCompensationsRequest.new({coach_id: 37, compensations: [WinthropClient::MassUpdateAdminCompensationsRequestCompensationsInner.new]}) # MassUpdateAdminCompensationsRequest | 
+
+begin
+  
+  result = api_instance.mass_update_admin_compensations(mass_update_admin_compensations_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->mass_update_admin_compensations: #{e}"
+end
+```
+
+#### Using the mass_update_admin_compensations_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<MassUpdateAdminCompensations200Response>, Integer, Hash)> mass_update_admin_compensations_with_http_info(mass_update_admin_compensations_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.mass_update_admin_compensations_with_http_info(mass_update_admin_compensations_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <MassUpdateAdminCompensations200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->mass_update_admin_compensations_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **mass_update_admin_compensations_request** | [**MassUpdateAdminCompensationsRequest**](MassUpdateAdminCompensationsRequest.md) |  |  |
+
+### Return type
+
+[**MassUpdateAdminCompensations200Response**](MassUpdateAdminCompensations200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## preview_admin_coach_contracts
+
+> <AdminCoachContractsPreview> preview_admin_coach_contracts(opts)
+
+
+
+Parse a posted CSV and return its headers/rows without persisting anything (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  import: WinthropClient::PreviewAdminCoachContractsRequestImport.new # PreviewAdminCoachContractsRequestImport | 
+}
+
+begin
+  
+  result = api_instance.preview_admin_coach_contracts(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->preview_admin_coach_contracts: #{e}"
+end
+```
+
+#### Using the preview_admin_coach_contracts_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminCoachContractsPreview>, Integer, Hash)> preview_admin_coach_contracts_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.preview_admin_coach_contracts_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminCoachContractsPreview>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->preview_admin_coach_contracts_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **import** | [**PreviewAdminCoachContractsRequestImport**](PreviewAdminCoachContractsRequestImport.md) |  | [optional] |
+
+### Return type
+
+[**AdminCoachContractsPreview**](AdminCoachContractsPreview.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+
+## preview_admin_coach_merge_log
+
+> <AdminCoachMergeLogPreview> preview_admin_coach_merge_log(primary_coach_id, duplicate_coach_id)
+
+
+
+Preview what a coach merge would affect before committing (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+primary_coach_id = 56 # Integer | 
+duplicate_coach_id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.preview_admin_coach_merge_log(primary_coach_id, duplicate_coach_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->preview_admin_coach_merge_log: #{e}"
+end
+```
+
+#### Using the preview_admin_coach_merge_log_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminCoachMergeLogPreview>, Integer, Hash)> preview_admin_coach_merge_log_with_http_info(primary_coach_id, duplicate_coach_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.preview_admin_coach_merge_log_with_http_info(primary_coach_id, duplicate_coach_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminCoachMergeLogPreview>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->preview_admin_coach_merge_log_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **primary_coach_id** | **Integer** |  |  |
+| **duplicate_coach_id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminCoachMergeLogPreview**](AdminCoachMergeLogPreview.md)
 
 ### Authorization
 
@@ -21395,7 +23680,7 @@ end
 
 
 
-Search coaches by priority_ids and Ransack filters
+Search coaches by priority_ids and Ransack filters. A search that filters or sorts on pay returns only people whose latest_salary the caller may see. Pay is any pay-like column (latest_salary, latest_salary_year, positions.compensation_id, ...) and any condition or sort whose association path passes through a pay table (compensations, contracts, raw_contracts, income_reports, termination_agreements), whatever the final column. A column directly on the person's own pay records (compensations_<column>, contracts_<column>, income_reports_<column>, termination_agreements_<column>, positions_compensation_<column>, current_position_compensation_<column>, next_position_compensation_<column>) also leaves the person out if any of those records is hidden from the caller. Any other path to pay, including one that continues past those records (e.g. compensations_contract_status_name_eq, contracts_raw_contract_text_cont, or co-workers' pay through positions_season_positions_compensation_*), is unsupported: it returns no results unless the caller is a super admin or service connection, even with both pay roles. Searches that do not touch pay are unaffected.
 
 ### Examples
 
@@ -21751,6 +24036,162 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_admin_coach
+
+> <AdminCoach> update_admin_coach(id, create_admin_coach_request)
+
+
+
+Update a coach's editable fields (admin-only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 'id_example' # String | 
+create_admin_coach_request = WinthropClient::CreateAdminCoachRequest.new({coach: WinthropClient::CreateAdminCoachRequestCoach.new({first_name: 'first_name_example', last_name: 'last_name_example'})}) # CreateAdminCoachRequest | 
+
+begin
+  
+  result = api_instance.update_admin_coach(id, create_admin_coach_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_coach: #{e}"
+end
+```
+
+#### Using the update_admin_coach_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminCoach>, Integer, Hash)> update_admin_coach_with_http_info(id, create_admin_coach_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_coach_with_http_info(id, create_admin_coach_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminCoach>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_coach_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** |  |  |
+| **create_admin_coach_request** | [**CreateAdminCoachRequest**](CreateAdminCoachRequest.md) |  |  |
+
+### Return type
+
+[**AdminCoach**](AdminCoach.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_admin_contract
+
+> <AdminContract> update_admin_contract(id, opts)
+
+
+
+Update an employment contract, optionally replacing its PDF (admin, super-admin only). Metadata and file edits are atomic under the coach/contract locks. Replacement preserves the RawContract and structured terms, clears derived OCR text, and refuses documents shared with other records.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+opts = {
+  contract: WinthropClient::CreateAdminContractRequestContract.new, # CreateAdminContractRequestContract | 
+  raw_contract: WinthropClient::CreateAdminContractRequestRawContract.new # CreateAdminContractRequestRawContract | 
+}
+
+begin
+  
+  result = api_instance.update_admin_contract(id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_contract: #{e}"
+end
+```
+
+#### Using the update_admin_contract_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminContract>, Integer, Hash)> update_admin_contract_with_http_info(id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_contract_with_http_info(id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminContract>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_contract_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **contract** | [**CreateAdminContractRequestContract**](CreateAdminContractRequestContract.md) |  | [optional] |
+| **raw_contract** | [**CreateAdminContractRequestRawContract**](CreateAdminContractRequestRawContract.md) |  | [optional] |
+
+### Return type
+
+[**AdminContract**](AdminContract.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 
 
