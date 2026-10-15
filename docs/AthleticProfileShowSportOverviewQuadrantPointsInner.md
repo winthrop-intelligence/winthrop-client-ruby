@@ -11,6 +11,7 @@
 | **is_subject** | **Boolean** |  | [optional] |
 | **spend_cents** | **Integer** |  | [optional] |
 | **spend_year** | **Integer** |  | [optional] |
+| **spend_basis** | **String** | Which report this program&#39;s spend was read from. A private peer files no NCAA FRS sport split, so it plots from its own federal EADA sport row instead of going unplotted (WINAD-10402) — a separate report with different definitions, so each dot names its own source rather than the chart implying one. Null where no spend was filed at all. | [optional] |
 | **net_rank** | **Integer** |  | [optional] |
 | **rpi** | **Integer** |  | [optional] |
 | **conference_wins** | **Integer** |  | [optional] |
@@ -30,6 +31,7 @@ instance = WinthropClient::AthleticProfileShowSportOverviewQuadrantPointsInner.n
   is_subject: null,
   spend_cents: null,
   spend_year: null,
+  spend_basis: null,
   net_rank: null,
   rpi: null,
   conference_wins: null,
