@@ -7,8 +7,8 @@
 | **school** | [**SchoolDepartmentOverviewSchool**](SchoolDepartmentOverviewSchool.md) |  |  |
 | **conference** | [**SchoolDepartmentOverviewConference**](SchoolDepartmentOverviewConference.md) |  |  |
 | **latest_filed_year** | **Integer** |  |  |
-| **selected_year** | **Integer** |  |  |
-| **available_years** | **Array&lt;Integer&gt;** |  |  |
+| **selected_year** | **Integer** | Season ending year, separate from the resolved spending fiscal year |  |
+| **available_years** | **Array&lt;Integer&gt;** | Selectable season ending years, including gaps between filed fiscal years |  |
 | **results_quadrant** | [**DepartmentOverviewResultsQuadrant**](DepartmentOverviewResultsQuadrant.md) |  |  |
 | **headline_stats** | [**Array&lt;DepartmentOverviewHeadlineStat&gt;**](DepartmentOverviewHeadlineStat.md) |  |  |
 | **flow_summary** | [**DepartmentOverviewFlowSummary**](DepartmentOverviewFlowSummary.md) |  |  |
@@ -20,10 +20,12 @@
 | **mode** | **String** | Which basis the tab renders. A private school has no FRS filing, so every FRS-derived module is null and the private_* modules carry the page. | [optional] |
 | **private_spend** | [**DepartmentOverviewPrivateSpend**](DepartmentOverviewPrivateSpend.md) |  | [optional] |
 | **private_results** | [**DepartmentOverviewPrivateResults**](DepartmentOverviewPrivateResults.md) |  | [optional] |
-| **private_coverage** | [**DepartmentOverviewPrivateCoverage**](DepartmentOverviewPrivateCoverage.md) |  | [optional] |
 | **private_disclosure** | [**DepartmentOverviewPrivateDisclosure**](DepartmentOverviewPrivateDisclosure.md) |  | [optional] |
+| **private_coaching_pay** | [**DepartmentOverviewPrivateCoachingPay**](DepartmentOverviewPrivateCoachingPay.md) |  | [optional] |
+| **private_snapshot** | [**DepartmentOverviewPrivateSnapshot**](DepartmentOverviewPrivateSnapshot.md) |  | [optional] |
 | **private_ad** | [**DepartmentOverviewPrivateAd**](DepartmentOverviewPrivateAd.md) |  | [optional] |
 | **private_basis** | [**DepartmentOverviewPrivateBasis**](DepartmentOverviewPrivateBasis.md) |  | [optional] |
+| **private_flagship** | [**DepartmentOverviewPrivateFlagship**](DepartmentOverviewPrivateFlagship.md) |  | [optional] |
 
 ## Example
 
@@ -47,10 +49,12 @@ instance = WinthropClient::SchoolDepartmentOverview.new(
   mode: null,
   private_spend: null,
   private_results: null,
-  private_coverage: null,
   private_disclosure: null,
+  private_coaching_pay: null,
+  private_snapshot: null,
   private_ad: null,
-  private_basis: null
+  private_basis: null,
+  private_flagship: null
 )
 ```
 
