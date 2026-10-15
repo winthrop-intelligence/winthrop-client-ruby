@@ -110,6 +110,7 @@ docs/CoachCompensationTabQuartiles.md
 docs/CoachCompensationTabQuartilesRowsInner.md
 docs/CoachCompensationTabSidebar.md
 docs/CoachCompensationTabSidebarCoachingStaffInner.md
+docs/CoachCompensationTabSidebarCoachingStaffInnerSalarySource.md
 docs/CoachCompensationTabSidebarContractsInner.md
 docs/CoachCompensationTabSidebarIncomeReportsInner.md
 docs/CoachCoworkerHistoryTab.md
@@ -597,9 +598,7 @@ docs/NewsFeedCollection.md
 docs/Note.md
 docs/PageView.md
 docs/PendingContractCreated.md
-docs/PerformanceChartCoach.md
-docs/PerformanceChartData.md
-docs/PerformanceChartRecord.md
+docs/PersonAssignment.md
 docs/Position.md
 docs/PositionCollection.md
 docs/PositionDepartureRequest.md
@@ -937,6 +936,7 @@ lib/winthrop-client-ruby/models/coach_compensation_tab_quartiles.rb
 lib/winthrop-client-ruby/models/coach_compensation_tab_quartiles_rows_inner.rb
 lib/winthrop-client-ruby/models/coach_compensation_tab_sidebar.rb
 lib/winthrop-client-ruby/models/coach_compensation_tab_sidebar_coaching_staff_inner.rb
+lib/winthrop-client-ruby/models/coach_compensation_tab_sidebar_coaching_staff_inner_salary_source.rb
 lib/winthrop-client-ruby/models/coach_compensation_tab_sidebar_contracts_inner.rb
 lib/winthrop-client-ruby/models/coach_compensation_tab_sidebar_income_reports_inner.rb
 lib/winthrop-client-ruby/models/coach_coworker_history_tab.rb
@@ -1418,9 +1418,7 @@ lib/winthrop-client-ruby/models/news_feed_collection.rb
 lib/winthrop-client-ruby/models/note.rb
 lib/winthrop-client-ruby/models/page_view.rb
 lib/winthrop-client-ruby/models/pending_contract_created.rb
-lib/winthrop-client-ruby/models/performance_chart_coach.rb
-lib/winthrop-client-ruby/models/performance_chart_data.rb
-lib/winthrop-client-ruby/models/performance_chart_record.rb
+lib/winthrop-client-ruby/models/person_assignment.rb
 lib/winthrop-client-ruby/models/position.rb
 lib/winthrop-client-ruby/models/position_collection.rb
 lib/winthrop-client-ruby/models/position_departure_request.rb
@@ -1634,5 +1632,7 @@ lib/winthrop-client-ruby/models/wire_change.rb
 lib/winthrop-client-ruby/models/wire_change_coach.rb
 lib/winthrop-client-ruby/models/wire_change_school.rb
 lib/winthrop-client-ruby/version.rb
+spec/models/coach_compensation_tab_sidebar_coaching_staff_inner_salary_source_spec.rb
+spec/models/person_assignment_spec.rb
 spec/spec_helper.rb
 winthrop-client-ruby.gemspec

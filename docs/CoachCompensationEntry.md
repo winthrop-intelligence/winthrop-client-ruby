@@ -7,6 +7,7 @@
 | **year_str** | **String** |  |  |
 | **school_name** | **String** |  |  |
 | **school_id** | **Integer** |  |  |
+| **assignments** | [**Array&lt;PersonAssignment&gt;**](PersonAssignment.md) | Authorized positions attached to this compensation record, ranked primary first; does not change its salary or season. | [optional] |
 | **position_sport** | **String** |  |  |
 | **total_cents** | **Integer** |  | [optional] |
 | **base_salary_cents** | **Integer** |  | [optional] |
@@ -32,6 +33,7 @@ instance = WinthropClient::CoachCompensationEntry.new(
   year_str: null,
   school_name: null,
   school_id: null,
+  assignments: null,
   position_sport: null,
   total_cents: null,
   base_salary_cents: null,
