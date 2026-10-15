@@ -9,6 +9,7 @@
 | **coaching_staff** | [**Array&lt;CoachCompensationTabSidebarCoachingStaffInner&gt;**](CoachCompensationTabSidebarCoachingStaffInner.md) |  | [optional] |
 | **staff_title** | **String** |  | [optional] |
 | **asst_pool_spend_cents** | **Integer** |  | [optional] |
+| **asst_coach_count** | **Integer** | Number of staff in the assistant pool, excluding current head coaches using the same group as pool spend. | [optional] |
 | **coli** | [**ColiData**](ColiData.md) |  | [optional] |
 
 ## Example
@@ -22,6 +23,7 @@ instance = WinthropClient::CoachCompensationTabSidebar.new(
   coaching_staff: null,
   staff_title: null,
   asst_pool_spend_cents: null,
+  asst_coach_count: null,
   coli: null
 )
 ```
