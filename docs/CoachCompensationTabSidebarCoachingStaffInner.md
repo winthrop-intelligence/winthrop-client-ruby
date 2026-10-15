@@ -9,7 +9,9 @@
 | **name** | **String** |  | [optional] |
 | **initials** | **String** |  | [optional] |
 | **position_types** | **Array&lt;String&gt;** |  | [optional] |
+| **assignments** | [**Array&lt;PersonAssignment&gt;**](PersonAssignment.md) | This staff member&#39;s positions in the card&#39;s season, ranked primary first (WINAD-10522) | [optional] |
 | **salary_cents** | **Integer** |  | [optional] |
+| **salary_source** | [**CoachCompensationTabSidebarCoachingStaffInnerSalarySource**](CoachCompensationTabSidebarCoachingStaffInnerSalarySource.md) |  | [optional] |
 | **avatar_url** | **String** |  | [optional] |
 
 ## Example
@@ -23,7 +25,9 @@ instance = WinthropClient::CoachCompensationTabSidebarCoachingStaffInner.new(
   name: null,
   initials: null,
   position_types: null,
+  assignments: null,
   salary_cents: null,
+  salary_source: null,
   avatar_url: null
 )
 ```
