@@ -5184,7 +5184,7 @@ end
 
 
 
-Delete a single position
+Delete a single position. A position that has a compensation attached (compensation_id is set) is refused with 422 (errors.compensation_id names the compensation) and nothing is written, because deleting the last position of a compensation would delete the compensation (its pay row) with it. The check reads the position under a lock in the same transaction as the delete (the position's coach is locked first, then the position row), so a compensation attached after the request was received is still refused. Unlink the compensation (PATCH the position with compensation_id null) or delete it (DELETE /compensations/{compensationId}) first. A position with no compensation is deleted and no compensation is touched. API clients in winthrop-clients must be regenerated to expose this change.
 
 ### Examples
 
@@ -6310,7 +6310,7 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56 # Integer | results page to retrieve.
+  page: 56 # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
 }
 
 begin
@@ -6344,7 +6344,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
 
 ### Return type
 
@@ -6862,8 +6862,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... }, # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
   favorites_only: 'favorites_only_example', # String | When \"1\" or \"true\", restrict results to the current user's favorited administrators
   contract_expires_on: 'contract_expires_on_example' # String | Filter by contract expiration. Use \"expired\" or a date range like \"2025-01-01..2025-12-31\"
@@ -6900,8 +6900,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 | **favorites_only** | **String** | When \&quot;1\&quot; or \&quot;true\&quot;, restrict results to the current user&#39;s favorited administrators | [optional] |
 | **contract_expires_on** | **String** | Filter by contract expiration. Use \&quot;expired\&quot; or a date range like \&quot;2025-01-01..2025-12-31\&quot; | [optional] |
@@ -6946,8 +6946,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -6982,8 +6982,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -7266,8 +7266,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -7302,8 +7302,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -7491,8 +7491,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -7527,8 +7527,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -7571,8 +7571,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -7607,8 +7607,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -8395,8 +8395,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... }, # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
   position_type_id: 56, # Integer | Filter by position type (expands to group if position is a group stub)
   contract_expires_on: 'contract_expires_on_example' # String | Filter by contract expiration. Use \"expired\" for expired contracts, or a date range in \"YYYY-MM-DD..YYYY-MM-DD\" format.
@@ -8433,8 +8433,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 | **position_type_id** | **Integer** | Filter by position type (expands to group if position is a group stub) | [optional] |
 | **contract_expires_on** | **String** | Filter by contract expiration. Use \&quot;expired\&quot; for expired contracts, or a date range in \&quot;YYYY-MM-DD..YYYY-MM-DD\&quot; format. | [optional] |
@@ -8479,8 +8479,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -8515,8 +8515,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -8727,8 +8727,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -8763,8 +8763,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -9351,8 +9351,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -9387,8 +9387,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -9505,8 +9505,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -9541,8 +9541,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -9730,8 +9730,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -9766,8 +9766,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -9810,8 +9810,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -9846,8 +9846,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -10046,8 +10046,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -10082,8 +10082,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -10200,8 +10200,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -10236,8 +10236,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -10354,8 +10354,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -10390,8 +10390,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -10434,8 +10434,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -10470,8 +10470,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -10514,7 +10514,7 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -10549,7 +10549,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -10961,8 +10961,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -10997,8 +10997,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -11043,12 +11043,13 @@ api_instance = WinthropClient::DefaultApi.new
 opts = {
   coach_id: 56, # Integer | 
   raw_contract_id: 56, # Integer | The contract the items come from
+  ended_by_contract_id: 56, # Integer | Only the items whose ending amendment is this raw contract (an earned raise ended by an amendment). Unlike raw_contract_id, it never matches the contract an item comes from. Items with no ending amendment are never listed by it.
   school_id: 56, # Integer | Every item whose season belongs to one of this school's teams
   season_year: 56, # Integer | The season's END year (2026 is the 2025-26 season). `season` is accepted as the same filter.
   season: 56, # Integer | Same as season_year
   season_id: 56, # Integer | One team's season row
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56 # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56 # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
 }
 
 begin
@@ -11084,12 +11085,13 @@ end
 | ---- | ---- | ----------- | ----- |
 | **coach_id** | **Integer** |  | [optional] |
 | **raw_contract_id** | **Integer** | The contract the items come from | [optional] |
+| **ended_by_contract_id** | **Integer** | Only the items whose ending amendment is this raw contract (an earned raise ended by an amendment). Unlike raw_contract_id, it never matches the contract an item comes from. Items with no ending amendment are never listed by it. | [optional] |
 | **school_id** | **Integer** | Every item whose season belongs to one of this school&#39;s teams | [optional] |
 | **season_year** | **Integer** | The season&#39;s END year (2026 is the 2025-26 season). &#x60;season&#x60; is accepted as the same filter. | [optional] |
 | **season** | **Integer** | Same as season_year | [optional] |
 | **season_id** | **Integer** | One team&#39;s season row | [optional] |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 
 ### Return type
 
@@ -12166,8 +12168,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -12202,8 +12204,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -12320,8 +12322,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -12356,8 +12358,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -12474,8 +12476,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -12510,8 +12512,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -12853,8 +12855,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... }, # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
   distance_school_type: 'home', # String | Top-level distance side (paired with q[distance_lt]). Only honored when the caller's account is tied to a school.
   include_school_summary: true, # Boolean | When true, also compute a per-school median paid_out / received block. Requires q[sport_id_eq] and a school filter (home_school_id_eq, away_school_id_eq, or home_school_id_or_away_school_id_eq). Mutually exclusive with include_cohort_summary.
@@ -12895,8 +12897,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 | **distance_school_type** | **String** | Top-level distance side (paired with q[distance_lt]). Only honored when the caller&#39;s account is tied to a school. | [optional] |
 | **include_school_summary** | **Boolean** | When true, also compute a per-school median paid_out / received block. Requires q[sport_id_eq] and a school filter (home_school_id_eq, away_school_id_eq, or home_school_id_or_away_school_id_eq). Mutually exclusive with include_cohort_summary. | [optional] |
@@ -13167,8 +13169,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -13203,8 +13205,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -13471,8 +13473,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... }, # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
   group_by_school: true, # Boolean | When true, returns one row per school+sport (the school's newest post as the representative, newest school first) and pagination counts schools. When false/absent, returns the per-post listing.
   post_details: true # Boolean | When true, each posts[] entry is enriched with the per-post detail fields (status, start_date, end_date, description, game_types_display, expires_on, created_at, can_manage, created_by) and the result carries the shared school+sport contacts[]. Used by the school+sport show page. When false/absent, posts[] stays lean (id, date, game_types only).
@@ -13509,8 +13511,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 | **group_by_school** | **Boolean** | When true, returns one row per school+sport (the school&#39;s newest post as the representative, newest school first) and pagination counts schools. When false/absent, returns the per-post listing. | [optional] |
 | **post_details** | **Boolean** | When true, each posts[] entry is enriched with the per-post detail fields (status, start_date, end_date, description, game_types_display, expires_on, created_at, can_manage, created_by) and the result carries the shared school+sport contacts[]. Used by the school+sport show page. When false/absent, posts[] stays lean (id, date, game_types only). | [optional] |
@@ -13555,8 +13557,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -13591,8 +13593,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -13635,8 +13637,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -13671,8 +13673,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -14019,8 +14021,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -14055,8 +14057,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -14257,8 +14259,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -14293,8 +14295,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -14482,8 +14484,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -14518,8 +14520,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -14763,7 +14765,7 @@ end
 
 
 
-Retrieve a single position
+Retrieve a single position. Carries departure_on for every caller, and departure_reason and departure_source_url only for callers who may update positions (the keys are absent for the rest). approval_quote is never returned by a read.
 
 ### Examples
 
@@ -14857,8 +14859,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -14893,8 +14895,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -14917,7 +14919,7 @@ end
 
 
 
-Retrieve some or all positions
+Retrieve some or all positions. Each position carries departure_on for every caller, and departure_reason and departure_source_url only for callers who may update positions (the keys are absent for the rest). approval_quote is never returned by a read.
 
 ### Examples
 
@@ -14937,8 +14939,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -14973,8 +14975,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -15165,8 +15167,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -15201,8 +15203,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -15245,7 +15247,7 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
   per_page: 56, # Integer | Positive page size; requests above 100 are clamped to 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
@@ -15281,7 +15283,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
 | **per_page** | **Integer** | Positive page size; requests above 100 are clamped to 100. | [optional][default to 100] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
@@ -15551,8 +15553,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -15587,8 +15589,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -17499,8 +17501,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... }, # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
   sport_name: 'BASKETBALL_M' # String | A sport's internal name (e.g. `BASKETBALL_M`, `BASKETBALL_W`, `FOOTBALL`). When supplied, each returned school includes a `rank` field with its latest sport-appropriate ranking (NET/AP/RPI) for that sport. Unknown values are ignored and simply yield no rank.
 }
@@ -17536,8 +17538,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 | **sport_name** | **String** | A sport&#39;s internal name (e.g. &#x60;BASKETBALL_M&#x60;, &#x60;BASKETBALL_W&#x60;, &#x60;FOOTBALL&#x60;). When supplied, each returned school includes a &#x60;rank&#x60; field with its latest sport-appropriate ranking (NET/AP/RPI) for that sport. Unknown values are ignored and simply yield no rank. | [optional] |
 
@@ -17797,8 +17799,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -17833,8 +17835,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -17879,8 +17881,8 @@ api_instance = WinthropClient::DefaultApi.new
 coach_id = 56 # Integer | ID of coach to retrieve
 opts = {
   q: { ... }, # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56 # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56 # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
 }
 
 begin
@@ -17916,8 +17918,8 @@ end
 | ---- | ---- | ----------- | ----- |
 | **coach_id** | **Integer** | ID of coach to retrieve |  |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 
 ### Return type
 
@@ -18033,8 +18035,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -18069,8 +18071,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -18657,8 +18659,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -18693,8 +18695,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -18877,8 +18879,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -18913,8 +18915,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -19646,8 +19648,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... }, # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
   sport_name: 'sport_name_example', # String | Sport name filter (e.g. BASKETBALL_M)
   exclude_already_scheduled: '1', # String | Exclude schools already on the user's schedule
@@ -19685,8 +19687,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 | **sport_name** | **String** | Sport name filter (e.g. BASKETBALL_M) | [optional] |
 | **exclude_already_scheduled** | **String** | Exclude schools already on the user&#39;s schedule | [optional] |
@@ -19737,8 +19739,8 @@ opts = {
   sport_id: 56, # Integer | Only results of this sport.
   season_year: 56, # Integer | Only results of seasons ending in this year (2023 = the 2022-23 season). APR and GSR rows sit on the season of the academic year the rate measures.
   result_name: 'result_name_example', # String | Only results with this name, for example ncaa_stage_reached.
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -19778,8 +19780,8 @@ end
 | **sport_id** | **Integer** | Only results of this sport. | [optional] |
 | **season_year** | **Integer** | Only results of seasons ending in this year (2023 &#x3D; the 2022-23 season). APR and GSR rows sit on the season of the academic year the rate measures. | [optional] |
 | **result_name** | **String** | Only results with this name, for example ncaa_stage_reached. | [optional] |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -20040,7 +20042,7 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56 # Integer | results page to retrieve.
+  page: 56 # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
 }
 
 begin
@@ -20074,7 +20076,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
 
 ### Return type
 
@@ -20190,8 +20192,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -20226,8 +20228,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -20418,8 +20420,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -20454,8 +20456,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -20498,8 +20500,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -20534,8 +20536,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -20652,8 +20654,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
@@ -20688,8 +20690,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
@@ -20732,8 +20734,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
-  per_page: 56, # Integer | number of results per page.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
   q: { ... }, # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
   q_coach_id_eq: 56, # Integer | Filter by coach ID
   q_school_id_eq: 56, # Integer | Filter by school ID
@@ -20771,8 +20773,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. | [optional][default to 20] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
 | **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 | **q_coach_id_eq** | **Integer** | Filter by coach ID | [optional] |
 | **q_school_id_eq** | **Integer** | Filter by school ID | [optional] |
@@ -21393,7 +21395,7 @@ end
 
 
 
-Search coaches by priority_ids and Ransack filters
+Search coaches by priority_ids and Ransack filters. A search that filters or sorts on pay returns only people whose latest_salary the caller may see. Pay is any pay-like column (latest_salary, latest_salary_year, positions.compensation_id, ...) and any condition or sort whose association path passes through a pay table (compensations, contracts, raw_contracts, income_reports, termination_agreements), whatever the final column. A column directly on the person's own pay records (compensations_<column>, contracts_<column>, income_reports_<column>, termination_agreements_<column>, positions_compensation_<column>, current_position_compensation_<column>, next_position_compensation_<column>) also leaves the person out if any of those records is hidden from the caller. Any other path to pay, including one that continues past those records (e.g. compensations_contract_status_name_eq, contracts_raw_contract_text_cont, or co-workers' pay through positions_season_positions_compensation_*), is unsupported: it returns no results unless the caller is a super admin or service connection, even with both pay roles. Searches that do not touch pay are unaffected.
 
 ### Examples
 

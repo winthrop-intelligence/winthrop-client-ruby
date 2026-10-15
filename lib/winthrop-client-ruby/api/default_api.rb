@@ -4290,7 +4290,7 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Delete a single position
+    # Delete a single position. A position that has a compensation attached (compensation_id is set) is refused with 422 (errors.compensation_id names the compensation) and nothing is written, because deleting the last position of a compensation would delete the compensation (its pay row) with it. The check reads the position under a lock in the same transaction as the delete (the position's coach is locked first, then the position row), so a compensation attached after the request was received is still refused. Unlink the compensation (PATCH the position with compensation_id null) or delete it (DELETE /compensations/{compensationId}) first. A position with no compensation is deleted and no compensation is touched. API clients in winthrop-clients must be regenerated to expose this change.
     # @param position_id [Integer] ID of position to delete
     # @param [Hash] opts the optional parameters
     # @option opts [String] :change_note Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned.
@@ -4300,7 +4300,7 @@ module WinthropClient
       nil
     end
 
-    # Delete a single position
+    # Delete a single position. A position that has a compensation attached (compensation_id is set) is refused with 422 (errors.compensation_id names the compensation) and nothing is written, because deleting the last position of a compensation would delete the compensation (its pay row) with it. The check reads the position under a lock in the same transaction as the delete (the position&#39;s coach is locked first, then the position row), so a compensation attached after the request was received is still refused. Unlink the compensation (PATCH the position with compensation_id null) or delete it (DELETE /compensations/{compensationId}) first. A position with no compensation is deleted and no compensation is touched. API clients in winthrop-clients must be regenerated to expose this change.
     # @param position_id [Integer] ID of position to delete
     # @param [Hash] opts the optional parameters
     # @option opts [String] :change_note Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned.
@@ -5217,7 +5217,7 @@ module WinthropClient
 
     # Retrieve paginated list of users for the current user's account with their computed access permissions
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
     # @return [AccountUsersResponse]
     def get_account_users(opts = {})
       data, _status_code, _headers = get_account_users_with_http_info(opts)
@@ -5226,12 +5226,20 @@ module WinthropClient
 
     # Retrieve paginated list of users for the current user&#39;s account with their computed access permissions
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
     # @return [Array<(AccountUsersResponse, Integer, Hash)>] AccountUsersResponse data, response status code and response headers
     def get_account_users_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_account_users ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_account_users, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_account_users, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/account_users'
 
@@ -5724,8 +5732,8 @@ module WinthropClient
 
     # Search administrators with filtering, pagination, and comp stats (React UI endpoint)
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @option opts [String] :favorites_only When \&quot;1\&quot; or \&quot;true\&quot;, restrict results to the current user&#39;s favorited administrators
     # @option opts [String] :contract_expires_on Filter by contract expiration. Use \&quot;expired\&quot; or a date range like \&quot;2025-01-01..2025-12-31\&quot;
@@ -5737,8 +5745,8 @@ module WinthropClient
 
     # Search administrators with filtering, pagination, and comp stats (React UI endpoint)
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @option opts [String] :favorites_only When \&quot;1\&quot; or \&quot;true\&quot;, restrict results to the current user&#39;s favorited administrators
     # @option opts [String] :contract_expires_on Filter by contract expiration. Use \&quot;expired\&quot; or a date range like \&quot;2025-01-01..2025-12-31\&quot;
@@ -5747,6 +5755,22 @@ module WinthropClient
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_administrator_searches ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_administrator_searches, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_administrator_searches, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_administrator_searches, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_administrator_searches, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/administrator_searches'
 
@@ -5794,8 +5818,8 @@ module WinthropClient
 
     # Retrieve some or all administrators
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [AdministratorCollection]
     def get_administrators(opts = {})
@@ -5805,14 +5829,30 @@ module WinthropClient
 
     # Retrieve some or all administrators
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(AdministratorCollection, Integer, Hash)>] AdministratorCollection data, response status code and response headers
     def get_administrators_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_administrators ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_administrators, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_administrators, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_administrators, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_administrators, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/administrators'
 
@@ -6078,8 +6118,8 @@ module WinthropClient
 
     # Retrieve some or all audited financial report statuses
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [AuditedFinancialReportStatusCollection]
     def get_audited_financial_report_statuses(opts = {})
@@ -6089,14 +6129,30 @@ module WinthropClient
 
     # Retrieve some or all audited financial report statuses
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(AuditedFinancialReportStatusCollection, Integer, Hash)>] AuditedFinancialReportStatusCollection data, response status code and response headers
     def get_audited_financial_report_statuses_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_audited_financial_report_statuses ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_audited_financial_report_statuses, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_audited_financial_report_statuses, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_audited_financial_report_statuses, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_audited_financial_report_statuses, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/audited_financial_report_statuses'
 
@@ -6258,8 +6314,8 @@ module WinthropClient
 
     # Retrieve some or all cashflows
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [CashflowCollection]
     def get_cashflows(opts = {})
@@ -6269,14 +6325,30 @@ module WinthropClient
 
     # Retrieve some or all cashflows
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(CashflowCollection, Integer, Hash)>] CashflowCollection data, response status code and response headers
     def get_cashflows_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_cashflows ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_cashflows, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_cashflows, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_cashflows, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_cashflows, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/cashflows'
 
@@ -6323,8 +6395,8 @@ module WinthropClient
     # List all categories
     # List all categories
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [CategoryCollection]
     def get_categories(opts = {})
@@ -6335,14 +6407,30 @@ module WinthropClient
     # List all categories
     # List all categories
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(CategoryCollection, Integer, Hash)>] CategoryCollection data, response status code and response headers
     def get_categories_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_categories ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_categories, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_categories, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_categories, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_categories, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/central_jobs/categories'
 
@@ -7013,8 +7101,8 @@ module WinthropClient
 
     # Search coaches with filtering and pagination
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @option opts [Integer] :position_type_id Filter by position type (expands to group if position is a group stub)
     # @option opts [String] :contract_expires_on Filter by contract expiration. Use \&quot;expired\&quot; for expired contracts, or a date range in \&quot;YYYY-MM-DD..YYYY-MM-DD\&quot; format.
@@ -7026,8 +7114,8 @@ module WinthropClient
 
     # Search coaches with filtering and pagination
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @option opts [Integer] :position_type_id Filter by position type (expands to group if position is a group stub)
     # @option opts [String] :contract_expires_on Filter by contract expiration. Use \&quot;expired\&quot; for expired contracts, or a date range in \&quot;YYYY-MM-DD..YYYY-MM-DD\&quot; format.
@@ -7036,6 +7124,22 @@ module WinthropClient
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_coach_searches ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_coach_searches, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_coach_searches, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_coach_searches, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_coach_searches, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/coach_searches'
 
@@ -7083,8 +7187,8 @@ module WinthropClient
 
     # Retrieve some or all coaches
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [CoachCollection]
     def get_coaches(opts = {})
@@ -7094,14 +7198,30 @@ module WinthropClient
 
     # Retrieve some or all coaches
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(CoachCollection, Integer, Hash)>] CoachCollection data, response status code and response headers
     def get_coaches_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_coaches ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_coaches, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_coaches, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_coaches, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_coaches, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/coaches'
 
@@ -7321,8 +7441,8 @@ module WinthropClient
 
     # Retrieve some or all compensations
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [CompensationCollection]
     def get_compensations(opts = {})
@@ -7332,14 +7452,30 @@ module WinthropClient
 
     # Retrieve some or all compensations
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(CompensationCollection, Integer, Hash)>] CompensationCollection data, response status code and response headers
     def get_compensations_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_compensations ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_compensations, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_compensations, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_compensations, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_compensations, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/compensations'
 
@@ -7840,8 +7976,8 @@ module WinthropClient
 
     # Retrieve some or all conferences
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [ConferenceCollection]
     def get_conferences(opts = {})
@@ -7851,14 +7987,30 @@ module WinthropClient
 
     # Retrieve some or all conferences
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(ConferenceCollection, Integer, Hash)>] ConferenceCollection data, response status code and response headers
     def get_conferences_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_conferences ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_conferences, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_conferences, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_conferences, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_conferences, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/conferences'
 
@@ -7965,8 +8117,8 @@ module WinthropClient
 
     # Retrieve some or all conferenceships
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [ConferenceshipCollection]
     def get_conferenceships(opts = {})
@@ -7976,14 +8128,30 @@ module WinthropClient
 
     # Retrieve some or all conferenceships
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(ConferenceshipCollection, Integer, Hash)>] ConferenceshipCollection data, response status code and response headers
     def get_conferenceships_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_conferenceships ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_conferenceships, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_conferenceships, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_conferenceships, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_conferenceships, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/conferenceships'
 
@@ -8145,8 +8313,8 @@ module WinthropClient
 
     # Retrieve scheduling contacts for the current account's school
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [ContactSearchCollection]
     def get_contact_searches(opts = {})
@@ -8156,14 +8324,30 @@ module WinthropClient
 
     # Retrieve scheduling contacts for the current account&#39;s school
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(ContactSearchCollection, Integer, Hash)>] ContactSearchCollection data, response status code and response headers
     def get_contact_searches_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_contact_searches ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_contact_searches, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_contact_searches, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_contact_searches, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_contact_searches, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/contact_searches'
 
@@ -8209,8 +8393,8 @@ module WinthropClient
 
     # Retrieve some or all contacts
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [ContactCollection]
     def get_contacts(opts = {})
@@ -8220,14 +8404,30 @@ module WinthropClient
 
     # Retrieve some or all contacts
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(ContactCollection, Integer, Hash)>] ContactCollection data, response status code and response headers
     def get_contacts_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_contacts ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_contacts, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_contacts, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_contacts, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_contacts, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/contacts'
 
@@ -8414,8 +8614,8 @@ module WinthropClient
 
     # Retrieve some or all contracts
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [ContractCollection]
     def get_contracts(opts = {})
@@ -8425,14 +8625,30 @@ module WinthropClient
 
     # Retrieve some or all contracts
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(ContractCollection, Integer, Hash)>] ContractCollection data, response status code and response headers
     def get_contracts_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_contracts ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_contracts, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_contracts, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_contracts, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_contracts, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/contracts'
 
@@ -8539,8 +8755,8 @@ module WinthropClient
 
     # Search deals with filtering and pagination
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [DealSearchResultCollection]
     def get_deal_searches(opts = {})
@@ -8550,14 +8766,30 @@ module WinthropClient
 
     # Search deals with filtering and pagination
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(DealSearchResultCollection, Integer, Hash)>] DealSearchResultCollection data, response status code and response headers
     def get_deal_searches_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_deal_searches ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_deal_searches, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_deal_searches, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_deal_searches, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_deal_searches, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/deal_searches'
 
@@ -8664,8 +8896,8 @@ module WinthropClient
 
     # Retrieve some or all deal statuses
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [DealStatusCollection]
     def get_deal_statuses(opts = {})
@@ -8675,14 +8907,30 @@ module WinthropClient
 
     # Retrieve some or all deal statuses
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(DealStatusCollection, Integer, Hash)>] DealStatusCollection data, response status code and response headers
     def get_deal_statuses_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_deal_statuses ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_deal_statuses, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_deal_statuses, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_deal_statuses, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_deal_statuses, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/deal_statuses'
 
@@ -8728,8 +8976,8 @@ module WinthropClient
 
     # Retrieve some or all deals
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [DealCollection]
     def get_deals(opts = {})
@@ -8739,14 +8987,30 @@ module WinthropClient
 
     # Retrieve some or all deals
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(DealCollection, Integer, Hash)>] DealCollection data, response status code and response headers
     def get_deals_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_deals ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_deals, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_deals, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_deals, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_deals, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/deals'
 
@@ -8792,7 +9056,7 @@ module WinthropClient
 
     # Search school departments with filtering and pagination
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [DepartmentSearchResultCollection]
     def get_department_searches(opts = {})
@@ -8802,13 +9066,21 @@ module WinthropClient
 
     # Search school departments with filtering and pagination
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(DepartmentSearchResultCollection, Integer, Hash)>] DepartmentSearchResultCollection data, response status code and response headers
     def get_department_searches_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_department_searches ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_department_searches, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_department_searches, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/department_searches'
 
@@ -9153,8 +9425,8 @@ module WinthropClient
 
     # Retrieve some or all divisions
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [DivisionCollection]
     def get_divisions(opts = {})
@@ -9164,14 +9436,30 @@ module WinthropClient
 
     # Retrieve some or all divisions
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(DivisionCollection, Integer, Hash)>] DivisionCollection data, response status code and response headers
     def get_divisions_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_divisions ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_divisions, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_divisions, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_divisions, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_divisions, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/divisions'
 
@@ -9219,12 +9507,13 @@ module WinthropClient
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :coach_id 
     # @option opts [Integer] :raw_contract_id The contract the items come from
+    # @option opts [Integer] :ended_by_contract_id Only the items whose ending amendment is this raw contract (an earned raise ended by an amendment). Unlike raw_contract_id, it never matches the contract an item comes from. Items with no ending amendment are never listed by it.
     # @option opts [Integer] :school_id Every item whose season belongs to one of this school&#39;s teams
     # @option opts [Integer] :season_year The season&#39;s END year (2026 is the 2025-26 season). &#x60;season&#x60; is accepted as the same filter.
     # @option opts [Integer] :season Same as season_year
     # @option opts [Integer] :season_id One team&#39;s season row
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @return [EarnedIncentiveCollection]
     def get_earned_incentives(opts = {})
       data, _status_code, _headers = get_earned_incentives_with_http_info(opts)
@@ -9235,17 +9524,34 @@ module WinthropClient
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :coach_id 
     # @option opts [Integer] :raw_contract_id The contract the items come from
+    # @option opts [Integer] :ended_by_contract_id Only the items whose ending amendment is this raw contract (an earned raise ended by an amendment). Unlike raw_contract_id, it never matches the contract an item comes from. Items with no ending amendment are never listed by it.
     # @option opts [Integer] :school_id Every item whose season belongs to one of this school&#39;s teams
     # @option opts [Integer] :season_year The season&#39;s END year (2026 is the 2025-26 season). &#x60;season&#x60; is accepted as the same filter.
     # @option opts [Integer] :season Same as season_year
     # @option opts [Integer] :season_id One team&#39;s season row
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @return [Array<(EarnedIncentiveCollection, Integer, Hash)>] EarnedIncentiveCollection data, response status code and response headers
     def get_earned_incentives_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_earned_incentives ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_earned_incentives, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_earned_incentives, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_earned_incentives, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_earned_incentives, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/earned_incentives'
 
@@ -9253,6 +9559,7 @@ module WinthropClient
       query_params = opts[:query_params] || {}
       query_params[:'coach_id'] = opts[:'coach_id'] if !opts[:'coach_id'].nil?
       query_params[:'raw_contract_id'] = opts[:'raw_contract_id'] if !opts[:'raw_contract_id'].nil?
+      query_params[:'ended_by_contract_id'] = opts[:'ended_by_contract_id'] if !opts[:'ended_by_contract_id'].nil?
       query_params[:'school_id'] = opts[:'school_id'] if !opts[:'school_id'].nil?
       query_params[:'season_year'] = opts[:'season_year'] if !opts[:'season_year'].nil?
       query_params[:'season'] = opts[:'season'] if !opts[:'season'].nil?
@@ -10114,8 +10421,8 @@ module WinthropClient
 
     # Search NCAA financial data with filtering and pagination
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [FinancialSearchResultCollection]
     def get_financial_searches(opts = {})
@@ -10125,14 +10432,30 @@ module WinthropClient
 
     # Search NCAA financial data with filtering and pagination
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(FinancialSearchResultCollection, Integer, Hash)>] FinancialSearchResultCollection data, response status code and response headers
     def get_financial_searches_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_financial_searches ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_financial_searches, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_financial_searches, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_financial_searches, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_financial_searches, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/financial_searches'
 
@@ -10239,8 +10562,8 @@ module WinthropClient
 
     # Retrieve some or all foia labels
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [FoiaLabelCollection]
     def get_foia_labels(opts = {})
@@ -10250,14 +10573,30 @@ module WinthropClient
 
     # Retrieve some or all foia labels
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(FoiaLabelCollection, Integer, Hash)>] FoiaLabelCollection data, response status code and response headers
     def get_foia_labels_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_foia_labels ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_foia_labels, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_foia_labels, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_foia_labels, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_foia_labels, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/foia_labels'
 
@@ -10364,8 +10703,8 @@ module WinthropClient
 
     # Retrieve some or all foia requests
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [FoiaRequestCollection]
     def get_foia_requests(opts = {})
@@ -10375,14 +10714,30 @@ module WinthropClient
 
     # Retrieve some or all foia requests
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(FoiaRequestCollection, Integer, Hash)>] FoiaRequestCollection data, response status code and response headers
     def get_foia_requests_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_foia_requests ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_foia_requests, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_foia_requests, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_foia_requests, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_foia_requests, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/foia_requests'
 
@@ -10678,8 +11033,8 @@ module WinthropClient
 
     # Search game contracts (GAD) with filtering and pagination. Optionally returns school-summary (median paid/received) and cohort-summary (NCAA cohort benchmark) aggregates alongside the paginated agreements.
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @option opts [String] :distance_school_type Top-level distance side (paired with q[distance_lt]). Only honored when the caller&#39;s account is tied to a school.
     # @option opts [Boolean] :include_school_summary When true, also compute a per-school median paid_out / received block. Requires q[sport_id_eq] and a school filter (home_school_id_eq, away_school_id_eq, or home_school_id_or_away_school_id_eq). Mutually exclusive with include_cohort_summary.
@@ -10695,8 +11050,8 @@ module WinthropClient
 
     # Search game contracts (GAD) with filtering and pagination. Optionally returns school-summary (median paid/received) and cohort-summary (NCAA cohort benchmark) aggregates alongside the paginated agreements.
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @option opts [String] :distance_school_type Top-level distance side (paired with q[distance_lt]). Only honored when the caller&#39;s account is tied to a school.
     # @option opts [Boolean] :include_school_summary When true, also compute a per-school median paid_out / received block. Requires q[sport_id_eq] and a school filter (home_school_id_eq, away_school_id_eq, or home_school_id_or_away_school_id_eq). Mutually exclusive with include_cohort_summary.
@@ -10709,6 +11064,22 @@ module WinthropClient
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_gad_searches ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_gad_searches, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_gad_searches, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_gad_searches, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_gad_searches, must be greater than or equal to 1.'
+      end
+
       allowable_values = ["home", "away"]
       if @api_client.config.client_side_validation && opts[:'distance_school_type'] && !allowable_values.include?(opts[:'distance_school_type'])
         fail ArgumentError, "invalid value for \"distance_school_type\", must be one of #{allowable_values}"
@@ -10959,8 +11330,8 @@ module WinthropClient
 
     # Retrieve some or all game_contracts
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [GameContractCollection]
     def get_game_contracts(opts = {})
@@ -10970,14 +11341,30 @@ module WinthropClient
 
     # Retrieve some or all game_contracts
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(GameContractCollection, Integer, Hash)>] GameContractCollection data, response status code and response headers
     def get_game_contracts_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_game_contracts ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_game_contracts, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_game_contracts, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_game_contracts, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_game_contracts, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/game_contracts'
 
@@ -11203,8 +11590,8 @@ module WinthropClient
 
     # Search game posts with enriched data including school info, location, RPI, etc. WINAD: pass q[defer_enrichment]=true (the dashboard feed) to omit the slow per-card blocks — overlap, guarantee, and schedule_intents — from each row so the cards paint first; POST /game_post_searches/enrichment then returns those blocks for the loaded pairs. The inline path (e.g. post_details) leaves the flag off and keeps them on each row.
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @option opts [Boolean] :group_by_school When true, returns one row per school+sport (the school&#39;s newest post as the representative, newest school first) and pagination counts schools. When false/absent, returns the per-post listing.
     # @option opts [Boolean] :post_details When true, each posts[] entry is enriched with the per-post detail fields (status, start_date, end_date, description, game_types_display, expires_on, created_at, can_manage, created_by) and the result carries the shared school+sport contacts[]. Used by the school+sport show page. When false/absent, posts[] stays lean (id, date, game_types only).
@@ -11216,8 +11603,8 @@ module WinthropClient
 
     # Search game posts with enriched data including school info, location, RPI, etc. WINAD: pass q[defer_enrichment]&#x3D;true (the dashboard feed) to omit the slow per-card blocks — overlap, guarantee, and schedule_intents — from each row so the cards paint first; POST /game_post_searches/enrichment then returns those blocks for the loaded pairs. The inline path (e.g. post_details) leaves the flag off and keeps them on each row.
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @option opts [Boolean] :group_by_school When true, returns one row per school+sport (the school&#39;s newest post as the representative, newest school first) and pagination counts schools. When false/absent, returns the per-post listing.
     # @option opts [Boolean] :post_details When true, each posts[] entry is enriched with the per-post detail fields (status, start_date, end_date, description, game_types_display, expires_on, created_at, can_manage, created_by) and the result carries the shared school+sport contacts[]. Used by the school+sport show page. When false/absent, posts[] stays lean (id, date, game_types only).
@@ -11226,6 +11613,22 @@ module WinthropClient
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_game_post_searches ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_game_post_searches, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_game_post_searches, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_game_post_searches, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_game_post_searches, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/game_post_searches'
 
@@ -11273,8 +11676,8 @@ module WinthropClient
 
     # Retrieve some or all game_posts
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [GamePostCollection]
     def get_game_posts(opts = {})
@@ -11284,14 +11687,30 @@ module WinthropClient
 
     # Retrieve some or all game_posts
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(GamePostCollection, Integer, Hash)>] GamePostCollection data, response status code and response headers
     def get_game_posts_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_game_posts ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_game_posts, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_game_posts, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_game_posts, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_game_posts, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/game_posts'
 
@@ -11337,8 +11756,8 @@ module WinthropClient
 
     # Retrieve some or all games
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [GameCollection]
     def get_games(opts = {})
@@ -11348,14 +11767,30 @@ module WinthropClient
 
     # Retrieve some or all games
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(GameCollection, Integer, Hash)>] GameCollection data, response status code and response headers
     def get_games_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_games ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_games, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_games, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_games, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_games, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/games'
 
@@ -11657,8 +12092,8 @@ module WinthropClient
 
     # Retrieve some or all income reports
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [IncomeReportCollection]
     def get_income_reports(opts = {})
@@ -11668,14 +12103,30 @@ module WinthropClient
 
     # Retrieve some or all income reports
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(IncomeReportCollection, Integer, Hash)>] IncomeReportCollection data, response status code and response headers
     def get_income_reports_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_income_reports ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_income_reports, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_income_reports, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_income_reports, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_income_reports, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/income_reports'
 
@@ -11857,8 +12308,8 @@ module WinthropClient
     # List all job posts
     # List all job posts
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [JobPostCollection]
     def get_job_posts(opts = {})
@@ -11869,14 +12320,30 @@ module WinthropClient
     # List all job posts
     # List all job posts
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(JobPostCollection, Integer, Hash)>] JobPostCollection data, response status code and response headers
     def get_job_posts_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_job_posts ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_job_posts, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_job_posts, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_job_posts, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_job_posts, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/central_jobs/job_posts'
 
@@ -12038,8 +12505,8 @@ module WinthropClient
 
     # Retrieve some or all ncaa financial report statuses
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [NcaaFinancialReportStatusCollection]
     def get_ncaa_financial_report_statuses(opts = {})
@@ -12049,14 +12516,30 @@ module WinthropClient
 
     # Retrieve some or all ncaa financial report statuses
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(NcaaFinancialReportStatusCollection, Integer, Hash)>] NcaaFinancialReportStatusCollection data, response status code and response headers
     def get_ncaa_financial_report_statuses_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_ncaa_financial_report_statuses ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_ncaa_financial_report_statuses, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_ncaa_financial_report_statuses, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_ncaa_financial_report_statuses, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_ncaa_financial_report_statuses, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/ncaa_financial_report_statuses'
 
@@ -12287,7 +12770,7 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Retrieve a single position
+    # Retrieve a single position. Carries departure_on for every caller, and departure_reason and departure_source_url only for callers who may update positions (the keys are absent for the rest). approval_quote is never returned by a read.
     # @param position_id [Integer] ID of position to retrieve
     # @param [Hash] opts the optional parameters
     # @return [Position]
@@ -12296,7 +12779,7 @@ module WinthropClient
       data
     end
 
-    # Retrieve a single position
+    # Retrieve a single position. Carries departure_on for every caller, and departure_reason and departure_source_url only for callers who may update positions (the keys are absent for the rest). approval_quote is never returned by a read.
     # @param position_id [Integer] ID of position to retrieve
     # @param [Hash] opts the optional parameters
     # @return [Array<(Position, Integer, Hash)>] Position data, response status code and response headers
@@ -12350,8 +12833,8 @@ module WinthropClient
 
     # Retrieve some or all position types
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [PositionTypeCollection]
     def get_position_types(opts = {})
@@ -12361,14 +12844,30 @@ module WinthropClient
 
     # Retrieve some or all position types
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(PositionTypeCollection, Integer, Hash)>] PositionTypeCollection data, response status code and response headers
     def get_position_types_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_position_types ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_position_types, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_position_types, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_position_types, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_position_types, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/position_types'
 
@@ -12412,10 +12911,10 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Retrieve some or all positions
+    # Retrieve some or all positions. Each position carries departure_on for every caller, and departure_reason and departure_source_url only for callers who may update positions (the keys are absent for the rest). approval_quote is never returned by a read.
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [PositionCollection]
     def get_positions(opts = {})
@@ -12423,16 +12922,32 @@ module WinthropClient
       data
     end
 
-    # Retrieve some or all positions
+    # Retrieve some or all positions. Each position carries departure_on for every caller, and departure_reason and departure_source_url only for callers who may update positions (the keys are absent for the rest). approval_quote is never returned by a read.
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(PositionCollection, Integer, Hash)>] PositionCollection data, response status code and response headers
     def get_positions_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_positions ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_positions, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_positions, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_positions, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_positions, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/positions'
 
@@ -12600,8 +13115,8 @@ module WinthropClient
 
     # Retrieve some or all raw_contracts
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [RawContractCollection]
     def get_raw_contracts(opts = {})
@@ -12611,14 +13126,30 @@ module WinthropClient
 
     # Retrieve some or all raw_contracts
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(RawContractCollection, Integer, Hash)>] RawContractCollection data, response status code and response headers
     def get_raw_contracts_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_raw_contracts ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_raw_contracts, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_raw_contracts, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_raw_contracts, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_raw_contracts, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/raw_contracts'
 
@@ -12664,7 +13195,7 @@ module WinthropClient
 
     # Compact read-only position data for reconciliation. Supports the same Ransack filters as positions, including school_id_eq + season_year_eq for rosters, coach_id_in + season_year_gteq for recent history, and coach_id_in without a year bound for full history. Accepts nested or JSON-encoded q. Sorts (or s) may be an array or comma-separated string using id, coach_id, season_id, season_year, school_id, season_sport_id, title or departing, with optional asc/desc directions. Other sort fields or malformed sort input return 400; collection sorting is excluded to prevent duplicate positions. id asc is the default and is appended as a tie-breaker unless an explicit id sort is supplied. As with positions, non-managers cannot read hidden-coach positions or identities; coach-less positions remain readable. Shared entities occur once per page in included and are referenced by ID from data. Biography URLs are retained; biography text, athletic directors, images and compensation are omitted. Use the existing coach detail endpoint only when biography text is needed. Pagination is live, not a frozen snapshot.
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
     # @option opts [Integer] :per_page Positive page size; requests above 100 are clamped to 100. (default to 100)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [ReconciliationPositionCollection]
@@ -12675,7 +13206,7 @@ module WinthropClient
 
     # Compact read-only position data for reconciliation. Supports the same Ransack filters as positions, including school_id_eq + season_year_eq for rosters, coach_id_in + season_year_gteq for recent history, and coach_id_in without a year bound for full history. Accepts nested or JSON-encoded q. Sorts (or s) may be an array or comma-separated string using id, coach_id, season_id, season_year, school_id, season_sport_id, title or departing, with optional asc/desc directions. Other sort fields or malformed sort input return 400; collection sorting is excluded to prevent duplicate positions. id asc is the default and is appended as a tie-breaker unless an explicit id sort is supplied. As with positions, non-managers cannot read hidden-coach positions or identities; coach-less positions remain readable. Shared entities occur once per page in included and are referenced by ID from data. Biography URLs are retained; biography text, athletic directors, images and compensation are omitted. Use the existing coach detail endpoint only when biography text is needed. Pagination is live, not a frozen snapshot.
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
     # @option opts [Integer] :per_page Positive page size; requests above 100 are clamped to 100. (default to 100)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(ReconciliationPositionCollection, Integer, Hash)>] ReconciliationPositionCollection data, response status code and response headers
@@ -12683,6 +13214,14 @@ module WinthropClient
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_reconciliation_positions ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_reconciliation_positions, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_reconciliation_positions, must be greater than or equal to 1.'
+      end
+
       if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
         fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_reconciliation_positions, must be greater than or equal to 1.'
       end
@@ -12918,8 +13457,8 @@ module WinthropClient
 
     # Retrieve some or all requested items
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [RequestedItemCollection]
     def get_requested_items(opts = {})
@@ -12929,14 +13468,30 @@ module WinthropClient
 
     # Retrieve some or all requested items
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(RequestedItemCollection, Integer, Hash)>] RequestedItemCollection data, response status code and response headers
     def get_requested_items_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_requested_items ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_requested_items, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_requested_items, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_requested_items, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_requested_items, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/requested_items'
 
@@ -14541,8 +15096,8 @@ module WinthropClient
 
     # Retrieve some or all schools
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @option opts [String] :sport_name A sport&#39;s internal name (e.g. &#x60;BASKETBALL_M&#x60;, &#x60;BASKETBALL_W&#x60;, &#x60;FOOTBALL&#x60;). When supplied, each returned school includes a &#x60;rank&#x60; field with its latest sport-appropriate ranking (NET/AP/RPI) for that sport. Unknown values are ignored and simply yield no rank.
     # @return [SchoolCollection]
@@ -14553,8 +15108,8 @@ module WinthropClient
 
     # Retrieve some or all schools
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @option opts [String] :sport_name A sport&#39;s internal name (e.g. &#x60;BASKETBALL_M&#x60;, &#x60;BASKETBALL_W&#x60;, &#x60;FOOTBALL&#x60;). When supplied, each returned school includes a &#x60;rank&#x60; field with its latest sport-appropriate ranking (NET/AP/RPI) for that sport. Unknown values are ignored and simply yield no rank.
     # @return [Array<(SchoolCollection, Integer, Hash)>] SchoolCollection data, response status code and response headers
@@ -14562,6 +15117,22 @@ module WinthropClient
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_schools ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_schools, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_schools, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_schools, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_schools, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/schools'
 
@@ -14779,8 +15350,8 @@ module WinthropClient
 
     # Retrieve some or all seasons
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [SeasonCollection]
     def get_seasons(opts = {})
@@ -14790,14 +15361,30 @@ module WinthropClient
 
     # Retrieve some or all seasons
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(SeasonCollection, Integer, Hash)>] SeasonCollection data, response status code and response headers
     def get_seasons_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_seasons ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_seasons, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_seasons, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_seasons, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_seasons, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/seasons'
 
@@ -14845,8 +15432,8 @@ module WinthropClient
     # @param coach_id [Integer] ID of coach to retrieve
     # @param [Hash] opts the optional parameters
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @return [CoachCollection]
     def get_similar_coaches(coach_id, opts = {})
       data, _status_code, _headers = get_similar_coaches_with_http_info(coach_id, opts)
@@ -14857,8 +15444,8 @@ module WinthropClient
     # @param coach_id [Integer] ID of coach to retrieve
     # @param [Hash] opts the optional parameters
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @return [Array<(CoachCollection, Integer, Hash)>] CoachCollection data, response status code and response headers
     def get_similar_coaches_with_http_info(coach_id, opts = {})
       if @api_client.config.debugging
@@ -14868,6 +15455,22 @@ module WinthropClient
       if @api_client.config.client_side_validation && coach_id.nil?
         fail ArgumentError, "Missing the required parameter 'coach_id' when calling DefaultApi.get_similar_coaches"
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_similar_coaches, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_similar_coaches, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_similar_coaches, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_similar_coaches, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/coaches/{coachId}/similar_coaches'.sub('{' + 'coachId' + '}', CGI.escape(coach_id.to_s))
 
@@ -14974,8 +15577,8 @@ module WinthropClient
 
     # Retrieve some or all sports
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [SportCollection]
     def get_sports(opts = {})
@@ -14985,14 +15588,30 @@ module WinthropClient
 
     # Retrieve some or all sports
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(SportCollection, Integer, Hash)>] SportCollection data, response status code and response headers
     def get_sports_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_sports ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_sports, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_sports, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_sports, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_sports, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/sports'
 
@@ -15493,8 +16112,8 @@ module WinthropClient
 
     # Retrieve some or all subdivisions
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [SubdivisionCollection]
     def get_subdivisions(opts = {})
@@ -15504,14 +16123,30 @@ module WinthropClient
 
     # Retrieve some or all subdivisions
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(SubdivisionCollection, Integer, Hash)>] SubdivisionCollection data, response status code and response headers
     def get_subdivisions_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_subdivisions ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_subdivisions, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_subdivisions, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_subdivisions, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_subdivisions, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/subdivisions'
 
@@ -15686,8 +16321,8 @@ module WinthropClient
 
     # Retrieve the all subscriptions
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [SubscriptionCollection]
     def get_subscriptions(opts = {})
@@ -15697,14 +16332,30 @@ module WinthropClient
 
     # Retrieve the all subscriptions
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(SubscriptionCollection, Integer, Hash)>] SubscriptionCollection data, response status code and response headers
     def get_subscriptions_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_subscriptions ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_subscriptions, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_subscriptions, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_subscriptions, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_subscriptions, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/subscriptions'
 
@@ -16339,8 +16990,8 @@ module WinthropClient
 
     # Search team schedules with enriched data including contacts, RPI, returning percentages, and guarantee contract info. Guarantee contract data (home_contracts/away_contracts) is permission-filtered to contracts the caller's ability can view; for users without guarantee access the home_contracts/away_contracts objects are omitted entirely, and the avg_guarantee_paid_cents/avg_guarantee_received_cents aggregate fields are null unless the caller can view aggregate guarantee amounts.
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @option opts [String] :sport_name Sport name filter (e.g. BASKETBALL_M)
     # @option opts [String] :exclude_already_scheduled Exclude schools already on the user&#39;s schedule
@@ -16353,8 +17004,8 @@ module WinthropClient
 
     # Search team schedules with enriched data including contacts, RPI, returning percentages, and guarantee contract info. Guarantee contract data (home_contracts/away_contracts) is permission-filtered to contracts the caller&#39;s ability can view; for users without guarantee access the home_contracts/away_contracts objects are omitted entirely, and the avg_guarantee_paid_cents/avg_guarantee_received_cents aggregate fields are null unless the caller can view aggregate guarantee amounts.
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @option opts [String] :sport_name Sport name filter (e.g. BASKETBALL_M)
     # @option opts [String] :exclude_already_scheduled Exclude schools already on the user&#39;s schedule
@@ -16364,6 +17015,22 @@ module WinthropClient
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_team_schedule_searches ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_team_schedule_searches, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_team_schedule_searches, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_team_schedule_searches, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_team_schedule_searches, must be greater than or equal to 1.'
+      end
+
       allowable_values = ["1"]
       if @api_client.config.client_side_validation && opts[:'exclude_already_scheduled'] && !allowable_values.include?(opts[:'exclude_already_scheduled'])
         fail ArgumentError, "invalid value for \"exclude_already_scheduled\", must be one of #{allowable_values}"
@@ -16425,8 +17092,8 @@ module WinthropClient
     # @option opts [Integer] :sport_id Only results of this sport.
     # @option opts [Integer] :season_year Only results of seasons ending in this year (2023 &#x3D; the 2022-23 season). APR and GSR rows sit on the season of the academic year the rate measures.
     # @option opts [String] :result_name Only results with this name, for example ncaa_stage_reached.
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [TeamSeasonResultCollection]
     def get_team_season_results(opts = {})
@@ -16441,14 +17108,30 @@ module WinthropClient
     # @option opts [Integer] :sport_id Only results of this sport.
     # @option opts [Integer] :season_year Only results of seasons ending in this year (2023 &#x3D; the 2022-23 season). APR and GSR rows sit on the season of the academic year the rate measures.
     # @option opts [String] :result_name Only results with this name, for example ncaa_stage_reached.
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(TeamSeasonResultCollection, Integer, Hash)>] TeamSeasonResultCollection data, response status code and response headers
     def get_team_season_results_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_team_season_results ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_team_season_results, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_team_season_results, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_team_season_results, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_team_season_results, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/team_season_results'
 
@@ -16674,7 +17357,7 @@ module WinthropClient
 
     # Retrieve paginated list of uploaded contracts for the current account
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
     # @return [UploadsResponse]
     def get_uploads(opts = {})
       data, _status_code, _headers = get_uploads_with_http_info(opts)
@@ -16683,12 +17366,20 @@ module WinthropClient
 
     # Retrieve paginated list of uploaded contracts for the current account
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
     # @return [Array<(UploadsResponse, Integer, Hash)>] UploadsResponse data, response status code and response headers
     def get_uploads_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_uploads ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_uploads, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_uploads, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/uploads'
 
@@ -16793,8 +17484,8 @@ module WinthropClient
 
     # Retrieve some or all user_activity_summaries
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [UserActivitySummaryCollection]
     def get_user_activity_summaries(opts = {})
@@ -16804,14 +17495,30 @@ module WinthropClient
 
     # Retrieve some or all user_activity_summaries
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(UserActivitySummaryCollection, Integer, Hash)>] UserActivitySummaryCollection data, response status code and response headers
     def get_user_activity_summaries_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_user_activity_summaries ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_user_activity_summaries, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_user_activity_summaries, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_user_activity_summaries, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_user_activity_summaries, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/user_activity_summaries'
 
@@ -16979,8 +17686,8 @@ module WinthropClient
 
     # Retrieve some or all user_requests
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [UserRequestCollection]
     def get_user_requests(opts = {})
@@ -16990,14 +17697,30 @@ module WinthropClient
 
     # Retrieve some or all user_requests
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(UserRequestCollection, Integer, Hash)>] UserRequestCollection data, response status code and response headers
     def get_user_requests_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_user_requests ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_user_requests, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_user_requests, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_user_requests, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_user_requests, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/user_requests'
 
@@ -17043,8 +17766,8 @@ module WinthropClient
 
     # Retrieve some or all users
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [UserCollection]
     def get_users(opts = {})
@@ -17054,14 +17777,30 @@ module WinthropClient
 
     # Retrieve some or all users
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(UserCollection, Integer, Hash)>] UserCollection data, response status code and response headers
     def get_users_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_users ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_users, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_users, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_users, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_users, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/users'
 
@@ -17168,8 +17907,8 @@ module WinthropClient
 
     # Retrieve some or all vendors
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [VendorCollection]
     def get_vendors(opts = {})
@@ -17179,14 +17918,30 @@ module WinthropClient
 
     # Retrieve some or all vendors
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(VendorCollection, Integer, Hash)>] VendorCollection data, response status code and response headers
     def get_vendors_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_vendors ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_vendors, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_vendors, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_vendors, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_vendors, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/vendors'
 
@@ -17232,8 +17987,8 @@ module WinthropClient
 
     # Returns WireChange records. Supports Ransack-style filters (`q[...]`). Includes related position_types and sports arrays in each object. Each item also includes coach avatar (if present) and school logo images.
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @option opts [Integer] :q_coach_id_eq Filter by coach ID
     # @option opts [Integer] :q_school_id_eq Filter by school ID
@@ -17246,8 +18001,8 @@ module WinthropClient
 
     # Returns WireChange records. Supports Ransack-style filters (&#x60;q[...]&#x60;). Includes related position_types and sports arrays in each object. Each item also includes coach avatar (if present) and school logo images.
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @option opts [Integer] :q_coach_id_eq Filter by coach ID
     # @option opts [Integer] :q_school_id_eq Filter by school ID
@@ -17257,6 +18012,22 @@ module WinthropClient
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_wire_changes ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_wire_changes, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.get_wire_changes, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_wire_changes, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.get_wire_changes, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/api/v1/wire_changes'
 
@@ -17825,7 +18596,7 @@ module WinthropClient
       return data, status_code, headers
     end
 
-    # Search coaches by priority_ids and Ransack filters
+    # Search coaches by priority_ids and Ransack filters. A search that filters or sorts on pay returns only people whose latest_salary the caller may see. Pay is any pay-like column (latest_salary, latest_salary_year, positions.compensation_id, ...) and any condition or sort whose association path passes through a pay table (compensations, contracts, raw_contracts, income_reports, termination_agreements), whatever the final column. A column directly on the person's own pay records (compensations_<column>, contracts_<column>, income_reports_<column>, termination_agreements_<column>, positions_compensation_<column>, current_position_compensation_<column>, next_position_compensation_<column>) also leaves the person out if any of those records is hidden from the caller. Any other path to pay, including one that continues past those records (e.g. compensations_contract_status_name_eq, contracts_raw_contract_text_cont, or co-workers' pay through positions_season_positions_compensation_*), is unsupported: it returns no results unless the caller is a super admin or service connection, even with both pay roles. Searches that do not touch pay are unaffected.
     # @param [Hash] opts the optional parameters
     # @option opts [Filters] :filters 
     # @return [CoachCollection]
@@ -17834,7 +18605,7 @@ module WinthropClient
       data
     end
 
-    # Search coaches by priority_ids and Ransack filters
+    # Search coaches by priority_ids and Ransack filters. A search that filters or sorts on pay returns only people whose latest_salary the caller may see. Pay is any pay-like column (latest_salary, latest_salary_year, positions.compensation_id, ...) and any condition or sort whose association path passes through a pay table (compensations, contracts, raw_contracts, income_reports, termination_agreements), whatever the final column. A column directly on the person&#39;s own pay records (compensations_&lt;column&gt;, contracts_&lt;column&gt;, income_reports_&lt;column&gt;, termination_agreements_&lt;column&gt;, positions_compensation_&lt;column&gt;, current_position_compensation_&lt;column&gt;, next_position_compensation_&lt;column&gt;) also leaves the person out if any of those records is hidden from the caller. Any other path to pay, including one that continues past those records (e.g. compensations_contract_status_name_eq, contracts_raw_contract_text_cont, or co-workers&#39; pay through positions_season_positions_compensation_*), is unsupported: it returns no results unless the caller is a super admin or service connection, even with both pay roles. Searches that do not touch pay are unaffected.
     # @param [Hash] opts the optional parameters
     # @option opts [Filters] :filters 
     # @return [Array<(CoachCollection, Integer, Hash)>] CoachCollection data, response status code and response headers

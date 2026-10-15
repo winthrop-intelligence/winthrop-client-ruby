@@ -24,6 +24,9 @@ module WinthropClient
     # Only on a refused coach move. The verification events recorded for the contract.
     attr_accessor :linked_verification_ids
 
+    # Only on a refused coach move. The earned incentives whose raw_contract_id or ended_by_contract_id is the contract's RawContract, in id order, each once.
+    attr_accessor :linked_earned_incentive_ids
+
     # Error messages keyed by attribute (base for whole-request errors)
     attr_accessor :errors
 
@@ -33,6 +36,7 @@ module WinthropClient
         :'linked_compensation_ids' => :'linked_compensation_ids',
         :'linked_position_ids' => :'linked_position_ids',
         :'linked_verification_ids' => :'linked_verification_ids',
+        :'linked_earned_incentive_ids' => :'linked_earned_incentive_ids',
         :'errors' => :'errors'
       }
     end
@@ -53,6 +57,7 @@ module WinthropClient
         :'linked_compensation_ids' => :'Array<Integer>',
         :'linked_position_ids' => :'Array<Integer>',
         :'linked_verification_ids' => :'Array<Integer>',
+        :'linked_earned_incentive_ids' => :'Array<Integer>',
         :'errors' => :'Hash<String, Array<String>>'
       }
     end
@@ -94,6 +99,12 @@ module WinthropClient
       if attributes.key?(:'linked_verification_ids')
         if (value = attributes[:'linked_verification_ids']).is_a?(Array)
           self.linked_verification_ids = value
+        end
+      end
+
+      if attributes.key?(:'linked_earned_incentive_ids')
+        if (value = attributes[:'linked_earned_incentive_ids']).is_a?(Array)
+          self.linked_earned_incentive_ids = value
         end
       end
 
@@ -144,6 +155,7 @@ module WinthropClient
           linked_compensation_ids == o.linked_compensation_ids &&
           linked_position_ids == o.linked_position_ids &&
           linked_verification_ids == o.linked_verification_ids &&
+          linked_earned_incentive_ids == o.linked_earned_incentive_ids &&
           errors == o.errors
     end
 
@@ -156,7 +168,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [linked_compensation_ids, linked_position_ids, linked_verification_ids, errors].hash
+      [linked_compensation_ids, linked_position_ids, linked_verification_ids, linked_earned_incentive_ids, errors].hash
     end
 
     # Builds the object from hash

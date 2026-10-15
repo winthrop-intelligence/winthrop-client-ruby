@@ -21,9 +21,6 @@ module WinthropClient
 
     attr_accessor :school_name
 
-    # Full school name for performance charts and accessible summaries.
-    attr_accessor :school_full_name
-
     attr_accessor :school_id
 
     attr_accessor :position_sport
@@ -38,19 +35,44 @@ module WinthropClient
 
     attr_accessor :apr_asr
 
+    # The measure in apr_asr, selected using the same school division rule; null for administrator rows.
+    attr_accessor :academic_metric
+
     attr_accessor :coach_apr
 
     attr_accessor :departing
 
-    # True when the position includes the Head Coach position type (interim head coach is not included).
+    # True when the position includes Head Coach or Interim Head Coach.
     attr_accessor :head_coach
 
-    # True when the position includes a coaching type in the Assistant Coaches group, excluding Offensive, Defensive and Special Teams Analysts. A season can be neither head coach nor assistant, e.g. an interim head coach, analyst or operations role.
+    # True when the position includes a coaching type in the Assistant Coaches group, excluding Offensive, Defensive and Special Teams Analysts. A season can be neither head coach nor assistant, e.g. an analyst or operations role.
     attr_accessor :assistant_coach
 
     attr_accessor :us_news
 
     attr_accessor :directors_cup
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -58,7 +80,6 @@ module WinthropClient
         :'sport' => :'sport',
         :'year_str' => :'year_str',
         :'school_name' => :'school_name',
-        :'school_full_name' => :'school_full_name',
         :'school_id' => :'school_id',
         :'position_sport' => :'position_sport',
         :'record' => :'record',
@@ -66,6 +87,7 @@ module WinthropClient
         :'net_rank' => :'net_rank',
         :'ap_rank' => :'ap_rank',
         :'apr_asr' => :'apr_asr',
+        :'academic_metric' => :'academic_metric',
         :'coach_apr' => :'coach_apr',
         :'departing' => :'departing',
         :'head_coach' => :'head_coach',
@@ -91,7 +113,6 @@ module WinthropClient
         :'sport' => :'String',
         :'year_str' => :'String',
         :'school_name' => :'String',
-        :'school_full_name' => :'String',
         :'school_id' => :'Integer',
         :'position_sport' => :'String',
         :'record' => :'String',
@@ -99,6 +120,7 @@ module WinthropClient
         :'net_rank' => :'String',
         :'ap_rank' => :'String',
         :'apr_asr' => :'String',
+        :'academic_metric' => :'String',
         :'coach_apr' => :'Float',
         :'departing' => :'Boolean',
         :'head_coach' => :'Boolean',
@@ -116,6 +138,7 @@ module WinthropClient
         :'net_rank',
         :'ap_rank',
         :'apr_asr',
+        :'academic_metric',
         :'coach_apr',
         :'departing',
         :'us_news',
@@ -157,12 +180,6 @@ module WinthropClient
         self.school_name = nil
       end
 
-      if attributes.key?(:'school_full_name')
-        self.school_full_name = attributes[:'school_full_name']
-      else
-        self.school_full_name = nil
-      end
-
       if attributes.key?(:'school_id')
         self.school_id = attributes[:'school_id']
       else
@@ -193,6 +210,12 @@ module WinthropClient
 
       if attributes.key?(:'apr_asr')
         self.apr_asr = attributes[:'apr_asr']
+      end
+
+      if attributes.key?(:'academic_metric')
+        self.academic_metric = attributes[:'academic_metric']
+      else
+        self.academic_metric = nil
       end
 
       if attributes.key?(:'coach_apr')
@@ -237,10 +260,6 @@ module WinthropClient
         invalid_properties.push('invalid value for "school_name", school_name cannot be nil.')
       end
 
-      if @school_full_name.nil?
-        invalid_properties.push('invalid value for "school_full_name", school_full_name cannot be nil.')
-      end
-
       if @school_id.nil?
         invalid_properties.push('invalid value for "school_id", school_id cannot be nil.')
       end
@@ -259,9 +278,10 @@ module WinthropClient
       return false if @sport.nil?
       return false if @year_str.nil?
       return false if @school_name.nil?
-      return false if @school_full_name.nil?
       return false if @school_id.nil?
       return false if @position_sport.nil?
+      academic_metric_validator = EnumAttributeValidator.new('String', ["APR", "ASR"])
+      return false unless academic_metric_validator.valid?(@academic_metric)
       true
     end
 
@@ -296,16 +316,6 @@ module WinthropClient
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] school_full_name Value to be assigned
-    def school_full_name=(school_full_name)
-      if school_full_name.nil?
-        fail ArgumentError, 'school_full_name cannot be nil'
-      end
-
-      @school_full_name = school_full_name
-    end
-
-    # Custom attribute writer method with validation
     # @param [Object] school_id Value to be assigned
     def school_id=(school_id)
       if school_id.nil?
@@ -325,6 +335,16 @@ module WinthropClient
       @position_sport = position_sport
     end
 
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] academic_metric Object to be assigned
+    def academic_metric=(academic_metric)
+      validator = EnumAttributeValidator.new('String', ["APR", "ASR"])
+      unless validator.valid?(academic_metric)
+        fail ArgumentError, "invalid value for \"academic_metric\", must be one of #{validator.allowable_values}."
+      end
+      @academic_metric = academic_metric
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -333,7 +353,6 @@ module WinthropClient
           sport == o.sport &&
           year_str == o.year_str &&
           school_name == o.school_name &&
-          school_full_name == o.school_full_name &&
           school_id == o.school_id &&
           position_sport == o.position_sport &&
           record == o.record &&
@@ -341,6 +360,7 @@ module WinthropClient
           net_rank == o.net_rank &&
           ap_rank == o.ap_rank &&
           apr_asr == o.apr_asr &&
+          academic_metric == o.academic_metric &&
           coach_apr == o.coach_apr &&
           departing == o.departing &&
           head_coach == o.head_coach &&
@@ -358,7 +378,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [sport, year_str, school_name, school_full_name, school_id, position_sport, record, rpi, net_rank, ap_rank, apr_asr, coach_apr, departing, head_coach, assistant_coach, us_news, directors_cup].hash
+      [sport, year_str, school_name, school_id, position_sport, record, rpi, net_rank, ap_rank, apr_asr, academic_metric, coach_apr, departing, head_coach, assistant_coach, us_news, directors_cup].hash
     end
 
     # Builds the object from hash

@@ -213,8 +213,8 @@ module WinthropClient
     # @option opts [Date] :date Restrict to interests submitted on this calendar day (application time zone). Format YYYY-MM-DD. May be combined with the submitted_after/submitted_before bounds.
     # @option opts [Time] :submitted_after Only include interests submitted at or after this timestamp (ISO 8601).
     # @option opts [Time] :submitted_before Only include interests submitted at or before this timestamp (ISO 8601).
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @return [JobPostInterestLeadCollection]
     def get_job_post_interest_leads(opts = {})
       data, _status_code, _headers = get_job_post_interest_leads_with_http_info(opts)
@@ -226,13 +226,29 @@ module WinthropClient
     # @option opts [Date] :date Restrict to interests submitted on this calendar day (application time zone). Format YYYY-MM-DD. May be combined with the submitted_after/submitted_before bounds.
     # @option opts [Time] :submitted_after Only include interests submitted at or after this timestamp (ISO 8601).
     # @option opts [Time] :submitted_before Only include interests submitted at or before this timestamp (ISO 8601).
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @return [Array<(JobPostInterestLeadCollection, Integer, Hash)>] JobPostInterestLeadCollection data, response status code and response headers
     def get_job_post_interest_leads_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: IntercollegiateApi.get_job_post_interest_leads ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling IntercollegiateApi.get_job_post_interest_leads, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling IntercollegiateApi.get_job_post_interest_leads, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling IntercollegiateApi.get_job_post_interest_leads, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling IntercollegiateApi.get_job_post_interest_leads, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/wi_jobs/job_post_interest_leads'
 
@@ -376,8 +392,8 @@ module WinthropClient
 
     # Retrieve some or all active jobs
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [JobCollection]
     def get_job_posts(opts = {})
@@ -387,14 +403,30 @@ module WinthropClient
 
     # Retrieve some or all active jobs
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page results page to retrieve. (default to 1)
-    # @option opts [Integer] :per_page number of results per page. (default to 20)
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @return [Array<(JobCollection, Integer, Hash)>] JobCollection data, response status code and response headers
     def get_job_posts_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: IntercollegiateApi.get_job_posts ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling IntercollegiateApi.get_job_posts, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling IntercollegiateApi.get_job_posts, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling IntercollegiateApi.get_job_posts, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling IntercollegiateApi.get_job_posts, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/wi_jobs/job_posts'
 

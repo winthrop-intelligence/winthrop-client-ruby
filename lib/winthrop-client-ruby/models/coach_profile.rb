@@ -25,6 +25,7 @@ module WinthropClient
 
     attr_accessor :phone
 
+    # True when the profile reads as an administrator's: every position the person holds in their header season (the latest season up to the current one) is in the ADMIN sport.
     attr_accessor :leader
 
     # Whether the coach appears on customer-facing surfaces

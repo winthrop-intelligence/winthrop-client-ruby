@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **leader_ad** | **Boolean** |  |  |
+| **leader_ad** | **Boolean** | Same as CoachProfile.leader (the profile reads as an administrator&#39;s). |  |
 | **positions** | [**Array&lt;RecruitingPositionEntry&gt;**](RecruitingPositionEntry.md) |  |  |
 | **conference_comparison** | [**CoachRecruitingTabConferenceComparison**](CoachRecruitingTabConferenceComparison.md) |  | [optional] |
 | **can_see_financials** | **Boolean** |  |  |

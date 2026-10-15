@@ -108,7 +108,7 @@ end
 
 api_instance = WinthropClient::FoiaInboxApi.new
 opts = {
-  page: 56, # Integer | results page to retrieve.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
   per_page: 56, # Integer | 
   school_id: 56, # Integer | 
   foia_request_id: 56, # Integer | 
@@ -146,7 +146,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. | [optional][default to 1] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
 | **per_page** | **Integer** |  | [optional][default to 100] |
 | **school_id** | **Integer** |  | [optional] |
 | **foia_request_id** | **Integer** |  | [optional] |

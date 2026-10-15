@@ -15,6 +15,7 @@ require 'time'
 
 module WinthropClient
   class CoachRecruitingTab < ApiModelBase
+    # Same as CoachProfile.leader (the profile reads as an administrator's).
     attr_accessor :leader_ad
 
     attr_accessor :positions
