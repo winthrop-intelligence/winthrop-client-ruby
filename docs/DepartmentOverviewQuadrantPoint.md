@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **basis** | **String** |  |  |
 | **school_id** | **Integer** |  |  |
 | **name** | **String** |  |  |
 | **is_subject** | **Boolean** |  |  |
@@ -17,6 +18,7 @@
 require 'winthrop-client-ruby'
 
 instance = WinthropClient::DepartmentOverviewQuadrantPoint.new(
+  basis: null,
   school_id: null,
   name: null,
   is_subject: null,
