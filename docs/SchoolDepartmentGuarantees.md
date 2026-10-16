@@ -17,6 +17,7 @@
 | **sports** | [**Array&lt;DepartmentGuaranteesSportLedger&gt;**](DepartmentGuaranteesSportLedger.md) |  |  |
 | **market** | [**DepartmentGuaranteesMarket**](DepartmentGuaranteesMarket.md) |  |  |
 | **trend** | [**Array&lt;DepartmentGuaranteesTrendEntry&gt;**](DepartmentGuaranteesTrendEntry.md) |  |  |
+| **slate_coverage** | [**DepartmentGuaranteesSlateCoverage**](DepartmentGuaranteesSlateCoverage.md) |  |  |
 
 ## Example
 
@@ -36,7 +37,8 @@ instance = WinthropClient::SchoolDepartmentGuarantees.new(
   committed_in: null,
   sports: null,
   market: null,
-  trend: null
+  trend: null,
+  slate_coverage: null
 )
 ```
 
