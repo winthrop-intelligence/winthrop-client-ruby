@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** |  | [optional] |
+| **billing_addresses** | [**Array&lt;AccountBillingAddress&gt;**](AccountBillingAddress.md) | This invoice&#39;s recipients, which may differ from the account&#39;s billing defaults. | [optional] |
 | **invoice_date** | **Date** |  | [optional] |
 | **description** | **String** |  | [optional] |
 | **amount_cents** | **Integer** |  | [optional] |
@@ -26,6 +27,7 @@ require 'winthrop-client-ruby'
 
 instance = WinthropClient::AccountInvoice.new(
   id: null,
+  billing_addresses: null,
   invoice_date: null,
   description: null,
   amount_cents: null,

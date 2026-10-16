@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **data** | [**Array&lt;Subscription&gt;**](Subscription.md) |  | [optional] |
+| **subscription_types** | [**Array&lt;SubscriptionTypeSummary&gt;**](SubscriptionTypeSummary.md) |  | [optional] |
 | **meta** | [**Meta**](Meta.md) |  | [optional] |
 
 ## Example
@@ -14,6 +15,7 @@ require 'winthrop-client-ruby'
 
 instance = WinthropClient::SubscriptionCollection.new(
   data: null,
+  subscription_types: null,
   meta: null
 )
 ```
