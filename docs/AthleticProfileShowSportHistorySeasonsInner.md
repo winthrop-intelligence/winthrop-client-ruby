@@ -16,6 +16,7 @@
 | **conference_wins** | **Integer** |  | [optional] |
 | **postseason** | **String** |  | [optional] |
 | **spend_cents** | **Integer** |  | [optional] |
+| **spend_basis** | **String** | Which report this season&#39;s spend was read from. A private school files no NCAA FRS sport split, so its trail reads that season&#39;s own federal EADA sport filing instead of being withheld (WINAD-10408). Never walked back to a neighbouring year&#39;s filing — a season plotted from another season&#39;s money would be a fabricated point — so this is null wherever that season filed nothing. | [optional] |
 
 ## Example
 
@@ -34,7 +35,8 @@ instance = WinthropClient::AthleticProfileShowSportHistorySeasonsInner.new(
   rpi: null,
   conference_wins: null,
   postseason: null,
-  spend_cents: null
+  spend_cents: null,
+  spend_basis: null
 )
 ```
 

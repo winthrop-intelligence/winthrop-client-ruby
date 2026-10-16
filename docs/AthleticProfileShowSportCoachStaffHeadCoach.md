@@ -8,8 +8,9 @@
 | **name** | **String** |  | [optional] |
 | **last_name** | **String** | Structured last name — may be multi-word (\&quot;Hughley Jr\&quot;). | [optional] |
 | **comp_cents** | **Integer** |  | [optional] |
+| **comp_fiscal_year** | **Integer** | The IRS 990&#39;s own filing year, when this seat&#39;s pay was read from one (a private school — see comp_basis). Null on contract basis, where the contract&#39;s own dates say when. | [optional] |
 | **base_salary_cents** | **Integer** |  | [optional] |
-| **comp_rank** | **Integer** |  | [optional] |
+| **comp_rank** | **Integer** | Withheld (null) on 990 basis: a 990 total and a contract&#39;s guaranteed comp are different quantities, so placing one in the other&#39;s order would invent a comparison neither filing supports (WINAD-10406, matching DepartmentCoaches&#39;s private_990 rule). | [optional] |
 | **comp_cohort_size** | **Integer** |  | [optional] |
 | **comp_median_cents** | **Integer** |  | [optional] |
 | **contract_start_on** | **Date** |  | [optional] |
@@ -32,6 +33,7 @@ instance = WinthropClient::AthleticProfileShowSportCoachStaffHeadCoach.new(
   name: null,
   last_name: null,
   comp_cents: null,
+  comp_fiscal_year: null,
   base_salary_cents: null,
   comp_rank: null,
   comp_cohort_size: null,
