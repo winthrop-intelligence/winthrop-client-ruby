@@ -6,18 +6,18 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | ------ | ------------ | ----------- |
 | [**get_coach_contract_requests**](ReportingApi.md#get_coach_contract_requests) | **GET** /api/v1/reports/coach_contract_requests |  |
 | [**get_coach_history**](ReportingApi.md#get_coach_history) | **GET** /api/v1/reports/coach_history |  |
-| [**get_conferenceships**](ReportingApi.md#get_conferenceships) | **GET** /api/v1/reports/conferenceships |  |
 | [**get_foia_details**](ReportingApi.md#get_foia_details) | **GET** /api/v1/reports/foia_details |  |
 | [**get_foia_follow_up_report**](ReportingApi.md#get_foia_follow_up_report) | **GET** /api/v1/reports/foia_follow_up_report |  |
 | [**get_foia_request_followup_history**](ReportingApi.md#get_foia_request_followup_history) | **GET** /api/v1/reports/foia_request_followup_history |  |
 | [**get_foia_requested_item_status_breakdown**](ReportingApi.md#get_foia_requested_item_status_breakdown) | **GET** /api/v1/reports/foia_requested_item_status_breakdown |  |
 | [**get_foia_requested_item_status_transitions**](ReportingApi.md#get_foia_requested_item_status_transitions) | **GET** /api/v1/reports/foia_requested_item_status_transitions |  |
 | [**get_foia_status_summary**](ReportingApi.md#get_foia_status_summary) | **GET** /api/v1/reports/foia_status_summary |  |
-| [**get_games**](ReportingApi.md#get_games) | **GET** /api/v1/reports/games |  |
 | [**get_invoices**](ReportingApi.md#get_invoices) | **GET** /api/v1/reports/invoices |  |
+| [**get_report_conferenceships**](ReportingApi.md#get_report_conferenceships) | **GET** /api/v1/reports/conferenceships |  |
+| [**get_report_games**](ReportingApi.md#get_report_games) | **GET** /api/v1/reports/games |  |
+| [**get_report_subscriptions**](ReportingApi.md#get_report_subscriptions) | **GET** /api/v1/reports/subscriptions |  |
 | [**get_school_contract_requests**](ReportingApi.md#get_school_contract_requests) | **GET** /api/v1/reports/school_contract_requests |  |
 | [**get_schools_financials_qc**](ReportingApi.md#get_schools_financials_qc) | **GET** /api/v1/financials_qc |  |
-| [**get_subscriptions**](ReportingApi.md#get_subscriptions) | **GET** /api/v1/reports/subscriptions |  |
 
 
 ## get_coach_contract_requests
@@ -152,84 +152,6 @@ begin
   p data # => Object
 rescue WinthropClient::ApiError => e
   puts "Error when calling ReportingApi->get_coach_history_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
-| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
-
-### Return type
-
-**Object**
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## get_conferenceships
-
-> Object get_conferenceships(opts)
-
-
-
-Retrieve some or all conferenceships
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::ReportingApi.new
-opts = {
-  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
-  q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
-}
-
-begin
-  
-  result = api_instance.get_conferenceships(opts)
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling ReportingApi->get_conferenceships: #{e}"
-end
-```
-
-#### Using the get_conferenceships_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(Object, Integer, Hash)> get_conferenceships_with_http_info(opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.get_conferenceships_with_http_info(opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => Object
-rescue WinthropClient::ApiError => e
-  puts "Error when calling ReportingApi->get_conferenceships_with_http_info: #{e}"
 end
 ```
 
@@ -774,84 +696,6 @@ end
 - **Accept**: application/json
 
 
-## get_games
-
-> Object get_games(opts)
-
-
-
-Retrieve some or all games
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::ReportingApi.new
-opts = {
-  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
-  q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
-}
-
-begin
-  
-  result = api_instance.get_games(opts)
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling ReportingApi->get_games: #{e}"
-end
-```
-
-#### Using the get_games_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(Object, Integer, Hash)> get_games_with_http_info(opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.get_games_with_http_info(opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => Object
-rescue WinthropClient::ApiError => e
-  puts "Error when calling ReportingApi->get_games_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
-| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
-
-### Return type
-
-**Object**
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
 ## get_invoices
 
 > <InvoiceReportResult> get_invoices(opts)
@@ -919,6 +763,240 @@ end
 ### Return type
 
 [**InvoiceReportResult**](InvoiceReportResult.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_report_conferenceships
+
+> Object get_report_conferenceships(opts)
+
+
+
+Retrieve some or all conferenceships
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::ReportingApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+}
+
+begin
+  
+  result = api_instance.get_report_conferenceships(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling ReportingApi->get_report_conferenceships: #{e}"
+end
+```
+
+#### Using the get_report_conferenceships_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> get_report_conferenceships_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_report_conferenceships_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue WinthropClient::ApiError => e
+  puts "Error when calling ReportingApi->get_report_conferenceships_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_report_games
+
+> Object get_report_games(opts)
+
+
+
+Retrieve some or all games
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::ReportingApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+}
+
+begin
+  
+  result = api_instance.get_report_games(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling ReportingApi->get_report_games: #{e}"
+end
+```
+
+#### Using the get_report_games_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> get_report_games_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_report_games_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue WinthropClient::ApiError => e
+  puts "Error when calling ReportingApi->get_report_games_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_report_subscriptions
+
+> Object get_report_subscriptions(opts)
+
+
+
+Retrieve subscriptions
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::ReportingApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+}
+
+begin
+  
+  result = api_instance.get_report_subscriptions(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling ReportingApi->get_report_subscriptions: #{e}"
+end
+```
+
+#### Using the get_report_subscriptions_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> get_report_subscriptions_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_report_subscriptions_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue WinthropClient::ApiError => e
+  puts "Error when calling ReportingApi->get_report_subscriptions_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
+
+### Return type
+
+**Object**
 
 ### Authorization
 
@@ -1075,84 +1153,6 @@ end
 ### Return type
 
 [**FinancialQc**](FinancialQc.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## get_subscriptions
-
-> Object get_subscriptions(opts)
-
-
-
-Retrieve subscriptions
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::ReportingApi.new
-opts = {
-  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
-  q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
-}
-
-begin
-  
-  result = api_instance.get_subscriptions(opts)
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling ReportingApi->get_subscriptions: #{e}"
-end
-```
-
-#### Using the get_subscriptions_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(Object, Integer, Hash)> get_subscriptions_with_http_info(opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.get_subscriptions_with_http_info(opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => Object
-rescue WinthropClient::ApiError => e
-  puts "Error when calling ReportingApi->get_subscriptions_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
-| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
-
-### Return type
-
-**Object**
 
 ### Authorization
 
