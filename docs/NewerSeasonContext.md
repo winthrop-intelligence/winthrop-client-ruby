@@ -11,6 +11,7 @@
 | **conference_name** | **String** |  |  |
 | **position_title** | **String** |  |  |
 | **compensation_cents** | **Integer** | Positive total compensation for this position season only; null when missing or unauthorized |  |
+| **assignments** | [**Array&lt;PersonAssignment&gt;**](PersonAssignment.md) | Every newer assignment behind this context, ranked primary first; each carries its own season | [optional] |
 
 ## Example
 
@@ -24,7 +25,8 @@ instance = WinthropClient::NewerSeasonContext.new(
   school_short_name: null,
   conference_name: null,
   position_title: null,
-  compensation_cents: null
+  compensation_cents: null,
+  assignments: null
 )
 ```
 
