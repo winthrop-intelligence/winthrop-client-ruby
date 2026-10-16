@@ -10,7 +10,7 @@
 | **title** | **String** |  | [optional] |
 | **comp_cents** | **Integer** |  | [optional] |
 | **contract_end_on** | **Date** |  | [optional] |
-| **at_will** | **Boolean** | True when no term is stated (no contract, at-will contract, or no end date). Null when compensation is not permitted. | [optional] |
+| **at_will** | **Boolean** | True when a contract on file states no term (at-will, or no end date). False for a dated contract and for a seat with no contract on file. Null when compensation is not permitted. | [optional] |
 | **on_file** | **Boolean** |  | [optional] |
 
 ## Example
