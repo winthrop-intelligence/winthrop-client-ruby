@@ -4,6 +4,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**archive_admin_foia_labels**](DefaultApi.md#archive_admin_foia_labels) | **POST** /api/v1/admin/foia_labels/{id}/archive |  |
 | [**average_conference_comp**](DefaultApi.md#average_conference_comp) | **GET** /api/v1/compensations/average_conference_comp |  |
 | [**average_division_comp**](DefaultApi.md#average_division_comp) | **GET** /api/v1/compensations/average_division_comp |  |
 | [**average_school_comp**](DefaultApi.md#average_school_comp) | **GET** /api/v1/compensations/average_school_comp |  |
@@ -27,6 +28,11 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**create_admin_contract**](DefaultApi.md#create_admin_contract) | **POST** /api/v1/admin/contracts |  |
 | [**create_admin_desk_report**](DefaultApi.md#create_admin_desk_report) | **POST** /api/v1/admin/desk_reports |  |
 | [**create_admin_desk_report_artifact**](DefaultApi.md#create_admin_desk_report_artifact) | **POST** /api/v1/admin/desk_reports/{desk_report_uuid}/artifacts |  |
+| [**create_admin_foia_contacts**](DefaultApi.md#create_admin_foia_contacts) | **POST** /api/v1/admin/foia_contacts |  |
+| [**create_admin_foia_labels**](DefaultApi.md#create_admin_foia_labels) | **POST** /api/v1/admin/foia_labels |  |
+| [**create_admin_foia_request_builder**](DefaultApi.md#create_admin_foia_request_builder) | **POST** /api/v1/admin/foia_request_builder |  |
+| [**create_admin_foia_request_bulk_quick_actions**](DefaultApi.md#create_admin_foia_request_bulk_quick_actions) | **POST** /api/v1/admin/foia_requests/{id}/bulk_quick_actions |  |
+| [**create_admin_foia_requests**](DefaultApi.md#create_admin_foia_requests) | **POST** /api/v1/admin/foia_requests |  |
 | [**create_admin_income_report**](DefaultApi.md#create_admin_income_report) | **POST** /api/v1/admin/income_reports |  |
 | [**create_admin_invoice**](DefaultApi.md#create_admin_invoice) | **POST** /api/v1/admin/invoices |  |
 | [**create_admin_requested_item_ri_note**](DefaultApi.md#create_admin_requested_item_ri_note) | **POST** /api/v1/admin/requested_items/{requested_item_id}/ri_note |  |
@@ -101,6 +107,9 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**destroy_admin_compensation**](DefaultApi.md#destroy_admin_compensation) | **DELETE** /api/v1/admin/compensations/{id} |  |
 | [**destroy_admin_contact**](DefaultApi.md#destroy_admin_contact) | **DELETE** /api/v1/admin/contacts/{id} |  |
 | [**destroy_admin_contract**](DefaultApi.md#destroy_admin_contract) | **DELETE** /api/v1/admin/contracts/{id} |  |
+| [**destroy_admin_foia_contacts**](DefaultApi.md#destroy_admin_foia_contacts) | **DELETE** /api/v1/admin/foia_contacts/{id} |  |
+| [**destroy_admin_foia_labels**](DefaultApi.md#destroy_admin_foia_labels) | **DELETE** /api/v1/admin/foia_labels/{id} |  |
+| [**destroy_admin_foia_requests**](DefaultApi.md#destroy_admin_foia_requests) | **DELETE** /api/v1/admin/foia_requests/{id} |  |
 | [**destroy_admin_income_report**](DefaultApi.md#destroy_admin_income_report) | **DELETE** /api/v1/admin/income_reports/{id} |  |
 | [**destroy_admin_raw_contract**](DefaultApi.md#destroy_admin_raw_contract) | **DELETE** /api/v1/admin/raw_contracts/{id} |  |
 | [**destroy_admin_requested_item**](DefaultApi.md#destroy_admin_requested_item) | **DELETE** /api/v1/admin/requested_items/{id} |  |
@@ -126,6 +135,14 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_admin_desk_report_activity_summaries**](DefaultApi.md#get_admin_desk_report_activity_summaries) | **GET** /api/v1/admin/desk_reports/activity_summaries |  |
 | [**get_admin_desk_reports**](DefaultApi.md#get_admin_desk_reports) | **GET** /api/v1/admin/desk_reports |  |
 | [**get_admin_desk_requests**](DefaultApi.md#get_admin_desk_requests) | **GET** /api/v1/admin/desk_requests |  |
+| [**get_admin_foia_labels**](DefaultApi.md#get_admin_foia_labels) | **GET** /api/v1/admin/foia_labels/{id} |  |
+| [**get_admin_foia_request_builder_form_options**](DefaultApi.md#get_admin_foia_request_builder_form_options) | **GET** /api/v1/admin/foia_request_builder/form_options |  |
+| [**get_admin_foia_request_builder_log**](DefaultApi.md#get_admin_foia_request_builder_log) | **GET** /api/v1/admin/foia_request_builder_logs/{id} |  |
+| [**get_admin_foia_request_coaches**](DefaultApi.md#get_admin_foia_request_coaches) | **GET** /api/v1/admin/foia_requests/{id}/coaches |  |
+| [**get_admin_foia_request_financials**](DefaultApi.md#get_admin_foia_request_financials) | **GET** /api/v1/admin/foia_requests/{id}/financials |  |
+| [**get_admin_foia_request_games**](DefaultApi.md#get_admin_foia_request_games) | **GET** /api/v1/admin/foia_requests/{id}/games |  |
+| [**get_admin_foia_request_text**](DefaultApi.md#get_admin_foia_request_text) | **GET** /api/v1/admin/foia_requests/{id}/text |  |
+| [**get_admin_foia_requests**](DefaultApi.md#get_admin_foia_requests) | **GET** /api/v1/admin/foia_requests/{id} |  |
 | [**get_admin_income_report**](DefaultApi.md#get_admin_income_report) | **GET** /api/v1/admin/income_reports/{id} |  |
 | [**get_admin_invoice**](DefaultApi.md#get_admin_invoice) | **GET** /api/v1/admin/invoices/{invoiceId} |  |
 | [**get_admin_invoices**](DefaultApi.md#get_admin_invoices) | **GET** /api/v1/admin/invoices |  |
@@ -330,12 +347,22 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**list_admin_contacts**](DefaultApi.md#list_admin_contacts) | **GET** /api/v1/admin/contacts |  |
 | [**list_admin_contract_request_searches**](DefaultApi.md#list_admin_contract_request_searches) | **GET** /api/v1/admin/contract_request_searches |  |
 | [**list_admin_contracts**](DefaultApi.md#list_admin_contracts) | **GET** /api/v1/admin/contracts |  |
+| [**list_admin_foia_contacts**](DefaultApi.md#list_admin_foia_contacts) | **GET** /api/v1/admin/foia_contacts |  |
+| [**list_admin_foia_contacts_available_schools**](DefaultApi.md#list_admin_foia_contacts_available_schools) | **GET** /api/v1/admin/foia_contacts/available_schools |  |
+| [**list_admin_foia_labels**](DefaultApi.md#list_admin_foia_labels) | **GET** /api/v1/admin/foia_labels |  |
+| [**list_admin_foia_request_builder_jobs**](DefaultApi.md#list_admin_foia_request_builder_jobs) | **GET** /api/v1/admin/foia_request_builder/jobs |  |
+| [**list_admin_foia_request_builder_logs**](DefaultApi.md#list_admin_foia_request_builder_logs) | **GET** /api/v1/admin/foia_request_builder_logs |  |
+| [**list_admin_foia_request_details**](DefaultApi.md#list_admin_foia_request_details) | **GET** /api/v1/admin/foia_requests/details |  |
+| [**list_admin_foia_request_follow_up_report**](DefaultApi.md#list_admin_foia_request_follow_up_report) | **GET** /api/v1/admin/foia_requests/follow_up_report |  |
+| [**list_admin_foia_request_schools**](DefaultApi.md#list_admin_foia_request_schools) | **GET** /api/v1/admin/foia_requests/schools |  |
+| [**list_admin_foia_requests**](DefaultApi.md#list_admin_foia_requests) | **GET** /api/v1/admin/foia_requests |  |
 | [**list_admin_income_reports**](DefaultApi.md#list_admin_income_reports) | **GET** /api/v1/admin/income_reports |  |
 | [**list_admin_raw_contracts_between_schools**](DefaultApi.md#list_admin_raw_contracts_between_schools) | **GET** /api/v1/admin/raw_contracts/game_contracts_between_schools |  |
 | [**list_admin_requested_items**](DefaultApi.md#list_admin_requested_items) | **GET** /api/v1/admin/requested_items |  |
 | [**list_admin_termination_agreements**](DefaultApi.md#list_admin_termination_agreements) | **GET** /api/v1/admin/termination_agreements |  |
 | [**list_admin_youtube_videos**](DefaultApi.md#list_admin_youtube_videos) | **GET** /api/v1/admin/youtube_videos |  |
 | [**list_notes**](DefaultApi.md#list_notes) | **GET** /api/v1/notes/list |  |
+| [**mark_admin_foia_request_processed_followup**](DefaultApi.md#mark_admin_foia_request_processed_followup) | **PATCH** /api/v1/admin/foia_requests/{id}/mark_processed_followup |  |
 | [**mark_paid_admin_invoice**](DefaultApi.md#mark_paid_admin_invoice) | **POST** /api/v1/admin/invoices/{invoiceId}/mark_paid |  |
 | [**mass_update_admin_compensations**](DefaultApi.md#mass_update_admin_compensations) | **POST** /api/v1/admin/compensations/mass_update |  |
 | [**mass_update_admin_requested_items**](DefaultApi.md#mass_update_admin_requested_items) | **PATCH** /api/v1/admin/requested_items/mass_update |  |
@@ -351,6 +378,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**search_coaches**](DefaultApi.md#search_coaches) | **POST** /api/v1/coaches/search |  |
 | [**send_admin_invoice**](DefaultApi.md#send_admin_invoice) | **POST** /api/v1/admin/invoices/{invoiceId}/send |  |
 | [**send_otp_code**](DefaultApi.md#send_otp_code) | **POST** /api/v1/otp/send_code |  |
+| [**unarchive_admin_foia_labels**](DefaultApi.md#unarchive_admin_foia_labels) | **POST** /api/v1/admin/foia_labels/{id}/unarchive |  |
 | [**unstract_raw_contract_pdf_text**](DefaultApi.md#unstract_raw_contract_pdf_text) | **POST** /api/v1/raw_contracts/{raw_contractId}/unstract_pdf_text |  |
 | [**update_account_user**](DefaultApi.md#update_account_user) | **PATCH** /api/v1/account_users/{accountUserId} |  |
 | [**update_account_user_activation**](DefaultApi.md#update_account_user_activation) | **PATCH** /api/v1/account_user_activation |  |
@@ -359,6 +387,14 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_admin_contract**](DefaultApi.md#update_admin_contract) | **PATCH** /api/v1/admin/contracts/{id} |  |
 | [**update_admin_desk_report**](DefaultApi.md#update_admin_desk_report) | **PATCH** /api/v1/admin/desk_reports/{uuid} |  |
 | [**update_admin_desk_request**](DefaultApi.md#update_admin_desk_request) | **PATCH** /api/v1/admin/desk_requests/{uuid} |  |
+| [**update_admin_foia_contacts**](DefaultApi.md#update_admin_foia_contacts) | **PATCH** /api/v1/admin/foia_contacts/{id} |  |
+| [**update_admin_foia_labels**](DefaultApi.md#update_admin_foia_labels) | **PATCH** /api/v1/admin/foia_labels/{id} |  |
+| [**update_admin_foia_request_builder_compensations**](DefaultApi.md#update_admin_foia_request_builder_compensations) | **POST** /api/v1/admin/foia_request_builder/update_compensations_to_requested |  |
+| [**update_admin_foia_request_builder_sent_dates**](DefaultApi.md#update_admin_foia_request_builder_sent_dates) | **POST** /api/v1/admin/foia_request_builder/update_sent_dates |  |
+| [**update_admin_foia_request_coaches**](DefaultApi.md#update_admin_foia_request_coaches) | **PATCH** /api/v1/admin/foia_requests/{id}/coaches |  |
+| [**update_admin_foia_request_financials**](DefaultApi.md#update_admin_foia_request_financials) | **PATCH** /api/v1/admin/foia_requests/{id}/financials |  |
+| [**update_admin_foia_request_games**](DefaultApi.md#update_admin_foia_request_games) | **PATCH** /api/v1/admin/foia_requests/{id}/games |  |
+| [**update_admin_foia_requests**](DefaultApi.md#update_admin_foia_requests) | **PATCH** /api/v1/admin/foia_requests/{id} |  |
 | [**update_admin_income_report**](DefaultApi.md#update_admin_income_report) | **PATCH** /api/v1/admin/income_reports/{id} |  |
 | [**update_admin_invoice**](DefaultApi.md#update_admin_invoice) | **PATCH** /api/v1/admin/invoices/{invoiceId} |  |
 | [**update_admin_requested_item**](DefaultApi.md#update_admin_requested_item) | **PATCH** /api/v1/admin/requested_items/{id} |  |
@@ -403,6 +439,80 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**view_invoice_file**](DefaultApi.md#view_invoice_file) | **GET** /api/v1/subscriptions/{subscriptionId}/invoices/{invoiceId}/view_file |  |
 | [**view_raw_contract_file**](DefaultApi.md#view_raw_contract_file) | **GET** /api/v1/raw_contracts/{raw_contractId}/view_file |  |
 | [**view_subscription_acceptance_contract**](DefaultApi.md#view_subscription_acceptance_contract) | **GET** /api/v1/subscription_acceptances/{subscriptionAcceptanceId}/contract |  |
+
+
+## archive_admin_foia_labels
+
+> <AdminFoiaLabel> archive_admin_foia_labels(id)
+
+
+
+Archive a FOIA label (mirrors the old admin's Archive action)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.archive_admin_foia_labels(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->archive_admin_foia_labels: #{e}"
+end
+```
+
+#### Using the archive_admin_foia_labels_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFoiaLabel>, Integer, Hash)> archive_admin_foia_labels_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.archive_admin_foia_labels_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFoiaLabel>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->archive_admin_foia_labels_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminFoiaLabel**](AdminFoiaLabel.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## average_conference_comp
@@ -2149,6 +2259,376 @@ end
 ### HTTP request headers
 
 - **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+
+## create_admin_foia_contacts
+
+> <AdminFoiaContact> create_admin_foia_contacts(create_admin_foia_contact_request)
+
+
+
+Create a new FOIA Contact (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_admin_foia_contact_request = WinthropClient::CreateAdminFoiaContactRequest.new({foia_contact: WinthropClient::CreateAdminFoiaContactRequestFoiaContact.new({school_id: 37})}) # CreateAdminFoiaContactRequest | 
+
+begin
+  
+  result = api_instance.create_admin_foia_contacts(create_admin_foia_contact_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_foia_contacts: #{e}"
+end
+```
+
+#### Using the create_admin_foia_contacts_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFoiaContact>, Integer, Hash)> create_admin_foia_contacts_with_http_info(create_admin_foia_contact_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_foia_contacts_with_http_info(create_admin_foia_contact_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFoiaContact>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_foia_contacts_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_admin_foia_contact_request** | [**CreateAdminFoiaContactRequest**](CreateAdminFoiaContactRequest.md) |  |  |
+
+### Return type
+
+[**AdminFoiaContact**](AdminFoiaContact.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_admin_foia_labels
+
+> <AdminFoiaLabel> create_admin_foia_labels(create_admin_foia_label_request)
+
+
+
+Create a new FOIA label
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_admin_foia_label_request = WinthropClient::CreateAdminFoiaLabelRequest.new({foia_label: WinthropClient::CreateAdminFoiaLabelRequestFoiaLabel.new({name: 'name_example'})}) # CreateAdminFoiaLabelRequest | 
+
+begin
+  
+  result = api_instance.create_admin_foia_labels(create_admin_foia_label_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_foia_labels: #{e}"
+end
+```
+
+#### Using the create_admin_foia_labels_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFoiaLabel>, Integer, Hash)> create_admin_foia_labels_with_http_info(create_admin_foia_label_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_foia_labels_with_http_info(create_admin_foia_label_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFoiaLabel>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_foia_labels_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_admin_foia_label_request** | [**CreateAdminFoiaLabelRequest**](CreateAdminFoiaLabelRequest.md) |  |  |
+
+### Return type
+
+[**AdminFoiaLabel**](AdminFoiaLabel.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_admin_foia_request_builder
+
+> create_admin_foia_request_builder(create_foia_request_builder_request)
+
+
+
+Create a new FOIA Request Builder job, generating FoiaRequest/RequestedItem rows for selected schools (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_foia_request_builder_request = WinthropClient::CreateFoiaRequestBuilderRequest.new({foia_request_builder: WinthropClient::CreateFoiaRequestBuilderRequestFoiaRequestBuilder.new({foia_label: 'foia_label_example', school_groups: ['school_groups_example']})}) # CreateFoiaRequestBuilderRequest | 
+
+begin
+  
+  api_instance.create_admin_foia_request_builder(create_foia_request_builder_request)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_foia_request_builder: #{e}"
+end
+```
+
+#### Using the create_admin_foia_request_builder_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> create_admin_foia_request_builder_with_http_info(create_foia_request_builder_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_foia_request_builder_with_http_info(create_foia_request_builder_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_foia_request_builder_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_foia_request_builder_request** | [**CreateFoiaRequestBuilderRequest**](CreateFoiaRequestBuilderRequest.md) |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+
+## create_admin_foia_request_bulk_quick_actions
+
+> create_admin_foia_request_bulk_quick_actions(id, create_admin_foia_request_bulk_quick_actions_request)
+
+
+
+Queue a background job applying bulk quick actions (Mark Received/Not Available/etc) to a set of requested items
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+create_admin_foia_request_bulk_quick_actions_request = WinthropClient::CreateAdminFoiaRequestBulkQuickActionsRequest.new # CreateAdminFoiaRequestBulkQuickActionsRequest | 
+
+begin
+  
+  api_instance.create_admin_foia_request_bulk_quick_actions(id, create_admin_foia_request_bulk_quick_actions_request)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_foia_request_bulk_quick_actions: #{e}"
+end
+```
+
+#### Using the create_admin_foia_request_bulk_quick_actions_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> create_admin_foia_request_bulk_quick_actions_with_http_info(id, create_admin_foia_request_bulk_quick_actions_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_foia_request_bulk_quick_actions_with_http_info(id, create_admin_foia_request_bulk_quick_actions_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_foia_request_bulk_quick_actions_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **create_admin_foia_request_bulk_quick_actions_request** | [**CreateAdminFoiaRequestBulkQuickActionsRequest**](CreateAdminFoiaRequestBulkQuickActionsRequest.md) |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+
+## create_admin_foia_requests
+
+> <AdminFoiaRequest> create_admin_foia_requests(create_foia_request_request)
+
+
+
+Create a new FOIA request (admin-only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_foia_request_request = WinthropClient::CreateFoiaRequestRequest.new({foia_request: WinthropClient::CreateFoiaRequestRequestFoiaRequest.new({school_id: 37, foia_label_id: 37})}) # CreateFoiaRequestRequest | 
+
+begin
+  
+  result = api_instance.create_admin_foia_requests(create_foia_request_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_foia_requests: #{e}"
+end
+```
+
+#### Using the create_admin_foia_requests_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFoiaRequest>, Integer, Hash)> create_admin_foia_requests_with_http_info(create_foia_request_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_foia_requests_with_http_info(create_foia_request_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFoiaRequest>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_foia_requests_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_foia_request_request** | [**CreateFoiaRequestRequest**](CreateFoiaRequestRequest.md) |  |  |
+
+### Return type
+
+[**AdminFoiaRequest**](AdminFoiaRequest.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -7652,6 +8132,225 @@ nil (empty response body)
 - **Accept**: Not defined
 
 
+## destroy_admin_foia_contacts
+
+> destroy_admin_foia_contacts(id)
+
+
+
+Delete a FOIA Contact (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  api_instance.destroy_admin_foia_contacts(id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_foia_contacts: #{e}"
+end
+```
+
+#### Using the destroy_admin_foia_contacts_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> destroy_admin_foia_contacts_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_admin_foia_contacts_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_foia_contacts_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## destroy_admin_foia_labels
+
+> destroy_admin_foia_labels(id)
+
+
+
+Permanently delete a FOIA label
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  api_instance.destroy_admin_foia_labels(id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_foia_labels: #{e}"
+end
+```
+
+#### Using the destroy_admin_foia_labels_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> destroy_admin_foia_labels_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_admin_foia_labels_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_foia_labels_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## destroy_admin_foia_requests
+
+> destroy_admin_foia_requests(id)
+
+
+
+Delete a FOIA request
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  api_instance.destroy_admin_foia_requests(id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_foia_requests: #{e}"
+end
+```
+
+#### Using the destroy_admin_foia_requests_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> destroy_admin_foia_requests_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_admin_foia_requests_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_foia_requests_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
 ## destroy_admin_income_report
 
 > destroy_admin_income_report(id, opts)
@@ -9534,6 +10233,607 @@ end
 ### Return type
 
 [**DeskAdminQueueResponse**](DeskAdminQueueResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_foia_labels
+
+> <AdminFoiaLabel> get_admin_foia_labels(id)
+
+
+
+Retrieve a single FOIA label
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_admin_foia_labels(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_foia_labels: #{e}"
+end
+```
+
+#### Using the get_admin_foia_labels_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFoiaLabel>, Integer, Hash)> get_admin_foia_labels_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_foia_labels_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFoiaLabel>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_foia_labels_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminFoiaLabel**](AdminFoiaLabel.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_foia_request_builder_form_options
+
+> <AdminFoiaRequestBuilderFormOptions> get_admin_foia_request_builder_form_options
+
+
+
+Retrieve selectable schools/sports/compensation options for the FOIA Request Builder form (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_admin_foia_request_builder_form_options
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_foia_request_builder_form_options: #{e}"
+end
+```
+
+#### Using the get_admin_foia_request_builder_form_options_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFoiaRequestBuilderFormOptions>, Integer, Hash)> get_admin_foia_request_builder_form_options_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_foia_request_builder_form_options_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFoiaRequestBuilderFormOptions>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_foia_request_builder_form_options_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**AdminFoiaRequestBuilderFormOptions**](AdminFoiaRequestBuilderFormOptions.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_foia_request_builder_log
+
+> <AdminFoiaRequestBuilderLog> get_admin_foia_request_builder_log(id)
+
+
+
+Retrieve a single FOIA Request Builder log entry's computed detail breakdown (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_admin_foia_request_builder_log(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_foia_request_builder_log: #{e}"
+end
+```
+
+#### Using the get_admin_foia_request_builder_log_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFoiaRequestBuilderLog>, Integer, Hash)> get_admin_foia_request_builder_log_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_foia_request_builder_log_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFoiaRequestBuilderLog>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_foia_request_builder_log_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminFoiaRequestBuilderLog**](AdminFoiaRequestBuilderLog.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_foia_request_coaches
+
+> <AdminFoiaRequestCoachesList> get_admin_foia_request_coaches(id, opts)
+
+
+
+Coach contract requests for the Coaches wizard tab
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+}
+
+begin
+  
+  result = api_instance.get_admin_foia_request_coaches(id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_foia_request_coaches: #{e}"
+end
+```
+
+#### Using the get_admin_foia_request_coaches_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFoiaRequestCoachesList>, Integer, Hash)> get_admin_foia_request_coaches_with_http_info(id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_foia_request_coaches_with_http_info(id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFoiaRequestCoachesList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_foia_request_coaches_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
+
+### Return type
+
+[**AdminFoiaRequestCoachesList**](AdminFoiaRequestCoachesList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_foia_request_financials
+
+> <AdminFoiaRequestFinancialsList> get_admin_foia_request_financials(id)
+
+
+
+Per-year NCAA/audited financial report availability for the Financials wizard tab
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_admin_foia_request_financials(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_foia_request_financials: #{e}"
+end
+```
+
+#### Using the get_admin_foia_request_financials_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFoiaRequestFinancialsList>, Integer, Hash)> get_admin_foia_request_financials_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_foia_request_financials_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFoiaRequestFinancialsList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_foia_request_financials_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminFoiaRequestFinancialsList**](AdminFoiaRequestFinancialsList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_foia_request_games
+
+> <AdminFoiaRequestGamesList> get_admin_foia_request_games(id, opts)
+
+
+
+Eligible non-conference games for the Games wizard tab
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  q: { key: 3.56} # Hash<String, Object> | Ransack filters including sport_id_eq and season_year_eq
+}
+
+begin
+  
+  result = api_instance.get_admin_foia_request_games(id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_foia_request_games: #{e}"
+end
+```
+
+#### Using the get_admin_foia_request_games_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFoiaRequestGamesList>, Integer, Hash)> get_admin_foia_request_games_with_http_info(id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_foia_request_games_with_http_info(id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFoiaRequestGamesList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_foia_request_games_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **q** | [**Hash&lt;String, Object&gt;**](Object.md) | Ransack filters including sport_id_eq and season_year_eq | [optional] |
+
+### Return type
+
+[**AdminFoiaRequestGamesList**](AdminFoiaRequestGamesList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_foia_request_text
+
+> <AdminFoiaRequestLetter> get_admin_foia_request_text(id)
+
+
+
+The generated FOIA request \"copy\" letter text
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_admin_foia_request_text(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_foia_request_text: #{e}"
+end
+```
+
+#### Using the get_admin_foia_request_text_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFoiaRequestLetter>, Integer, Hash)> get_admin_foia_request_text_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_foia_request_text_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFoiaRequestLetter>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_foia_request_text_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminFoiaRequestLetter**](AdminFoiaRequestLetter.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_foia_requests
+
+> <AdminFoiaRequest> get_admin_foia_requests(id)
+
+
+
+Show a single FOIA request
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_admin_foia_requests(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_foia_requests: #{e}"
+end
+```
+
+#### Using the get_admin_foia_requests_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFoiaRequest>, Integer, Hash)> get_admin_foia_requests_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_foia_requests_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFoiaRequest>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_foia_requests_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminFoiaRequest**](AdminFoiaRequest.md)
 
 ### Authorization
 
@@ -25258,6 +26558,727 @@ end
 - **Accept**: application/json
 
 
+## list_admin_foia_contacts
+
+> <AdminFoiaContactsList> list_admin_foia_contacts(opts)
+
+
+
+Retrieve a paginated list of FOIA Contacts, filterable by division/subdivision/conference/school (via the associated school), contact type, name/email prefix, and field presence (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  q_school_division_id_eq: 56, # Integer | 
+  q_school_subdivisions_id_eq: 56, # Integer | 
+  q_school_conferences_id_eq: 56, # Integer | 
+  q_school_id_eq: 56, # Integer | 
+  q_type_eq: 'Lead', # String | 
+  q_first_name_start: 'q_first_name_start_example', # String | 
+  q_last_name_start: 'q_last_name_start_example', # String | 
+  q_email_start: 'q_email_start_example', # String | 
+  q_phone_present: true, # Boolean | 
+  q_mailing_address_present: true, # Boolean | 
+  q_contact_page_url_present: true, # Boolean | 
+  q_position_present: true # Boolean | 
+}
+
+begin
+  
+  result = api_instance.list_admin_foia_contacts(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_foia_contacts: #{e}"
+end
+```
+
+#### Using the list_admin_foia_contacts_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFoiaContactsList>, Integer, Hash)> list_admin_foia_contacts_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_foia_contacts_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFoiaContactsList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_foia_contacts_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **q_school_division_id_eq** | **Integer** |  | [optional] |
+| **q_school_subdivisions_id_eq** | **Integer** |  | [optional] |
+| **q_school_conferences_id_eq** | **Integer** |  | [optional] |
+| **q_school_id_eq** | **Integer** |  | [optional] |
+| **q_type_eq** | **String** |  | [optional] |
+| **q_first_name_start** | **String** |  | [optional] |
+| **q_last_name_start** | **String** |  | [optional] |
+| **q_email_start** | **String** |  | [optional] |
+| **q_phone_present** | **Boolean** |  | [optional] |
+| **q_mailing_address_present** | **Boolean** |  | [optional] |
+| **q_contact_page_url_present** | **Boolean** |  | [optional] |
+| **q_position_present** | **Boolean** |  | [optional] |
+
+### Return type
+
+[**AdminFoiaContactsList**](AdminFoiaContactsList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_foia_contacts_available_schools
+
+> <Array<IdName>> list_admin_foia_contacts_available_schools
+
+
+
+Retrieve D1/D2 schools available for the FOIA Contact create/edit form's school select (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.list_admin_foia_contacts_available_schools
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_foia_contacts_available_schools: #{e}"
+end
+```
+
+#### Using the list_admin_foia_contacts_available_schools_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<IdName>>, Integer, Hash)> list_admin_foia_contacts_available_schools_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_foia_contacts_available_schools_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<IdName>>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_foia_contacts_available_schools_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Array&lt;IdName&gt;**](IdName.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_foia_labels
+
+> <AdminFoiaLabelsList> list_admin_foia_labels(opts)
+
+
+
+List FOIA labels (admin-only), optionally filtered to archived labels
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  q: { ... }, # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+  archived: true # Boolean | When true, return archived FOIA labels instead of unarchived ones
+}
+
+begin
+  
+  result = api_instance.list_admin_foia_labels(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_foia_labels: #{e}"
+end
+```
+
+#### Using the list_admin_foia_labels_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFoiaLabelsList>, Integer, Hash)> list_admin_foia_labels_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_foia_labels_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFoiaLabelsList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_foia_labels_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
+| **archived** | **Boolean** | When true, return archived FOIA labels instead of unarchived ones | [optional] |
+
+### Return type
+
+[**AdminFoiaLabelsList**](AdminFoiaLabelsList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_foia_request_builder_jobs
+
+> <Array<AdminFoiaRequestBuilderJob>> list_admin_foia_request_builder_jobs
+
+
+
+Retrieve current/recent Sidekiq job status for FOIA Request Builder background jobs (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.list_admin_foia_request_builder_jobs
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_foia_request_builder_jobs: #{e}"
+end
+```
+
+#### Using the list_admin_foia_request_builder_jobs_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<AdminFoiaRequestBuilderJob>>, Integer, Hash)> list_admin_foia_request_builder_jobs_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_foia_request_builder_jobs_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<AdminFoiaRequestBuilderJob>>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_foia_request_builder_jobs_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Array&lt;AdminFoiaRequestBuilderJob&gt;**](AdminFoiaRequestBuilderJob.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_foia_request_builder_logs
+
+> <AdminFoiaRequestBuilderLogList> list_admin_foia_request_builder_logs(opts)
+
+
+
+Retrieve a paginated list of FOIA Request Builder log entries (past builder runs) (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56 # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+}
+
+begin
+  
+  result = api_instance.list_admin_foia_request_builder_logs(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_foia_request_builder_logs: #{e}"
+end
+```
+
+#### Using the list_admin_foia_request_builder_logs_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFoiaRequestBuilderLogList>, Integer, Hash)> list_admin_foia_request_builder_logs_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_foia_request_builder_logs_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFoiaRequestBuilderLogList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_foia_request_builder_logs_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+
+### Return type
+
+[**AdminFoiaRequestBuilderLogList**](AdminFoiaRequestBuilderLogList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_foia_request_details
+
+> list_admin_foia_request_details(opts)
+
+
+
+Cross-request requested-items report, ransack-filterable; format=csv queues an async export instead of returning JSON
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+  q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+}
+
+begin
+  
+  api_instance.list_admin_foia_request_details(opts)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_foia_request_details: #{e}"
+end
+```
+
+#### Using the list_admin_foia_request_details_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> list_admin_foia_request_details_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_foia_request_details_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_foia_request_details_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## list_admin_foia_request_follow_up_report
+
+> list_admin_foia_request_follow_up_report(opts)
+
+
+
+The FOIA follow-up worklist, sortable by follow_up_date etc; send_email=true triggers the same admin notifier email the old page's button sent
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+  q: { ... }, # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+  sort_by: 'sort_by_example', # String | 
+  send_email: true # Boolean | 
+}
+
+begin
+  
+  api_instance.list_admin_foia_request_follow_up_report(opts)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_foia_request_follow_up_report: #{e}"
+end
+```
+
+#### Using the list_admin_foia_request_follow_up_report_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> list_admin_foia_request_follow_up_report_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_foia_request_follow_up_report_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_foia_request_follow_up_report_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
+| **sort_by** | **String** |  | [optional] |
+| **send_email** | **Boolean** |  | [optional] |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## list_admin_foia_request_schools
+
+> list_admin_foia_request_schools(opts)
+
+
+
+Cascading division/subdivision -> schools lookup for the New FOIA Request form
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  division_id: 56, # Integer | 
+  subdivision_id: 56 # Integer | 
+}
+
+begin
+  
+  api_instance.list_admin_foia_request_schools(opts)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_foia_request_schools: #{e}"
+end
+```
+
+#### Using the list_admin_foia_request_schools_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> list_admin_foia_request_schools_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_foia_request_schools_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_foia_request_schools_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **division_id** | **Integer** |  | [optional] |
+| **subdivision_id** | **Integer** |  | [optional] |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## list_admin_foia_requests
+
+> <AdminFoiaRequestsList> list_admin_foia_requests(opts)
+
+
+
+Retrieve a paginated, ransack-filterable list of FOIA requests (admin-only), defaulting to ACTIVE state
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+  q: { ... }, # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+  with_request_type: 'with_request_type_example', # String | 
+  school_has_salary_site: 'true' # String | 
+}
+
+begin
+  
+  result = api_instance.list_admin_foia_requests(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_foia_requests: #{e}"
+end
+```
+
+#### Using the list_admin_foia_requests_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFoiaRequestsList>, Integer, Hash)> list_admin_foia_requests_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_foia_requests_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFoiaRequestsList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_foia_requests_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
+| **with_request_type** | **String** |  | [optional] |
+| **school_has_salary_site** | **String** |  | [optional] |
+
+### Return type
+
+[**AdminFoiaRequestsList**](AdminFoiaRequestsList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## list_admin_income_reports
 
 > <AdminIncomeReportList> list_admin_income_reports(opts)
@@ -25753,6 +27774,79 @@ This endpoint does not need any parameter.
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+
+## mark_admin_foia_request_processed_followup
+
+> mark_admin_foia_request_processed_followup(id)
+
+
+
+Mark a FOIA request as followed-up today (recomputes follow_up_date)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  api_instance.mark_admin_foia_request_processed_followup(id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->mark_admin_foia_request_processed_followup: #{e}"
+end
+```
+
+#### Using the mark_admin_foia_request_processed_followup_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> mark_admin_foia_request_processed_followup_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.mark_admin_foia_request_processed_followup_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->mark_admin_foia_request_processed_followup_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 
 ## mark_paid_admin_invoice
@@ -26875,6 +28969,80 @@ This endpoint does not need any parameter.
 - **Accept**: application/json
 
 
+## unarchive_admin_foia_labels
+
+> <AdminFoiaLabel> unarchive_admin_foia_labels(id)
+
+
+
+Unarchive a FOIA label (mirrors the old admin's Unarchive action)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.unarchive_admin_foia_labels(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->unarchive_admin_foia_labels: #{e}"
+end
+```
+
+#### Using the unarchive_admin_foia_labels_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFoiaLabel>, Integer, Hash)> unarchive_admin_foia_labels_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.unarchive_admin_foia_labels_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFoiaLabel>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->unarchive_admin_foia_labels_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminFoiaLabel**](AdminFoiaLabel.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## unstract_raw_contract_pdf_text
 
 > <RegenerateRawContractPdf200Response> unstract_raw_contract_pdf_text(raw_contract_id, opts)
@@ -27466,6 +29634,602 @@ end
 ### Return type
 
 [**UpdateAdminDeskRequest200Response**](UpdateAdminDeskRequest200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_admin_foia_contacts
+
+> <AdminFoiaContact> update_admin_foia_contacts(id, update_admin_foia_contact_request)
+
+
+
+Update an existing FOIA Contact (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+update_admin_foia_contact_request = WinthropClient::UpdateAdminFoiaContactRequest.new({foia_contact: WinthropClient::UpdateAdminFoiaContactRequestFoiaContact.new}) # UpdateAdminFoiaContactRequest | 
+
+begin
+  
+  result = api_instance.update_admin_foia_contacts(id, update_admin_foia_contact_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_foia_contacts: #{e}"
+end
+```
+
+#### Using the update_admin_foia_contacts_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFoiaContact>, Integer, Hash)> update_admin_foia_contacts_with_http_info(id, update_admin_foia_contact_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_foia_contacts_with_http_info(id, update_admin_foia_contact_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFoiaContact>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_foia_contacts_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **update_admin_foia_contact_request** | [**UpdateAdminFoiaContactRequest**](UpdateAdminFoiaContactRequest.md) |  |  |
+
+### Return type
+
+[**AdminFoiaContact**](AdminFoiaContact.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_admin_foia_labels
+
+> <AdminFoiaLabel> update_admin_foia_labels(id, update_admin_foia_label_request)
+
+
+
+Update a FOIA label's name
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+update_admin_foia_label_request = WinthropClient::UpdateAdminFoiaLabelRequest.new({foia_label: WinthropClient::UpdateAdminFoiaLabelRequestFoiaLabel.new}) # UpdateAdminFoiaLabelRequest | 
+
+begin
+  
+  result = api_instance.update_admin_foia_labels(id, update_admin_foia_label_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_foia_labels: #{e}"
+end
+```
+
+#### Using the update_admin_foia_labels_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFoiaLabel>, Integer, Hash)> update_admin_foia_labels_with_http_info(id, update_admin_foia_label_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_foia_labels_with_http_info(id, update_admin_foia_label_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFoiaLabel>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_foia_labels_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **update_admin_foia_label_request** | [**UpdateAdminFoiaLabelRequest**](UpdateAdminFoiaLabelRequest.md) |  |  |
+
+### Return type
+
+[**AdminFoiaLabel**](AdminFoiaLabel.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_admin_foia_request_builder_compensations
+
+> update_admin_foia_request_builder_compensations
+
+
+
+Bulk-update requested items' compensation status to \"requested\" (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  api_instance.update_admin_foia_request_builder_compensations
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_foia_request_builder_compensations: #{e}"
+end
+```
+
+#### Using the update_admin_foia_request_builder_compensations_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> update_admin_foia_request_builder_compensations_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_foia_request_builder_compensations_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_foia_request_builder_compensations_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## update_admin_foia_request_builder_sent_dates
+
+> update_admin_foia_request_builder_sent_dates
+
+
+
+Bulk-update requested items' FOIA-sent dates (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  api_instance.update_admin_foia_request_builder_sent_dates
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_foia_request_builder_sent_dates: #{e}"
+end
+```
+
+#### Using the update_admin_foia_request_builder_sent_dates_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> update_admin_foia_request_builder_sent_dates_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_foia_request_builder_sent_dates_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_foia_request_builder_sent_dates_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## update_admin_foia_request_coaches
+
+> <AdminFoiaRequest> update_admin_foia_request_coaches(id, update_admin_foia_request_coaches_request)
+
+
+
+Attach selected compensations/income reports to the FOIA request
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+update_admin_foia_request_coaches_request = WinthropClient::UpdateAdminFoiaRequestCoachesRequest.new # UpdateAdminFoiaRequestCoachesRequest | 
+
+begin
+  
+  result = api_instance.update_admin_foia_request_coaches(id, update_admin_foia_request_coaches_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_foia_request_coaches: #{e}"
+end
+```
+
+#### Using the update_admin_foia_request_coaches_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFoiaRequest>, Integer, Hash)> update_admin_foia_request_coaches_with_http_info(id, update_admin_foia_request_coaches_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_foia_request_coaches_with_http_info(id, update_admin_foia_request_coaches_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFoiaRequest>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_foia_request_coaches_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **update_admin_foia_request_coaches_request** | [**UpdateAdminFoiaRequestCoachesRequest**](UpdateAdminFoiaRequestCoachesRequest.md) |  |  |
+
+### Return type
+
+[**AdminFoiaRequest**](AdminFoiaRequest.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_admin_foia_request_financials
+
+> <AdminFoiaRequest> update_admin_foia_request_financials(id, update_admin_foia_request_financials_request)
+
+
+
+Add selected NCAA/audited financial report statuses without removing existing items or their notes. Repeated IDs/years are ignored; empty selections do not clear attachments. Status IDs must belong to the request school.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+update_admin_foia_request_financials_request = WinthropClient::UpdateAdminFoiaRequestFinancialsRequest.new # UpdateAdminFoiaRequestFinancialsRequest | 
+
+begin
+  
+  result = api_instance.update_admin_foia_request_financials(id, update_admin_foia_request_financials_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_foia_request_financials: #{e}"
+end
+```
+
+#### Using the update_admin_foia_request_financials_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFoiaRequest>, Integer, Hash)> update_admin_foia_request_financials_with_http_info(id, update_admin_foia_request_financials_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_foia_request_financials_with_http_info(id, update_admin_foia_request_financials_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFoiaRequest>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_foia_request_financials_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **update_admin_foia_request_financials_request** | [**UpdateAdminFoiaRequestFinancialsRequest**](UpdateAdminFoiaRequestFinancialsRequest.md) |  |  |
+
+### Return type
+
+[**AdminFoiaRequest**](AdminFoiaRequest.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_admin_foia_request_games
+
+> <AdminFoiaRequest> update_admin_foia_request_games(id, update_admin_foia_request_games_request)
+
+
+
+Attach selected games to the FOIA request
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+update_admin_foia_request_games_request = WinthropClient::UpdateAdminFoiaRequestGamesRequest.new # UpdateAdminFoiaRequestGamesRequest | 
+
+begin
+  
+  result = api_instance.update_admin_foia_request_games(id, update_admin_foia_request_games_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_foia_request_games: #{e}"
+end
+```
+
+#### Using the update_admin_foia_request_games_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFoiaRequest>, Integer, Hash)> update_admin_foia_request_games_with_http_info(id, update_admin_foia_request_games_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_foia_request_games_with_http_info(id, update_admin_foia_request_games_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFoiaRequest>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_foia_request_games_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **update_admin_foia_request_games_request** | [**UpdateAdminFoiaRequestGamesRequest**](UpdateAdminFoiaRequestGamesRequest.md) |  |  |
+
+### Return type
+
+[**AdminFoiaRequest**](AdminFoiaRequest.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_admin_foia_requests
+
+> <AdminFoiaRequest> update_admin_foia_requests(id, update_foia_request_request)
+
+
+
+Update a FOIA request's own fields (state/status/dates/foia_label) and its Vendors wizard tab (deal_status_ids)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+update_foia_request_request = WinthropClient::UpdateFoiaRequestRequest.new({foia_request: WinthropClient::UpdateFoiaRequestRequestFoiaRequest.new}) # UpdateFoiaRequestRequest | 
+
+begin
+  
+  result = api_instance.update_admin_foia_requests(id, update_foia_request_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_foia_requests: #{e}"
+end
+```
+
+#### Using the update_admin_foia_requests_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFoiaRequest>, Integer, Hash)> update_admin_foia_requests_with_http_info(id, update_foia_request_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_foia_requests_with_http_info(id, update_foia_request_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFoiaRequest>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_foia_requests_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **update_foia_request_request** | [**UpdateFoiaRequestRequest**](UpdateFoiaRequestRequest.md) |  |  |
+
+### Return type
+
+[**AdminFoiaRequest**](AdminFoiaRequest.md)
 
 ### Authorization
 
