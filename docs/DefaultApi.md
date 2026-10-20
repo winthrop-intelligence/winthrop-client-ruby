@@ -10545,7 +10545,7 @@ end
 
 ## get_admin_foia_request_financials
 
-> <AdminFoiaRequestFinancialsList> get_admin_foia_request_financials(id)
+> <AdminFoiaRequestFinancialsList> get_admin_foia_request_financials(id, opts)
 
 
 
@@ -10569,10 +10569,13 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 id = 56 # Integer | 
+opts = {
+  q_ncaa_financial_report_status: 'Available' # String | Keeps only the years whose NCAA financial report is available or missing. This list is not a Ransack search and reads no other `q` key: any other key with a value is a 400.
+}
 
 begin
   
-  result = api_instance.get_admin_foia_request_financials(id)
+  result = api_instance.get_admin_foia_request_financials(id, opts)
   p result
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->get_admin_foia_request_financials: #{e}"
@@ -10583,12 +10586,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AdminFoiaRequestFinancialsList>, Integer, Hash)> get_admin_foia_request_financials_with_http_info(id)
+> <Array(<AdminFoiaRequestFinancialsList>, Integer, Hash)> get_admin_foia_request_financials_with_http_info(id, opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.get_admin_foia_request_financials_with_http_info(id)
+  data, status_code, headers = api_instance.get_admin_foia_request_financials_with_http_info(id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AdminFoiaRequestFinancialsList>
@@ -10602,6 +10605,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** |  |  |
+| **q_ncaa_financial_report_status** | **String** | Keeps only the years whose NCAA financial report is available or missing. This list is not a Ransack search and reads no other &#x60;q&#x60; key: any other key with a value is a 400. | [optional] |
 
 ### Return type
 
@@ -24741,7 +24745,8 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56 # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
 begin
@@ -24776,6 +24781,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
 
@@ -26906,7 +26912,10 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 opts = {
-  page: 56 # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  q_user_id_eq: 56, # Integer | 
+  q_foia_label_id_eq: 56, # Integer | 
+  q_status_eq: 'q_status_eq_example' # String | 
 }
 
 begin
@@ -26941,6 +26950,9 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **q_user_id_eq** | **Integer** |  | [optional] |
+| **q_foia_label_id_eq** | **Integer** |  | [optional] |
+| **q_status_eq** | **String** |  | [optional] |
 
 ### Return type
 
@@ -27032,7 +27044,7 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## list_admin_foia_request_follow_up_report
@@ -27041,7 +27053,7 @@ nil (empty response body)
 
 
 
-The FOIA follow-up worklist, sortable by follow_up_date etc; send_email=true triggers the same admin notifier email the old page's button sent
+The FOIA follow-up worklist, sortable by follow_up_date etc; send_email=true triggers the same admin notifier email the old page's button sent. q[show_processed_today] (true/false) is read by the report itself and is not a Ransack condition
 
 ### Examples
 
@@ -27115,7 +27127,7 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## list_admin_foia_request_schools
@@ -27309,7 +27321,8 @@ opts = {
   contract_status_id: 56, # Integer | 
   year: 56, # Integer | 
   page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
-  per_page: 56 # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+  q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
 }
 
 begin
@@ -27348,6 +27361,7 @@ end
 | **year** | **Integer** |  | [optional] |
 | **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
 | **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
 
 ### Return type
 
@@ -29049,7 +29063,7 @@ end
 
 
 
-Extract text from a raw contract PDF
+Deprecated alias of POST /raw_contracts/{raw_contractId}/ocr_text/regenerate (WINAD-10683), kept for one release and then removed. It does exactly the same thing: re-runs Mistral OCR on the raw contract's PDF. 
 
 ### Examples
 
