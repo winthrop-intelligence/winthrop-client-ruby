@@ -6,7 +6,9 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | ------ | ------------ | ----------- |
 | [**create_pending_contract**](ContractsApi.md#create_pending_contract) | **POST** /api/v1/contracts |  |
 | [**delete_pending_contract**](ContractsApi.md#delete_pending_contract) | **DELETE** /api/v1/contracts/{contractId} |  |
+| [**get_compensation_verification_status**](ContractsApi.md#get_compensation_verification_status) | **GET** /api/v1/compensation_verification_status | Verification status of every compensation row of some schools in one season |
 | [**get_contract_history**](ContractsApi.md#get_contract_history) | **GET** /api/v1/contract_history |  |
+| [**list_contract_verifications**](ContractsApi.md#list_contract_verifications) | **GET** /api/v1/contract_verifications | List verification events across contracts |
 | [**publish_pending_contract**](ContractsApi.md#publish_pending_contract) | **POST** /api/v1/contracts/{contractId}/publish |  |
 | [**replace_contract_file**](ContractsApi.md#replace_contract_file) | **PUT** /api/v1/contracts/{contractId}/file |  |
 | [**update_contract**](ContractsApi.md#update_contract) | **PATCH** /api/v1/contracts/{contractId} |  |
@@ -179,6 +181,94 @@ nil (empty response body)
 - **Accept**: application/json
 
 
+## get_compensation_verification_status
+
+> <GetCompensationVerificationStatus200Response> get_compensation_verification_status(season, opts)
+
+Verification status of every compensation row of some schools in one season
+
+Computed on request (WINAD-10682), so there is no ETag. One row per compensation row whose school is in `school_ids` (or is a member of `conference_id`'s primary conference) and whose `year` is `season`, so a season is the season-ending year, as in `ContractVerification.seasons` (2025-26 is 2026). `status`, first match wins:  * `unlinked`: the row has no contract (the contract and event fields are null). * `not_verified`: it has a contract but no verification event covers the season. * `mismatch`, `could_not_verify`, `revoked`: the latest event covering the season has that result. * `changed_since_verified`: the latest covering event is `passed`, but the row was edited after it   (`changed_since` says how). * `verified`: the latest covering event is `passed` and nothing changed since.  The latest covering event is the newest (verified_at DESC, id DESC) event on the row's contract whose `seasons` include the season: the same rule as `meta.verified_seasons` of GET /raw_contracts/{id}/verifications, so a row is `verified` or `changed_since_verified` exactly when its season is in that list.  `changed_since` lists, in time order, every change strictly after the event's `verified_at` to: the row's base salary, talent fee, one-time bonus or deferred amount (`base_salary_cents`, `talent_fee`, `one_time_bonus_cents`, `deferred_comp_cents`); its `year`, `coach_id`, `school_id`, `contract_id` or `contract_status_id`; the row being created (`row`); a position linked to the row (`position.season_id`, `position.coach_id`, `position.compensation_id`); the contract moving to another coach (`contract.coach_id`); the PDF being replaced (`raw_contract.file`) and the school filed on it (`raw_contract.school_id`). A version whose saved data cannot be read is reported as field `unreadable`. It is empty unless the status is `changed_since_verified`.  The rows that make up the contract's season count too, so a row that was deleted, or unlinked or moved out of the season after the event, changes every row still in that contract and season, even though those rows were not touched. They are reconstructed from the history of every row that is or was in the contract: `row` with `old` `compensation <id>` and `new` null (a row deleted from the season), `row` with `old` null and `new` `created` (a row created in it, or the same entry for the row itself), `contract_id` with the old and new contract id (a row linked to or unlinked from the contract, null for none) and `year` with the old and new season (a row moved into or out of the season). A row that was deleted, unlinked or moved before the event does not count, nor does a row of another contract or another season of the contract. Not detectable: a position taken off the row. Each entry names the person who made the change (`user`; null for an edit with no recorded author), so the endpoint needs the ability to update contracts: a customer gets 403.  `counts_by_status` in `meta` covers the whole scope, before `status[]` and `q`. `status[]` keeps only those statuses. `q` takes the Ransack filters of GET /contract_verifications (without its school and season scopes) and applies them to the event in force only, never to older events; a row with no event (`not_verified`, `unlinked`) is not removed by `q`, so `q[verified_at_lt]=2026-09-15` is \"not verified, or verified before 9-15\" in one call; add `status[]=verified` to keep only the rows that have an event. A hidden coach's rows are left out for a caller who cannot manage coaches. Rows are ordered by school, coach, compensation id. The whole scope is computed on every page; a Big Ten season is a few pages of 500 to 1000.  A 400 is `{ \"errors\": { \"<parameter>\": [\"...\"] } }`, keyed by the parameter that is missing or invalid: `season`, `school_ids` (also when both or neither of `school_ids` and `conference_id` are given, or more than 300 schools), `conference_id`, `status`, or `q` (the shared UnknownRansackCondition answer, WINAD-10681: a condition that is unknown, outside the allowlist or has no predicate). A malformed `page` or `per_page` is a 400 too. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::ContractsApi.new
+season = 56 # Integer | Season-ending year, a positive whole number.
+opts = {
+  school_ids: [37], # Array<Integer> | The schools to read, as school_ids[]=1&school_ids[]=2 or a comma separated list. At most 300. Give exactly one of school_ids and conference_id.
+  conference_id: 56, # Integer | The schools whose primary conference this is (not schools that play one sport in it). At most 300 schools; an unknown conference is 400.
+  status: [WinthropClient::CompensationVerificationStatusValue::VERIFIED], # Array<CompensationVerificationStatusValue> | Keep only rows with these statuses (status[]=verified&status[]=not_verified).
+  q: { key: 3.56}, # Object | Ransack filters on the verification event in force, for example q[verified_at_lt]=2026-09-15T00:00:00Z, q[method_eq]=agent, q[agent_run_id_start]=astra or q[batch_id_eq]=big-ten-2025-a. Same allowlist as GET /contract_verifications, without its bulk-only school scopes; a condition outside it, or one with no predicate, is a 400 naming it (`errors.q`, WINAD-10681).
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56 # Integer | Page size, capped at 1000; defaults to 500.
+}
+
+begin
+  # Verification status of every compensation row of some schools in one season
+  result = api_instance.get_compensation_verification_status(season, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling ContractsApi->get_compensation_verification_status: #{e}"
+end
+```
+
+#### Using the get_compensation_verification_status_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetCompensationVerificationStatus200Response>, Integer, Hash)> get_compensation_verification_status_with_http_info(season, opts)
+
+```ruby
+begin
+  # Verification status of every compensation row of some schools in one season
+  data, status_code, headers = api_instance.get_compensation_verification_status_with_http_info(season, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetCompensationVerificationStatus200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling ContractsApi->get_compensation_verification_status_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **season** | **Integer** | Season-ending year, a positive whole number. |  |
+| **school_ids** | [**Array&lt;Integer&gt;**](Integer.md) | The schools to read, as school_ids[]&#x3D;1&amp;school_ids[]&#x3D;2 or a comma separated list. At most 300. Give exactly one of school_ids and conference_id. | [optional] |
+| **conference_id** | **Integer** | The schools whose primary conference this is (not schools that play one sport in it). At most 300 schools; an unknown conference is 400. | [optional] |
+| **status** | [**Array&lt;CompensationVerificationStatusValue&gt;**](CompensationVerificationStatusValue.md) | Keep only rows with these statuses (status[]&#x3D;verified&amp;status[]&#x3D;not_verified). | [optional] |
+| **q** | [**Object**](.md) | Ransack filters on the verification event in force, for example q[verified_at_lt]&#x3D;2026-09-15T00:00:00Z, q[method_eq]&#x3D;agent, q[agent_run_id_start]&#x3D;astra or q[batch_id_eq]&#x3D;big-ten-2025-a. Same allowlist as GET /contract_verifications, without its bulk-only school scopes; a condition outside it, or one with no predicate, is a 400 naming it (&#x60;errors.q&#x60;, WINAD-10681). | [optional] |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | Page size, capped at 1000; defaults to 500. | [optional][default to 500] |
+
+### Return type
+
+[**GetCompensationVerificationStatus200Response**](GetCompensationVerificationStatus200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_contract_history
 
 > <ContractHistoryCollection> get_contract_history(opts)
@@ -252,6 +342,86 @@ end
 ### Return type
 
 [**ContractHistoryCollection**](ContractHistoryCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_contract_verifications
+
+> <ListContractVerifications200Response> list_contract_verifications(opts)
+
+List verification events across contracts
+
+The verification history of many contracts in one request (WINAD-10680), instead of one GET /raw_contracts/{id}/verifications per document. Read-only. Each row is exactly what the per-contract read returns for the same event (the ContractVerification schema); that endpoint is unchanged. There is no `verified_seasons` in the meta, since that is a per-contract summary; derive it from the events, newest first (a season counts as verified when its latest event is `passed`).  Ordering is always verified_at DESC, id DESC, so pages never overlap or skip. Ransack filters, with the same allowlist as the per-contract read (id, contract_id, raw_contract_id, coach_id, verified_by_id, verified_at, result, method, agent_run_id, evidence_url, created_at, batch_id, code_version; association traversal and predicates on `seasons` are not available; a filter outside the allowlist, or an attribute without a predicate, is a 400 naming it, WINAD-10681). Examples: everything verified on 2026-10-10 is `q[verified_at_gteq]=2026-10-10&q[verified_at_lt]=2026-10-11`, one posting batch is `q[batch_id_eq]=...`, runs of one bot are `q[agent_run_id_start]=...`. Three filters exist only here: `q[contract_school_id_eq]` and `q[contract_school_id_in][]` keep the events of contracts whose coach has (or had) a position at that school, as the contracts index's `contract_school_id_eq` does, and `q[seasons_contains]=2025` keeps the events whose `seasons` include that year (one whole number, within the 32-bit range; anything else is 400 `errors.q.seasons_contains`). A list filter takes at most 1000 values (more is 422 `errors.q.<filter>`; a comma separated string counts the same). Ids go in the query string, so for a larger set page through `contract_school_id_in` or a smaller `contract_id_in` slice. For a season-by-season status per compensation row use GET /compensation_verification_status.  Visibility is the per-contract read's, applied to every contract in one query: only events of contracts whose RawContract the caller may read, and that the contracts API serves them, are returned (a hidden coach's contracts and pending contracts are left out for anyone who cannot manage coaches, with the counts to match). A contract with no document is not listed. A caller who may not read documents at all gets 403. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::ContractsApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | Page size, capped at 500; defaults to 100.
+  q: WinthropClient::ListContractVerificationsQParameter.new # ListContractVerificationsQParameter | Ransack filters, for example q[contract_id_in][]=1&q[contract_id_in][]=2, q[contract_school_id_eq]=7, q[result_eq]=passed, q[seasons_contains]=2025, q[batch_id_eq]=big-ten-2025-a, q[code_version_start]=0c2950e or q[s]=verified_at asc. At most 1000 values in any list.
+}
+
+begin
+  # List verification events across contracts
+  result = api_instance.list_contract_verifications(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling ContractsApi->list_contract_verifications: #{e}"
+end
+```
+
+#### Using the list_contract_verifications_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ListContractVerifications200Response>, Integer, Hash)> list_contract_verifications_with_http_info(opts)
+
+```ruby
+begin
+  # List verification events across contracts
+  data, status_code, headers = api_instance.list_contract_verifications_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ListContractVerifications200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling ContractsApi->list_contract_verifications_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | Page size, capped at 500; defaults to 100. | [optional][default to 100] |
+| **q** | [**ListContractVerificationsQParameter**](.md) | Ransack filters, for example q[contract_id_in][]&#x3D;1&amp;q[contract_id_in][]&#x3D;2, q[contract_school_id_eq]&#x3D;7, q[result_eq]&#x3D;passed, q[seasons_contains]&#x3D;2025, q[batch_id_eq]&#x3D;big-ten-2025-a, q[code_version_start]&#x3D;0c2950e or q[s]&#x3D;verified_at asc. At most 1000 values in any list. | [optional] |
+
+### Return type
+
+[**ListContractVerifications200Response**](ListContractVerifications200Response.md)
 
 ### Authorization
 
