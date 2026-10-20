@@ -12,6 +12,8 @@
 | **evidence_url** | **String** | HTTP(S) evidence link; required for passed and mismatch results. | [optional] |
 | **reason** | **String** | Only set on revoked events. | [optional] |
 | **approval_quote** | **String** | Only set on revoked events. | [optional] |
+| **batch_id** | **String** | Posting batch label the caller gave at creation; null for events posted without one. | [optional] |
+| **code_version** | **String** | Commit SHA of the posting code the caller gave at creation (lower case); null when not given. | [optional] |
 | **id** | **Integer** |  |  |
 | **contract_id** | **Integer** |  |  |
 | **raw_contract_id** | **Integer** | Checked PDF; becomes null when that RawContract is deleted. |  |
@@ -33,6 +35,8 @@ instance = WinthropClient::ContractVerification.new(
   evidence_url: null,
   reason: null,
   approval_quote: null,
+  batch_id: null,
+  code_version: null,
   id: null,
   contract_id: null,
   raw_contract_id: null,
