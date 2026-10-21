@@ -1,0 +1,20 @@
+# WinthropClient::UpdateAdminDealRequest
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **change_note** | **String** | Optional reason, stored on every audit version; trimmed, blank means absent. | [optional] |
+| **deal** | [**UpdateAdminDealRequestDeal**](UpdateAdminDealRequestDeal.md) |  |  |
+
+## Example
+
+```ruby
+require 'winthrop-client-ruby'
+
+instance = WinthropClient::UpdateAdminDealRequest.new(
+  change_note: null,
+  deal: null
+)
+```
+
