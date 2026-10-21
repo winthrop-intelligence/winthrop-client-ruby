@@ -818,6 +818,194 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Force-confirm a user's email/account, bypassing the normal confirmation flow (super_admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminUser]
+    def confirm_email_admin_user(id, opts = {})
+      data, _status_code, _headers = confirm_email_admin_user_with_http_info(id, opts)
+      data
+    end
+
+    # Force-confirm a user&#39;s email/account, bypassing the normal confirmation flow (super_admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminUser, Integer, Hash)>] AdminUser data, response status code and response headers
+    def confirm_email_admin_user_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.confirm_email_admin_user ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.confirm_email_admin_user"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/users/{id}/confirm_email'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminUser'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.confirm_email_admin_user",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#confirm_email_admin_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Enqueue the system-wide job that departs closed-school positions for `year - 1` and copies every other coach's non-departing positions forward into `year` (admin-only)
+    # @param copy_positions_for_year_request [CopyPositionsForYearRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [CopyPositionsForYearResponse]
+    def copy_for_year_admin_positions(copy_positions_for_year_request, opts = {})
+      data, _status_code, _headers = copy_for_year_admin_positions_with_http_info(copy_positions_for_year_request, opts)
+      data
+    end
+
+    # Enqueue the system-wide job that departs closed-school positions for &#x60;year - 1&#x60; and copies every other coach&#39;s non-departing positions forward into &#x60;year&#x60; (admin-only)
+    # @param copy_positions_for_year_request [CopyPositionsForYearRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CopyPositionsForYearResponse, Integer, Hash)>] CopyPositionsForYearResponse data, response status code and response headers
+    def copy_for_year_admin_positions_with_http_info(copy_positions_for_year_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.copy_for_year_admin_positions ...'
+      end
+      # verify the required parameter 'copy_positions_for_year_request' is set
+      if @api_client.config.client_side_validation && copy_positions_for_year_request.nil?
+        fail ArgumentError, "Missing the required parameter 'copy_positions_for_year_request' when calling DefaultApi.copy_for_year_admin_positions"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/positions/copy_for_year'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(copy_positions_for_year_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CopyPositionsForYearResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.copy_for_year_admin_positions",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#copy_for_year_admin_positions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Copy this one position into the next season for its coach (admin-only)
+    # @param id [Integer] ID of the position
+    # @param [Hash] opts the optional parameters
+    # @return [CopyToNextYearResponse]
+    def copy_to_next_year_admin_position(id, opts = {})
+      data, _status_code, _headers = copy_to_next_year_admin_position_with_http_info(id, opts)
+      data
+    end
+
+    # Copy this one position into the next season for its coach (admin-only)
+    # @param id [Integer] ID of the position
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CopyToNextYearResponse, Integer, Hash)>] CopyToNextYearResponse data, response status code and response headers
+    def copy_to_next_year_admin_position_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.copy_to_next_year_admin_position ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.copy_to_next_year_admin_position"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/positions/{id}/copy_to_next_year'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CopyToNextYearResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.copy_to_next_year_admin_position",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#copy_to_next_year_admin_position\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create a new user for the current account. The email prefix is combined with the account email domain. The new user receives an invitation email.
     # @param create_account_user_request [CreateAccountUserRequest] 
     # @param [Hash] opts the optional parameters
@@ -1405,6 +1593,138 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Create a conference (admin, super-admin only)
+    # @param create_admin_conferences_request [CreateAdminConferencesRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminConferenceDetail]
+    def create_admin_conferences(create_admin_conferences_request, opts = {})
+      data, _status_code, _headers = create_admin_conferences_with_http_info(create_admin_conferences_request, opts)
+      data
+    end
+
+    # Create a conference (admin, super-admin only)
+    # @param create_admin_conferences_request [CreateAdminConferencesRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminConferenceDetail, Integer, Hash)>] AdminConferenceDetail data, response status code and response headers
+    def create_admin_conferences_with_http_info(create_admin_conferences_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_admin_conferences ...'
+      end
+      # verify the required parameter 'create_admin_conferences_request' is set
+      if @api_client.config.client_side_validation && create_admin_conferences_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_admin_conferences_request' when calling DefaultApi.create_admin_conferences"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/conferences'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_admin_conferences_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminConferenceDetail'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_admin_conferences",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_admin_conferences\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create a conferenceship, assigning a school to a conference for a sport (admin, super-admin only)
+    # @param create_admin_conferenceships_request [CreateAdminConferenceshipsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminConferenceship]
+    def create_admin_conferenceships(create_admin_conferenceships_request, opts = {})
+      data, _status_code, _headers = create_admin_conferenceships_with_http_info(create_admin_conferenceships_request, opts)
+      data
+    end
+
+    # Create a conferenceship, assigning a school to a conference for a sport (admin, super-admin only)
+    # @param create_admin_conferenceships_request [CreateAdminConferenceshipsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminConferenceship, Integer, Hash)>] AdminConferenceship data, response status code and response headers
+    def create_admin_conferenceships_with_http_info(create_admin_conferenceships_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_admin_conferenceships ...'
+      end
+      # verify the required parameter 'create_admin_conferenceships_request' is set
+      if @api_client.config.client_side_validation && create_admin_conferenceships_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_admin_conferenceships_request' when calling DefaultApi.create_admin_conferenceships"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/conferenceships'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_admin_conferenceships_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminConferenceship'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_admin_conferenceships",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_admin_conferenceships\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create a new scheduling contact (admin, super-admin only)
     # @param create_contact_request [CreateContactRequest] 
     # @param [Hash] opts the optional parameters
@@ -1540,6 +1860,138 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#create_admin_contract\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create a Deal (school, deal_type, vendors, dates, autorenew, archived, raw_contract, text) - deal_detail_attributes is never accepted on create, matching the live form
+    # @param create_admin_deal_request [CreateAdminDealRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminDeal]
+    def create_admin_deal(create_admin_deal_request, opts = {})
+      data, _status_code, _headers = create_admin_deal_with_http_info(create_admin_deal_request, opts)
+      data
+    end
+
+    # Create a Deal (school, deal_type, vendors, dates, autorenew, archived, raw_contract, text) - deal_detail_attributes is never accepted on create, matching the live form
+    # @param create_admin_deal_request [CreateAdminDealRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminDeal, Integer, Hash)>] AdminDeal data, response status code and response headers
+    def create_admin_deal_with_http_info(create_admin_deal_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_admin_deal ...'
+      end
+      # verify the required parameter 'create_admin_deal_request' is set
+      if @api_client.config.client_side_validation && create_admin_deal_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_admin_deal_request' when calling DefaultApi.create_admin_deal"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/deals'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_admin_deal_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminDeal'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_admin_deal",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_admin_deal\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create a DealStatus for a school+deal_type pair that doesn't have one yet (the school-deals mass-edit table's entry point)
+    # @param create_admin_deal_statuses_request [CreateAdminDealStatusesRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminDealStatuses]
+    def create_admin_deal_statuses(create_admin_deal_statuses_request, opts = {})
+      data, _status_code, _headers = create_admin_deal_statuses_with_http_info(create_admin_deal_statuses_request, opts)
+      data
+    end
+
+    # Create a DealStatus for a school+deal_type pair that doesn&#39;t have one yet (the school-deals mass-edit table&#39;s entry point)
+    # @param create_admin_deal_statuses_request [CreateAdminDealStatusesRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminDealStatuses, Integer, Hash)>] AdminDealStatuses data, response status code and response headers
+    def create_admin_deal_statuses_with_http_info(create_admin_deal_statuses_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_admin_deal_statuses ...'
+      end
+      # verify the required parameter 'create_admin_deal_statuses_request' is set
+      if @api_client.config.client_side_validation && create_admin_deal_statuses_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_admin_deal_statuses_request' when calling DefaultApi.create_admin_deal_statuses"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/deal_statuses'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_admin_deal_statuses_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminDealStatuses'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_admin_deal_statuses",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_admin_deal_statuses\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -2027,6 +2479,72 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Start impersonating a user (admin, super-admin only)
+    # @param create_admin_impersonations_request [CreateAdminImpersonationsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminImpersonation]
+    def create_admin_impersonations(create_admin_impersonations_request, opts = {})
+      data, _status_code, _headers = create_admin_impersonations_with_http_info(create_admin_impersonations_request, opts)
+      data
+    end
+
+    # Start impersonating a user (admin, super-admin only)
+    # @param create_admin_impersonations_request [CreateAdminImpersonationsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminImpersonation, Integer, Hash)>] AdminImpersonation data, response status code and response headers
+    def create_admin_impersonations_with_http_info(create_admin_impersonations_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_admin_impersonations ...'
+      end
+      # verify the required parameter 'create_admin_impersonations_request' is set
+      if @api_client.config.client_side_validation && create_admin_impersonations_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_admin_impersonations_request' when calling DefaultApi.create_admin_impersonations"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/impersonations'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_admin_impersonations_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminImpersonation'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_admin_impersonations",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_admin_impersonations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create an outside income report for a coach, optionally attaching a raw contract PDF (admin, super-admin only)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :change_note 
@@ -2166,6 +2684,138 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Create a new position for a coach in an existing season (admin-only)
+    # @param create_admin_position_request [CreateAdminPositionRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminPosition]
+    def create_admin_position(create_admin_position_request, opts = {})
+      data, _status_code, _headers = create_admin_position_with_http_info(create_admin_position_request, opts)
+      data
+    end
+
+    # Create a new position for a coach in an existing season (admin-only)
+    # @param create_admin_position_request [CreateAdminPositionRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminPosition, Integer, Hash)>] AdminPosition data, response status code and response headers
+    def create_admin_position_with_http_info(create_admin_position_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_admin_position ...'
+      end
+      # verify the required parameter 'create_admin_position_request' is set
+      if @api_client.config.client_side_validation && create_admin_position_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_admin_position_request' when calling DefaultApi.create_admin_position"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/positions'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_admin_position_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminPosition'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_admin_position",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_admin_position\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create a new Position Type (admin-only)
+    # @param create_position_type_request [CreatePositionTypeRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminPositionType]
+    def create_admin_position_types(create_position_type_request, opts = {})
+      data, _status_code, _headers = create_admin_position_types_with_http_info(create_position_type_request, opts)
+      data
+    end
+
+    # Create a new Position Type (admin-only)
+    # @param create_position_type_request [CreatePositionTypeRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminPositionType, Integer, Hash)>] AdminPositionType data, response status code and response headers
+    def create_admin_position_types_with_http_info(create_position_type_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_admin_position_types ...'
+      end
+      # verify the required parameter 'create_position_type_request' is set
+      if @api_client.config.client_side_validation && create_position_type_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_position_type_request' when calling DefaultApi.create_admin_position_types"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/position_types'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_position_type_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminPositionType'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_admin_position_types",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_admin_position_types\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create a note on a requested item (admin, super-admin only)
     # @param requested_item_id [Integer] 
     # @param admin_ri_note_input [AdminRiNoteInput] 
@@ -2238,6 +2888,550 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Create a Deal scoped to this School
+    # @param school_id [Integer] 
+    # @param create_admin_school_deal_request [CreateAdminSchoolDealRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminDeal]
+    def create_admin_school_deal(school_id, create_admin_school_deal_request, opts = {})
+      data, _status_code, _headers = create_admin_school_deal_with_http_info(school_id, create_admin_school_deal_request, opts)
+      data
+    end
+
+    # Create a Deal scoped to this School
+    # @param school_id [Integer] 
+    # @param create_admin_school_deal_request [CreateAdminSchoolDealRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminDeal, Integer, Hash)>] AdminDeal data, response status code and response headers
+    def create_admin_school_deal_with_http_info(school_id, create_admin_school_deal_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_admin_school_deal ...'
+      end
+      # verify the required parameter 'school_id' is set
+      if @api_client.config.client_side_validation && school_id.nil?
+        fail ArgumentError, "Missing the required parameter 'school_id' when calling DefaultApi.create_admin_school_deal"
+      end
+      # verify the required parameter 'create_admin_school_deal_request' is set
+      if @api_client.config.client_side_validation && create_admin_school_deal_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_admin_school_deal_request' when calling DefaultApi.create_admin_school_deal"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/schools/{school_id}/deals'.sub('{' + 'school_id' + '}', CGI.escape(school_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_admin_school_deal_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminDeal'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_admin_school_deal",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_admin_school_deal\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create a new alternate/historical school name (super_admin only)
+    # @param create_admin_school_names_request [CreateAdminSchoolNamesRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminSchoolName]
+    def create_admin_school_names(create_admin_school_names_request, opts = {})
+      data, _status_code, _headers = create_admin_school_names_with_http_info(create_admin_school_names_request, opts)
+      data
+    end
+
+    # Create a new alternate/historical school name (super_admin only)
+    # @param create_admin_school_names_request [CreateAdminSchoolNamesRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminSchoolName, Integer, Hash)>] AdminSchoolName data, response status code and response headers
+    def create_admin_school_names_with_http_info(create_admin_school_names_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_admin_school_names ...'
+      end
+      # verify the required parameter 'create_admin_school_names_request' is set
+      if @api_client.config.client_side_validation && create_admin_school_names_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_admin_school_names_request' when calling DefaultApi.create_admin_school_names"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/school_names'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_admin_school_names_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminSchoolName'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_admin_school_names",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_admin_school_names\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Upload a standalone Audited Financial Report PDF (or NCAA Financial Report PDF via school_revenue_year) for one school/year (super_admin only)
+    # @param school_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :season_audited_financials 
+    # @option opts [Integer] :season_year 
+    # @return [CreateAdminSchoolRevenue201Response]
+    def create_admin_school_revenue(school_id, opts = {})
+      data, _status_code, _headers = create_admin_school_revenue_with_http_info(school_id, opts)
+      data
+    end
+
+    # Upload a standalone Audited Financial Report PDF (or NCAA Financial Report PDF via school_revenue_year) for one school/year (super_admin only)
+    # @param school_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :season_audited_financials 
+    # @option opts [Integer] :season_year 
+    # @return [Array<(CreateAdminSchoolRevenue201Response, Integer, Hash)>] CreateAdminSchoolRevenue201Response data, response status code and response headers
+    def create_admin_school_revenue_with_http_info(school_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_admin_school_revenue ...'
+      end
+      # verify the required parameter 'school_id' is set
+      if @api_client.config.client_side_validation && school_id.nil?
+        fail ArgumentError, "Missing the required parameter 'school_id' when calling DefaultApi.create_admin_school_revenue"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/schools/{schoolId}/revenue'.sub('{' + 'schoolId' + '}', CGI.escape(school_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['multipart/form-data'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+      form_params['season[audited_financials]'] = opts[:'season_audited_financials'] if !opts[:'season_audited_financials'].nil?
+      form_params['season[year]'] = opts[:'season_year'] if !opts[:'season_year'].nil?
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CreateAdminSchoolRevenue201Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_admin_school_revenue",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_admin_school_revenue\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Queue the combined NCAA Financial Report CSV+PDF and Financial Stats CSV upload for one school/year via SchoolFinancialImportService (super_admin only)
+    # @param school_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :season_revenue_csv 
+    # @option opts [File] :season_revenue_pdf 
+    # @option opts [File] :season_financial_infos 
+    # @option opts [Integer] :season_year 
+    # @return [RegenerateRawContractPdf200Response]
+    def create_admin_school_revenue_combined_upload(school_id, opts = {})
+      data, _status_code, _headers = create_admin_school_revenue_combined_upload_with_http_info(school_id, opts)
+      data
+    end
+
+    # Queue the combined NCAA Financial Report CSV+PDF and Financial Stats CSV upload for one school/year via SchoolFinancialImportService (super_admin only)
+    # @param school_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :season_revenue_csv 
+    # @option opts [File] :season_revenue_pdf 
+    # @option opts [File] :season_financial_infos 
+    # @option opts [Integer] :season_year 
+    # @return [Array<(RegenerateRawContractPdf200Response, Integer, Hash)>] RegenerateRawContractPdf200Response data, response status code and response headers
+    def create_admin_school_revenue_combined_upload_with_http_info(school_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_admin_school_revenue_combined_upload ...'
+      end
+      # verify the required parameter 'school_id' is set
+      if @api_client.config.client_side_validation && school_id.nil?
+        fail ArgumentError, "Missing the required parameter 'school_id' when calling DefaultApi.create_admin_school_revenue_combined_upload"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/schools/{schoolId}/revenue/combined_upload'.sub('{' + 'schoolId' + '}', CGI.escape(school_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['multipart/form-data'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+      form_params['season[revenue_csv]'] = opts[:'season_revenue_csv'] if !opts[:'season_revenue_csv'].nil?
+      form_params['season[revenue_pdf]'] = opts[:'season_revenue_pdf'] if !opts[:'season_revenue_pdf'].nil?
+      form_params['season[financial_infos]'] = opts[:'season_financial_infos'] if !opts[:'season_financial_infos'].nil?
+      form_params['season[year]'] = opts[:'season_year'] if !opts[:'season_year'].nil?
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'RegenerateRawContractPdf200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_admin_school_revenue_combined_upload",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_admin_school_revenue_combined_upload\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update school upload (persisted super admin only)
+    # @param [Hash] opts the optional parameters
+    # @option opts [CreateAdminSchoolUploadRequestSchoolUpload] :school_upload 
+    # @return [nil]
+    def create_admin_school_upload(opts = {})
+      create_admin_school_upload_with_http_info(opts)
+      nil
+    end
+
+    # Update school upload (persisted super admin only)
+    # @param [Hash] opts the optional parameters
+    # @option opts [CreateAdminSchoolUploadRequestSchoolUpload] :school_upload 
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def create_admin_school_upload_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_admin_school_upload ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/school_uploads'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['multipart/form-data'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+      form_params['school_upload'] = opts[:'school_upload'] if !opts[:'school_upload'].nil?
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_admin_school_upload",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_admin_school_upload\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create a new school (admin-only)
+    # @param [Hash] opts the optional parameters
+    # @option opts [CreateAdminSchoolRequestSchool] :school 
+    # @return [AdminSchoolDetail]
+    def create_admin_schools(opts = {})
+      data, _status_code, _headers = create_admin_schools_with_http_info(opts)
+      data
+    end
+
+    # Create a new school (admin-only)
+    # @param [Hash] opts the optional parameters
+    # @option opts [CreateAdminSchoolRequestSchool] :school 
+    # @return [Array<(AdminSchoolDetail, Integer, Hash)>] AdminSchoolDetail data, response status code and response headers
+    def create_admin_schools_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_admin_schools ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/schools'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['multipart/form-data'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+      form_params['school'] = opts[:'school'] if !opts[:'school'].nil?
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminSchoolDetail'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_admin_schools",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_admin_schools\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create a new Sport (admin-only)
+    # @param create_sport_request [CreateSportRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminSport]
+    def create_admin_sport(create_sport_request, opts = {})
+      data, _status_code, _headers = create_admin_sport_with_http_info(create_sport_request, opts)
+      data
+    end
+
+    # Create a new Sport (admin-only)
+    # @param create_sport_request [CreateSportRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminSport, Integer, Hash)>] AdminSport data, response status code and response headers
+    def create_admin_sport_with_http_info(create_sport_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_admin_sport ...'
+      end
+      # verify the required parameter 'create_sport_request' is set
+      if @api_client.config.client_side_validation && create_sport_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_sport_request' when calling DefaultApi.create_admin_sport"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/sports'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_sport_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminSport'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_admin_sport",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_admin_sport\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Add a school as a member of a subdivision (super_admin only)
+    # @param create_admin_subdivision_membership_request [CreateAdminSubdivisionMembershipRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminSubdivisionMembership]
+    def create_admin_subdivision_membership(create_admin_subdivision_membership_request, opts = {})
+      data, _status_code, _headers = create_admin_subdivision_membership_with_http_info(create_admin_subdivision_membership_request, opts)
+      data
+    end
+
+    # Add a school as a member of a subdivision (super_admin only)
+    # @param create_admin_subdivision_membership_request [CreateAdminSubdivisionMembershipRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminSubdivisionMembership, Integer, Hash)>] AdminSubdivisionMembership data, response status code and response headers
+    def create_admin_subdivision_membership_with_http_info(create_admin_subdivision_membership_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_admin_subdivision_membership ...'
+      end
+      # verify the required parameter 'create_admin_subdivision_membership_request' is set
+      if @api_client.config.client_side_validation && create_admin_subdivision_membership_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_admin_subdivision_membership_request' when calling DefaultApi.create_admin_subdivision_membership"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/subdivision_memberships'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_admin_subdivision_membership_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminSubdivisionMembership'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_admin_subdivision_membership",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_admin_subdivision_membership\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create a termination agreement for a coach, optionally attaching a raw contract PDF (admin, super-admin only)
     # @param termination_agreement [CreateTerminationAgreementRequestTerminationAgreement] 
     # @param [Hash] opts the optional parameters
@@ -2304,6 +3498,210 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#create_admin_termination_agreement\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create a new user (super_admin only)
+    # @param create_admin_user_request [CreateAdminUserRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminUser]
+    def create_admin_user(create_admin_user_request, opts = {})
+      data, _status_code, _headers = create_admin_user_with_http_info(create_admin_user_request, opts)
+      data
+    end
+
+    # Create a new user (super_admin only)
+    # @param create_admin_user_request [CreateAdminUserRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminUser, Integer, Hash)>] AdminUser data, response status code and response headers
+    def create_admin_user_with_http_info(create_admin_user_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_admin_user ...'
+      end
+      # verify the required parameter 'create_admin_user_request' is set
+      if @api_client.config.client_side_validation && create_admin_user_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_admin_user_request' when calling DefaultApi.create_admin_user"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/users'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_admin_user_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminUser'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_admin_user",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_admin_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create a Deal scoped to this Vendor
+    # @param vendor_id [Integer] 
+    # @param create_admin_school_deal_request [CreateAdminSchoolDealRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminDeal]
+    def create_admin_vendor_deal(vendor_id, create_admin_school_deal_request, opts = {})
+      data, _status_code, _headers = create_admin_vendor_deal_with_http_info(vendor_id, create_admin_school_deal_request, opts)
+      data
+    end
+
+    # Create a Deal scoped to this Vendor
+    # @param vendor_id [Integer] 
+    # @param create_admin_school_deal_request [CreateAdminSchoolDealRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminDeal, Integer, Hash)>] AdminDeal data, response status code and response headers
+    def create_admin_vendor_deal_with_http_info(vendor_id, create_admin_school_deal_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_admin_vendor_deal ...'
+      end
+      # verify the required parameter 'vendor_id' is set
+      if @api_client.config.client_side_validation && vendor_id.nil?
+        fail ArgumentError, "Missing the required parameter 'vendor_id' when calling DefaultApi.create_admin_vendor_deal"
+      end
+      # verify the required parameter 'create_admin_school_deal_request' is set
+      if @api_client.config.client_side_validation && create_admin_school_deal_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_admin_school_deal_request' when calling DefaultApi.create_admin_vendor_deal"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/vendors/{vendor_id}/deals'.sub('{' + 'vendor_id' + '}', CGI.escape(vendor_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_admin_school_deal_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminDeal'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_admin_vendor_deal",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_admin_vendor_deal\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create a vendor (admin, super-admin only)
+    # @param create_admin_vendors_request [CreateAdminVendorsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminVendorDetail]
+    def create_admin_vendors(create_admin_vendors_request, opts = {})
+      data, _status_code, _headers = create_admin_vendors_with_http_info(create_admin_vendors_request, opts)
+      data
+    end
+
+    # Create a vendor (admin, super-admin only)
+    # @param create_admin_vendors_request [CreateAdminVendorsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminVendorDetail, Integer, Hash)>] AdminVendorDetail data, response status code and response headers
+    def create_admin_vendors_with_http_info(create_admin_vendors_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_admin_vendors ...'
+      end
+      # verify the required parameter 'create_admin_vendors_request' is set
+      if @api_client.config.client_side_validation && create_admin_vendors_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_admin_vendors_request' when calling DefaultApi.create_admin_vendors"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/vendors'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_admin_vendors_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminVendorDetail'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_admin_vendors",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_admin_vendors\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -6498,6 +7896,65 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Delete an avatar and clear the coach's cached photo_url (admin, super-admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def destroy_admin_avatars(id, opts = {})
+      destroy_admin_avatars_with_http_info(id, opts)
+      nil
+    end
+
+    # Delete an avatar and clear the coach&#39;s cached photo_url (admin, super-admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def destroy_admin_avatars_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.destroy_admin_avatars ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.destroy_admin_avatars"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/avatars/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.destroy_admin_avatars",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#destroy_admin_avatars\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete a coach (admin-only)
     # @param id [String] 
     # @param [Hash] opts the optional parameters
@@ -6616,6 +8073,124 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Delete a conference (admin, super-admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def destroy_admin_conferences(id, opts = {})
+      destroy_admin_conferences_with_http_info(id, opts)
+      nil
+    end
+
+    # Delete a conference (admin, super-admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def destroy_admin_conferences_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.destroy_admin_conferences ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.destroy_admin_conferences"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/conferences/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.destroy_admin_conferences",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#destroy_admin_conferences\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Destroy a conferenceship (admin, super-admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def destroy_admin_conferenceships(id, opts = {})
+      destroy_admin_conferenceships_with_http_info(id, opts)
+      nil
+    end
+
+    # Destroy a conferenceship (admin, super-admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def destroy_admin_conferenceships_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.destroy_admin_conferenceships ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.destroy_admin_conferenceships"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/conferenceships/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.destroy_admin_conferenceships",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#destroy_admin_conferenceships\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete a scheduling contact (admin, super-admin only)
     # @param id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -6730,6 +8305,190 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#destroy_admin_contract\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Destroy a Deal
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :change_note Optional reason, stored on every audit version; trimmed, blank means absent.
+    # @return [nil]
+    def destroy_admin_deal(id, opts = {})
+      destroy_admin_deal_with_http_info(id, opts)
+      nil
+    end
+
+    # Destroy a Deal
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :change_note Optional reason, stored on every audit version; trimmed, blank means absent.
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def destroy_admin_deal_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.destroy_admin_deal ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.destroy_admin_deal"
+      end
+      if @api_client.config.client_side_validation && !opts[:'change_note'].nil? && opts[:'change_note'].to_s.length > 500
+        fail ArgumentError, 'invalid value for "opts[:"change_note"]" when calling DefaultApi.destroy_admin_deal, the character length must be smaller than or equal to 500.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/admin/deals/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'change_note'] = opts[:'change_note'] if !opts[:'change_note'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.destroy_admin_deal",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#destroy_admin_deal\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete a favorite (admin, super-admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def destroy_admin_favorites(id, opts = {})
+      destroy_admin_favorites_with_http_info(id, opts)
+      nil
+    end
+
+    # Delete a favorite (admin, super-admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def destroy_admin_favorites_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.destroy_admin_favorites ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.destroy_admin_favorites"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/favorites/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.destroy_admin_favorites",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#destroy_admin_favorites\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete a single financial stat row (super_admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def destroy_admin_financial_stats(id, opts = {})
+      destroy_admin_financial_stats_with_http_info(id, opts)
+      nil
+    end
+
+    # Delete a single financial stat row (super_admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def destroy_admin_financial_stats_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.destroy_admin_financial_stats ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.destroy_admin_financial_stats"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/financial_stats/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.destroy_admin_financial_stats",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#destroy_admin_financial_stats\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -6911,6 +8670,61 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # End the active impersonation session, resuming the super admin account (admin, super-admin only)
+    # @param [Hash] opts the optional parameters
+    # @return [DestroyAdminImpersonations200Response]
+    def destroy_admin_impersonations(opts = {})
+      data, _status_code, _headers = destroy_admin_impersonations_with_http_info(opts)
+      data
+    end
+
+    # End the active impersonation session, resuming the super admin account (admin, super-admin only)
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(DestroyAdminImpersonations200Response, Integer, Hash)>] DestroyAdminImpersonations200Response data, response status code and response headers
+    def destroy_admin_impersonations_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.destroy_admin_impersonations ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/impersonations'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'DestroyAdminImpersonations200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.destroy_admin_impersonations",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#destroy_admin_impersonations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete an income report (admin, super-admin only)
     # @param id [Integer] ID of the income report
     # @param [Hash] opts the optional parameters
@@ -6973,6 +8787,183 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#destroy_admin_income_report\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete a note (admin)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def destroy_admin_note(id, opts = {})
+      destroy_admin_note_with_http_info(id, opts)
+      nil
+    end
+
+    # Delete a note (admin)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def destroy_admin_note_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.destroy_admin_note ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.destroy_admin_note"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/notes/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.destroy_admin_note",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#destroy_admin_note\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete a single position (admin-only)
+    # @param id [Integer] ID of the position
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def destroy_admin_position(id, opts = {})
+      destroy_admin_position_with_http_info(id, opts)
+      nil
+    end
+
+    # Delete a single position (admin-only)
+    # @param id [Integer] ID of the position
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def destroy_admin_position_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.destroy_admin_position ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.destroy_admin_position"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/positions/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.destroy_admin_position",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#destroy_admin_position\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete a single Position Type (admin-only)
+    # @param id [Integer] ID of the Position Type
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def destroy_admin_position_types(id, opts = {})
+      destroy_admin_position_types_with_http_info(id, opts)
+      nil
+    end
+
+    # Delete a single Position Type (admin-only)
+    # @param id [Integer] ID of the Position Type
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def destroy_admin_position_types_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.destroy_admin_position_types ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.destroy_admin_position_types"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/position_types/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.destroy_admin_position_types",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#destroy_admin_position_types\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -7161,6 +9152,375 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Destroy a Deal scoped to this School
+    # @param school_id [Integer] 
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def destroy_admin_school_deal(school_id, id, opts = {})
+      destroy_admin_school_deal_with_http_info(school_id, id, opts)
+      nil
+    end
+
+    # Destroy a Deal scoped to this School
+    # @param school_id [Integer] 
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def destroy_admin_school_deal_with_http_info(school_id, id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.destroy_admin_school_deal ...'
+      end
+      # verify the required parameter 'school_id' is set
+      if @api_client.config.client_side_validation && school_id.nil?
+        fail ArgumentError, "Missing the required parameter 'school_id' when calling DefaultApi.destroy_admin_school_deal"
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.destroy_admin_school_deal"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/schools/{school_id}/deals/{id}'.sub('{' + 'school_id' + '}', CGI.escape(school_id.to_s)).sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.destroy_admin_school_deal",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#destroy_admin_school_deal\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete a user's custom school group (super_admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def destroy_admin_school_groups(id, opts = {})
+      destroy_admin_school_groups_with_http_info(id, opts)
+      nil
+    end
+
+    # Delete a user&#39;s custom school group (super_admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def destroy_admin_school_groups_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.destroy_admin_school_groups ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.destroy_admin_school_groups"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/school_groups/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.destroy_admin_school_groups",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#destroy_admin_school_groups\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete an alternate school name (super_admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def destroy_admin_school_names(id, opts = {})
+      destroy_admin_school_names_with_http_info(id, opts)
+      nil
+    end
+
+    # Delete an alternate school name (super_admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def destroy_admin_school_names_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.destroy_admin_school_names ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.destroy_admin_school_names"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/school_names/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.destroy_admin_school_names",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#destroy_admin_school_names\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete every financial record (cashflows, FINANCIALS raw contracts, financial stats, financial infos) for one school/year (super_admin only)
+    # @param school_id [Integer] 
+    # @param year [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [RegenerateRawContractPdf200Response]
+    def destroy_admin_school_revenue_year(school_id, year, opts = {})
+      data, _status_code, _headers = destroy_admin_school_revenue_year_with_http_info(school_id, year, opts)
+      data
+    end
+
+    # Delete every financial record (cashflows, FINANCIALS raw contracts, financial stats, financial infos) for one school/year (super_admin only)
+    # @param school_id [Integer] 
+    # @param year [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(RegenerateRawContractPdf200Response, Integer, Hash)>] RegenerateRawContractPdf200Response data, response status code and response headers
+    def destroy_admin_school_revenue_year_with_http_info(school_id, year, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.destroy_admin_school_revenue_year ...'
+      end
+      # verify the required parameter 'school_id' is set
+      if @api_client.config.client_side_validation && school_id.nil?
+        fail ArgumentError, "Missing the required parameter 'school_id' when calling DefaultApi.destroy_admin_school_revenue_year"
+      end
+      # verify the required parameter 'year' is set
+      if @api_client.config.client_side_validation && year.nil?
+        fail ArgumentError, "Missing the required parameter 'year' when calling DefaultApi.destroy_admin_school_revenue_year"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/schools/{schoolId}/revenue/destroy_school_financial_data'.sub('{' + 'schoolId' + '}', CGI.escape(school_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'year'] = year
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'RegenerateRawContractPdf200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.destroy_admin_school_revenue_year",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#destroy_admin_school_revenue_year\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete a single Sport (admin-only)
+    # @param id [Integer] ID of the Sport
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def destroy_admin_sport(id, opts = {})
+      destroy_admin_sport_with_http_info(id, opts)
+      nil
+    end
+
+    # Delete a single Sport (admin-only)
+    # @param id [Integer] ID of the Sport
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def destroy_admin_sport_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.destroy_admin_sport ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.destroy_admin_sport"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/sports/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.destroy_admin_sport",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#destroy_admin_sport\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Remove a school's membership in a subdivision (super_admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def destroy_admin_subdivision_membership(id, opts = {})
+      destroy_admin_subdivision_membership_with_http_info(id, opts)
+      nil
+    end
+
+    # Remove a school&#39;s membership in a subdivision (super_admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def destroy_admin_subdivision_membership_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.destroy_admin_subdivision_membership ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.destroy_admin_subdivision_membership"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/subdivision_memberships/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.destroy_admin_subdivision_membership",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#destroy_admin_subdivision_membership\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete a termination agreement (admin, super-admin only)
     # @param id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -7220,6 +9580,191 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Delete a user (super_admin only); fails with 422 if the user has dependent records (e.g. FOIA requests) - suspend instead in that case
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def destroy_admin_user(id, opts = {})
+      destroy_admin_user_with_http_info(id, opts)
+      nil
+    end
+
+    # Delete a user (super_admin only); fails with 422 if the user has dependent records (e.g. FOIA requests) - suspend instead in that case
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def destroy_admin_user_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.destroy_admin_user ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.destroy_admin_user"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/users/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.destroy_admin_user",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#destroy_admin_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Destroy a Deal scoped to this Vendor
+    # @param vendor_id [Integer] 
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def destroy_admin_vendor_deal(vendor_id, id, opts = {})
+      destroy_admin_vendor_deal_with_http_info(vendor_id, id, opts)
+      nil
+    end
+
+    # Destroy a Deal scoped to this Vendor
+    # @param vendor_id [Integer] 
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def destroy_admin_vendor_deal_with_http_info(vendor_id, id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.destroy_admin_vendor_deal ...'
+      end
+      # verify the required parameter 'vendor_id' is set
+      if @api_client.config.client_side_validation && vendor_id.nil?
+        fail ArgumentError, "Missing the required parameter 'vendor_id' when calling DefaultApi.destroy_admin_vendor_deal"
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.destroy_admin_vendor_deal"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/vendors/{vendor_id}/deals/{id}'.sub('{' + 'vendor_id' + '}', CGI.escape(vendor_id.to_s)).sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.destroy_admin_vendor_deal",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#destroy_admin_vendor_deal\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete a vendor (admin, super-admin only); fails if the vendor has deals
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def destroy_admin_vendors(id, opts = {})
+      destroy_admin_vendors_with_http_info(id, opts)
+      nil
+    end
+
+    # Delete a vendor (admin, super-admin only); fails if the vendor has deals
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def destroy_admin_vendors_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.destroy_admin_vendors ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.destroy_admin_vendors"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/vendors/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.destroy_admin_vendors",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#destroy_admin_vendors\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete a YouTube video
     # @param id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -7275,6 +9820,74 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#destroy_admin_youtube_video\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Destroy a Deal's deal_detail (the only way to change deal_type on the live edit form, since the type select is disabled once a deal_detail exists)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :change_note Optional reason, stored on every audit version; trimmed, blank means absent.
+    # @return [AdminDeal]
+    def destroy_deal_detail_admin_deal(id, opts = {})
+      data, _status_code, _headers = destroy_deal_detail_admin_deal_with_http_info(id, opts)
+      data
+    end
+
+    # Destroy a Deal&#39;s deal_detail (the only way to change deal_type on the live edit form, since the type select is disabled once a deal_detail exists)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :change_note Optional reason, stored on every audit version; trimmed, blank means absent.
+    # @return [Array<(AdminDeal, Integer, Hash)>] AdminDeal data, response status code and response headers
+    def destroy_deal_detail_admin_deal_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.destroy_deal_detail_admin_deal ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.destroy_deal_detail_admin_deal"
+      end
+      if @api_client.config.client_side_validation && !opts[:'change_note'].nil? && opts[:'change_note'].to_s.length > 500
+        fail ArgumentError, 'invalid value for "opts[:"change_note"]" when calling DefaultApi.destroy_deal_detail_admin_deal, the character length must be smaller than or equal to 500.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/admin/deals/{id}/destroy_deal_detail'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'change_note'] = opts[:'change_note'] if !opts[:'change_note'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminDeal'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.destroy_deal_detail_admin_deal",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#destroy_deal_detail_admin_deal\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -7420,6 +10033,68 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Download a per-school Financial Stats CSV template with one row per distinct sport (super_admin only)
+    # @param school_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [File]
+    def download_admin_financial_stats_csv_template(school_id, opts = {})
+      data, _status_code, _headers = download_admin_financial_stats_csv_template_with_http_info(school_id, opts)
+      data
+    end
+
+    # Download a per-school Financial Stats CSV template with one row per distinct sport (super_admin only)
+    # @param school_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(File, Integer, Hash)>] File data, response status code and response headers
+    def download_admin_financial_stats_csv_template_with_http_info(school_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.download_admin_financial_stats_csv_template ...'
+      end
+      # verify the required parameter 'school_id' is set
+      if @api_client.config.client_side_validation && school_id.nil?
+        fail ArgumentError, "Missing the required parameter 'school_id' when calling DefaultApi.download_admin_financial_stats_csv_template"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/financial_stats/download_csv_template'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'school_id'] = school_id
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['text/csv']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'File'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.download_admin_financial_stats_csv_template",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#download_admin_financial_stats_csv_template\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Download the raw contract PDF with a provenance watermark (attachment disposition)
     # @param raw_contract_id [Integer] ID of the RawContract
     # @param [Hash] opts the optional parameters
@@ -7477,6 +10152,128 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#download_raw_contract_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a single Position Type plus the selectable Position Type Groups, for the \"Edit Position Type\" admin form
+    # @param id [Integer] ID of the Position Type
+    # @param [Hash] opts the optional parameters
+    # @return [EditAdminPositionType]
+    def edit_admin_position_types(id, opts = {})
+      data, _status_code, _headers = edit_admin_position_types_with_http_info(id, opts)
+      data
+    end
+
+    # Retrieve a single Position Type plus the selectable Position Type Groups, for the \&quot;Edit Position Type\&quot; admin form
+    # @param id [Integer] ID of the Position Type
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EditAdminPositionType, Integer, Hash)>] EditAdminPositionType data, response status code and response headers
+    def edit_admin_position_types_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.edit_admin_position_types ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.edit_admin_position_types"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/position_types/{id}/edit'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'EditAdminPositionType'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.edit_admin_position_types",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#edit_admin_position_types\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a single Sport plus the selectable Time of Year options, for the \"Edit Sport\" admin form
+    # @param id [Integer] ID of the Sport
+    # @param [Hash] opts the optional parameters
+    # @return [EditAdminSport]
+    def edit_admin_sport(id, opts = {})
+      data, _status_code, _headers = edit_admin_sport_with_http_info(id, opts)
+      data
+    end
+
+    # Retrieve a single Sport plus the selectable Time of Year options, for the \&quot;Edit Sport\&quot; admin form
+    # @param id [Integer] ID of the Sport
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EditAdminSport, Integer, Hash)>] EditAdminSport data, response status code and response headers
+    def edit_admin_sport_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.edit_admin_sport ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.edit_admin_sport"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/sports/{id}/edit'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'EditAdminSport'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.edit_admin_sport",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#edit_admin_sport\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -8061,6 +10858,128 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Retrieve a single conference (admin, super-admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminConferenceDetail]
+    def get_admin_conferences(id, opts = {})
+      data, _status_code, _headers = get_admin_conferences_with_http_info(id, opts)
+      data
+    end
+
+    # Retrieve a single conference (admin, super-admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminConferenceDetail, Integer, Hash)>] AdminConferenceDetail data, response status code and response headers
+    def get_admin_conferences_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_admin_conferences ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.get_admin_conferences"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/conferences/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminConferenceDetail'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_admin_conferences",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_admin_conferences\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a single conferenceship (admin, super-admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminConferenceship]
+    def get_admin_conferenceships(id, opts = {})
+      data, _status_code, _headers = get_admin_conferenceships_with_http_info(id, opts)
+      data
+    end
+
+    # Retrieve a single conferenceship (admin, super-admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminConferenceship, Integer, Hash)>] AdminConferenceship data, response status code and response headers
+    def get_admin_conferenceships_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_admin_conferenceships ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.get_admin_conferenceships"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/conferenceships/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminConferenceship'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_admin_conferenceships",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_admin_conferenceships\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve an employment contract (admin, super-admin only)
     # @param id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -8173,6 +11092,116 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_admin_contract_request_searches_options\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Reference data for the QC Vendor Contracts filter bar and edit form (deal status types, deal sources, foia-requestable deal types)
+    # @param [Hash] opts the optional parameters
+    # @return [AdminDealStatusesOptions]
+    def get_admin_deal_statuses_options(opts = {})
+      data, _status_code, _headers = get_admin_deal_statuses_options_with_http_info(opts)
+      data
+    end
+
+    # Reference data for the QC Vendor Contracts filter bar and edit form (deal status types, deal sources, foia-requestable deal types)
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminDealStatusesOptions, Integer, Hash)>] AdminDealStatusesOptions data, response status code and response headers
+    def get_admin_deal_statuses_options_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_admin_deal_statuses_options ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/deal_statuses/options'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminDealStatusesOptions'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_admin_deal_statuses_options",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_admin_deal_statuses_options\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Reference data for the Deals create/edit form and filter bar - deal_types (each with its live type-specific deal_detail_fields), vendors, sports
+    # @param [Hash] opts the optional parameters
+    # @return [AdminDealsOptions]
+    def get_admin_deals_options(opts = {})
+      data, _status_code, _headers = get_admin_deals_options_with_http_info(opts)
+      data
+    end
+
+    # Reference data for the Deals create/edit form and filter bar - deal_types (each with its live type-specific deal_detail_fields), vendors, sports
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminDealsOptions, Integer, Hash)>] AdminDealsOptions data, response status code and response headers
+    def get_admin_deals_options_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_admin_deals_options ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/deals/options'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminDealsOptions'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_admin_deals_options",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_admin_deals_options\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -8561,6 +11590,183 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_admin_desk_requests\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a download's metadata and resolved asset url (admin, super-admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminDownload]
+    def get_admin_download(id, opts = {})
+      data, _status_code, _headers = get_admin_download_with_http_info(id, opts)
+      data
+    end
+
+    # Retrieve a download&#39;s metadata and resolved asset url (admin, super-admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminDownload, Integer, Hash)>] AdminDownload data, response status code and response headers
+    def get_admin_download_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_admin_download ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.get_admin_download"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/downloads/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminDownload'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_admin_download",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_admin_download\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a favorite plus its own user's category options (admin, super-admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminFavoriteDetail]
+    def get_admin_favorites(id, opts = {})
+      data, _status_code, _headers = get_admin_favorites_with_http_info(id, opts)
+      data
+    end
+
+    # Retrieve a favorite plus its own user&#39;s category options (admin, super-admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminFavoriteDetail, Integer, Hash)>] AdminFavoriteDetail data, response status code and response headers
+    def get_admin_favorites_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_admin_favorites ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.get_admin_favorites"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/favorites/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminFavoriteDetail'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_admin_favorites",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_admin_favorites\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Reference data for the User Favorites filter bar (accounts, favoritable types, favorited items)
+    # @param [Hash] opts the optional parameters
+    # @return [AdminFavoritesOptions]
+    def get_admin_favorites_options(opts = {})
+      data, _status_code, _headers = get_admin_favorites_options_with_http_info(opts)
+      data
+    end
+
+    # Reference data for the User Favorites filter bar (accounts, favoritable types, favorited items)
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminFavoritesOptions, Integer, Hash)>] AdminFavoritesOptions data, response status code and response headers
+    def get_admin_favorites_options_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_admin_favorites_options ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/favorites/options'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminFavoritesOptions'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_admin_favorites_options",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_admin_favorites_options\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -9287,6 +12493,122 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Retrieve a single position (admin-only)
+    # @param id [Integer] ID of the position
+    # @param [Hash] opts the optional parameters
+    # @return [AdminPosition]
+    def get_admin_position(id, opts = {})
+      data, _status_code, _headers = get_admin_position_with_http_info(id, opts)
+      data
+    end
+
+    # Retrieve a single position (admin-only)
+    # @param id [Integer] ID of the position
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminPosition, Integer, Hash)>] AdminPosition data, response status code and response headers
+    def get_admin_position_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_admin_position ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.get_admin_position"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/positions/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminPosition'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_admin_position",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_admin_position\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Configured next season and selectable season years for copying positions (admin-only)
+    # @param [Hash] opts the optional parameters
+    # @return [GetAdminPositionCopyOptions200Response]
+    def get_admin_position_copy_options(opts = {})
+      data, _status_code, _headers = get_admin_position_copy_options_with_http_info(opts)
+      data
+    end
+
+    # Configured next season and selectable season years for copying positions (admin-only)
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GetAdminPositionCopyOptions200Response, Integer, Hash)>] GetAdminPositionCopyOptions200Response data, response status code and response headers
+    def get_admin_position_copy_options_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_admin_position_copy_options ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/positions/copy_for_year'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GetAdminPositionCopyOptions200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_admin_position_copy_options",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_admin_position_copy_options\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve OCR/unstract text extraction status and content for a raw contract (admin, super-admin only)
     # @param id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -9409,6 +12731,250 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Retrieve a single alternate school name (super_admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminSchoolName]
+    def get_admin_school_names(id, opts = {})
+      data, _status_code, _headers = get_admin_school_names_with_http_info(id, opts)
+      data
+    end
+
+    # Retrieve a single alternate school name (super_admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminSchoolName, Integer, Hash)>] AdminSchoolName data, response status code and response headers
+    def get_admin_school_names_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_admin_school_names ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.get_admin_school_names"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/school_names/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminSchoolName'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_admin_school_names",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_admin_school_names\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a school's uploaded financial years, D1/D2/D3 school picker, year-select options, and Sidekiq import job status (super_admin only)
+    # @param school_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminSchoolRevenueList]
+    def get_admin_school_revenue(school_id, opts = {})
+      data, _status_code, _headers = get_admin_school_revenue_with_http_info(school_id, opts)
+      data
+    end
+
+    # Retrieve a school&#39;s uploaded financial years, D1/D2/D3 school picker, year-select options, and Sidekiq import job status (super_admin only)
+    # @param school_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminSchoolRevenueList, Integer, Hash)>] AdminSchoolRevenueList data, response status code and response headers
+    def get_admin_school_revenue_with_http_info(school_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_admin_school_revenue ...'
+      end
+      # verify the required parameter 'school_id' is set
+      if @api_client.config.client_side_validation && school_id.nil?
+        fail ArgumentError, "Missing the required parameter 'school_id' when calling DefaultApi.get_admin_school_revenue"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/schools/{schoolId}/revenue'.sub('{' + 'schoolId' + '}', CGI.escape(school_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminSchoolRevenueList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_admin_school_revenue",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_admin_school_revenue\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a single school's full editable detail (admin-only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminSchoolDetail]
+    def get_admin_schools(id, opts = {})
+      data, _status_code, _headers = get_admin_schools_with_http_info(id, opts)
+      data
+    end
+
+    # Retrieve a single school&#39;s full editable detail (admin-only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminSchoolDetail, Integer, Hash)>] AdminSchoolDetail data, response status code and response headers
+    def get_admin_schools_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_admin_schools ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.get_admin_schools"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/schools/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminSchoolDetail'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_admin_schools",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_admin_schools\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a single Sport (admin-only)
+    # @param id [Integer] ID of the Sport
+    # @param [Hash] opts the optional parameters
+    # @return [AdminSport]
+    def get_admin_sport(id, opts = {})
+      data, _status_code, _headers = get_admin_sport_with_http_info(id, opts)
+      data
+    end
+
+    # Retrieve a single Sport (admin-only)
+    # @param id [Integer] ID of the Sport
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminSport, Integer, Hash)>] AdminSport data, response status code and response headers
+    def get_admin_sport_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_admin_sport ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.get_admin_sport"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/sports/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminSport'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_admin_sport",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_admin_sport\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve a termination agreement (admin, super-admin only)
     # @param id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -9466,6 +13032,183 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_admin_termination_agreement\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve one user's full editable detail (super_admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminUser]
+    def get_admin_user(id, opts = {})
+      data, _status_code, _headers = get_admin_user_with_http_info(id, opts)
+      data
+    end
+
+    # Retrieve one user&#39;s full editable detail (super_admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminUser, Integer, Hash)>] AdminUser data, response status code and response headers
+    def get_admin_user_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_admin_user ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.get_admin_user"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/users/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminUser'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_admin_user",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_admin_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a single vendor (admin, super-admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminVendorDetail]
+    def get_admin_vendors(id, opts = {})
+      data, _status_code, _headers = get_admin_vendors_with_http_info(id, opts)
+      data
+    end
+
+    # Retrieve a single vendor (admin, super-admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminVendorDetail, Integer, Hash)>] AdminVendorDetail data, response status code and response headers
+    def get_admin_vendors_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_admin_vendors ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.get_admin_vendors"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/vendors/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminVendorDetail'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_admin_vendors",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_admin_vendors\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve selectable deal types for the vendor form (admin, super-admin only)
+    # @param [Hash] opts the optional parameters
+    # @return [AdminVendorsOptions]
+    def get_admin_vendors_options(opts = {})
+      data, _status_code, _headers = get_admin_vendors_options_with_http_info(opts)
+      data
+    end
+
+    # Retrieve selectable deal types for the vendor form (admin, super-admin only)
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminVendorsOptions, Integer, Hash)>] AdminVendorsOptions data, response status code and response headers
+    def get_admin_vendors_options_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_admin_vendors_options ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/vendors/options'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminVendorsOptions'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_admin_vendors_options",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_admin_vendors_options\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -22643,6 +26386,403 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Retrieve a paginated directory of every school with its conference/division/subdivision details (admin, super-admin only)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @return [AdminConferenceSchoolDirectoryList]
+    def list_admin_conference_schools_directory(opts = {})
+      data, _status_code, _headers = list_admin_conference_schools_directory_with_http_info(opts)
+      data
+    end
+
+    # Retrieve a paginated directory of every school with its conference/division/subdivision details (admin, super-admin only)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @return [Array<(AdminConferenceSchoolDirectoryList, Integer, Hash)>] AdminConferenceSchoolDirectoryList data, response status code and response headers
+    def list_admin_conference_schools_directory_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_conference_schools_directory ...'
+      end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_conference_schools_directory, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_conference_schools_directory, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_conference_schools_directory, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_conference_schools_directory, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/admin/conferences/schools'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminConferenceSchoolDirectoryList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_conference_schools_directory",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_conference_schools_directory\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List conferences (admin, super-admin only), sorted by name
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+    # @return [AdminConferenceList]
+    def list_admin_conferences(opts = {})
+      data, _status_code, _headers = list_admin_conferences_with_http_info(opts)
+      data
+    end
+
+    # List conferences (admin, super-admin only), sorted by name
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+    # @return [Array<(AdminConferenceList, Integer, Hash)>] AdminConferenceList data, response status code and response headers
+    def list_admin_conferences_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_conferences ...'
+      end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_conferences, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_conferences, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_conferences, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_conferences, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/admin/conferences'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminConferenceList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_conferences",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_conferences\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a paginated list of conferenceships (school/sport/conference assignments), filterable by school, sport, and conference (admin, super-admin only)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :q_school_id_eq Filter to one school&#39;s conferenceships
+    # @option opts [Integer] :q_sport_id_eq Filter to one sport&#39;s conferenceships
+    # @option opts [Integer] :q_conference_id_eq Filter to one conference&#39;s conferenceships
+    # @return [AdminConferenceshipsList]
+    def list_admin_conferenceships(opts = {})
+      data, _status_code, _headers = list_admin_conferenceships_with_http_info(opts)
+      data
+    end
+
+    # Retrieve a paginated list of conferenceships (school/sport/conference assignments), filterable by school, sport, and conference (admin, super-admin only)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :q_school_id_eq Filter to one school&#39;s conferenceships
+    # @option opts [Integer] :q_sport_id_eq Filter to one sport&#39;s conferenceships
+    # @option opts [Integer] :q_conference_id_eq Filter to one conference&#39;s conferenceships
+    # @return [Array<(AdminConferenceshipsList, Integer, Hash)>] AdminConferenceshipsList data, response status code and response headers
+    def list_admin_conferenceships_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_conferenceships ...'
+      end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_conferenceships, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_conferenceships, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/admin/conferenceships'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'q[school_id_eq]'] = opts[:'q_school_id_eq'] if !opts[:'q_school_id_eq'].nil?
+      query_params[:'q[sport_id_eq]'] = opts[:'q_sport_id_eq'] if !opts[:'q_sport_id_eq'].nil?
+      query_params[:'q[conference_id_eq]'] = opts[:'q_conference_id_eq'] if !opts[:'q_conference_id_eq'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminConferenceshipsList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_conferenceships",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_conferenceships\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve all conferences (id/name pairs) for the conferenceship form's Conference picker (admin, super-admin only)
+    # @param [Hash] opts the optional parameters
+    # @return [Array<IdName>]
+    def list_admin_conferenceships_available_conferences(opts = {})
+      data, _status_code, _headers = list_admin_conferenceships_available_conferences_with_http_info(opts)
+      data
+    end
+
+    # Retrieve all conferences (id/name pairs) for the conferenceship form&#39;s Conference picker (admin, super-admin only)
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<IdName>, Integer, Hash)>] Array<IdName> data, response status code and response headers
+    def list_admin_conferenceships_available_conferences_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_conferenceships_available_conferences ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/conferenceships/available_conferences'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<IdName>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_conferenceships_available_conferences",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_conferenceships_available_conferences\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve all schools (id/name pairs) for the conferenceship form's School picker (admin, super-admin only)
+    # @param [Hash] opts the optional parameters
+    # @return [Array<IdName>]
+    def list_admin_conferenceships_available_schools(opts = {})
+      data, _status_code, _headers = list_admin_conferenceships_available_schools_with_http_info(opts)
+      data
+    end
+
+    # Retrieve all schools (id/name pairs) for the conferenceship form&#39;s School picker (admin, super-admin only)
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<IdName>, Integer, Hash)>] Array<IdName> data, response status code and response headers
+    def list_admin_conferenceships_available_schools_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_conferenceships_available_schools ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/conferenceships/available_schools'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<IdName>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_conferenceships_available_schools",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_conferenceships_available_schools\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve all sports (id/name pairs) for the conferenceship form's Sport picker (admin, super-admin only)
+    # @param [Hash] opts the optional parameters
+    # @return [Array<IdName>]
+    def list_admin_conferenceships_available_sports(opts = {})
+      data, _status_code, _headers = list_admin_conferenceships_available_sports_with_http_info(opts)
+      data
+    end
+
+    # Retrieve all sports (id/name pairs) for the conferenceship form&#39;s Sport picker (admin, super-admin only)
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<IdName>, Integer, Hash)>] Array<IdName> data, response status code and response headers
+    def list_admin_conferenceships_available_sports_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_conferenceships_available_sports ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/conferenceships/available_sports'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<IdName>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_conferenceships_available_sports",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_conferenceships_available_sports\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve coaches eligible to be assigned as a scheduling contact for a school/sport (admin, super-admin only)
     # @param school_id [Integer] 
     # @param sport_id [Integer] 
@@ -22947,6 +27087,388 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#list_admin_contracts\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a paginated, filterable report of DealStatus rows for public D1/D2 schools (QC Vendor Contracts admin), excluding the Video Mgmt deal type
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+    # @return [AdminDealStatusesList]
+    def list_admin_deal_statuses(opts = {})
+      data, _status_code, _headers = list_admin_deal_statuses_with_http_info(opts)
+      data
+    end
+
+    # Retrieve a paginated, filterable report of DealStatus rows for public D1/D2 schools (QC Vendor Contracts admin), excluding the Video Mgmt deal type
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+    # @return [Array<(AdminDealStatusesList, Integer, Hash)>] AdminDealStatusesList data, response status code and response headers
+    def list_admin_deal_statuses_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_deal_statuses ...'
+      end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_deal_statuses, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_deal_statuses, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_deal_statuses, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_deal_statuses, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/admin/deal_statuses'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminDealStatusesList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_deal_statuses",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_deal_statuses\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List Deals (Ransack-filterable), active-first (super_admin only)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+    # @return [AdminDealsList]
+    def list_admin_deals(opts = {})
+      data, _status_code, _headers = list_admin_deals_with_http_info(opts)
+      data
+    end
+
+    # List Deals (Ransack-filterable), active-first (super_admin only)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+    # @return [Array<(AdminDealsList, Integer, Hash)>] AdminDealsList data, response status code and response headers
+    def list_admin_deals_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_deals ...'
+      end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_deals, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_deals, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_deals, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_deals, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/admin/deals'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminDealsList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_deals",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_deals\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List/filter user favorites (admin, super-admin only) — Account, User email prefix, Type, and Item ransack filters
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+    # @return [AdminFavoritesList]
+    def list_admin_favorites(opts = {})
+      data, _status_code, _headers = list_admin_favorites_with_http_info(opts)
+      data
+    end
+
+    # List/filter user favorites (admin, super-admin only) — Account, User email prefix, Type, and Item ransack filters
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+    # @return [Array<(AdminFavoritesList, Integer, Hash)>] AdminFavoritesList data, response status code and response headers
+    def list_admin_favorites_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_favorites ...'
+      end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_favorites, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_favorites, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/admin/favorites'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminFavoritesList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_favorites",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_favorites\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a paginated list of per-school, per-sport financial stat rows (super_admin only), filterable by school name and season year
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [String] :q_season_school_name_cont Filter to rows whose school name contains this value
+    # @option opts [Integer] :q_season_year_eq Filter to rows for one season year
+    # @return [AdminFinancialStatsList]
+    def list_admin_financial_stats(opts = {})
+      data, _status_code, _headers = list_admin_financial_stats_with_http_info(opts)
+      data
+    end
+
+    # Retrieve a paginated list of per-school, per-sport financial stat rows (super_admin only), filterable by school name and season year
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [String] :q_season_school_name_cont Filter to rows whose school name contains this value
+    # @option opts [Integer] :q_season_year_eq Filter to rows for one season year
+    # @return [Array<(AdminFinancialStatsList, Integer, Hash)>] AdminFinancialStatsList data, response status code and response headers
+    def list_admin_financial_stats_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_financial_stats ...'
+      end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_financial_stats, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_financial_stats, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/admin/financial_stats'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'q[season_school_name_cont]'] = opts[:'q_season_school_name_cont'] if !opts[:'q_season_school_name_cont'].nil?
+      query_params[:'q[season_year_eq]'] = opts[:'q_season_year_eq'] if !opts[:'q_season_year_eq'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminFinancialStatsList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_financial_stats",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_financial_stats\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List the Financials QC report — per-school NCAA PDF/Audited PDF/NCAA CSV/School Info CSV/Sport Stats CSV file status for a season year (admin, super-admin only)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :financials_qc_conference_id 
+    # @option opts [Integer] :financials_qc_division_id 
+    # @option opts [Integer] :financials_qc_subdivision_id 
+    # @option opts [Integer] :financials_qc_school_id 
+    # @option opts [Integer] :financials_qc_year 
+    # @return [AdminFinancialsQcList]
+    def list_admin_financials_qc(opts = {})
+      data, _status_code, _headers = list_admin_financials_qc_with_http_info(opts)
+      data
+    end
+
+    # List the Financials QC report — per-school NCAA PDF/Audited PDF/NCAA CSV/School Info CSV/Sport Stats CSV file status for a season year (admin, super-admin only)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :financials_qc_conference_id 
+    # @option opts [Integer] :financials_qc_division_id 
+    # @option opts [Integer] :financials_qc_subdivision_id 
+    # @option opts [Integer] :financials_qc_school_id 
+    # @option opts [Integer] :financials_qc_year 
+    # @return [Array<(AdminFinancialsQcList, Integer, Hash)>] AdminFinancialsQcList data, response status code and response headers
+    def list_admin_financials_qc_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_financials_qc ...'
+      end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_financials_qc, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_financials_qc, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/admin/financials_qc'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'financials_qc[conference_id]'] = opts[:'financials_qc_conference_id'] if !opts[:'financials_qc_conference_id'].nil?
+      query_params[:'financials_qc[division_id]'] = opts[:'financials_qc_division_id'] if !opts[:'financials_qc_division_id'].nil?
+      query_params[:'financials_qc[subdivision_id]'] = opts[:'financials_qc_subdivision_id'] if !opts[:'financials_qc_subdivision_id'].nil?
+      query_params[:'financials_qc[school_id]'] = opts[:'financials_qc_school_id'] if !opts[:'financials_qc_school_id'].nil?
+      query_params[:'financials_qc[year]'] = opts[:'financials_qc_year'] if !opts[:'financials_qc_year'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminFinancialsQcList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_financials_qc",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_financials_qc\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -23401,10 +27923,10 @@ module WinthropClient
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @option opts [String] :sort_by 
     # @option opts [Boolean] :send_email 
-    # @return [nil]
+    # @return [AdminFoiaFollowUpReport]
     def list_admin_foia_request_follow_up_report(opts = {})
-      list_admin_foia_request_follow_up_report_with_http_info(opts)
-      nil
+      data, _status_code, _headers = list_admin_foia_request_follow_up_report_with_http_info(opts)
+      data
     end
 
     # The FOIA follow-up worklist, sortable by follow_up_date etc; send_email&#x3D;true triggers the same admin notifier email the old page&#39;s button sent. q[show_processed_today] (true/false) is read by the report itself and is not a Ransack condition
@@ -23414,7 +27936,7 @@ module WinthropClient
     # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
     # @option opts [String] :sort_by 
     # @option opts [Boolean] :send_email 
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(AdminFoiaFollowUpReport, Integer, Hash)>] AdminFoiaFollowUpReport data, response status code and response headers
     def list_admin_foia_request_follow_up_report_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_foia_request_follow_up_report ...'
@@ -23458,7 +27980,7 @@ module WinthropClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type]
+      return_type = opts[:debug_return_type] || 'AdminFoiaFollowUpReport'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
@@ -23718,6 +28240,257 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # List user notes (admin) — Account, User email prefix, Notable type, Notable id ransack filters
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+    # @return [AdminNotesList]
+    def list_admin_notes(opts = {})
+      data, _status_code, _headers = list_admin_notes_with_http_info(opts)
+      data
+    end
+
+    # List user notes (admin) — Account, User email prefix, Notable type, Notable id ransack filters
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+    # @return [Array<(AdminNotesList, Integer, Hash)>] AdminNotesList data, response status code and response headers
+    def list_admin_notes_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_notes ...'
+      end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_notes, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_notes, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/admin/notes'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminNotesList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_notes",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_notes\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve all Position Types (admin-only), ordered by their manual sort position. `q[s]` accepts `ord`, `name_display`, `positions_count` or `position_type_group_name_display` followed by `asc` or `desc` (default `ord asc`, ties broken by id); `per_page` defaults to 100
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+    # @option opts [String] :visibility The old admin index&#39;s All | Visible | Hidden filter on the customer-catalog flag; any other value lists every record
+    # @return [AdminPositionTypesList]
+    def list_admin_position_types(opts = {})
+      data, _status_code, _headers = list_admin_position_types_with_http_info(opts)
+      data
+    end
+
+    # Retrieve all Position Types (admin-only), ordered by their manual sort position. &#x60;q[s]&#x60; accepts &#x60;ord&#x60;, &#x60;name_display&#x60;, &#x60;positions_count&#x60; or &#x60;position_type_group_name_display&#x60; followed by &#x60;asc&#x60; or &#x60;desc&#x60; (default &#x60;ord asc&#x60;, ties broken by id); &#x60;per_page&#x60; defaults to 100
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+    # @option opts [String] :visibility The old admin index&#39;s All | Visible | Hidden filter on the customer-catalog flag; any other value lists every record
+    # @return [Array<(AdminPositionTypesList, Integer, Hash)>] AdminPositionTypesList data, response status code and response headers
+    def list_admin_position_types_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_position_types ...'
+      end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_position_types, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_position_types, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_position_types, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_position_types, must be greater than or equal to 1.'
+      end
+
+      allowable_values = ["all", "visible", "hidden"]
+      if @api_client.config.client_side_validation && opts[:'visibility'] && !allowable_values.include?(opts[:'visibility'])
+        fail ArgumentError, "invalid value for \"visibility\", must be one of #{allowable_values}"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/position_types'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
+      query_params[:'visibility'] = opts[:'visibility'] if !opts[:'visibility'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminPositionTypesList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_position_types",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_position_types\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a paginated list of per-coach, per-season position assignments (admin-only), filterable by coach, school, sport, season year, and departing status
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+    # @option opts [Integer] :coach_id 
+    # @option opts [Integer] :school_id 
+    # @option opts [Integer] :sport_id 
+    # @option opts [Integer] :year 
+    # @option opts [Boolean] :departing 
+    # @return [AdminPositionsList]
+    def list_admin_positions(opts = {})
+      data, _status_code, _headers = list_admin_positions_with_http_info(opts)
+      data
+    end
+
+    # Retrieve a paginated list of per-coach, per-season position assignments (admin-only), filterable by coach, school, sport, season year, and departing status
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+    # @option opts [Integer] :coach_id 
+    # @option opts [Integer] :school_id 
+    # @option opts [Integer] :sport_id 
+    # @option opts [Integer] :year 
+    # @option opts [Boolean] :departing 
+    # @return [Array<(AdminPositionsList, Integer, Hash)>] AdminPositionsList data, response status code and response headers
+    def list_admin_positions_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_positions ...'
+      end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_positions, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_positions, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_positions, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_positions, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/admin/positions'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
+      query_params[:'coach_id'] = opts[:'coach_id'] if !opts[:'coach_id'].nil?
+      query_params[:'school_id'] = opts[:'school_id'] if !opts[:'school_id'].nil?
+      query_params[:'sport_id'] = opts[:'sport_id'] if !opts[:'sport_id'].nil?
+      query_params[:'year'] = opts[:'year'] if !opts[:'year'].nil?
+      query_params[:'departing'] = opts[:'departing'] if !opts[:'departing'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminPositionsList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_positions",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_positions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve raw contracts matched to game contracts between two schools for a sport, for the admin game-contract attach picker (admin, super-admin only)
     # @param home_school_id [Integer] 
     # @param away_school_id [Integer] 
@@ -23914,6 +28687,970 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # List a School's Deals (Ransack-filterable), active-first
+    # @param school_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+    # @return [AdminDealsList]
+    def list_admin_school_deals(school_id, opts = {})
+      data, _status_code, _headers = list_admin_school_deals_with_http_info(school_id, opts)
+      data
+    end
+
+    # List a School&#39;s Deals (Ransack-filterable), active-first
+    # @param school_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+    # @return [Array<(AdminDealsList, Integer, Hash)>] AdminDealsList data, response status code and response headers
+    def list_admin_school_deals_with_http_info(school_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_school_deals ...'
+      end
+      # verify the required parameter 'school_id' is set
+      if @api_client.config.client_side_validation && school_id.nil?
+        fail ArgumentError, "Missing the required parameter 'school_id' when calling DefaultApi.list_admin_school_deals"
+      end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_school_deals, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_school_deals, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_school_deals, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_school_deals, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/admin/schools/{school_id}/deals'.sub('{' + 'school_id' + '}', CGI.escape(school_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminDealsList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_school_deals",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_school_deals\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Per-school conference/non-conference game counts for one sport+year (defaults to BASKETBALL_M, current season)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @option opts [Integer] :year 
+    # @option opts [Integer] :school_id 
+    # @return [nil]
+    def list_admin_school_game_counts(opts = {})
+      list_admin_school_game_counts_with_http_info(opts)
+      nil
+    end
+
+    # Per-school conference/non-conference game counts for one sport+year (defaults to BASKETBALL_M, current season)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @option opts [Integer] :year 
+    # @option opts [Integer] :school_id 
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def list_admin_school_game_counts_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_school_game_counts ...'
+      end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_school_game_counts, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_school_game_counts, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_school_game_counts, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_school_game_counts, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/admin/schools/game_counts'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'year'] = opts[:'year'] if !opts[:'year'].nil?
+      query_params[:'school_id'] = opts[:'school_id'] if !opts[:'school_id'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_school_game_counts",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_school_game_counts\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a paginated list of users' custom school groups (super_admin only), filterable by account, user email, and included school
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :q_user_account_id_eq Filter to school groups owned by users on one account
+    # @option opts [String] :q_user_email_start Filter to school groups whose owning user&#39;s email starts with this value
+    # @option opts [Array<Integer>] :q_schools_id_in Filter to school groups that include any of these schools
+    # @return [AdminSchoolGroupsList]
+    def list_admin_school_groups(opts = {})
+      data, _status_code, _headers = list_admin_school_groups_with_http_info(opts)
+      data
+    end
+
+    # Retrieve a paginated list of users&#39; custom school groups (super_admin only), filterable by account, user email, and included school
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :q_user_account_id_eq Filter to school groups owned by users on one account
+    # @option opts [String] :q_user_email_start Filter to school groups whose owning user&#39;s email starts with this value
+    # @option opts [Array<Integer>] :q_schools_id_in Filter to school groups that include any of these schools
+    # @return [Array<(AdminSchoolGroupsList, Integer, Hash)>] AdminSchoolGroupsList data, response status code and response headers
+    def list_admin_school_groups_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_school_groups ...'
+      end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_school_groups, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_school_groups, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/admin/school_groups'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'q[user_account_id_eq]'] = opts[:'q_user_account_id_eq'] if !opts[:'q_user_account_id_eq'].nil?
+      query_params[:'q[user_email_start]'] = opts[:'q_user_email_start'] if !opts[:'q_user_email_start'].nil?
+      query_params[:'q[schools_id_in][]'] = @api_client.build_collection_param(opts[:'q_schools_id_in'], :csv) if !opts[:'q_schools_id_in'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminSchoolGroupsList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_school_groups",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_school_groups\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve D1/D2 schools (id/name pairs) for the school group picker (super_admin only)
+    # @param [Hash] opts the optional parameters
+    # @return [Array<IdName>]
+    def list_admin_school_groups_available_schools(opts = {})
+      data, _status_code, _headers = list_admin_school_groups_available_schools_with_http_info(opts)
+      data
+    end
+
+    # Retrieve D1/D2 schools (id/name pairs) for the school group picker (super_admin only)
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<IdName>, Integer, Hash)>] Array<IdName> data, response status code and response headers
+    def list_admin_school_groups_available_schools_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_school_groups_available_schools ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/school_groups/available_schools'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<IdName>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_school_groups_available_schools",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_school_groups_available_schools\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Paginated, ransack-filterable list of schools with their logo/external-logo attachment URLs (Logo QC page)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+    # @return [nil]
+    def list_admin_school_logos_qc(opts = {})
+      list_admin_school_logos_qc_with_http_info(opts)
+      nil
+    end
+
+    # Paginated, ransack-filterable list of schools with their logo/external-logo attachment URLs (Logo QC page)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def list_admin_school_logos_qc_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_school_logos_qc ...'
+      end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_school_logos_qc, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_school_logos_qc, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_school_logos_qc, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_school_logos_qc, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/admin/schools/school_logos_qc'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_school_logos_qc",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_school_logos_qc\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a paginated list of alternate/historical school names (super_admin only), filterable by school and name
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :q_school_id_eq Filter to alternate names for one school
+    # @option opts [String] :q_name_cont Substring match on the alternate name
+    # @return [AdminSchoolNamesList]
+    def list_admin_school_names(opts = {})
+      data, _status_code, _headers = list_admin_school_names_with_http_info(opts)
+      data
+    end
+
+    # Retrieve a paginated list of alternate/historical school names (super_admin only), filterable by school and name
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :q_school_id_eq Filter to alternate names for one school
+    # @option opts [String] :q_name_cont Substring match on the alternate name
+    # @return [Array<(AdminSchoolNamesList, Integer, Hash)>] AdminSchoolNamesList data, response status code and response headers
+    def list_admin_school_names_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_school_names ...'
+      end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_school_names, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_school_names, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/admin/school_names'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'q[school_id_eq]'] = opts[:'q_school_id_eq'] if !opts[:'q_school_id_eq'].nil?
+      query_params[:'q[name_cont]'] = opts[:'q_name_cont'] if !opts[:'q_name_cont'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminSchoolNamesList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_school_names",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_school_names\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve all schools (id/name pairs) for the alternate school name picker (super_admin only)
+    # @param [Hash] opts the optional parameters
+    # @return [Array<IdName>]
+    def list_admin_school_names_available_schools(opts = {})
+      data, _status_code, _headers = list_admin_school_names_available_schools_with_http_info(opts)
+      data
+    end
+
+    # Retrieve all schools (id/name pairs) for the alternate school name picker (super_admin only)
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<IdName>, Integer, Hash)>] Array<IdName> data, response status code and response headers
+    def list_admin_school_names_available_schools_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_school_names_available_schools ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/school_names/available_schools'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<IdName>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_school_names_available_schools",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_school_names_available_schools\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve current Sidekiq job status for the School Info CSV import (admin, super-admin only)
+    # @param [Hash] opts the optional parameters
+    # @return [AdminSchoolUploadsIndex]
+    def list_admin_school_uploads(opts = {})
+      data, _status_code, _headers = list_admin_school_uploads_with_http_info(opts)
+      data
+    end
+
+    # Retrieve current Sidekiq job status for the School Info CSV import (admin, super-admin only)
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminSchoolUploadsIndex, Integer, Hash)>] AdminSchoolUploadsIndex data, response status code and response headers
+    def list_admin_school_uploads_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_school_uploads ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/school_uploads'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminSchoolUploadsIndex'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_school_uploads",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_school_uploads\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a paginated, ransack-filterable list of schools (admin-only), sorted by name
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+    # @return [AdminSchoolList]
+    def list_admin_schools(opts = {})
+      data, _status_code, _headers = list_admin_schools_with_http_info(opts)
+      data
+    end
+
+    # Retrieve a paginated, ransack-filterable list of schools (admin-only), sorted by name
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+    # @return [Array<(AdminSchoolList, Integer, Hash)>] AdminSchoolList data, response status code and response headers
+    def list_admin_schools_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_schools ...'
+      end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_schools, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_schools, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_schools, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_schools, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/admin/schools'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminSchoolList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_schools",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_schools\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a paginated cashflows report for this Sport (admin-only, read-only)
+    # @param id [Integer] ID of the Sport
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @return [AdminSportCashflowsList]
+    def list_admin_sport_cashflows(id, opts = {})
+      data, _status_code, _headers = list_admin_sport_cashflows_with_http_info(id, opts)
+      data
+    end
+
+    # Retrieve a paginated cashflows report for this Sport (admin-only, read-only)
+    # @param id [Integer] ID of the Sport
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @return [Array<(AdminSportCashflowsList, Integer, Hash)>] AdminSportCashflowsList data, response status code and response headers
+    def list_admin_sport_cashflows_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_sport_cashflows ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.list_admin_sport_cashflows"
+      end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_sport_cashflows, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_sport_cashflows, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_sport_cashflows, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_sport_cashflows, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/admin/sports/{id}/cashflows'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminSportCashflowsList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_sport_cashflows",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_sport_cashflows\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve the positions currently assigned to this Sport (admin-only, read-only report)
+    # @param id [Integer] ID of the Sport
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @return [AdminSportPositionsList]
+    def list_admin_sport_positions(id, opts = {})
+      data, _status_code, _headers = list_admin_sport_positions_with_http_info(id, opts)
+      data
+    end
+
+    # Retrieve the positions currently assigned to this Sport (admin-only, read-only report)
+    # @param id [Integer] ID of the Sport
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @return [Array<(AdminSportPositionsList, Integer, Hash)>] AdminSportPositionsList data, response status code and response headers
+    def list_admin_sport_positions_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_sport_positions ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.list_admin_sport_positions"
+      end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_sport_positions, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_sport_positions, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_sport_positions, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_sport_positions, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/admin/sports/{id}/positions'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminSportPositionsList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_sport_positions",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_sport_positions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a page of Sports (admin-only), sorted via q[s] by name_display, gender_code, time_of_year_ord, emerging or visible (asc or desc; default name_display asc, ties by id); per_page defaults to 100
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+    # @option opts [String] :visibility The old admin index&#39;s All | Visible | Hidden filter on the customer-catalog flag; any other value lists every record
+    # @return [AdminSportsList]
+    def list_admin_sports(opts = {})
+      data, _status_code, _headers = list_admin_sports_with_http_info(opts)
+      data
+    end
+
+    # Retrieve a page of Sports (admin-only), sorted via q[s] by name_display, gender_code, time_of_year_ord, emerging or visible (asc or desc; default name_display asc, ties by id); per_page defaults to 100
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+    # @option opts [String] :visibility The old admin index&#39;s All | Visible | Hidden filter on the customer-catalog flag; any other value lists every record
+    # @return [Array<(AdminSportsList, Integer, Hash)>] AdminSportsList data, response status code and response headers
+    def list_admin_sports_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_sports ...'
+      end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_sports, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_sports, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_sports, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_sports, must be greater than or equal to 1.'
+      end
+
+      allowable_values = ["all", "visible", "hidden"]
+      if @api_client.config.client_side_validation && opts[:'visibility'] && !allowable_values.include?(opts[:'visibility'])
+        fail ArgumentError, "invalid value for \"visibility\", must be one of #{allowable_values}"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/sports'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
+      query_params[:'visibility'] = opts[:'visibility'] if !opts[:'visibility'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminSportsList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_sports",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_sports\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a paginated list of school subdivision-membership rows (super_admin only), filterable by school and subdivision
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :q_school_id_eq Filter to memberships for one school
+    # @option opts [Integer] :q_subdivision_id_eq Filter to memberships in one subdivision
+    # @return [AdminSubdivisionMembershipsList]
+    def list_admin_subdivision_memberships(opts = {})
+      data, _status_code, _headers = list_admin_subdivision_memberships_with_http_info(opts)
+      data
+    end
+
+    # Retrieve a paginated list of school subdivision-membership rows (super_admin only), filterable by school and subdivision
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :q_school_id_eq Filter to memberships for one school
+    # @option opts [Integer] :q_subdivision_id_eq Filter to memberships in one subdivision
+    # @return [Array<(AdminSubdivisionMembershipsList, Integer, Hash)>] AdminSubdivisionMembershipsList data, response status code and response headers
+    def list_admin_subdivision_memberships_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_subdivision_memberships ...'
+      end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_subdivision_memberships, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_subdivision_memberships, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/admin/subdivision_memberships'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'q[school_id_eq]'] = opts[:'q_school_id_eq'] if !opts[:'q_school_id_eq'].nil?
+      query_params[:'q[subdivision_id_eq]'] = opts[:'q_subdivision_id_eq'] if !opts[:'q_subdivision_id_eq'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminSubdivisionMembershipsList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_subdivision_memberships",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_subdivision_memberships\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # List termination agreements (optionally filtered by coach) (admin, super-admin only)
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :q_coach_id_eq 
@@ -23990,6 +29727,586 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#list_admin_termination_agreements\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Search accounts by name for the user form's Account picker (super_admin only)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :name 
+    # @return [Array<IdName>]
+    def list_admin_user_account_options(opts = {})
+      data, _status_code, _headers = list_admin_user_account_options_with_http_info(opts)
+      data
+    end
+
+    # Search accounts by name for the user form&#39;s Account picker (super_admin only)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :name 
+    # @return [Array<(Array<IdName>, Integer, Hash)>] Array<IdName> data, response status code and response headers
+    def list_admin_user_account_options_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_user_account_options ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/users/account_options'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<IdName>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_user_account_options",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_user_account_options\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List coaches with a current-season position at an account's school, for the user form's Coach picker (super_admin only)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :account_id 
+    # @option opts [Integer] :user_id 
+    # @return [Array<ListAdminUserCoachOptions200ResponseInner>]
+    def list_admin_user_coach_options(opts = {})
+      data, _status_code, _headers = list_admin_user_coach_options_with_http_info(opts)
+      data
+    end
+
+    # List coaches with a current-season position at an account&#39;s school, for the user form&#39;s Coach picker (super_admin only)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :account_id 
+    # @option opts [Integer] :user_id 
+    # @return [Array<(Array<ListAdminUserCoachOptions200ResponseInner>, Integer, Hash)>] Array<ListAdminUserCoachOptions200ResponseInner> data, response status code and response headers
+    def list_admin_user_coach_options_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_user_coach_options ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/users/coach_options'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'account_id'] = opts[:'account_id'] if !opts[:'account_id'].nil?
+      query_params[:'user_id'] = opts[:'user_id'] if !opts[:'user_id'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<ListAdminUserCoachOptions200ResponseInner>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_user_coach_options",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_user_coach_options\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List assignable roles for the user form's Roles multi-select (super_admin only)
+    # @param [Hash] opts the optional parameters
+    # @return [Array<String>]
+    def list_admin_user_role_options(opts = {})
+      data, _status_code, _headers = list_admin_user_role_options_with_http_info(opts)
+      data
+    end
+
+    # List assignable roles for the user form&#39;s Roles multi-select (super_admin only)
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<String>, Integer, Hash)>] Array<String> data, response status code and response headers
+    def list_admin_user_role_options_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_user_role_options ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/users/role_options'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<String>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_user_role_options",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_user_role_options\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List schedulable and permissible sport collections for the user form's sport multi-selects (super_admin only)
+    # @param [Hash] opts the optional parameters
+    # @return [ListAdminUserSportOptions200Response]
+    def list_admin_user_sport_options(opts = {})
+      data, _status_code, _headers = list_admin_user_sport_options_with_http_info(opts)
+      data
+    end
+
+    # List schedulable and permissible sport collections for the user form&#39;s sport multi-selects (super_admin only)
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ListAdminUserSportOptions200Response, Integer, Hash)>] ListAdminUserSportOptions200Response data, response status code and response headers
+    def list_admin_user_sport_options_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_user_sport_options ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/users/sport_options'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ListAdminUserSportOptions200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_user_sport_options",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_user_sport_options\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a paginated, cross-account list of every system user (super_admin only), filterable by account name, subscription type/status, name/email prefix, OTP requirement, state, role, coach-assigned, external-profile, exclude-admins, and created-date range
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [String] :q_account_name_cont Filter to users whose account name contains this value
+    # @option opts [Array<Integer>] :q_subscription_type_id_in Filter to users whose account has one of these subscription types
+    # @option opts [String] :q_subscription_status Filter to users whose account subscription is active or inactive
+    # @option opts [String] :q_first_name_start Filter to users whose first name starts with this value
+    # @option opts [String] :q_last_name_start Filter to users whose last name starts with this value
+    # @option opts [String] :q_email_start Filter to users whose email starts with this value
+    # @option opts [Boolean] :q_otp_required_eq Filter to users with (or without) OTP required
+    # @option opts [String] :q_state_eq Filter to users in this Devise state
+    # @option opts [String] :role Filter to users holding this role symbol
+    # @option opts [Boolean] :q_coach_id_not_null Filter to users that do (or don&#39;t) have a coach assigned
+    # @option opts [Boolean] :q_exclude_profile Filter to users without an external Winthrop profile
+    # @option opts [String] :q_all_without_role Filter to users lacking this role (used for \&quot;Exclude Admins\&quot; via the real role name, e.g. super_admin)
+    # @option opts [Date] :q_created_at_gteq Filter to users created on or after this date
+    # @option opts [Date] :q_created_at_lteq Filter to users created on or before this date
+    # @return [AdminUsersList]
+    def list_admin_users(opts = {})
+      data, _status_code, _headers = list_admin_users_with_http_info(opts)
+      data
+    end
+
+    # Retrieve a paginated, cross-account list of every system user (super_admin only), filterable by account name, subscription type/status, name/email prefix, OTP requirement, state, role, coach-assigned, external-profile, exclude-admins, and created-date range
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [String] :q_account_name_cont Filter to users whose account name contains this value
+    # @option opts [Array<Integer>] :q_subscription_type_id_in Filter to users whose account has one of these subscription types
+    # @option opts [String] :q_subscription_status Filter to users whose account subscription is active or inactive
+    # @option opts [String] :q_first_name_start Filter to users whose first name starts with this value
+    # @option opts [String] :q_last_name_start Filter to users whose last name starts with this value
+    # @option opts [String] :q_email_start Filter to users whose email starts with this value
+    # @option opts [Boolean] :q_otp_required_eq Filter to users with (or without) OTP required
+    # @option opts [String] :q_state_eq Filter to users in this Devise state
+    # @option opts [String] :role Filter to users holding this role symbol
+    # @option opts [Boolean] :q_coach_id_not_null Filter to users that do (or don&#39;t) have a coach assigned
+    # @option opts [Boolean] :q_exclude_profile Filter to users without an external Winthrop profile
+    # @option opts [String] :q_all_without_role Filter to users lacking this role (used for \&quot;Exclude Admins\&quot; via the real role name, e.g. super_admin)
+    # @option opts [Date] :q_created_at_gteq Filter to users created on or after this date
+    # @option opts [Date] :q_created_at_lteq Filter to users created on or before this date
+    # @return [Array<(AdminUsersList, Integer, Hash)>] AdminUsersList data, response status code and response headers
+    def list_admin_users_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_users ...'
+      end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_users, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_users, must be greater than or equal to 1.'
+      end
+
+      allowable_values = ["active", "inactive"]
+      if @api_client.config.client_side_validation && opts[:'q_subscription_status'] && !allowable_values.include?(opts[:'q_subscription_status'])
+        fail ArgumentError, "invalid value for \"q_subscription_status\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["active", "created", "pending", "suspended"]
+      if @api_client.config.client_side_validation && opts[:'q_state_eq'] && !allowable_values.include?(opts[:'q_state_eq'])
+        fail ArgumentError, "invalid value for \"q_state_eq\", must be one of #{allowable_values}"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/users'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'q[account_name_cont]'] = opts[:'q_account_name_cont'] if !opts[:'q_account_name_cont'].nil?
+      query_params[:'q[subscription_type_id_in][]'] = @api_client.build_collection_param(opts[:'q_subscription_type_id_in'], :csv) if !opts[:'q_subscription_type_id_in'].nil?
+      query_params[:'q[subscription_status]'] = opts[:'q_subscription_status'] if !opts[:'q_subscription_status'].nil?
+      query_params[:'q[first_name_start]'] = opts[:'q_first_name_start'] if !opts[:'q_first_name_start'].nil?
+      query_params[:'q[last_name_start]'] = opts[:'q_last_name_start'] if !opts[:'q_last_name_start'].nil?
+      query_params[:'q[email_start]'] = opts[:'q_email_start'] if !opts[:'q_email_start'].nil?
+      query_params[:'q[otp_required_eq]'] = opts[:'q_otp_required_eq'] if !opts[:'q_otp_required_eq'].nil?
+      query_params[:'q[state_eq]'] = opts[:'q_state_eq'] if !opts[:'q_state_eq'].nil?
+      query_params[:'role'] = opts[:'role'] if !opts[:'role'].nil?
+      query_params[:'q[coach_id_not_null]'] = opts[:'q_coach_id_not_null'] if !opts[:'q_coach_id_not_null'].nil?
+      query_params[:'q[exclude_profile]'] = opts[:'q_exclude_profile'] if !opts[:'q_exclude_profile'].nil?
+      query_params[:'q[all_without_role]'] = opts[:'q_all_without_role'] if !opts[:'q_all_without_role'].nil?
+      query_params[:'q[created_at_gteq]'] = opts[:'q_created_at_gteq'] if !opts[:'q_created_at_gteq'].nil?
+      query_params[:'q[created_at_lteq]'] = opts[:'q_created_at_lteq'] if !opts[:'q_created_at_lteq'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminUsersList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_users",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_users\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a paginated, filterable QC report of Deal rows (Vendor Contract QC admin) — filterable by school division/subdivision/conference/school/deal type/verified status, sortable by school name/start date/end date
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+    # @return [AdminVendorContractsList]
+    def list_admin_vendor_contracts(opts = {})
+      data, _status_code, _headers = list_admin_vendor_contracts_with_http_info(opts)
+      data
+    end
+
+    # Retrieve a paginated, filterable QC report of Deal rows (Vendor Contract QC admin) — filterable by school division/subdivision/conference/school/deal type/verified status, sortable by school name/start date/end date
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+    # @return [Array<(AdminVendorContractsList, Integer, Hash)>] AdminVendorContractsList data, response status code and response headers
+    def list_admin_vendor_contracts_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_vendor_contracts ...'
+      end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_vendor_contracts, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_vendor_contracts, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_vendor_contracts, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_vendor_contracts, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/admin/vendor_contracts'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminVendorContractsList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_vendor_contracts",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_vendor_contracts\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List a Vendor's Deals (Ransack-filterable), active-first
+    # @param vendor_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+    # @return [AdminDealsList]
+    def list_admin_vendor_deals(vendor_id, opts = {})
+      data, _status_code, _headers = list_admin_vendor_deals_with_http_info(vendor_id, opts)
+      data
+    end
+
+    # List a Vendor&#39;s Deals (Ransack-filterable), active-first
+    # @param vendor_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [Integer] :per_page number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. (default to 20)
+    # @option opts [Object] :q Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+    # @return [Array<(AdminDealsList, Integer, Hash)>] AdminDealsList data, response status code and response headers
+    def list_admin_vendor_deals_with_http_info(vendor_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_vendor_deals ...'
+      end
+      # verify the required parameter 'vendor_id' is set
+      if @api_client.config.client_side_validation && vendor_id.nil?
+        fail ArgumentError, "Missing the required parameter 'vendor_id' when calling DefaultApi.list_admin_vendor_deals"
+      end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_vendor_deals, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_vendor_deals, must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_vendor_deals, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DefaultApi.list_admin_vendor_deals, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/admin/vendors/{vendor_id}/deals'.sub('{' + 'vendor_id' + '}', CGI.escape(vendor_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminDealsList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_vendor_deals",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_vendor_deals\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List vendors, optionally filtered by name (admin, super-admin only)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [String] :q_name_eq 
+    # @return [AdminVendorsList]
+    def list_admin_vendors(opts = {})
+      data, _status_code, _headers = list_admin_vendors_with_http_info(opts)
+      data
+    end
+
+    # List vendors, optionally filtered by name (admin, super-admin only)
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. (default to 1)
+    # @option opts [String] :q_name_eq 
+    # @return [Array<(AdminVendorsList, Integer, Hash)>] AdminVendorsList data, response status code and response headers
+    def list_admin_vendors_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.list_admin_vendors ...'
+      end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] > 2147483647
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_vendors, must be smaller than or equal to 2147483647.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling DefaultApi.list_admin_vendors, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/admin/vendors'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'q[name_eq]'] = opts[:'q_name_eq'] if !opts[:'q_name_eq'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminVendorsList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.list_admin_vendors",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_admin_vendors\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -24265,6 +30582,204 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Copy every one of a coach's positions for a given season year forward into the next season year, skipping any that already exist or fail validation (admin-only)
+    # @param mass_copy_positions_request [MassCopyPositionsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [MassCopyPositionsResponse]
+    def mass_copy_admin_positions(mass_copy_positions_request, opts = {})
+      data, _status_code, _headers = mass_copy_admin_positions_with_http_info(mass_copy_positions_request, opts)
+      data
+    end
+
+    # Copy every one of a coach&#39;s positions for a given season year forward into the next season year, skipping any that already exist or fail validation (admin-only)
+    # @param mass_copy_positions_request [MassCopyPositionsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(MassCopyPositionsResponse, Integer, Hash)>] MassCopyPositionsResponse data, response status code and response headers
+    def mass_copy_admin_positions_with_http_info(mass_copy_positions_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.mass_copy_admin_positions ...'
+      end
+      # verify the required parameter 'mass_copy_positions_request' is set
+      if @api_client.config.client_side_validation && mass_copy_positions_request.nil?
+        fail ArgumentError, "Missing the required parameter 'mass_copy_positions_request' when calling DefaultApi.mass_copy_admin_positions"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/positions/mass_copy'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(mass_copy_positions_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'MassCopyPositionsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.mass_copy_admin_positions",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#mass_copy_admin_positions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create the same position (title + position types) for one coach across a range of season years, for one or more sports, auto-vivifying seasons as needed (admin-only)
+    # @param mass_create_positions_request [MassCreatePositionsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [MassCreatePositionsResponse]
+    def mass_create_admin_positions(mass_create_positions_request, opts = {})
+      data, _status_code, _headers = mass_create_admin_positions_with_http_info(mass_create_positions_request, opts)
+      data
+    end
+
+    # Create the same position (title + position types) for one coach across a range of season years, for one or more sports, auto-vivifying seasons as needed (admin-only)
+    # @param mass_create_positions_request [MassCreatePositionsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(MassCreatePositionsResponse, Integer, Hash)>] MassCreatePositionsResponse data, response status code and response headers
+    def mass_create_admin_positions_with_http_info(mass_create_positions_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.mass_create_admin_positions ...'
+      end
+      # verify the required parameter 'mass_create_positions_request' is set
+      if @api_client.config.client_side_validation && mass_create_positions_request.nil?
+        fail ArgumentError, "Missing the required parameter 'mass_create_positions_request' when calling DefaultApi.mass_create_admin_positions"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/positions/mass_create'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(mass_create_positions_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'MassCreatePositionsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.mass_create_admin_positions",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#mass_create_admin_positions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Mark every one of a coach's not-yet-departing positions for a given season year as departing (admin-only)
+    # @param mass_depart_positions_request [MassDepartPositionsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [MassDepartPositionsResponse]
+    def mass_depart_admin_positions(mass_depart_positions_request, opts = {})
+      data, _status_code, _headers = mass_depart_admin_positions_with_http_info(mass_depart_positions_request, opts)
+      data
+    end
+
+    # Mark every one of a coach&#39;s not-yet-departing positions for a given season year as departing (admin-only)
+    # @param mass_depart_positions_request [MassDepartPositionsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(MassDepartPositionsResponse, Integer, Hash)>] MassDepartPositionsResponse data, response status code and response headers
+    def mass_depart_admin_positions_with_http_info(mass_depart_positions_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.mass_depart_admin_positions ...'
+      end
+      # verify the required parameter 'mass_depart_positions_request' is set
+      if @api_client.config.client_side_validation && mass_depart_positions_request.nil?
+        fail ArgumentError, "Missing the required parameter 'mass_depart_positions_request' when calling DefaultApi.mass_depart_admin_positions"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/positions/mass_depart'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(mass_depart_positions_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'MassDepartPositionsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.mass_depart_admin_positions",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#mass_depart_admin_positions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Atomically save submitted changed rows for one coach (super-admin only). Existing IDs must belong to that coach; school and year cannot change. New rows require existing positions for the school and year, and never create positions. Omit untouched rows so unrelated historical validation errors do not block a save.
     # @param mass_update_admin_compensations_request [MassUpdateAdminCompensationsRequest] 
     # @param [Hash] opts the optional parameters
@@ -24331,6 +30846,72 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Bulk-update position types/creation reason/article link for many existing positions belonging to one coach, in a single all-or-nothing transaction (admin-only)
+    # @param mass_update_positions_request [MassUpdatePositionsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [MassUpdatePositionsResponse]
+    def mass_update_admin_positions(mass_update_positions_request, opts = {})
+      data, _status_code, _headers = mass_update_admin_positions_with_http_info(mass_update_positions_request, opts)
+      data
+    end
+
+    # Bulk-update position types/creation reason/article link for many existing positions belonging to one coach, in a single all-or-nothing transaction (admin-only)
+    # @param mass_update_positions_request [MassUpdatePositionsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(MassUpdatePositionsResponse, Integer, Hash)>] MassUpdatePositionsResponse data, response status code and response headers
+    def mass_update_admin_positions_with_http_info(mass_update_positions_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.mass_update_admin_positions ...'
+      end
+      # verify the required parameter 'mass_update_positions_request' is set
+      if @api_client.config.client_side_validation && mass_update_positions_request.nil?
+        fail ArgumentError, "Missing the required parameter 'mass_update_positions_request' when calling DefaultApi.mass_update_admin_positions"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/positions/mass_update'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(mass_update_positions_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'MassUpdatePositionsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.mass_update_admin_positions",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#mass_update_admin_positions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Bulk-update the status of multiple requested items at once (admin, super-admin only)
     # @param mass_update_admin_requested_items_request [MassUpdateAdminRequestedItemsRequest] 
     # @param [Hash] opts the optional parameters
@@ -24391,6 +30972,182 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#mass_update_admin_requested_items\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve the suggested order number and the selectable Position Type Groups, for the \"New Position Type\" admin form
+    # @param [Hash] opts the optional parameters
+    # @return [NewAdminPositionType]
+    def new_admin_position_type(opts = {})
+      data, _status_code, _headers = new_admin_position_type_with_http_info(opts)
+      data
+    end
+
+    # Retrieve the suggested order number and the selectable Position Type Groups, for the \&quot;New Position Type\&quot; admin form
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(NewAdminPositionType, Integer, Hash)>] NewAdminPositionType data, response status code and response headers
+    def new_admin_position_type_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.new_admin_position_type ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/position_types/new'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'NewAdminPositionType'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.new_admin_position_type",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#new_admin_position_type\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve the selectable Time of Year options, for the \"New Sport\" admin form
+    # @param [Hash] opts the optional parameters
+    # @return [NewAdminSport]
+    def new_admin_sport(opts = {})
+      data, _status_code, _headers = new_admin_sport_with_http_info(opts)
+      data
+    end
+
+    # Retrieve the selectable Time of Year options, for the \&quot;New Sport\&quot; admin form
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(NewAdminSport, Integer, Hash)>] NewAdminSport data, response status code and response headers
+    def new_admin_sport_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.new_admin_sport ...'
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/sports/new'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'NewAdminSport'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.new_admin_sport",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#new_admin_sport\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve Position Types grouped by Position Type Group for a set of sport ids (admin-only), used to populate the Coaches admin form's position dropdown
+    # @param position_types_for_groups_admin_sports_request [PositionTypesForGroupsAdminSportsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [PositionTypesForGroupsAdminSports200Response]
+    def position_types_for_groups_admin_sports(position_types_for_groups_admin_sports_request, opts = {})
+      data, _status_code, _headers = position_types_for_groups_admin_sports_with_http_info(position_types_for_groups_admin_sports_request, opts)
+      data
+    end
+
+    # Retrieve Position Types grouped by Position Type Group for a set of sport ids (admin-only), used to populate the Coaches admin form&#39;s position dropdown
+    # @param position_types_for_groups_admin_sports_request [PositionTypesForGroupsAdminSportsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(PositionTypesForGroupsAdminSports200Response, Integer, Hash)>] PositionTypesForGroupsAdminSports200Response data, response status code and response headers
+    def position_types_for_groups_admin_sports_with_http_info(position_types_for_groups_admin_sports_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.position_types_for_groups_admin_sports ...'
+      end
+      # verify the required parameter 'position_types_for_groups_admin_sports_request' is set
+      if @api_client.config.client_side_validation && position_types_for_groups_admin_sports_request.nil?
+        fail ArgumentError, "Missing the required parameter 'position_types_for_groups_admin_sports_request' when calling DefaultApi.position_types_for_groups_admin_sports"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/sports/position_types_for_groups'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(position_types_for_groups_admin_sports_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PositionTypesForGroupsAdminSports200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.position_types_for_groups_admin_sports",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#position_types_for_groups_admin_sports\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -24718,6 +31475,133 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#regenerate_raw_contract_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Remove a school's full-membership conference assignment (admin, super-admin only)
+    # @param id [Integer] 
+    # @param school_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def remove_admin_conference_school(id, school_id, opts = {})
+      remove_admin_conference_school_with_http_info(id, school_id, opts)
+      nil
+    end
+
+    # Remove a school&#39;s full-membership conference assignment (admin, super-admin only)
+    # @param id [Integer] 
+    # @param school_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def remove_admin_conference_school_with_http_info(id, school_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.remove_admin_conference_school ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.remove_admin_conference_school"
+      end
+      # verify the required parameter 'school_id' is set
+      if @api_client.config.client_side_validation && school_id.nil?
+        fail ArgumentError, "Missing the required parameter 'school_id' when calling DefaultApi.remove_admin_conference_school"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/conferences/{id}/remove_school'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'school_id'] = school_id
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.remove_admin_conference_school",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#remove_admin_conference_school\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Revoke a user's intercollegiate direct-access authorization tokens (super_admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [RegenerateRawContractPdf200Response]
+    def remove_admin_user_intercollegiate_authorization(id, opts = {})
+      data, _status_code, _headers = remove_admin_user_intercollegiate_authorization_with_http_info(id, opts)
+      data
+    end
+
+    # Revoke a user&#39;s intercollegiate direct-access authorization tokens (super_admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(RegenerateRawContractPdf200Response, Integer, Hash)>] RegenerateRawContractPdf200Response data, response status code and response headers
+    def remove_admin_user_intercollegiate_authorization_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.remove_admin_user_intercollegiate_authorization ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.remove_admin_user_intercollegiate_authorization"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/users/{id}/remove_intercollegiate_authorization'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'RegenerateRawContractPdf200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.remove_admin_user_intercollegiate_authorization",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#remove_admin_user_intercollegiate_authorization\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -25114,6 +31998,67 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Resend the account confirmation email to a pending user (super_admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [RegenerateRawContractPdf200Response]
+    def send_confirm_email_admin_user(id, opts = {})
+      data, _status_code, _headers = send_confirm_email_admin_user_with_http_info(id, opts)
+      data
+    end
+
+    # Resend the account confirmation email to a pending user (super_admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(RegenerateRawContractPdf200Response, Integer, Hash)>] RegenerateRawContractPdf200Response data, response status code and response headers
+    def send_confirm_email_admin_user_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.send_confirm_email_admin_user ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.send_confirm_email_admin_user"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/users/{id}/send_confirm_email'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'RegenerateRawContractPdf200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.send_confirm_email_admin_user",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#send_confirm_email_admin_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Send an OTP verification code to the authenticated user's email
     # @param [Hash] opts the optional parameters
     # @return [CreatePasswordReset200Response]
@@ -25165,6 +32110,323 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#send_otp_code\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Show a single Deal
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminDeal]
+    def show_admin_deal(id, opts = {})
+      data, _status_code, _headers = show_admin_deal_with_http_info(id, opts)
+      data
+    end
+
+    # Show a single Deal
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminDeal, Integer, Hash)>] AdminDeal data, response status code and response headers
+    def show_admin_deal_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.show_admin_deal ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.show_admin_deal"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/deals/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminDeal'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.show_admin_deal",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#show_admin_deal\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Show a Deal scoped to this School
+    # @param school_id [Integer] 
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminDeal]
+    def show_admin_school_deal(school_id, id, opts = {})
+      data, _status_code, _headers = show_admin_school_deal_with_http_info(school_id, id, opts)
+      data
+    end
+
+    # Show a Deal scoped to this School
+    # @param school_id [Integer] 
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminDeal, Integer, Hash)>] AdminDeal data, response status code and response headers
+    def show_admin_school_deal_with_http_info(school_id, id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.show_admin_school_deal ...'
+      end
+      # verify the required parameter 'school_id' is set
+      if @api_client.config.client_side_validation && school_id.nil?
+        fail ArgumentError, "Missing the required parameter 'school_id' when calling DefaultApi.show_admin_school_deal"
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.show_admin_school_deal"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/schools/{school_id}/deals/{id}'.sub('{' + 'school_id' + '}', CGI.escape(school_id.to_s)).sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminDeal'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.show_admin_school_deal",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#show_admin_school_deal\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Show a Deal scoped to this Vendor
+    # @param vendor_id [Integer] 
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminDeal]
+    def show_admin_vendor_deal(vendor_id, id, opts = {})
+      data, _status_code, _headers = show_admin_vendor_deal_with_http_info(vendor_id, id, opts)
+      data
+    end
+
+    # Show a Deal scoped to this Vendor
+    # @param vendor_id [Integer] 
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminDeal, Integer, Hash)>] AdminDeal data, response status code and response headers
+    def show_admin_vendor_deal_with_http_info(vendor_id, id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.show_admin_vendor_deal ...'
+      end
+      # verify the required parameter 'vendor_id' is set
+      if @api_client.config.client_side_validation && vendor_id.nil?
+        fail ArgumentError, "Missing the required parameter 'vendor_id' when calling DefaultApi.show_admin_vendor_deal"
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.show_admin_vendor_deal"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/vendors/{vendor_id}/deals/{id}'.sub('{' + 'vendor_id' + '}', CGI.escape(vendor_id.to_s)).sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminDeal'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.show_admin_vendor_deal",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#show_admin_vendor_deal\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Suspend a user (super_admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminUser]
+    def suspend_admin_user(id, opts = {})
+      data, _status_code, _headers = suspend_admin_user_with_http_info(id, opts)
+      data
+    end
+
+    # Suspend a user (super_admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminUser, Integer, Hash)>] AdminUser data, response status code and response headers
+    def suspend_admin_user_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.suspend_admin_user ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.suspend_admin_user"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/users/{id}/suspend'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminUser'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.suspend_admin_user",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#suspend_admin_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Flip a single position's departing flag (admin-only)
+    # @param id [Integer] ID of the position
+    # @param [Hash] opts the optional parameters
+    # @return [AdminPosition]
+    def toggle_departing_admin_position(id, opts = {})
+      data, _status_code, _headers = toggle_departing_admin_position_with_http_info(id, opts)
+      data
+    end
+
+    # Flip a single position&#39;s departing flag (admin-only)
+    # @param id [Integer] ID of the position
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminPosition, Integer, Hash)>] AdminPosition data, response status code and response headers
+    def toggle_departing_admin_position_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.toggle_departing_admin_position ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.toggle_departing_admin_position"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/positions/{id}/toggle_departing'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminPosition'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.toggle_departing_admin_position",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#toggle_departing_admin_position\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -25294,6 +32556,67 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#unstract_raw_contract_pdf_text\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Reactivate a suspended user (super_admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminUser]
+    def unsuspend_admin_user(id, opts = {})
+      data, _status_code, _headers = unsuspend_admin_user_with_http_info(id, opts)
+      data
+    end
+
+    # Reactivate a suspended user (super_admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminUser, Integer, Hash)>] AdminUser data, response status code and response headers
+    def unsuspend_admin_user_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.unsuspend_admin_user ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.unsuspend_admin_user"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/users/{id}/unsuspend'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminUser'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.unsuspend_admin_user",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#unsuspend_admin_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -25436,6 +32759,75 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Update an avatar's image, remote image URL, or crop coordinates (admin, super-admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [UpdateAdminAvatarsRequestAvatar] :avatar 
+    # @return [AdminAvatar]
+    def update_admin_avatars(id, opts = {})
+      data, _status_code, _headers = update_admin_avatars_with_http_info(id, opts)
+      data
+    end
+
+    # Update an avatar&#39;s image, remote image URL, or crop coordinates (admin, super-admin only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [UpdateAdminAvatarsRequestAvatar] :avatar 
+    # @return [Array<(AdminAvatar, Integer, Hash)>] AdminAvatar data, response status code and response headers
+    def update_admin_avatars_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_admin_avatars ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.update_admin_avatars"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/avatars/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['multipart/form-data'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+      form_params['avatar'] = opts[:'avatar'] if !opts[:'avatar'].nil?
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminAvatar'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_admin_avatars",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_admin_avatars\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Update a coach's editable fields (admin-only)
     # @param id [String] 
     # @param create_admin_coach_request [CreateAdminCoachRequest] 
@@ -25504,6 +32896,150 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#update_admin_coach\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a conference (admin, super-admin only)
+    # @param id [Integer] 
+    # @param update_admin_conferences_request [UpdateAdminConferencesRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminConferenceDetail]
+    def update_admin_conferences(id, update_admin_conferences_request, opts = {})
+      data, _status_code, _headers = update_admin_conferences_with_http_info(id, update_admin_conferences_request, opts)
+      data
+    end
+
+    # Update a conference (admin, super-admin only)
+    # @param id [Integer] 
+    # @param update_admin_conferences_request [UpdateAdminConferencesRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminConferenceDetail, Integer, Hash)>] AdminConferenceDetail data, response status code and response headers
+    def update_admin_conferences_with_http_info(id, update_admin_conferences_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_admin_conferences ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.update_admin_conferences"
+      end
+      # verify the required parameter 'update_admin_conferences_request' is set
+      if @api_client.config.client_side_validation && update_admin_conferences_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_admin_conferences_request' when calling DefaultApi.update_admin_conferences"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/conferences/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_admin_conferences_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminConferenceDetail'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_admin_conferences",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_admin_conferences\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update an existing conferenceship's school/sport/conference assignment (admin, super-admin only)
+    # @param id [Integer] 
+    # @param update_admin_conferenceships_request [UpdateAdminConferenceshipsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminConferenceship]
+    def update_admin_conferenceships(id, update_admin_conferenceships_request, opts = {})
+      data, _status_code, _headers = update_admin_conferenceships_with_http_info(id, update_admin_conferenceships_request, opts)
+      data
+    end
+
+    # Update an existing conferenceship&#39;s school/sport/conference assignment (admin, super-admin only)
+    # @param id [Integer] 
+    # @param update_admin_conferenceships_request [UpdateAdminConferenceshipsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminConferenceship, Integer, Hash)>] AdminConferenceship data, response status code and response headers
+    def update_admin_conferenceships_with_http_info(id, update_admin_conferenceships_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_admin_conferenceships ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.update_admin_conferenceships"
+      end
+      # verify the required parameter 'update_admin_conferenceships_request' is set
+      if @api_client.config.client_side_validation && update_admin_conferenceships_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_admin_conferenceships_request' when calling DefaultApi.update_admin_conferenceships"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/conferenceships/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_admin_conferenceships_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminConferenceship'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_admin_conferenceships",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_admin_conferenceships\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -25652,6 +33188,148 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Update a Deal's fields, and (once a deal_type is set) its type-specific deal_detail_attributes
+    # @param id [Integer] 
+    # @param update_admin_deal_request [UpdateAdminDealRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminDeal]
+    def update_admin_deal(id, update_admin_deal_request, opts = {})
+      data, _status_code, _headers = update_admin_deal_with_http_info(id, update_admin_deal_request, opts)
+      data
+    end
+
+    # Update a Deal&#39;s fields, and (once a deal_type is set) its type-specific deal_detail_attributes
+    # @param id [Integer] 
+    # @param update_admin_deal_request [UpdateAdminDealRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminDeal, Integer, Hash)>] AdminDeal data, response status code and response headers
+    def update_admin_deal_with_http_info(id, update_admin_deal_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_admin_deal ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.update_admin_deal"
+      end
+      # verify the required parameter 'update_admin_deal_request' is set
+      if @api_client.config.client_side_validation && update_admin_deal_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_admin_deal_request' when calling DefaultApi.update_admin_deal"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/deals/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_admin_deal_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminDeal'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_admin_deal",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_admin_deal\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update deal status (persisted super admin only)
+    # @param id [Integer] 
+    # @param update_admin_deal_status_request [UpdateAdminDealStatusRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def update_admin_deal_status(id, update_admin_deal_status_request, opts = {})
+      update_admin_deal_status_with_http_info(id, update_admin_deal_status_request, opts)
+      nil
+    end
+
+    # Update deal status (persisted super admin only)
+    # @param id [Integer] 
+    # @param update_admin_deal_status_request [UpdateAdminDealStatusRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def update_admin_deal_status_with_http_info(id, update_admin_deal_status_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_admin_deal_status ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.update_admin_deal_status"
+      end
+      # verify the required parameter 'update_admin_deal_status_request' is set
+      if @api_client.config.client_side_validation && update_admin_deal_status_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_admin_deal_status_request' when calling DefaultApi.update_admin_deal_status"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/deal_statuses/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_admin_deal_status_request)
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_admin_deal_status",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_admin_deal_status\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Update the cover fields and/or the staged draft body (blank clears it). Drafts only: a live or hidden report answers 422 — it changes through Publish update (after a restore, for a hidden one), so readers never see a change with no version behind it.  `mark_in_progress: true` is \"Mark in progress\" on the draft (WINAD-10567), after any edits in the same request are saved. A draft built from an ask marks the ask. A draft Tyler started himself needs an eligible audience in \"Who can see it\" (Everyone or named recipients; 422 if empty); the first time only, and when Desk email is on, they are emailed \"We've begun work on <title>\" and the desk gets one copy. If the email cannot be queued the start is undone and the answer is 503.  `status: building` is an alias for mark_in_progress. `status: delivered` records work delivery without publishing: status remains draft and admin_status becomes delivered. A linked report delivers its ask instead. Repeating delivery is a no-op; delivered work cannot restart. Both transitions accept desk_draft_write for a persisted super-admin. Other status values are denied (403 for draft-only tokens, otherwise 422). Do not combine delivered with mark_in_progress. Publication remains a separate action. 
     # @param uuid [String] Public uuid of the Desk report
     # @param desk_admin_report_update [DeskAdminReportUpdate] 
@@ -25792,6 +33470,78 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#update_admin_desk_request\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Reassign a favorite's category (admin, super-admin only) — the only editable field
+    # @param id [Integer] 
+    # @param update_admin_favorites_request [UpdateAdminFavoritesRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminFavoriteDetail]
+    def update_admin_favorites(id, update_admin_favorites_request, opts = {})
+      data, _status_code, _headers = update_admin_favorites_with_http_info(id, update_admin_favorites_request, opts)
+      data
+    end
+
+    # Reassign a favorite&#39;s category (admin, super-admin only) — the only editable field
+    # @param id [Integer] 
+    # @param update_admin_favorites_request [UpdateAdminFavoritesRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminFavoriteDetail, Integer, Hash)>] AdminFavoriteDetail data, response status code and response headers
+    def update_admin_favorites_with_http_info(id, update_admin_favorites_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_admin_favorites ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.update_admin_favorites"
+      end
+      # verify the required parameter 'update_admin_favorites_request' is set
+      if @api_client.config.client_side_validation && update_admin_favorites_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_admin_favorites_request' when calling DefaultApi.update_admin_favorites"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/favorites/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_admin_favorites_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminFavoriteDetail'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_admin_favorites",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_admin_favorites\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -26485,6 +34235,222 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Update a note's content (admin)
+    # @param id [Integer] 
+    # @param update_admin_note_request [UpdateAdminNoteRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminNote]
+    def update_admin_note(id, update_admin_note_request, opts = {})
+      data, _status_code, _headers = update_admin_note_with_http_info(id, update_admin_note_request, opts)
+      data
+    end
+
+    # Update a note&#39;s content (admin)
+    # @param id [Integer] 
+    # @param update_admin_note_request [UpdateAdminNoteRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminNote, Integer, Hash)>] AdminNote data, response status code and response headers
+    def update_admin_note_with_http_info(id, update_admin_note_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_admin_note ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.update_admin_note"
+      end
+      # verify the required parameter 'update_admin_note_request' is set
+      if @api_client.config.client_side_validation && update_admin_note_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_admin_note_request' when calling DefaultApi.update_admin_note"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/notes/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_admin_note_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminNote'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_admin_note",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_admin_note\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a single position (admin-only)
+    # @param id [Integer] ID of the position
+    # @param create_admin_position_request [CreateAdminPositionRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminPosition]
+    def update_admin_position(id, create_admin_position_request, opts = {})
+      data, _status_code, _headers = update_admin_position_with_http_info(id, create_admin_position_request, opts)
+      data
+    end
+
+    # Update a single position (admin-only)
+    # @param id [Integer] ID of the position
+    # @param create_admin_position_request [CreateAdminPositionRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminPosition, Integer, Hash)>] AdminPosition data, response status code and response headers
+    def update_admin_position_with_http_info(id, create_admin_position_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_admin_position ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.update_admin_position"
+      end
+      # verify the required parameter 'create_admin_position_request' is set
+      if @api_client.config.client_side_validation && create_admin_position_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_admin_position_request' when calling DefaultApi.update_admin_position"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/positions/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_admin_position_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminPosition'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_admin_position",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_admin_position\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a single Position Type (admin-only)
+    # @param id [Integer] ID of the Position Type
+    # @param create_position_type_request [CreatePositionTypeRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminPositionType]
+    def update_admin_position_types(id, create_position_type_request, opts = {})
+      data, _status_code, _headers = update_admin_position_types_with_http_info(id, create_position_type_request, opts)
+      data
+    end
+
+    # Update a single Position Type (admin-only)
+    # @param id [Integer] ID of the Position Type
+    # @param create_position_type_request [CreatePositionTypeRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminPositionType, Integer, Hash)>] AdminPositionType data, response status code and response headers
+    def update_admin_position_types_with_http_info(id, create_position_type_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_admin_position_types ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.update_admin_position_types"
+      end
+      # verify the required parameter 'create_position_type_request' is set
+      if @api_client.config.client_side_validation && create_position_type_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_position_type_request' when calling DefaultApi.update_admin_position_types"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/position_types/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_position_type_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminPositionType'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_admin_position_types",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_admin_position_types\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Update a single requested item's status (admin, super-admin only)
     # @param id [Integer] 
     # @param update_admin_requested_item_request [UpdateAdminRequestedItemRequest] 
@@ -26629,6 +34595,367 @@ module WinthropClient
       return data, status_code, headers
     end
 
+    # Update a Deal scoped to this School
+    # @param school_id [Integer] 
+    # @param id [Integer] 
+    # @param create_admin_school_deal_request [CreateAdminSchoolDealRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminDeal]
+    def update_admin_school_deal(school_id, id, create_admin_school_deal_request, opts = {})
+      data, _status_code, _headers = update_admin_school_deal_with_http_info(school_id, id, create_admin_school_deal_request, opts)
+      data
+    end
+
+    # Update a Deal scoped to this School
+    # @param school_id [Integer] 
+    # @param id [Integer] 
+    # @param create_admin_school_deal_request [CreateAdminSchoolDealRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminDeal, Integer, Hash)>] AdminDeal data, response status code and response headers
+    def update_admin_school_deal_with_http_info(school_id, id, create_admin_school_deal_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_admin_school_deal ...'
+      end
+      # verify the required parameter 'school_id' is set
+      if @api_client.config.client_side_validation && school_id.nil?
+        fail ArgumentError, "Missing the required parameter 'school_id' when calling DefaultApi.update_admin_school_deal"
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.update_admin_school_deal"
+      end
+      # verify the required parameter 'create_admin_school_deal_request' is set
+      if @api_client.config.client_side_validation && create_admin_school_deal_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_admin_school_deal_request' when calling DefaultApi.update_admin_school_deal"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/schools/{school_id}/deals/{id}'.sub('{' + 'school_id' + '}', CGI.escape(school_id.to_s)).sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_admin_school_deal_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminDeal'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_admin_school_deal",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_admin_school_deal\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update school group (persisted super admin only)
+    # @param id [Integer] 
+    # @param update_admin_school_group_request [UpdateAdminSchoolGroupRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def update_admin_school_group(id, update_admin_school_group_request, opts = {})
+      update_admin_school_group_with_http_info(id, update_admin_school_group_request, opts)
+      nil
+    end
+
+    # Update school group (persisted super admin only)
+    # @param id [Integer] 
+    # @param update_admin_school_group_request [UpdateAdminSchoolGroupRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def update_admin_school_group_with_http_info(id, update_admin_school_group_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_admin_school_group ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.update_admin_school_group"
+      end
+      # verify the required parameter 'update_admin_school_group_request' is set
+      if @api_client.config.client_side_validation && update_admin_school_group_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_admin_school_group_request' when calling DefaultApi.update_admin_school_group"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/school_groups/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_admin_school_group_request)
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_admin_school_group",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_admin_school_group\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update an existing alternate school name (super_admin only)
+    # @param id [Integer] 
+    # @param update_admin_school_names_request [UpdateAdminSchoolNamesRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminSchoolName]
+    def update_admin_school_names(id, update_admin_school_names_request, opts = {})
+      data, _status_code, _headers = update_admin_school_names_with_http_info(id, update_admin_school_names_request, opts)
+      data
+    end
+
+    # Update an existing alternate school name (super_admin only)
+    # @param id [Integer] 
+    # @param update_admin_school_names_request [UpdateAdminSchoolNamesRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminSchoolName, Integer, Hash)>] AdminSchoolName data, response status code and response headers
+    def update_admin_school_names_with_http_info(id, update_admin_school_names_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_admin_school_names ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.update_admin_school_names"
+      end
+      # verify the required parameter 'update_admin_school_names_request' is set
+      if @api_client.config.client_side_validation && update_admin_school_names_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_admin_school_names_request' when calling DefaultApi.update_admin_school_names"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/school_names/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_admin_school_names_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminSchoolName'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_admin_school_names",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_admin_school_names\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a school's editable fields (admin-only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [CreateAdminSchoolRequestSchool] :school 
+    # @return [AdminSchoolDetail]
+    def update_admin_schools(id, opts = {})
+      data, _status_code, _headers = update_admin_schools_with_http_info(id, opts)
+      data
+    end
+
+    # Update a school&#39;s editable fields (admin-only)
+    # @param id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [CreateAdminSchoolRequestSchool] :school 
+    # @return [Array<(AdminSchoolDetail, Integer, Hash)>] AdminSchoolDetail data, response status code and response headers
+    def update_admin_schools_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_admin_schools ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.update_admin_schools"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/schools/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['multipart/form-data'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+      form_params['school'] = opts[:'school'] if !opts[:'school'].nil?
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminSchoolDetail'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_admin_schools",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_admin_schools\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a single Sport (admin-only)
+    # @param id [Integer] ID of the Sport
+    # @param create_sport_request [CreateSportRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminSport]
+    def update_admin_sport(id, create_sport_request, opts = {})
+      data, _status_code, _headers = update_admin_sport_with_http_info(id, create_sport_request, opts)
+      data
+    end
+
+    # Update a single Sport (admin-only)
+    # @param id [Integer] ID of the Sport
+    # @param create_sport_request [CreateSportRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminSport, Integer, Hash)>] AdminSport data, response status code and response headers
+    def update_admin_sport_with_http_info(id, create_sport_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_admin_sport ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.update_admin_sport"
+      end
+      # verify the required parameter 'create_sport_request' is set
+      if @api_client.config.client_side_validation && create_sport_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_sport_request' when calling DefaultApi.update_admin_sport"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/sports/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_sport_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminSport'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_admin_sport",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_admin_sport\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Replace the attached PDF on a termination agreement (admin, super-admin only)
     # @param id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -26694,6 +35021,228 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#update_admin_termination_agreement\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a user's fields, roles, and sport access (super_admin only)
+    # @param id [Integer] 
+    # @param update_admin_user_request [UpdateAdminUserRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminUser]
+    def update_admin_user(id, update_admin_user_request, opts = {})
+      data, _status_code, _headers = update_admin_user_with_http_info(id, update_admin_user_request, opts)
+      data
+    end
+
+    # Update a user&#39;s fields, roles, and sport access (super_admin only)
+    # @param id [Integer] 
+    # @param update_admin_user_request [UpdateAdminUserRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminUser, Integer, Hash)>] AdminUser data, response status code and response headers
+    def update_admin_user_with_http_info(id, update_admin_user_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_admin_user ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.update_admin_user"
+      end
+      # verify the required parameter 'update_admin_user_request' is set
+      if @api_client.config.client_side_validation && update_admin_user_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_admin_user_request' when calling DefaultApi.update_admin_user"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/users/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_admin_user_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminUser'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_admin_user",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_admin_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a Deal scoped to this Vendor
+    # @param vendor_id [Integer] 
+    # @param id [Integer] 
+    # @param create_admin_school_deal_request [CreateAdminSchoolDealRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminDeal]
+    def update_admin_vendor_deal(vendor_id, id, create_admin_school_deal_request, opts = {})
+      data, _status_code, _headers = update_admin_vendor_deal_with_http_info(vendor_id, id, create_admin_school_deal_request, opts)
+      data
+    end
+
+    # Update a Deal scoped to this Vendor
+    # @param vendor_id [Integer] 
+    # @param id [Integer] 
+    # @param create_admin_school_deal_request [CreateAdminSchoolDealRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminDeal, Integer, Hash)>] AdminDeal data, response status code and response headers
+    def update_admin_vendor_deal_with_http_info(vendor_id, id, create_admin_school_deal_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_admin_vendor_deal ...'
+      end
+      # verify the required parameter 'vendor_id' is set
+      if @api_client.config.client_side_validation && vendor_id.nil?
+        fail ArgumentError, "Missing the required parameter 'vendor_id' when calling DefaultApi.update_admin_vendor_deal"
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.update_admin_vendor_deal"
+      end
+      # verify the required parameter 'create_admin_school_deal_request' is set
+      if @api_client.config.client_side_validation && create_admin_school_deal_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_admin_school_deal_request' when calling DefaultApi.update_admin_vendor_deal"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/vendors/{vendor_id}/deals/{id}'.sub('{' + 'vendor_id' + '}', CGI.escape(vendor_id.to_s)).sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_admin_school_deal_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminDeal'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_admin_vendor_deal",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_admin_vendor_deal\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a vendor (admin, super-admin only)
+    # @param id [Integer] 
+    # @param update_admin_vendors_request [UpdateAdminVendorsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminVendorDetail]
+    def update_admin_vendors(id, update_admin_vendors_request, opts = {})
+      data, _status_code, _headers = update_admin_vendors_with_http_info(id, update_admin_vendors_request, opts)
+      data
+    end
+
+    # Update a vendor (admin, super-admin only)
+    # @param id [Integer] 
+    # @param update_admin_vendors_request [UpdateAdminVendorsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminVendorDetail, Integer, Hash)>] AdminVendorDetail data, response status code and response headers
+    def update_admin_vendors_with_http_info(id, update_admin_vendors_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_admin_vendors ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.update_admin_vendors"
+      end
+      # verify the required parameter 'update_admin_vendors_request' is set
+      if @api_client.config.client_side_validation && update_admin_vendors_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_admin_vendors_request' when calling DefaultApi.update_admin_vendors"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/vendors/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_admin_vendors_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminVendorDetail'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_admin_vendors",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_admin_vendors\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -28806,6 +37355,78 @@ module WinthropClient
       data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#update_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Set a Deal's verified flag (reached from the QC Vendor Contracts page)
+    # @param id [Integer] 
+    # @param update_verified_admin_deal_request [UpdateVerifiedAdminDealRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AdminDeal]
+    def update_verified_admin_deal(id, update_verified_admin_deal_request, opts = {})
+      data, _status_code, _headers = update_verified_admin_deal_with_http_info(id, update_verified_admin_deal_request, opts)
+      data
+    end
+
+    # Set a Deal&#39;s verified flag (reached from the QC Vendor Contracts page)
+    # @param id [Integer] 
+    # @param update_verified_admin_deal_request [UpdateVerifiedAdminDealRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdminDeal, Integer, Hash)>] AdminDeal data, response status code and response headers
+    def update_verified_admin_deal_with_http_info(id, update_verified_admin_deal_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_verified_admin_deal ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.update_verified_admin_deal"
+      end
+      # verify the required parameter 'update_verified_admin_deal_request' is set
+      if @api_client.config.client_side_validation && update_verified_admin_deal_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_verified_admin_deal_request' when calling DefaultApi.update_verified_admin_deal"
+      end
+      # resource path
+      local_var_path = '/api/v1/admin/deals/{id}/update_verified'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_verified_admin_deal_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdminDeal'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_verified_admin_deal",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_verified_admin_deal\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

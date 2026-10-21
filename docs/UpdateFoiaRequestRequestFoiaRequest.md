@@ -14,6 +14,8 @@
 | **updated_by_school** | **Date** |  | [optional] |
 | **deal_status_ids** | **Array&lt;Integer&gt;** |  | [optional] |
 | **foia_notes_attributes** | [**Array&lt;UpdateFoiaRequestRequestFoiaRequestFoiaNotesAttributesInner&gt;**](UpdateFoiaRequestRequestFoiaRequestFoiaNotesAttributesInner.md) | Request-level note edits. Omit id to add; pass id to edit or delete. Author is set by the server. | [optional] |
+| **vendor_deal_type_ids** | **Array&lt;Integer&gt;** | Add these FOIA-requestable types without replacing existing requested items. Idempotent. | [optional] |
+| **school_foia_notes_attributes** | [**Array&lt;UpdateFoiaRequestRequestFoiaRequestSchoolFoiaNotesAttributesInner&gt;**](UpdateFoiaRequestRequestFoiaRequestSchoolFoiaNotesAttributesInner.md) | Notes scoped to this request&#39;s school. Author is set by the server; foreign note IDs are refused. | [optional] |
 
 ## Example
 
@@ -30,7 +32,9 @@ instance = WinthropClient::UpdateFoiaRequestRequestFoiaRequest.new(
   follow_up_date: null,
   updated_by_school: null,
   deal_status_ids: null,
-  foia_notes_attributes: null
+  foia_notes_attributes: null,
+  vendor_deal_type_ids: null,
+  school_foia_notes_attributes: null
 )
 ```
 

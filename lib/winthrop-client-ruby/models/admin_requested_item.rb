@@ -23,6 +23,9 @@ module WinthropClient
 
     attr_accessor :requestable_type
 
+    # Coach name formatted as last name, first name
+    attr_accessor :coach
+
     attr_accessor :coach_id
 
     attr_accessor :status
@@ -54,6 +57,7 @@ module WinthropClient
         :'foia_request_id' => :'foia_request_id',
         :'requestable_id' => :'requestable_id',
         :'requestable_type' => :'requestable_type',
+        :'coach' => :'coach',
         :'coach_id' => :'coach_id',
         :'status' => :'status',
         :'created_at' => :'created_at',
@@ -86,6 +90,7 @@ module WinthropClient
         :'foia_request_id' => :'Integer',
         :'requestable_id' => :'Integer',
         :'requestable_type' => :'String',
+        :'coach' => :'String',
         :'coach_id' => :'Integer',
         :'status' => :'String',
         :'created_at' => :'Time',
@@ -106,6 +111,7 @@ module WinthropClient
       Set.new([
         :'requestable_id',
         :'requestable_type',
+        :'coach',
         :'coach_id',
         :'title',
         :'type_display',
@@ -147,6 +153,10 @@ module WinthropClient
 
       if attributes.key?(:'requestable_type')
         self.requestable_type = attributes[:'requestable_type']
+      end
+
+      if attributes.key?(:'coach')
+        self.coach = attributes[:'coach']
       end
 
       if attributes.key?(:'coach_id')
@@ -222,6 +232,7 @@ module WinthropClient
           foia_request_id == o.foia_request_id &&
           requestable_id == o.requestable_id &&
           requestable_type == o.requestable_type &&
+          coach == o.coach &&
           coach_id == o.coach_id &&
           status == o.status &&
           created_at == o.created_at &&
@@ -245,7 +256,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, foia_request_id, requestable_id, requestable_type, coach_id, status, created_at, updated_at, title, type_display, has_note, foia_label, foia_state, foia_school, updated_by, note].hash
+      [id, foia_request_id, requestable_id, requestable_type, coach, coach_id, status, created_at, updated_at, title, type_display, has_note, foia_label, foia_state, foia_school, updated_by, note].hash
     end
 
     # Builds the object from hash

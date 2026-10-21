@@ -23,6 +23,7 @@
 | **status_percentage** | **Float** |  | [optional] |
 | **deal_status_ids** | **Array&lt;Integer&gt;** |  | [optional] |
 | **foia_notes** | [**Array&lt;AdminFoiaRequestNote&gt;**](AdminFoiaRequestNote.md) | Request-level notes, newest first; included on detail and write responses. | [optional] |
+| **vendor_options** | [**Array&lt;AdminFoiaVendorOption&gt;**](AdminFoiaVendorOption.md) | FOIA-requestable vendor types for this school; reading does not create statuses. | [optional] |
 
 ## Example
 
@@ -48,7 +49,8 @@ instance = WinthropClient::AdminFoiaRequest.new(
   received_items_count: null,
   status_percentage: null,
   deal_status_ids: null,
-  foia_notes: null
+  foia_notes: null,
+  vendor_options: null
 )
 ```
 

@@ -8,6 +8,7 @@
 | **foia_request_id** | **Integer** |  | [optional] |
 | **requestable_id** | **Integer** |  | [optional] |
 | **requestable_type** | **String** |  | [optional] |
+| **coach** | **String** | Coach name formatted as last name, first name | [optional] |
 | **coach_id** | **Integer** |  | [optional] |
 | **status** | **String** |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
@@ -31,6 +32,7 @@ instance = WinthropClient::AdminRequestedItem.new(
   foia_request_id: null,
   requestable_id: null,
   requestable_type: null,
+  coach: null,
   coach_id: null,
   status: null,
   created_at: null,

@@ -15,6 +15,9 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**bulk_update_admin_contract_request_searches**](DefaultApi.md#bulk_update_admin_contract_request_searches) | **POST** /api/v1/admin/contract_request_searches/bulk_update |  |
 | [**bulk_update_game_post_searches**](DefaultApi.md#bulk_update_game_post_searches) | **POST** /api/v1/game_post_searches/bulk_update |  |
 | [**compare_coli**](DefaultApi.md#compare_coli) | **GET** /api/v1/schools/compare_coli |  |
+| [**confirm_email_admin_user**](DefaultApi.md#confirm_email_admin_user) | **POST** /api/v1/admin/users/{id}/confirm_email |  |
+| [**copy_for_year_admin_positions**](DefaultApi.md#copy_for_year_admin_positions) | **POST** /api/v1/admin/positions/copy_for_year |  |
+| [**copy_to_next_year_admin_position**](DefaultApi.md#copy_to_next_year_admin_position) | **POST** /api/v1/admin/positions/{id}/copy_to_next_year |  |
 | [**create_account_user**](DefaultApi.md#create_account_user) | **POST** /api/v1/account_users |  |
 | [**create_admin_coach**](DefaultApi.md#create_admin_coach) | **POST** /api/v1/admin/coaches |  |
 | [**create_admin_coach_apr_upload**](DefaultApi.md#create_admin_coach_apr_upload) | **POST** /api/v1/admin/coaches/coach_apr_upload |  |
@@ -24,8 +27,12 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**create_admin_coach_merge_log**](DefaultApi.md#create_admin_coach_merge_log) | **POST** /api/v1/admin/coach_merge_logs |  |
 | [**create_admin_coach_profile_match**](DefaultApi.md#create_admin_coach_profile_match) | **POST** /api/v1/admin/coaches/profile_match |  |
 | [**create_admin_coach_upload**](DefaultApi.md#create_admin_coach_upload) | **POST** /api/v1/admin/coaches/upload |  |
+| [**create_admin_conferences**](DefaultApi.md#create_admin_conferences) | **POST** /api/v1/admin/conferences |  |
+| [**create_admin_conferenceships**](DefaultApi.md#create_admin_conferenceships) | **POST** /api/v1/admin/conferenceships |  |
 | [**create_admin_contact**](DefaultApi.md#create_admin_contact) | **POST** /api/v1/admin/contacts |  |
 | [**create_admin_contract**](DefaultApi.md#create_admin_contract) | **POST** /api/v1/admin/contracts |  |
+| [**create_admin_deal**](DefaultApi.md#create_admin_deal) | **POST** /api/v1/admin/deals |  |
+| [**create_admin_deal_statuses**](DefaultApi.md#create_admin_deal_statuses) | **POST** /api/v1/admin/deal_statuses |  |
 | [**create_admin_desk_report**](DefaultApi.md#create_admin_desk_report) | **POST** /api/v1/admin/desk_reports |  |
 | [**create_admin_desk_report_artifact**](DefaultApi.md#create_admin_desk_report_artifact) | **POST** /api/v1/admin/desk_reports/{desk_report_uuid}/artifacts |  |
 | [**create_admin_foia_contacts**](DefaultApi.md#create_admin_foia_contacts) | **POST** /api/v1/admin/foia_contacts |  |
@@ -33,10 +40,24 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**create_admin_foia_request_builder**](DefaultApi.md#create_admin_foia_request_builder) | **POST** /api/v1/admin/foia_request_builder |  |
 | [**create_admin_foia_request_bulk_quick_actions**](DefaultApi.md#create_admin_foia_request_bulk_quick_actions) | **POST** /api/v1/admin/foia_requests/{id}/bulk_quick_actions |  |
 | [**create_admin_foia_requests**](DefaultApi.md#create_admin_foia_requests) | **POST** /api/v1/admin/foia_requests |  |
+| [**create_admin_impersonations**](DefaultApi.md#create_admin_impersonations) | **POST** /api/v1/admin/impersonations |  |
 | [**create_admin_income_report**](DefaultApi.md#create_admin_income_report) | **POST** /api/v1/admin/income_reports |  |
 | [**create_admin_invoice**](DefaultApi.md#create_admin_invoice) | **POST** /api/v1/admin/invoices |  |
+| [**create_admin_position**](DefaultApi.md#create_admin_position) | **POST** /api/v1/admin/positions |  |
+| [**create_admin_position_types**](DefaultApi.md#create_admin_position_types) | **POST** /api/v1/admin/position_types |  |
 | [**create_admin_requested_item_ri_note**](DefaultApi.md#create_admin_requested_item_ri_note) | **POST** /api/v1/admin/requested_items/{requested_item_id}/ri_note |  |
+| [**create_admin_school_deal**](DefaultApi.md#create_admin_school_deal) | **POST** /api/v1/admin/schools/{school_id}/deals |  |
+| [**create_admin_school_names**](DefaultApi.md#create_admin_school_names) | **POST** /api/v1/admin/school_names |  |
+| [**create_admin_school_revenue**](DefaultApi.md#create_admin_school_revenue) | **POST** /api/v1/admin/schools/{schoolId}/revenue |  |
+| [**create_admin_school_revenue_combined_upload**](DefaultApi.md#create_admin_school_revenue_combined_upload) | **POST** /api/v1/admin/schools/{schoolId}/revenue/combined_upload |  |
+| [**create_admin_school_upload**](DefaultApi.md#create_admin_school_upload) | **POST** /api/v1/admin/school_uploads |  |
+| [**create_admin_schools**](DefaultApi.md#create_admin_schools) | **POST** /api/v1/admin/schools |  |
+| [**create_admin_sport**](DefaultApi.md#create_admin_sport) | **POST** /api/v1/admin/sports |  |
+| [**create_admin_subdivision_membership**](DefaultApi.md#create_admin_subdivision_membership) | **POST** /api/v1/admin/subdivision_memberships |  |
 | [**create_admin_termination_agreement**](DefaultApi.md#create_admin_termination_agreement) | **POST** /api/v1/admin/termination_agreements |  |
+| [**create_admin_user**](DefaultApi.md#create_admin_user) | **POST** /api/v1/admin/users |  |
+| [**create_admin_vendor_deal**](DefaultApi.md#create_admin_vendor_deal) | **POST** /api/v1/admin/vendors/{vendor_id}/deals |  |
+| [**create_admin_vendors**](DefaultApi.md#create_admin_vendors) | **POST** /api/v1/admin/vendors |  |
 | [**create_admin_youtube_video**](DefaultApi.md#create_admin_youtube_video) | **POST** /api/v1/admin/youtube_videos |  |
 | [**create_cashflow**](DefaultApi.md#create_cashflow) | **POST** /api/v1/cashflows |  |
 | [**create_coach**](DefaultApi.md#create_coach) | **POST** /api/v1/coaches |  |
@@ -103,22 +124,45 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_team_schedule_note**](DefaultApi.md#delete_team_schedule_note) | **DELETE** /api/v1/team_schedule_notes/{fil_team_id} |  |
 | [**delete_team_season_result**](DefaultApi.md#delete_team_season_result) | **DELETE** /api/v1/team_season_results/{teamSeasonResultId} |  |
 | [**delete_upload**](DefaultApi.md#delete_upload) | **DELETE** /api/v1/uploads/{uploadId} |  |
+| [**destroy_admin_avatars**](DefaultApi.md#destroy_admin_avatars) | **DELETE** /api/v1/admin/avatars/{id} |  |
 | [**destroy_admin_coach**](DefaultApi.md#destroy_admin_coach) | **DELETE** /api/v1/admin/coaches/{id} |  |
 | [**destroy_admin_compensation**](DefaultApi.md#destroy_admin_compensation) | **DELETE** /api/v1/admin/compensations/{id} |  |
+| [**destroy_admin_conferences**](DefaultApi.md#destroy_admin_conferences) | **DELETE** /api/v1/admin/conferences/{id} |  |
+| [**destroy_admin_conferenceships**](DefaultApi.md#destroy_admin_conferenceships) | **DELETE** /api/v1/admin/conferenceships/{id} |  |
 | [**destroy_admin_contact**](DefaultApi.md#destroy_admin_contact) | **DELETE** /api/v1/admin/contacts/{id} |  |
 | [**destroy_admin_contract**](DefaultApi.md#destroy_admin_contract) | **DELETE** /api/v1/admin/contracts/{id} |  |
+| [**destroy_admin_deal**](DefaultApi.md#destroy_admin_deal) | **DELETE** /api/v1/admin/deals/{id} |  |
+| [**destroy_admin_favorites**](DefaultApi.md#destroy_admin_favorites) | **DELETE** /api/v1/admin/favorites/{id} |  |
+| [**destroy_admin_financial_stats**](DefaultApi.md#destroy_admin_financial_stats) | **DELETE** /api/v1/admin/financial_stats/{id} |  |
 | [**destroy_admin_foia_contacts**](DefaultApi.md#destroy_admin_foia_contacts) | **DELETE** /api/v1/admin/foia_contacts/{id} |  |
 | [**destroy_admin_foia_labels**](DefaultApi.md#destroy_admin_foia_labels) | **DELETE** /api/v1/admin/foia_labels/{id} |  |
 | [**destroy_admin_foia_requests**](DefaultApi.md#destroy_admin_foia_requests) | **DELETE** /api/v1/admin/foia_requests/{id} |  |
+| [**destroy_admin_impersonations**](DefaultApi.md#destroy_admin_impersonations) | **DELETE** /api/v1/admin/impersonations |  |
 | [**destroy_admin_income_report**](DefaultApi.md#destroy_admin_income_report) | **DELETE** /api/v1/admin/income_reports/{id} |  |
+| [**destroy_admin_note**](DefaultApi.md#destroy_admin_note) | **DELETE** /api/v1/admin/notes/{id} |  |
+| [**destroy_admin_position**](DefaultApi.md#destroy_admin_position) | **DELETE** /api/v1/admin/positions/{id} |  |
+| [**destroy_admin_position_types**](DefaultApi.md#destroy_admin_position_types) | **DELETE** /api/v1/admin/position_types/{id} |  |
 | [**destroy_admin_raw_contract**](DefaultApi.md#destroy_admin_raw_contract) | **DELETE** /api/v1/admin/raw_contracts/{id} |  |
 | [**destroy_admin_requested_item**](DefaultApi.md#destroy_admin_requested_item) | **DELETE** /api/v1/admin/requested_items/{id} |  |
 | [**destroy_admin_requested_item_ri_note**](DefaultApi.md#destroy_admin_requested_item_ri_note) | **DELETE** /api/v1/admin/requested_items/{requested_item_id}/ri_note |  |
+| [**destroy_admin_school_deal**](DefaultApi.md#destroy_admin_school_deal) | **DELETE** /api/v1/admin/schools/{school_id}/deals/{id} |  |
+| [**destroy_admin_school_groups**](DefaultApi.md#destroy_admin_school_groups) | **DELETE** /api/v1/admin/school_groups/{id} |  |
+| [**destroy_admin_school_names**](DefaultApi.md#destroy_admin_school_names) | **DELETE** /api/v1/admin/school_names/{id} |  |
+| [**destroy_admin_school_revenue_year**](DefaultApi.md#destroy_admin_school_revenue_year) | **DELETE** /api/v1/admin/schools/{schoolId}/revenue/destroy_school_financial_data |  |
+| [**destroy_admin_sport**](DefaultApi.md#destroy_admin_sport) | **DELETE** /api/v1/admin/sports/{id} |  |
+| [**destroy_admin_subdivision_membership**](DefaultApi.md#destroy_admin_subdivision_membership) | **DELETE** /api/v1/admin/subdivision_memberships/{id} |  |
 | [**destroy_admin_termination_agreement**](DefaultApi.md#destroy_admin_termination_agreement) | **DELETE** /api/v1/admin/termination_agreements/{id} |  |
+| [**destroy_admin_user**](DefaultApi.md#destroy_admin_user) | **DELETE** /api/v1/admin/users/{id} |  |
+| [**destroy_admin_vendor_deal**](DefaultApi.md#destroy_admin_vendor_deal) | **DELETE** /api/v1/admin/vendors/{vendor_id}/deals/{id} |  |
+| [**destroy_admin_vendors**](DefaultApi.md#destroy_admin_vendors) | **DELETE** /api/v1/admin/vendors/{id} |  |
 | [**destroy_admin_youtube_video**](DefaultApi.md#destroy_admin_youtube_video) | **DELETE** /api/v1/admin/youtube_videos/{id} |  |
+| [**destroy_deal_detail_admin_deal**](DefaultApi.md#destroy_deal_detail_admin_deal) | **DELETE** /api/v1/admin/deals/{id}/destroy_deal_detail |  |
 | [**download_admin_coach_contracts_csv_template**](DefaultApi.md#download_admin_coach_contracts_csv_template) | **GET** /api/v1/admin/coach_contracts/download_csv_template |  |
 | [**download_admin_coach_contracts_outside_income_csv_template**](DefaultApi.md#download_admin_coach_contracts_outside_income_csv_template) | **GET** /api/v1/admin/coach_contracts/outside_income_csv_template |  |
+| [**download_admin_financial_stats_csv_template**](DefaultApi.md#download_admin_financial_stats_csv_template) | **GET** /api/v1/admin/financial_stats/download_csv_template |  |
 | [**download_raw_contract_file**](DefaultApi.md#download_raw_contract_file) | **GET** /api/v1/raw_contracts/{raw_contractId}/download |  |
+| [**edit_admin_position_types**](DefaultApi.md#edit_admin_position_types) | **GET** /api/v1/admin/position_types/{id}/edit |  |
+| [**edit_admin_sport**](DefaultApi.md#edit_admin_sport) | **GET** /api/v1/admin/sports/{id}/edit |  |
 | [**enrich_game_post_searches**](DefaultApi.md#enrich_game_post_searches) | **POST** /api/v1/game_post_searches/enrichment |  |
 | [**export_admin_contract_request_searches_coaches**](DefaultApi.md#export_admin_contract_request_searches_coaches) | **POST** /api/v1/admin/contract_request_searches/export_coaches |  |
 | [**export_revenue_searches**](DefaultApi.md#export_revenue_searches) | **GET** /api/v1/revenue_searches/export |  |
@@ -128,13 +172,20 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_accounts**](DefaultApi.md#get_accounts) | **GET** /api/v1/accounts |  |
 | [**get_admin_coach**](DefaultApi.md#get_admin_coach) | **GET** /api/v1/admin/coaches/{id} |  |
 | [**get_admin_coach_merge_log**](DefaultApi.md#get_admin_coach_merge_log) | **GET** /api/v1/admin/coach_merge_logs/{id} |  |
+| [**get_admin_conferences**](DefaultApi.md#get_admin_conferences) | **GET** /api/v1/admin/conferences/{id} |  |
+| [**get_admin_conferenceships**](DefaultApi.md#get_admin_conferenceships) | **GET** /api/v1/admin/conferenceships/{id} |  |
 | [**get_admin_contract**](DefaultApi.md#get_admin_contract) | **GET** /api/v1/admin/contracts/{id} |  |
 | [**get_admin_contract_request_searches_options**](DefaultApi.md#get_admin_contract_request_searches_options) | **GET** /api/v1/admin/contract_request_searches/options |  |
+| [**get_admin_deal_statuses_options**](DefaultApi.md#get_admin_deal_statuses_options) | **GET** /api/v1/admin/deal_statuses/options |  |
+| [**get_admin_deals_options**](DefaultApi.md#get_admin_deals_options) | **GET** /api/v1/admin/deals/options |  |
 | [**get_admin_desk_report**](DefaultApi.md#get_admin_desk_report) | **GET** /api/v1/admin/desk_reports/{uuid} |  |
 | [**get_admin_desk_report_activity**](DefaultApi.md#get_admin_desk_report_activity) | **GET** /api/v1/admin/desk_reports/{uuid}/activity |  |
 | [**get_admin_desk_report_activity_summaries**](DefaultApi.md#get_admin_desk_report_activity_summaries) | **GET** /api/v1/admin/desk_reports/activity_summaries |  |
 | [**get_admin_desk_reports**](DefaultApi.md#get_admin_desk_reports) | **GET** /api/v1/admin/desk_reports |  |
 | [**get_admin_desk_requests**](DefaultApi.md#get_admin_desk_requests) | **GET** /api/v1/admin/desk_requests |  |
+| [**get_admin_download**](DefaultApi.md#get_admin_download) | **GET** /api/v1/admin/downloads/{id} |  |
+| [**get_admin_favorites**](DefaultApi.md#get_admin_favorites) | **GET** /api/v1/admin/favorites/{id} |  |
+| [**get_admin_favorites_options**](DefaultApi.md#get_admin_favorites_options) | **GET** /api/v1/admin/favorites/options |  |
 | [**get_admin_foia_labels**](DefaultApi.md#get_admin_foia_labels) | **GET** /api/v1/admin/foia_labels/{id} |  |
 | [**get_admin_foia_request_builder_form_options**](DefaultApi.md#get_admin_foia_request_builder_form_options) | **GET** /api/v1/admin/foia_request_builder/form_options |  |
 | [**get_admin_foia_request_builder_log**](DefaultApi.md#get_admin_foia_request_builder_log) | **GET** /api/v1/admin/foia_request_builder_logs/{id} |  |
@@ -146,9 +197,18 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_admin_income_report**](DefaultApi.md#get_admin_income_report) | **GET** /api/v1/admin/income_reports/{id} |  |
 | [**get_admin_invoice**](DefaultApi.md#get_admin_invoice) | **GET** /api/v1/admin/invoices/{invoiceId} |  |
 | [**get_admin_invoices**](DefaultApi.md#get_admin_invoices) | **GET** /api/v1/admin/invoices |  |
+| [**get_admin_position**](DefaultApi.md#get_admin_position) | **GET** /api/v1/admin/positions/{id} |  |
+| [**get_admin_position_copy_options**](DefaultApi.md#get_admin_position_copy_options) | **GET** /api/v1/admin/positions/copy_for_year |  |
 | [**get_admin_raw_contract_text**](DefaultApi.md#get_admin_raw_contract_text) | **GET** /api/v1/admin/raw_contracts/{id}/text |  |
 | [**get_admin_requested_item_ri_note**](DefaultApi.md#get_admin_requested_item_ri_note) | **GET** /api/v1/admin/requested_items/{requested_item_id}/ri_note |  |
+| [**get_admin_school_names**](DefaultApi.md#get_admin_school_names) | **GET** /api/v1/admin/school_names/{id} |  |
+| [**get_admin_school_revenue**](DefaultApi.md#get_admin_school_revenue) | **GET** /api/v1/admin/schools/{schoolId}/revenue |  |
+| [**get_admin_schools**](DefaultApi.md#get_admin_schools) | **GET** /api/v1/admin/schools/{id} |  |
+| [**get_admin_sport**](DefaultApi.md#get_admin_sport) | **GET** /api/v1/admin/sports/{id} |  |
 | [**get_admin_termination_agreement**](DefaultApi.md#get_admin_termination_agreement) | **GET** /api/v1/admin/termination_agreements/{id} |  |
+| [**get_admin_user**](DefaultApi.md#get_admin_user) | **GET** /api/v1/admin/users/{id} |  |
+| [**get_admin_vendors**](DefaultApi.md#get_admin_vendors) | **GET** /api/v1/admin/vendors/{id} |  |
+| [**get_admin_vendors_options**](DefaultApi.md#get_admin_vendors_options) | **GET** /api/v1/admin/vendors/options |  |
 | [**get_administrator**](DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} |  |
 | [**get_administrator_searches**](DefaultApi.md#get_administrator_searches) | **GET** /api/v1/administrator_searches |  |
 | [**get_administrators**](DefaultApi.md#get_administrators) | **GET** /api/v1/administrators |  |
@@ -343,10 +403,21 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**list_admin_coach_upload_jobs**](DefaultApi.md#list_admin_coach_upload_jobs) | **GET** /api/v1/admin/coaches/upload |  |
 | [**list_admin_coaches**](DefaultApi.md#list_admin_coaches) | **GET** /api/v1/admin/coaches |  |
 | [**list_admin_compensations**](DefaultApi.md#list_admin_compensations) | **GET** /api/v1/admin/compensations |  |
+| [**list_admin_conference_schools_directory**](DefaultApi.md#list_admin_conference_schools_directory) | **GET** /api/v1/admin/conferences/schools |  |
+| [**list_admin_conferences**](DefaultApi.md#list_admin_conferences) | **GET** /api/v1/admin/conferences |  |
+| [**list_admin_conferenceships**](DefaultApi.md#list_admin_conferenceships) | **GET** /api/v1/admin/conferenceships |  |
+| [**list_admin_conferenceships_available_conferences**](DefaultApi.md#list_admin_conferenceships_available_conferences) | **GET** /api/v1/admin/conferenceships/available_conferences |  |
+| [**list_admin_conferenceships_available_schools**](DefaultApi.md#list_admin_conferenceships_available_schools) | **GET** /api/v1/admin/conferenceships/available_schools |  |
+| [**list_admin_conferenceships_available_sports**](DefaultApi.md#list_admin_conferenceships_available_sports) | **GET** /api/v1/admin/conferenceships/available_sports |  |
 | [**list_admin_contact_eligible_coaches**](DefaultApi.md#list_admin_contact_eligible_coaches) | **GET** /api/v1/admin/contacts/eligible_coaches |  |
 | [**list_admin_contacts**](DefaultApi.md#list_admin_contacts) | **GET** /api/v1/admin/contacts |  |
 | [**list_admin_contract_request_searches**](DefaultApi.md#list_admin_contract_request_searches) | **GET** /api/v1/admin/contract_request_searches |  |
 | [**list_admin_contracts**](DefaultApi.md#list_admin_contracts) | **GET** /api/v1/admin/contracts |  |
+| [**list_admin_deal_statuses**](DefaultApi.md#list_admin_deal_statuses) | **GET** /api/v1/admin/deal_statuses |  |
+| [**list_admin_deals**](DefaultApi.md#list_admin_deals) | **GET** /api/v1/admin/deals |  |
+| [**list_admin_favorites**](DefaultApi.md#list_admin_favorites) | **GET** /api/v1/admin/favorites |  |
+| [**list_admin_financial_stats**](DefaultApi.md#list_admin_financial_stats) | **GET** /api/v1/admin/financial_stats |  |
+| [**list_admin_financials_qc**](DefaultApi.md#list_admin_financials_qc) | **GET** /api/v1/admin/financials_qc |  |
 | [**list_admin_foia_contacts**](DefaultApi.md#list_admin_foia_contacts) | **GET** /api/v1/admin/foia_contacts |  |
 | [**list_admin_foia_contacts_available_schools**](DefaultApi.md#list_admin_foia_contacts_available_schools) | **GET** /api/v1/admin/foia_contacts/available_schools |  |
 | [**list_admin_foia_labels**](DefaultApi.md#list_admin_foia_labels) | **GET** /api/v1/admin/foia_labels |  |
@@ -357,36 +428,82 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**list_admin_foia_request_schools**](DefaultApi.md#list_admin_foia_request_schools) | **GET** /api/v1/admin/foia_requests/schools |  |
 | [**list_admin_foia_requests**](DefaultApi.md#list_admin_foia_requests) | **GET** /api/v1/admin/foia_requests |  |
 | [**list_admin_income_reports**](DefaultApi.md#list_admin_income_reports) | **GET** /api/v1/admin/income_reports |  |
+| [**list_admin_notes**](DefaultApi.md#list_admin_notes) | **GET** /api/v1/admin/notes |  |
+| [**list_admin_position_types**](DefaultApi.md#list_admin_position_types) | **GET** /api/v1/admin/position_types |  |
+| [**list_admin_positions**](DefaultApi.md#list_admin_positions) | **GET** /api/v1/admin/positions |  |
 | [**list_admin_raw_contracts_between_schools**](DefaultApi.md#list_admin_raw_contracts_between_schools) | **GET** /api/v1/admin/raw_contracts/game_contracts_between_schools |  |
 | [**list_admin_requested_items**](DefaultApi.md#list_admin_requested_items) | **GET** /api/v1/admin/requested_items |  |
+| [**list_admin_school_deals**](DefaultApi.md#list_admin_school_deals) | **GET** /api/v1/admin/schools/{school_id}/deals |  |
+| [**list_admin_school_game_counts**](DefaultApi.md#list_admin_school_game_counts) | **GET** /api/v1/admin/schools/game_counts |  |
+| [**list_admin_school_groups**](DefaultApi.md#list_admin_school_groups) | **GET** /api/v1/admin/school_groups |  |
+| [**list_admin_school_groups_available_schools**](DefaultApi.md#list_admin_school_groups_available_schools) | **GET** /api/v1/admin/school_groups/available_schools |  |
+| [**list_admin_school_logos_qc**](DefaultApi.md#list_admin_school_logos_qc) | **GET** /api/v1/admin/schools/school_logos_qc |  |
+| [**list_admin_school_names**](DefaultApi.md#list_admin_school_names) | **GET** /api/v1/admin/school_names |  |
+| [**list_admin_school_names_available_schools**](DefaultApi.md#list_admin_school_names_available_schools) | **GET** /api/v1/admin/school_names/available_schools |  |
+| [**list_admin_school_uploads**](DefaultApi.md#list_admin_school_uploads) | **GET** /api/v1/admin/school_uploads |  |
+| [**list_admin_schools**](DefaultApi.md#list_admin_schools) | **GET** /api/v1/admin/schools |  |
+| [**list_admin_sport_cashflows**](DefaultApi.md#list_admin_sport_cashflows) | **GET** /api/v1/admin/sports/{id}/cashflows |  |
+| [**list_admin_sport_positions**](DefaultApi.md#list_admin_sport_positions) | **GET** /api/v1/admin/sports/{id}/positions |  |
+| [**list_admin_sports**](DefaultApi.md#list_admin_sports) | **GET** /api/v1/admin/sports |  |
+| [**list_admin_subdivision_memberships**](DefaultApi.md#list_admin_subdivision_memberships) | **GET** /api/v1/admin/subdivision_memberships |  |
 | [**list_admin_termination_agreements**](DefaultApi.md#list_admin_termination_agreements) | **GET** /api/v1/admin/termination_agreements |  |
+| [**list_admin_user_account_options**](DefaultApi.md#list_admin_user_account_options) | **GET** /api/v1/admin/users/account_options |  |
+| [**list_admin_user_coach_options**](DefaultApi.md#list_admin_user_coach_options) | **GET** /api/v1/admin/users/coach_options |  |
+| [**list_admin_user_role_options**](DefaultApi.md#list_admin_user_role_options) | **GET** /api/v1/admin/users/role_options |  |
+| [**list_admin_user_sport_options**](DefaultApi.md#list_admin_user_sport_options) | **GET** /api/v1/admin/users/sport_options |  |
+| [**list_admin_users**](DefaultApi.md#list_admin_users) | **GET** /api/v1/admin/users |  |
+| [**list_admin_vendor_contracts**](DefaultApi.md#list_admin_vendor_contracts) | **GET** /api/v1/admin/vendor_contracts |  |
+| [**list_admin_vendor_deals**](DefaultApi.md#list_admin_vendor_deals) | **GET** /api/v1/admin/vendors/{vendor_id}/deals |  |
+| [**list_admin_vendors**](DefaultApi.md#list_admin_vendors) | **GET** /api/v1/admin/vendors |  |
 | [**list_admin_youtube_videos**](DefaultApi.md#list_admin_youtube_videos) | **GET** /api/v1/admin/youtube_videos |  |
 | [**list_notes**](DefaultApi.md#list_notes) | **GET** /api/v1/notes/list |  |
 | [**mark_admin_foia_request_processed_followup**](DefaultApi.md#mark_admin_foia_request_processed_followup) | **PATCH** /api/v1/admin/foia_requests/{id}/mark_processed_followup |  |
 | [**mark_paid_admin_invoice**](DefaultApi.md#mark_paid_admin_invoice) | **POST** /api/v1/admin/invoices/{invoiceId}/mark_paid |  |
+| [**mass_copy_admin_positions**](DefaultApi.md#mass_copy_admin_positions) | **PATCH** /api/v1/admin/positions/mass_copy |  |
+| [**mass_create_admin_positions**](DefaultApi.md#mass_create_admin_positions) | **POST** /api/v1/admin/positions/mass_create |  |
+| [**mass_depart_admin_positions**](DefaultApi.md#mass_depart_admin_positions) | **PATCH** /api/v1/admin/positions/mass_depart |  |
 | [**mass_update_admin_compensations**](DefaultApi.md#mass_update_admin_compensations) | **POST** /api/v1/admin/compensations/mass_update |  |
+| [**mass_update_admin_positions**](DefaultApi.md#mass_update_admin_positions) | **POST** /api/v1/admin/positions/mass_update |  |
 | [**mass_update_admin_requested_items**](DefaultApi.md#mass_update_admin_requested_items) | **PATCH** /api/v1/admin/requested_items/mass_update |  |
+| [**new_admin_position_type**](DefaultApi.md#new_admin_position_type) | **GET** /api/v1/admin/position_types/new |  |
+| [**new_admin_sport**](DefaultApi.md#new_admin_sport) | **GET** /api/v1/admin/sports/new |  |
+| [**position_types_for_groups_admin_sports**](DefaultApi.md#position_types_for_groups_admin_sports) | **POST** /api/v1/admin/sports/position_types_for_groups |  |
 | [**prefill_admin_invoice**](DefaultApi.md#prefill_admin_invoice) | **GET** /api/v1/admin/invoices/prefill |  |
 | [**preview_admin_coach_contracts**](DefaultApi.md#preview_admin_coach_contracts) | **POST** /api/v1/admin/coach_contracts/preview |  |
 | [**preview_admin_coach_merge_log**](DefaultApi.md#preview_admin_coach_merge_log) | **GET** /api/v1/admin/coach_merge_logs/preview |  |
 | [**publish_admin_desk_report**](DefaultApi.md#publish_admin_desk_report) | **POST** /api/v1/admin/desk_reports/{uuid}/publish |  |
 | [**regenerate_raw_contract_pdf**](DefaultApi.md#regenerate_raw_contract_pdf) | **POST** /api/v1/raw_contracts/{raw_contractId}/regenerate_pdf |  |
+| [**remove_admin_conference_school**](DefaultApi.md#remove_admin_conference_school) | **DELETE** /api/v1/admin/conferences/{id}/remove_school |  |
+| [**remove_admin_user_intercollegiate_authorization**](DefaultApi.md#remove_admin_user_intercollegiate_authorization) | **DELETE** /api/v1/admin/users/{id}/remove_intercollegiate_authorization |  |
 | [**resolve_frs_export**](DefaultApi.md#resolve_frs_export) | **POST** /api/v1/frs_exports/resolve |  |
 | [**restore_admin_desk_report**](DefaultApi.md#restore_admin_desk_report) | **POST** /api/v1/admin/desk_reports/{uuid}/restore |  |
 | [**retry_frs_export**](DefaultApi.md#retry_frs_export) | **POST** /api/v1/frs_exports/{frsExportId}/retry |  |
 | [**revoke_contract_verification**](DefaultApi.md#revoke_contract_verification) | **POST** /api/v1/raw_contracts/{raw_contractId}/verifications/revoke | Revoke verified seasons (append a revocation event) |
 | [**search_coaches**](DefaultApi.md#search_coaches) | **POST** /api/v1/coaches/search |  |
 | [**send_admin_invoice**](DefaultApi.md#send_admin_invoice) | **POST** /api/v1/admin/invoices/{invoiceId}/send |  |
+| [**send_confirm_email_admin_user**](DefaultApi.md#send_confirm_email_admin_user) | **POST** /api/v1/admin/users/{id}/send_confirm_email |  |
 | [**send_otp_code**](DefaultApi.md#send_otp_code) | **POST** /api/v1/otp/send_code |  |
+| [**show_admin_deal**](DefaultApi.md#show_admin_deal) | **GET** /api/v1/admin/deals/{id} |  |
+| [**show_admin_school_deal**](DefaultApi.md#show_admin_school_deal) | **GET** /api/v1/admin/schools/{school_id}/deals/{id} |  |
+| [**show_admin_vendor_deal**](DefaultApi.md#show_admin_vendor_deal) | **GET** /api/v1/admin/vendors/{vendor_id}/deals/{id} |  |
+| [**suspend_admin_user**](DefaultApi.md#suspend_admin_user) | **PUT** /api/v1/admin/users/{id}/suspend |  |
+| [**toggle_departing_admin_position**](DefaultApi.md#toggle_departing_admin_position) | **PATCH** /api/v1/admin/positions/{id}/toggle_departing |  |
 | [**unarchive_admin_foia_labels**](DefaultApi.md#unarchive_admin_foia_labels) | **POST** /api/v1/admin/foia_labels/{id}/unarchive |  |
 | [**unstract_raw_contract_pdf_text**](DefaultApi.md#unstract_raw_contract_pdf_text) | **POST** /api/v1/raw_contracts/{raw_contractId}/unstract_pdf_text |  |
+| [**unsuspend_admin_user**](DefaultApi.md#unsuspend_admin_user) | **PUT** /api/v1/admin/users/{id}/unsuspend |  |
 | [**update_account_user**](DefaultApi.md#update_account_user) | **PATCH** /api/v1/account_users/{accountUserId} |  |
 | [**update_account_user_activation**](DefaultApi.md#update_account_user_activation) | **PATCH** /api/v1/account_user_activation |  |
+| [**update_admin_avatars**](DefaultApi.md#update_admin_avatars) | **PATCH** /api/v1/admin/avatars/{id} |  |
 | [**update_admin_coach**](DefaultApi.md#update_admin_coach) | **PATCH** /api/v1/admin/coaches/{id} |  |
+| [**update_admin_conferences**](DefaultApi.md#update_admin_conferences) | **PATCH** /api/v1/admin/conferences/{id} |  |
+| [**update_admin_conferenceships**](DefaultApi.md#update_admin_conferenceships) | **PATCH** /api/v1/admin/conferenceships/{id} |  |
 | [**update_admin_contact**](DefaultApi.md#update_admin_contact) | **PATCH** /api/v1/admin/contacts/{id} |  |
 | [**update_admin_contract**](DefaultApi.md#update_admin_contract) | **PATCH** /api/v1/admin/contracts/{id} |  |
+| [**update_admin_deal**](DefaultApi.md#update_admin_deal) | **PATCH** /api/v1/admin/deals/{id} |  |
+| [**update_admin_deal_status**](DefaultApi.md#update_admin_deal_status) | **PATCH** /api/v1/admin/deal_statuses/{id} |  |
 | [**update_admin_desk_report**](DefaultApi.md#update_admin_desk_report) | **PATCH** /api/v1/admin/desk_reports/{uuid} |  |
 | [**update_admin_desk_request**](DefaultApi.md#update_admin_desk_request) | **PATCH** /api/v1/admin/desk_requests/{uuid} |  |
+| [**update_admin_favorites**](DefaultApi.md#update_admin_favorites) | **PATCH** /api/v1/admin/favorites/{id} |  |
 | [**update_admin_foia_contacts**](DefaultApi.md#update_admin_foia_contacts) | **PATCH** /api/v1/admin/foia_contacts/{id} |  |
 | [**update_admin_foia_labels**](DefaultApi.md#update_admin_foia_labels) | **PATCH** /api/v1/admin/foia_labels/{id} |  |
 | [**update_admin_foia_request_builder_compensations**](DefaultApi.md#update_admin_foia_request_builder_compensations) | **POST** /api/v1/admin/foia_request_builder/update_compensations_to_requested |  |
@@ -397,9 +514,20 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_admin_foia_requests**](DefaultApi.md#update_admin_foia_requests) | **PATCH** /api/v1/admin/foia_requests/{id} |  |
 | [**update_admin_income_report**](DefaultApi.md#update_admin_income_report) | **PATCH** /api/v1/admin/income_reports/{id} |  |
 | [**update_admin_invoice**](DefaultApi.md#update_admin_invoice) | **PATCH** /api/v1/admin/invoices/{invoiceId} |  |
+| [**update_admin_note**](DefaultApi.md#update_admin_note) | **PATCH** /api/v1/admin/notes/{id} |  |
+| [**update_admin_position**](DefaultApi.md#update_admin_position) | **PATCH** /api/v1/admin/positions/{id} |  |
+| [**update_admin_position_types**](DefaultApi.md#update_admin_position_types) | **PATCH** /api/v1/admin/position_types/{id} |  |
 | [**update_admin_requested_item**](DefaultApi.md#update_admin_requested_item) | **PATCH** /api/v1/admin/requested_items/{id} |  |
 | [**update_admin_requested_item_ri_note**](DefaultApi.md#update_admin_requested_item_ri_note) | **PATCH** /api/v1/admin/requested_items/{requested_item_id}/ri_note |  |
+| [**update_admin_school_deal**](DefaultApi.md#update_admin_school_deal) | **PATCH** /api/v1/admin/schools/{school_id}/deals/{id} |  |
+| [**update_admin_school_group**](DefaultApi.md#update_admin_school_group) | **PATCH** /api/v1/admin/school_groups/{id} |  |
+| [**update_admin_school_names**](DefaultApi.md#update_admin_school_names) | **PATCH** /api/v1/admin/school_names/{id} |  |
+| [**update_admin_schools**](DefaultApi.md#update_admin_schools) | **PATCH** /api/v1/admin/schools/{id} |  |
+| [**update_admin_sport**](DefaultApi.md#update_admin_sport) | **PATCH** /api/v1/admin/sports/{id} |  |
 | [**update_admin_termination_agreement**](DefaultApi.md#update_admin_termination_agreement) | **PATCH** /api/v1/admin/termination_agreements/{id} |  |
+| [**update_admin_user**](DefaultApi.md#update_admin_user) | **PATCH** /api/v1/admin/users/{id} |  |
+| [**update_admin_vendor_deal**](DefaultApi.md#update_admin_vendor_deal) | **PATCH** /api/v1/admin/vendors/{vendor_id}/deals/{id} |  |
+| [**update_admin_vendors**](DefaultApi.md#update_admin_vendors) | **PATCH** /api/v1/admin/vendors/{id} |  |
 | [**update_admin_youtube_video**](DefaultApi.md#update_admin_youtube_video) | **PATCH** /api/v1/admin/youtube_videos/{id} |  |
 | [**update_cashflow**](DefaultApi.md#update_cashflow) | **PUT** /api/v1/cashflows/{cashflowId} |  |
 | [**update_coach**](DefaultApi.md#update_coach) | **PATCH** /api/v1/coaches/{coachId} |  |
@@ -429,6 +557,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_subscription_acceptance**](DefaultApi.md#update_subscription_acceptance) | **PATCH** /api/v1/subscription_acceptances/{subscriptionAcceptanceId} |  |
 | [**update_team_schedule_favorite**](DefaultApi.md#update_team_schedule_favorite) | **PATCH** /api/v1/team_schedule_favorites/{id} |  |
 | [**update_user**](DefaultApi.md#update_user) | **PATCH** /api/v1/users/{userId} |  |
+| [**update_verified_admin_deal**](DefaultApi.md#update_verified_admin_deal) | **PATCH** /api/v1/admin/deals/{id}/update_verified |  |
 | [**upsert_earned_incentive**](DefaultApi.md#upsert_earned_incentive) | **PUT** /api/v1/earned_incentives |  |
 | [**upsert_team_schedule_note**](DefaultApi.md#upsert_team_schedule_note) | **PUT** /api/v1/team_schedule_notes/{fil_team_id} |  |
 | [**upsert_team_season_result**](DefaultApi.md#upsert_team_season_result) | **PUT** /api/v1/team_season_results |  |
@@ -1283,6 +1412,228 @@ end
 - **Accept**: application/json
 
 
+## confirm_email_admin_user
+
+> <AdminUser> confirm_email_admin_user(id)
+
+
+
+Force-confirm a user's email/account, bypassing the normal confirmation flow (super_admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.confirm_email_admin_user(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->confirm_email_admin_user: #{e}"
+end
+```
+
+#### Using the confirm_email_admin_user_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminUser>, Integer, Hash)> confirm_email_admin_user_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.confirm_email_admin_user_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminUser>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->confirm_email_admin_user_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminUser**](AdminUser.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## copy_for_year_admin_positions
+
+> <CopyPositionsForYearResponse> copy_for_year_admin_positions(copy_positions_for_year_request)
+
+
+
+Enqueue the system-wide job that departs closed-school positions for `year - 1` and copies every other coach's non-departing positions forward into `year` (admin-only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+copy_positions_for_year_request = WinthropClient::CopyPositionsForYearRequest.new({year: 37}) # CopyPositionsForYearRequest | 
+
+begin
+  
+  result = api_instance.copy_for_year_admin_positions(copy_positions_for_year_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->copy_for_year_admin_positions: #{e}"
+end
+```
+
+#### Using the copy_for_year_admin_positions_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CopyPositionsForYearResponse>, Integer, Hash)> copy_for_year_admin_positions_with_http_info(copy_positions_for_year_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.copy_for_year_admin_positions_with_http_info(copy_positions_for_year_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CopyPositionsForYearResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->copy_for_year_admin_positions_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **copy_positions_for_year_request** | [**CopyPositionsForYearRequest**](CopyPositionsForYearRequest.md) |  |  |
+
+### Return type
+
+[**CopyPositionsForYearResponse**](CopyPositionsForYearResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## copy_to_next_year_admin_position
+
+> <CopyToNextYearResponse> copy_to_next_year_admin_position(id)
+
+
+
+Copy this one position into the next season for its coach (admin-only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | ID of the position
+
+begin
+  
+  result = api_instance.copy_to_next_year_admin_position(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->copy_to_next_year_admin_position: #{e}"
+end
+```
+
+#### Using the copy_to_next_year_admin_position_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CopyToNextYearResponse>, Integer, Hash)> copy_to_next_year_admin_position_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.copy_to_next_year_admin_position_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CopyToNextYearResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->copy_to_next_year_admin_position_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | ID of the position |  |
+
+### Return type
+
+[**CopyToNextYearResponse**](CopyToNextYearResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## create_account_user
 
 > <AccountUser> create_account_user(create_account_user_request)
@@ -1956,6 +2307,154 @@ nil (empty response body)
 - **Accept**: Not defined
 
 
+## create_admin_conferences
+
+> <AdminConferenceDetail> create_admin_conferences(create_admin_conferences_request)
+
+
+
+Create a conference (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_admin_conferences_request = WinthropClient::CreateAdminConferencesRequest.new({conference: WinthropClient::CreateAdminConferencesRequestConference.new({name: 'name_example', name_display: 'name_display_example'})}) # CreateAdminConferencesRequest | 
+
+begin
+  
+  result = api_instance.create_admin_conferences(create_admin_conferences_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_conferences: #{e}"
+end
+```
+
+#### Using the create_admin_conferences_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminConferenceDetail>, Integer, Hash)> create_admin_conferences_with_http_info(create_admin_conferences_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_conferences_with_http_info(create_admin_conferences_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminConferenceDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_conferences_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_admin_conferences_request** | [**CreateAdminConferencesRequest**](CreateAdminConferencesRequest.md) |  |  |
+
+### Return type
+
+[**AdminConferenceDetail**](AdminConferenceDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_admin_conferenceships
+
+> <AdminConferenceship> create_admin_conferenceships(create_admin_conferenceships_request)
+
+
+
+Create a conferenceship, assigning a school to a conference for a sport (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_admin_conferenceships_request = WinthropClient::CreateAdminConferenceshipsRequest.new({conferenceship: WinthropClient::CreateAdminConferenceshipsRequestConferenceship.new({school_id: 37, sport_id: 37, conference_id: 37})}) # CreateAdminConferenceshipsRequest | 
+
+begin
+  
+  result = api_instance.create_admin_conferenceships(create_admin_conferenceships_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_conferenceships: #{e}"
+end
+```
+
+#### Using the create_admin_conferenceships_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminConferenceship>, Integer, Hash)> create_admin_conferenceships_with_http_info(create_admin_conferenceships_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_conferenceships_with_http_info(create_admin_conferenceships_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminConferenceship>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_conferenceships_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_admin_conferenceships_request** | [**CreateAdminConferenceshipsRequest**](CreateAdminConferenceshipsRequest.md) |  |  |
+
+### Return type
+
+[**AdminConferenceship**](AdminConferenceship.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_admin_contact
 
 > <AdminContact> create_admin_contact(create_contact_request)
@@ -2107,6 +2606,154 @@ end
 ### HTTP request headers
 
 - **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+
+## create_admin_deal
+
+> <AdminDeal> create_admin_deal(create_admin_deal_request)
+
+
+
+Create a Deal (school, deal_type, vendors, dates, autorenew, archived, raw_contract, text) - deal_detail_attributes is never accepted on create, matching the live form
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_admin_deal_request = WinthropClient::CreateAdminDealRequest.new({deal: WinthropClient::CreateAdminDealRequestDeal.new}) # CreateAdminDealRequest | 
+
+begin
+  
+  result = api_instance.create_admin_deal(create_admin_deal_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_deal: #{e}"
+end
+```
+
+#### Using the create_admin_deal_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminDeal>, Integer, Hash)> create_admin_deal_with_http_info(create_admin_deal_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_deal_with_http_info(create_admin_deal_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminDeal>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_deal_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_admin_deal_request** | [**CreateAdminDealRequest**](CreateAdminDealRequest.md) |  |  |
+
+### Return type
+
+[**AdminDeal**](AdminDeal.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_admin_deal_statuses
+
+> <AdminDealStatuses> create_admin_deal_statuses(create_admin_deal_statuses_request)
+
+
+
+Create a DealStatus for a school+deal_type pair that doesn't have one yet (the school-deals mass-edit table's entry point)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_admin_deal_statuses_request = WinthropClient::CreateAdminDealStatusesRequest.new({deal_status: WinthropClient::CreateAdminDealStatusesRequestDealStatus.new({school_id: 37, deal_type_id: 37})}) # CreateAdminDealStatusesRequest | 
+
+begin
+  
+  result = api_instance.create_admin_deal_statuses(create_admin_deal_statuses_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_deal_statuses: #{e}"
+end
+```
+
+#### Using the create_admin_deal_statuses_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminDealStatuses>, Integer, Hash)> create_admin_deal_statuses_with_http_info(create_admin_deal_statuses_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_deal_statuses_with_http_info(create_admin_deal_statuses_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminDealStatuses>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_deal_statuses_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_admin_deal_statuses_request** | [**CreateAdminDealStatusesRequest**](CreateAdminDealStatusesRequest.md) |  |  |
+
+### Return type
+
+[**AdminDealStatuses**](AdminDealStatuses.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -2632,6 +3279,80 @@ end
 - **Accept**: application/json
 
 
+## create_admin_impersonations
+
+> <AdminImpersonation> create_admin_impersonations(create_admin_impersonations_request)
+
+
+
+Start impersonating a user (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_admin_impersonations_request = WinthropClient::CreateAdminImpersonationsRequest.new({id: 37}) # CreateAdminImpersonationsRequest | 
+
+begin
+  
+  result = api_instance.create_admin_impersonations(create_admin_impersonations_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_impersonations: #{e}"
+end
+```
+
+#### Using the create_admin_impersonations_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminImpersonation>, Integer, Hash)> create_admin_impersonations_with_http_info(create_admin_impersonations_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_impersonations_with_http_info(create_admin_impersonations_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminImpersonation>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_impersonations_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_admin_impersonations_request** | [**CreateAdminImpersonationsRequest**](CreateAdminImpersonationsRequest.md) |  |  |
+
+### Return type
+
+[**AdminImpersonation**](AdminImpersonation.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_admin_income_report
 
 > <AdminIncomeReport> create_admin_income_report(opts)
@@ -2786,6 +3507,154 @@ end
 - **Accept**: application/json
 
 
+## create_admin_position
+
+> <AdminPosition> create_admin_position(create_admin_position_request)
+
+
+
+Create a new position for a coach in an existing season (admin-only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_admin_position_request = WinthropClient::CreateAdminPositionRequest.new({position: WinthropClient::CreateAdminPositionRequestPosition.new}) # CreateAdminPositionRequest | 
+
+begin
+  
+  result = api_instance.create_admin_position(create_admin_position_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_position: #{e}"
+end
+```
+
+#### Using the create_admin_position_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminPosition>, Integer, Hash)> create_admin_position_with_http_info(create_admin_position_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_position_with_http_info(create_admin_position_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminPosition>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_position_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_admin_position_request** | [**CreateAdminPositionRequest**](CreateAdminPositionRequest.md) |  |  |
+
+### Return type
+
+[**AdminPosition**](AdminPosition.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_admin_position_types
+
+> <AdminPositionType> create_admin_position_types(create_position_type_request)
+
+
+
+Create a new Position Type (admin-only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_position_type_request = WinthropClient::CreatePositionTypeRequest.new({position_type: WinthropClient::CreatePositionTypeRequestPositionType.new}) # CreatePositionTypeRequest | 
+
+begin
+  
+  result = api_instance.create_admin_position_types(create_position_type_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_position_types: #{e}"
+end
+```
+
+#### Using the create_admin_position_types_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminPositionType>, Integer, Hash)> create_admin_position_types_with_http_info(create_position_type_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_position_types_with_http_info(create_position_type_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminPositionType>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_position_types_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_position_type_request** | [**CreatePositionTypeRequest**](CreatePositionTypeRequest.md) |  |  |
+
+### Return type
+
+[**AdminPositionType**](AdminPositionType.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_admin_requested_item_ri_note
 
 > <AdminRiNote> create_admin_requested_item_ri_note(requested_item_id, admin_ri_note_input)
@@ -2851,6 +3720,619 @@ end
 ### Return type
 
 [**AdminRiNote**](AdminRiNote.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_admin_school_deal
+
+> <AdminDeal> create_admin_school_deal(school_id, create_admin_school_deal_request)
+
+
+
+Create a Deal scoped to this School
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | 
+create_admin_school_deal_request = WinthropClient::CreateAdminSchoolDealRequest.new({deal: 3.56}) # CreateAdminSchoolDealRequest | 
+
+begin
+  
+  result = api_instance.create_admin_school_deal(school_id, create_admin_school_deal_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_school_deal: #{e}"
+end
+```
+
+#### Using the create_admin_school_deal_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminDeal>, Integer, Hash)> create_admin_school_deal_with_http_info(school_id, create_admin_school_deal_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_school_deal_with_http_info(school_id, create_admin_school_deal_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminDeal>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_school_deal_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** |  |  |
+| **create_admin_school_deal_request** | [**CreateAdminSchoolDealRequest**](CreateAdminSchoolDealRequest.md) |  |  |
+
+### Return type
+
+[**AdminDeal**](AdminDeal.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_admin_school_names
+
+> <AdminSchoolName> create_admin_school_names(create_admin_school_names_request)
+
+
+
+Create a new alternate/historical school name (super_admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_admin_school_names_request = WinthropClient::CreateAdminSchoolNamesRequest.new({school_name: WinthropClient::CreateAdminSchoolNamesRequestSchoolName.new({school_id: 37, name: 'name_example'})}) # CreateAdminSchoolNamesRequest | 
+
+begin
+  
+  result = api_instance.create_admin_school_names(create_admin_school_names_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_school_names: #{e}"
+end
+```
+
+#### Using the create_admin_school_names_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminSchoolName>, Integer, Hash)> create_admin_school_names_with_http_info(create_admin_school_names_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_school_names_with_http_info(create_admin_school_names_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminSchoolName>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_school_names_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_admin_school_names_request** | [**CreateAdminSchoolNamesRequest**](CreateAdminSchoolNamesRequest.md) |  |  |
+
+### Return type
+
+[**AdminSchoolName**](AdminSchoolName.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_admin_school_revenue
+
+> <CreateAdminSchoolRevenue201Response> create_admin_school_revenue(school_id, opts)
+
+
+
+Upload a standalone Audited Financial Report PDF (or NCAA Financial Report PDF via school_revenue_year) for one school/year (super_admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | 
+opts = {
+  season_audited_financials: File.new('/path/to/some/file'), # File | 
+  season_year: 56 # Integer | 
+}
+
+begin
+  
+  result = api_instance.create_admin_school_revenue(school_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_school_revenue: #{e}"
+end
+```
+
+#### Using the create_admin_school_revenue_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateAdminSchoolRevenue201Response>, Integer, Hash)> create_admin_school_revenue_with_http_info(school_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_school_revenue_with_http_info(school_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateAdminSchoolRevenue201Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_school_revenue_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** |  |  |
+| **season_audited_financials** | **File** |  | [optional] |
+| **season_year** | **Integer** |  | [optional] |
+
+### Return type
+
+[**CreateAdminSchoolRevenue201Response**](CreateAdminSchoolRevenue201Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+
+## create_admin_school_revenue_combined_upload
+
+> <RegenerateRawContractPdf200Response> create_admin_school_revenue_combined_upload(school_id, opts)
+
+
+
+Queue the combined NCAA Financial Report CSV+PDF and Financial Stats CSV upload for one school/year via SchoolFinancialImportService (super_admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | 
+opts = {
+  season_revenue_csv: File.new('/path/to/some/file'), # File | 
+  season_revenue_pdf: File.new('/path/to/some/file'), # File | 
+  season_financial_infos: File.new('/path/to/some/file'), # File | 
+  season_year: 56 # Integer | 
+}
+
+begin
+  
+  result = api_instance.create_admin_school_revenue_combined_upload(school_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_school_revenue_combined_upload: #{e}"
+end
+```
+
+#### Using the create_admin_school_revenue_combined_upload_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RegenerateRawContractPdf200Response>, Integer, Hash)> create_admin_school_revenue_combined_upload_with_http_info(school_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_school_revenue_combined_upload_with_http_info(school_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RegenerateRawContractPdf200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_school_revenue_combined_upload_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** |  |  |
+| **season_revenue_csv** | **File** |  | [optional] |
+| **season_revenue_pdf** | **File** |  | [optional] |
+| **season_financial_infos** | **File** |  | [optional] |
+| **season_year** | **Integer** |  | [optional] |
+
+### Return type
+
+[**RegenerateRawContractPdf200Response**](RegenerateRawContractPdf200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+
+## create_admin_school_upload
+
+> create_admin_school_upload(opts)
+
+
+
+Update school upload (persisted super admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  school_upload: WinthropClient::CreateAdminSchoolUploadRequestSchoolUpload.new # CreateAdminSchoolUploadRequestSchoolUpload | 
+}
+
+begin
+  
+  api_instance.create_admin_school_upload(opts)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_school_upload: #{e}"
+end
+```
+
+#### Using the create_admin_school_upload_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> create_admin_school_upload_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_school_upload_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_school_upload_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_upload** | [**CreateAdminSchoolUploadRequestSchoolUpload**](CreateAdminSchoolUploadRequestSchoolUpload.md) |  | [optional] |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: Not defined
+
+
+## create_admin_schools
+
+> <AdminSchoolDetail> create_admin_schools(opts)
+
+
+
+Create a new school (admin-only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  school: WinthropClient::CreateAdminSchoolRequestSchool.new # CreateAdminSchoolRequestSchool | 
+}
+
+begin
+  
+  result = api_instance.create_admin_schools(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_schools: #{e}"
+end
+```
+
+#### Using the create_admin_schools_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminSchoolDetail>, Integer, Hash)> create_admin_schools_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_schools_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminSchoolDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_schools_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school** | [**CreateAdminSchoolRequestSchool**](CreateAdminSchoolRequestSchool.md) |  | [optional] |
+
+### Return type
+
+[**AdminSchoolDetail**](AdminSchoolDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+
+## create_admin_sport
+
+> <AdminSport> create_admin_sport(create_sport_request)
+
+
+
+Create a new Sport (admin-only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_sport_request = WinthropClient::CreateSportRequest.new({sport: WinthropClient::CreateSportRequestSport.new}) # CreateSportRequest | 
+
+begin
+  
+  result = api_instance.create_admin_sport(create_sport_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_sport: #{e}"
+end
+```
+
+#### Using the create_admin_sport_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminSport>, Integer, Hash)> create_admin_sport_with_http_info(create_sport_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_sport_with_http_info(create_sport_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminSport>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_sport_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_sport_request** | [**CreateSportRequest**](CreateSportRequest.md) |  |  |
+
+### Return type
+
+[**AdminSport**](AdminSport.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_admin_subdivision_membership
+
+> <AdminSubdivisionMembership> create_admin_subdivision_membership(create_admin_subdivision_membership_request)
+
+
+
+Add a school as a member of a subdivision (super_admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_admin_subdivision_membership_request = WinthropClient::CreateAdminSubdivisionMembershipRequest.new({subdivision_membership: WinthropClient::CreateAdminSubdivisionMembershipRequestSubdivisionMembership.new({school_id: 37, subdivision_id: 37})}) # CreateAdminSubdivisionMembershipRequest | 
+
+begin
+  
+  result = api_instance.create_admin_subdivision_membership(create_admin_subdivision_membership_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_subdivision_membership: #{e}"
+end
+```
+
+#### Using the create_admin_subdivision_membership_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminSubdivisionMembership>, Integer, Hash)> create_admin_subdivision_membership_with_http_info(create_admin_subdivision_membership_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_subdivision_membership_with_http_info(create_admin_subdivision_membership_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminSubdivisionMembership>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_subdivision_membership_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_admin_subdivision_membership_request** | [**CreateAdminSubdivisionMembershipRequest**](CreateAdminSubdivisionMembershipRequest.md) |  |  |
+
+### Return type
+
+[**AdminSubdivisionMembership**](AdminSubdivisionMembership.md)
 
 ### Authorization
 
@@ -2937,6 +4419,230 @@ end
 ### HTTP request headers
 
 - **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+
+## create_admin_user
+
+> <AdminUser> create_admin_user(create_admin_user_request)
+
+
+
+Create a new user (super_admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_admin_user_request = WinthropClient::CreateAdminUserRequest.new # CreateAdminUserRequest | 
+
+begin
+  
+  result = api_instance.create_admin_user(create_admin_user_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_user: #{e}"
+end
+```
+
+#### Using the create_admin_user_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminUser>, Integer, Hash)> create_admin_user_with_http_info(create_admin_user_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_user_with_http_info(create_admin_user_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminUser>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_user_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_admin_user_request** | [**CreateAdminUserRequest**](CreateAdminUserRequest.md) |  |  |
+
+### Return type
+
+[**AdminUser**](AdminUser.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_admin_vendor_deal
+
+> <AdminDeal> create_admin_vendor_deal(vendor_id, create_admin_school_deal_request)
+
+
+
+Create a Deal scoped to this Vendor
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+vendor_id = 56 # Integer | 
+create_admin_school_deal_request = WinthropClient::CreateAdminSchoolDealRequest.new({deal: 3.56}) # CreateAdminSchoolDealRequest | 
+
+begin
+  
+  result = api_instance.create_admin_vendor_deal(vendor_id, create_admin_school_deal_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_vendor_deal: #{e}"
+end
+```
+
+#### Using the create_admin_vendor_deal_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminDeal>, Integer, Hash)> create_admin_vendor_deal_with_http_info(vendor_id, create_admin_school_deal_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_vendor_deal_with_http_info(vendor_id, create_admin_school_deal_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminDeal>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_vendor_deal_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **vendor_id** | **Integer** |  |  |
+| **create_admin_school_deal_request** | [**CreateAdminSchoolDealRequest**](CreateAdminSchoolDealRequest.md) |  |  |
+
+### Return type
+
+[**AdminDeal**](AdminDeal.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_admin_vendors
+
+> <AdminVendorDetail> create_admin_vendors(create_admin_vendors_request)
+
+
+
+Create a vendor (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_admin_vendors_request = WinthropClient::CreateAdminVendorsRequest.new({vendor: WinthropClient::CreateAdminVendorsRequestVendor.new({name: 'name_example'})}) # CreateAdminVendorsRequest | 
+
+begin
+  
+  result = api_instance.create_admin_vendors(create_admin_vendors_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_vendors: #{e}"
+end
+```
+
+#### Using the create_admin_vendors_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminVendorDetail>, Integer, Hash)> create_admin_vendors_with_http_info(create_admin_vendors_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_vendors_with_http_info(create_admin_vendors_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminVendorDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_vendors_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_admin_vendors_request** | [**CreateAdminVendorsRequest**](CreateAdminVendorsRequest.md) |  |  |
+
+### Return type
+
+[**AdminVendorDetail**](AdminVendorDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -7840,6 +9546,79 @@ end
 - **Accept**: application/json
 
 
+## destroy_admin_avatars
+
+> destroy_admin_avatars(id)
+
+
+
+Delete an avatar and clear the coach's cached photo_url (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  api_instance.destroy_admin_avatars(id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_avatars: #{e}"
+end
+```
+
+#### Using the destroy_admin_avatars_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> destroy_admin_avatars_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_admin_avatars_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_avatars_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
 ## destroy_admin_coach
 
 > destroy_admin_coach(id)
@@ -7986,6 +9765,152 @@ nil (empty response body)
 - **Accept**: Not defined
 
 
+## destroy_admin_conferences
+
+> destroy_admin_conferences(id)
+
+
+
+Delete a conference (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  api_instance.destroy_admin_conferences(id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_conferences: #{e}"
+end
+```
+
+#### Using the destroy_admin_conferences_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> destroy_admin_conferences_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_admin_conferences_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_conferences_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## destroy_admin_conferenceships
+
+> destroy_admin_conferenceships(id)
+
+
+
+Destroy a conferenceship (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  api_instance.destroy_admin_conferenceships(id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_conferenceships: #{e}"
+end
+```
+
+#### Using the destroy_admin_conferenceships_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> destroy_admin_conferenceships_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_admin_conferenceships_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_conferenceships_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
 ## destroy_admin_contact
 
 > destroy_admin_contact(id)
@@ -8109,6 +10034,229 @@ begin
   p data # => nil
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->destroy_admin_contract_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## destroy_admin_deal
+
+> destroy_admin_deal(id, opts)
+
+
+
+Destroy a Deal
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+opts = {
+  change_note: 'change_note_example' # String | Optional reason, stored on every audit version; trimmed, blank means absent.
+}
+
+begin
+  
+  api_instance.destroy_admin_deal(id, opts)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_deal: #{e}"
+end
+```
+
+#### Using the destroy_admin_deal_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> destroy_admin_deal_with_http_info(id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_admin_deal_with_http_info(id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_deal_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **change_note** | **String** | Optional reason, stored on every audit version; trimmed, blank means absent. | [optional] |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## destroy_admin_favorites
+
+> destroy_admin_favorites(id)
+
+
+
+Delete a favorite (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  api_instance.destroy_admin_favorites(id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_favorites: #{e}"
+end
+```
+
+#### Using the destroy_admin_favorites_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> destroy_admin_favorites_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_admin_favorites_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_favorites_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## destroy_admin_financial_stats
+
+> destroy_admin_financial_stats(id)
+
+
+
+Delete a single financial stat row (super_admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  api_instance.destroy_admin_financial_stats(id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_financial_stats: #{e}"
+end
+```
+
+#### Using the destroy_admin_financial_stats_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> destroy_admin_financial_stats_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_admin_financial_stats_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_financial_stats_with_http_info: #{e}"
 end
 ```
 
@@ -8351,6 +10499,77 @@ nil (empty response body)
 - **Accept**: Not defined
 
 
+## destroy_admin_impersonations
+
+> <DestroyAdminImpersonations200Response> destroy_admin_impersonations
+
+
+
+End the active impersonation session, resuming the super admin account (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.destroy_admin_impersonations
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_impersonations: #{e}"
+end
+```
+
+#### Using the destroy_admin_impersonations_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DestroyAdminImpersonations200Response>, Integer, Hash)> destroy_admin_impersonations_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_admin_impersonations_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DestroyAdminImpersonations200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_impersonations_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**DestroyAdminImpersonations200Response**](DestroyAdminImpersonations200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## destroy_admin_income_report
 
 > destroy_admin_income_report(id, opts)
@@ -8413,6 +10632,225 @@ end
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** | ID of the income report |  |
 | **change_note** | **String** |  | [optional] |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## destroy_admin_note
+
+> destroy_admin_note(id)
+
+
+
+Delete a note (admin)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  api_instance.destroy_admin_note(id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_note: #{e}"
+end
+```
+
+#### Using the destroy_admin_note_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> destroy_admin_note_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_admin_note_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_note_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## destroy_admin_position
+
+> destroy_admin_position(id)
+
+
+
+Delete a single position (admin-only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | ID of the position
+
+begin
+  
+  api_instance.destroy_admin_position(id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_position: #{e}"
+end
+```
+
+#### Using the destroy_admin_position_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> destroy_admin_position_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_admin_position_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_position_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | ID of the position |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## destroy_admin_position_types
+
+> destroy_admin_position_types(id)
+
+
+
+Delete a single Position Type (admin-only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | ID of the Position Type
+
+begin
+  
+  api_instance.destroy_admin_position_types(id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_position_types: #{e}"
+end
+```
+
+#### Using the destroy_admin_position_types_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> destroy_admin_position_types_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_admin_position_types_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_position_types_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | ID of the Position Type |  |
 
 ### Return type
 
@@ -8651,6 +11089,449 @@ nil (empty response body)
 - **Accept**: Not defined
 
 
+## destroy_admin_school_deal
+
+> destroy_admin_school_deal(school_id, id)
+
+
+
+Destroy a Deal scoped to this School
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | 
+id = 56 # Integer | 
+
+begin
+  
+  api_instance.destroy_admin_school_deal(school_id, id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_school_deal: #{e}"
+end
+```
+
+#### Using the destroy_admin_school_deal_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> destroy_admin_school_deal_with_http_info(school_id, id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_admin_school_deal_with_http_info(school_id, id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_school_deal_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** |  |  |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## destroy_admin_school_groups
+
+> destroy_admin_school_groups(id)
+
+
+
+Delete a user's custom school group (super_admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  api_instance.destroy_admin_school_groups(id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_school_groups: #{e}"
+end
+```
+
+#### Using the destroy_admin_school_groups_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> destroy_admin_school_groups_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_admin_school_groups_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_school_groups_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## destroy_admin_school_names
+
+> destroy_admin_school_names(id)
+
+
+
+Delete an alternate school name (super_admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  api_instance.destroy_admin_school_names(id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_school_names: #{e}"
+end
+```
+
+#### Using the destroy_admin_school_names_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> destroy_admin_school_names_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_admin_school_names_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_school_names_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## destroy_admin_school_revenue_year
+
+> <RegenerateRawContractPdf200Response> destroy_admin_school_revenue_year(school_id, year)
+
+
+
+Delete every financial record (cashflows, FINANCIALS raw contracts, financial stats, financial infos) for one school/year (super_admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | 
+year = 56 # Integer | 
+
+begin
+  
+  result = api_instance.destroy_admin_school_revenue_year(school_id, year)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_school_revenue_year: #{e}"
+end
+```
+
+#### Using the destroy_admin_school_revenue_year_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RegenerateRawContractPdf200Response>, Integer, Hash)> destroy_admin_school_revenue_year_with_http_info(school_id, year)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_admin_school_revenue_year_with_http_info(school_id, year)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RegenerateRawContractPdf200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_school_revenue_year_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** |  |  |
+| **year** | **Integer** |  |  |
+
+### Return type
+
+[**RegenerateRawContractPdf200Response**](RegenerateRawContractPdf200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## destroy_admin_sport
+
+> destroy_admin_sport(id)
+
+
+
+Delete a single Sport (admin-only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | ID of the Sport
+
+begin
+  
+  api_instance.destroy_admin_sport(id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_sport: #{e}"
+end
+```
+
+#### Using the destroy_admin_sport_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> destroy_admin_sport_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_admin_sport_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_sport_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | ID of the Sport |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## destroy_admin_subdivision_membership
+
+> destroy_admin_subdivision_membership(id)
+
+
+
+Remove a school's membership in a subdivision (super_admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  api_instance.destroy_admin_subdivision_membership(id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_subdivision_membership: #{e}"
+end
+```
+
+#### Using the destroy_admin_subdivision_membership_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> destroy_admin_subdivision_membership_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_admin_subdivision_membership_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_subdivision_membership_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
 ## destroy_admin_termination_agreement
 
 > destroy_admin_termination_agreement(id)
@@ -8701,6 +11582,227 @@ begin
   p data # => nil
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->destroy_admin_termination_agreement_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## destroy_admin_user
+
+> destroy_admin_user(id)
+
+
+
+Delete a user (super_admin only); fails with 422 if the user has dependent records (e.g. FOIA requests) - suspend instead in that case
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  api_instance.destroy_admin_user(id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_user: #{e}"
+end
+```
+
+#### Using the destroy_admin_user_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> destroy_admin_user_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_admin_user_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_user_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## destroy_admin_vendor_deal
+
+> destroy_admin_vendor_deal(vendor_id, id)
+
+
+
+Destroy a Deal scoped to this Vendor
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+vendor_id = 56 # Integer | 
+id = 56 # Integer | 
+
+begin
+  
+  api_instance.destroy_admin_vendor_deal(vendor_id, id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_vendor_deal: #{e}"
+end
+```
+
+#### Using the destroy_admin_vendor_deal_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> destroy_admin_vendor_deal_with_http_info(vendor_id, id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_admin_vendor_deal_with_http_info(vendor_id, id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_vendor_deal_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **vendor_id** | **Integer** |  |  |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## destroy_admin_vendors
+
+> destroy_admin_vendors(id)
+
+
+
+Delete a vendor (admin, super-admin only); fails if the vendor has deals
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  api_instance.destroy_admin_vendors(id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_vendors: #{e}"
+end
+```
+
+#### Using the destroy_admin_vendors_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> destroy_admin_vendors_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_admin_vendors_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_vendors_with_http_info: #{e}"
 end
 ```
 
@@ -8795,6 +11897,84 @@ nil (empty response body)
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+
+## destroy_deal_detail_admin_deal
+
+> <AdminDeal> destroy_deal_detail_admin_deal(id, opts)
+
+
+
+Destroy a Deal's deal_detail (the only way to change deal_type on the live edit form, since the type select is disabled once a deal_detail exists)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+opts = {
+  change_note: 'change_note_example' # String | Optional reason, stored on every audit version; trimmed, blank means absent.
+}
+
+begin
+  
+  result = api_instance.destroy_deal_detail_admin_deal(id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_deal_detail_admin_deal: #{e}"
+end
+```
+
+#### Using the destroy_deal_detail_admin_deal_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminDeal>, Integer, Hash)> destroy_deal_detail_admin_deal_with_http_info(id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_deal_detail_admin_deal_with_http_info(id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminDeal>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_deal_detail_admin_deal_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **change_note** | **String** | Optional reason, stored on every audit version; trimmed, blank means absent. | [optional] |
+
+### Return type
+
+[**AdminDeal**](AdminDeal.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## download_admin_coach_contracts_csv_template
@@ -8953,6 +12133,80 @@ end
 - **Accept**: text/csv
 
 
+## download_admin_financial_stats_csv_template
+
+> File download_admin_financial_stats_csv_template(school_id)
+
+
+
+Download a per-school Financial Stats CSV template with one row per distinct sport (super_admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.download_admin_financial_stats_csv_template(school_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->download_admin_financial_stats_csv_template: #{e}"
+end
+```
+
+#### Using the download_admin_financial_stats_csv_template_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(File, Integer, Hash)> download_admin_financial_stats_csv_template_with_http_info(school_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.download_admin_financial_stats_csv_template_with_http_info(school_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => File
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->download_admin_financial_stats_csv_template_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** |  |  |
+
+### Return type
+
+**File**
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/csv
+
+
 ## download_raw_contract_file
 
 > File download_raw_contract_file(raw_contract_id)
@@ -9025,6 +12279,154 @@ end
 
 - **Content-Type**: Not defined
 - **Accept**: application/pdf
+
+
+## edit_admin_position_types
+
+> <EditAdminPositionType> edit_admin_position_types(id)
+
+
+
+Retrieve a single Position Type plus the selectable Position Type Groups, for the \"Edit Position Type\" admin form
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | ID of the Position Type
+
+begin
+  
+  result = api_instance.edit_admin_position_types(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->edit_admin_position_types: #{e}"
+end
+```
+
+#### Using the edit_admin_position_types_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EditAdminPositionType>, Integer, Hash)> edit_admin_position_types_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.edit_admin_position_types_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EditAdminPositionType>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->edit_admin_position_types_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | ID of the Position Type |  |
+
+### Return type
+
+[**EditAdminPositionType**](EditAdminPositionType.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## edit_admin_sport
+
+> <EditAdminSport> edit_admin_sport(id)
+
+
+
+Retrieve a single Sport plus the selectable Time of Year options, for the \"Edit Sport\" admin form
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | ID of the Sport
+
+begin
+  
+  result = api_instance.edit_admin_sport(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->edit_admin_sport: #{e}"
+end
+```
+
+#### Using the edit_admin_sport_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EditAdminSport>, Integer, Hash)> edit_admin_sport_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.edit_admin_sport_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EditAdminSport>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->edit_admin_sport_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | ID of the Sport |  |
+
+### Return type
+
+[**EditAdminSport**](EditAdminSport.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## enrich_game_post_searches
@@ -9697,6 +13099,154 @@ end
 - **Accept**: application/json
 
 
+## get_admin_conferences
+
+> <AdminConferenceDetail> get_admin_conferences(id)
+
+
+
+Retrieve a single conference (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_admin_conferences(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_conferences: #{e}"
+end
+```
+
+#### Using the get_admin_conferences_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminConferenceDetail>, Integer, Hash)> get_admin_conferences_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_conferences_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminConferenceDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_conferences_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminConferenceDetail**](AdminConferenceDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_conferenceships
+
+> <AdminConferenceship> get_admin_conferenceships(id)
+
+
+
+Retrieve a single conferenceship (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_admin_conferenceships(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_conferenceships: #{e}"
+end
+```
+
+#### Using the get_admin_conferenceships_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminConferenceship>, Integer, Hash)> get_admin_conferenceships_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_conferenceships_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminConferenceship>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_conferenceships_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminConferenceship**](AdminConferenceship.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_admin_contract
 
 > <AdminContract> get_admin_contract(id)
@@ -9831,6 +13381,148 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**AdminContractRequestSearchesOptions**](AdminContractRequestSearchesOptions.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_deal_statuses_options
+
+> <AdminDealStatusesOptions> get_admin_deal_statuses_options
+
+
+
+Reference data for the QC Vendor Contracts filter bar and edit form (deal status types, deal sources, foia-requestable deal types)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_admin_deal_statuses_options
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_deal_statuses_options: #{e}"
+end
+```
+
+#### Using the get_admin_deal_statuses_options_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminDealStatusesOptions>, Integer, Hash)> get_admin_deal_statuses_options_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_deal_statuses_options_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminDealStatusesOptions>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_deal_statuses_options_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**AdminDealStatusesOptions**](AdminDealStatusesOptions.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_deals_options
+
+> <AdminDealsOptions> get_admin_deals_options
+
+
+
+Reference data for the Deals create/edit form and filter bar - deal_types (each with its live type-specific deal_detail_fields), vendors, sports
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_admin_deals_options
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_deals_options: #{e}"
+end
+```
+
+#### Using the get_admin_deals_options_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminDealsOptions>, Integer, Hash)> get_admin_deals_options_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_deals_options_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminDealsOptions>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_deals_options_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**AdminDealsOptions**](AdminDealsOptions.md)
 
 ### Authorization
 
@@ -10233,6 +13925,225 @@ end
 ### Return type
 
 [**DeskAdminQueueResponse**](DeskAdminQueueResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_download
+
+> <AdminDownload> get_admin_download(id)
+
+
+
+Retrieve a download's metadata and resolved asset url (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_admin_download(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_download: #{e}"
+end
+```
+
+#### Using the get_admin_download_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminDownload>, Integer, Hash)> get_admin_download_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_download_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminDownload>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_download_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminDownload**](AdminDownload.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_favorites
+
+> <AdminFavoriteDetail> get_admin_favorites(id)
+
+
+
+Retrieve a favorite plus its own user's category options (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_admin_favorites(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_favorites: #{e}"
+end
+```
+
+#### Using the get_admin_favorites_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFavoriteDetail>, Integer, Hash)> get_admin_favorites_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_favorites_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFavoriteDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_favorites_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminFavoriteDetail**](AdminFavoriteDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_favorites_options
+
+> <AdminFavoritesOptions> get_admin_favorites_options
+
+
+
+Reference data for the User Favorites filter bar (accounts, favoritable types, favorited items)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_admin_favorites_options
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_favorites_options: #{e}"
+end
+```
+
+#### Using the get_admin_favorites_options_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFavoritesOptions>, Integer, Hash)> get_admin_favorites_options_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_favorites_options_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFavoritesOptions>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_favorites_options_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**AdminFavoritesOptions**](AdminFavoritesOptions.md)
 
 ### Authorization
 
@@ -11087,6 +14998,151 @@ end
 - **Accept**: application/json
 
 
+## get_admin_position
+
+> <AdminPosition> get_admin_position(id)
+
+
+
+Retrieve a single position (admin-only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | ID of the position
+
+begin
+  
+  result = api_instance.get_admin_position(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_position: #{e}"
+end
+```
+
+#### Using the get_admin_position_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminPosition>, Integer, Hash)> get_admin_position_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_position_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminPosition>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_position_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | ID of the position |  |
+
+### Return type
+
+[**AdminPosition**](AdminPosition.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_position_copy_options
+
+> <GetAdminPositionCopyOptions200Response> get_admin_position_copy_options
+
+
+
+Configured next season and selectable season years for copying positions (admin-only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_admin_position_copy_options
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_position_copy_options: #{e}"
+end
+```
+
+#### Using the get_admin_position_copy_options_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetAdminPositionCopyOptions200Response>, Integer, Hash)> get_admin_position_copy_options_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_position_copy_options_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetAdminPositionCopyOptions200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_position_copy_options_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GetAdminPositionCopyOptions200Response**](GetAdminPositionCopyOptions200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_admin_raw_contract_text
 
 > <AdminRawContractText> get_admin_raw_contract_text(id)
@@ -11235,6 +15291,302 @@ end
 - **Accept**: application/json
 
 
+## get_admin_school_names
+
+> <AdminSchoolName> get_admin_school_names(id)
+
+
+
+Retrieve a single alternate school name (super_admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_admin_school_names(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_school_names: #{e}"
+end
+```
+
+#### Using the get_admin_school_names_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminSchoolName>, Integer, Hash)> get_admin_school_names_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_school_names_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminSchoolName>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_school_names_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminSchoolName**](AdminSchoolName.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_school_revenue
+
+> <AdminSchoolRevenueList> get_admin_school_revenue(school_id)
+
+
+
+Retrieve a school's uploaded financial years, D1/D2/D3 school picker, year-select options, and Sidekiq import job status (super_admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_admin_school_revenue(school_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_school_revenue: #{e}"
+end
+```
+
+#### Using the get_admin_school_revenue_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminSchoolRevenueList>, Integer, Hash)> get_admin_school_revenue_with_http_info(school_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_school_revenue_with_http_info(school_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminSchoolRevenueList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_school_revenue_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminSchoolRevenueList**](AdminSchoolRevenueList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_schools
+
+> <AdminSchoolDetail> get_admin_schools(id)
+
+
+
+Retrieve a single school's full editable detail (admin-only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_admin_schools(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_schools: #{e}"
+end
+```
+
+#### Using the get_admin_schools_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminSchoolDetail>, Integer, Hash)> get_admin_schools_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_schools_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminSchoolDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_schools_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminSchoolDetail**](AdminSchoolDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_sport
+
+> <AdminSport> get_admin_sport(id)
+
+
+
+Retrieve a single Sport (admin-only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | ID of the Sport
+
+begin
+  
+  result = api_instance.get_admin_sport(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_sport: #{e}"
+end
+```
+
+#### Using the get_admin_sport_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminSport>, Integer, Hash)> get_admin_sport_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_sport_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminSport>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_sport_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | ID of the Sport |  |
+
+### Return type
+
+[**AdminSport**](AdminSport.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_admin_termination_agreement
 
 > <AdminTerminationAgreement> get_admin_termination_agreement(id)
@@ -11298,6 +15650,225 @@ end
 ### Return type
 
 [**AdminTerminationAgreement**](AdminTerminationAgreement.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_user
+
+> <AdminUser> get_admin_user(id)
+
+
+
+Retrieve one user's full editable detail (super_admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_admin_user(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_user: #{e}"
+end
+```
+
+#### Using the get_admin_user_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminUser>, Integer, Hash)> get_admin_user_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_user_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminUser>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_user_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminUser**](AdminUser.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_vendors
+
+> <AdminVendorDetail> get_admin_vendors(id)
+
+
+
+Retrieve a single vendor (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_admin_vendors(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_vendors: #{e}"
+end
+```
+
+#### Using the get_admin_vendors_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminVendorDetail>, Integer, Hash)> get_admin_vendors_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_vendors_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminVendorDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_vendors_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminVendorDetail**](AdminVendorDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_vendors_options
+
+> <AdminVendorsOptions> get_admin_vendors_options
+
+
+
+Retrieve selectable deal types for the vendor form (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_admin_vendors_options
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_vendors_options: #{e}"
+end
+```
+
+#### Using the get_admin_vendors_options_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminVendorsOptions>, Integer, Hash)> get_admin_vendors_options_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_vendors_options_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminVendorsOptions>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_vendors_options_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**AdminVendorsOptions**](AdminVendorsOptions.md)
 
 ### Authorization
 
@@ -26246,6 +30817,459 @@ end
 - **Accept**: application/json
 
 
+## list_admin_conference_schools_directory
+
+> <AdminConferenceSchoolDirectoryList> list_admin_conference_schools_directory(opts)
+
+
+
+Retrieve a paginated directory of every school with its conference/division/subdivision details (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56 # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+}
+
+begin
+  
+  result = api_instance.list_admin_conference_schools_directory(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_conference_schools_directory: #{e}"
+end
+```
+
+#### Using the list_admin_conference_schools_directory_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminConferenceSchoolDirectoryList>, Integer, Hash)> list_admin_conference_schools_directory_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_conference_schools_directory_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminConferenceSchoolDirectoryList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_conference_schools_directory_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+
+### Return type
+
+[**AdminConferenceSchoolDirectoryList**](AdminConferenceSchoolDirectoryList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_conferences
+
+> <AdminConferenceList> list_admin_conferences(opts)
+
+
+
+List conferences (admin, super-admin only), sorted by name
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+  q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+}
+
+begin
+  
+  result = api_instance.list_admin_conferences(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_conferences: #{e}"
+end
+```
+
+#### Using the list_admin_conferences_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminConferenceList>, Integer, Hash)> list_admin_conferences_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_conferences_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminConferenceList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_conferences_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
+
+### Return type
+
+[**AdminConferenceList**](AdminConferenceList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_conferenceships
+
+> <AdminConferenceshipsList> list_admin_conferenceships(opts)
+
+
+
+Retrieve a paginated list of conferenceships (school/sport/conference assignments), filterable by school, sport, and conference (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  q_school_id_eq: 56, # Integer | Filter to one school's conferenceships
+  q_sport_id_eq: 56, # Integer | Filter to one sport's conferenceships
+  q_conference_id_eq: 56 # Integer | Filter to one conference's conferenceships
+}
+
+begin
+  
+  result = api_instance.list_admin_conferenceships(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_conferenceships: #{e}"
+end
+```
+
+#### Using the list_admin_conferenceships_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminConferenceshipsList>, Integer, Hash)> list_admin_conferenceships_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_conferenceships_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminConferenceshipsList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_conferenceships_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **q_school_id_eq** | **Integer** | Filter to one school&#39;s conferenceships | [optional] |
+| **q_sport_id_eq** | **Integer** | Filter to one sport&#39;s conferenceships | [optional] |
+| **q_conference_id_eq** | **Integer** | Filter to one conference&#39;s conferenceships | [optional] |
+
+### Return type
+
+[**AdminConferenceshipsList**](AdminConferenceshipsList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_conferenceships_available_conferences
+
+> <Array<IdName>> list_admin_conferenceships_available_conferences
+
+
+
+Retrieve all conferences (id/name pairs) for the conferenceship form's Conference picker (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.list_admin_conferenceships_available_conferences
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_conferenceships_available_conferences: #{e}"
+end
+```
+
+#### Using the list_admin_conferenceships_available_conferences_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<IdName>>, Integer, Hash)> list_admin_conferenceships_available_conferences_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_conferenceships_available_conferences_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<IdName>>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_conferenceships_available_conferences_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Array&lt;IdName&gt;**](IdName.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_conferenceships_available_schools
+
+> <Array<IdName>> list_admin_conferenceships_available_schools
+
+
+
+Retrieve all schools (id/name pairs) for the conferenceship form's School picker (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.list_admin_conferenceships_available_schools
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_conferenceships_available_schools: #{e}"
+end
+```
+
+#### Using the list_admin_conferenceships_available_schools_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<IdName>>, Integer, Hash)> list_admin_conferenceships_available_schools_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_conferenceships_available_schools_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<IdName>>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_conferenceships_available_schools_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Array&lt;IdName&gt;**](IdName.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_conferenceships_available_sports
+
+> <Array<IdName>> list_admin_conferenceships_available_sports
+
+
+
+Retrieve all sports (id/name pairs) for the conferenceship form's Sport picker (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.list_admin_conferenceships_available_sports
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_conferenceships_available_sports: #{e}"
+end
+```
+
+#### Using the list_admin_conferenceships_available_sports_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<IdName>>, Integer, Hash)> list_admin_conferenceships_available_sports_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_conferenceships_available_sports_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<IdName>>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_conferenceships_available_sports_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Array&lt;IdName&gt;**](IdName.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## list_admin_contact_eligible_coaches
 
 > <Array<AdminEligibleCoachOption>> list_admin_contact_eligible_coaches(school_id, sport_id)
@@ -26553,6 +31577,410 @@ end
 ### Return type
 
 [**AdminContractList**](AdminContractList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_deal_statuses
+
+> <AdminDealStatusesList> list_admin_deal_statuses(opts)
+
+
+
+Retrieve a paginated, filterable report of DealStatus rows for public D1/D2 schools (QC Vendor Contracts admin), excluding the Video Mgmt deal type
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+  q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+}
+
+begin
+  
+  result = api_instance.list_admin_deal_statuses(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_deal_statuses: #{e}"
+end
+```
+
+#### Using the list_admin_deal_statuses_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminDealStatusesList>, Integer, Hash)> list_admin_deal_statuses_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_deal_statuses_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminDealStatusesList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_deal_statuses_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
+
+### Return type
+
+[**AdminDealStatusesList**](AdminDealStatusesList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_deals
+
+> <AdminDealsList> list_admin_deals(opts)
+
+
+
+List Deals (Ransack-filterable), active-first (super_admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+  q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+}
+
+begin
+  
+  result = api_instance.list_admin_deals(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_deals: #{e}"
+end
+```
+
+#### Using the list_admin_deals_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminDealsList>, Integer, Hash)> list_admin_deals_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_deals_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminDealsList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_deals_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
+
+### Return type
+
+[**AdminDealsList**](AdminDealsList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_favorites
+
+> <AdminFavoritesList> list_admin_favorites(opts)
+
+
+
+List/filter user favorites (admin, super-admin only) — Account, User email prefix, Type, and Item ransack filters
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+}
+
+begin
+  
+  result = api_instance.list_admin_favorites(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_favorites: #{e}"
+end
+```
+
+#### Using the list_admin_favorites_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFavoritesList>, Integer, Hash)> list_admin_favorites_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_favorites_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFavoritesList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_favorites_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
+
+### Return type
+
+[**AdminFavoritesList**](AdminFavoritesList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_financial_stats
+
+> <AdminFinancialStatsList> list_admin_financial_stats(opts)
+
+
+
+Retrieve a paginated list of per-school, per-sport financial stat rows (super_admin only), filterable by school name and season year
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  q_season_school_name_cont: 'q_season_school_name_cont_example', # String | Filter to rows whose school name contains this value
+  q_season_year_eq: 56 # Integer | Filter to rows for one season year
+}
+
+begin
+  
+  result = api_instance.list_admin_financial_stats(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_financial_stats: #{e}"
+end
+```
+
+#### Using the list_admin_financial_stats_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFinancialStatsList>, Integer, Hash)> list_admin_financial_stats_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_financial_stats_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFinancialStatsList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_financial_stats_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **q_season_school_name_cont** | **String** | Filter to rows whose school name contains this value | [optional] |
+| **q_season_year_eq** | **Integer** | Filter to rows for one season year | [optional] |
+
+### Return type
+
+[**AdminFinancialStatsList**](AdminFinancialStatsList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_financials_qc
+
+> <AdminFinancialsQcList> list_admin_financials_qc(opts)
+
+
+
+List the Financials QC report — per-school NCAA PDF/Audited PDF/NCAA CSV/School Info CSV/Sport Stats CSV file status for a season year (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  financials_qc_conference_id: 56, # Integer | 
+  financials_qc_division_id: 56, # Integer | 
+  financials_qc_subdivision_id: 56, # Integer | 
+  financials_qc_school_id: 56, # Integer | 
+  financials_qc_year: 56 # Integer | 
+}
+
+begin
+  
+  result = api_instance.list_admin_financials_qc(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_financials_qc: #{e}"
+end
+```
+
+#### Using the list_admin_financials_qc_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFinancialsQcList>, Integer, Hash)> list_admin_financials_qc_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_financials_qc_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFinancialsQcList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_financials_qc_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **financials_qc_conference_id** | **Integer** |  | [optional] |
+| **financials_qc_division_id** | **Integer** |  | [optional] |
+| **financials_qc_subdivision_id** | **Integer** |  | [optional] |
+| **financials_qc_school_id** | **Integer** |  | [optional] |
+| **financials_qc_year** | **Integer** |  | [optional] |
+
+### Return type
+
+[**AdminFinancialsQcList**](AdminFinancialsQcList.md)
 
 ### Authorization
 
@@ -27049,7 +32477,7 @@ nil (empty response body)
 
 ## list_admin_foia_request_follow_up_report
 
-> list_admin_foia_request_follow_up_report(opts)
+> <AdminFoiaFollowUpReport> list_admin_foia_request_follow_up_report(opts)
 
 
 
@@ -27082,7 +32510,8 @@ opts = {
 
 begin
   
-  api_instance.list_admin_foia_request_follow_up_report(opts)
+  result = api_instance.list_admin_foia_request_follow_up_report(opts)
+  p result
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->list_admin_foia_request_follow_up_report: #{e}"
 end
@@ -27090,9 +32519,9 @@ end
 
 #### Using the list_admin_foia_request_follow_up_report_with_http_info variant
 
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
+This returns an Array which contains the response data, status code and headers.
 
-> <Array(nil, Integer, Hash)> list_admin_foia_request_follow_up_report_with_http_info(opts)
+> <Array(<AdminFoiaFollowUpReport>, Integer, Hash)> list_admin_foia_request_follow_up_report_with_http_info(opts)
 
 ```ruby
 begin
@@ -27100,7 +32529,7 @@ begin
   data, status_code, headers = api_instance.list_admin_foia_request_follow_up_report_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => nil
+  p data # => <AdminFoiaFollowUpReport>
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->list_admin_foia_request_follow_up_report_with_http_info: #{e}"
 end
@@ -27118,7 +32547,7 @@ end
 
 ### Return type
 
-nil (empty response body)
+[**AdminFoiaFollowUpReport**](AdminFoiaFollowUpReport.md)
 
 ### Authorization
 
@@ -27377,6 +32806,256 @@ end
 - **Accept**: application/json
 
 
+## list_admin_notes
+
+> <AdminNotesList> list_admin_notes(opts)
+
+
+
+List user notes (admin) — Account, User email prefix, Notable type, Notable id ransack filters
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+}
+
+begin
+  
+  result = api_instance.list_admin_notes(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_notes: #{e}"
+end
+```
+
+#### Using the list_admin_notes_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminNotesList>, Integer, Hash)> list_admin_notes_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_notes_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminNotesList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_notes_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
+
+### Return type
+
+[**AdminNotesList**](AdminNotesList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_position_types
+
+> <AdminPositionTypesList> list_admin_position_types(opts)
+
+
+
+Retrieve all Position Types (admin-only), ordered by their manual sort position. `q[s]` accepts `ord`, `name_display`, `positions_count` or `position_type_group_name_display` followed by `asc` or `desc` (default `ord asc`, ties broken by id); `per_page` defaults to 100
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+  q: { ... }, # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+  visibility: 'all' # String | The old admin index's All | Visible | Hidden filter on the customer-catalog flag; any other value lists every record
+}
+
+begin
+  
+  result = api_instance.list_admin_position_types(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_position_types: #{e}"
+end
+```
+
+#### Using the list_admin_position_types_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminPositionTypesList>, Integer, Hash)> list_admin_position_types_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_position_types_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminPositionTypesList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_position_types_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
+| **visibility** | **String** | The old admin index&#39;s All | Visible | Hidden filter on the customer-catalog flag; any other value lists every record | [optional] |
+
+### Return type
+
+[**AdminPositionTypesList**](AdminPositionTypesList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_positions
+
+> <AdminPositionsList> list_admin_positions(opts)
+
+
+
+Retrieve a paginated list of per-coach, per-season position assignments (admin-only), filterable by coach, school, sport, season year, and departing status
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+  q: { ... }, # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+  coach_id: 56, # Integer | 
+  school_id: 56, # Integer | 
+  sport_id: 56, # Integer | 
+  year: 56, # Integer | 
+  departing: true # Boolean | 
+}
+
+begin
+  
+  result = api_instance.list_admin_positions(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_positions: #{e}"
+end
+```
+
+#### Using the list_admin_positions_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminPositionsList>, Integer, Hash)> list_admin_positions_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_positions_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminPositionsList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_positions_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
+| **coach_id** | **Integer** |  | [optional] |
+| **school_id** | **Integer** |  | [optional] |
+| **sport_id** | **Integer** |  | [optional] |
+| **year** | **Integer** |  | [optional] |
+| **departing** | **Boolean** |  | [optional] |
+
+### Return type
+
+[**AdminPositionsList**](AdminPositionsList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## list_admin_raw_contracts_between_schools
 
 > <ListAdminRawContractsBetweenSchools200Response> list_admin_raw_contracts_between_schools(home_school_id, away_school_id, sport_id)
@@ -27551,6 +33230,1025 @@ end
 - **Accept**: application/json
 
 
+## list_admin_school_deals
+
+> <AdminDealsList> list_admin_school_deals(school_id, opts)
+
+
+
+List a School's Deals (Ransack-filterable), active-first
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | 
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+  q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+}
+
+begin
+  
+  result = api_instance.list_admin_school_deals(school_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_school_deals: #{e}"
+end
+```
+
+#### Using the list_admin_school_deals_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminDealsList>, Integer, Hash)> list_admin_school_deals_with_http_info(school_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_school_deals_with_http_info(school_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminDealsList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_school_deals_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** |  |  |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
+
+### Return type
+
+[**AdminDealsList**](AdminDealsList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_school_game_counts
+
+> list_admin_school_game_counts(opts)
+
+
+
+Per-school conference/non-conference game counts for one sport+year (defaults to BASKETBALL_M, current season)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+  year: 56, # Integer | 
+  school_id: 56 # Integer | 
+}
+
+begin
+  
+  api_instance.list_admin_school_game_counts(opts)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_school_game_counts: #{e}"
+end
+```
+
+#### Using the list_admin_school_game_counts_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> list_admin_school_game_counts_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_school_game_counts_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_school_game_counts_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+| **year** | **Integer** |  | [optional] |
+| **school_id** | **Integer** |  | [optional] |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## list_admin_school_groups
+
+> <AdminSchoolGroupsList> list_admin_school_groups(opts)
+
+
+
+Retrieve a paginated list of users' custom school groups (super_admin only), filterable by account, user email, and included school
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  q_user_account_id_eq: 56, # Integer | Filter to school groups owned by users on one account
+  q_user_email_start: 'q_user_email_start_example', # String | Filter to school groups whose owning user's email starts with this value
+  q_schools_id_in: [37] # Array<Integer> | Filter to school groups that include any of these schools
+}
+
+begin
+  
+  result = api_instance.list_admin_school_groups(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_school_groups: #{e}"
+end
+```
+
+#### Using the list_admin_school_groups_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminSchoolGroupsList>, Integer, Hash)> list_admin_school_groups_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_school_groups_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminSchoolGroupsList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_school_groups_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **q_user_account_id_eq** | **Integer** | Filter to school groups owned by users on one account | [optional] |
+| **q_user_email_start** | **String** | Filter to school groups whose owning user&#39;s email starts with this value | [optional] |
+| **q_schools_id_in** | [**Array&lt;Integer&gt;**](Integer.md) | Filter to school groups that include any of these schools | [optional] |
+
+### Return type
+
+[**AdminSchoolGroupsList**](AdminSchoolGroupsList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_school_groups_available_schools
+
+> <Array<IdName>> list_admin_school_groups_available_schools
+
+
+
+Retrieve D1/D2 schools (id/name pairs) for the school group picker (super_admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.list_admin_school_groups_available_schools
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_school_groups_available_schools: #{e}"
+end
+```
+
+#### Using the list_admin_school_groups_available_schools_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<IdName>>, Integer, Hash)> list_admin_school_groups_available_schools_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_school_groups_available_schools_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<IdName>>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_school_groups_available_schools_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Array&lt;IdName&gt;**](IdName.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_school_logos_qc
+
+> list_admin_school_logos_qc(opts)
+
+
+
+Paginated, ransack-filterable list of schools with their logo/external-logo attachment URLs (Logo QC page)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+  q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+}
+
+begin
+  
+  api_instance.list_admin_school_logos_qc(opts)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_school_logos_qc: #{e}"
+end
+```
+
+#### Using the list_admin_school_logos_qc_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> list_admin_school_logos_qc_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_school_logos_qc_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_school_logos_qc_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_school_names
+
+> <AdminSchoolNamesList> list_admin_school_names(opts)
+
+
+
+Retrieve a paginated list of alternate/historical school names (super_admin only), filterable by school and name
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  q_school_id_eq: 56, # Integer | Filter to alternate names for one school
+  q_name_cont: 'q_name_cont_example' # String | Substring match on the alternate name
+}
+
+begin
+  
+  result = api_instance.list_admin_school_names(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_school_names: #{e}"
+end
+```
+
+#### Using the list_admin_school_names_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminSchoolNamesList>, Integer, Hash)> list_admin_school_names_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_school_names_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminSchoolNamesList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_school_names_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **q_school_id_eq** | **Integer** | Filter to alternate names for one school | [optional] |
+| **q_name_cont** | **String** | Substring match on the alternate name | [optional] |
+
+### Return type
+
+[**AdminSchoolNamesList**](AdminSchoolNamesList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_school_names_available_schools
+
+> <Array<IdName>> list_admin_school_names_available_schools
+
+
+
+Retrieve all schools (id/name pairs) for the alternate school name picker (super_admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.list_admin_school_names_available_schools
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_school_names_available_schools: #{e}"
+end
+```
+
+#### Using the list_admin_school_names_available_schools_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<IdName>>, Integer, Hash)> list_admin_school_names_available_schools_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_school_names_available_schools_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<IdName>>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_school_names_available_schools_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Array&lt;IdName&gt;**](IdName.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_school_uploads
+
+> <AdminSchoolUploadsIndex> list_admin_school_uploads
+
+
+
+Retrieve current Sidekiq job status for the School Info CSV import (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.list_admin_school_uploads
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_school_uploads: #{e}"
+end
+```
+
+#### Using the list_admin_school_uploads_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminSchoolUploadsIndex>, Integer, Hash)> list_admin_school_uploads_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_school_uploads_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminSchoolUploadsIndex>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_school_uploads_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**AdminSchoolUploadsIndex**](AdminSchoolUploadsIndex.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_schools
+
+> <AdminSchoolList> list_admin_schools(opts)
+
+
+
+Retrieve a paginated, ransack-filterable list of schools (admin-only), sorted by name
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+  q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+}
+
+begin
+  
+  result = api_instance.list_admin_schools(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_schools: #{e}"
+end
+```
+
+#### Using the list_admin_schools_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminSchoolList>, Integer, Hash)> list_admin_schools_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_schools_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminSchoolList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_schools_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
+
+### Return type
+
+[**AdminSchoolList**](AdminSchoolList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_sport_cashflows
+
+> <AdminSportCashflowsList> list_admin_sport_cashflows(id, opts)
+
+
+
+Retrieve a paginated cashflows report for this Sport (admin-only, read-only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | ID of the Sport
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56 # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+}
+
+begin
+  
+  result = api_instance.list_admin_sport_cashflows(id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_sport_cashflows: #{e}"
+end
+```
+
+#### Using the list_admin_sport_cashflows_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminSportCashflowsList>, Integer, Hash)> list_admin_sport_cashflows_with_http_info(id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_sport_cashflows_with_http_info(id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminSportCashflowsList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_sport_cashflows_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | ID of the Sport |  |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+
+### Return type
+
+[**AdminSportCashflowsList**](AdminSportCashflowsList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_sport_positions
+
+> <AdminSportPositionsList> list_admin_sport_positions(id, opts)
+
+
+
+Retrieve the positions currently assigned to this Sport (admin-only, read-only report)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | ID of the Sport
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56 # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+}
+
+begin
+  
+  result = api_instance.list_admin_sport_positions(id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_sport_positions: #{e}"
+end
+```
+
+#### Using the list_admin_sport_positions_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminSportPositionsList>, Integer, Hash)> list_admin_sport_positions_with_http_info(id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_sport_positions_with_http_info(id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminSportPositionsList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_sport_positions_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | ID of the Sport |  |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+
+### Return type
+
+[**AdminSportPositionsList**](AdminSportPositionsList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_sports
+
+> <AdminSportsList> list_admin_sports(opts)
+
+
+
+Retrieve a page of Sports (admin-only), sorted via q[s] by name_display, gender_code, time_of_year_ord, emerging or visible (asc or desc; default name_display asc, ties by id); per_page defaults to 100
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+  q: { ... }, # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+  visibility: 'all' # String | The old admin index's All | Visible | Hidden filter on the customer-catalog flag; any other value lists every record
+}
+
+begin
+  
+  result = api_instance.list_admin_sports(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_sports: #{e}"
+end
+```
+
+#### Using the list_admin_sports_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminSportsList>, Integer, Hash)> list_admin_sports_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_sports_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminSportsList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_sports_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
+| **visibility** | **String** | The old admin index&#39;s All | Visible | Hidden filter on the customer-catalog flag; any other value lists every record | [optional] |
+
+### Return type
+
+[**AdminSportsList**](AdminSportsList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_subdivision_memberships
+
+> <AdminSubdivisionMembershipsList> list_admin_subdivision_memberships(opts)
+
+
+
+Retrieve a paginated list of school subdivision-membership rows (super_admin only), filterable by school and subdivision
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  q_school_id_eq: 56, # Integer | Filter to memberships for one school
+  q_subdivision_id_eq: 56 # Integer | Filter to memberships in one subdivision
+}
+
+begin
+  
+  result = api_instance.list_admin_subdivision_memberships(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_subdivision_memberships: #{e}"
+end
+```
+
+#### Using the list_admin_subdivision_memberships_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminSubdivisionMembershipsList>, Integer, Hash)> list_admin_subdivision_memberships_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_subdivision_memberships_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminSubdivisionMembershipsList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_subdivision_memberships_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **q_school_id_eq** | **Integer** | Filter to memberships for one school | [optional] |
+| **q_subdivision_id_eq** | **Integer** | Filter to memberships in one subdivision | [optional] |
+
+### Return type
+
+[**AdminSubdivisionMembershipsList**](AdminSubdivisionMembershipsList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## list_admin_termination_agreements
 
 > <AdminTerminationAgreementList> list_admin_termination_agreements(opts)
@@ -27620,6 +34318,646 @@ end
 ### Return type
 
 [**AdminTerminationAgreementList**](AdminTerminationAgreementList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_user_account_options
+
+> <Array<IdName>> list_admin_user_account_options(opts)
+
+
+
+Search accounts by name for the user form's Account picker (super_admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  name: 'name_example' # String | 
+}
+
+begin
+  
+  result = api_instance.list_admin_user_account_options(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_user_account_options: #{e}"
+end
+```
+
+#### Using the list_admin_user_account_options_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<IdName>>, Integer, Hash)> list_admin_user_account_options_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_user_account_options_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<IdName>>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_user_account_options_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **name** | **String** |  | [optional] |
+
+### Return type
+
+[**Array&lt;IdName&gt;**](IdName.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_user_coach_options
+
+> <Array<ListAdminUserCoachOptions200ResponseInner>> list_admin_user_coach_options(opts)
+
+
+
+List coaches with a current-season position at an account's school, for the user form's Coach picker (super_admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  account_id: 56, # Integer | 
+  user_id: 56 # Integer | 
+}
+
+begin
+  
+  result = api_instance.list_admin_user_coach_options(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_user_coach_options: #{e}"
+end
+```
+
+#### Using the list_admin_user_coach_options_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<ListAdminUserCoachOptions200ResponseInner>>, Integer, Hash)> list_admin_user_coach_options_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_user_coach_options_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<ListAdminUserCoachOptions200ResponseInner>>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_user_coach_options_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **account_id** | **Integer** |  | [optional] |
+| **user_id** | **Integer** |  | [optional] |
+
+### Return type
+
+[**Array&lt;ListAdminUserCoachOptions200ResponseInner&gt;**](ListAdminUserCoachOptions200ResponseInner.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_user_role_options
+
+> Array&lt;String&gt; list_admin_user_role_options
+
+
+
+List assignable roles for the user form's Roles multi-select (super_admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.list_admin_user_role_options
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_user_role_options: #{e}"
+end
+```
+
+#### Using the list_admin_user_role_options_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Array&lt;String&gt;, Integer, Hash)> list_admin_user_role_options_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_user_role_options_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Array&lt;String&gt;
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_user_role_options_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**Array&lt;String&gt;**
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_user_sport_options
+
+> <ListAdminUserSportOptions200Response> list_admin_user_sport_options
+
+
+
+List schedulable and permissible sport collections for the user form's sport multi-selects (super_admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.list_admin_user_sport_options
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_user_sport_options: #{e}"
+end
+```
+
+#### Using the list_admin_user_sport_options_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ListAdminUserSportOptions200Response>, Integer, Hash)> list_admin_user_sport_options_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_user_sport_options_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ListAdminUserSportOptions200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_user_sport_options_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ListAdminUserSportOptions200Response**](ListAdminUserSportOptions200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_users
+
+> <AdminUsersList> list_admin_users(opts)
+
+
+
+Retrieve a paginated, cross-account list of every system user (super_admin only), filterable by account name, subscription type/status, name/email prefix, OTP requirement, state, role, coach-assigned, external-profile, exclude-admins, and created-date range
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  q_account_name_cont: 'q_account_name_cont_example', # String | Filter to users whose account name contains this value
+  q_subscription_type_id_in: [37], # Array<Integer> | Filter to users whose account has one of these subscription types
+  q_subscription_status: 'active', # String | Filter to users whose account subscription is active or inactive
+  q_first_name_start: 'q_first_name_start_example', # String | Filter to users whose first name starts with this value
+  q_last_name_start: 'q_last_name_start_example', # String | Filter to users whose last name starts with this value
+  q_email_start: 'q_email_start_example', # String | Filter to users whose email starts with this value
+  q_otp_required_eq: true, # Boolean | Filter to users with (or without) OTP required
+  q_state_eq: 'active', # String | Filter to users in this Devise state
+  role: 'role_example', # String | Filter to users holding this role symbol
+  q_coach_id_not_null: true, # Boolean | Filter to users that do (or don't) have a coach assigned
+  q_exclude_profile: true, # Boolean | Filter to users without an external Winthrop profile
+  q_all_without_role: 'q_all_without_role_example', # String | Filter to users lacking this role (used for \"Exclude Admins\" via the real role name, e.g. super_admin)
+  q_created_at_gteq: Date.parse('2013-10-20'), # Date | Filter to users created on or after this date
+  q_created_at_lteq: Date.parse('2013-10-20') # Date | Filter to users created on or before this date
+}
+
+begin
+  
+  result = api_instance.list_admin_users(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_users: #{e}"
+end
+```
+
+#### Using the list_admin_users_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminUsersList>, Integer, Hash)> list_admin_users_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_users_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminUsersList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_users_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **q_account_name_cont** | **String** | Filter to users whose account name contains this value | [optional] |
+| **q_subscription_type_id_in** | [**Array&lt;Integer&gt;**](Integer.md) | Filter to users whose account has one of these subscription types | [optional] |
+| **q_subscription_status** | **String** | Filter to users whose account subscription is active or inactive | [optional] |
+| **q_first_name_start** | **String** | Filter to users whose first name starts with this value | [optional] |
+| **q_last_name_start** | **String** | Filter to users whose last name starts with this value | [optional] |
+| **q_email_start** | **String** | Filter to users whose email starts with this value | [optional] |
+| **q_otp_required_eq** | **Boolean** | Filter to users with (or without) OTP required | [optional] |
+| **q_state_eq** | **String** | Filter to users in this Devise state | [optional] |
+| **role** | **String** | Filter to users holding this role symbol | [optional] |
+| **q_coach_id_not_null** | **Boolean** | Filter to users that do (or don&#39;t) have a coach assigned | [optional] |
+| **q_exclude_profile** | **Boolean** | Filter to users without an external Winthrop profile | [optional] |
+| **q_all_without_role** | **String** | Filter to users lacking this role (used for \&quot;Exclude Admins\&quot; via the real role name, e.g. super_admin) | [optional] |
+| **q_created_at_gteq** | **Date** | Filter to users created on or after this date | [optional] |
+| **q_created_at_lteq** | **Date** | Filter to users created on or before this date | [optional] |
+
+### Return type
+
+[**AdminUsersList**](AdminUsersList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_vendor_contracts
+
+> <AdminVendorContractsList> list_admin_vendor_contracts(opts)
+
+
+
+Retrieve a paginated, filterable QC report of Deal rows (Vendor Contract QC admin) — filterable by school division/subdivision/conference/school/deal type/verified status, sortable by school name/start date/end date
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+  q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+}
+
+begin
+  
+  result = api_instance.list_admin_vendor_contracts(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_vendor_contracts: #{e}"
+end
+```
+
+#### Using the list_admin_vendor_contracts_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminVendorContractsList>, Integer, Hash)> list_admin_vendor_contracts_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_vendor_contracts_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminVendorContractsList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_vendor_contracts_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
+
+### Return type
+
+[**AdminVendorContractsList**](AdminVendorContractsList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_vendor_deals
+
+> <AdminDealsList> list_admin_vendor_deals(vendor_id, opts)
+
+
+
+List a Vendor's Deals (Ransack-filterable), active-first
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+vendor_id = 56 # Integer | 
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+  q: { ... } # Object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
+}
+
+begin
+  
+  result = api_instance.list_admin_vendor_deals(vendor_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_vendor_deals: #{e}"
+end
+```
+
+#### Using the list_admin_vendor_deals_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminDealsList>, Integer, Hash)> list_admin_vendor_deals_with_http_info(vendor_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_vendor_deals_with_http_info(vendor_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminDealsList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_vendor_deals_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **vendor_id** | **Integer** |  |  |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+| **q** | [**Object**](.md) | Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] |
+
+### Return type
+
+[**AdminDealsList**](AdminDealsList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_vendors
+
+> <AdminVendorsList> list_admin_vendors(opts)
+
+
+
+List vendors, optionally filtered by name (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  q_name_eq: 'q_name_eq_example' # String | 
+}
+
+begin
+  
+  result = api_instance.list_admin_vendors(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_vendors: #{e}"
+end
+```
+
+#### Using the list_admin_vendors_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminVendorsList>, Integer, Hash)> list_admin_vendors_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_vendors_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminVendorsList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_vendors_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **q_name_eq** | **String** |  | [optional] |
+
+### Return type
+
+[**AdminVendorsList**](AdminVendorsList.md)
 
 ### Authorization
 
@@ -27937,6 +35275,228 @@ end
 - **Accept**: application/json
 
 
+## mass_copy_admin_positions
+
+> <MassCopyPositionsResponse> mass_copy_admin_positions(mass_copy_positions_request)
+
+
+
+Copy every one of a coach's positions for a given season year forward into the next season year, skipping any that already exist or fail validation (admin-only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+mass_copy_positions_request = WinthropClient::MassCopyPositionsRequest.new({coach_id: 37, year: 37}) # MassCopyPositionsRequest | 
+
+begin
+  
+  result = api_instance.mass_copy_admin_positions(mass_copy_positions_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->mass_copy_admin_positions: #{e}"
+end
+```
+
+#### Using the mass_copy_admin_positions_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<MassCopyPositionsResponse>, Integer, Hash)> mass_copy_admin_positions_with_http_info(mass_copy_positions_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.mass_copy_admin_positions_with_http_info(mass_copy_positions_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <MassCopyPositionsResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->mass_copy_admin_positions_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **mass_copy_positions_request** | [**MassCopyPositionsRequest**](MassCopyPositionsRequest.md) |  |  |
+
+### Return type
+
+[**MassCopyPositionsResponse**](MassCopyPositionsResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## mass_create_admin_positions
+
+> <MassCreatePositionsResponse> mass_create_admin_positions(mass_create_positions_request)
+
+
+
+Create the same position (title + position types) for one coach across a range of season years, for one or more sports, auto-vivifying seasons as needed (admin-only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+mass_create_positions_request = WinthropClient::MassCreatePositionsRequest.new({coach_id: 37, school_id: 37, sport_ids: [37], mass_start_year: 37, mass_end_year: 37}) # MassCreatePositionsRequest | 
+
+begin
+  
+  result = api_instance.mass_create_admin_positions(mass_create_positions_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->mass_create_admin_positions: #{e}"
+end
+```
+
+#### Using the mass_create_admin_positions_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<MassCreatePositionsResponse>, Integer, Hash)> mass_create_admin_positions_with_http_info(mass_create_positions_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.mass_create_admin_positions_with_http_info(mass_create_positions_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <MassCreatePositionsResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->mass_create_admin_positions_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **mass_create_positions_request** | [**MassCreatePositionsRequest**](MassCreatePositionsRequest.md) |  |  |
+
+### Return type
+
+[**MassCreatePositionsResponse**](MassCreatePositionsResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## mass_depart_admin_positions
+
+> <MassDepartPositionsResponse> mass_depart_admin_positions(mass_depart_positions_request)
+
+
+
+Mark every one of a coach's not-yet-departing positions for a given season year as departing (admin-only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+mass_depart_positions_request = WinthropClient::MassDepartPositionsRequest.new({coach_id: 37, year: 37}) # MassDepartPositionsRequest | 
+
+begin
+  
+  result = api_instance.mass_depart_admin_positions(mass_depart_positions_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->mass_depart_admin_positions: #{e}"
+end
+```
+
+#### Using the mass_depart_admin_positions_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<MassDepartPositionsResponse>, Integer, Hash)> mass_depart_admin_positions_with_http_info(mass_depart_positions_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.mass_depart_admin_positions_with_http_info(mass_depart_positions_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <MassDepartPositionsResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->mass_depart_admin_positions_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **mass_depart_positions_request** | [**MassDepartPositionsRequest**](MassDepartPositionsRequest.md) |  |  |
+
+### Return type
+
+[**MassDepartPositionsResponse**](MassDepartPositionsResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## mass_update_admin_compensations
 
 > <MassUpdateAdminCompensations200Response> mass_update_admin_compensations(mass_update_admin_compensations_request)
@@ -28000,6 +35560,80 @@ end
 ### Return type
 
 [**MassUpdateAdminCompensations200Response**](MassUpdateAdminCompensations200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## mass_update_admin_positions
+
+> <MassUpdatePositionsResponse> mass_update_admin_positions(mass_update_positions_request)
+
+
+
+Bulk-update position types/creation reason/article link for many existing positions belonging to one coach, in a single all-or-nothing transaction (admin-only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+mass_update_positions_request = WinthropClient::MassUpdatePositionsRequest.new({coach_id: 37, positions: [WinthropClient::MassUpdatePositionRow.new({id: 37})]}) # MassUpdatePositionsRequest | 
+
+begin
+  
+  result = api_instance.mass_update_admin_positions(mass_update_positions_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->mass_update_admin_positions: #{e}"
+end
+```
+
+#### Using the mass_update_admin_positions_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<MassUpdatePositionsResponse>, Integer, Hash)> mass_update_admin_positions_with_http_info(mass_update_positions_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.mass_update_admin_positions_with_http_info(mass_update_positions_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <MassUpdatePositionsResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->mass_update_admin_positions_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **mass_update_positions_request** | [**MassUpdatePositionsRequest**](MassUpdatePositionsRequest.md) |  |  |
+
+### Return type
+
+[**MassUpdatePositionsResponse**](MassUpdatePositionsResponse.md)
 
 ### Authorization
 
@@ -28082,6 +35716,222 @@ nil (empty response body)
 
 - **Content-Type**: application/json
 - **Accept**: Not defined
+
+
+## new_admin_position_type
+
+> <NewAdminPositionType> new_admin_position_type
+
+
+
+Retrieve the suggested order number and the selectable Position Type Groups, for the \"New Position Type\" admin form
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.new_admin_position_type
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->new_admin_position_type: #{e}"
+end
+```
+
+#### Using the new_admin_position_type_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<NewAdminPositionType>, Integer, Hash)> new_admin_position_type_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.new_admin_position_type_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <NewAdminPositionType>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->new_admin_position_type_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**NewAdminPositionType**](NewAdminPositionType.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## new_admin_sport
+
+> <NewAdminSport> new_admin_sport
+
+
+
+Retrieve the selectable Time of Year options, for the \"New Sport\" admin form
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.new_admin_sport
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->new_admin_sport: #{e}"
+end
+```
+
+#### Using the new_admin_sport_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<NewAdminSport>, Integer, Hash)> new_admin_sport_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.new_admin_sport_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <NewAdminSport>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->new_admin_sport_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**NewAdminSport**](NewAdminSport.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## position_types_for_groups_admin_sports
+
+> <PositionTypesForGroupsAdminSports200Response> position_types_for_groups_admin_sports(position_types_for_groups_admin_sports_request)
+
+
+
+Retrieve Position Types grouped by Position Type Group for a set of sport ids (admin-only), used to populate the Coaches admin form's position dropdown
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+position_types_for_groups_admin_sports_request = WinthropClient::PositionTypesForGroupsAdminSportsRequest.new({sports_ids: [37]}) # PositionTypesForGroupsAdminSportsRequest | 
+
+begin
+  
+  result = api_instance.position_types_for_groups_admin_sports(position_types_for_groups_admin_sports_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->position_types_for_groups_admin_sports: #{e}"
+end
+```
+
+#### Using the position_types_for_groups_admin_sports_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PositionTypesForGroupsAdminSports200Response>, Integer, Hash)> position_types_for_groups_admin_sports_with_http_info(position_types_for_groups_admin_sports_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.position_types_for_groups_admin_sports_with_http_info(position_types_for_groups_admin_sports_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PositionTypesForGroupsAdminSports200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->position_types_for_groups_admin_sports_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **position_types_for_groups_admin_sports_request** | [**PositionTypesForGroupsAdminSportsRequest**](PositionTypesForGroupsAdminSportsRequest.md) |  |  |
+
+### Return type
+
+[**PositionTypesForGroupsAdminSports200Response**](PositionTypesForGroupsAdminSports200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ## prefill_admin_invoice
@@ -28445,6 +36295,155 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **raw_contract_id** | **Integer** | ID of the RawContract |  |
+
+### Return type
+
+[**RegenerateRawContractPdf200Response**](RegenerateRawContractPdf200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## remove_admin_conference_school
+
+> remove_admin_conference_school(id, school_id)
+
+
+
+Remove a school's full-membership conference assignment (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+school_id = 56 # Integer | 
+
+begin
+  
+  api_instance.remove_admin_conference_school(id, school_id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->remove_admin_conference_school: #{e}"
+end
+```
+
+#### Using the remove_admin_conference_school_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> remove_admin_conference_school_with_http_info(id, school_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.remove_admin_conference_school_with_http_info(id, school_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->remove_admin_conference_school_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **school_id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## remove_admin_user_intercollegiate_authorization
+
+> <RegenerateRawContractPdf200Response> remove_admin_user_intercollegiate_authorization(id)
+
+
+
+Revoke a user's intercollegiate direct-access authorization tokens (super_admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.remove_admin_user_intercollegiate_authorization(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->remove_admin_user_intercollegiate_authorization: #{e}"
+end
+```
+
+#### Using the remove_admin_user_intercollegiate_authorization_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RegenerateRawContractPdf200Response>, Integer, Hash)> remove_admin_user_intercollegiate_authorization_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.remove_admin_user_intercollegiate_authorization_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RegenerateRawContractPdf200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->remove_admin_user_intercollegiate_authorization_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
 
 ### Return type
 
@@ -28912,6 +36911,80 @@ end
 - **Accept**: application/json
 
 
+## send_confirm_email_admin_user
+
+> <RegenerateRawContractPdf200Response> send_confirm_email_admin_user(id)
+
+
+
+Resend the account confirmation email to a pending user (super_admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.send_confirm_email_admin_user(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->send_confirm_email_admin_user: #{e}"
+end
+```
+
+#### Using the send_confirm_email_admin_user_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RegenerateRawContractPdf200Response>, Integer, Hash)> send_confirm_email_admin_user_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.send_confirm_email_admin_user_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RegenerateRawContractPdf200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->send_confirm_email_admin_user_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**RegenerateRawContractPdf200Response**](RegenerateRawContractPdf200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## send_otp_code
 
 > <CreatePasswordReset200Response> send_otp_code
@@ -28972,6 +37045,380 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**CreatePasswordReset200Response**](CreatePasswordReset200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## show_admin_deal
+
+> <AdminDeal> show_admin_deal(id)
+
+
+
+Show a single Deal
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.show_admin_deal(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->show_admin_deal: #{e}"
+end
+```
+
+#### Using the show_admin_deal_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminDeal>, Integer, Hash)> show_admin_deal_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.show_admin_deal_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminDeal>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->show_admin_deal_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminDeal**](AdminDeal.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## show_admin_school_deal
+
+> <AdminDeal> show_admin_school_deal(school_id, id)
+
+
+
+Show a Deal scoped to this School
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | 
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.show_admin_school_deal(school_id, id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->show_admin_school_deal: #{e}"
+end
+```
+
+#### Using the show_admin_school_deal_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminDeal>, Integer, Hash)> show_admin_school_deal_with_http_info(school_id, id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.show_admin_school_deal_with_http_info(school_id, id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminDeal>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->show_admin_school_deal_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** |  |  |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminDeal**](AdminDeal.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## show_admin_vendor_deal
+
+> <AdminDeal> show_admin_vendor_deal(vendor_id, id)
+
+
+
+Show a Deal scoped to this Vendor
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+vendor_id = 56 # Integer | 
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.show_admin_vendor_deal(vendor_id, id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->show_admin_vendor_deal: #{e}"
+end
+```
+
+#### Using the show_admin_vendor_deal_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminDeal>, Integer, Hash)> show_admin_vendor_deal_with_http_info(vendor_id, id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.show_admin_vendor_deal_with_http_info(vendor_id, id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminDeal>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->show_admin_vendor_deal_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **vendor_id** | **Integer** |  |  |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminDeal**](AdminDeal.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## suspend_admin_user
+
+> <AdminUser> suspend_admin_user(id)
+
+
+
+Suspend a user (super_admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.suspend_admin_user(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->suspend_admin_user: #{e}"
+end
+```
+
+#### Using the suspend_admin_user_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminUser>, Integer, Hash)> suspend_admin_user_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.suspend_admin_user_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminUser>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->suspend_admin_user_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminUser**](AdminUser.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## toggle_departing_admin_position
+
+> <AdminPosition> toggle_departing_admin_position(id)
+
+
+
+Flip a single position's departing flag (admin-only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | ID of the position
+
+begin
+  
+  result = api_instance.toggle_departing_admin_position(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->toggle_departing_admin_position: #{e}"
+end
+```
+
+#### Using the toggle_departing_admin_position_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminPosition>, Integer, Hash)> toggle_departing_admin_position_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.toggle_departing_admin_position_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminPosition>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->toggle_departing_admin_position_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | ID of the position |  |
+
+### Return type
+
+[**AdminPosition**](AdminPosition.md)
 
 ### Authorization
 
@@ -29135,6 +37582,80 @@ end
 - **Accept**: application/json
 
 
+## unsuspend_admin_user
+
+> <AdminUser> unsuspend_admin_user(id)
+
+
+
+Reactivate a suspended user (super_admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.unsuspend_admin_user(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->unsuspend_admin_user: #{e}"
+end
+```
+
+#### Using the unsuspend_admin_user_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminUser>, Integer, Hash)> unsuspend_admin_user_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.unsuspend_admin_user_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminUser>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->unsuspend_admin_user_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminUser**](AdminUser.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## update_account_user
 
 > <DeleteAccountUser200Response> update_account_user(account_user_id, update_account_user_request)
@@ -29275,6 +37796,84 @@ No authorization required
 - **Accept**: application/json
 
 
+## update_admin_avatars
+
+> <AdminAvatar> update_admin_avatars(id, opts)
+
+
+
+Update an avatar's image, remote image URL, or crop coordinates (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+opts = {
+  avatar: WinthropClient::UpdateAdminAvatarsRequestAvatar.new # UpdateAdminAvatarsRequestAvatar | 
+}
+
+begin
+  
+  result = api_instance.update_admin_avatars(id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_avatars: #{e}"
+end
+```
+
+#### Using the update_admin_avatars_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminAvatar>, Integer, Hash)> update_admin_avatars_with_http_info(id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_avatars_with_http_info(id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminAvatar>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_avatars_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **avatar** | [**UpdateAdminAvatarsRequestAvatar**](UpdateAdminAvatarsRequestAvatar.md) |  | [optional] |
+
+### Return type
+
+[**AdminAvatar**](AdminAvatar.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+
 ## update_admin_coach
 
 > <AdminCoach> update_admin_coach(id, create_admin_coach_request)
@@ -29340,6 +37939,158 @@ end
 ### Return type
 
 [**AdminCoach**](AdminCoach.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_admin_conferences
+
+> <AdminConferenceDetail> update_admin_conferences(id, update_admin_conferences_request)
+
+
+
+Update a conference (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+update_admin_conferences_request = WinthropClient::UpdateAdminConferencesRequest.new({conference: WinthropClient::UpdateAdminConferencesRequestConference.new}) # UpdateAdminConferencesRequest | 
+
+begin
+  
+  result = api_instance.update_admin_conferences(id, update_admin_conferences_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_conferences: #{e}"
+end
+```
+
+#### Using the update_admin_conferences_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminConferenceDetail>, Integer, Hash)> update_admin_conferences_with_http_info(id, update_admin_conferences_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_conferences_with_http_info(id, update_admin_conferences_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminConferenceDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_conferences_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **update_admin_conferences_request** | [**UpdateAdminConferencesRequest**](UpdateAdminConferencesRequest.md) |  |  |
+
+### Return type
+
+[**AdminConferenceDetail**](AdminConferenceDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_admin_conferenceships
+
+> <AdminConferenceship> update_admin_conferenceships(id, update_admin_conferenceships_request)
+
+
+
+Update an existing conferenceship's school/sport/conference assignment (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+update_admin_conferenceships_request = WinthropClient::UpdateAdminConferenceshipsRequest.new({conferenceship: WinthropClient::UpdateAdminConferenceshipsRequestConferenceship.new}) # UpdateAdminConferenceshipsRequest | 
+
+begin
+  
+  result = api_instance.update_admin_conferenceships(id, update_admin_conferenceships_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_conferenceships: #{e}"
+end
+```
+
+#### Using the update_admin_conferenceships_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminConferenceship>, Integer, Hash)> update_admin_conferenceships_with_http_info(id, update_admin_conferenceships_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_conferenceships_with_http_info(id, update_admin_conferenceships_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminConferenceship>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_conferenceships_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **update_admin_conferenceships_request** | [**UpdateAdminConferenceshipsRequest**](UpdateAdminConferenceshipsRequest.md) |  |  |
+
+### Return type
+
+[**AdminConferenceship**](AdminConferenceship.md)
 
 ### Authorization
 
@@ -29507,6 +38258,157 @@ end
 - **Accept**: application/json
 
 
+## update_admin_deal
+
+> <AdminDeal> update_admin_deal(id, update_admin_deal_request)
+
+
+
+Update a Deal's fields, and (once a deal_type is set) its type-specific deal_detail_attributes
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+update_admin_deal_request = WinthropClient::UpdateAdminDealRequest.new({deal: WinthropClient::UpdateAdminDealRequestDeal.new}) # UpdateAdminDealRequest | 
+
+begin
+  
+  result = api_instance.update_admin_deal(id, update_admin_deal_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_deal: #{e}"
+end
+```
+
+#### Using the update_admin_deal_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminDeal>, Integer, Hash)> update_admin_deal_with_http_info(id, update_admin_deal_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_deal_with_http_info(id, update_admin_deal_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminDeal>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_deal_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **update_admin_deal_request** | [**UpdateAdminDealRequest**](UpdateAdminDealRequest.md) |  |  |
+
+### Return type
+
+[**AdminDeal**](AdminDeal.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_admin_deal_status
+
+> update_admin_deal_status(id, update_admin_deal_status_request)
+
+
+
+Update deal status (persisted super admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+update_admin_deal_status_request = WinthropClient::UpdateAdminDealStatusRequest.new # UpdateAdminDealStatusRequest | 
+
+begin
+  
+  api_instance.update_admin_deal_status(id, update_admin_deal_status_request)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_deal_status: #{e}"
+end
+```
+
+#### Using the update_admin_deal_status_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> update_admin_deal_status_with_http_info(id, update_admin_deal_status_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_deal_status_with_http_info(id, update_admin_deal_status_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_deal_status_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **update_admin_deal_status_request** | [**UpdateAdminDealStatusRequest**](UpdateAdminDealStatusRequest.md) |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+
 ## update_admin_desk_report
 
 > <DeskAdminReportResponse> update_admin_desk_report(uuid, desk_admin_report_update)
@@ -29648,6 +38550,82 @@ end
 ### Return type
 
 [**UpdateAdminDeskRequest200Response**](UpdateAdminDeskRequest200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_admin_favorites
+
+> <AdminFavoriteDetail> update_admin_favorites(id, update_admin_favorites_request)
+
+
+
+Reassign a favorite's category (admin, super-admin only) — the only editable field
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+update_admin_favorites_request = WinthropClient::UpdateAdminFavoritesRequest.new({favorite: WinthropClient::UpdateAdminFavoritesRequestFavorite.new}) # UpdateAdminFavoritesRequest | 
+
+begin
+  
+  result = api_instance.update_admin_favorites(id, update_admin_favorites_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_favorites: #{e}"
+end
+```
+
+#### Using the update_admin_favorites_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminFavoriteDetail>, Integer, Hash)> update_admin_favorites_with_http_info(id, update_admin_favorites_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_favorites_with_http_info(id, update_admin_favorites_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminFavoriteDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_favorites_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **update_admin_favorites_request** | [**UpdateAdminFavoritesRequest**](UpdateAdminFavoritesRequest.md) |  |  |
+
+### Return type
+
+[**AdminFavoriteDetail**](AdminFavoriteDetail.md)
 
 ### Authorization
 
@@ -30413,6 +39391,234 @@ end
 - **Accept**: application/json
 
 
+## update_admin_note
+
+> <AdminNote> update_admin_note(id, update_admin_note_request)
+
+
+
+Update a note's content (admin)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+update_admin_note_request = WinthropClient::UpdateAdminNoteRequest.new({note: WinthropClient::UpdateAdminNoteRequestNote.new}) # UpdateAdminNoteRequest | 
+
+begin
+  
+  result = api_instance.update_admin_note(id, update_admin_note_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_note: #{e}"
+end
+```
+
+#### Using the update_admin_note_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminNote>, Integer, Hash)> update_admin_note_with_http_info(id, update_admin_note_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_note_with_http_info(id, update_admin_note_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminNote>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_note_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **update_admin_note_request** | [**UpdateAdminNoteRequest**](UpdateAdminNoteRequest.md) |  |  |
+
+### Return type
+
+[**AdminNote**](AdminNote.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_admin_position
+
+> <AdminPosition> update_admin_position(id, create_admin_position_request)
+
+
+
+Update a single position (admin-only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | ID of the position
+create_admin_position_request = WinthropClient::CreateAdminPositionRequest.new({position: WinthropClient::CreateAdminPositionRequestPosition.new}) # CreateAdminPositionRequest | 
+
+begin
+  
+  result = api_instance.update_admin_position(id, create_admin_position_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_position: #{e}"
+end
+```
+
+#### Using the update_admin_position_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminPosition>, Integer, Hash)> update_admin_position_with_http_info(id, create_admin_position_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_position_with_http_info(id, create_admin_position_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminPosition>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_position_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | ID of the position |  |
+| **create_admin_position_request** | [**CreateAdminPositionRequest**](CreateAdminPositionRequest.md) |  |  |
+
+### Return type
+
+[**AdminPosition**](AdminPosition.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_admin_position_types
+
+> <AdminPositionType> update_admin_position_types(id, create_position_type_request)
+
+
+
+Update a single Position Type (admin-only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | ID of the Position Type
+create_position_type_request = WinthropClient::CreatePositionTypeRequest.new({position_type: WinthropClient::CreatePositionTypeRequestPositionType.new}) # CreatePositionTypeRequest | 
+
+begin
+  
+  result = api_instance.update_admin_position_types(id, create_position_type_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_position_types: #{e}"
+end
+```
+
+#### Using the update_admin_position_types_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminPositionType>, Integer, Hash)> update_admin_position_types_with_http_info(id, create_position_type_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_position_types_with_http_info(id, create_position_type_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminPositionType>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_position_types_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | ID of the Position Type |  |
+| **create_position_type_request** | [**CreatePositionTypeRequest**](CreatePositionTypeRequest.md) |  |  |
+
+### Return type
+
+[**AdminPositionType**](AdminPositionType.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## update_admin_requested_item
 
 > <AdminRequestedItem> update_admin_requested_item(id, update_admin_requested_item_request)
@@ -30565,6 +39771,389 @@ end
 - **Accept**: application/json
 
 
+## update_admin_school_deal
+
+> <AdminDeal> update_admin_school_deal(school_id, id, create_admin_school_deal_request)
+
+
+
+Update a Deal scoped to this School
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | 
+id = 56 # Integer | 
+create_admin_school_deal_request = WinthropClient::CreateAdminSchoolDealRequest.new({deal: 3.56}) # CreateAdminSchoolDealRequest | 
+
+begin
+  
+  result = api_instance.update_admin_school_deal(school_id, id, create_admin_school_deal_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_school_deal: #{e}"
+end
+```
+
+#### Using the update_admin_school_deal_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminDeal>, Integer, Hash)> update_admin_school_deal_with_http_info(school_id, id, create_admin_school_deal_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_school_deal_with_http_info(school_id, id, create_admin_school_deal_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminDeal>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_school_deal_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** |  |  |
+| **id** | **Integer** |  |  |
+| **create_admin_school_deal_request** | [**CreateAdminSchoolDealRequest**](CreateAdminSchoolDealRequest.md) |  |  |
+
+### Return type
+
+[**AdminDeal**](AdminDeal.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_admin_school_group
+
+> update_admin_school_group(id, update_admin_school_group_request)
+
+
+
+Update school group (persisted super admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+update_admin_school_group_request = WinthropClient::UpdateAdminSchoolGroupRequest.new # UpdateAdminSchoolGroupRequest | 
+
+begin
+  
+  api_instance.update_admin_school_group(id, update_admin_school_group_request)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_school_group: #{e}"
+end
+```
+
+#### Using the update_admin_school_group_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> update_admin_school_group_with_http_info(id, update_admin_school_group_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_school_group_with_http_info(id, update_admin_school_group_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_school_group_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **update_admin_school_group_request** | [**UpdateAdminSchoolGroupRequest**](UpdateAdminSchoolGroupRequest.md) |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+
+## update_admin_school_names
+
+> <AdminSchoolName> update_admin_school_names(id, update_admin_school_names_request)
+
+
+
+Update an existing alternate school name (super_admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+update_admin_school_names_request = WinthropClient::UpdateAdminSchoolNamesRequest.new({school_name: WinthropClient::UpdateAdminSchoolNamesRequestSchoolName.new}) # UpdateAdminSchoolNamesRequest | 
+
+begin
+  
+  result = api_instance.update_admin_school_names(id, update_admin_school_names_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_school_names: #{e}"
+end
+```
+
+#### Using the update_admin_school_names_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminSchoolName>, Integer, Hash)> update_admin_school_names_with_http_info(id, update_admin_school_names_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_school_names_with_http_info(id, update_admin_school_names_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminSchoolName>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_school_names_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **update_admin_school_names_request** | [**UpdateAdminSchoolNamesRequest**](UpdateAdminSchoolNamesRequest.md) |  |  |
+
+### Return type
+
+[**AdminSchoolName**](AdminSchoolName.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_admin_schools
+
+> <AdminSchoolDetail> update_admin_schools(id, opts)
+
+
+
+Update a school's editable fields (admin-only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+opts = {
+  school: WinthropClient::CreateAdminSchoolRequestSchool.new # CreateAdminSchoolRequestSchool | 
+}
+
+begin
+  
+  result = api_instance.update_admin_schools(id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_schools: #{e}"
+end
+```
+
+#### Using the update_admin_schools_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminSchoolDetail>, Integer, Hash)> update_admin_schools_with_http_info(id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_schools_with_http_info(id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminSchoolDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_schools_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **school** | [**CreateAdminSchoolRequestSchool**](CreateAdminSchoolRequestSchool.md) |  | [optional] |
+
+### Return type
+
+[**AdminSchoolDetail**](AdminSchoolDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+
+## update_admin_sport
+
+> <AdminSport> update_admin_sport(id, create_sport_request)
+
+
+
+Update a single Sport (admin-only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | ID of the Sport
+create_sport_request = WinthropClient::CreateSportRequest.new({sport: WinthropClient::CreateSportRequestSport.new}) # CreateSportRequest | 
+
+begin
+  
+  result = api_instance.update_admin_sport(id, create_sport_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_sport: #{e}"
+end
+```
+
+#### Using the update_admin_sport_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminSport>, Integer, Hash)> update_admin_sport_with_http_info(id, create_sport_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_sport_with_http_info(id, create_sport_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminSport>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_sport_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | ID of the Sport |  |
+| **create_sport_request** | [**CreateSportRequest**](CreateSportRequest.md) |  |  |
+
+### Return type
+
+[**AdminSport**](AdminSport.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## update_admin_termination_agreement
 
 > <AdminTerminationAgreement> update_admin_termination_agreement(id, opts)
@@ -30640,6 +40229,236 @@ end
 ### HTTP request headers
 
 - **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+
+## update_admin_user
+
+> <AdminUser> update_admin_user(id, update_admin_user_request)
+
+
+
+Update a user's fields, roles, and sport access (super_admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+update_admin_user_request = WinthropClient::UpdateAdminUserRequest.new # UpdateAdminUserRequest | 
+
+begin
+  
+  result = api_instance.update_admin_user(id, update_admin_user_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_user: #{e}"
+end
+```
+
+#### Using the update_admin_user_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminUser>, Integer, Hash)> update_admin_user_with_http_info(id, update_admin_user_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_user_with_http_info(id, update_admin_user_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminUser>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_user_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **update_admin_user_request** | [**UpdateAdminUserRequest**](UpdateAdminUserRequest.md) |  |  |
+
+### Return type
+
+[**AdminUser**](AdminUser.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_admin_vendor_deal
+
+> <AdminDeal> update_admin_vendor_deal(vendor_id, id, create_admin_school_deal_request)
+
+
+
+Update a Deal scoped to this Vendor
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+vendor_id = 56 # Integer | 
+id = 56 # Integer | 
+create_admin_school_deal_request = WinthropClient::CreateAdminSchoolDealRequest.new({deal: 3.56}) # CreateAdminSchoolDealRequest | 
+
+begin
+  
+  result = api_instance.update_admin_vendor_deal(vendor_id, id, create_admin_school_deal_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_vendor_deal: #{e}"
+end
+```
+
+#### Using the update_admin_vendor_deal_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminDeal>, Integer, Hash)> update_admin_vendor_deal_with_http_info(vendor_id, id, create_admin_school_deal_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_vendor_deal_with_http_info(vendor_id, id, create_admin_school_deal_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminDeal>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_vendor_deal_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **vendor_id** | **Integer** |  |  |
+| **id** | **Integer** |  |  |
+| **create_admin_school_deal_request** | [**CreateAdminSchoolDealRequest**](CreateAdminSchoolDealRequest.md) |  |  |
+
+### Return type
+
+[**AdminDeal**](AdminDeal.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_admin_vendors
+
+> <AdminVendorDetail> update_admin_vendors(id, update_admin_vendors_request)
+
+
+
+Update a vendor (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+update_admin_vendors_request = WinthropClient::UpdateAdminVendorsRequest.new({vendor: WinthropClient::UpdateAdminVendorsRequestVendor.new}) # UpdateAdminVendorsRequest | 
+
+begin
+  
+  result = api_instance.update_admin_vendors(id, update_admin_vendors_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_vendors: #{e}"
+end
+```
+
+#### Using the update_admin_vendors_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminVendorDetail>, Integer, Hash)> update_admin_vendors_with_http_info(id, update_admin_vendors_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_vendors_with_http_info(id, update_admin_vendors_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminVendorDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_vendors_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **update_admin_vendors_request** | [**UpdateAdminVendorsRequest**](UpdateAdminVendorsRequest.md) |  |  |
+
+### Return type
+
+[**AdminVendorDetail**](AdminVendorDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -32856,6 +42675,82 @@ end
 ### Return type
 
 [**User**](User.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_verified_admin_deal
+
+> <AdminDeal> update_verified_admin_deal(id, update_verified_admin_deal_request)
+
+
+
+Set a Deal's verified flag (reached from the QC Vendor Contracts page)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+update_verified_admin_deal_request = WinthropClient::UpdateVerifiedAdminDealRequest.new({deal: WinthropClient::UpdateVerifiedAdminDealRequestDeal.new}) # UpdateVerifiedAdminDealRequest | 
+
+begin
+  
+  result = api_instance.update_verified_admin_deal(id, update_verified_admin_deal_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_verified_admin_deal: #{e}"
+end
+```
+
+#### Using the update_verified_admin_deal_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminDeal>, Integer, Hash)> update_verified_admin_deal_with_http_info(id, update_verified_admin_deal_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_verified_admin_deal_with_http_info(id, update_verified_admin_deal_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminDeal>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_verified_admin_deal_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **update_verified_admin_deal_request** | [**UpdateVerifiedAdminDealRequest**](UpdateVerifiedAdminDealRequest.md) |  |  |
+
+### Return type
+
+[**AdminDeal**](AdminDeal.md)
 
 ### Authorization
 

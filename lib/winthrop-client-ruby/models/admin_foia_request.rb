@@ -54,6 +54,9 @@ module WinthropClient
     # Request-level notes, newest first; included on detail and write responses.
     attr_accessor :foia_notes
 
+    # FOIA-requestable vendor types for this school; reading does not create statuses.
+    attr_accessor :vendor_options
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -75,7 +78,8 @@ module WinthropClient
         :'received_items_count' => :'received_items_count',
         :'status_percentage' => :'status_percentage',
         :'deal_status_ids' => :'deal_status_ids',
-        :'foia_notes' => :'foia_notes'
+        :'foia_notes' => :'foia_notes',
+        :'vendor_options' => :'vendor_options'
       }
     end
 
@@ -110,7 +114,8 @@ module WinthropClient
         :'received_items_count' => :'Integer',
         :'status_percentage' => :'Float',
         :'deal_status_ids' => :'Array<Integer>',
-        :'foia_notes' => :'Array<AdminFoiaRequestNote>'
+        :'foia_notes' => :'Array<AdminFoiaRequestNote>',
+        :'vendor_options' => :'Array<AdminFoiaVendorOption>'
       }
     end
 
@@ -223,6 +228,12 @@ module WinthropClient
           self.foia_notes = value
         end
       end
+
+      if attributes.key?(:'vendor_options')
+        if (value = attributes[:'vendor_options']).is_a?(Array)
+          self.vendor_options = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -263,7 +274,8 @@ module WinthropClient
           received_items_count == o.received_items_count &&
           status_percentage == o.status_percentage &&
           deal_status_ids == o.deal_status_ids &&
-          foia_notes == o.foia_notes
+          foia_notes == o.foia_notes &&
+          vendor_options == o.vendor_options
     end
 
     # @see the `==` method
@@ -275,7 +287,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, state, status, date_sent, updated_by_school, updated_by_wi, follow_up_date, last_processed_followup, created_at, updated_at, school, foia_label, created_by, updated_by, requested_items_count, received_items_count, status_percentage, deal_status_ids, foia_notes].hash
+      [id, state, status, date_sent, updated_by_school, updated_by_wi, follow_up_date, last_processed_followup, created_at, updated_at, school, foia_label, created_by, updated_by, requested_items_count, received_items_count, status_percentage, deal_status_ids, foia_notes, vendor_options].hash
     end
 
     # Builds the object from hash
