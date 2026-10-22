@@ -18,6 +18,8 @@
 | **end_year** | **Integer** |  | [optional] |
 | **start_at** | **Time** |  | [optional] |
 | **end_at** | **Time** |  | [optional] |
+| **start_on** | **Date** | The deal&#39;s start date as a plain calendar date (YYYY-MM-DD): the UTC calendar date of the stored start_at/end_at instant, the same in every reader&#39;s time zone. Additive; the timestamp field next to it is unchanged. | [optional] |
+| **end_on** | **Date** | The deal&#39;s end date as a plain calendar date (YYYY-MM-DD): the UTC calendar date of the stored start_at/end_at instant, the same in every reader&#39;s time zone. Additive; the timestamp field next to it is unchanged. | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **summary** | **String** |  | [optional] |
 | **autorenew** | **Boolean** |  | [optional] |
@@ -47,6 +49,8 @@ instance = WinthropClient::DealUpdateResult.new(
   end_year: null,
   start_at: null,
   end_at: null,
+  start_on: Tue Jul 01 00:00:00 UTC 2025,
+  end_on: Tue Jul 01 00:00:00 UTC 2025,
   created_at: null,
   summary: null,
   autorenew: null,
