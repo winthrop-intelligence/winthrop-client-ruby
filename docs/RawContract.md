@@ -5,9 +5,9 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** |  | [optional] |
-| **asset_file_size** | **Integer** |  | [optional] |
-| **asset_content_type** | **String** |  | [optional] |
-| **asset_file_name** | **String** |  | [optional] |
+| **asset_file_size** | **Integer** | Byte size of the file currently held (the stored file&#39;s size when one is attached, the legacy column otherwise) | [optional] |
+| **asset_content_type** | **String** | Content type of the file currently held (the stored file&#39;s when one is attached) | [optional] |
+| **asset_file_name** | **String** | Name of the file currently held (the stored file&#39;s when one is attached); the name view_file and download use | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
 | **contract_type_id** | **Integer** |  | [optional] |

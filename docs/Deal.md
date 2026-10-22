@@ -9,6 +9,8 @@
 | **vendor_id** | **Integer** |  | [optional] |
 | **start_at** | **Time** |  | [optional] |
 | **end_at** | **Time** |  | [optional] |
+| **start_on** | **Date** | The deal&#39;s start date as a plain calendar date (YYYY-MM-DD): the UTC calendar date of the stored start_at/end_at instant, the same in every reader&#39;s time zone. Additive; the timestamp field next to it is unchanged. | [optional] |
+| **end_on** | **Date** | The deal&#39;s end date as a plain calendar date (YYYY-MM-DD): the UTC calendar date of the stored start_at/end_at instant, the same in every reader&#39;s time zone. Additive; the timestamp field next to it is unchanged. | [optional] |
 | **signed** | **Time** |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
@@ -30,6 +32,8 @@ instance = WinthropClient::Deal.new(
   vendor_id: null,
   start_at: 2019-01-01T00:00Z,
   end_at: 2019-01-01T00:00Z,
+  start_on: Tue Jul 01 00:00:00 UTC 2025,
+  end_on: Tue Jul 01 00:00:00 UTC 2025,
   signed: 2019-01-01T00:00Z,
   created_at: 2019-01-01T00:00Z,
   updated_at: 2019-01-01T00:00Z,

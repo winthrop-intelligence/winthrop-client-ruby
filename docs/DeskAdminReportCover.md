@@ -7,6 +7,7 @@
 | **treatment** | **String** |  |  |
 | **kicker** | **String** |  |  |
 | **numeral** | **String** |  |  |
+| **images** | [**DeskAdminCoverImages**](DeskAdminCoverImages.md) |  |  |
 
 ## Example
 
@@ -16,7 +17,8 @@ require 'winthrop-client-ruby'
 instance = WinthropClient::DeskAdminReportCover.new(
   treatment: null,
   kicker: null,
-  numeral: null
+  numeral: null,
+  images: null
 )
 ```
 

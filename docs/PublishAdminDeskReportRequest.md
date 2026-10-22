@@ -12,6 +12,8 @@
 | **downloads_pdf** | **File** | PDF replacement or addition; multipart updates only. | [optional] |
 | **downloads_xlsx** | **File** | XLSX replacement or addition; multipart updates only. | [optional] |
 | **downloads_pptx** | **File** | PPTX replacement or addition; multipart updates only. | [optional] |
+| **cover_images_card** | **File** | Library card cover image (WebP, PNG or JPEG, up to 2 MB) replacement or addition; multipart updates only. | [optional] |
+| **cover_images_banner** | **File** | Art-only reader header image (WebP, PNG or JPEG, up to 2 MB) replacement or addition; multipart updates only. | [optional] |
 
 ## Example
 
@@ -26,7 +28,9 @@ instance = WinthropClient::PublishAdminDeskReportRequest.new(
   update: null,
   downloads_pdf: null,
   downloads_xlsx: null,
-  downloads_pptx: null
+  downloads_pptx: null,
+  cover_images_card: null,
+  cover_images_banner: null
 )
 ```
 
