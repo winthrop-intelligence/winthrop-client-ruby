@@ -42051,7 +42051,7 @@ end
 
 
 
-Atomically update deal fields and Apparel or Multimedia detail values. At least one field is required. Unknown fields and fields belonging to another deal type return 422 without changes. Changes are audited with the authenticated user. 
+Atomically update deal fields and the deal's own detail values. Detail updates are accepted for Apparel, Multimedia, Concessions, Pouring Rights, Ticketing, Outsourced Ticketing, Trademark, Bookstore, NIL and Video Mgmt deals (WINAD-10685); Travel, Athletics Software and Executive Search deals have no detail fields. At least one field is required. Unknown fields and fields belonging to another deal type return 422 (naming the fields the type allows) without changes. Changes are audited with the authenticated user. 
 
 ### Examples
 
