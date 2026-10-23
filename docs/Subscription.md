@@ -27,6 +27,7 @@
 | **contract_accepted_ip_address** | **String** |  | [optional] |
 | **renewal** | **Boolean** |  | [optional] |
 | **renewing** | **Boolean** |  | [optional] |
+| **scheduled_for_activation** | **Boolean** | Queued to take over from the account&#39;s active agreement on its start date. Set only when the agreement is created as an inactive renewal for an account that has an active subscription (or queued by an operator with winad:schedule_subscription_activation); cleared when the agreement is activated, stops being a renewal, or ends. True only while the agreement is inactive and its end date has not passed, so an ended renewal stops reporting it even before the entry is cleared. False for every other subscription, including an inactive renewal that was never queued, which the daily activation task never switches on. Read-only. | [optional] |
 | **invoicing** | **Boolean** |  | [optional] |
 | **notes** | **String** |  | [optional] |
 | **send_renewal** | **Boolean** |  | [optional] |
@@ -70,6 +71,7 @@ instance = WinthropClient::Subscription.new(
   contract_accepted_ip_address: 233.34.24.28,
   renewal: false,
   renewing: false,
+  scheduled_for_activation: false,
   invoicing: true,
   notes: This is a note,
   send_renewal: true,
