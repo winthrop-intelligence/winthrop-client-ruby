@@ -16,6 +16,9 @@ require 'time'
 module WinthropClient
   # Partial update of a published contract. At least one of the contract fields is required; change_note alone is insufficient. Pending contracts are published, not edited. Setting at_will true requires end_on null. Changes are audited with the authenticated user and the optional change_note. 
   class UpdateContractRequest < ApiModelBase
+    # Id of the RawContract (a coach contract document nobody else holds) the contract should hold from now on. See the PATCH description.
+    attr_accessor :raw_contract_id
+
     # Contract start date (strict YYYY-MM-DD); cannot be null.
     attr_accessor :start_on
 
@@ -37,12 +40,19 @@ module WinthropClient
     # Moves the contract to this coach. Refused (422 errors.coach_id plus linked_compensation_ids, linked_position_ids, linked_verification_ids and linked_earned_incentive_ids) while any of those rows still link to the contract; the agent never relinks them itself.
     attr_accessor :coach_id
 
+    # Same as coach_id (WINAD-10739). Giving both with different values is a 422.
+    attr_accessor :contractable_id
+
+    # Sets the owner type (WINAD-10739), for example to repair a contract saved with a contractable_id and no type. Only Coach is accepted. A contract with no owner id needs coach_id / contractable_id in the same request, because the type alone is a 422 (errors.contractable_id). Together with coach_id / contractable_id these are the only fields a pending contract accepts.
+    attr_accessor :contractable_type
+
     # Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates, the records it saves as side effects included, and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write.
     attr_accessor :change_note
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'raw_contract_id' => :'raw_contract_id',
         :'start_on' => :'start_on',
         :'end_on' => :'end_on',
         :'at_will' => :'at_will',
@@ -50,6 +60,8 @@ module WinthropClient
         :'expires_on' => :'expires_on',
         :'contingent_change' => :'contingent_change',
         :'coach_id' => :'coach_id',
+        :'contractable_id' => :'contractable_id',
+        :'contractable_type' => :'contractable_type',
         :'change_note' => :'change_note'
       }
     end
@@ -67,6 +79,7 @@ module WinthropClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'raw_contract_id' => :'Integer',
         :'start_on' => :'Date',
         :'end_on' => :'Date',
         :'at_will' => :'Boolean',
@@ -74,6 +87,8 @@ module WinthropClient
         :'expires_on' => :'Date',
         :'contingent_change' => :'Boolean',
         :'coach_id' => :'Integer',
+        :'contractable_id' => :'Integer',
+        :'contractable_type' => :'String',
         :'change_note' => :'String'
       }
     end
@@ -104,6 +119,10 @@ module WinthropClient
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'raw_contract_id')
+        self.raw_contract_id = attributes[:'raw_contract_id']
+      end
+
       if attributes.key?(:'start_on')
         self.start_on = attributes[:'start_on']
       end
@@ -132,6 +151,14 @@ module WinthropClient
         self.coach_id = attributes[:'coach_id']
       end
 
+      if attributes.key?(:'contractable_id')
+        self.contractable_id = attributes[:'contractable_id']
+      end
+
+      if attributes.key?(:'contractable_type')
+        self.contractable_type = attributes[:'contractable_type']
+      end
+
       if attributes.key?(:'change_note')
         self.change_note = attributes[:'change_note']
       end
@@ -153,8 +180,20 @@ module WinthropClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      contractable_type_validator = EnumAttributeValidator.new('String', ["Coach"])
+      return false unless contractable_type_validator.valid?(@contractable_type)
       return false if !@change_note.nil? && @change_note.to_s.length > 500
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] contractable_type Object to be assigned
+    def contractable_type=(contractable_type)
+      validator = EnumAttributeValidator.new('String', ["Coach"])
+      unless validator.valid?(contractable_type)
+        fail ArgumentError, "invalid value for \"contractable_type\", must be one of #{validator.allowable_values}."
+      end
+      @contractable_type = contractable_type
     end
 
     # Custom attribute writer method with validation
@@ -172,6 +211,7 @@ module WinthropClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          raw_contract_id == o.raw_contract_id &&
           start_on == o.start_on &&
           end_on == o.end_on &&
           at_will == o.at_will &&
@@ -179,6 +219,8 @@ module WinthropClient
           expires_on == o.expires_on &&
           contingent_change == o.contingent_change &&
           coach_id == o.coach_id &&
+          contractable_id == o.contractable_id &&
+          contractable_type == o.contractable_type &&
           change_note == o.change_note
     end
 
@@ -191,7 +233,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [start_on, end_on, at_will, executed_on, expires_on, contingent_change, coach_id, change_note].hash
+      [raw_contract_id, start_on, end_on, at_will, executed_on, expires_on, contingent_change, coach_id, contractable_id, contractable_type, change_note].hash
     end
 
     # Builds the object from hash

@@ -9,7 +9,7 @@
 | **min_purchase_obl** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] |
 | **signing_bonus** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] |
 | **contingent_bonus** | **Boolean** |  | [optional] |
-| **sports** | [**Array&lt;ApparelDealUpdateSportsInner&gt;**](ApparelDealUpdateSportsInner.md) | Sport IDs or case-insensitive display names; an empty array clears all sports. | [optional] |
+| **sports** | [**Array&lt;ApparelDealUpdateSportsInner&gt;**](ApparelDealUpdateSportsInner.md) | Teams covered. Sport IDs or case-insensitive display names; an empty array clears all sports. Leave empty and set all_sports for department-wide deals. | [optional] |
 | **grf** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] |
 | **bha** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] |
 | **additional_rev** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] |
@@ -42,6 +42,23 @@
 | **guaranteed_amt_year_one** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] |
 | **capital_improvement** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] |
 | **annual_host_fee** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] |
+| **products** | **String** | Vendor products, modules or packages bought, e.g. \&quot;Hub, ARMS, INFLCR\&quot;. Blank clears. | [optional] |
+| **all_sports** | **Boolean** | True only when the contract says department-wide or all teams. Null restores not stated. | [optional] |
+| **final_year_fee** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] |
+| **implementation_fee** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] |
+| **travel_subtype** | **String** | Kind of travel deal. Required when the detail is saved. | [optional] |
+| **management_fee** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] |
+| **agent_ticket_fee** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] |
+| **included_transactions** | [**DealUpdateCount**](DealUpdateCount.md) |  | [optional] |
+| **onsite_agents** | [**DealUpdateOnsiteAgents**](DealUpdateOnsiteAgents.md) |  | [optional] |
+| **after_hours_fee** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] |
+| **rate_per_mile** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] |
+| **daily_rate** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] |
+| **daily_rate_rule** | **String** | Bus Charter. How the daily rate is billed. Null clears. | [optional] |
+| **driver_overnight** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] |
+| **price_per_round_trip** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] |
+| **aircraft** | **String** | Air Charter. Aircraft type, e.g. A320. Blank clears. | [optional] |
+| **round_trips** | [**DealUpdateCount**](DealUpdateCount.md) |  | [optional] |
 
 ## Example
 
@@ -86,7 +103,24 @@ instance = WinthropClient::UpdateDealRequestDealDetail.new(
   alloc_percent_6: null,
   guaranteed_amt_year_one: null,
   capital_improvement: null,
-  annual_host_fee: null
+  annual_host_fee: null,
+  products: null,
+  all_sports: null,
+  final_year_fee: null,
+  implementation_fee: null,
+  travel_subtype: null,
+  management_fee: null,
+  agent_ticket_fee: null,
+  included_transactions: null,
+  onsite_agents: null,
+  after_hours_fee: null,
+  rate_per_mile: null,
+  daily_rate: null,
+  daily_rate_rule: null,
+  driver_overnight: null,
+  price_per_round_trip: null,
+  aircraft: null,
+  round_trips: null
 )
 ```
 

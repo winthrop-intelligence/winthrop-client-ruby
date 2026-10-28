@@ -21,6 +21,7 @@ module WinthropClient
       def openapi_any_of
         [
           :'ApparelDealUpdate',
+          :'AthleticsSoftwareDealUpdate',
           :'BookstoreDealUpdate',
           :'ConcessionDealUpdate',
           :'MultimediaDealUpdate',
@@ -29,6 +30,7 @@ module WinthropClient
           :'PouringDealUpdate',
           :'TicketingDealUpdate',
           :'TrademarkDealUpdate',
+          :'TravelDealUpdate',
           :'VideoDealUpdate'
         ]
       end

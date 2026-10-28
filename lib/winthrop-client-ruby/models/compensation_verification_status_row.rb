@@ -284,7 +284,7 @@ module WinthropClient
       return false if @compensation_id.nil?
       return false if @school_id.nil?
       return false if @status.nil?
-      method_validator = EnumAttributeValidator.new('String', ["agent", "manual"])
+      method_validator = EnumAttributeValidator.new('String', ["agent", "manual", "agent_concur"])
       return false unless method_validator.valid?(@method)
       return false if @changed_since.nil?
       true
@@ -323,7 +323,7 @@ module WinthropClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] method Object to be assigned
     def method=(method)
-      validator = EnumAttributeValidator.new('String', ["agent", "manual"])
+      validator = EnumAttributeValidator.new('String', ["agent", "manual", "agent_concur"])
       unless validator.valid?(method)
         fail ArgumentError, "invalid value for \"method\", must be one of #{validator.allowable_values}."
       end

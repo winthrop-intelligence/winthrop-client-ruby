@@ -117,6 +117,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_job_post**](DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post |
 | [**delete_note**](DefaultApi.md#delete_note) | **DELETE** /api/v1/notes/{id} |  |
 | [**delete_position**](DefaultApi.md#delete_position) | **DELETE** /api/v1/positions/{positionId} |  |
+| [**delete_raw_contract**](DefaultApi.md#delete_raw_contract) | **DELETE** /api/v1/raw_contracts/{raw_contractId} |  |
 | [**delete_requested_item**](DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} |  |
 | [**delete_schedule_intent**](DefaultApi.md#delete_schedule_intent) | **DELETE** /api/v1/schedule_intents/{scheduleIntentId} |  |
 | [**delete_schedule_tournament**](DefaultApi.md#delete_schedule_tournament) | **DELETE** /api/v1/schedule_tournaments/{scheduleTournamentId} |  |
@@ -475,6 +476,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**mass_update_admin_compensations**](DefaultApi.md#mass_update_admin_compensations) | **POST** /api/v1/admin/compensations/mass_update |  |
 | [**mass_update_admin_positions**](DefaultApi.md#mass_update_admin_positions) | **POST** /api/v1/admin/positions/mass_update |  |
 | [**mass_update_admin_requested_items**](DefaultApi.md#mass_update_admin_requested_items) | **PATCH** /api/v1/admin/requested_items/mass_update |  |
+| [**merge_coach**](DefaultApi.md#merge_coach) | **POST** /api/v1/coaches/{coachId}/merge |  |
 | [**new_admin_position_type**](DefaultApi.md#new_admin_position_type) | **GET** /api/v1/admin/position_types/new |  |
 | [**new_admin_sport**](DefaultApi.md#new_admin_sport) | **GET** /api/v1/admin/sports/new |  |
 | [**position_types_for_groups_admin_sports**](DefaultApi.md#position_types_for_groups_admin_sports) | **POST** /api/v1/admin/sports/position_types_for_groups |  |
@@ -5271,7 +5273,7 @@ end
 
 Append a contract verification event
 
-Requires winad_verify, an application explicitly allowing winad_verify, a persisted token resource owner, and read access to the parent RawContract. winad_write is not required and does not grant this action. The document must belong to a Contract. Identity fields are server-derived. Agent retries use a unique (contract_id, agent_run_id) key: equivalent normalized payloads return the original event; changed payloads, documents, or verifiers conflict. An omitted verified_at on retry retains the original check time. The result 'revoked' is rejected here; use the revoke endpoint. Manual checks are never deduplicated. This API provides no endpoints to edit or delete events.
+Requires winad_verify, an application explicitly allowing winad_verify, a persisted token resource owner, and read access to the parent RawContract. winad_write is not required and does not grant this action. The document must belong to a Contract. Identity fields are server-derived. Retries of an agent or agent_concur run are keyed by (contract_id, method, agent_run_id): equivalent normalized payloads return the original event; changed payloads, documents, or verifiers conflict. An omitted verified_at on retry retains the original check time. The result 'revoked' is rejected here; use the revoke endpoint. Manual checks are never deduplicated. This API provides no endpoints to edit or delete events.
 
 ### Examples
 
@@ -7113,11 +7115,11 @@ end
 
 ## create_season
 
-> <Season> create_season(opts)
+> <Season> create_season(create_season_request)
 
 
 
-Create a new Season
+Create the Season for a school, sport and year that has none. If a Season already exists for that triple it is returned unchanged with 200 and nothing is created. The optional top-level change_note is stored on the audit version of the create.
 
 ### Examples
 
@@ -7136,13 +7138,11 @@ WinthropClient.configure do |config|
 end
 
 api_instance = WinthropClient::DefaultApi.new
-opts = {
-  season: WinthropClient::Season.new # Season | 
-}
+create_season_request = WinthropClient::CreateSeasonRequest.new({school_id: 37, sport_id: 37, year: 37}) # CreateSeasonRequest | 
 
 begin
   
-  result = api_instance.create_season(opts)
+  result = api_instance.create_season(create_season_request)
   p result
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->create_season: #{e}"
@@ -7153,12 +7153,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Season>, Integer, Hash)> create_season_with_http_info(opts)
+> <Array(<Season>, Integer, Hash)> create_season_with_http_info(create_season_request)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.create_season_with_http_info(opts)
+  data, status_code, headers = api_instance.create_season_with_http_info(create_season_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Season>
@@ -7171,7 +7171,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **season** | [**Season**](Season.md) |  | [optional] |
+| **create_season_request** | [**CreateSeasonRequest**](CreateSeasonRequest.md) |  |  |
 
 ### Return type
 
@@ -9035,6 +9035,83 @@ end
 | ---- | ---- | ----------- | ----- |
 | **position_id** | **Integer** | ID of position to delete |  |
 | **change_note** | **String** | Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned. | [optional] |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_raw_contract
+
+> delete_raw_contract(raw_contract_id, opts)
+
+
+
+Retire a duplicate RawContract and its stored files. Requires the winad_write OAuth scope and permission to destroy the RawContract. Links are moved first (re-point the income report, pay rows and verification events to the document that stays), then it is retired. While a pay row (compensation of its Contract), an income report, an earned incentive (as its document or as the amendment that ends it) or a verification event still links to it, or its Contract has pay rows or verification events of its own, nothing is deleted and the answer is 409 with errors.blockers, an object of id lists under pay_rows, contracts, income_reports, earned_incentives and verification_events (only the non-empty ones). A Contract with no links of its own is deleted with the RawContract. The delete is an audit version (PaperTrail) with the optional change_note. Returns 204 with no body. API clients in winthrop-clients must be regenerated to expose this change.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+raw_contract_id = 56 # Integer | ID of the RawContract
+opts = {
+  change_note: 'change_note_example' # String | Optional. Why the record is retired, for the audit history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text is refused with 422 (errors.change_note). Never returned.
+}
+
+begin
+  
+  api_instance.delete_raw_contract(raw_contract_id, opts)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_raw_contract: #{e}"
+end
+```
+
+#### Using the delete_raw_contract_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_raw_contract_with_http_info(raw_contract_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_raw_contract_with_http_info(raw_contract_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->delete_raw_contract_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **raw_contract_id** | **Integer** | ID of the RawContract |  |
+| **change_note** | **String** | Optional. Why the record is retired, for the audit history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text is refused with 422 (errors.change_note). Never returned. | [optional] |
 
 ### Return type
 
@@ -36475,6 +36552,82 @@ nil (empty response body)
 - **Accept**: Not defined
 
 
+## merge_coach
+
+> <MergeCoach200Response> merge_coach(coach_id, merge_coach_request)
+
+
+
+Merge the coach in from_coach_id into this coach (super admin only). Moves its contracts, copies positions, pay and income reports the coach does not have, fills blank profile fields, and writes a coach merge log.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+coach_id = 56 # Integer | ID of the coach that keeps the merged data
+merge_coach_request = WinthropClient::MergeCoachRequest.new({from_coach_id: 37}) # MergeCoachRequest | 
+
+begin
+  
+  result = api_instance.merge_coach(coach_id, merge_coach_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->merge_coach: #{e}"
+end
+```
+
+#### Using the merge_coach_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<MergeCoach200Response>, Integer, Hash)> merge_coach_with_http_info(coach_id, merge_coach_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.merge_coach_with_http_info(coach_id, merge_coach_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <MergeCoach200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->merge_coach_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **coach_id** | **Integer** | ID of the coach that keeps the merged data |  |
+| **merge_coach_request** | [**MergeCoachRequest**](MergeCoachRequest.md) |  |  |
+
+### Return type
+
+[**MergeCoach200Response**](MergeCoach200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## new_admin_position_type
 
 > <NewAdminPositionType> new_admin_position_type
@@ -41823,7 +41976,7 @@ end
 
 
 
-Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to \"yearly\", \"hourly\", or \"990\" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \"990\". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A change_note that is not a string, or contains a NUL character, is refused with 422 (errors.change_note). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row's current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
+Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to \"yearly\", \"hourly\", or \"990\" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \"990\". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A change_note that is not a string, or contains a NUL character, is refused with 422 (errors.change_note). A body with only a non-blank change_note (no compensation, or an empty one) records the note on a new version without changing any value (WINAD-10718). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row's current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
 
 ### Examples
 
@@ -42051,7 +42204,7 @@ end
 
 
 
-Atomically update deal fields and the deal's own detail values. Detail updates are accepted for Apparel, Multimedia, Concessions, Pouring Rights, Ticketing, Outsourced Ticketing, Trademark, Bookstore, NIL and Video Mgmt deals (WINAD-10685); Travel, Athletics Software and Executive Search deals have no detail fields. At least one field is required. Unknown fields and fields belonging to another deal type return 422 (naming the fields the type allows) without changes. Changes are audited with the authenticated user. 
+Atomically update deal fields and the deal's own detail values. Detail updates are accepted for Apparel, Multimedia, Concessions, Pouring Rights, Ticketing, Outsourced Ticketing, Trademark, Bookstore, NIL, Video Mgmt, Athletics Software and Travel deals (WINAD-10685); Executive Search deals have no detail fields. At least one field is required. Unknown fields and fields belonging to another deal type return 422 (naming the fields the type allows) without changes. Changes are audited with the authenticated user. 
 
 ### Examples
 

@@ -19,6 +19,106 @@ module WinthropClient
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # File a PDF as a coach's RawContract (WINAD-10702), for example an outside-income form a school emailed, so that it can be attached to the coach's income report: take the returned `id` and send it as `raw_contract_id` to PATCH /income_reports/{incomeReportId} (or POST /income_reports). Send multipart/form-data with the PDF as `file` and the owner as `coach_id`. The file must really be a PDF (its bytes are checked, not its name or declared type) and its name at most 255 characters (counted after Active Storage's sanitiser, as for PUT /raw_contracts/{raw_contractId}/file). There is no size limit of our own: the API gateway's request limit applies.  This creates a RawContract only, not a pending contract: unlike POST /contracts it adds nothing to the contract-entry queue and no Contract exists for the document. A RawContract has no coach column; the income report that takes the document over carries the coach. `coach_id` must be a coach the caller may see and decides the document's school: the coach's current school (null without a position this season), or `school_id` when it is sent. The document is a COACH one, so exactly one Mistral OCR job is queued, as for an upload in the admin UI; read the text from GET /raw_contracts/{raw_contractId}/ocr_text once it finishes. The file is served by GET /raw_contracts/{raw_contractId}/view_file and /download.  `start_on` and `end_on` are the dates of a Contract, which a RawContract cannot hold. Send both (YYYY-MM-DD, the end not before the start) to file a dated, published Coach contract on the coach in the same transaction, as the admin's contract upload does (`contract_id` is then set); send neither to create no Contract. One of them alone is refused. Use POST /contracts and its publish call for an undated pending contract or an at-will one.  Until the document is attached, a document sent without dates has no owner record, so the hidden-coach protection (which follows a Contract, income report or termination agreement) does not yet apply to it, even for a coach with visible=false: it is readable like any other RawContract by every caller who may read RawContracts. Attach it to the income report promptly; once attached, or when `start_on` and `end_on` are sent, it is withheld from callers who cannot see the coach.  Everything is created in one transaction after the checks pass, and the stored file is removed again if it fails: a refusal leaves no blob, RawContract or Contract. The creation is recorded in the RawContract's audit history with the acting user (none for a client-credentials token), the API client and the optional change_note. Requires the winad_write scope and a user who may create RawContracts. 
+    # @param file [File] The PDF
+    # @param coach_id [Integer] The coach the document is filed for
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :school_id Optional. The school the document is filed under. Defaults to the coach&#39;s current school.
+    # @option opts [Date] :start_on Optional, YYYY-MM-DD. Together with end_on it also files a dated Coach contract (see above).
+    # @option opts [Date] :end_on Optional, YYYY-MM-DD, not before start_on. Required with start_on and refused without it.
+    # @option opts [String] :change_note Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write.
+    # @return [RawContractUploaded]
+    def create_raw_contract(file, coach_id, opts = {})
+      data, _status_code, _headers = create_raw_contract_with_http_info(file, coach_id, opts)
+      data
+    end
+
+    # File a PDF as a coach&#39;s RawContract (WINAD-10702), for example an outside-income form a school emailed, so that it can be attached to the coach&#39;s income report: take the returned &#x60;id&#x60; and send it as &#x60;raw_contract_id&#x60; to PATCH /income_reports/{incomeReportId} (or POST /income_reports). Send multipart/form-data with the PDF as &#x60;file&#x60; and the owner as &#x60;coach_id&#x60;. The file must really be a PDF (its bytes are checked, not its name or declared type) and its name at most 255 characters (counted after Active Storage&#39;s sanitiser, as for PUT /raw_contracts/{raw_contractId}/file). There is no size limit of our own: the API gateway&#39;s request limit applies.  This creates a RawContract only, not a pending contract: unlike POST /contracts it adds nothing to the contract-entry queue and no Contract exists for the document. A RawContract has no coach column; the income report that takes the document over carries the coach. &#x60;coach_id&#x60; must be a coach the caller may see and decides the document&#39;s school: the coach&#39;s current school (null without a position this season), or &#x60;school_id&#x60; when it is sent. The document is a COACH one, so exactly one Mistral OCR job is queued, as for an upload in the admin UI; read the text from GET /raw_contracts/{raw_contractId}/ocr_text once it finishes. The file is served by GET /raw_contracts/{raw_contractId}/view_file and /download.  &#x60;start_on&#x60; and &#x60;end_on&#x60; are the dates of a Contract, which a RawContract cannot hold. Send both (YYYY-MM-DD, the end not before the start) to file a dated, published Coach contract on the coach in the same transaction, as the admin&#39;s contract upload does (&#x60;contract_id&#x60; is then set); send neither to create no Contract. One of them alone is refused. Use POST /contracts and its publish call for an undated pending contract or an at-will one.  Until the document is attached, a document sent without dates has no owner record, so the hidden-coach protection (which follows a Contract, income report or termination agreement) does not yet apply to it, even for a coach with visible&#x3D;false: it is readable like any other RawContract by every caller who may read RawContracts. Attach it to the income report promptly; once attached, or when &#x60;start_on&#x60; and &#x60;end_on&#x60; are sent, it is withheld from callers who cannot see the coach.  Everything is created in one transaction after the checks pass, and the stored file is removed again if it fails: a refusal leaves no blob, RawContract or Contract. The creation is recorded in the RawContract&#39;s audit history with the acting user (none for a client-credentials token), the API client and the optional change_note. Requires the winad_write scope and a user who may create RawContracts. 
+    # @param file [File] The PDF
+    # @param coach_id [Integer] The coach the document is filed for
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :school_id Optional. The school the document is filed under. Defaults to the coach&#39;s current school.
+    # @option opts [Date] :start_on Optional, YYYY-MM-DD. Together with end_on it also files a dated Coach contract (see above).
+    # @option opts [Date] :end_on Optional, YYYY-MM-DD, not before start_on. Required with start_on and refused without it.
+    # @option opts [String] :change_note Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write.
+    # @return [Array<(RawContractUploaded, Integer, Hash)>] RawContractUploaded data, response status code and response headers
+    def create_raw_contract_with_http_info(file, coach_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: RawContractsApi.create_raw_contract ...'
+      end
+      # verify the required parameter 'file' is set
+      if @api_client.config.client_side_validation && file.nil?
+        fail ArgumentError, "Missing the required parameter 'file' when calling RawContractsApi.create_raw_contract"
+      end
+      # verify the required parameter 'coach_id' is set
+      if @api_client.config.client_side_validation && coach_id.nil?
+        fail ArgumentError, "Missing the required parameter 'coach_id' when calling RawContractsApi.create_raw_contract"
+      end
+      pattern = Regexp.new(/^\d{4}-\d{2}-\d{2}$/)
+      if @api_client.config.client_side_validation && !opts[:'start_on'].nil? && opts[:'start_on'] !~ pattern
+        fail ArgumentError, "invalid value for 'opts[:\"start_on\"]' when calling RawContractsApi.create_raw_contract, must conform to the pattern #{pattern}."
+      end
+
+      pattern = Regexp.new(/^\d{4}-\d{2}-\d{2}$/)
+      if @api_client.config.client_side_validation && !opts[:'end_on'].nil? && opts[:'end_on'] !~ pattern
+        fail ArgumentError, "invalid value for 'opts[:\"end_on\"]' when calling RawContractsApi.create_raw_contract, must conform to the pattern #{pattern}."
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'change_note'].nil? && opts[:'change_note'].to_s.length > 500
+        fail ArgumentError, 'invalid value for "opts[:"change_note"]" when calling RawContractsApi.create_raw_contract, the character length must be smaller than or equal to 500.'
+      end
+
+      # resource path
+      local_var_path = '/api/v1/raw_contracts'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['multipart/form-data'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+      form_params['file'] = file
+      form_params['coach_id'] = coach_id
+      form_params['school_id'] = opts[:'school_id'] if !opts[:'school_id'].nil?
+      form_params['start_on'] = opts[:'start_on'] if !opts[:'start_on'].nil?
+      form_params['end_on'] = opts[:'end_on'] if !opts[:'end_on'].nil?
+      form_params['change_note'] = opts[:'change_note'] if !opts[:'change_note'].nil?
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'RawContractUploaded'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey', 'Oauth2']
+
+      new_options = opts.merge(
+        :operation => :"RawContractsApi.create_raw_contract",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: RawContractsApi#create_raw_contract\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Return the structured contract terms stored on a RawContract (WINAD-10633), and whether the contract's OCR text has changed since they were read (contract_terms_stale).
     # @param raw_contract_id [Integer] ID of the RawContract
     # @param [Hash] opts the optional parameters

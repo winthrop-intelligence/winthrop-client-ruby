@@ -63,7 +63,41 @@ module WinthropClient
 
     attr_accessor :annual_host_fee
 
+    attr_accessor :travel_subtype
+
+    attr_accessor :management_fee
+
+    attr_accessor :agent_ticket_fee
+
+    attr_accessor :included_transactions
+
+    attr_accessor :onsite_agents
+
+    attr_accessor :after_hours_fee
+
+    attr_accessor :rate_per_mile
+
+    attr_accessor :daily_rate
+
+    attr_accessor :daily_rate_rule
+
+    attr_accessor :driver_overnight
+
+    attr_accessor :price_per_round_trip
+
+    attr_accessor :aircraft
+
+    attr_accessor :round_trips
+
     attr_accessor :guaranteed_amt_year_one
+
+    attr_accessor :products
+
+    attr_accessor :all_sports
+
+    attr_accessor :final_year_fee
+
+    attr_accessor :implementation_fee
 
     attr_accessor :capital_improvement
 
@@ -120,7 +154,24 @@ module WinthropClient
         :'renewal_rev_percent' => :'renewal_rev_percent',
         :'annual_fee' => :'annual_fee',
         :'annual_host_fee' => :'annual_host_fee',
+        :'travel_subtype' => :'travel_subtype',
+        :'management_fee' => :'management_fee',
+        :'agent_ticket_fee' => :'agent_ticket_fee',
+        :'included_transactions' => :'included_transactions',
+        :'onsite_agents' => :'onsite_agents',
+        :'after_hours_fee' => :'after_hours_fee',
+        :'rate_per_mile' => :'rate_per_mile',
+        :'daily_rate' => :'daily_rate',
+        :'daily_rate_rule' => :'daily_rate_rule',
+        :'driver_overnight' => :'driver_overnight',
+        :'price_per_round_trip' => :'price_per_round_trip',
+        :'aircraft' => :'aircraft',
+        :'round_trips' => :'round_trips',
         :'guaranteed_amt_year_one' => :'guaranteed_amt_year_one',
+        :'products' => :'products',
+        :'all_sports' => :'all_sports',
+        :'final_year_fee' => :'final_year_fee',
+        :'implementation_fee' => :'implementation_fee',
         :'capital_improvement' => :'capital_improvement',
         :'threshold_1' => :'threshold_1',
         :'alloc_percent_1' => :'alloc_percent_1',
@@ -175,7 +226,24 @@ module WinthropClient
         :'renewal_rev_percent' => :'Float',
         :'annual_fee' => :'Float',
         :'annual_host_fee' => :'Float',
+        :'travel_subtype' => :'String',
+        :'management_fee' => :'Float',
+        :'agent_ticket_fee' => :'Float',
+        :'included_transactions' => :'Integer',
+        :'onsite_agents' => :'Float',
+        :'after_hours_fee' => :'Float',
+        :'rate_per_mile' => :'Float',
+        :'daily_rate' => :'Float',
+        :'daily_rate_rule' => :'String',
+        :'driver_overnight' => :'Float',
+        :'price_per_round_trip' => :'Float',
+        :'aircraft' => :'String',
+        :'round_trips' => :'Integer',
         :'guaranteed_amt_year_one' => :'Float',
+        :'products' => :'String',
+        :'all_sports' => :'Boolean',
+        :'final_year_fee' => :'Float',
+        :'implementation_fee' => :'Float',
         :'capital_improvement' => :'Float',
         :'threshold_1' => :'Float',
         :'alloc_percent_1' => :'Float',
@@ -220,7 +288,24 @@ module WinthropClient
         :'renewal_rev_percent',
         :'annual_fee',
         :'annual_host_fee',
+        :'travel_subtype',
+        :'management_fee',
+        :'agent_ticket_fee',
+        :'included_transactions',
+        :'onsite_agents',
+        :'after_hours_fee',
+        :'rate_per_mile',
+        :'daily_rate',
+        :'daily_rate_rule',
+        :'driver_overnight',
+        :'price_per_round_trip',
+        :'aircraft',
+        :'round_trips',
         :'guaranteed_amt_year_one',
+        :'products',
+        :'all_sports',
+        :'final_year_fee',
+        :'implementation_fee',
         :'capital_improvement',
         :'threshold_1',
         :'alloc_percent_1',
@@ -349,8 +434,76 @@ module WinthropClient
         self.annual_host_fee = attributes[:'annual_host_fee']
       end
 
+      if attributes.key?(:'travel_subtype')
+        self.travel_subtype = attributes[:'travel_subtype']
+      end
+
+      if attributes.key?(:'management_fee')
+        self.management_fee = attributes[:'management_fee']
+      end
+
+      if attributes.key?(:'agent_ticket_fee')
+        self.agent_ticket_fee = attributes[:'agent_ticket_fee']
+      end
+
+      if attributes.key?(:'included_transactions')
+        self.included_transactions = attributes[:'included_transactions']
+      end
+
+      if attributes.key?(:'onsite_agents')
+        self.onsite_agents = attributes[:'onsite_agents']
+      end
+
+      if attributes.key?(:'after_hours_fee')
+        self.after_hours_fee = attributes[:'after_hours_fee']
+      end
+
+      if attributes.key?(:'rate_per_mile')
+        self.rate_per_mile = attributes[:'rate_per_mile']
+      end
+
+      if attributes.key?(:'daily_rate')
+        self.daily_rate = attributes[:'daily_rate']
+      end
+
+      if attributes.key?(:'daily_rate_rule')
+        self.daily_rate_rule = attributes[:'daily_rate_rule']
+      end
+
+      if attributes.key?(:'driver_overnight')
+        self.driver_overnight = attributes[:'driver_overnight']
+      end
+
+      if attributes.key?(:'price_per_round_trip')
+        self.price_per_round_trip = attributes[:'price_per_round_trip']
+      end
+
+      if attributes.key?(:'aircraft')
+        self.aircraft = attributes[:'aircraft']
+      end
+
+      if attributes.key?(:'round_trips')
+        self.round_trips = attributes[:'round_trips']
+      end
+
       if attributes.key?(:'guaranteed_amt_year_one')
         self.guaranteed_amt_year_one = attributes[:'guaranteed_amt_year_one']
+      end
+
+      if attributes.key?(:'products')
+        self.products = attributes[:'products']
+      end
+
+      if attributes.key?(:'all_sports')
+        self.all_sports = attributes[:'all_sports']
+      end
+
+      if attributes.key?(:'final_year_fee')
+        self.final_year_fee = attributes[:'final_year_fee']
+      end
+
+      if attributes.key?(:'implementation_fee')
+        self.implementation_fee = attributes[:'implementation_fee']
       end
 
       if attributes.key?(:'capital_improvement')
@@ -456,7 +609,24 @@ module WinthropClient
           renewal_rev_percent == o.renewal_rev_percent &&
           annual_fee == o.annual_fee &&
           annual_host_fee == o.annual_host_fee &&
+          travel_subtype == o.travel_subtype &&
+          management_fee == o.management_fee &&
+          agent_ticket_fee == o.agent_ticket_fee &&
+          included_transactions == o.included_transactions &&
+          onsite_agents == o.onsite_agents &&
+          after_hours_fee == o.after_hours_fee &&
+          rate_per_mile == o.rate_per_mile &&
+          daily_rate == o.daily_rate &&
+          daily_rate_rule == o.daily_rate_rule &&
+          driver_overnight == o.driver_overnight &&
+          price_per_round_trip == o.price_per_round_trip &&
+          aircraft == o.aircraft &&
+          round_trips == o.round_trips &&
           guaranteed_amt_year_one == o.guaranteed_amt_year_one &&
+          products == o.products &&
+          all_sports == o.all_sports &&
+          final_year_fee == o.final_year_fee &&
+          implementation_fee == o.implementation_fee &&
           capital_improvement == o.capital_improvement &&
           threshold_1 == o.threshold_1 &&
           alloc_percent_1 == o.alloc_percent_1 &&
@@ -482,7 +652,7 @@ module WinthropClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [type, grf, bha, rev_share_percent, signing_bonus, contingent_bonus, additional_rev, cash_annual_avg, min_purchase_obl, prod_allot_annual_avg, srf, avg_annual_prod, sla, partner, total_guar, annual_guar, license, maintenance, acct_mgr, total_rev_percent, new_rev_percent, renewal_rev_percent, annual_fee, annual_host_fee, guaranteed_amt_year_one, capital_improvement, threshold_1, alloc_percent_1, threshold_2, alloc_percent_2, threshold_3, alloc_percent_3, threshold_4, alloc_percent_4, threshold_5, alloc_percent_5, threshold_6, alloc_percent_6, sports].hash
+      [type, grf, bha, rev_share_percent, signing_bonus, contingent_bonus, additional_rev, cash_annual_avg, min_purchase_obl, prod_allot_annual_avg, srf, avg_annual_prod, sla, partner, total_guar, annual_guar, license, maintenance, acct_mgr, total_rev_percent, new_rev_percent, renewal_rev_percent, annual_fee, annual_host_fee, travel_subtype, management_fee, agent_ticket_fee, included_transactions, onsite_agents, after_hours_fee, rate_per_mile, daily_rate, daily_rate_rule, driver_overnight, price_per_round_trip, aircraft, round_trips, guaranteed_amt_year_one, products, all_sports, final_year_fee, implementation_fee, capital_improvement, threshold_1, alloc_percent_1, threshold_2, alloc_percent_2, threshold_3, alloc_percent_3, threshold_4, alloc_percent_4, threshold_5, alloc_percent_5, threshold_6, alloc_percent_6, sports].hash
     end
 
     # Builds the object from hash
