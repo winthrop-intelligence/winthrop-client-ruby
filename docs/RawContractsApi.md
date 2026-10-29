@@ -4,10 +4,97 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**create_raw_contract**](RawContractsApi.md#create_raw_contract) | **POST** /api/v1/raw_contracts |  |
 | [**get_raw_contract_contract_terms**](RawContractsApi.md#get_raw_contract_contract_terms) | **GET** /api/v1/raw_contracts/{raw_contractId}/contract_terms |  |
 | [**regenerate_raw_contract_ocr_text**](RawContractsApi.md#regenerate_raw_contract_ocr_text) | **POST** /api/v1/raw_contracts/{raw_contractId}/ocr_text/regenerate |  |
 | [**replace_raw_contract_file**](RawContractsApi.md#replace_raw_contract_file) | **PUT** /api/v1/raw_contracts/{raw_contractId}/file |  |
 | [**update_raw_contract_contract_terms**](RawContractsApi.md#update_raw_contract_contract_terms) | **PATCH** /api/v1/raw_contracts/{raw_contractId}/contract_terms |  |
+
+
+## create_raw_contract
+
+> <RawContractUploaded> create_raw_contract(file, coach_id, opts)
+
+
+
+File a PDF as a coach's RawContract (WINAD-10702), for example an outside-income form a school emailed, so that it can be attached to the coach's income report: take the returned `id` and send it as `raw_contract_id` to PATCH /income_reports/{incomeReportId} (or POST /income_reports). Send multipart/form-data with the PDF as `file` and the owner as `coach_id`. The file must really be a PDF (its bytes are checked, not its name or declared type) and its name at most 255 characters (counted after Active Storage's sanitiser, as for PUT /raw_contracts/{raw_contractId}/file). There is no size limit of our own: the API gateway's request limit applies.  This creates a RawContract only, not a pending contract: unlike POST /contracts it adds nothing to the contract-entry queue and no Contract exists for the document. A RawContract has no coach column; the income report that takes the document over carries the coach. `coach_id` must be a coach the caller may see and decides the document's school: the coach's current school (null without a position this season), or `school_id` when it is sent. The document is a COACH one, so exactly one Mistral OCR job is queued, as for an upload in the admin UI; read the text from GET /raw_contracts/{raw_contractId}/ocr_text once it finishes. The file is served by GET /raw_contracts/{raw_contractId}/view_file and /download.  `start_on` and `end_on` are the dates of a Contract, which a RawContract cannot hold. Send both (YYYY-MM-DD, the end not before the start) to file a dated, published Coach contract on the coach in the same transaction, as the admin's contract upload does (`contract_id` is then set); send neither to create no Contract. One of them alone is refused. Use POST /contracts and its publish call for an undated pending contract or an at-will one.  Until the document is attached, a document sent without dates has no owner record, so the hidden-coach protection (which follows a Contract, income report or termination agreement) does not yet apply to it, even for a coach with visible=false: it is readable like any other RawContract by every caller who may read RawContracts. Attach it to the income report promptly; once attached, or when `start_on` and `end_on` are sent, it is withheld from callers who cannot see the coach.  Everything is created in one transaction after the checks pass, and the stored file is removed again if it fails: a refusal leaves no blob, RawContract or Contract. The creation is recorded in the RawContract's audit history with the acting user (none for a client-credentials token), the API client and the optional change_note. Requires the winad_write scope and a user who may create RawContracts. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::RawContractsApi.new
+file = File.new('/path/to/some/file') # File | The PDF
+coach_id = 56 # Integer | The coach the document is filed for
+opts = {
+  school_id: 56, # Integer | Optional. The school the document is filed under. Defaults to the coach's current school.
+  start_on: Date.parse('2013-10-20'), # Date | Optional, YYYY-MM-DD. Together with end_on it also files a dated Coach contract (see above).
+  end_on: Date.parse('2013-10-20'), # Date | Optional, YYYY-MM-DD, not before start_on. Required with start_on and refused without it.
+  change_note: 'change_note_example' # String | Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write.
+}
+
+begin
+  
+  result = api_instance.create_raw_contract(file, coach_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling RawContractsApi->create_raw_contract: #{e}"
+end
+```
+
+#### Using the create_raw_contract_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RawContractUploaded>, Integer, Hash)> create_raw_contract_with_http_info(file, coach_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_raw_contract_with_http_info(file, coach_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RawContractUploaded>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling RawContractsApi->create_raw_contract_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **file** | **File** | The PDF |  |
+| **coach_id** | **Integer** | The coach the document is filed for |  |
+| **school_id** | **Integer** | Optional. The school the document is filed under. Defaults to the coach&#39;s current school. | [optional] |
+| **start_on** | **Date** | Optional, YYYY-MM-DD. Together with end_on it also files a dated Coach contract (see above). | [optional] |
+| **end_on** | **Date** | Optional, YYYY-MM-DD, not before start_on. Required with start_on and refused without it. | [optional] |
+| **change_note** | **String** | Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write. | [optional] |
+
+### Return type
+
+[**RawContractUploaded**](RawContractUploaded.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
 
 ## get_raw_contract_contract_terms

@@ -19,6 +19,8 @@
 | **deal_type_id** | **Integer** |  | [optional] |
 | **archived** | **Boolean** |  | [optional] |
 | **verified** | **Boolean** |  | [optional] |
+| **pending** | **Boolean** | True for a vendor deal filed as a PDF through POST /deals and not yet published (WINAD-10698). Pending deals are internal-only; a customer never receives one. Independent of archived. | [optional] |
+| **raw_contract_id** | **Integer** | The id of the deal&#39;s RawContract (the vendor PDF), if any; null for a caller who cannot show raw contracts. | [optional] |
 | **raw_contract** | [**RawContractTerms**](RawContractTerms.md) | The linked RawContract&#39;s structured terms (deal show only); null when the deal has no RawContract or the user cannot read it. | [optional] |
 
 ## Example
@@ -42,6 +44,8 @@ instance = WinthropClient::Deal.new(
   deal_type_id: null,
   archived: null,
   verified: null,
+  pending: null,
+  raw_contract_id: null,
   raw_contract: null
 )
 ```

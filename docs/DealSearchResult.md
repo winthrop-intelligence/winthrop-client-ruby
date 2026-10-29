@@ -24,6 +24,7 @@
 | **summary** | **String** |  | [optional] |
 | **autorenew** | **Boolean** |  | [optional] |
 | **archived** | **Boolean** |  | [optional] |
+| **pending** | **Boolean** | True for a vendor deal filed as a PDF and not yet published (WINAD-10698). Customers never receive a pending row; staff can filter with q[pending_eq]&#x3D;true. | [optional] |
 | **vendors** | [**Array&lt;DealDetailVendor&gt;**](DealDetailVendor.md) |  | [optional] |
 | **deal_detail** | [**DealDetail**](DealDetail.md) |  | [optional] |
 | **raw_contract_id** | **Integer** |  | [optional] |
@@ -55,6 +56,7 @@ instance = WinthropClient::DealSearchResult.new(
   summary: null,
   autorenew: null,
   archived: null,
+  pending: null,
   vendors: null,
   deal_detail: null,
   raw_contract_id: null,

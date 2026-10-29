@@ -28,6 +28,7 @@
 | **deal_detail** | [**DealUpdateDetail**](DealUpdateDetail.md) |  | [optional] |
 | **raw_contract_id** | **Integer** |  | [optional] |
 | **verified** | **Boolean** |  | [optional] |
+| **pending** | **Boolean** | True for a vendor deal filed from a PDF and not yet published (WINAD-10698); false once published (WINAD-10699, POST /deals/{dealId}/publish). | [optional] |
 
 ## Example
 
@@ -58,7 +59,8 @@ instance = WinthropClient::DealUpdateResult.new(
   vendors: null,
   deal_detail: null,
   raw_contract_id: null,
-  verified: null
+  verified: null,
+  pending: null
 )
 ```
 

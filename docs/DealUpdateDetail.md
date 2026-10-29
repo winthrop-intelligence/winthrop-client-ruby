@@ -28,7 +28,24 @@
 | **renewal_rev_percent** | **String** |  | [optional] |
 | **annual_fee** | **String** |  | [optional] |
 | **annual_host_fee** | **String** |  | [optional] |
+| **travel_subtype** | **String** |  | [optional] |
+| **management_fee** | **String** |  | [optional] |
+| **agent_ticket_fee** | **String** |  | [optional] |
+| **included_transactions** | **Integer** |  | [optional] |
+| **onsite_agents** | **String** |  | [optional] |
+| **after_hours_fee** | **String** |  | [optional] |
+| **rate_per_mile** | **String** |  | [optional] |
+| **daily_rate** | **String** |  | [optional] |
+| **daily_rate_rule** | **String** |  | [optional] |
+| **driver_overnight** | **String** |  | [optional] |
+| **price_per_round_trip** | **String** |  | [optional] |
+| **aircraft** | **String** |  | [optional] |
+| **round_trips** | **Integer** |  | [optional] |
 | **guaranteed_amt_year_one** | **String** |  | [optional] |
+| **products** | **String** |  | [optional] |
+| **all_sports** | **Boolean** |  | [optional] |
+| **final_year_fee** | **String** |  | [optional] |
+| **implementation_fee** | **String** |  | [optional] |
 | **capital_improvement** | **String** |  | [optional] |
 | **threshold_1** | **String** |  | [optional] |
 | **alloc_percent_1** | **String** |  | [optional] |
@@ -74,7 +91,24 @@ instance = WinthropClient::DealUpdateDetail.new(
   renewal_rev_percent: null,
   annual_fee: null,
   annual_host_fee: null,
+  travel_subtype: null,
+  management_fee: null,
+  agent_ticket_fee: null,
+  included_transactions: null,
+  onsite_agents: null,
+  after_hours_fee: null,
+  rate_per_mile: null,
+  daily_rate: null,
+  daily_rate_rule: null,
+  driver_overnight: null,
+  price_per_round_trip: null,
+  aircraft: null,
+  round_trips: null,
   guaranteed_amt_year_one: null,
+  products: null,
+  all_sports: null,
+  final_year_fee: null,
+  implementation_fee: null,
   capital_improvement: null,
   threshold_1: null,
   alloc_percent_1: null,
