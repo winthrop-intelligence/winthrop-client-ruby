@@ -17,6 +17,8 @@
 | **media_link** | **String** |  | [optional] |
 | **raw_contract_id** | **Integer** |  | [optional] |
 | **one_time_bonus_cents** | **Integer** |  | [optional] |
+| **relocation_cents** | **Integer** | The relocation amount, separate from one_time_bonus_cents. Null when there is none. Counted in total_cents only when relocation_taxable is true. | [optional] |
+| **relocation_taxable** | **Boolean** | Whether the relocation is taxable income. Null exactly when relocation_cents is null. | [optional] |
 | **outside_income_cents** | **Integer** |  | [optional] |
 | **contingent_bonus** | **Boolean** |  | [optional] |
 | **buyout_terms** | **String** |  | [optional] |
@@ -43,6 +45,8 @@ instance = WinthropClient::CoachCompensationEntry.new(
   media_link: null,
   raw_contract_id: null,
   one_time_bonus_cents: null,
+  relocation_cents: null,
+  relocation_taxable: null,
   outside_income_cents: null,
   contingent_bonus: null,
   buyout_terms: null,

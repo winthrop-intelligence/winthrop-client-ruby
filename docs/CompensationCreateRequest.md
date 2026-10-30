@@ -12,6 +12,8 @@
 | **compensation_type** | **String** |  | [optional] |
 | **base_salary_cents** | **Integer** |  | [optional] |
 | **one_time_bonus_cents** | **Integer** |  | [optional] |
+| **relocation_cents** | **Integer** | The relocation amount in cents, separate from one_time_bonus_cents. Requires relocation_taxable; counted in the guaranteed total only when that is true. | [optional] |
+| **relocation_taxable** | **Boolean** | Whether the relocation is taxable income. Required when relocation_cents is set; must be omitted or null when it is not. | [optional] |
 | **outside_income_cents** | **Integer** |  | [optional] |
 | **deferred_comp_cents** | **Integer** |  | [optional] |
 | **guaranteed_comp_cents** | **Integer** |  | [optional] |
@@ -26,7 +28,7 @@
 | **contingent_bonus** | **Boolean** |  | [optional] |
 | **bonus_has_contingents** | **Boolean** |  | [optional] |
 | **county_club_membership_paid** | **Boolean** |  | [optional] |
-| **is_car_provided** | **Boolean** | Accepted on creation only | [optional] |
+| **is_car_provided** | **Boolean** | Accepted on POST; see the Compensation schema for PATCH. | [optional] |
 | **executed_on** | **Date** |  | [optional] |
 | **start_on** | **Date** |  | [optional] |
 | **end_on** | **Date** |  | [optional] |
@@ -49,6 +51,8 @@ instance = WinthropClient::CompensationCreateRequest.new(
   compensation_type: null,
   base_salary_cents: null,
   one_time_bonus_cents: null,
+  relocation_cents: null,
+  relocation_taxable: null,
   outside_income_cents: null,
   deferred_comp_cents: null,
   guaranteed_comp_cents: null,

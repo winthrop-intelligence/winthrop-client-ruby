@@ -38,6 +38,8 @@
 | **compensation_contingent_bonus** | **Boolean** |  | [optional] |
 | **compensation_deferred_comp_cents** | **Integer** |  | [optional] |
 | **compensation_one_time_bonus_cents** | **Integer** |  | [optional] |
+| **compensation_relocation_cents** | **Integer** | The relocation amount, separate from the one-time bonus. Null when there is none. Counted in compensation_cents only when compensation_relocation_taxable is true. | [optional] |
+| **compensation_relocation_taxable** | **Boolean** | Whether the relocation is taxable income. Null exactly when compensation_relocation_cents is null. | [optional] |
 | **compensation_buyout_terms** | **String** |  | [optional] |
 | **compensation_is_car_provided** | **Boolean** |  | [optional] |
 | **compensation_outside_income_cents** | **Integer** |  | [optional] |
@@ -97,6 +99,8 @@ instance = WinthropClient::CoachSearchResult.new(
   compensation_contingent_bonus: null,
   compensation_deferred_comp_cents: null,
   compensation_one_time_bonus_cents: null,
+  compensation_relocation_cents: null,
+  compensation_relocation_taxable: null,
   compensation_buyout_terms: null,
   compensation_is_car_provided: null,
   compensation_outside_income_cents: null,

@@ -67,6 +67,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**create_conferenceship**](DefaultApi.md#create_conferenceship) | **POST** /api/v1/conferenceships |  |
 | [**create_contact_search**](DefaultApi.md#create_contact_search) | **POST** /api/v1/contact_searches |  |
 | [**create_contract_verification**](DefaultApi.md#create_contract_verification) | **POST** /api/v1/raw_contracts/{raw_contractId}/verifications | Append a contract verification event |
+| [**create_deal_verification**](DefaultApi.md#create_deal_verification) | **POST** /api/v1/deals/{dealId}/verifications | Append a deal verification event |
 | [**create_desk_report_archive**](DefaultApi.md#create_desk_report_archive) | **POST** /api/v1/desk_reports/{uuid}/archive |  |
 | [**create_desk_report_opened**](DefaultApi.md#create_desk_report_opened) | **POST** /api/v1/desk_reports/{uuid}/opened |  |
 | [**create_desk_request**](DefaultApi.md#create_desk_request) | **POST** /api/v1/desk_requests |  |
@@ -224,6 +225,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_athletic_profile_search**](DefaultApi.md#get_athletic_profile_search) | **GET** /api/v1/athletic_profile_searches/{athleticProfileSearchId} |  |
 | [**get_audited_financial_report_status**](DefaultApi.md#get_audited_financial_report_status) | **GET** /api/v1/audited_financial_report_statuses/{auditedFinancialReportStatusId} |  |
 | [**get_audited_financial_report_statuses**](DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses |  |
+| [**get_bowl_games**](DefaultApi.md#get_bowl_games) | **GET** /api/v1/bowl_games |  |
 | [**get_cashflow**](DefaultApi.md#get_cashflow) | **GET** /api/v1/cashflows/{cashflowId} |  |
 | [**get_cashflow_groups**](DefaultApi.md#get_cashflow_groups) | **GET** /api/v1/cashflow_groups |  |
 | [**get_cashflows**](DefaultApi.md#get_cashflows) | **GET** /api/v1/cashflows |  |
@@ -264,6 +266,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_deal_searches**](DefaultApi.md#get_deal_searches) | **GET** /api/v1/deal_searches |  |
 | [**get_deal_status**](DefaultApi.md#get_deal_status) | **GET** /api/v1/deal_statuses/{dealStatusId} |  |
 | [**get_deal_statuses**](DefaultApi.md#get_deal_statuses) | **GET** /api/v1/deal_statuses |  |
+| [**get_deal_verifications**](DefaultApi.md#get_deal_verifications) | **GET** /api/v1/deals/{dealId}/verifications | List the deal&#39;s verification history |
 | [**get_deals**](DefaultApi.md#get_deals) | **GET** /api/v1/deals |  |
 | [**get_department_searches**](DefaultApi.md#get_department_searches) | **GET** /api/v1/department_searches |  |
 | [**get_desk_report**](DefaultApi.md#get_desk_report) | **GET** /api/v1/desk_reports/{uuid} |  |
@@ -324,6 +327,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_position**](DefaultApi.md#get_position) | **GET** /api/v1/positions/{positionId} |  |
 | [**get_position_types**](DefaultApi.md#get_position_types) | **GET** /api/v1/position_types |  |
 | [**get_positions**](DefaultApi.md#get_positions) | **GET** /api/v1/positions |  |
+| [**get_postseason_results**](DefaultApi.md#get_postseason_results) | **GET** /api/v1/postseason_results |  |
 | [**get_raw_contract**](DefaultApi.md#get_raw_contract) | **GET** /api/v1/raw_contracts/{raw_contractId} |  |
 | [**get_raw_contract_ocr_text**](DefaultApi.md#get_raw_contract_ocr_text) | **GET** /api/v1/raw_contracts/{raw_contractId}/ocr_text |  |
 | [**get_raw_contracts**](DefaultApi.md#get_raw_contracts) | **GET** /api/v1/raw_contracts |  |
@@ -389,6 +393,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_team_schedule_searches**](DefaultApi.md#get_team_schedule_searches) | **GET** /api/v1/team_schedule_searches |  |
 | [**get_team_season_results**](DefaultApi.md#get_team_season_results) | **GET** /api/v1/team_season_results |  |
 | [**get_time_zones**](DefaultApi.md#get_time_zones) | **GET** /api/v1/time_zones |  |
+| [**get_tournament_rounds**](DefaultApi.md#get_tournament_rounds) | **GET** /api/v1/tournament_rounds |  |
 | [**get_upload**](DefaultApi.md#get_upload) | **GET** /api/v1/uploads/{uploadId} |  |
 | [**get_upload_file**](DefaultApi.md#get_upload_file) | **GET** /api/v1/uploads/{uploadId}/file |  |
 | [**get_uploads**](DefaultApi.md#get_uploads) | **GET** /api/v1/uploads |  |
@@ -467,6 +472,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**list_admin_vendor_deals**](DefaultApi.md#list_admin_vendor_deals) | **GET** /api/v1/admin/vendors/{vendor_id}/deals |  |
 | [**list_admin_vendors**](DefaultApi.md#list_admin_vendors) | **GET** /api/v1/admin/vendors |  |
 | [**list_admin_youtube_videos**](DefaultApi.md#list_admin_youtube_videos) | **GET** /api/v1/admin/youtube_videos |  |
+| [**list_deal_verifications**](DefaultApi.md#list_deal_verifications) | **GET** /api/v1/deal_verifications | List verification events across deals |
 | [**list_notes**](DefaultApi.md#list_notes) | **GET** /api/v1/notes/list |  |
 | [**mark_admin_foia_request_processed_followup**](DefaultApi.md#mark_admin_foia_request_processed_followup) | **PATCH** /api/v1/admin/foia_requests/{id}/mark_processed_followup |  |
 | [**mark_paid_admin_invoice**](DefaultApi.md#mark_paid_admin_invoice) | **POST** /api/v1/admin/invoices/{invoiceId}/mark_paid |  |
@@ -479,11 +485,13 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**merge_coach**](DefaultApi.md#merge_coach) | **POST** /api/v1/coaches/{coachId}/merge |  |
 | [**new_admin_position_type**](DefaultApi.md#new_admin_position_type) | **GET** /api/v1/admin/position_types/new |  |
 | [**new_admin_sport**](DefaultApi.md#new_admin_sport) | **GET** /api/v1/admin/sports/new |  |
+| [**patch_season**](DefaultApi.md#patch_season) | **PATCH** /api/v1/seasons/{seasonId} |  |
 | [**position_types_for_groups_admin_sports**](DefaultApi.md#position_types_for_groups_admin_sports) | **POST** /api/v1/admin/sports/position_types_for_groups |  |
 | [**prefill_admin_invoice**](DefaultApi.md#prefill_admin_invoice) | **GET** /api/v1/admin/invoices/prefill |  |
 | [**preview_admin_coach_contracts**](DefaultApi.md#preview_admin_coach_contracts) | **POST** /api/v1/admin/coach_contracts/preview |  |
 | [**preview_admin_coach_merge_log**](DefaultApi.md#preview_admin_coach_merge_log) | **GET** /api/v1/admin/coach_merge_logs/preview |  |
 | [**publish_admin_desk_report**](DefaultApi.md#publish_admin_desk_report) | **POST** /api/v1/admin/desk_reports/{uuid}/publish |  |
+| [**put_postseason_result**](DefaultApi.md#put_postseason_result) | **PUT** /api/v1/postseason_results |  |
 | [**recalculate_admin_system_setting_latest_salaries**](DefaultApi.md#recalculate_admin_system_setting_latest_salaries) | **POST** /api/v1/admin/system_setting/latest_salary_recalculation |  |
 | [**refresh_admin_system_setting_season_cache**](DefaultApi.md#refresh_admin_system_setting_season_cache) | **POST** /api/v1/admin/system_setting/season_cache_refresh |  |
 | [**regenerate_raw_contract_pdf**](DefaultApi.md#regenerate_raw_contract_pdf) | **POST** /api/v1/raw_contracts/{raw_contractId}/regenerate_pdf |  |
@@ -493,6 +501,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**restore_admin_desk_report**](DefaultApi.md#restore_admin_desk_report) | **POST** /api/v1/admin/desk_reports/{uuid}/restore |  |
 | [**retry_frs_export**](DefaultApi.md#retry_frs_export) | **POST** /api/v1/frs_exports/{frsExportId}/retry |  |
 | [**revoke_contract_verification**](DefaultApi.md#revoke_contract_verification) | **POST** /api/v1/raw_contracts/{raw_contractId}/verifications/revoke | Revoke verified seasons (append a revocation event) |
+| [**revoke_deal_verification**](DefaultApi.md#revoke_deal_verification) | **POST** /api/v1/deals/{dealId}/verifications/revoke | Revoke a deal&#39;s verification (append a revocation event) |
 | [**run_admin_scraper**](DefaultApi.md#run_admin_scraper) | **POST** /api/v1/admin/scrapers/{id}/run |  |
 | [**search_coaches**](DefaultApi.md#search_coaches) | **POST** /api/v1/coaches/search |  |
 | [**send_admin_invoice**](DefaultApi.md#send_admin_invoice) | **POST** /api/v1/admin/invoices/{invoiceId}/send |  |
@@ -4971,7 +4980,7 @@ end
 
 
 
-Create the compensation for one coach, school, and year, typically a missing future, contract-covered season. Compensation coach, school, and year are derived from the coach's positions, so the positions are resolved first, modeled on the coach contract CSV uploader. If the coach already has positions at school_id in that year they are used and nothing is copied. Otherwise the positions the coach holds at that school in the latest earlier year are copied into the requested year (the same title and position types, creating the season if needed), and the new compensation is linked to them. If the coach has no earlier position at that school there is nothing to copy and the request is refused; create the position first. Positions that already exist in the requested year are used as they are; sports the earlier year has but the requested year lacks are not added. One target year per request, at most 15 years ahead. Fields other than the documented compensation fields are refused rather than ignored (is_car_provided is accepted on creation only; PATCH does not update it). When contract_id is supplied it must be a non-pending contract of the same coach, and unless contract_status_id is sent the compensation is marked complete, as the CSV uploader does; an explicitly sent contract_status_id is kept. Every value is checked as sent. Ids, the year and the cents amounts must be whole numbers (an integer or a string of digits, with no commas, decimals or text, within the 32-bit integer range), booleans must be true or false, dates must be YYYY-MM-DD, and an array or object is refused for a scalar field, each with a field-specific 422; nothing is silently dropped or coerced. The whole request is one transaction, so on any error nothing is saved. If a background job cannot be queued after the row was saved, the compensation is still returned with 201 and the problem is reported to Sentry. Requires a super admin and the winad_write OAuth scope. To change an existing compensation use PATCH /compensations/{compensationId}. API clients in winthrop-clients must be regenerated to expose this operation.
+Create the compensation for one coach, school, and year, typically a missing future, contract-covered season. Compensation coach, school, and year are derived from the coach's positions, so the positions are resolved first, modeled on the coach contract CSV uploader. If the coach already has positions at school_id in that year they are used and nothing is copied. Otherwise the positions the coach holds at that school in the latest earlier year are copied into the requested year (the same title and position types, creating the season if needed), and the new compensation is linked to them. If the coach has no earlier position at that school there is nothing to copy and the request is refused; create the position first. Positions that already exist in the requested year are used as they are; sports the earlier year has but the requested year lacks are not added. One target year per request, at most 15 years ahead. Fields other than the documented compensation fields are refused rather than ignored. When contract_id is supplied it must be a non-pending contract of the same coach, and unless contract_status_id is sent the compensation is marked complete, as the CSV uploader does; an explicitly sent contract_status_id is kept. Every value is checked as sent. Ids, the year and the cents amounts must be whole numbers (an integer or a string of digits, with no commas, decimals or text, within the 32-bit integer range), booleans must be true or false, dates must be YYYY-MM-DD, and an array or object is refused for a scalar field, each with a field-specific 422; nothing is silently dropped or coerced. The whole request is one transaction, so on any error nothing is saved. If a background job cannot be queued after the row was saved, the compensation is still returned with 201 and the problem is reported to Sentry. Requires a super admin and the winad_write OAuth scope. To change an existing compensation use PATCH /compensations/{compensationId}. API clients in winthrop-clients must be regenerated to expose this operation.
 
 ### Examples
 
@@ -5332,6 +5341,82 @@ end
 ### Return type
 
 [**ContractVerification**](ContractVerification.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_deal_verification
+
+> <DealVerification> create_deal_verification(deal_id, create_deal_verification_request)
+
+Append a deal verification event
+
+Requires winad_verify, an application explicitly allowing winad_verify, a persisted token resource owner, and read access to the deal. winad_write is not required and does not grant this action. A verification means we agree with the whole deal row, so there are no seasons. Identity fields are server-derived. Agent retries use a unique (deal_id, agent_run_id) key: an equivalent payload returns the original event, a changed payload conflicts. An omitted verified_at on retry retains the original check time. The result 'revoked' is rejected here; use the revoke endpoint. Manual checks are never deduplicated. There are no endpoints to edit or delete events, and deals.verified is not touched.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+deal_id = 56 # Integer | 
+create_deal_verification_request = WinthropClient::CreateDealVerificationRequest.new({deal_verification: WinthropClient::DealVerificationInput.new({result: 'passed', method: 'agent'})}) # CreateDealVerificationRequest | 
+
+begin
+  # Append a deal verification event
+  result = api_instance.create_deal_verification(deal_id, create_deal_verification_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_deal_verification: #{e}"
+end
+```
+
+#### Using the create_deal_verification_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DealVerification>, Integer, Hash)> create_deal_verification_with_http_info(deal_id, create_deal_verification_request)
+
+```ruby
+begin
+  # Append a deal verification event
+  data, status_code, headers = api_instance.create_deal_verification_with_http_info(deal_id, create_deal_verification_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DealVerification>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_deal_verification_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **deal_id** | **Integer** |  |  |
+| **create_deal_verification_request** | [**CreateDealVerificationRequest**](CreateDealVerificationRequest.md) |  |  |
+
+### Return type
+
+[**DealVerification**](DealVerification.md)
 
 ### Authorization
 
@@ -9056,7 +9141,7 @@ nil (empty response body)
 
 
 
-Retire a duplicate RawContract and its stored files. Requires the winad_write OAuth scope and permission to destroy the RawContract. Links are moved first (re-point the income report, pay rows and verification events to the document that stays), then it is retired. While a pay row (compensation of its Contract), an income report, an earned incentive (as its document or as the amendment that ends it) or a verification event still links to it, or its Contract has pay rows or verification events of its own, nothing is deleted and the answer is 409 with errors.blockers, an object of id lists under pay_rows, contracts, income_reports, earned_incentives and verification_events (only the non-empty ones). A Contract with no links of its own is deleted with the RawContract. The delete is an audit version (PaperTrail) with the optional change_note. Returns 204 with no body. API clients in winthrop-clients must be regenerated to expose this change.
+Retire a duplicate RawContract and its stored files. Requires the winad_write OAuth scope and permission to destroy the RawContract. Links are moved first (re-point the income report, pay rows and verification events to the document that stays), then it is retired. While a pay row (compensation of its Contract), an income report, an earned incentive (as its document or as the amendment that ends it), a verification event or a buyout inputs revision still links to it, or its Contract has pay rows or verification events of its own, nothing is deleted and the answer is 409 with errors.blockers, an object of id lists under pay_rows, contracts, income_reports, earned_incentives, verification_events and buyout_input_revisions (only the non-empty ones). A Contract with no links of its own is deleted with the RawContract. The delete is an audit version (PaperTrail) with the optional change_note. Returns 204 with no body. API clients in winthrop-clients must be regenerated to expose this change.
 
 ### Examples
 
@@ -17043,6 +17128,84 @@ end
 - **Accept**: application/json
 
 
+## get_bowl_games
+
+> <BowlGameCollection> get_bowl_games(opts)
+
+
+
+Retrieve the bowl games, to find the bowl_game_id of a postseason result
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56 # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+}
+
+begin
+  
+  result = api_instance.get_bowl_games(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_bowl_games: #{e}"
+end
+```
+
+#### Using the get_bowl_games_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<BowlGameCollection>, Integer, Hash)> get_bowl_games_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_bowl_games_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <BowlGameCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_bowl_games_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+
+### Return type
+
+[**BowlGameCollection**](BowlGameCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_cashflow
 
 > <Cashflow> get_cashflow(cashflow_id)
@@ -20120,6 +20283,88 @@ end
 ### Return type
 
 [**DealStatusCollection**](DealStatusCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_deal_verifications
+
+> <GetDealVerifications200Response> get_deal_verifications(deal_id, opts)
+
+List the deal's verification history
+
+Requires read access to the deal. Events are add-only, belong to the deal itself (so they survive replacing its RawContract PDF) and are ordered by verified_at DESC and id DESC. `meta.verified` is true while the latest event is passed. The legacy deals.verified boolean is unrelated and unchanged.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+deal_id = 56 # Integer | 
+opts = {
+  page: 56, # Integer | 
+  per_page: 56, # Integer | Page size, capped at 100; defaults to 35.
+  q: { ... } # Object | Ransack filters on scalar verification fields only.
+}
+
+begin
+  # List the deal's verification history
+  result = api_instance.get_deal_verifications(deal_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_deal_verifications: #{e}"
+end
+```
+
+#### Using the get_deal_verifications_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetDealVerifications200Response>, Integer, Hash)> get_deal_verifications_with_http_info(deal_id, opts)
+
+```ruby
+begin
+  # List the deal's verification history
+  data, status_code, headers = api_instance.get_deal_verifications_with_http_info(deal_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetDealVerifications200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_deal_verifications_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **deal_id** | **Integer** |  |  |
+| **page** | **Integer** |  | [optional] |
+| **per_page** | **Integer** | Page size, capped at 100; defaults to 35. | [optional] |
+| **q** | [**Object**](.md) | Ransack filters on scalar verification fields only. | [optional] |
+
+### Return type
+
+[**GetDealVerifications200Response**](GetDealVerifications200Response.md)
 
 ### Authorization
 
@@ -24716,6 +24961,92 @@ end
 - **Accept**: application/json
 
 
+## get_postseason_results
+
+> <PostseasonResultCollection> get_postseason_results(opts)
+
+
+
+Retrieve postseason results, the furthest stage each season reached (a bowl game or a tournament round, and whether it was won). Filter by season_id, or by school_id, sport_id and season_year.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+  season_id: 56, # Integer | 
+  school_id: 56, # Integer | 
+  sport_id: 56, # Integer | 
+  season_year: 56 # Integer | Season year (2023 = the 2022-23 season)
+}
+
+begin
+  
+  result = api_instance.get_postseason_results(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_postseason_results: #{e}"
+end
+```
+
+#### Using the get_postseason_results_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PostseasonResultCollection>, Integer, Hash)> get_postseason_results_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_postseason_results_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PostseasonResultCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_postseason_results_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+| **season_id** | **Integer** |  | [optional] |
+| **school_id** | **Integer** |  | [optional] |
+| **sport_id** | **Integer** |  | [optional] |
+| **season_year** | **Integer** | Season year (2023 &#x3D; the 2022-23 season) | [optional] |
+
+### Return type
+
+[**PostseasonResultCollection**](PostseasonResultCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_raw_contract
 
 > <RawContract> get_raw_contract(raw_contract_id)
@@ -24796,7 +25127,7 @@ end
 
 
 
-Return the contract's Mistral OCR text; if not yet stored, OCR the PDF on demand and return it
+Return the contract's stored text; if not yet stored, extract it on demand (the PDF's own text layer when it covers the pages, else Mistral OCR) and return it
 
 ### Examples
 
@@ -24870,7 +25201,7 @@ end
 
 
 
-Retrieve some or all raw_contracts
+Retrieve some or all raw_contracts. `q[buyout_inputs_present]=true` (WINAD-10717) keeps only those with checked buyout inputs; each row then carries id, coach_id, buyout_inputs_updated_at and as_of (false is not applied).
 
 ### Examples
 
@@ -27502,7 +27833,7 @@ end
 
 
 
-Retrieve some or all seasons
+Retrieve some or all seasons. Besides the season columns, q takes school_division_id_eq and school_subdivision_id_eq (the division / subdivision of the season's school), and the _null predicates (q[wins_null]=1, conference_wins_null, conference_position_null) list seasons with no record yet, for example the empty D1 seasons of a sport and year: q[year_eq]=2025&q[sport_id_eq]=7&q[school_division_id_eq]=1&q[wins_null]=1.
 
 ### Examples
 
@@ -29736,6 +30067,88 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**GetTimeZones200Response**](GetTimeZones200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_tournament_rounds
+
+> <TournamentRoundCollection> get_tournament_rounds(opts)
+
+
+
+Retrieve the tournament rounds with their tournament and sport, to find the tournament_round_id of a postseason result
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+  sport_id: 56, # Integer | 
+  tournament_id: 56 # Integer | 
+}
+
+begin
+  
+  result = api_instance.get_tournament_rounds(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_tournament_rounds: #{e}"
+end
+```
+
+#### Using the get_tournament_rounds_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TournamentRoundCollection>, Integer, Hash)> get_tournament_rounds_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_tournament_rounds_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TournamentRoundCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_tournament_rounds_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+| **sport_id** | **Integer** |  | [optional] |
+| **tournament_id** | **Integer** |  | [optional] |
+
+### Return type
+
+[**TournamentRoundCollection**](TournamentRoundCollection.md)
 
 ### Authorization
 
@@ -35891,6 +36304,86 @@ end
 - **Accept**: application/json
 
 
+## list_deal_verifications
+
+> <ListDealVerifications200Response> list_deal_verifications(opts)
+
+List verification events across deals
+
+The verification events of many vendor deals in one request (WINAD-10737), for progress counts. Read-only. Each row is what GET /deals/{dealId}/verifications returns for the same event (the DealVerification schema). Ordered verified_at DESC, id DESC, so pages never overlap or skip; `per_page` defaults to 100, capped at 500. Ransack filters on id, deal_id, verified_by_id, verified_at, result, method, agent_run_id, evidence_url, created_at, batch_id and code_version, plus two filters that exist only here: `q[deal_type_id_eq]` / `q[deal_type_id_in][]` and `q[school_id_eq]` / `q[school_id_in][]` keep the events of deals of that deal type / school. A filter outside the allowlist, or an attribute without a predicate, is a 400 naming it. A caller sees the events of the deals they may read (pending deals are internal-only). 
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | 
+  per_page: 56, # Integer | Page size, capped at 500; defaults to 100.
+  q: { ... } # Object | Ransack filters, e.g. q[deal_type_id_eq]=3&q[school_id_in][]=1&q[school_id_in][]=2.
+}
+
+begin
+  # List verification events across deals
+  result = api_instance.list_deal_verifications(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_deal_verifications: #{e}"
+end
+```
+
+#### Using the list_deal_verifications_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ListDealVerifications200Response>, Integer, Hash)> list_deal_verifications_with_http_info(opts)
+
+```ruby
+begin
+  # List verification events across deals
+  data, status_code, headers = api_instance.list_deal_verifications_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ListDealVerifications200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_deal_verifications_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** |  | [optional] |
+| **per_page** | **Integer** | Page size, capped at 500; defaults to 100. | [optional] |
+| **q** | [**Object**](.md) | Ransack filters, e.g. q[deal_type_id_eq]&#x3D;3&amp;q[school_id_in][]&#x3D;1&amp;q[school_id_in][]&#x3D;2. | [optional] |
+
+### Return type
+
+[**ListDealVerifications200Response**](ListDealVerifications200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## list_notes
 
 > <Array<ListNotes200ResponseInner>> list_notes
@@ -36770,6 +37263,82 @@ This endpoint does not need any parameter.
 - **Accept**: application/json
 
 
+## patch_season
+
+> <Season> patch_season(season_id, season_record_update)
+
+
+
+Write the record fields of a Season (the fields of the admin season stats editor, the regular-season / postseason split and the conference championship flags). Only the fields in the body change; an explicit null clears a field. An optional top-level change_note is stored on the audit version. Requires the winad_write scope and an admin user.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+season_id = 56 # Integer | ID of the Season
+season_record_update = WinthropClient::SeasonRecordUpdate.new # SeasonRecordUpdate | Season record fields to change
+
+begin
+  
+  result = api_instance.patch_season(season_id, season_record_update)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->patch_season: #{e}"
+end
+```
+
+#### Using the patch_season_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Season>, Integer, Hash)> patch_season_with_http_info(season_id, season_record_update)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.patch_season_with_http_info(season_id, season_record_update)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Season>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->patch_season_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **season_id** | **Integer** | ID of the Season |  |
+| **season_record_update** | [**SeasonRecordUpdate**](SeasonRecordUpdate.md) | Season record fields to change |  |
+
+### Return type
+
+[**Season**](Season.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## position_types_for_groups_admin_sports
 
 > <PositionTypesForGroupsAdminSports200Response> position_types_for_groups_admin_sports(position_types_for_groups_admin_sports_request)
@@ -37143,6 +37712,80 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json, multipart/form-data
+- **Accept**: application/json
+
+
+## put_postseason_result
+
+> <PostseasonResult> put_postseason_result(postseason_result_input)
+
+
+
+Upsert the one postseason result of a season (replaces the row). Requires the winad_write scope and an admin user. An optional change_note is stored on the audit version.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+postseason_result_input = WinthropClient::PostseasonResultInput.new({season_id: 37, won: false}) # PostseasonResultInput | 
+
+begin
+  
+  result = api_instance.put_postseason_result(postseason_result_input)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->put_postseason_result: #{e}"
+end
+```
+
+#### Using the put_postseason_result_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PostseasonResult>, Integer, Hash)> put_postseason_result_with_http_info(postseason_result_input)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.put_postseason_result_with_http_info(postseason_result_input)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PostseasonResult>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->put_postseason_result_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **postseason_result_input** | [**PostseasonResultInput**](PostseasonResultInput.md) |  |  |
+
+### Return type
+
+[**PostseasonResult**](PostseasonResult.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -37798,6 +38441,82 @@ end
 ### Return type
 
 [**ContractVerification**](ContractVerification.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## revoke_deal_verification
+
+> <DealVerification> revoke_deal_verification(deal_id, deal_verification_revocation_input)
+
+Revoke a deal's verification (append a revocation event)
+
+Same gates as create: winad_verify token scope, an application explicitly allowing winad_verify, a persisted token resource owner, and read access to the deal. Appends a result 'revoked' event; nothing is deleted. The latest event (verified_at DESC, id DESC) is authoritative. Only a currently verified deal can be revoked. No verified_at or identity fields are accepted. The body is a flat JSON object with reason, approval_quote and an optional change_note.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+deal_id = 56 # Integer | 
+deal_verification_revocation_input = WinthropClient::DealVerificationRevocationInput.new({reason: 'reason_example', approval_quote: 'approval_quote_example'}) # DealVerificationRevocationInput | 
+
+begin
+  # Revoke a deal's verification (append a revocation event)
+  result = api_instance.revoke_deal_verification(deal_id, deal_verification_revocation_input)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->revoke_deal_verification: #{e}"
+end
+```
+
+#### Using the revoke_deal_verification_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DealVerification>, Integer, Hash)> revoke_deal_verification_with_http_info(deal_id, deal_verification_revocation_input)
+
+```ruby
+begin
+  # Revoke a deal's verification (append a revocation event)
+  data, status_code, headers = api_instance.revoke_deal_verification_with_http_info(deal_id, deal_verification_revocation_input)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DealVerification>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->revoke_deal_verification_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **deal_id** | **Integer** |  |  |
+| **deal_verification_revocation_input** | [**DealVerificationRevocationInput**](DealVerificationRevocationInput.md) |  |  |
+
+### Return type
+
+[**DealVerification**](DealVerification.md)
 
 ### Authorization
 
@@ -41976,7 +42695,7 @@ end
 
 
 
-Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to \"yearly\", \"hourly\", or \"990\" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \"990\". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A change_note that is not a string, or contains a NUL character, is refused with 422 (errors.change_note). A body with only a non-blank change_note (no compensation, or an empty one) records the note on a new version without changing any value (WINAD-10718). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row's current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
+Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to \"yearly\", \"hourly\", or \"990\" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \"990\". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A change_note that is not a string, or contains a NUL character, is refused with 422 (errors.change_note). A body with only a non-blank change_note (no compensation, or an empty one) records the note on a new version without changing any value (WINAD-10718). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row's current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. relocation_cents and relocation_taxable (WINAD-10700) are written together. An amount needs a true/false flag, and the flag must be null when the amount is null (422 keyed relocation_taxable otherwise). A taxable amount is added to calculated_guaranteed_comp_cents, a non-taxable one is not. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
 
 ### Examples
 
@@ -43594,11 +44313,11 @@ end
 
 ## update_season
 
-> <Season> update_season(season_id, season)
+> <Season> update_season(season_id, season_record_update)
 
 
 
-Update a single Season
+Same as PATCH (only the fields in the body change)
 
 ### Examples
 
@@ -43618,11 +44337,11 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 season_id = 56 # Integer | ID of the Season
-season = WinthropClient::Season.new # Season | Season attributes to update
+season_record_update = WinthropClient::SeasonRecordUpdate.new # SeasonRecordUpdate | Season record fields to change
 
 begin
   
-  result = api_instance.update_season(season_id, season)
+  result = api_instance.update_season(season_id, season_record_update)
   p result
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->update_season: #{e}"
@@ -43633,12 +44352,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Season>, Integer, Hash)> update_season_with_http_info(season_id, season)
+> <Array(<Season>, Integer, Hash)> update_season_with_http_info(season_id, season_record_update)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.update_season_with_http_info(season_id, season)
+  data, status_code, headers = api_instance.update_season_with_http_info(season_id, season_record_update)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Season>
@@ -43652,7 +44371,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **season_id** | **Integer** | ID of the Season |  |
-| **season** | [**Season**](Season.md) | Season attributes to update |  |
+| **season_record_update** | [**SeasonRecordUpdate**](SeasonRecordUpdate.md) | Season record fields to change |  |
 
 ### Return type
 

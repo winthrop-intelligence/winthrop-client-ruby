@@ -22,6 +22,7 @@
 | **end_on** | **Date** | The deal&#39;s end date as a plain calendar date (YYYY-MM-DD): the UTC calendar date of the stored start_at/end_at instant, the same in every reader&#39;s time zone. Additive; the timestamp field next to it is unchanged. | [optional] |
 | **created_at** | **Time** |  | [optional] |
 | **summary** | **String** |  | [optional] |
+| **text** | **String** | The summary, under the name PATCH accepts (same value as summary). | [optional] |
 | **autorenew** | **Boolean** |  | [optional] |
 | **archived** | **Boolean** |  | [optional] |
 | **vendors** | [**Array&lt;DealDetailVendor&gt;**](DealDetailVendor.md) |  | [optional] |
@@ -54,6 +55,7 @@ instance = WinthropClient::DealUpdateResult.new(
   end_on: Tue Jul 01 00:00:00 UTC 2025,
   created_at: null,
   summary: null,
+  text: null,
   autorenew: null,
   archived: null,
   vendors: null,
