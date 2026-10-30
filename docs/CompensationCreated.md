@@ -9,7 +9,7 @@
 | **bonus_comp_cents** | **Integer** |  | [optional] |
 | **deferred_comp_cents** | **Integer** |  | [optional] |
 | **talent_fee** | **Integer** |  | [optional] |
-| **is_car_provided** | **Boolean** | Accepted when creating a compensation (POST) only. PATCH ignores this field. | [optional] |
+| **is_car_provided** | **Boolean** | Accepted on POST and PATCH. Must be a JSON boolean (true/false) or, as in POST, the strings \&quot;true\&quot;/\&quot;false\&quot;/\&quot;1\&quot;/\&quot;0\&quot; and the integers 1/0. PATCH is stricter than POST - it refuses null, \&quot;\&quot; and floats (0.0, 1.0), which POST accepts and converts - and answers 422 (errors.is_car_provided). | [optional] |
 | **country_club_dues_cents** | **Integer** |  | [optional] |
 | **coach_id** | **Integer** | Required on creation. Existing coach-less records may return null. Updates may omit this field or send its unchanged value. To change an existing compensation&#39;s identity, move the linked position. | [optional] |
 | **contract_id** | **Integer** | Request field, optional. The contract to link. On creation it must be a non-pending contract of coach_id. Responses describe the linked contract in the nested contract object. | [optional] |
@@ -23,6 +23,8 @@
 | **updated_at** | **Time** |  | [optional] |
 | **outside_income_cents** | **Integer** |  | [optional] |
 | **one_time_bonus_cents** | **Integer** |  | [optional] |
+| **relocation_cents** | **Integer** | The relocation amount in cents, separate from one_time_bonus_cents. Counted in calculated_guaranteed_comp_cents only when relocation_taxable is true; a non-taxable amount is stored and shown but stays out of the total. Requires relocation_taxable whenever it is set (422 on relocation_taxable otherwise). A whole number of cents on writes, non-negative and at most 9223372036854775807 (a bigint, unlike the 32-bit amounts beside it); a taxable amount must also keep calculated_guaranteed_comp_cents within 2147483647 (422 on calculated_guaranteed_comp_cents otherwise). Null or omitted when there is no relocation. | [optional] |
+| **relocation_taxable** | **Boolean** | Whether the relocation is taxable income. Required (true or false) when relocation_cents is set and null when it is not; there is no default, so an unknown value is never counted as income. On writes it must be a JSON boolean (or \&quot;true\&quot;/\&quot;false\&quot;/\&quot;1\&quot;/\&quot;0\&quot;), anything else is a 422. | [optional] |
 | **comment** | **String** |  | [optional] |
 | **county_club_membership_paid** | **Boolean** |  | [optional] |
 | **base_salary_cents** | **Integer** |  | [optional] |
@@ -64,6 +66,8 @@ instance = WinthropClient::CompensationCreated.new(
   updated_at: 2019-01-01T00:00Z,
   outside_income_cents: 10000,
   one_time_bonus_cents: 10000,
+  relocation_cents: 500000,
+  relocation_taxable: true,
   comment: This is a comment,
   county_club_membership_paid: false,
   base_salary_cents: 10000,

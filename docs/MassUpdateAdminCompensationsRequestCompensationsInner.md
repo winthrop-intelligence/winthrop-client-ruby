@@ -9,6 +9,8 @@
 | **school_id** | **Integer** |  | [optional] |
 | **base_salary_dollars** | **String** |  | [optional] |
 | **one_time_bonus_dollars** | **String** |  | [optional] |
+| **relocation_dollars** | **String** | The relocation amount in dollars. Blank or null clears it (and the flag with it). | [optional] |
+| **relocation_taxable** | **Boolean** | Whether the relocation is taxable income. Required when relocation_dollars is set; ignored (stored as null) when it is blank. | [optional] |
 | **talent_fee_dollars** | **String** |  | [optional] |
 | **outside_income_dollars** | **String** |  | [optional] |
 | **deferred_comp_dollars** | **String** |  | [optional] |
@@ -33,6 +35,8 @@ instance = WinthropClient::MassUpdateAdminCompensationsRequestCompensationsInner
   school_id: null,
   base_salary_dollars: null,
   one_time_bonus_dollars: null,
+  relocation_dollars: null,
+  relocation_taxable: null,
   talent_fee_dollars: null,
   outside_income_dollars: null,
   deferred_comp_dollars: null,
