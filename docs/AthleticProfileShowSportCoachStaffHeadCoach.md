@@ -9,6 +9,8 @@
 | **last_name** | **String** | Structured last name — may be multi-word (\&quot;Hughley Jr\&quot;). | [optional] |
 | **comp_cents** | **Integer** |  | [optional] |
 | **base_salary_cents** | **Integer** |  | [optional] |
+| **relocation_cents** | **Integer** | Relocation in cents (WINAD-10757). Null when there is none. | [optional] |
+| **relocation_taxable** | **Boolean** | true is paid relocation, counted in comp_cents; false is a reimbursement cap, not counted. Null when there is no relocation. | [optional] |
 | **comp_rank** | **Integer** |  | [optional] |
 | **comp_cohort_size** | **Integer** |  | [optional] |
 | **comp_median_cents** | **Integer** |  | [optional] |
@@ -33,6 +35,8 @@ instance = WinthropClient::AthleticProfileShowSportCoachStaffHeadCoach.new(
   last_name: null,
   comp_cents: null,
   base_salary_cents: null,
+  relocation_cents: null,
+  relocation_taxable: null,
   comp_rank: null,
   comp_cohort_size: null,
   comp_median_cents: null,

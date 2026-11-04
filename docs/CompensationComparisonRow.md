@@ -23,6 +23,8 @@
 | **base_salary_cents** | **Integer** |  | [optional] |
 | **talent_fee_cents** | **Integer** |  | [optional] |
 | **one_time_bonus_cents** | **Integer** |  | [optional] |
+| **relocation_cents** | **Integer** | The relocation amount in cents, separate from one_time_bonus_cents. Null when there is no relocation. | [optional] |
+| **relocation_taxable** | **Boolean** | true is paid relocation, counted in compensation_cents; false is reimbursed (\&quot;up to\&quot;), shown but not counted. Null when there is no relocation. | [optional] |
 | **outside_income_cents** | **Integer** |  | [optional] |
 | **deferred_comp_cents** | **Integer** |  | [optional] |
 | **compensation_type** | **String** |  | [optional] |
@@ -55,6 +57,8 @@ instance = WinthropClient::CompensationComparisonRow.new(
   base_salary_cents: null,
   talent_fee_cents: null,
   one_time_bonus_cents: null,
+  relocation_cents: null,
+  relocation_taxable: null,
   outside_income_cents: null,
   deferred_comp_cents: null,
   compensation_type: null,

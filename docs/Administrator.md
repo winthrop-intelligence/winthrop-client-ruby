@@ -40,6 +40,8 @@
 | **compensation_outside_income_cents** | **Integer** | Only included in /administrator_searches responses when the user has administrator_compensation permission. | [optional] |
 | **compensation_deferred_comp_cents** | **Integer** | Only included in /administrator_searches responses when the user has administrator_compensation permission. | [optional] |
 | **compensation_one_time_bonus_cents** | **Integer** | Only included in /administrator_searches responses when the user has administrator_compensation permission. | [optional] |
+| **compensation_relocation_cents** | **Integer** | The relocation amount, separate from the one-time bonus (WINAD-10700). Null when there is none. Counted in compensation_cents only when compensation_relocation_taxable is true. Included under the same administrator_compensation permission as the other compensation fields. | [optional] |
+| **compensation_relocation_taxable** | **Boolean** | Whether the relocation is taxable income. Null exactly when compensation_relocation_cents is null. | [optional] |
 | **compensation_contingent_bonus** | **Boolean** | Only included in /administrator_searches responses when the user has administrator_compensation permission. | [optional] |
 | **compensation_buyout_terms** | **String** | Only included in /administrator_searches responses when the user has administrator_compensation permission. | [optional] |
 | **compensation_is_car_provided** | **Boolean** | Only included in /administrator_searches responses when the user has administrator_compensation permission. | [optional] |
@@ -102,6 +104,8 @@ instance = WinthropClient::Administrator.new(
   compensation_outside_income_cents: 10000,
   compensation_deferred_comp_cents: 10000,
   compensation_one_time_bonus_cents: 10000,
+  compensation_relocation_cents: 500000,
+  compensation_relocation_taxable: null,
   compensation_contingent_bonus: true,
   compensation_buyout_terms: This is a compensation buyout terms,
   compensation_is_car_provided: true,

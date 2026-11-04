@@ -59,6 +59,15 @@
 | **alloc_percent_5** | **Float** |  | [optional] |
 | **threshold_6** | **Float** |  | [optional] |
 | **alloc_percent_6** | **Float** |  | [optional] |
+| **position_id** | **Integer** |  | [optional] |
+| **search_scope** | **String** |  | [optional] |
+| **search_fee** | **Float** |  | [optional] |
+| **fee_basis** | **String** |  | [optional] |
+| **fee_percent** | **Float** |  | [optional] |
+| **guarantee_months** | **Float** |  | [optional] |
+| **expense_terms** | **String** |  | [optional] |
+| **annual_retainer** | **Float** |  | [optional] |
+| **position** | [**DealDetailPosition**](DealDetailPosition.md) |  | [optional] |
 | **sports** | **Array&lt;String&gt;** |  | [optional] |
 
 ## Example
@@ -122,6 +131,15 @@ instance = WinthropClient::DealDetail.new(
   alloc_percent_5: null,
   threshold_6: null,
   alloc_percent_6: null,
+  position_id: null,
+  search_scope: null,
+  search_fee: null,
+  fee_basis: null,
+  fee_percent: null,
+  guarantee_months: null,
+  expense_terms: null,
+  annual_retainer: null,
+  position: null,
   sports: null
 )
 ```

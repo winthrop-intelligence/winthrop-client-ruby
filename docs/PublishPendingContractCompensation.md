@@ -12,6 +12,8 @@
 | **outside_income** | [**PublishPendingContractCompensationOneTimeBonus**](PublishPendingContractCompensationOneTimeBonus.md) |  | [optional] |
 | **deferred_compensation** | [**PublishPendingContractCompensationOneTimeBonus**](PublishPendingContractCompensationOneTimeBonus.md) |  | [optional] |
 | **personal_services** | [**PublishPendingContractCompensationOneTimeBonus**](PublishPendingContractCompensationOneTimeBonus.md) |  | [optional] |
+| **relocation_cents** | **Integer** | Relocation money, paid or reimbursed, in cents (WINAD-10758). Not one_time_bonus. Needs relocation_taxable; omitted leaves a stored relocation unchanged, null clears it. | [optional] |
+| **relocation_taxable** | **Boolean** | Required (true or false) when relocation_cents is set, and must be null or omitted when it is not. | [optional] |
 | **contingent_bonus** | **Boolean** |  | [optional] |
 | **country_club_membership** | **Boolean** |  | [optional] |
 | **car_provided** | **Boolean** |  | [optional] |
@@ -33,6 +35,8 @@ instance = WinthropClient::PublishPendingContractCompensation.new(
   outside_income: null,
   deferred_compensation: null,
   personal_services: null,
+  relocation_cents: null,
+  relocation_taxable: null,
   contingent_bonus: null,
   country_club_membership: null,
   car_provided: null,

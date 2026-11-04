@@ -5,10 +5,15 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**create_raw_contract**](RawContractsApi.md#create_raw_contract) | **POST** /api/v1/raw_contracts |  |
+| [**get_raw_contract_buyout_input_revision**](RawContractsApi.md#get_raw_contract_buyout_input_revision) | **GET** /api/v1/raw_contracts/{raw_contractId}/buyout_inputs/revisions/{revisionId} |  |
+| [**get_raw_contract_buyout_inputs**](RawContractsApi.md#get_raw_contract_buyout_inputs) | **GET** /api/v1/raw_contracts/{raw_contractId}/buyout_inputs |  |
 | [**get_raw_contract_contract_terms**](RawContractsApi.md#get_raw_contract_contract_terms) | **GET** /api/v1/raw_contracts/{raw_contractId}/contract_terms |  |
+| [**list_raw_contract_buyout_input_revisions**](RawContractsApi.md#list_raw_contract_buyout_input_revisions) | **GET** /api/v1/raw_contracts/{raw_contractId}/buyout_inputs/revisions |  |
 | [**regenerate_raw_contract_ocr_text**](RawContractsApi.md#regenerate_raw_contract_ocr_text) | **POST** /api/v1/raw_contracts/{raw_contractId}/ocr_text/regenerate |  |
 | [**replace_raw_contract_file**](RawContractsApi.md#replace_raw_contract_file) | **PUT** /api/v1/raw_contracts/{raw_contractId}/file |  |
+| [**update_raw_contract_buyout_inputs**](RawContractsApi.md#update_raw_contract_buyout_inputs) | **PATCH** /api/v1/raw_contracts/{raw_contractId}/buyout_inputs |  |
 | [**update_raw_contract_contract_terms**](RawContractsApi.md#update_raw_contract_contract_terms) | **PATCH** /api/v1/raw_contracts/{raw_contractId}/contract_terms |  |
+| [**update_raw_contract_school**](RawContractsApi.md#update_raw_contract_school) | **PATCH** /api/v1/raw_contracts/{raw_contractId} |  |
 
 
 ## create_raw_contract
@@ -97,6 +102,156 @@ end
 - **Accept**: application/json
 
 
+## get_raw_contract_buyout_input_revision
+
+> <RawContractBuyoutInputRevision> get_raw_contract_buyout_input_revision(raw_contract_id, revision_id)
+
+
+
+Return one revision of the RawContract's buyout inputs (WINAD-10717), exactly as it was written. Revisions are never changed.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::RawContractsApi.new
+raw_contract_id = 56 # Integer | ID of the RawContract
+revision_id = 56 # Integer | ID of the revision (from the revisions list)
+
+begin
+  
+  result = api_instance.get_raw_contract_buyout_input_revision(raw_contract_id, revision_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling RawContractsApi->get_raw_contract_buyout_input_revision: #{e}"
+end
+```
+
+#### Using the get_raw_contract_buyout_input_revision_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RawContractBuyoutInputRevision>, Integer, Hash)> get_raw_contract_buyout_input_revision_with_http_info(raw_contract_id, revision_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_raw_contract_buyout_input_revision_with_http_info(raw_contract_id, revision_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RawContractBuyoutInputRevision>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling RawContractsApi->get_raw_contract_buyout_input_revision_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **raw_contract_id** | **Integer** | ID of the RawContract |  |
+| **revision_id** | **Integer** | ID of the revision (from the revisions list) |  |
+
+### Return type
+
+[**RawContractBuyoutInputRevision**](RawContractBuyoutInputRevision.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_raw_contract_buyout_inputs
+
+> <RawContractBuyoutInputs> get_raw_contract_buyout_inputs(raw_contract_id)
+
+
+
+Return the checked buyout inputs (schema buyout-inputs-v1) stored on a RawContract (WINAD-10717), when they were stored, and whether they are stale. Stale means that after the newest revision the contract's OCR text was redone (`ocr_text_changed`) and/or its contract_terms changed (`contract_terms_changed`); the document is kept, only flagged.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::RawContractsApi.new
+raw_contract_id = 56 # Integer | ID of the RawContract
+
+begin
+  
+  result = api_instance.get_raw_contract_buyout_inputs(raw_contract_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling RawContractsApi->get_raw_contract_buyout_inputs: #{e}"
+end
+```
+
+#### Using the get_raw_contract_buyout_inputs_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RawContractBuyoutInputs>, Integer, Hash)> get_raw_contract_buyout_inputs_with_http_info(raw_contract_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_raw_contract_buyout_inputs_with_http_info(raw_contract_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RawContractBuyoutInputs>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling RawContractsApi->get_raw_contract_buyout_inputs_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **raw_contract_id** | **Integer** | ID of the RawContract |  |
+
+### Return type
+
+[**RawContractBuyoutInputs**](RawContractBuyoutInputs.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_raw_contract_contract_terms
 
 > <RawContractTerms> get_raw_contract_contract_terms(raw_contract_id)
@@ -160,6 +315,80 @@ end
 ### Return type
 
 [**RawContractTerms**](RawContractTerms.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_raw_contract_buyout_input_revisions
+
+> <ListRawContractBuyoutInputRevisions200Response> list_raw_contract_buyout_input_revisions(raw_contract_id)
+
+
+
+List every revision of the RawContract's buyout inputs, newest first (WINAD-10717). Requires permission to update the RawContract, because revisions name the person who made each write.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::RawContractsApi.new
+raw_contract_id = 56 # Integer | ID of the RawContract
+
+begin
+  
+  result = api_instance.list_raw_contract_buyout_input_revisions(raw_contract_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling RawContractsApi->list_raw_contract_buyout_input_revisions: #{e}"
+end
+```
+
+#### Using the list_raw_contract_buyout_input_revisions_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ListRawContractBuyoutInputRevisions200Response>, Integer, Hash)> list_raw_contract_buyout_input_revisions_with_http_info(raw_contract_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_raw_contract_buyout_input_revisions_with_http_info(raw_contract_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ListRawContractBuyoutInputRevisions200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling RawContractsApi->list_raw_contract_buyout_input_revisions_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **raw_contract_id** | **Integer** | ID of the RawContract |  |
+
+### Return type
+
+[**ListRawContractBuyoutInputRevisions200Response**](ListRawContractBuyoutInputRevisions200Response.md)
 
 ### Authorization
 
@@ -325,6 +554,86 @@ end
 - **Accept**: application/json
 
 
+## update_raw_contract_buyout_inputs
+
+> <RawContractBuyoutInputs> update_raw_contract_buyout_inputs(raw_contract_id, buyout_inputs, opts)
+
+
+
+Replace the whole buyout_inputs document on a RawContract (WINAD-10717) and add an immutable revision (who, when, change_note, document; see GET .../buyout_inputs/revisions). The body is the document itself: a JSON object with `schema` equal to \"buyout-inputs-v1\", `rc` equal to the RawContract id in the path, and `as_of` (YYYY-MM-DD). Nothing deeper is checked here (the JSON Schema lives in the data-quality repo); every other key is stored as sent.  Requires the winad_write scope and a user-backed token (client-credentials tokens are refused) with permission to update the RawContract. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::RawContractsApi.new
+raw_contract_id = 56 # Integer | ID of the RawContract
+buyout_inputs = WinthropClient::BuyoutInputs.new({schema: 'buyout-inputs-v1', rc: 37, as_of: Date.today}) # BuyoutInputs | 
+opts = {
+  change_note: 'change_note_example' # String | Optional. Why the inputs are being written; stored on the revision and on the audit version this write creates. It is a query parameter because the request body is the document: a `change_note` key in the body is stored as part of the document and never used as the note. At most 500 characters after trimming; blank is the same as omitted; a value that is not text or is longer is refused with 422 (errors.change_note) before anything is written. Never returned.
+}
+
+begin
+  
+  result = api_instance.update_raw_contract_buyout_inputs(raw_contract_id, buyout_inputs, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling RawContractsApi->update_raw_contract_buyout_inputs: #{e}"
+end
+```
+
+#### Using the update_raw_contract_buyout_inputs_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RawContractBuyoutInputs>, Integer, Hash)> update_raw_contract_buyout_inputs_with_http_info(raw_contract_id, buyout_inputs, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_raw_contract_buyout_inputs_with_http_info(raw_contract_id, buyout_inputs, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RawContractBuyoutInputs>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling RawContractsApi->update_raw_contract_buyout_inputs_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **raw_contract_id** | **Integer** | ID of the RawContract |  |
+| **buyout_inputs** | [**BuyoutInputs**](BuyoutInputs.md) |  |  |
+| **change_note** | **String** | Optional. Why the inputs are being written; stored on the revision and on the audit version this write creates. It is a query parameter because the request body is the document: a &#x60;change_note&#x60; key in the body is stored as part of the document and never used as the note. At most 500 characters after trimming; blank is the same as omitted; a value that is not text or is longer is refused with 422 (errors.change_note) before anything is written. Never returned. | [optional] |
+
+### Return type
+
+[**RawContractBuyoutInputs**](RawContractBuyoutInputs.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## update_raw_contract_contract_terms
 
 > <RawContractTerms> update_raw_contract_contract_terms(raw_contract_id, contract_terms, opts)
@@ -394,6 +703,82 @@ end
 ### Return type
 
 [**RawContractTerms**](RawContractTerms.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_raw_contract_school
+
+> <RawContract> update_raw_contract_school(raw_contract_id, update_raw_contract_school_request)
+
+
+
+Set the school of a RawContract (WINAD-10719). A contract relink is refused with \"Destination Contract employer is unknown\" when the destination RawContract has no school; this sets it. Only `school_id` (and an optional `change_note`) is read; no other attribute is changed. An unknown, malformed or missing `school_id` is refused with 422 (errors.school_id) and nothing changes. The response is the RawContract as by GET /raw_contracts/{raw_contractId}, with the new `school_id` and `school_name`.  The change is recorded as a PaperTrail version of the RawContract (`school_id` old and new, the acting user, the API client and the change_note). When the RawContract belongs to a contract, the version is linked to it and GET /contract_history lists it. Requires winad_write and a user-backed OAuth token (client-credentials tokens are refused) with permission to update the RawContract. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::RawContractsApi.new
+raw_contract_id = 56 # Integer | ID of the RawContract
+update_raw_contract_school_request = WinthropClient::UpdateRawContractSchoolRequest.new({school_id: 37}) # UpdateRawContractSchoolRequest | 
+
+begin
+  
+  result = api_instance.update_raw_contract_school(raw_contract_id, update_raw_contract_school_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling RawContractsApi->update_raw_contract_school: #{e}"
+end
+```
+
+#### Using the update_raw_contract_school_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RawContract>, Integer, Hash)> update_raw_contract_school_with_http_info(raw_contract_id, update_raw_contract_school_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_raw_contract_school_with_http_info(raw_contract_id, update_raw_contract_school_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RawContract>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling RawContractsApi->update_raw_contract_school_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **raw_contract_id** | **Integer** | ID of the RawContract |  |
+| **update_raw_contract_school_request** | [**UpdateRawContractSchoolRequest**](UpdateRawContractSchoolRequest.md) |  |  |
+
+### Return type
+
+[**RawContract**](RawContract.md)
 
 ### Authorization
 

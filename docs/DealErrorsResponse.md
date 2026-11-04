@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **code** | **String** | Reason for a refused or temporarily unavailable Drive upload. | [optional] |
 | **errors** | **Hash&lt;String, Array&lt;String&gt;&gt;** | Attribute (school_id, deal_type, vendor_id, file, drive_id, change_note, base; for a publish a field path such as deal.end_on or deal_detail.partner) mapped to its messages. |  |
 
 ## Example
@@ -12,6 +13,7 @@
 require 'winthrop-client-ruby'
 
 instance = WinthropClient::DealErrorsResponse.new(
+  code: null,
   errors: null
 )
 ```
