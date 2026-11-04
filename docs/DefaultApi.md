@@ -19,6 +19,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**copy_for_year_admin_positions**](DefaultApi.md#copy_for_year_admin_positions) | **POST** /api/v1/admin/positions/copy_for_year |  |
 | [**copy_to_next_year_admin_position**](DefaultApi.md#copy_to_next_year_admin_position) | **POST** /api/v1/admin/positions/{id}/copy_to_next_year |  |
 | [**create_account_user**](DefaultApi.md#create_account_user) | **POST** /api/v1/account_users |  |
+| [**create_admin_bowl_games**](DefaultApi.md#create_admin_bowl_games) | **POST** /api/v1/admin/bowl_games |  |
 | [**create_admin_coach**](DefaultApi.md#create_admin_coach) | **POST** /api/v1/admin/coaches |  |
 | [**create_admin_coach_apr_upload**](DefaultApi.md#create_admin_coach_apr_upload) | **POST** /api/v1/admin/coaches/coach_apr_upload |  |
 | [**create_admin_coach_contract**](DefaultApi.md#create_admin_coach_contract) | **POST** /api/v1/admin/coach_contracts |  |
@@ -41,6 +42,9 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**create_admin_foia_request_builder**](DefaultApi.md#create_admin_foia_request_builder) | **POST** /api/v1/admin/foia_request_builder |  |
 | [**create_admin_foia_request_bulk_quick_actions**](DefaultApi.md#create_admin_foia_request_bulk_quick_actions) | **POST** /api/v1/admin/foia_requests/{id}/bulk_quick_actions |  |
 | [**create_admin_foia_requests**](DefaultApi.md#create_admin_foia_requests) | **POST** /api/v1/admin/foia_requests |  |
+| [**create_admin_game_contracts_uploader**](DefaultApi.md#create_admin_game_contracts_uploader) | **POST** /api/v1/admin/game_contracts_uploader |  |
+| [**create_admin_games_mass_update**](DefaultApi.md#create_admin_games_mass_update) | **POST** /api/v1/admin/games/mass_update |  |
+| [**create_admin_games_upload**](DefaultApi.md#create_admin_games_upload) | **POST** /api/v1/admin/games/upload |  |
 | [**create_admin_impersonations**](DefaultApi.md#create_admin_impersonations) | **POST** /api/v1/admin/impersonations |  |
 | [**create_admin_income_report**](DefaultApi.md#create_admin_income_report) | **POST** /api/v1/admin/income_reports |  |
 | [**create_admin_invoice**](DefaultApi.md#create_admin_invoice) | **POST** /api/v1/admin/invoices |  |
@@ -48,6 +52,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**create_admin_position_types**](DefaultApi.md#create_admin_position_types) | **POST** /api/v1/admin/position_types |  |
 | [**create_admin_requested_item_ri_note**](DefaultApi.md#create_admin_requested_item_ri_note) | **POST** /api/v1/admin/requested_items/{requested_item_id}/ri_note |  |
 | [**create_admin_school_deal**](DefaultApi.md#create_admin_school_deal) | **POST** /api/v1/admin/schools/{school_id}/deals |  |
+| [**create_admin_school_game**](DefaultApi.md#create_admin_school_game) | **POST** /api/v1/admin/schools/{school_id}/games |  |
 | [**create_admin_school_names**](DefaultApi.md#create_admin_school_names) | **POST** /api/v1/admin/school_names |  |
 | [**create_admin_school_revenue**](DefaultApi.md#create_admin_school_revenue) | **POST** /api/v1/admin/schools/{schoolId}/revenue |  |
 | [**create_admin_school_revenue_combined_upload**](DefaultApi.md#create_admin_school_revenue_combined_upload) | **POST** /api/v1/admin/schools/{schoolId}/revenue/combined_upload |  |
@@ -67,6 +72,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**create_conferenceship**](DefaultApi.md#create_conferenceship) | **POST** /api/v1/conferenceships |  |
 | [**create_contact_search**](DefaultApi.md#create_contact_search) | **POST** /api/v1/contact_searches |  |
 | [**create_contract_verification**](DefaultApi.md#create_contract_verification) | **POST** /api/v1/raw_contracts/{raw_contractId}/verifications | Append a contract verification event |
+| [**create_deal_verification**](DefaultApi.md#create_deal_verification) | **POST** /api/v1/deals/{dealId}/verifications | Append a deal verification event |
 | [**create_desk_report_archive**](DefaultApi.md#create_desk_report_archive) | **POST** /api/v1/desk_reports/{uuid}/archive |  |
 | [**create_desk_report_opened**](DefaultApi.md#create_desk_report_opened) | **POST** /api/v1/desk_reports/{uuid}/opened |  |
 | [**create_desk_request**](DefaultApi.md#create_desk_request) | **POST** /api/v1/desk_requests |  |
@@ -128,6 +134,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_team_season_result**](DefaultApi.md#delete_team_season_result) | **DELETE** /api/v1/team_season_results/{teamSeasonResultId} |  |
 | [**delete_upload**](DefaultApi.md#delete_upload) | **DELETE** /api/v1/uploads/{uploadId} |  |
 | [**destroy_admin_avatars**](DefaultApi.md#destroy_admin_avatars) | **DELETE** /api/v1/admin/avatars/{id} |  |
+| [**destroy_admin_bowl_games**](DefaultApi.md#destroy_admin_bowl_games) | **DELETE** /api/v1/admin/bowl_games/{id} |  |
 | [**destroy_admin_coach**](DefaultApi.md#destroy_admin_coach) | **DELETE** /api/v1/admin/coaches/{id} |  |
 | [**destroy_admin_compensation**](DefaultApi.md#destroy_admin_compensation) | **DELETE** /api/v1/admin/compensations/{id} |  |
 | [**destroy_admin_conferences**](DefaultApi.md#destroy_admin_conferences) | **DELETE** /api/v1/admin/conferences/{id} |  |
@@ -140,6 +147,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**destroy_admin_foia_contacts**](DefaultApi.md#destroy_admin_foia_contacts) | **DELETE** /api/v1/admin/foia_contacts/{id} |  |
 | [**destroy_admin_foia_labels**](DefaultApi.md#destroy_admin_foia_labels) | **DELETE** /api/v1/admin/foia_labels/{id} |  |
 | [**destroy_admin_foia_requests**](DefaultApi.md#destroy_admin_foia_requests) | **DELETE** /api/v1/admin/foia_requests/{id} |  |
+| [**destroy_admin_game_contract**](DefaultApi.md#destroy_admin_game_contract) | **DELETE** /api/v1/admin/game_contracts/{id} |  |
 | [**destroy_admin_impersonations**](DefaultApi.md#destroy_admin_impersonations) | **DELETE** /api/v1/admin/impersonations |  |
 | [**destroy_admin_income_report**](DefaultApi.md#destroy_admin_income_report) | **DELETE** /api/v1/admin/income_reports/{id} |  |
 | [**destroy_admin_note**](DefaultApi.md#destroy_admin_note) | **DELETE** /api/v1/admin/notes/{id} |  |
@@ -149,6 +157,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**destroy_admin_requested_item**](DefaultApi.md#destroy_admin_requested_item) | **DELETE** /api/v1/admin/requested_items/{id} |  |
 | [**destroy_admin_requested_item_ri_note**](DefaultApi.md#destroy_admin_requested_item_ri_note) | **DELETE** /api/v1/admin/requested_items/{requested_item_id}/ri_note |  |
 | [**destroy_admin_school_deal**](DefaultApi.md#destroy_admin_school_deal) | **DELETE** /api/v1/admin/schools/{school_id}/deals/{id} |  |
+| [**destroy_admin_school_game**](DefaultApi.md#destroy_admin_school_game) | **DELETE** /api/v1/admin/schools/{school_id}/games/{id} |  |
 | [**destroy_admin_school_groups**](DefaultApi.md#destroy_admin_school_groups) | **DELETE** /api/v1/admin/school_groups/{id} |  |
 | [**destroy_admin_school_names**](DefaultApi.md#destroy_admin_school_names) | **DELETE** /api/v1/admin/school_names/{id} |  |
 | [**destroy_admin_school_revenue_year**](DefaultApi.md#destroy_admin_school_revenue_year) | **DELETE** /api/v1/admin/schools/{schoolId}/revenue/destroy_school_financial_data |  |
@@ -166,17 +175,20 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**download_admin_coach_contracts_csv_template**](DefaultApi.md#download_admin_coach_contracts_csv_template) | **GET** /api/v1/admin/coach_contracts/download_csv_template |  |
 | [**download_admin_coach_contracts_outside_income_csv_template**](DefaultApi.md#download_admin_coach_contracts_outside_income_csv_template) | **GET** /api/v1/admin/coach_contracts/outside_income_csv_template |  |
 | [**download_admin_financial_stats_csv_template**](DefaultApi.md#download_admin_financial_stats_csv_template) | **GET** /api/v1/admin/financial_stats/download_csv_template |  |
+| [**download_admin_game_contracts_uploader_csv_template**](DefaultApi.md#download_admin_game_contracts_uploader_csv_template) | **GET** /api/v1/admin/game_contracts_uploader/download_csv_template |  |
 | [**download_admin_uploads**](DefaultApi.md#download_admin_uploads) | **POST** /api/v1/admin/uploads/download |  |
 | [**download_raw_contract_file**](DefaultApi.md#download_raw_contract_file) | **GET** /api/v1/raw_contracts/{raw_contractId}/download |  |
 | [**edit_admin_position_types**](DefaultApi.md#edit_admin_position_types) | **GET** /api/v1/admin/position_types/{id}/edit |  |
 | [**edit_admin_sport**](DefaultApi.md#edit_admin_sport) | **GET** /api/v1/admin/sports/{id}/edit |  |
 | [**enrich_game_post_searches**](DefaultApi.md#enrich_game_post_searches) | **POST** /api/v1/game_post_searches/enrichment |  |
 | [**export_admin_contract_request_searches_coaches**](DefaultApi.md#export_admin_contract_request_searches_coaches) | **POST** /api/v1/admin/contract_request_searches/export_coaches |  |
+| [**export_admin_school_games**](DefaultApi.md#export_admin_school_games) | **POST** /api/v1/admin/schools/{school_id}/games/export |  |
 | [**export_revenue_searches**](DefaultApi.md#export_revenue_searches) | **GET** /api/v1/revenue_searches/export |  |
 | [**get_account**](DefaultApi.md#get_account) | **GET** /api/v1/accounts/{id} |  |
 | [**get_account_user_activation**](DefaultApi.md#get_account_user_activation) | **GET** /api/v1/account_user_activation |  |
 | [**get_account_users**](DefaultApi.md#get_account_users) | **GET** /api/v1/account_users |  |
 | [**get_accounts**](DefaultApi.md#get_accounts) | **GET** /api/v1/accounts |  |
+| [**get_admin_bowl_games**](DefaultApi.md#get_admin_bowl_games) | **GET** /api/v1/admin/bowl_games/{id} |  |
 | [**get_admin_coach**](DefaultApi.md#get_admin_coach) | **GET** /api/v1/admin/coaches/{id} |  |
 | [**get_admin_coach_merge_log**](DefaultApi.md#get_admin_coach_merge_log) | **GET** /api/v1/admin/coach_merge_logs/{id} |  |
 | [**get_admin_conferences**](DefaultApi.md#get_admin_conferences) | **GET** /api/v1/admin/conferences/{id} |  |
@@ -201,6 +213,11 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_admin_foia_request_games**](DefaultApi.md#get_admin_foia_request_games) | **GET** /api/v1/admin/foia_requests/{id}/games |  |
 | [**get_admin_foia_request_text**](DefaultApi.md#get_admin_foia_request_text) | **GET** /api/v1/admin/foia_requests/{id}/text |  |
 | [**get_admin_foia_requests**](DefaultApi.md#get_admin_foia_requests) | **GET** /api/v1/admin/foia_requests/{id} |  |
+| [**get_admin_game_contract**](DefaultApi.md#get_admin_game_contract) | **GET** /api/v1/admin/game_contracts/{id} |  |
+| [**get_admin_game_contract_series**](DefaultApi.md#get_admin_game_contract_series) | **GET** /api/v1/admin/game_contracts/{id}/series |  |
+| [**get_admin_game_contracts_uploader**](DefaultApi.md#get_admin_game_contracts_uploader) | **GET** /api/v1/admin/game_contracts_uploader |  |
+| [**get_admin_games_mass_update_status**](DefaultApi.md#get_admin_games_mass_update_status) | **GET** /api/v1/admin/games/mass_update |  |
+| [**get_admin_games_upload_status**](DefaultApi.md#get_admin_games_upload_status) | **GET** /api/v1/admin/games/upload |  |
 | [**get_admin_income_report**](DefaultApi.md#get_admin_income_report) | **GET** /api/v1/admin/income_reports/{id} |  |
 | [**get_admin_invoice**](DefaultApi.md#get_admin_invoice) | **GET** /api/v1/admin/invoices/{invoiceId} |  |
 | [**get_admin_invoices**](DefaultApi.md#get_admin_invoices) | **GET** /api/v1/admin/invoices |  |
@@ -208,6 +225,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_admin_position_copy_options**](DefaultApi.md#get_admin_position_copy_options) | **GET** /api/v1/admin/positions/copy_for_year |  |
 | [**get_admin_raw_contract_text**](DefaultApi.md#get_admin_raw_contract_text) | **GET** /api/v1/admin/raw_contracts/{id}/text |  |
 | [**get_admin_requested_item_ri_note**](DefaultApi.md#get_admin_requested_item_ri_note) | **GET** /api/v1/admin/requested_items/{requested_item_id}/ri_note |  |
+| [**get_admin_school_game**](DefaultApi.md#get_admin_school_game) | **GET** /api/v1/admin/schools/{school_id}/games/{id} |  |
 | [**get_admin_school_names**](DefaultApi.md#get_admin_school_names) | **GET** /api/v1/admin/school_names/{id} |  |
 | [**get_admin_school_revenue**](DefaultApi.md#get_admin_school_revenue) | **GET** /api/v1/admin/schools/{schoolId}/revenue |  |
 | [**get_admin_schools**](DefaultApi.md#get_admin_schools) | **GET** /api/v1/admin/schools/{id} |  |
@@ -224,6 +242,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_athletic_profile_search**](DefaultApi.md#get_athletic_profile_search) | **GET** /api/v1/athletic_profile_searches/{athleticProfileSearchId} |  |
 | [**get_audited_financial_report_status**](DefaultApi.md#get_audited_financial_report_status) | **GET** /api/v1/audited_financial_report_statuses/{auditedFinancialReportStatusId} |  |
 | [**get_audited_financial_report_statuses**](DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses |  |
+| [**get_bowl_games**](DefaultApi.md#get_bowl_games) | **GET** /api/v1/bowl_games |  |
 | [**get_cashflow**](DefaultApi.md#get_cashflow) | **GET** /api/v1/cashflows/{cashflowId} |  |
 | [**get_cashflow_groups**](DefaultApi.md#get_cashflow_groups) | **GET** /api/v1/cashflow_groups |  |
 | [**get_cashflows**](DefaultApi.md#get_cashflows) | **GET** /api/v1/cashflows |  |
@@ -264,6 +283,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_deal_searches**](DefaultApi.md#get_deal_searches) | **GET** /api/v1/deal_searches |  |
 | [**get_deal_status**](DefaultApi.md#get_deal_status) | **GET** /api/v1/deal_statuses/{dealStatusId} |  |
 | [**get_deal_statuses**](DefaultApi.md#get_deal_statuses) | **GET** /api/v1/deal_statuses |  |
+| [**get_deal_verifications**](DefaultApi.md#get_deal_verifications) | **GET** /api/v1/deals/{dealId}/verifications | List the deal&#39;s verification history |
 | [**get_deals**](DefaultApi.md#get_deals) | **GET** /api/v1/deals |  |
 | [**get_department_searches**](DefaultApi.md#get_department_searches) | **GET** /api/v1/department_searches |  |
 | [**get_desk_report**](DefaultApi.md#get_desk_report) | **GET** /api/v1/desk_reports/{uuid} |  |
@@ -324,6 +344,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_position**](DefaultApi.md#get_position) | **GET** /api/v1/positions/{positionId} |  |
 | [**get_position_types**](DefaultApi.md#get_position_types) | **GET** /api/v1/position_types |  |
 | [**get_positions**](DefaultApi.md#get_positions) | **GET** /api/v1/positions |  |
+| [**get_postseason_results**](DefaultApi.md#get_postseason_results) | **GET** /api/v1/postseason_results |  |
 | [**get_raw_contract**](DefaultApi.md#get_raw_contract) | **GET** /api/v1/raw_contracts/{raw_contractId} |  |
 | [**get_raw_contract_ocr_text**](DefaultApi.md#get_raw_contract_ocr_text) | **GET** /api/v1/raw_contracts/{raw_contractId}/ocr_text |  |
 | [**get_raw_contracts**](DefaultApi.md#get_raw_contracts) | **GET** /api/v1/raw_contracts |  |
@@ -389,6 +410,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_team_schedule_searches**](DefaultApi.md#get_team_schedule_searches) | **GET** /api/v1/team_schedule_searches |  |
 | [**get_team_season_results**](DefaultApi.md#get_team_season_results) | **GET** /api/v1/team_season_results |  |
 | [**get_time_zones**](DefaultApi.md#get_time_zones) | **GET** /api/v1/time_zones |  |
+| [**get_tournament_rounds**](DefaultApi.md#get_tournament_rounds) | **GET** /api/v1/tournament_rounds |  |
 | [**get_upload**](DefaultApi.md#get_upload) | **GET** /api/v1/uploads/{uploadId} |  |
 | [**get_upload_file**](DefaultApi.md#get_upload_file) | **GET** /api/v1/uploads/{uploadId}/file |  |
 | [**get_uploads**](DefaultApi.md#get_uploads) | **GET** /api/v1/uploads |  |
@@ -402,6 +424,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_vendors**](DefaultApi.md#get_vendors) | **GET** /api/v1/vendors |  |
 | [**get_wire_changes**](DefaultApi.md#get_wire_changes) | **GET** /api/v1/wire_changes |  |
 | [**hide_admin_desk_report**](DefaultApi.md#hide_admin_desk_report) | **POST** /api/v1/admin/desk_reports/{uuid}/hide |  |
+| [**list_admin_bowl_games**](DefaultApi.md#list_admin_bowl_games) | **GET** /api/v1/admin/bowl_games |  |
 | [**list_admin_coach_apr_upload_jobs**](DefaultApi.md#list_admin_coach_apr_upload_jobs) | **GET** /api/v1/admin/coaches/coach_apr_upload |  |
 | [**list_admin_coach_contracts**](DefaultApi.md#list_admin_coach_contracts) | **GET** /api/v1/admin/coach_contracts |  |
 | [**list_admin_coach_contracts_outside_income**](DefaultApi.md#list_admin_coach_contracts_outside_income) | **GET** /api/v1/admin/coach_contracts/outside_income |  |
@@ -424,6 +447,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**list_admin_deal_statuses**](DefaultApi.md#list_admin_deal_statuses) | **GET** /api/v1/admin/deal_statuses |  |
 | [**list_admin_deals**](DefaultApi.md#list_admin_deals) | **GET** /api/v1/admin/deals |  |
 | [**list_admin_favorites**](DefaultApi.md#list_admin_favorites) | **GET** /api/v1/admin/favorites |  |
+| [**list_admin_filtered_game_contracts**](DefaultApi.md#list_admin_filtered_game_contracts) | **GET** /api/v1/admin/schools/{school_id}/games/filtered_game_contracts |  |
 | [**list_admin_financial_stats**](DefaultApi.md#list_admin_financial_stats) | **GET** /api/v1/admin/financial_stats |  |
 | [**list_admin_financials_qc**](DefaultApi.md#list_admin_financials_qc) | **GET** /api/v1/admin/financials_qc |  |
 | [**list_admin_foia_contacts**](DefaultApi.md#list_admin_foia_contacts) | **GET** /api/v1/admin/foia_contacts |  |
@@ -435,6 +459,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**list_admin_foia_request_follow_up_report**](DefaultApi.md#list_admin_foia_request_follow_up_report) | **GET** /api/v1/admin/foia_requests/follow_up_report |  |
 | [**list_admin_foia_request_schools**](DefaultApi.md#list_admin_foia_request_schools) | **GET** /api/v1/admin/foia_requests/schools |  |
 | [**list_admin_foia_requests**](DefaultApi.md#list_admin_foia_requests) | **GET** /api/v1/admin/foia_requests |  |
+| [**list_admin_game_contracts**](DefaultApi.md#list_admin_game_contracts) | **GET** /api/v1/admin/game_contracts |  |
 | [**list_admin_income_reports**](DefaultApi.md#list_admin_income_reports) | **GET** /api/v1/admin/income_reports |  |
 | [**list_admin_notes**](DefaultApi.md#list_admin_notes) | **GET** /api/v1/admin/notes |  |
 | [**list_admin_position_types**](DefaultApi.md#list_admin_position_types) | **GET** /api/v1/admin/position_types |  |
@@ -443,6 +468,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**list_admin_requested_items**](DefaultApi.md#list_admin_requested_items) | **GET** /api/v1/admin/requested_items |  |
 | [**list_admin_school_deals**](DefaultApi.md#list_admin_school_deals) | **GET** /api/v1/admin/schools/{school_id}/deals |  |
 | [**list_admin_school_game_counts**](DefaultApi.md#list_admin_school_game_counts) | **GET** /api/v1/admin/schools/game_counts |  |
+| [**list_admin_school_games**](DefaultApi.md#list_admin_school_games) | **GET** /api/v1/admin/schools/{school_id}/games |  |
 | [**list_admin_school_groups**](DefaultApi.md#list_admin_school_groups) | **GET** /api/v1/admin/school_groups |  |
 | [**list_admin_school_groups_available_schools**](DefaultApi.md#list_admin_school_groups_available_schools) | **GET** /api/v1/admin/school_groups/available_schools |  |
 | [**list_admin_school_logos_qc**](DefaultApi.md#list_admin_school_logos_qc) | **GET** /api/v1/admin/schools/school_logos_qc |  |
@@ -467,6 +493,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**list_admin_vendor_deals**](DefaultApi.md#list_admin_vendor_deals) | **GET** /api/v1/admin/vendors/{vendor_id}/deals |  |
 | [**list_admin_vendors**](DefaultApi.md#list_admin_vendors) | **GET** /api/v1/admin/vendors |  |
 | [**list_admin_youtube_videos**](DefaultApi.md#list_admin_youtube_videos) | **GET** /api/v1/admin/youtube_videos |  |
+| [**list_deal_verifications**](DefaultApi.md#list_deal_verifications) | **GET** /api/v1/deal_verifications | List verification events across deals |
 | [**list_notes**](DefaultApi.md#list_notes) | **GET** /api/v1/notes/list |  |
 | [**mark_admin_foia_request_processed_followup**](DefaultApi.md#mark_admin_foia_request_processed_followup) | **PATCH** /api/v1/admin/foia_requests/{id}/mark_processed_followup |  |
 | [**mark_paid_admin_invoice**](DefaultApi.md#mark_paid_admin_invoice) | **POST** /api/v1/admin/invoices/{invoiceId}/mark_paid |  |
@@ -479,11 +506,13 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**merge_coach**](DefaultApi.md#merge_coach) | **POST** /api/v1/coaches/{coachId}/merge |  |
 | [**new_admin_position_type**](DefaultApi.md#new_admin_position_type) | **GET** /api/v1/admin/position_types/new |  |
 | [**new_admin_sport**](DefaultApi.md#new_admin_sport) | **GET** /api/v1/admin/sports/new |  |
+| [**patch_season**](DefaultApi.md#patch_season) | **PATCH** /api/v1/seasons/{seasonId} |  |
 | [**position_types_for_groups_admin_sports**](DefaultApi.md#position_types_for_groups_admin_sports) | **POST** /api/v1/admin/sports/position_types_for_groups |  |
 | [**prefill_admin_invoice**](DefaultApi.md#prefill_admin_invoice) | **GET** /api/v1/admin/invoices/prefill |  |
 | [**preview_admin_coach_contracts**](DefaultApi.md#preview_admin_coach_contracts) | **POST** /api/v1/admin/coach_contracts/preview |  |
 | [**preview_admin_coach_merge_log**](DefaultApi.md#preview_admin_coach_merge_log) | **GET** /api/v1/admin/coach_merge_logs/preview |  |
 | [**publish_admin_desk_report**](DefaultApi.md#publish_admin_desk_report) | **POST** /api/v1/admin/desk_reports/{uuid}/publish |  |
+| [**put_postseason_result**](DefaultApi.md#put_postseason_result) | **PUT** /api/v1/postseason_results |  |
 | [**recalculate_admin_system_setting_latest_salaries**](DefaultApi.md#recalculate_admin_system_setting_latest_salaries) | **POST** /api/v1/admin/system_setting/latest_salary_recalculation |  |
 | [**refresh_admin_system_setting_season_cache**](DefaultApi.md#refresh_admin_system_setting_season_cache) | **POST** /api/v1/admin/system_setting/season_cache_refresh |  |
 | [**regenerate_raw_contract_pdf**](DefaultApi.md#regenerate_raw_contract_pdf) | **POST** /api/v1/raw_contracts/{raw_contractId}/regenerate_pdf |  |
@@ -493,6 +522,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**restore_admin_desk_report**](DefaultApi.md#restore_admin_desk_report) | **POST** /api/v1/admin/desk_reports/{uuid}/restore |  |
 | [**retry_frs_export**](DefaultApi.md#retry_frs_export) | **POST** /api/v1/frs_exports/{frsExportId}/retry |  |
 | [**revoke_contract_verification**](DefaultApi.md#revoke_contract_verification) | **POST** /api/v1/raw_contracts/{raw_contractId}/verifications/revoke | Revoke verified seasons (append a revocation event) |
+| [**revoke_deal_verification**](DefaultApi.md#revoke_deal_verification) | **POST** /api/v1/deals/{dealId}/verifications/revoke | Revoke a deal&#39;s verification (append a revocation event) |
 | [**run_admin_scraper**](DefaultApi.md#run_admin_scraper) | **POST** /api/v1/admin/scrapers/{id}/run |  |
 | [**search_coaches**](DefaultApi.md#search_coaches) | **POST** /api/v1/coaches/search |  |
 | [**send_admin_invoice**](DefaultApi.md#send_admin_invoice) | **POST** /api/v1/admin/invoices/{invoiceId}/send |  |
@@ -509,6 +539,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_account_user**](DefaultApi.md#update_account_user) | **PATCH** /api/v1/account_users/{accountUserId} |  |
 | [**update_account_user_activation**](DefaultApi.md#update_account_user_activation) | **PATCH** /api/v1/account_user_activation |  |
 | [**update_admin_avatars**](DefaultApi.md#update_admin_avatars) | **PATCH** /api/v1/admin/avatars/{id} |  |
+| [**update_admin_bowl_games**](DefaultApi.md#update_admin_bowl_games) | **PATCH** /api/v1/admin/bowl_games/{id} |  |
 | [**update_admin_coach**](DefaultApi.md#update_admin_coach) | **PATCH** /api/v1/admin/coaches/{id} |  |
 | [**update_admin_conferences**](DefaultApi.md#update_admin_conferences) | **PATCH** /api/v1/admin/conferences/{id} |  |
 | [**update_admin_conferenceships**](DefaultApi.md#update_admin_conferenceships) | **PATCH** /api/v1/admin/conferenceships/{id} |  |
@@ -527,6 +558,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_admin_foia_request_financials**](DefaultApi.md#update_admin_foia_request_financials) | **PATCH** /api/v1/admin/foia_requests/{id}/financials |  |
 | [**update_admin_foia_request_games**](DefaultApi.md#update_admin_foia_request_games) | **PATCH** /api/v1/admin/foia_requests/{id}/games |  |
 | [**update_admin_foia_requests**](DefaultApi.md#update_admin_foia_requests) | **PATCH** /api/v1/admin/foia_requests/{id} |  |
+| [**update_admin_game_contract**](DefaultApi.md#update_admin_game_contract) | **PATCH** /api/v1/admin/game_contracts/{id} |  |
 | [**update_admin_income_report**](DefaultApi.md#update_admin_income_report) | **PATCH** /api/v1/admin/income_reports/{id} |  |
 | [**update_admin_invoice**](DefaultApi.md#update_admin_invoice) | **PATCH** /api/v1/admin/invoices/{invoiceId} |  |
 | [**update_admin_note**](DefaultApi.md#update_admin_note) | **PATCH** /api/v1/admin/notes/{id} |  |
@@ -535,6 +567,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_admin_requested_item**](DefaultApi.md#update_admin_requested_item) | **PATCH** /api/v1/admin/requested_items/{id} |  |
 | [**update_admin_requested_item_ri_note**](DefaultApi.md#update_admin_requested_item_ri_note) | **PATCH** /api/v1/admin/requested_items/{requested_item_id}/ri_note |  |
 | [**update_admin_school_deal**](DefaultApi.md#update_admin_school_deal) | **PATCH** /api/v1/admin/schools/{school_id}/deals/{id} |  |
+| [**update_admin_school_game**](DefaultApi.md#update_admin_school_game) | **PATCH** /api/v1/admin/schools/{school_id}/games/{id} |  |
 | [**update_admin_school_group**](DefaultApi.md#update_admin_school_group) | **PATCH** /api/v1/admin/school_groups/{id} |  |
 | [**update_admin_school_names**](DefaultApi.md#update_admin_school_names) | **PATCH** /api/v1/admin/school_names/{id} |  |
 | [**update_admin_schools**](DefaultApi.md#update_admin_schools) | **PATCH** /api/v1/admin/schools/{id} |  |
@@ -1714,6 +1747,80 @@ end
 ### Return type
 
 [**AccountUser**](AccountUser.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_admin_bowl_games
+
+> <AdminBowlGameDetail> create_admin_bowl_games(create_admin_bowl_games_request)
+
+
+
+Create a bowl game (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+create_admin_bowl_games_request = WinthropClient::CreateAdminBowlGamesRequest.new({bowl_game: WinthropClient::CreateAdminBowlGamesRequestBowlGame.new}) # CreateAdminBowlGamesRequest | 
+
+begin
+  
+  result = api_instance.create_admin_bowl_games(create_admin_bowl_games_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_bowl_games: #{e}"
+end
+```
+
+#### Using the create_admin_bowl_games_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminBowlGameDetail>, Integer, Hash)> create_admin_bowl_games_with_http_info(create_admin_bowl_games_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_bowl_games_with_http_info(create_admin_bowl_games_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminBowlGameDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_bowl_games_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_admin_bowl_games_request** | [**CreateAdminBowlGamesRequest**](CreateAdminBowlGamesRequest.md) |  |  |
+
+### Return type
+
+[**AdminBowlGameDetail**](AdminBowlGameDetail.md)
 
 ### Authorization
 
@@ -3374,6 +3481,234 @@ end
 - **Accept**: application/json
 
 
+## create_admin_game_contracts_uploader
+
+> <RegenerateRawContractPdf200Response> create_admin_game_contracts_uploader(opts)
+
+
+
+Upload a CSV of game contracts to queue for import via GameContractCsvImporter, after validating required headers (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  import_file: File.new('/path/to/some/file') # File | 
+}
+
+begin
+  
+  result = api_instance.create_admin_game_contracts_uploader(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_game_contracts_uploader: #{e}"
+end
+```
+
+#### Using the create_admin_game_contracts_uploader_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RegenerateRawContractPdf200Response>, Integer, Hash)> create_admin_game_contracts_uploader_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_game_contracts_uploader_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RegenerateRawContractPdf200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_game_contracts_uploader_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **import_file** | **File** |  | [optional] |
+
+### Return type
+
+[**RegenerateRawContractPdf200Response**](RegenerateRawContractPdf200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+
+## create_admin_games_mass_update
+
+> <CreateAdminGamesUpload200Response> create_admin_games_mass_update(opts)
+
+
+
+Queue a games CSV mass update
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  import_file: File.new('/path/to/some/file') # File | 
+}
+
+begin
+  
+  result = api_instance.create_admin_games_mass_update(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_games_mass_update: #{e}"
+end
+```
+
+#### Using the create_admin_games_mass_update_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateAdminGamesUpload200Response>, Integer, Hash)> create_admin_games_mass_update_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_games_mass_update_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateAdminGamesUpload200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_games_mass_update_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **import_file** | **File** |  | [optional] |
+
+### Return type
+
+[**CreateAdminGamesUpload200Response**](CreateAdminGamesUpload200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+
+## create_admin_games_upload
+
+> <CreateAdminGamesUpload200Response> create_admin_games_upload(opts)
+
+
+
+Queue a games CSV import
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  import_file: File.new('/path/to/some/file') # File | 
+}
+
+begin
+  
+  result = api_instance.create_admin_games_upload(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_games_upload: #{e}"
+end
+```
+
+#### Using the create_admin_games_upload_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateAdminGamesUpload200Response>, Integer, Hash)> create_admin_games_upload_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_games_upload_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateAdminGamesUpload200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_games_upload_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **import_file** | **File** |  | [optional] |
+
+### Return type
+
+[**CreateAdminGamesUpload200Response**](CreateAdminGamesUpload200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+
 ## create_admin_impersonations
 
 > <AdminImpersonation> create_admin_impersonations(create_admin_impersonations_request)
@@ -3891,6 +4226,82 @@ end
 ### Return type
 
 [**AdminDeal**](AdminDeal.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_admin_school_game
+
+> <AdminGame> create_admin_school_game(school_id, create_admin_school_game_request)
+
+
+
+Create a game for a school
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | 
+create_admin_school_game_request = WinthropClient::CreateAdminSchoolGameRequest.new({game: WinthropClient::GameWriteFields.new({sport_id: 37})}) # CreateAdminSchoolGameRequest | 
+
+begin
+  
+  result = api_instance.create_admin_school_game(school_id, create_admin_school_game_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_school_game: #{e}"
+end
+```
+
+#### Using the create_admin_school_game_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminGame>, Integer, Hash)> create_admin_school_game_with_http_info(school_id, create_admin_school_game_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_admin_school_game_with_http_info(school_id, create_admin_school_game_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminGame>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_admin_school_game_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** |  |  |
+| **create_admin_school_game_request** | [**CreateAdminSchoolGameRequest**](CreateAdminSchoolGameRequest.md) |  |  |
+
+### Return type
+
+[**AdminGame**](AdminGame.md)
 
 ### Authorization
 
@@ -4971,7 +5382,7 @@ end
 
 
 
-Create the compensation for one coach, school, and year, typically a missing future, contract-covered season. Compensation coach, school, and year are derived from the coach's positions, so the positions are resolved first, modeled on the coach contract CSV uploader. If the coach already has positions at school_id in that year they are used and nothing is copied. Otherwise the positions the coach holds at that school in the latest earlier year are copied into the requested year (the same title and position types, creating the season if needed), and the new compensation is linked to them. If the coach has no earlier position at that school there is nothing to copy and the request is refused; create the position first. Positions that already exist in the requested year are used as they are; sports the earlier year has but the requested year lacks are not added. One target year per request, at most 15 years ahead. Fields other than the documented compensation fields are refused rather than ignored (is_car_provided is accepted on creation only; PATCH does not update it). When contract_id is supplied it must be a non-pending contract of the same coach, and unless contract_status_id is sent the compensation is marked complete, as the CSV uploader does; an explicitly sent contract_status_id is kept. Every value is checked as sent. Ids, the year and the cents amounts must be whole numbers (an integer or a string of digits, with no commas, decimals or text, within the 32-bit integer range), booleans must be true or false, dates must be YYYY-MM-DD, and an array or object is refused for a scalar field, each with a field-specific 422; nothing is silently dropped or coerced. The whole request is one transaction, so on any error nothing is saved. If a background job cannot be queued after the row was saved, the compensation is still returned with 201 and the problem is reported to Sentry. Requires a super admin and the winad_write OAuth scope. To change an existing compensation use PATCH /compensations/{compensationId}. API clients in winthrop-clients must be regenerated to expose this operation.
+Create the compensation for one coach, school, and year, typically a missing future, contract-covered season. Compensation coach, school, and year are derived from the coach's positions, so the positions are resolved first, modeled on the coach contract CSV uploader. If the coach already has positions at school_id in that year they are used and nothing is copied. Otherwise the positions the coach holds at that school in the latest earlier year are copied into the requested year (the same title and position types, creating the season if needed), and the new compensation is linked to them. If the coach has no earlier position at that school there is nothing to copy and the request is refused; create the position first. Positions that already exist in the requested year are used as they are; sports the earlier year has but the requested year lacks are not added. One target year per request, at most 15 years ahead. Fields other than the documented compensation fields are refused rather than ignored. When contract_id is supplied it must be a non-pending contract of the same coach, and unless contract_status_id is sent the compensation is marked complete, as the CSV uploader does; an explicitly sent contract_status_id is kept. Every value is checked as sent. Ids, the year and the cents amounts must be whole numbers (an integer or a string of digits, with no commas, decimals or text, within the 32-bit integer range), booleans must be true or false, dates must be YYYY-MM-DD, and an array or object is refused for a scalar field, each with a field-specific 422; nothing is silently dropped or coerced. The whole request is one transaction, so on any error nothing is saved. If a background job cannot be queued after the row was saved, the compensation is still returned with 201 and the problem is reported to Sentry. Requires a super admin and the winad_write OAuth scope. To change an existing compensation use PATCH /compensations/{compensationId}. API clients in winthrop-clients must be regenerated to expose this operation.
 
 ### Examples
 
@@ -5332,6 +5743,82 @@ end
 ### Return type
 
 [**ContractVerification**](ContractVerification.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_deal_verification
+
+> <DealVerification> create_deal_verification(deal_id, create_deal_verification_request)
+
+Append a deal verification event
+
+Requires winad_verify, an application explicitly allowing winad_verify, a persisted token resource owner, and read access to the deal. winad_write is not required and does not grant this action. A verification means we agree with the whole deal row, so there are no seasons. Identity fields are server-derived. Agent retries use a unique (deal_id, agent_run_id) key: an equivalent payload returns the original event, a changed payload conflicts. An omitted verified_at on retry retains the original check time. The result 'revoked' is rejected here; use the revoke endpoint. Manual checks are never deduplicated. There are no endpoints to edit or delete events, and deals.verified is not touched.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+deal_id = 56 # Integer | 
+create_deal_verification_request = WinthropClient::CreateDealVerificationRequest.new({deal_verification: WinthropClient::DealVerificationInput.new({result: 'passed', method: 'agent'})}) # CreateDealVerificationRequest | 
+
+begin
+  # Append a deal verification event
+  result = api_instance.create_deal_verification(deal_id, create_deal_verification_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_deal_verification: #{e}"
+end
+```
+
+#### Using the create_deal_verification_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DealVerification>, Integer, Hash)> create_deal_verification_with_http_info(deal_id, create_deal_verification_request)
+
+```ruby
+begin
+  # Append a deal verification event
+  data, status_code, headers = api_instance.create_deal_verification_with_http_info(deal_id, create_deal_verification_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DealVerification>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->create_deal_verification_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **deal_id** | **Integer** |  |  |
+| **create_deal_verification_request** | [**CreateDealVerificationRequest**](CreateDealVerificationRequest.md) |  |  |
+
+### Return type
+
+[**DealVerification**](DealVerification.md)
 
 ### Authorization
 
@@ -9056,7 +9543,7 @@ nil (empty response body)
 
 
 
-Retire a duplicate RawContract and its stored files. Requires the winad_write OAuth scope and permission to destroy the RawContract. Links are moved first (re-point the income report, pay rows and verification events to the document that stays), then it is retired. While a pay row (compensation of its Contract), an income report, an earned incentive (as its document or as the amendment that ends it) or a verification event still links to it, or its Contract has pay rows or verification events of its own, nothing is deleted and the answer is 409 with errors.blockers, an object of id lists under pay_rows, contracts, income_reports, earned_incentives and verification_events (only the non-empty ones). A Contract with no links of its own is deleted with the RawContract. The delete is an audit version (PaperTrail) with the optional change_note. Returns 204 with no body. API clients in winthrop-clients must be regenerated to expose this change.
+Retire a duplicate RawContract and its stored files. Requires the winad_write OAuth scope and permission to destroy the RawContract. Links are moved first (re-point the income report, pay rows and verification events to the document that stays), then it is retired. While a pay row (compensation of its Contract), an income report, an earned incentive (as its document or as the amendment that ends it), a verification event or a buyout inputs revision still links to it, or its Contract has pay rows or verification events of its own, nothing is deleted and the answer is 409 with errors.blockers, an object of id lists under pay_rows, contracts, income_reports, earned_incentives, verification_events and buyout_input_revisions (only the non-empty ones). A Contract with no links of its own is deleted with the RawContract. The delete is an audit version (PaperTrail) with the optional change_note. Returns 204 with no body. API clients in winthrop-clients must be regenerated to expose this change.
 
 ### Examples
 
@@ -9842,6 +10329,79 @@ begin
   p data # => nil
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->destroy_admin_avatars_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## destroy_admin_bowl_games
+
+> destroy_admin_bowl_games(id)
+
+
+
+Delete a bowl game (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  api_instance.destroy_admin_bowl_games(id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_bowl_games: #{e}"
+end
+```
+
+#### Using the destroy_admin_bowl_games_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> destroy_admin_bowl_games_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_admin_bowl_games_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_bowl_games_with_http_info: #{e}"
 end
 ```
 
@@ -10745,6 +11305,79 @@ nil (empty response body)
 - **Accept**: Not defined
 
 
+## destroy_admin_game_contract
+
+> destroy_admin_game_contract(id)
+
+
+
+Delete a game contract, preserving its source document and all other document links (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  api_instance.destroy_admin_game_contract(id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_game_contract: #{e}"
+end
+```
+
+#### Using the destroy_admin_game_contract_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> destroy_admin_game_contract_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_admin_game_contract_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_game_contract_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
 ## destroy_admin_impersonations
 
 > <DestroyAdminImpersonations200Response> destroy_admin_impersonations
@@ -11386,6 +12019,81 @@ begin
   p data # => nil
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->destroy_admin_school_deal_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** |  |  |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## destroy_admin_school_game
+
+> destroy_admin_school_game(school_id, id)
+
+
+
+Delete a game
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | 
+id = 56 # Integer | 
+
+begin
+  
+  api_instance.destroy_admin_school_game(school_id, id)
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_school_game: #{e}"
+end
+```
+
+#### Using the destroy_admin_school_game_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> destroy_admin_school_game_with_http_info(school_id, id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.destroy_admin_school_game_with_http_info(school_id, id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->destroy_admin_school_game_with_http_info: #{e}"
 end
 ```
 
@@ -12670,9 +13378,89 @@ end
 - **Accept**: text/csv
 
 
+## download_admin_game_contracts_uploader_csv_template
+
+> File download_admin_game_contracts_uploader_csv_template(sports, opts)
+
+
+
+Download a per-school/sports/season-year Game Contract CSV template (Game.generate_csv_data) (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+sports = [37] # Array<Integer> | 
+opts = {
+  school_id: 56, # Integer | 
+  season_year: 56 # Integer | 
+}
+
+begin
+  
+  result = api_instance.download_admin_game_contracts_uploader_csv_template(sports, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->download_admin_game_contracts_uploader_csv_template: #{e}"
+end
+```
+
+#### Using the download_admin_game_contracts_uploader_csv_template_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(File, Integer, Hash)> download_admin_game_contracts_uploader_csv_template_with_http_info(sports, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.download_admin_game_contracts_uploader_csv_template_with_http_info(sports, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => File
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->download_admin_game_contracts_uploader_csv_template_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **sports** | [**Array&lt;Integer&gt;**](Integer.md) |  |  |
+| **school_id** | **Integer** |  | [optional] |
+| **season_year** | **Integer** |  | [optional] |
+
+### Return type
+
+**File**
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/csv
+
+
 ## download_admin_uploads
 
-> <DownloadAdminUploads202Response> download_admin_uploads
+> <CreateAdminGamesUpload200Response> download_admin_uploads
 
 
 
@@ -12709,7 +13497,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<DownloadAdminUploads202Response>, Integer, Hash)> download_admin_uploads_with_http_info
+> <Array(<CreateAdminGamesUpload200Response>, Integer, Hash)> download_admin_uploads_with_http_info
 
 ```ruby
 begin
@@ -12717,7 +13505,7 @@ begin
   data, status_code, headers = api_instance.download_admin_uploads_with_http_info
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <DownloadAdminUploads202Response>
+  p data # => <CreateAdminGamesUpload200Response>
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->download_admin_uploads_with_http_info: #{e}"
 end
@@ -12729,7 +13517,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**DownloadAdminUploads202Response**](DownloadAdminUploads202Response.md)
+[**CreateAdminGamesUpload200Response**](CreateAdminGamesUpload200Response.md)
 
 ### Authorization
 
@@ -13113,6 +13901,80 @@ end
 - **Accept**: application/json
 
 
+## export_admin_school_games
+
+> <RegenerateRawContractPdf200Response> export_admin_school_games(school_id)
+
+
+
+Queue a CSV export of the school's games (admin-only). GamesExportJob emails the CSV to the current user.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.export_admin_school_games(school_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->export_admin_school_games: #{e}"
+end
+```
+
+#### Using the export_admin_school_games_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RegenerateRawContractPdf200Response>, Integer, Hash)> export_admin_school_games_with_http_info(school_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.export_admin_school_games_with_http_info(school_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RegenerateRawContractPdf200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->export_admin_school_games_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** |  |  |
+
+### Return type
+
+[**RegenerateRawContractPdf200Response**](RegenerateRawContractPdf200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## export_revenue_searches
 
 > File export_revenue_searches(school_id, opts)
@@ -13474,6 +14336,80 @@ end
 ### Return type
 
 [**AccountSummaryCollection**](AccountSummaryCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_bowl_games
+
+> <AdminBowlGameDetail> get_admin_bowl_games(id)
+
+
+
+Retrieve a bowl game with its associated postseason results (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_admin_bowl_games(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_bowl_games: #{e}"
+end
+```
+
+#### Using the get_admin_bowl_games_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminBowlGameDetail>, Integer, Hash)> get_admin_bowl_games_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_bowl_games_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminBowlGameDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_bowl_games_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminBowlGameDetail**](AdminBowlGameDetail.md)
 
 ### Authorization
 
@@ -15294,6 +16230,367 @@ end
 - **Accept**: application/json
 
 
+## get_admin_game_contract
+
+> <AdminGameContract> get_admin_game_contract(id)
+
+
+
+Retrieve a game contract (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_admin_game_contract(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_game_contract: #{e}"
+end
+```
+
+#### Using the get_admin_game_contract_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminGameContract>, Integer, Hash)> get_admin_game_contract_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_game_contract_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminGameContract>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_game_contract_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminGameContract**](AdminGameContract.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_game_contract_series
+
+> <GetAdminGameContractSeries200Response> get_admin_game_contract_series(id)
+
+
+
+Retrieve the game contracts sharing this one's raw contract (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_admin_game_contract_series(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_game_contract_series: #{e}"
+end
+```
+
+#### Using the get_admin_game_contract_series_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetAdminGameContractSeries200Response>, Integer, Hash)> get_admin_game_contract_series_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_game_contract_series_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetAdminGameContractSeries200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_game_contract_series_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**GetAdminGameContractSeries200Response**](GetAdminGameContractSeries200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_game_contracts_uploader
+
+> <AdminGameContractsUploaderList> get_admin_game_contracts_uploader
+
+
+
+Get the Upload Game Contract CSV form data (schools, guarantee-eligible sports, season-year options, Sidekiq job status) (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_admin_game_contracts_uploader
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_game_contracts_uploader: #{e}"
+end
+```
+
+#### Using the get_admin_game_contracts_uploader_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminGameContractsUploaderList>, Integer, Hash)> get_admin_game_contracts_uploader_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_game_contracts_uploader_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminGameContractsUploaderList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_game_contracts_uploader_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**AdminGameContractsUploaderList**](AdminGameContractsUploaderList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_games_mass_update_status
+
+> <AdminGamesMassUpdateStatus> get_admin_games_mass_update_status
+
+
+
+Games CSV mass-updater job status + required/optional headers
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_admin_games_mass_update_status
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_games_mass_update_status: #{e}"
+end
+```
+
+#### Using the get_admin_games_mass_update_status_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminGamesMassUpdateStatus>, Integer, Hash)> get_admin_games_mass_update_status_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_games_mass_update_status_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminGamesMassUpdateStatus>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_games_mass_update_status_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**AdminGamesMassUpdateStatus**](AdminGamesMassUpdateStatus.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_games_upload_status
+
+> <AdminGamesUploadStatus> get_admin_games_upload_status
+
+
+
+Games CSV importer job status + required/optional headers
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+
+begin
+  
+  result = api_instance.get_admin_games_upload_status
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_games_upload_status: #{e}"
+end
+```
+
+#### Using the get_admin_games_upload_status_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminGamesUploadStatus>, Integer, Hash)> get_admin_games_upload_status_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_games_upload_status_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminGamesUploadStatus>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_games_upload_status_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**AdminGamesUploadStatus**](AdminGamesUploadStatus.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_admin_income_report
 
 > <AdminIncomeReport> get_admin_income_report(id)
@@ -15814,6 +17111,82 @@ end
 ### Return type
 
 [**AdminRiNote**](AdminRiNote.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_admin_school_game
+
+> <AdminGame> get_admin_school_game(school_id, id)
+
+
+
+Retrieve a game belonging to the school in the URL (home or away); an unrelated school/game pair returns 404
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | 
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.get_admin_school_game(school_id, id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_school_game: #{e}"
+end
+```
+
+#### Using the get_admin_school_game_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminGame>, Integer, Hash)> get_admin_school_game_with_http_info(school_id, id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_admin_school_game_with_http_info(school_id, id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminGame>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_admin_school_game_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** |  |  |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminGame**](AdminGame.md)
 
 ### Authorization
 
@@ -17032,6 +18405,84 @@ end
 ### Return type
 
 [**AuditedFinancialReportStatusCollection**](AuditedFinancialReportStatusCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_bowl_games
+
+> <BowlGameCollection> get_bowl_games(opts)
+
+
+
+Retrieve the bowl games, to find the bowl_game_id of a postseason result
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56 # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+}
+
+begin
+  
+  result = api_instance.get_bowl_games(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_bowl_games: #{e}"
+end
+```
+
+#### Using the get_bowl_games_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<BowlGameCollection>, Integer, Hash)> get_bowl_games_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_bowl_games_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <BowlGameCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_bowl_games_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+
+### Return type
+
+[**BowlGameCollection**](BowlGameCollection.md)
 
 ### Authorization
 
@@ -20120,6 +21571,88 @@ end
 ### Return type
 
 [**DealStatusCollection**](DealStatusCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_deal_verifications
+
+> <GetDealVerifications200Response> get_deal_verifications(deal_id, opts)
+
+List the deal's verification history
+
+Requires read access to the deal. Events are add-only, belong to the deal itself (so they survive replacing its RawContract PDF) and are ordered by verified_at DESC and id DESC. `meta.verified` is true while the latest event is passed. The legacy deals.verified boolean is unrelated and unchanged.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+deal_id = 56 # Integer | 
+opts = {
+  page: 56, # Integer | 
+  per_page: 56, # Integer | Page size, capped at 100; defaults to 35.
+  q: { ... } # Object | Ransack filters on scalar verification fields only.
+}
+
+begin
+  # List the deal's verification history
+  result = api_instance.get_deal_verifications(deal_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_deal_verifications: #{e}"
+end
+```
+
+#### Using the get_deal_verifications_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetDealVerifications200Response>, Integer, Hash)> get_deal_verifications_with_http_info(deal_id, opts)
+
+```ruby
+begin
+  # List the deal's verification history
+  data, status_code, headers = api_instance.get_deal_verifications_with_http_info(deal_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetDealVerifications200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_deal_verifications_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **deal_id** | **Integer** |  |  |
+| **page** | **Integer** |  | [optional] |
+| **per_page** | **Integer** | Page size, capped at 100; defaults to 35. | [optional] |
+| **q** | [**Object**](.md) | Ransack filters on scalar verification fields only. | [optional] |
+
+### Return type
+
+[**GetDealVerifications200Response**](GetDealVerifications200Response.md)
 
 ### Authorization
 
@@ -24716,6 +26249,92 @@ end
 - **Accept**: application/json
 
 
+## get_postseason_results
+
+> <PostseasonResultCollection> get_postseason_results(opts)
+
+
+
+Retrieve postseason results, the furthest stage each season reached (a bowl game or a tournament round, and whether it was won). Filter by season_id, or by school_id, sport_id and season_year.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+  season_id: 56, # Integer | 
+  school_id: 56, # Integer | 
+  sport_id: 56, # Integer | 
+  season_year: 56 # Integer | Season year (2023 = the 2022-23 season)
+}
+
+begin
+  
+  result = api_instance.get_postseason_results(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_postseason_results: #{e}"
+end
+```
+
+#### Using the get_postseason_results_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PostseasonResultCollection>, Integer, Hash)> get_postseason_results_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_postseason_results_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PostseasonResultCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_postseason_results_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+| **season_id** | **Integer** |  | [optional] |
+| **school_id** | **Integer** |  | [optional] |
+| **sport_id** | **Integer** |  | [optional] |
+| **season_year** | **Integer** | Season year (2023 &#x3D; the 2022-23 season) | [optional] |
+
+### Return type
+
+[**PostseasonResultCollection**](PostseasonResultCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_raw_contract
 
 > <RawContract> get_raw_contract(raw_contract_id)
@@ -24796,7 +26415,7 @@ end
 
 
 
-Return the contract's Mistral OCR text; if not yet stored, OCR the PDF on demand and return it
+Return the contract's stored text; if not yet stored, extract it on demand (the PDF's own text layer when it covers the pages, else Mistral OCR) and return it
 
 ### Examples
 
@@ -24870,7 +26489,7 @@ end
 
 
 
-Retrieve some or all raw_contracts
+Retrieve some or all raw_contracts. `q[buyout_inputs_present]=true` (WINAD-10717) keeps only those with checked buyout inputs; each row then carries id, coach_id, buyout_inputs_updated_at and as_of (false is not applied).
 
 ### Examples
 
@@ -27502,7 +29121,7 @@ end
 
 
 
-Retrieve some or all seasons
+Retrieve some or all seasons. Besides the season columns, q takes school_division_id_eq and school_subdivision_id_eq (the division / subdivision of the season's school), and the _null predicates (q[wins_null]=1, conference_wins_null, conference_position_null) list seasons with no record yet, for example the empty D1 seasons of a sport and year: q[year_eq]=2025&q[sport_id_eq]=7&q[school_division_id_eq]=1&q[wins_null]=1.
 
 ### Examples
 
@@ -29747,6 +31366,88 @@ This endpoint does not need any parameter.
 - **Accept**: application/json
 
 
+## get_tournament_rounds
+
+> <TournamentRoundCollection> get_tournament_rounds(opts)
+
+
+
+Retrieve the tournament rounds with their tournament and sport, to find the tournament_round_id of a postseason result
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+  sport_id: 56, # Integer | 
+  tournament_id: 56 # Integer | 
+}
+
+begin
+  
+  result = api_instance.get_tournament_rounds(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_tournament_rounds: #{e}"
+end
+```
+
+#### Using the get_tournament_rounds_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TournamentRoundCollection>, Integer, Hash)> get_tournament_rounds_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_tournament_rounds_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TournamentRoundCollection>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->get_tournament_rounds_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+| **sport_id** | **Integer** |  | [optional] |
+| **tournament_id** | **Integer** |  | [optional] |
+
+### Return type
+
+[**TournamentRoundCollection**](TournamentRoundCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_upload
 
 > <UploadDetail> get_upload(upload_id)
@@ -30748,6 +32449,88 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## list_admin_bowl_games
+
+> <AdminBowlGamesList> list_admin_bowl_games(opts)
+
+
+
+List bowl games (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
+  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+  q_name_cont: 'q_name_cont_example', # String | Case-insensitive name search
+  q_s: 'name asc' # String | Name sort order (defaults to ascending)
+}
+
+begin
+  
+  result = api_instance.list_admin_bowl_games(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_bowl_games: #{e}"
+end
+```
+
+#### Using the list_admin_bowl_games_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminBowlGamesList>, Integer, Hash)> list_admin_bowl_games_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_bowl_games_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminBowlGamesList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_bowl_games_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+| **q_name_cont** | **String** | Case-insensitive name search | [optional] |
+| **q_s** | **String** | Name sort order (defaults to ascending) | [optional] |
+
+### Return type
+
+[**AdminBowlGamesList**](AdminBowlGamesList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
@@ -32431,6 +34214,88 @@ end
 - **Accept**: application/json
 
 
+## list_admin_filtered_game_contracts
+
+> <ListAdminFilteredGameContracts200Response> list_admin_filtered_game_contracts(school_id, opts)
+
+
+
+Retrieve game contracts filtered by sport/home school/away school, for the game create/edit form's game_contract_id dropdown (admin-only). Blank filters match every game contract.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | 
+opts = {
+  sport_id: 56, # Integer | 
+  home_school_id: 56, # Integer | 
+  away_school_id: 56 # Integer | 
+}
+
+begin
+  
+  result = api_instance.list_admin_filtered_game_contracts(school_id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_filtered_game_contracts: #{e}"
+end
+```
+
+#### Using the list_admin_filtered_game_contracts_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ListAdminFilteredGameContracts200Response>, Integer, Hash)> list_admin_filtered_game_contracts_with_http_info(school_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_filtered_game_contracts_with_http_info(school_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ListAdminFilteredGameContracts200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_filtered_game_contracts_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** |  |  |
+| **sport_id** | **Integer** |  | [optional] |
+| **home_school_id** | **Integer** |  | [optional] |
+| **away_school_id** | **Integer** |  | [optional] |
+
+### Return type
+
+[**ListAdminFilteredGameContracts200Response**](ListAdminFilteredGameContracts200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## list_admin_financial_stats
 
 > <AdminFinancialStatsList> list_admin_financial_stats(opts)
@@ -33325,6 +35190,100 @@ end
 - **Accept**: application/json
 
 
+## list_admin_game_contracts
+
+> <ListAdminGameContracts200Response> list_admin_game_contracts(opts)
+
+
+
+List/search game contracts for QC (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  q_for_division: 56, # Integer | 
+  q_for_subdivision: 56, # Integer | 
+  q_for_conference: 56, # Integer | 
+  q_for_school: 56, # Integer | 
+  q_sport_id_eq: 56, # Integer | 
+  q_season_year_eq: 56, # Integer | 
+  q_verified_eq: true, # Boolean | 
+  q_s: 'q_s_example', # String | 
+  page: 56, # Integer | 
+  per_page: 56 # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
+}
+
+begin
+  
+  result = api_instance.list_admin_game_contracts(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_game_contracts: #{e}"
+end
+```
+
+#### Using the list_admin_game_contracts_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ListAdminGameContracts200Response>, Integer, Hash)> list_admin_game_contracts_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_game_contracts_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ListAdminGameContracts200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_game_contracts_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **q_for_division** | **Integer** |  | [optional] |
+| **q_for_subdivision** | **Integer** |  | [optional] |
+| **q_for_conference** | **Integer** |  | [optional] |
+| **q_for_school** | **Integer** |  | [optional] |
+| **q_sport_id_eq** | **Integer** |  | [optional] |
+| **q_season_year_eq** | **Integer** |  | [optional] |
+| **q_verified_eq** | **Boolean** |  | [optional] |
+| **q_s** | **String** |  | [optional] |
+| **page** | **Integer** |  | [optional] |
+| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
+
+### Return type
+
+[**ListAdminGameContracts200Response**](ListAdminGameContracts200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## list_admin_income_reports
 
 > <AdminIncomeReportList> list_admin_income_reports(opts)
@@ -33996,6 +35955,80 @@ nil (empty response body)
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+
+## list_admin_school_games
+
+> <AdminGamesList> list_admin_school_games(school_id)
+
+
+
+List a school's games plus the Sport/State picker lists (admin-only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.list_admin_school_games(school_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_school_games: #{e}"
+end
+```
+
+#### Using the list_admin_school_games_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminGamesList>, Integer, Hash)> list_admin_school_games_with_http_info(school_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_school_games_with_http_info(school_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminGamesList>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_school_games_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminGamesList**](AdminGamesList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## list_admin_school_groups
@@ -35891,6 +37924,86 @@ end
 - **Accept**: application/json
 
 
+## list_deal_verifications
+
+> <ListDealVerifications200Response> list_deal_verifications(opts)
+
+List verification events across deals
+
+The verification events of many vendor deals in one request (WINAD-10737), for progress counts. Read-only. Each row is what GET /deals/{dealId}/verifications returns for the same event (the DealVerification schema). Ordered verified_at DESC, id DESC, so pages never overlap or skip; `per_page` defaults to 100, capped at 500. Ransack filters on id, deal_id, verified_by_id, verified_at, result, method, agent_run_id, evidence_url, created_at, batch_id and code_version, plus two filters that exist only here: `q[deal_type_id_eq]` / `q[deal_type_id_in][]` and `q[school_id_eq]` / `q[school_id_in][]` keep the events of deals of that deal type / school. A filter outside the allowlist, or an attribute without a predicate, is a 400 naming it. A caller sees the events of the deals they may read (pending deals are internal-only). 
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+opts = {
+  page: 56, # Integer | 
+  per_page: 56, # Integer | Page size, capped at 500; defaults to 100.
+  q: { ... } # Object | Ransack filters, e.g. q[deal_type_id_eq]=3&q[school_id_in][]=1&q[school_id_in][]=2.
+}
+
+begin
+  # List verification events across deals
+  result = api_instance.list_deal_verifications(opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_deal_verifications: #{e}"
+end
+```
+
+#### Using the list_deal_verifications_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ListDealVerifications200Response>, Integer, Hash)> list_deal_verifications_with_http_info(opts)
+
+```ruby
+begin
+  # List verification events across deals
+  data, status_code, headers = api_instance.list_deal_verifications_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ListDealVerifications200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_deal_verifications_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** |  | [optional] |
+| **per_page** | **Integer** | Page size, capped at 500; defaults to 100. | [optional] |
+| **q** | [**Object**](.md) | Ransack filters, e.g. q[deal_type_id_eq]&#x3D;3&amp;q[school_id_in][]&#x3D;1&amp;q[school_id_in][]&#x3D;2. | [optional] |
+
+### Return type
+
+[**ListDealVerifications200Response**](ListDealVerifications200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## list_notes
 
 > <Array<ListNotes200ResponseInner>> list_notes
@@ -36770,6 +38883,82 @@ This endpoint does not need any parameter.
 - **Accept**: application/json
 
 
+## patch_season
+
+> <Season> patch_season(season_id, season_record_update)
+
+
+
+Write the record fields of a Season (the fields of the admin season stats editor, the regular-season / postseason split and the conference championship flags). Only the fields in the body change; an explicit null clears a field. An optional top-level change_note is stored on the audit version. Requires the winad_write scope and an admin user.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+season_id = 56 # Integer | ID of the Season
+season_record_update = WinthropClient::SeasonRecordUpdate.new # SeasonRecordUpdate | Season record fields to change
+
+begin
+  
+  result = api_instance.patch_season(season_id, season_record_update)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->patch_season: #{e}"
+end
+```
+
+#### Using the patch_season_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Season>, Integer, Hash)> patch_season_with_http_info(season_id, season_record_update)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.patch_season_with_http_info(season_id, season_record_update)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Season>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->patch_season_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **season_id** | **Integer** | ID of the Season |  |
+| **season_record_update** | [**SeasonRecordUpdate**](SeasonRecordUpdate.md) | Season record fields to change |  |
+
+### Return type
+
+[**Season**](Season.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## position_types_for_groups_admin_sports
 
 > <PositionTypesForGroupsAdminSports200Response> position_types_for_groups_admin_sports(position_types_for_groups_admin_sports_request)
@@ -37143,6 +39332,80 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json, multipart/form-data
+- **Accept**: application/json
+
+
+## put_postseason_result
+
+> <PostseasonResult> put_postseason_result(postseason_result_input)
+
+
+
+Upsert the one postseason result of a season (replaces the row). Requires the winad_write scope and an admin user. An optional change_note is stored on the audit version.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+postseason_result_input = WinthropClient::PostseasonResultInput.new({season_id: 37, won: false}) # PostseasonResultInput | 
+
+begin
+  
+  result = api_instance.put_postseason_result(postseason_result_input)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->put_postseason_result: #{e}"
+end
+```
+
+#### Using the put_postseason_result_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PostseasonResult>, Integer, Hash)> put_postseason_result_with_http_info(postseason_result_input)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.put_postseason_result_with_http_info(postseason_result_input)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PostseasonResult>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->put_postseason_result_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **postseason_result_input** | [**PostseasonResultInput**](PostseasonResultInput.md) |  |  |
+
+### Return type
+
+[**PostseasonResult**](PostseasonResult.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -37809,9 +40072,85 @@ end
 - **Accept**: application/json
 
 
+## revoke_deal_verification
+
+> <DealVerification> revoke_deal_verification(deal_id, deal_verification_revocation_input)
+
+Revoke a deal's verification (append a revocation event)
+
+Same gates as create: winad_verify token scope, an application explicitly allowing winad_verify, a persisted token resource owner, and read access to the deal. Appends a result 'revoked' event; nothing is deleted. The latest event (verified_at DESC, id DESC) is authoritative. Only a currently verified deal can be revoked. No verified_at or identity fields are accepted. The body is a flat JSON object with reason, approval_quote and an optional change_note.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+deal_id = 56 # Integer | 
+deal_verification_revocation_input = WinthropClient::DealVerificationRevocationInput.new({reason: 'reason_example', approval_quote: 'approval_quote_example'}) # DealVerificationRevocationInput | 
+
+begin
+  # Revoke a deal's verification (append a revocation event)
+  result = api_instance.revoke_deal_verification(deal_id, deal_verification_revocation_input)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->revoke_deal_verification: #{e}"
+end
+```
+
+#### Using the revoke_deal_verification_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DealVerification>, Integer, Hash)> revoke_deal_verification_with_http_info(deal_id, deal_verification_revocation_input)
+
+```ruby
+begin
+  # Revoke a deal's verification (append a revocation event)
+  data, status_code, headers = api_instance.revoke_deal_verification_with_http_info(deal_id, deal_verification_revocation_input)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DealVerification>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->revoke_deal_verification_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **deal_id** | **Integer** |  |  |
+| **deal_verification_revocation_input** | [**DealVerificationRevocationInput**](DealVerificationRevocationInput.md) |  |  |
+
+### Return type
+
+[**DealVerification**](DealVerification.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## run_admin_scraper
 
-> <DownloadAdminUploads202Response> run_admin_scraper(id, opts)
+> <CreateAdminGamesUpload200Response> run_admin_scraper(id, opts)
 
 
 
@@ -37852,7 +40191,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<DownloadAdminUploads202Response>, Integer, Hash)> run_admin_scraper_with_http_info(id, opts)
+> <Array(<CreateAdminGamesUpload200Response>, Integer, Hash)> run_admin_scraper_with_http_info(id, opts)
 
 ```ruby
 begin
@@ -37860,7 +40199,7 @@ begin
   data, status_code, headers = api_instance.run_admin_scraper_with_http_info(id, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <DownloadAdminUploads202Response>
+  p data # => <CreateAdminGamesUpload200Response>
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->run_admin_scraper_with_http_info: #{e}"
 end
@@ -37875,7 +40214,7 @@ end
 
 ### Return type
 
-[**DownloadAdminUploads202Response**](DownloadAdminUploads202Response.md)
+[**CreateAdminGamesUpload200Response**](CreateAdminGamesUpload200Response.md)
 
 ### Authorization
 
@@ -39001,6 +41340,82 @@ end
 ### HTTP request headers
 
 - **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+
+## update_admin_bowl_games
+
+> <AdminBowlGameDetail> update_admin_bowl_games(id, create_admin_bowl_games_request)
+
+
+
+Update a bowl game (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+create_admin_bowl_games_request = WinthropClient::CreateAdminBowlGamesRequest.new({bowl_game: WinthropClient::CreateAdminBowlGamesRequestBowlGame.new}) # CreateAdminBowlGamesRequest | 
+
+begin
+  
+  result = api_instance.update_admin_bowl_games(id, create_admin_bowl_games_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_bowl_games: #{e}"
+end
+```
+
+#### Using the update_admin_bowl_games_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminBowlGameDetail>, Integer, Hash)> update_admin_bowl_games_with_http_info(id, create_admin_bowl_games_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_bowl_games_with_http_info(id, create_admin_bowl_games_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminBowlGameDetail>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_bowl_games_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **create_admin_bowl_games_request** | [**CreateAdminBowlGamesRequest**](CreateAdminBowlGamesRequest.md) |  |  |
+
+### Return type
+
+[**AdminBowlGameDetail**](AdminBowlGameDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -40363,6 +42778,114 @@ end
 - **Accept**: application/json
 
 
+## update_admin_game_contract
+
+> <AdminGameContract> update_admin_game_contract(id, opts)
+
+
+
+Update a game contract, optionally attaching/uploading its raw contract (admin, super-admin only). The previous source document and its other links are retained.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+opts = {
+  game_contract_home_school_id: nil, # UpdateAdminGameContractRequestGameContractHomeSchoolId | 
+  game_contract_away_school_id: nil, # UpdateAdminGameContractRequestGameContractHomeSchoolId | 
+  game_contract_sport_id: 56, # Integer | 
+  game_contract_game_type: 'game_contract_game_type_example', # String | 
+  game_contract_game_date: 'game_contract_game_date_example', # String | 
+  game_contract_game_date_tbd: 'game_contract_game_date_tbd_example', # String | 
+  game_contract_off_site_location: 'game_contract_off_site_location_example', # String | 
+  game_contract_comp_dollars: 'game_contract_comp_dollars_example', # String | 
+  game_contract_comp_tbd: true, # Boolean | 
+  game_contract_variable: true, # Boolean | 
+  game_contract_cancel_fee_dollars: 'game_contract_cancel_fee_dollars_example', # String | 
+  game_contract_cancelled: true, # Boolean | 
+  game_contract_verified: true, # Boolean | 
+  game_contract_signed_on: 'game_contract_signed_on_example', # String | 
+  game_contract_raw_contract_id: 56, # Integer | 
+  raw_contract_file: File.new('/path/to/some/file') # File | 
+}
+
+begin
+  
+  result = api_instance.update_admin_game_contract(id, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_game_contract: #{e}"
+end
+```
+
+#### Using the update_admin_game_contract_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminGameContract>, Integer, Hash)> update_admin_game_contract_with_http_info(id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_game_contract_with_http_info(id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminGameContract>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_game_contract_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **game_contract_home_school_id** | [**UpdateAdminGameContractRequestGameContractHomeSchoolId**](UpdateAdminGameContractRequestGameContractHomeSchoolId.md) |  | [optional] |
+| **game_contract_away_school_id** | [**UpdateAdminGameContractRequestGameContractHomeSchoolId**](UpdateAdminGameContractRequestGameContractHomeSchoolId.md) |  | [optional] |
+| **game_contract_sport_id** | **Integer** |  | [optional] |
+| **game_contract_game_type** | **String** |  | [optional] |
+| **game_contract_game_date** | **String** |  | [optional] |
+| **game_contract_game_date_tbd** | **String** |  | [optional] |
+| **game_contract_off_site_location** | **String** |  | [optional] |
+| **game_contract_comp_dollars** | **String** |  | [optional] |
+| **game_contract_comp_tbd** | **Boolean** |  | [optional] |
+| **game_contract_variable** | **Boolean** |  | [optional] |
+| **game_contract_cancel_fee_dollars** | **String** |  | [optional] |
+| **game_contract_cancelled** | **Boolean** |  | [optional] |
+| **game_contract_verified** | **Boolean** |  | [optional] |
+| **game_contract_signed_on** | **String** |  | [optional] |
+| **game_contract_raw_contract_id** | **Integer** |  | [optional] |
+| **raw_contract_file** | **File** |  | [optional] |
+
+### Return type
+
+[**AdminGameContract**](AdminGameContract.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+
 ## update_admin_income_report
 
 > <AdminIncomeReport> update_admin_income_report(id, opts)
@@ -40968,6 +43491,84 @@ end
 ### Return type
 
 [**AdminDeal**](AdminDeal.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_admin_school_game
+
+> <AdminGame> update_admin_school_game(school_id, id, create_admin_school_game_request)
+
+
+
+Update a game
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+school_id = 56 # Integer | 
+id = 56 # Integer | 
+create_admin_school_game_request = WinthropClient::CreateAdminSchoolGameRequest.new({game: WinthropClient::GameWriteFields.new({sport_id: 37})}) # CreateAdminSchoolGameRequest | 
+
+begin
+  
+  result = api_instance.update_admin_school_game(school_id, id, create_admin_school_game_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_school_game: #{e}"
+end
+```
+
+#### Using the update_admin_school_game_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminGame>, Integer, Hash)> update_admin_school_game_with_http_info(school_id, id, create_admin_school_game_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_admin_school_game_with_http_info(school_id, id, create_admin_school_game_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminGame>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->update_admin_school_game_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **school_id** | **Integer** |  |  |
+| **id** | **Integer** |  |  |
+| **create_admin_school_game_request** | [**CreateAdminSchoolGameRequest**](CreateAdminSchoolGameRequest.md) |  |  |
+
+### Return type
+
+[**AdminGame**](AdminGame.md)
 
 ### Authorization
 
@@ -41976,7 +44577,7 @@ end
 
 
 
-Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to \"yearly\", \"hourly\", or \"990\" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \"990\". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A change_note that is not a string, or contains a NUL character, is refused with 422 (errors.change_note). A body with only a non-blank change_note (no compensation, or an empty one) records the note on a new version without changing any value (WINAD-10718). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row's current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
+Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to \"yearly\", \"hourly\", or \"990\" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \"990\". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A change_note that is not a string, or contains a NUL character, is refused with 422 (errors.change_note). A body with only a non-blank change_note (no compensation, or an empty one) records the note on a new version without changing any value (WINAD-10718). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row's current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. relocation_cents and relocation_taxable (WINAD-10700) are written together. An amount needs a true/false flag, and the flag must be null when the amount is null (422 keyed relocation_taxable otherwise). A taxable amount is added to calculated_guaranteed_comp_cents, a non-taxable one is not. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
 
 ### Examples
 
@@ -43292,7 +45893,7 @@ end
 
 
 
-Fully replace a position's departure details. Setting departing to true requires a date, reason, and public source URL. Setting false clears the date; omitted details become null. Records the user and the optional top-level change_note on the PaperTrail version, and writes the position change log. Identical requests are no-ops: no version is created, so no note is stored.
+Fully replace a position's departure details. Setting departing to true requires a date, reason, and public source URL. Setting false clears the date; omitted details become null. Records the user and the optional top-level change_note on the PaperTrail version, and writes the position change log. A client-credentials token (e.g. the directory scraper) is accepted too: its version records its OAuth application's name as the whodunnit, and no position change log entry is written, since that log needs a user. Identical requests are no-ops: no version is created, so no note is stored.
 
 ### Examples
 
@@ -43594,11 +46195,11 @@ end
 
 ## update_season
 
-> <Season> update_season(season_id, season)
+> <Season> update_season(season_id, season_record_update)
 
 
 
-Update a single Season
+Same as PATCH (only the fields in the body change)
 
 ### Examples
 
@@ -43618,11 +46219,11 @@ end
 
 api_instance = WinthropClient::DefaultApi.new
 season_id = 56 # Integer | ID of the Season
-season = WinthropClient::Season.new # Season | Season attributes to update
+season_record_update = WinthropClient::SeasonRecordUpdate.new # SeasonRecordUpdate | Season record fields to change
 
 begin
   
-  result = api_instance.update_season(season_id, season)
+  result = api_instance.update_season(season_id, season_record_update)
   p result
 rescue WinthropClient::ApiError => e
   puts "Error when calling DefaultApi->update_season: #{e}"
@@ -43633,12 +46234,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Season>, Integer, Hash)> update_season_with_http_info(season_id, season)
+> <Array(<Season>, Integer, Hash)> update_season_with_http_info(season_id, season_record_update)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.update_season_with_http_info(season_id, season)
+  data, status_code, headers = api_instance.update_season_with_http_info(season_id, season_record_update)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Season>
@@ -43652,7 +46253,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **season_id** | **Integer** | ID of the Season |  |
-| **season** | [**Season**](Season.md) | Season attributes to update |  |
+| **season_record_update** | [**SeasonRecordUpdate**](SeasonRecordUpdate.md) | Season record fields to change |  |
 
 ### Return type
 

@@ -11,6 +11,8 @@
 | **compensation_type** | **String** |  | [optional] |
 | **base_salary_dollars** | **String** |  | [optional] |
 | **one_time_bonus_dollars** | **String** |  | [optional] |
+| **relocation_dollars** | **String** | The relocation amount as a decimal dollar string. Null when there is none (not \&quot;0.00\&quot;). | [optional] |
+| **relocation_taxable** | **Boolean** | Whether the relocation is taxable income. Null exactly when relocation_dollars is null. | [optional] |
 | **talent_fee_dollars** | **String** |  | [optional] |
 | **outside_income_dollars** | **String** |  | [optional] |
 | **deferred_comp_dollars** | **String** |  | [optional] |
@@ -44,6 +46,8 @@ instance = WinthropClient::AdminCompensation.new(
   compensation_type: null,
   base_salary_dollars: null,
   one_time_bonus_dollars: null,
+  relocation_dollars: null,
+  relocation_taxable: null,
   talent_fee_dollars: null,
   outside_income_dollars: null,
   deferred_comp_dollars: null,

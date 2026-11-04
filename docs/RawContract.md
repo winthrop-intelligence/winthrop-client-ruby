@@ -37,6 +37,12 @@
 | **deal_info** | [**RawContractDealInfo**](RawContractDealInfo.md) |  | [optional] |
 | **contract_terms** | [**ContractTerms**](ContractTerms.md) | Structured terms read from this contract&#39;s OCR text (WINAD-10633); null when none have been stored. | [optional] |
 | **contract_terms_stale** | **Boolean** | True when contract_terms is present and source.rendition_sha256 no longer matches the SHA-256 of the current OCR text. | [optional] |
+| **buyout_inputs** | [**BuyoutInputs**](BuyoutInputs.md) | Checked buyout inputs (WINAD-10717); null when none have been stored. | [optional] |
+| **buyout_inputs_updated_at** | **Time** |  | [optional] |
+| **buyout_inputs_stale** | **Boolean** | True when, after the newest revision, the OCR text was redone or contract_terms changed. | [optional] |
+| **buyout_inputs_stale_reasons** | **Array&lt;String&gt;** |  | [optional] |
+| **as_of** | **Date** | The stored buyout_inputs document&#39;s as_of (for GET /raw_contracts?q[buyout_inputs_present]&#x3D;true). | [optional] |
+| **coach_id** | **Integer** | The coach of the linked contract, if any. | [optional] |
 
 ## Example
 
@@ -76,7 +82,13 @@ instance = WinthropClient::RawContract.new(
   contract_label: null,
   deal_info: null,
   contract_terms: null,
-  contract_terms_stale: null
+  contract_terms_stale: null,
+  buyout_inputs: null,
+  buyout_inputs_updated_at: null,
+  buyout_inputs_stale: null,
+  buyout_inputs_stale_reasons: null,
+  as_of: null,
+  coach_id: null
 )
 ```
 

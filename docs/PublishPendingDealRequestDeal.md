@@ -10,6 +10,9 @@
 | **start_at** | **Date** | The same as start_on (a plain YYYY-MM-DD date, not a datetime). Cannot be sent together with start_on. | [optional] |
 | **end_at** | **Date** | The same as end_on (a plain YYYY-MM-DD date, not a datetime; null is refused). Cannot be sent together with end_on. | [optional] |
 | **autorenew** | **Boolean** |  | [optional] |
+| **text** | **String** | WINAD-10738. The deal&#39;s summary, plain text; blank or null leaves it empty. | [optional] |
+| **vendor_ids** | **Array&lt;Integer&gt;** | WINAD-10738. Existing vendors, as in PATCH. Cannot be sent together with vendor_id. | [optional] |
+| **school_id** | **Integer** | WINAD-10738. An existing school, as in PATCH. | [optional] |
 
 ## Example
 
@@ -22,7 +25,10 @@ instance = WinthropClient::PublishPendingDealRequestDeal.new(
   end_on: Sun Jun 30 00:00:00 UTC 2030,
   start_at: null,
   end_at: null,
-  autorenew: null
+  autorenew: null,
+  text: null,
+  vendor_ids: null,
+  school_id: null
 )
 ```
 

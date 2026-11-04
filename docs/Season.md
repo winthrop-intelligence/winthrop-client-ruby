@@ -50,6 +50,14 @@
 | **non_conference_sos_ranking** | **Integer** |  | [optional] |
 | **conference_sos_ranking** | **Integer** |  | [optional] |
 | **ranking_through_date** | **Date** |  | [optional] |
+| **regular_season_wins** | **Integer** |  | [optional] |
+| **regular_season_losses** | **Integer** |  | [optional] |
+| **regular_season_ties** | **Integer** |  | [optional] |
+| **postseason_wins** | **Integer** |  | [optional] |
+| **postseason_losses** | **Integer** |  | [optional] |
+| **conference_regular_season_champion** | **Boolean** |  | [optional] |
+| **conference_tournament_champion** | **Boolean** |  | [optional] |
+| **postseason_result** | [**PostseasonResult**](PostseasonResult.md) |  | [optional] |
 | **head_coach** | [**Coach**](Coach.md) |  | [optional] |
 | **assistant_coaches** | [**Array&lt;Coach&gt;**](Coach.md) |  | [optional] |
 
@@ -105,6 +113,14 @@ instance = WinthropClient::Season.new(
   non_conference_sos_ranking: null,
   conference_sos_ranking: null,
   ranking_through_date: null,
+  regular_season_wins: null,
+  regular_season_losses: null,
+  regular_season_ties: null,
+  postseason_wins: null,
+  postseason_losses: null,
+  conference_regular_season_champion: null,
+  conference_tournament_champion: null,
+  postseason_result: null,
   head_coach: null,
   assistant_coaches: null
 )

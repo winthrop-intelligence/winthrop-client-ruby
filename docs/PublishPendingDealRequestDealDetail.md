@@ -42,6 +42,14 @@
 | **guaranteed_amt_year_one** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] |
 | **capital_improvement** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] |
 | **annual_host_fee** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] |
+| **position_id** | **Integer** | Id of an existing position (the role being filled); anything else is refused with 422 &#x60;deal_detail.position_id&#x60;. | [optional] |
+| **search_scope** | **String** |  | [optional] |
+| **search_fee** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] |
+| **fee_basis** | **String** |  | [optional] |
+| **fee_percent** | [**DealUpdatePercent**](DealUpdatePercent.md) |  | [optional] |
+| **guarantee_months** | [**DealUpdateMonths**](DealUpdateMonths.md) |  | [optional] |
+| **expense_terms** | **String** |  | [optional] |
+| **annual_retainer** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] |
 | **products** | **String** | Vendor products, modules or packages bought, e.g. \&quot;Hub, ARMS, INFLCR\&quot;. Blank clears. | [optional] |
 | **all_sports** | **Boolean** | True only when the contract says department-wide or all teams. Null restores not stated. | [optional] |
 | **final_year_fee** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] |
@@ -104,6 +112,14 @@ instance = WinthropClient::PublishPendingDealRequestDealDetail.new(
   guaranteed_amt_year_one: null,
   capital_improvement: null,
   annual_host_fee: null,
+  position_id: null,
+  search_scope: null,
+  search_fee: null,
+  fee_basis: null,
+  fee_percent: null,
+  guarantee_months: null,
+  expense_terms: null,
+  annual_retainer: null,
   products: null,
   all_sports: null,
   final_year_fee: null,

@@ -11,11 +11,11 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 
 ## create_pending_deal
 
-> <PendingDealCreated> create_pending_deal(school_id, deal_type, file, opts)
+> <PendingDealCreated> create_pending_deal(school_id, deal_type, opts)
 
 
 
-File a vendor deal PDF as a PENDING deal (WINAD-10698), the vendor counterpart of POST /contracts. In one transaction this creates a Deal with pending true (no dates, verified false, the optional vendor attached) and its RawContract (a vendor DEAL document linked to the deal and filed under the school, with the PDF attached); nothing is created and no file is left behind if the request is refused. The PDF must really be a PDF (its bytes are checked, not its name) and its file name at most 255 characters. The automatic OCR runs once after the upload; read the text with GET /raw_contracts/{raw_contractId}/ocr_text (Mistral on the first call, cached afterwards).  A pending deal is internal-only: it is not returned to customers by any search, list, show, export or MCP tool, and its PDF cannot be read by them. Staff list the pending deals with GET /deals?q[pending_eq]=true (or GET /deal_searches?q[pending_eq]=true) and delete one with DELETE /deals/{dealId}. Publishing is a separate operation. A pending deal does not change the school's deal status.  `deal_type` is one of Apparel, MMR (multimedia rights), Pouring, Concessions, Ticketing, Outsourced Ticketing, Trademark, Bookstore, Athletics Software (also `software`) or Travel (case, spaces and underscores do not matter), or the exact DealType name such as ApparelDealType. `drive_id` is the original Google Drive id of the source document, stored on the RawContract; a second request with the same drive_id for a deal of the same school is refused with 422 errors.drive_id. Requires the winad_write scope and a manage-level user (client-credentials service tokens included). 
+File a vendor deal PDF as a PENDING deal (WINAD-10698), the vendor counterpart of POST /contracts. In one transaction this creates a Deal with pending true (no dates, verified false, the optional vendor attached) and its RawContract (a vendor DEAL document linked to the deal and filed under the school, with the PDF attached); nothing is created and no file is left behind if the request is refused. The PDF must really be a PDF (its bytes are checked, not its name) and its file name at most 255 characters. The automatic OCR runs once after the upload; read the text with GET /raw_contracts/{raw_contractId}/ocr_text (Mistral on the first call, cached afterwards).  A pending deal is internal-only: it is not returned to customers by any search, list, show, export or MCP tool, and its PDF cannot be read by them. Staff list the pending deals with GET /deals?q[pending_eq]=true (or GET /deal_searches?q[pending_eq]=true) and delete one with DELETE /deals/{dealId}. Publishing is a separate operation. A pending deal does not change the school's deal status.  `deal_type` is one of Apparel, MMR (multimedia rights), Pouring, Concessions, Ticketing, Outsourced Ticketing, Trademark, Bookstore, Athletics Software (also `software`) or Travel (case, spaces and underscores do not matter), or the exact DealType name such as ApparelDealType. `drive_id` is the original Google Drive id of the source document, stored on the RawContract; a second request with the same drive_id for a deal of the same school is refused with 422 errors.drive_id. Requires the winad_write scope and a manage-level user (client-credentials service tokens included). Send either the PDF file or the final PDF's source_drive_file_id and expected_sha256. WinAD downloads the latter from Drive (100 MiB maximum) and verifies the exact bytes before storing anything. drive_id remains the duplicate guard and can differ from the final PDF's ID. 
 
 ### Examples
 
@@ -36,16 +36,19 @@ end
 api_instance = WinthropClient::DealsApi.new
 school_id = 56 # Integer | The school the deal is filed under
 deal_type = 'deal_type_example' # String | Apparel, MMR, Pouring, Concessions, Ticketing, Outsourced Ticketing, Trademark, Bookstore, Athletics Software or Travel (or the DealType name).
-file = File.new('/path/to/some/file') # File | The contract PDF as a multipart upload.
 opts = {
   vendor_id: 56, # Integer | Optional. An existing vendor, attached to the deal.
+  file: File.new('/path/to/some/file'), # File | The contract PDF as a multipart upload.
+  source_drive_file_id: 'source_drive_file_id_example', # String | ID of the final PDF shared with WinAD's Drive service account.
+  source_filename: 'source_filename_example', # String | Optional reviewed name for the stored PDF. Drive input only. Defaults to the Drive title.
+  expected_sha256: 'expected_sha256_example', # String | SHA-256 of the reviewed final PDF. Required only for Drive input.
   drive_id: 'drive_id_example', # String | Optional original Google Drive id of the source document; unique per school among deals.
   change_note: 'change_note_example' # String | Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates, the records it saves as side effects included. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write.
 }
 
 begin
   
-  result = api_instance.create_pending_deal(school_id, deal_type, file, opts)
+  result = api_instance.create_pending_deal(school_id, deal_type, opts)
   p result
 rescue WinthropClient::ApiError => e
   puts "Error when calling DealsApi->create_pending_deal: #{e}"
@@ -56,12 +59,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PendingDealCreated>, Integer, Hash)> create_pending_deal_with_http_info(school_id, deal_type, file, opts)
+> <Array(<PendingDealCreated>, Integer, Hash)> create_pending_deal_with_http_info(school_id, deal_type, opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.create_pending_deal_with_http_info(school_id, deal_type, file, opts)
+  data, status_code, headers = api_instance.create_pending_deal_with_http_info(school_id, deal_type, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PendingDealCreated>
@@ -76,8 +79,11 @@ end
 | ---- | ---- | ----------- | ----- |
 | **school_id** | **Integer** | The school the deal is filed under |  |
 | **deal_type** | **String** | Apparel, MMR, Pouring, Concessions, Ticketing, Outsourced Ticketing, Trademark, Bookstore, Athletics Software or Travel (or the DealType name). |  |
-| **file** | **File** | The contract PDF as a multipart upload. |  |
 | **vendor_id** | **Integer** | Optional. An existing vendor, attached to the deal. | [optional] |
+| **file** | **File** | The contract PDF as a multipart upload. | [optional] |
+| **source_drive_file_id** | **String** | ID of the final PDF shared with WinAD&#39;s Drive service account. | [optional] |
+| **source_filename** | **String** | Optional reviewed name for the stored PDF. Drive input only. Defaults to the Drive title. | [optional] |
+| **expected_sha256** | **String** | SHA-256 of the reviewed final PDF. Required only for Drive input. | [optional] |
 | **drive_id** | **String** | Optional original Google Drive id of the source document; unique per school among deals. | [optional] |
 | **change_note** | **String** | Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates, the records it saves as side effects included. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write. | [optional] |
 

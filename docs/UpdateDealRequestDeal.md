@@ -11,6 +11,9 @@
 | **autorenew** | **Boolean** |  | [optional] |
 | **verified** | **Boolean** | True requires a linked raw contract. | [optional] |
 | **archived** | **Boolean** | True archives the deal, false unarchives it (WINAD-10684). A strict JSON boolean (a string, a number or null is refused with 422 &#x60;deal.archived&#x60;). The response reads the new value back as &#x60;archived&#x60;; the audit version records old and new, the user, the API client and the &#x60;change_note&#x60;. | [optional] |
+| **text** | **String** | WINAD-10738. The deal&#39;s summary (the Text box on the admin deal form), plain text. Blank or null clears it. Audited with the change_note. Read back as &#x60;text&#x60; (and &#x60;summary&#x60;). | [optional] |
+| **vendor_ids** | **Array&lt;Integer&gt;** | WINAD-10738. Replaces the deal&#39;s vendors with these existing vendors (422 deal.vendor_ids for an unknown id or an empty list; a deal needs one). The first is also the deal&#39;s legacy vendor. | [optional] |
+| **school_id** | **Integer** | WINAD-10738. Moves the deal to this existing school (422 deal.school_id otherwise). The deal type cannot be changed. | [optional] |
 
 ## Example
 
@@ -24,7 +27,10 @@ instance = WinthropClient::UpdateDealRequestDeal.new(
   end_on: Wed Jun 30 00:00:00 UTC 2027,
   autorenew: null,
   verified: null,
-  archived: null
+  archived: null,
+  text: null,
+  vendor_ids: null,
+  school_id: null
 )
 ```
 
