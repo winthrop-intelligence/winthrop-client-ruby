@@ -1,4 +1,4 @@
-# WinthropClient::AdminFinancialsQcListMetaAllOfFilterOptionsYearsInner
+# WinthropClient::AdminPlayerStatFilterOptionsYearOptionsInner
 
 ## Properties
 
@@ -12,7 +12,7 @@
 ```ruby
 require 'winthrop-client-ruby'
 
-instance = WinthropClient::AdminFinancialsQcListMetaAllOfFilterOptionsYearsInner.new(
+instance = WinthropClient::AdminPlayerStatFilterOptionsYearOptionsInner.new(
   year: null,
   label: null
 )

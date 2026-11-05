@@ -21,7 +21,7 @@
 | **departure_on** | **Date** | Date the person left the position (YYYY-MM-DD), as recorded through PATCH /positions/{positionId}/departure or the admin departing form. null when none is recorded, as on every departure that was only ticked before this field existed. Unlike departing_set_at, which is when the box was ticked, this is when the person actually left. Returned to every caller who can read positions. Read-only here. | [optional][readonly] |
 | **departure_reason** | **String** | Recorded reason for the departure. null when none is recorded. Staff only. The key is absent (not null) in responses to callers who may not update positions, such as customers. Read-only here. | [optional][readonly] |
 | **departure_source_url** | **String** | Public source URL for the departure. null when none is recorded. Staff only. The key is absent (not null) in responses to callers who may not update positions, such as customers. Read-only here. | [optional][readonly] |
-| **suppress_departing_set_at** | **Boolean** | Write-only control flag for trusted automation. When true and departing is set to true, WinAD does not stamp departing_set_at, so historical/catch-up departures are not published as current wire events. Ignored on responses. | [optional] |
+| **suppress_departing_set_at** | **Boolean** | Ignored. departing cannot be changed through PATCH /positions/{positionId} (WINAD-10732), so there is no departure to suppress here; send suppress_departing_set_at to PATCH /positions/{positionId}/departure instead. Ignored on responses. | [optional] |
 | **creation_reason** | **String** |  | [optional] |
 | **creation_reason_updated_at** | **Time** |  | [optional] |
 | **coach** | [**Coach**](Coach.md) |  | [optional] |

@@ -8,7 +8,7 @@
 | **divisions** | [**Array&lt;IdName&gt;**](IdName.md) |  | [optional] |
 | **subdivisions** | [**Array&lt;IdName&gt;**](IdName.md) |  | [optional] |
 | **schools** | [**Array&lt;IdName&gt;**](IdName.md) |  | [optional] |
-| **years** | [**Array&lt;AdminFinancialsQcListMetaAllOfFilterOptionsYearsInner&gt;**](AdminFinancialsQcListMetaAllOfFilterOptionsYearsInner.md) |  | [optional] |
+| **years** | [**Array&lt;AdminPlayerStatFilterOptionsYearOptionsInner&gt;**](AdminPlayerStatFilterOptionsYearOptionsInner.md) |  | [optional] |
 
 ## Example
 
