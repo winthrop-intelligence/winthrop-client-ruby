@@ -1,4 +1,4 @@
-# WinthropClient::CreateAdminGamesUpload200Response
+# WinthropClient::QueueAdminPlayerStatsExport202Response
 
 ## Properties
 
@@ -11,7 +11,7 @@
 ```ruby
 require 'winthrop-client-ruby'
 
-instance = WinthropClient::CreateAdminGamesUpload200Response.new(
+instance = WinthropClient::QueueAdminPlayerStatsExport202Response.new(
   message: null
 )
 ```
