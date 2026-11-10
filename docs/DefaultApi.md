@@ -17,6 +17,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**bulk_update_game_post_searches**](DefaultApi.md#bulk_update_game_post_searches) | **POST** /api/v1/game_post_searches/bulk_update |  |
 | [**compare_coli**](DefaultApi.md#compare_coli) | **GET** /api/v1/schools/compare_coli |  |
 | [**confirm_email_admin_user**](DefaultApi.md#confirm_email_admin_user) | **POST** /api/v1/admin/users/{id}/confirm_email |  |
+| [**copy_admin_compensation_to_next_year**](DefaultApi.md#copy_admin_compensation_to_next_year) | **POST** /api/v1/admin/compensations/{id}/copy_to_next_year |  |
 | [**copy_for_year_admin_positions**](DefaultApi.md#copy_for_year_admin_positions) | **POST** /api/v1/admin/positions/copy_for_year |  |
 | [**copy_to_next_year_admin_position**](DefaultApi.md#copy_to_next_year_admin_position) | **POST** /api/v1/admin/positions/{id}/copy_to_next_year |  |
 | [**create_account_user**](DefaultApi.md#create_account_user) | **POST** /api/v1/account_users |  |
@@ -447,6 +448,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**list_admin_coach_merge_logs**](DefaultApi.md#list_admin_coach_merge_logs) | **GET** /api/v1/admin/coach_merge_logs |  |
 | [**list_admin_coach_upload_jobs**](DefaultApi.md#list_admin_coach_upload_jobs) | **GET** /api/v1/admin/coaches/upload |  |
 | [**list_admin_coaches**](DefaultApi.md#list_admin_coaches) | **GET** /api/v1/admin/coaches |  |
+| [**list_admin_compensation_change_history**](DefaultApi.md#list_admin_compensation_change_history) | **GET** /api/v1/admin/compensations/change_history |  |
 | [**list_admin_compensations**](DefaultApi.md#list_admin_compensations) | **GET** /api/v1/admin/compensations |  |
 | [**list_admin_conference_schools_directory**](DefaultApi.md#list_admin_conference_schools_directory) | **GET** /api/v1/admin/conferences/schools |  |
 | [**list_admin_conferences**](DefaultApi.md#list_admin_conferences) | **GET** /api/v1/admin/conferences |  |
@@ -639,6 +641,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**upsert_team_season_result**](DefaultApi.md#upsert_team_season_result) | **PUT** /api/v1/team_season_results |  |
 | [**user_me**](DefaultApi.md#user_me) | **GET** /api/v1/users/me |  |
 | [**validate_admin_desk_report**](DefaultApi.md#validate_admin_desk_report) | **POST** /api/v1/admin/desk_reports/{uuid}/validate |  |
+| [**verify_admin_contract**](DefaultApi.md#verify_admin_contract) | **PATCH** /api/v1/admin/contracts/{id}/verification |  |
 | [**verify_otp_code**](DefaultApi.md#verify_otp_code) | **POST** /api/v1/otp/verify |  |
 | [**verify_user_intercollegiate_access**](DefaultApi.md#verify_user_intercollegiate_access) | **GET** /api/v1/users/verify_user_intercollegiate_access |  |
 | [**view_invoice_file**](DefaultApi.md#view_invoice_file) | **GET** /api/v1/subscriptions/{subscriptionId}/invoices/{invoiceId}/view_file |  |
@@ -1625,6 +1628,80 @@ end
 ### Return type
 
 [**AdminUser**](AdminUser.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## copy_admin_compensation_to_next_year
+
+> <AdminCompensation> copy_admin_compensation_to_next_year(id)
+
+
+
+Copy a compensation to the next year; needs a position for that year (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.copy_admin_compensation_to_next_year(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->copy_admin_compensation_to_next_year: #{e}"
+end
+```
+
+#### Using the copy_admin_compensation_to_next_year_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminCompensation>, Integer, Hash)> copy_admin_compensation_to_next_year_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.copy_admin_compensation_to_next_year_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminCompensation>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->copy_admin_compensation_to_next_year_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminCompensation**](AdminCompensation.md)
 
 ### Authorization
 
@@ -27306,7 +27383,7 @@ end
 
 
 
-Retrieve postseason results, the furthest stage each season reached (a bowl game or a tournament round, and whether it was won). Filter by season_id, or by school_id, sport_id and season_year.
+Retrieve postseason results, the furthest stage each season reached (a football bowl by name or a tournament round, and whether it was won). Filter by season_id, or by school_id, sport_id and season_year.
 
 ### Examples
 
@@ -34169,6 +34246,80 @@ end
 ### Return type
 
 [**AdminCoachesList**](AdminCoachesList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_admin_compensation_change_history
+
+> <AdminCompensationChangeHistory> list_admin_compensation_change_history(coach_id)
+
+
+
+The change history (PaperTrail versions) of a coach's compensations, newest first (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+coach_id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.list_admin_compensation_change_history(coach_id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_compensation_change_history: #{e}"
+end
+```
+
+#### Using the list_admin_compensation_change_history_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminCompensationChangeHistory>, Integer, Hash)> list_admin_compensation_change_history_with_http_info(coach_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_admin_compensation_change_history_with_http_info(coach_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminCompensationChangeHistory>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->list_admin_compensation_change_history_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **coach_id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminCompensationChangeHistory**](AdminCompensationChangeHistory.md)
 
 ### Authorization
 
@@ -48998,6 +49149,82 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## verify_admin_contract
+
+> <AdminContract> verify_admin_contract(id, verified)
+
+
+
+Mark a contract verified or not verified (admin, super-admin only)
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+verified = true # Boolean | 
+
+begin
+  
+  result = api_instance.verify_admin_contract(id, verified)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->verify_admin_contract: #{e}"
+end
+```
+
+#### Using the verify_admin_contract_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminContract>, Integer, Hash)> verify_admin_contract_with_http_info(id, verified)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.verify_admin_contract_with_http_info(id, verified)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminContract>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->verify_admin_contract_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **verified** | **Boolean** |  |  |
+
+### Return type
+
+[**AdminContract**](AdminContract.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 

@@ -30,7 +30,7 @@
 | **has_raw_contract** | **Boolean** |  | [optional] |
 | **formatted_buyout_terms** | **String** |  | [optional] |
 | **raw_contract_id** | **Integer** |  | [optional] |
-| **school** | [**AdminCoachCurrentSchool**](AdminCoachCurrentSchool.md) |  | [optional] |
+| **school** | [**AdminCompensationSchool**](AdminCompensationSchool.md) |  | [optional] |
 | **contract_status** | [**AdminCoachHometownState**](AdminCoachHometownState.md) |  | [optional] |
 
 ## Example
