@@ -10,8 +10,7 @@
 | **sport_id** | **Integer** |  | [optional] |
 | **season_year** | **Integer** |  | [optional] |
 | **fb_bowl_name** | **String** | The football bowl as text, named that season without a presenting sponsor (e.g. Pinstripe Bowl) | [optional] |
-| **bowl_game_id** | **Integer** |  | [optional] |
-| **bowl_game_name** | **String** |  | [optional] |
+| **bowl_game_name** | **String** | The stored bowl name, same as fb_bowl_name | [optional] |
 | **tournament_round_id** | **Integer** |  | [optional] |
 | **tournament_round_name** | **String** |  | [optional] |
 | **round** | **Integer** | Round number within the tournament | [optional] |
@@ -33,7 +32,6 @@ instance = WinthropClient::PostseasonResult.new(
   sport_id: null,
   season_year: null,
   fb_bowl_name: null,
-  bowl_game_id: null,
   bowl_game_name: null,
   tournament_round_id: null,
   tournament_round_name: null,
