@@ -15,13 +15,15 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**bulk_update_admin_contract_request_searches**](DefaultApi.md#bulk_update_admin_contract_request_searches) | **POST** /api/v1/admin/contract_request_searches/bulk_update |  |
 | [**bulk_update_admin_season_stats_editor**](DefaultApi.md#bulk_update_admin_season_stats_editor) | **PATCH** /api/v1/admin/season_stats_editor/bulk_update |  |
 | [**bulk_update_game_post_searches**](DefaultApi.md#bulk_update_game_post_searches) | **POST** /api/v1/game_post_searches/bulk_update |  |
+| [**cancel_admin_archive_transfer_request**](DefaultApi.md#cancel_admin_archive_transfer_request) | **DELETE** /api/v1/admin/archive_transfer_requests/{id} |  |
+| [**close_compensation_requested_item**](DefaultApi.md#close_compensation_requested_item) | **POST** /api/v1/requested_items/{requestedItemId}/compensation_closure |  |
 | [**compare_coli**](DefaultApi.md#compare_coli) | **GET** /api/v1/schools/compare_coli |  |
 | [**confirm_email_admin_user**](DefaultApi.md#confirm_email_admin_user) | **POST** /api/v1/admin/users/{id}/confirm_email |  |
 | [**copy_admin_compensation_to_next_year**](DefaultApi.md#copy_admin_compensation_to_next_year) | **POST** /api/v1/admin/compensations/{id}/copy_to_next_year |  |
 | [**copy_for_year_admin_positions**](DefaultApi.md#copy_for_year_admin_positions) | **POST** /api/v1/admin/positions/copy_for_year |  |
 | [**copy_to_next_year_admin_position**](DefaultApi.md#copy_to_next_year_admin_position) | **POST** /api/v1/admin/positions/{id}/copy_to_next_year |  |
 | [**create_account_user**](DefaultApi.md#create_account_user) | **POST** /api/v1/account_users |  |
-| [**create_admin_bowl_games**](DefaultApi.md#create_admin_bowl_games) | **POST** /api/v1/admin/bowl_games |  |
+| [**create_admin_archive_transfer_request**](DefaultApi.md#create_admin_archive_transfer_request) | **POST** /api/v1/admin/archive_transfer_requests |  |
 | [**create_admin_coach**](DefaultApi.md#create_admin_coach) | **POST** /api/v1/admin/coaches |  |
 | [**create_admin_coach_apr_upload**](DefaultApi.md#create_admin_coach_apr_upload) | **POST** /api/v1/admin/coaches/coach_apr_upload |  |
 | [**create_admin_coach_contract**](DefaultApi.md#create_admin_coach_contract) | **POST** /api/v1/admin/coach_contracts |  |
@@ -140,7 +142,6 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**delete_team_season_result**](DefaultApi.md#delete_team_season_result) | **DELETE** /api/v1/team_season_results/{teamSeasonResultId} |  |
 | [**delete_upload**](DefaultApi.md#delete_upload) | **DELETE** /api/v1/uploads/{uploadId} |  |
 | [**destroy_admin_avatars**](DefaultApi.md#destroy_admin_avatars) | **DELETE** /api/v1/admin/avatars/{id} |  |
-| [**destroy_admin_bowl_games**](DefaultApi.md#destroy_admin_bowl_games) | **DELETE** /api/v1/admin/bowl_games/{id} |  |
 | [**destroy_admin_coach**](DefaultApi.md#destroy_admin_coach) | **DELETE** /api/v1/admin/coaches/{id} |  |
 | [**destroy_admin_compensation**](DefaultApi.md#destroy_admin_compensation) | **DELETE** /api/v1/admin/compensations/{id} |  |
 | [**destroy_admin_conferences**](DefaultApi.md#destroy_admin_conferences) | **DELETE** /api/v1/admin/conferences/{id} |  |
@@ -198,7 +199,6 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_account_user_activation**](DefaultApi.md#get_account_user_activation) | **GET** /api/v1/account_user_activation |  |
 | [**get_account_users**](DefaultApi.md#get_account_users) | **GET** /api/v1/account_users |  |
 | [**get_accounts**](DefaultApi.md#get_accounts) | **GET** /api/v1/accounts |  |
-| [**get_admin_bowl_games**](DefaultApi.md#get_admin_bowl_games) | **GET** /api/v1/admin/bowl_games/{id} |  |
 | [**get_admin_coach**](DefaultApi.md#get_admin_coach) | **GET** /api/v1/admin/coaches/{id} |  |
 | [**get_admin_coach_merge_log**](DefaultApi.md#get_admin_coach_merge_log) | **GET** /api/v1/admin/coach_merge_logs/{id} |  |
 | [**get_admin_conferences**](DefaultApi.md#get_admin_conferences) | **GET** /api/v1/admin/conferences/{id} |  |
@@ -257,7 +257,6 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_athletic_profile_search**](DefaultApi.md#get_athletic_profile_search) | **GET** /api/v1/athletic_profile_searches/{athleticProfileSearchId} |  |
 | [**get_audited_financial_report_status**](DefaultApi.md#get_audited_financial_report_status) | **GET** /api/v1/audited_financial_report_statuses/{auditedFinancialReportStatusId} |  |
 | [**get_audited_financial_report_statuses**](DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses |  |
-| [**get_bowl_games**](DefaultApi.md#get_bowl_games) | **GET** /api/v1/bowl_games |  |
 | [**get_cashflow**](DefaultApi.md#get_cashflow) | **GET** /api/v1/cashflows/{cashflowId} |  |
 | [**get_cashflow_groups**](DefaultApi.md#get_cashflow_groups) | **GET** /api/v1/cashflow_groups |  |
 | [**get_cashflows**](DefaultApi.md#get_cashflows) | **GET** /api/v1/cashflows |  |
@@ -439,7 +438,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**get_vendors**](DefaultApi.md#get_vendors) | **GET** /api/v1/vendors |  |
 | [**get_wire_changes**](DefaultApi.md#get_wire_changes) | **GET** /api/v1/wire_changes |  |
 | [**hide_admin_desk_report**](DefaultApi.md#hide_admin_desk_report) | **POST** /api/v1/admin/desk_reports/{uuid}/hide |  |
-| [**list_admin_bowl_games**](DefaultApi.md#list_admin_bowl_games) | **GET** /api/v1/admin/bowl_games |  |
+| [**list_admin_archive_transfer_requests**](DefaultApi.md#list_admin_archive_transfer_requests) | **GET** /api/v1/admin/archive_transfer_requests |  |
 | [**list_admin_coach_apr_upload_jobs**](DefaultApi.md#list_admin_coach_apr_upload_jobs) | **GET** /api/v1/admin/coaches/coach_apr_upload |  |
 | [**list_admin_coach_contracts**](DefaultApi.md#list_admin_coach_contracts) | **GET** /api/v1/admin/coach_contracts |  |
 | [**list_admin_coach_contracts_outside_income**](DefaultApi.md#list_admin_coach_contracts_outside_income) | **GET** /api/v1/admin/coach_contracts/outside_income |  |
@@ -561,7 +560,6 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**update_account_user**](DefaultApi.md#update_account_user) | **PATCH** /api/v1/account_users/{accountUserId} |  |
 | [**update_account_user_activation**](DefaultApi.md#update_account_user_activation) | **PATCH** /api/v1/account_user_activation |  |
 | [**update_admin_avatars**](DefaultApi.md#update_admin_avatars) | **PATCH** /api/v1/admin/avatars/{id} |  |
-| [**update_admin_bowl_games**](DefaultApi.md#update_admin_bowl_games) | **PATCH** /api/v1/admin/bowl_games/{id} |  |
 | [**update_admin_coach**](DefaultApi.md#update_admin_coach) | **PATCH** /api/v1/admin/coaches/{id} |  |
 | [**update_admin_conferences**](DefaultApi.md#update_admin_conferences) | **PATCH** /api/v1/admin/conferences/{id} |  |
 | [**update_admin_conferenceships**](DefaultApi.md#update_admin_conferenceships) | **PATCH** /api/v1/admin/conferenceships/{id} |  |
@@ -1487,6 +1485,156 @@ end
 - **Accept**: application/json
 
 
+## cancel_admin_archive_transfer_request
+
+> <AdminArchiveTransferRequest> cancel_admin_archive_transfer_request(id)
+
+
+
+Cancel a waiting copy request, or ask a running one to stop after the batch it is working on (super-admin only). The request is kept and returned.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+id = 56 # Integer | 
+
+begin
+  
+  result = api_instance.cancel_admin_archive_transfer_request(id)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->cancel_admin_archive_transfer_request: #{e}"
+end
+```
+
+#### Using the cancel_admin_archive_transfer_request_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdminArchiveTransferRequest>, Integer, Hash)> cancel_admin_archive_transfer_request_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.cancel_admin_archive_transfer_request_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdminArchiveTransferRequest>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->cancel_admin_archive_transfer_request_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+
+### Return type
+
+[**AdminArchiveTransferRequest**](AdminArchiveTransferRequest.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## close_compensation_requested_item
+
+> <CompensationClosureResponse> close_compensation_requested_item(requested_item_id, compensation_closure_request)
+
+
+
+Close one pending or received Compensation requested item as not available, in one transaction. The requested item becomes not_available and gets the operator's note; its Compensation becomes NOT_AVAILABLE and gets the same note as a comment sentence. Volunteer and graduate_assistant also add their position type to every position of the Compensation. Requires a user-backed token; the change is recorded as that user. Any failed check leaves both records unchanged.
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::DefaultApi.new
+requested_item_id = 56 # Integer | ID of the Compensation requested item to close
+compensation_closure_request = WinthropClient::CompensationClosureRequest.new({compensation_closure: WinthropClient::CompensationClosureInput.new({reason: 'not_employed', note: 'Not employed. Joined UMES June 2026.', expected_status: 'pending'})}) # CompensationClosureRequest | 
+
+begin
+  
+  result = api_instance.close_compensation_requested_item(requested_item_id, compensation_closure_request)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->close_compensation_requested_item: #{e}"
+end
+```
+
+#### Using the close_compensation_requested_item_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CompensationClosureResponse>, Integer, Hash)> close_compensation_requested_item_with_http_info(requested_item_id, compensation_closure_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.close_compensation_requested_item_with_http_info(requested_item_id, compensation_closure_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CompensationClosureResponse>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling DefaultApi->close_compensation_requested_item_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **requested_item_id** | **Integer** | ID of the Compensation requested item to close |  |
+| **compensation_closure_request** | [**CompensationClosureRequest**](CompensationClosureRequest.md) |  |  |
+
+### Return type
+
+[**CompensationClosureResponse**](CompensationClosureResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## compare_coli
 
 > <COLIAdjusted> compare_coli(school_id, other_person_school_id, other_person_total_compensation)
@@ -1935,13 +2083,13 @@ end
 - **Accept**: application/json
 
 
-## create_admin_bowl_games
+## create_admin_archive_transfer_request
 
-> <AdminBowlGameDetail> create_admin_bowl_games(create_admin_bowl_games_request)
+> <AdminArchiveTransferRequest> create_admin_archive_transfer_request(create_admin_archive_transfer_request)
 
 
 
-Create a bowl game (admin, super-admin only)
+Request a copy of old history into the archive (super-admin only). The transfer CronJob runs it within a few minutes, copy-only. Refused while the copy job is not checking in, cannot copy, or a request for the same table (or for every table) is waiting or running.
 
 ### Examples
 
@@ -1960,32 +2108,32 @@ WinthropClient.configure do |config|
 end
 
 api_instance = WinthropClient::DefaultApi.new
-create_admin_bowl_games_request = WinthropClient::CreateAdminBowlGamesRequest.new({bowl_game: WinthropClient::CreateAdminBowlGamesRequestBowlGame.new}) # CreateAdminBowlGamesRequest | 
+create_admin_archive_transfer_request = WinthropClient::CreateAdminArchiveTransferRequest.new({archive_transfer_request: WinthropClient::CreateAdminArchiveTransferRequestArchiveTransferRequest.new({table_name: 'all', max_rows: 37, max_minutes: 37})}) # CreateAdminArchiveTransferRequest | 
 
 begin
   
-  result = api_instance.create_admin_bowl_games(create_admin_bowl_games_request)
+  result = api_instance.create_admin_archive_transfer_request(create_admin_archive_transfer_request)
   p result
 rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->create_admin_bowl_games: #{e}"
+  puts "Error when calling DefaultApi->create_admin_archive_transfer_request: #{e}"
 end
 ```
 
-#### Using the create_admin_bowl_games_with_http_info variant
+#### Using the create_admin_archive_transfer_request_with_http_info variant
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AdminBowlGameDetail>, Integer, Hash)> create_admin_bowl_games_with_http_info(create_admin_bowl_games_request)
+> <Array(<AdminArchiveTransferRequest>, Integer, Hash)> create_admin_archive_transfer_request_with_http_info(create_admin_archive_transfer_request)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.create_admin_bowl_games_with_http_info(create_admin_bowl_games_request)
+  data, status_code, headers = api_instance.create_admin_archive_transfer_request_with_http_info(create_admin_archive_transfer_request)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <AdminBowlGameDetail>
+  p data # => <AdminArchiveTransferRequest>
 rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->create_admin_bowl_games_with_http_info: #{e}"
+  puts "Error when calling DefaultApi->create_admin_archive_transfer_request_with_http_info: #{e}"
 end
 ```
 
@@ -1993,11 +2141,11 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **create_admin_bowl_games_request** | [**CreateAdminBowlGamesRequest**](CreateAdminBowlGamesRequest.md) |  |  |
+| **create_admin_archive_transfer_request** | [**CreateAdminArchiveTransferRequest**](CreateAdminArchiveTransferRequest.md) |  |  |
 
 ### Return type
 
-[**AdminBowlGameDetail**](AdminBowlGameDetail.md)
+[**AdminArchiveTransferRequest**](AdminArchiveTransferRequest.md)
 
 ### Authorization
 
@@ -10831,79 +10979,6 @@ nil (empty response body)
 - **Accept**: Not defined
 
 
-## destroy_admin_bowl_games
-
-> destroy_admin_bowl_games(id)
-
-
-
-Delete a bowl game (admin, super-admin only)
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-id = 56 # Integer | 
-
-begin
-  
-  api_instance.destroy_admin_bowl_games(id)
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->destroy_admin_bowl_games: #{e}"
-end
-```
-
-#### Using the destroy_admin_bowl_games_with_http_info variant
-
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
-
-> <Array(nil, Integer, Hash)> destroy_admin_bowl_games_with_http_info(id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.destroy_admin_bowl_games_with_http_info(id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => nil
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->destroy_admin_bowl_games_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** |  |  |
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-
 ## destroy_admin_coach
 
 > destroy_admin_coach(id)
@@ -15106,80 +15181,6 @@ end
 ### Return type
 
 [**AccountSummaryCollection**](AccountSummaryCollection.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## get_admin_bowl_games
-
-> <AdminBowlGameDetail> get_admin_bowl_games(id)
-
-
-
-Retrieve a bowl game with its associated postseason results (admin, super-admin only)
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-id = 56 # Integer | 
-
-begin
-  
-  result = api_instance.get_admin_bowl_games(id)
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_admin_bowl_games: #{e}"
-end
-```
-
-#### Using the get_admin_bowl_games_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<AdminBowlGameDetail>, Integer, Hash)> get_admin_bowl_games_with_http_info(id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.get_admin_bowl_games_with_http_info(id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <AdminBowlGameDetail>
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_admin_bowl_games_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** |  |  |
-
-### Return type
-
-[**AdminBowlGameDetail**](AdminBowlGameDetail.md)
 
 ### Authorization
 
@@ -19533,84 +19534,6 @@ end
 ### Return type
 
 [**AuditedFinancialReportStatusCollection**](AuditedFinancialReportStatusCollection.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## get_bowl_games
-
-> <BowlGameCollection> get_bowl_games(opts)
-
-
-
-Retrieve the bowl games, to find the bowl_game_id of a postseason result
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-opts = {
-  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
-  per_page: 56 # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
-}
-
-begin
-  
-  result = api_instance.get_bowl_games(opts)
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_bowl_games: #{e}"
-end
-```
-
-#### Using the get_bowl_games_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<BowlGameCollection>, Integer, Hash)> get_bowl_games_with_http_info(opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.get_bowl_games_with_http_info(opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <BowlGameCollection>
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->get_bowl_games_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
-
-### Return type
-
-[**BowlGameCollection**](BowlGameCollection.md)
 
 ### Authorization
 
@@ -33580,13 +33503,13 @@ end
 - **Accept**: application/json
 
 
-## list_admin_bowl_games
+## list_admin_archive_transfer_requests
 
-> <AdminBowlGamesList> list_admin_bowl_games(opts)
+> <AdminArchiveTransferStatus> list_admin_archive_transfer_requests
 
 
 
-List bowl games (admin, super-admin only)
+Admin > Archive copies (super-admin only). The archive copy job's last check-in, each archive table's latest transfer run (progress, counts, copy speed, rows left behind, conflicts) and the 25 most recent copy requests.
 
 ### Examples
 
@@ -33605,52 +33528,41 @@ WinthropClient.configure do |config|
 end
 
 api_instance = WinthropClient::DefaultApi.new
-opts = {
-  page: 56, # Integer | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
-  per_page: 56, # Integer | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
-  q_name_cont: 'q_name_cont_example', # String | Case-insensitive name search
-  q_s: 'name asc' # String | Name sort order (defaults to ascending)
-}
 
 begin
   
-  result = api_instance.list_admin_bowl_games(opts)
+  result = api_instance.list_admin_archive_transfer_requests
   p result
 rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->list_admin_bowl_games: #{e}"
+  puts "Error when calling DefaultApi->list_admin_archive_transfer_requests: #{e}"
 end
 ```
 
-#### Using the list_admin_bowl_games_with_http_info variant
+#### Using the list_admin_archive_transfer_requests_with_http_info variant
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AdminBowlGamesList>, Integer, Hash)> list_admin_bowl_games_with_http_info(opts)
+> <Array(<AdminArchiveTransferStatus>, Integer, Hash)> list_admin_archive_transfer_requests_with_http_info
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.list_admin_bowl_games_with_http_info(opts)
+  data, status_code, headers = api_instance.list_admin_archive_transfer_requests_with_http_info
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <AdminBowlGamesList>
+  p data # => <AdminArchiveTransferStatus>
 rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->list_admin_bowl_games_with_http_info: #{e}"
+  puts "Error when calling DefaultApi->list_admin_archive_transfer_requests_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **page** | **Integer** | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional][default to 1] |
-| **per_page** | **Integer** | number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional][default to 20] |
-| **q_name_cont** | **String** | Case-insensitive name search | [optional] |
-| **q_s** | **String** | Name sort order (defaults to ascending) | [optional] |
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**AdminBowlGamesList**](AdminBowlGamesList.md)
+[**AdminArchiveTransferStatus**](AdminArchiveTransferStatus.md)
 
 ### Authorization
 
@@ -43019,82 +42931,6 @@ end
 ### HTTP request headers
 
 - **Content-Type**: multipart/form-data
-- **Accept**: application/json
-
-
-## update_admin_bowl_games
-
-> <AdminBowlGameDetail> update_admin_bowl_games(id, create_admin_bowl_games_request)
-
-
-
-Update a bowl game (admin, super-admin only)
-
-### Examples
-
-```ruby
-require 'time'
-require 'winthrop-client-ruby'
-# setup authorization
-WinthropClient.configure do |config|
-  # Configure API key authorization: ApiKey
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['Authorization'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: Oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = WinthropClient::DefaultApi.new
-id = 56 # Integer | 
-create_admin_bowl_games_request = WinthropClient::CreateAdminBowlGamesRequest.new({bowl_game: WinthropClient::CreateAdminBowlGamesRequestBowlGame.new}) # CreateAdminBowlGamesRequest | 
-
-begin
-  
-  result = api_instance.update_admin_bowl_games(id, create_admin_bowl_games_request)
-  p result
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->update_admin_bowl_games: #{e}"
-end
-```
-
-#### Using the update_admin_bowl_games_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<AdminBowlGameDetail>, Integer, Hash)> update_admin_bowl_games_with_http_info(id, create_admin_bowl_games_request)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.update_admin_bowl_games_with_http_info(id, create_admin_bowl_games_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <AdminBowlGameDetail>
-rescue WinthropClient::ApiError => e
-  puts "Error when calling DefaultApi->update_admin_bowl_games_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** |  |  |
-| **create_admin_bowl_games_request** | [**CreateAdminBowlGamesRequest**](CreateAdminBowlGamesRequest.md) |  |  |
-
-### Return type
-
-[**AdminBowlGameDetail**](AdminBowlGameDetail.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
 - **Accept**: application/json
 
 
