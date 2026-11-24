@@ -476,7 +476,7 @@ end
 
 ## replace_raw_contract_file
 
-> <RawContract> replace_raw_contract_file(raw_contract_id, file, file_signed_id, opts)
+> <RawContract> replace_raw_contract_file(raw_contract_id, opts)
 
 
 
@@ -500,15 +500,15 @@ end
 
 api_instance = WinthropClient::RawContractsApi.new
 raw_contract_id = 56 # Integer | ID of the vendor deal's RawContract whose PDF is replaced
-file = File.new('/path/to/some/file') # File | The new contract PDF as a multipart upload. Exactly one of file and file_signed_id is required.
-file_signed_id = 'file_signed_id_example' # String | Signed id returned by POST /contracts/direct_uploads after the PDF bytes were PUT to the returned URL. Exactly one of file and file_signed_id is required.
 opts = {
-  change_note: 'change_note_example' # String | Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates. At most 500 characters after trimming; blank is the same as omitted; a value that is not text or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write.
+  file: File.new('/path/to/some/file'), # File | The new contract PDF as a multipart upload. Exactly one of file and file_signed_id is required.
+  change_note: 'change_note_example', # String | Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates. At most 500 characters after trimming; blank is the same as omitted; a value that is not text or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write.
+  file_signed_id: 'file_signed_id_example' # String | Signed id returned by POST /contracts/direct_uploads after the PDF bytes were PUT to the returned URL. Exactly one of file and file_signed_id is required.
 }
 
 begin
   
-  result = api_instance.replace_raw_contract_file(raw_contract_id, file, file_signed_id, opts)
+  result = api_instance.replace_raw_contract_file(raw_contract_id, opts)
   p result
 rescue WinthropClient::ApiError => e
   puts "Error when calling RawContractsApi->replace_raw_contract_file: #{e}"
@@ -519,12 +519,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<RawContract>, Integer, Hash)> replace_raw_contract_file_with_http_info(raw_contract_id, file, file_signed_id, opts)
+> <Array(<RawContract>, Integer, Hash)> replace_raw_contract_file_with_http_info(raw_contract_id, opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.replace_raw_contract_file_with_http_info(raw_contract_id, file, file_signed_id, opts)
+  data, status_code, headers = api_instance.replace_raw_contract_file_with_http_info(raw_contract_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <RawContract>
@@ -538,9 +538,9 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **raw_contract_id** | **Integer** | ID of the vendor deal&#39;s RawContract whose PDF is replaced |  |
-| **file** | **File** | The new contract PDF as a multipart upload. Exactly one of file and file_signed_id is required. |  |
-| **file_signed_id** | **String** | Signed id returned by POST /contracts/direct_uploads after the PDF bytes were PUT to the returned URL. Exactly one of file and file_signed_id is required. |  |
+| **file** | **File** | The new contract PDF as a multipart upload. Exactly one of file and file_signed_id is required. | [optional] |
 | **change_note** | **String** | Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates. At most 500 characters after trimming; blank is the same as omitted; a value that is not text or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write. | [optional] |
+| **file_signed_id** | **String** | Signed id returned by POST /contracts/direct_uploads after the PDF bytes were PUT to the returned URL. Exactly one of file and file_signed_id is required. | [optional] |
 
 ### Return type
 
