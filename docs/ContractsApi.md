@@ -8,6 +8,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 | [**create_pending_contract**](ContractsApi.md#create_pending_contract) | **POST** /api/v1/contracts |  |
 | [**delete_pending_contract**](ContractsApi.md#delete_pending_contract) | **DELETE** /api/v1/contracts/{contractId} |  |
 | [**get_compensation_verification_status**](ContractsApi.md#get_compensation_verification_status) | **GET** /api/v1/compensation_verification_status | Verification status of every compensation row of some schools in one season |
+| [**get_compensation_verification_status_counts**](ContractsApi.md#get_compensation_verification_status_counts) | **GET** /api/v1/compensation_verification_status/counts | Verification status counts for some schools in one season, no rows |
 | [**get_contract_history**](ContractsApi.md#get_contract_history) | **GET** /api/v1/contract_history |  |
 | [**list_contract_verifications**](ContractsApi.md#list_contract_verifications) | **GET** /api/v1/contract_verifications | List verification events across contracts |
 | [**publish_pending_contract**](ContractsApi.md#publish_pending_contract) | **POST** /api/v1/contracts/{contractId}/publish |  |
@@ -22,7 +23,7 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 
 
 
-Step 1 of filing a pending contract PDF over the gateway's 1 MiB body limit. Creates the storage blob and returns the URL and headers to PUT the PDF bytes to, plus `signed_id` to send as `file_signed_id` to POST /contracts. Same payload as Active Storage's direct upload, behind the OAuth token. `winad_write` scope. Only application/pdf is accepted (422 otherwise), and byte_size must be 1 to 104857600 (100 MiB, the same limit as the Drive source). The returned `signed_id` is single-purpose and expires after 2 hours; filing it later is refused with 422 (errors.file_signed_id). When the contract is filed the stored bytes are checked against the declared byte_size and checksum (422, code checksum_mismatch) and then as a PDF (422, code invalid_pdf). 
+Step 1 of filing a pending contract PDF over the gateway's 1 MiB body limit. Creates the storage blob and returns the URL and headers to PUT the PDF bytes to, plus `signed_id` to send as `file_signed_id` to POST /contracts (or to PUT /raw_contracts/{raw_contractId}/file, to replace a vendor deal's PDF, WINAD-10820). Same payload as Active Storage's direct upload, behind the OAuth token. `winad_write` scope. Only application/pdf is accepted (422 otherwise), and byte_size must be 1 to 104857600 (100 MiB, the same limit as the Drive source). The returned `signed_id` is single-purpose and expires after 2 hours; filing it later is refused with 422 (errors.file_signed_id). When the contract is filed the stored bytes are checked against the declared byte_size and checksum (422, code checksum_mismatch) and then as a PDF (422, code invalid_pdf). 
 
 ### Examples
 
@@ -336,6 +337,86 @@ end
 ### Return type
 
 [**GetCompensationVerificationStatus200Response**](GetCompensationVerificationStatus200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_compensation_verification_status_counts
+
+> <GetCompensationVerificationStatusCounts200Response> get_compensation_verification_status_counts(season, opts)
+
+Verification status counts for some schools in one season, no rows
+
+WINAD-10768. The `counts_by_status` of GET /compensation_verification_status for the same scope and the same status rules (the same code decides each row), without building the rows: only the rows whose latest covering event is `passed` have their edit history read, and the authors of the changes are not looked up. Computed on request; `meta.as_of` is the time the read started. `status[]`, `q` and paging do not apply (as they do not to `meta.counts_by_status` of the rows). A hidden coach's rows are left out for a caller who cannot manage coaches. Errors and authorization are those of GET /compensation_verification_status. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'winthrop-client-ruby'
+# setup authorization
+WinthropClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: Oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = WinthropClient::ContractsApi.new
+season = 56 # Integer | Season-ending year, a positive whole number.
+opts = {
+  school_ids: [37], # Array<Integer> | The schools to read, as one comma separated list (school_ids=1,2; the form with explode false, because repeated school_ids=1&school_ids=2 keeps only the last) or school_ids[]=1&school_ids[]=2. At most 300. Give exactly one of school_ids and conference_id.
+  conference_id: 56 # Integer | The schools whose primary conference this is. At most 300 schools.
+}
+
+begin
+  # Verification status counts for some schools in one season, no rows
+  result = api_instance.get_compensation_verification_status_counts(season, opts)
+  p result
+rescue WinthropClient::ApiError => e
+  puts "Error when calling ContractsApi->get_compensation_verification_status_counts: #{e}"
+end
+```
+
+#### Using the get_compensation_verification_status_counts_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetCompensationVerificationStatusCounts200Response>, Integer, Hash)> get_compensation_verification_status_counts_with_http_info(season, opts)
+
+```ruby
+begin
+  # Verification status counts for some schools in one season, no rows
+  data, status_code, headers = api_instance.get_compensation_verification_status_counts_with_http_info(season, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetCompensationVerificationStatusCounts200Response>
+rescue WinthropClient::ApiError => e
+  puts "Error when calling ContractsApi->get_compensation_verification_status_counts_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **season** | **Integer** | Season-ending year, a positive whole number. |  |
+| **school_ids** | [**Array&lt;Integer&gt;**](Integer.md) | The schools to read, as one comma separated list (school_ids&#x3D;1,2; the form with explode false, because repeated school_ids&#x3D;1&amp;school_ids&#x3D;2 keeps only the last) or school_ids[]&#x3D;1&amp;school_ids[]&#x3D;2. At most 300. Give exactly one of school_ids and conference_id. | [optional] |
+| **conference_id** | **Integer** | The schools whose primary conference this is. At most 300 schools. | [optional] |
+
+### Return type
+
+[**GetCompensationVerificationStatusCounts200Response**](GetCompensationVerificationStatusCounts200Response.md)
 
 ### Authorization
 

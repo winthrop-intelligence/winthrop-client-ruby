@@ -4,6 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **updated_at** | **Time** | Echo exactly in cycle.updated_at, including microseconds. | [optional] |
+| **follow_up_date_explicit** | **Boolean** |  | [optional] |
 | **foia_request_id** | **Integer** |  | [optional] |
 | **foia_request_admin_url** | **String** |  | [optional] |
 | **school_admin_url** | **String** |  | [optional] |
@@ -72,6 +74,8 @@
 require 'winthrop-client-ruby'
 
 instance = WinthropClient::FoiaFollowUpReportRow.new(
+  updated_at: null,
+  follow_up_date_explicit: null,
   foia_request_id: null,
   foia_request_admin_url: null,
   school_admin_url: null,

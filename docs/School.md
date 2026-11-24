@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** |  | [optional] |
 | **name** | **String** |  | [optional] |
+| **alternate_names** | **Array&lt;String&gt;** | Every alternate name of the school, in the order they were added (same order as &#x60;GET /schools/{schoolId}/alternate_names&#x60;); an empty array when it has none. Included in every row of &#x60;GET /schools&#x60;; not included by &#x60;GET /schools/{schoolId}&#x60; or where a school is nested in another response.  | [optional] |
 | **short_name** | **String** |  | [optional] |
 | **location** | **String** |  | [optional] |
 | **created_at** | **Time** |  | [optional] |
@@ -53,6 +54,7 @@ require 'winthrop-client-ruby'
 instance = WinthropClient::School.new(
   id: 1,
   name: University of Alabama,
+  alternate_names: [&quot;UNCW&quot;],
   short_name: Alabama,
   location: Tuscaloosa, AL,
   created_at: 2019-01-01T00:00Z,

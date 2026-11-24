@@ -476,11 +476,11 @@ end
 
 ## replace_raw_contract_file
 
-> <RawContract> replace_raw_contract_file(raw_contract_id, file, opts)
+> <RawContract> replace_raw_contract_file(raw_contract_id, file, file_signed_id, opts)
 
 
 
-Replace the PDF of a vendor deal's RawContract (WINAD-10684). Send multipart/form-data with the new PDF as `file` and an optional `change_note`. The RawContract keeps its id and its `deal_id` link. The old file (and its OCR copy) is replaced, not kept as an attachment; the stored text is cleared and Mistral OCR is queued once, the way the admin's Re-extract does, so `text` (and GET /raw_contracts/{id}/ocr_text) reflect the new file once the extraction finishes. The structured `contract_terms` are not touched (they read as stale against the new text). `asset_file_name`, `asset_file_size` and `asset_content_type` are set from the new file and `updated_at` moves, so the response shows the new file name, size and time.  Vendor RawContracts only: a RawContract with no deal, one that belongs to a coach contract (use PUT /contracts/{contractId}/file) or one that a game contract, income report, termination agreement, subscription or system setting also uses is refused with 422 (errors.base) and nothing changes. The file must really be a PDF (its bytes are checked, not its name).  The replacement is recorded as exactly one PaperTrail version of the RawContract (no empty touch versions) with a `file` change (filename, byte_size, checksum and content_type, old and new) together with the legacy file columns, the acting user, the API client and the change_note. It is not linked to a contract, so GET /contract_history does not list it. Requires winad_write and a user-backed OAuth token (client-credentials tokens are refused) with permission to update the RawContract. 
+Replace the PDF of a vendor deal's RawContract (WINAD-10684). Send multipart/form-data with the new PDF by EXACTLY ONE of `file` or `file_signed_id`, and an optional `change_note`. The RawContract keeps its id and its `deal_id` link. The old file (and its OCR copy) is replaced, not kept as an attachment; the stored text is cleared and Mistral OCR is queued once, the way the admin's Re-extract does, so `text` (and GET /raw_contracts/{id}/ocr_text) reflect the new file once the extraction finishes. The structured `contract_terms` are not touched (they read as stale against the new text). `asset_file_name`, `asset_file_size` and `asset_content_type` are set from the new file and `updated_at` moves, so the response shows the new file name, size and time.  1. `file`: a multipart upload of the PDF. Larger bodies than the API gateway's request limit (1 MiB by default) cannot take this route (413). 2. `file_signed_id` (WINAD-10820): the signed id returned by POST /contracts/direct_uploads, after the PDF bytes (up to 100 MiB) were PUT to the returned URL. The stored bytes are read back, checked against the declared size and checksum and as a PDF, and that stored file becomes the RawContract's file. The signed id expires after 2 hours and works once.  A request with neither or with both is refused with 422 (errors.file and errors.file_signed_id, code invalid_input). A signed id that is unknown, expired, already in use or whose bytes were never uploaded is refused with 422 (errors.file_signed_id, code invalid_input); stored bytes that differ from what was declared are code checksum_mismatch, and bytes that are not a PDF or an invalid file name are code invalid_pdf. A refusal for the number of inputs or for change_note happens before the signed id is looked at, so the same signed id can be sent again. A request refused after the signed id was accepted (its bytes, its file name or the RawContract) removes the uploaded file, so ask for a new signed id before trying again. The server tolerates an empty field as \"not sent\".  Vendor RawContracts only: a RawContract with no deal, one that belongs to a coach contract (use PUT /contracts/{contractId}/file) or one that a game contract, income report, termination agreement, subscription or system setting also uses is refused with 422 (errors.base) and nothing changes. The file must really be a PDF (its bytes are checked, not its name).  The replacement is recorded as exactly one PaperTrail version of the RawContract (no empty touch versions) with a `file` change (filename, byte_size, checksum and content_type, old and new) together with the legacy file columns, the acting user, the API client and the change_note. It is not linked to a contract, so GET /contract_history does not list it. Requires winad_write and a user-backed OAuth token (client-credentials tokens are refused) with permission to update the RawContract. 
 
 ### Examples
 
@@ -500,14 +500,15 @@ end
 
 api_instance = WinthropClient::RawContractsApi.new
 raw_contract_id = 56 # Integer | ID of the vendor deal's RawContract whose PDF is replaced
-file = File.new('/path/to/some/file') # File | The new contract PDF
+file = File.new('/path/to/some/file') # File | The new contract PDF as a multipart upload. Exactly one of file and file_signed_id is required.
+file_signed_id = 'file_signed_id_example' # String | Signed id returned by POST /contracts/direct_uploads after the PDF bytes were PUT to the returned URL. Exactly one of file and file_signed_id is required.
 opts = {
   change_note: 'change_note_example' # String | Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates. At most 500 characters after trimming; blank is the same as omitted; a value that is not text or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write.
 }
 
 begin
   
-  result = api_instance.replace_raw_contract_file(raw_contract_id, file, opts)
+  result = api_instance.replace_raw_contract_file(raw_contract_id, file, file_signed_id, opts)
   p result
 rescue WinthropClient::ApiError => e
   puts "Error when calling RawContractsApi->replace_raw_contract_file: #{e}"
@@ -518,12 +519,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<RawContract>, Integer, Hash)> replace_raw_contract_file_with_http_info(raw_contract_id, file, opts)
+> <Array(<RawContract>, Integer, Hash)> replace_raw_contract_file_with_http_info(raw_contract_id, file, file_signed_id, opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.replace_raw_contract_file_with_http_info(raw_contract_id, file, opts)
+  data, status_code, headers = api_instance.replace_raw_contract_file_with_http_info(raw_contract_id, file, file_signed_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <RawContract>
@@ -537,7 +538,8 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **raw_contract_id** | **Integer** | ID of the vendor deal&#39;s RawContract whose PDF is replaced |  |
-| **file** | **File** | The new contract PDF |  |
+| **file** | **File** | The new contract PDF as a multipart upload. Exactly one of file and file_signed_id is required. |  |
+| **file_signed_id** | **String** | Signed id returned by POST /contracts/direct_uploads after the PDF bytes were PUT to the returned URL. Exactly one of file and file_signed_id is required. |  |
 | **change_note** | **String** | Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates. At most 500 characters after trimming; blank is the same as omitted; a value that is not text or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write. | [optional] |
 
 ### Return type
