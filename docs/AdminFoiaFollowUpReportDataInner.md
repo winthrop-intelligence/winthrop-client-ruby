@@ -29,6 +29,7 @@
 | **school_notes** | [**Array&lt;AdminFoiaRequestNote&gt;**](AdminFoiaRequestNote.md) |  | [optional] |
 | **follow_up_email_text** | **String** |  | [optional] |
 | **already_processed_today** | **Boolean** |  | [optional] |
+| **follow_up_cycle_key** | **String** | Current follow-up cycle key; send it back as observed_cycle_key when marking the request processed | [optional] |
 
 ## Example
 
@@ -60,7 +61,8 @@ instance = WinthropClient::AdminFoiaFollowUpReportDataInner.new(
   total_items: null,
   school_notes: null,
   follow_up_email_text: null,
-  already_processed_today: null
+  already_processed_today: null,
+  follow_up_cycle_key: null
 )
 ```
 

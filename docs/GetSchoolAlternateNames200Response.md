@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **data** | **Array&lt;String&gt;** |  | [optional] |
+| **alternate_names** | **Array&lt;String&gt;** | The school&#39;s alternate names in the order they were added; an empty array when it has none. |  |
 
 ## Example
 
@@ -12,7 +12,7 @@
 require 'winthrop-client-ruby'
 
 instance = WinthropClient::GetSchoolAlternateNames200Response.new(
-  data: [Alabama, UA, Bama]
+  alternate_names: [UNCW]
 )
 ```
 
